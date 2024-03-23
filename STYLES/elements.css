@@ -6,6 +6,7 @@
     display: flex;
     justify-content: flex-end;
 }
+
 .globalWrapperheropostimage {
     max-width: 1232px;
     margin: 0 auto;
@@ -15,12 +16,14 @@
     gap: 20%;
     pointer-events: none;
 }
+
 .chatmainwrp {
     position: fixed;
     right: 8px;
     bottom: 8px;
     z-index: 10;
 }
+
 .chatmainimage,
 .showchatglobalwtp {
     padding: 8px;
@@ -28,15 +31,18 @@
     background: var(--pink_color);
     border-radius: 8px;
 }
+
 .showchatglobalwtp {
     height: 64px;
     padding-top: 0;
     padding-bottom: 0;
 }
+
 .chatwithustxt h3 {
     width: 100%;
     text-align: end;
 }
+
 .chatimagewrp {
     cursor: pointer;
     background: var(--pink_color);
@@ -47,18 +53,22 @@
     border-radius: 8px;
     padding-left: 8px;
 }
+
 .chatwithustxt {
     margin-right: 4px;
 }
+
 .chatinsideimgwrp {
     cursor: pointer;
 }
+
 .showchatglobalwtp {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 24px;
 }
+
 .videoareaglobalwrp {
     background: var(--light_black);
     width: 100%;
@@ -68,13 +78,16 @@
     padding-bottom: 32px;
     overflow: hidden;
 }
+
 .heropostimagecaryingsofaimg {
     z-index: 1;
 }
+
 .mainpageheaderwrpbckg {
     background: var(--light_grey);
     width: 100%;
 }
+
 .methodpopuppriceswrp {
     display: flex;
 }
@@ -92,13 +105,16 @@
     justify-content: center;
     align-items: center;
 }
+
 .headerpinkphone {
     grid-row: 1/3;
 }
+
 .headerpinkelementwrpp1 {
     font-size: 1.5rem;
     text-align: center;
 }
+
 .headerpinkelementwrp a {
     font-size: 3rem;
 }
@@ -113,6 +129,7 @@
     display: flex;
     justify-content: space-between;
 }
+
 .mainpageheroarealeftwrp {
     display: flex;
     flex-direction: column;
@@ -124,9 +141,11 @@
     line-height: 1;
     margin-top: auto;
 }
+
 .heroareapinktitle {
     color: var(--pink_color);
 }
+
 .procesimagewrappermainwrp {
     display: flex;
     justify-content: center;
@@ -153,12 +172,14 @@
 
     width: fit-content;
 }
+
 .videoelm {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
+
 .videoareavideowrp {
     position: relative;
 
@@ -170,6 +191,7 @@
     z-index: 0;
     margin: 0 auto;
 }
+
 .paywithstripebutton:disabled {
     background: var(--light_grey);
     visibility: visible;
@@ -186,9 +208,11 @@
     flex-direction: column;
     padding-bottom: 40px;
 }
+
 .processimagewrappermob {
     display: none;
 }
+
 .processwrphowitworksp,
 .faqwrphowitworksp {
     margin: 0 auto;
@@ -198,9 +222,11 @@
     padding-bottom: 8px;
     width: fit-content;
 }
+
 .faqwrphowitworksp {
     margin-left: 0;
 }
+
 .processwrptheprocess {
     font-size: 6rem;
     font-weight: bold;
@@ -265,6 +291,7 @@
 .heroareaiq {
     font-weight: bold;
 }
+
 .heroinputlabel,
 .offerdeliverylabel {
     display: flex;
@@ -279,9 +306,11 @@
     margin-top: 24px;
     width: 100%;
 }
+
 .heroinputswrpedit {
     margin: 0;
 }
+
 .offereditdarkbckg {
     position: fixed;
     top: 0;
@@ -290,6 +319,7 @@
     background: var(--transparent_black_background);
     z-index: 10;
 }
+
 .heroinputsinputsinsidewrp,
 .heroinputsinputsinsidewrpedit {
     display: grid;
@@ -298,6 +328,7 @@
     gap: 24px;
     width: fit-content;
 }
+
 .postcodeconfirmbutton {
     color: var(--green);
     font-size: 2rem;
@@ -317,9 +348,11 @@
     grid-template-columns: minmax(240px, 304px);
     gap: 16px;
 }
+
 .heroinputsinputsinsidewrpedit :nth-child(3) {
     grid-column: 1;
 }
+
 .heroinputselectwrp,
 .heroinputselectwrpmanual {
     max-width: 304px;
@@ -334,12 +367,14 @@
     align-items: center;
     cursor: pointer;
 }
+
 .heroinputselectwrpmanual {
     padding: 0;
     display: flex;
     gap: 16px;
     padding-right: 16px;
 }
+
 .manualcityconfirmbutton {
     color: var(--pink_color);
     font-size: 2rem;
@@ -348,13 +383,16 @@
     cursor: pointer;
     text-decoration: underline;
 }
+
 .ifukorusinput {
     color: var(--dark_grey);
     position: relative;
 }
+
 .heroinputselectwrp p {
     pointer-events: none;
 }
+
 .logospacer {
     width: 2px;
     height: 93px;
@@ -365,9 +403,11 @@
 .heroinputselectwrpdisabled {
     cursor: not-allowed;
 }
+
 .collpostcode {
     grid-column: 1;
 }
+
 .destpostcode {
     grid-column: 2;
 }
@@ -384,6 +424,7 @@
     padding: 16px;
     margin-bottom: 24px;
 }
+
 .heroselectiondropdownwrp {
     position: absolute;
     top: 100%;
@@ -415,11 +456,13 @@
     z-index: -1;
     pointer-events: none;
 }
+
 .mainpagemainwrp {
     position: relative;
     background: var(--light_grey);
     background: #fff;
 }
+
 .bckimagewrp {
     position: relative;
     z-index: 1;
@@ -428,15 +471,16 @@
 
 .herobckgimg {
     min-width: 800px;
-
-    margin-top: 190px;
+    margin-top: 130px;
 }
+
 .heroareaselectionh3andclosebuttonwrp {
     display: none;
     background: var(--pink_color);
     color: #fff;
     padding: 16px;
 }
+
 .selectionlistclosebtrn {
     font-weight: bold;
     font-size: 2rem;
@@ -451,9 +495,11 @@
     background: white;
     font-weight: bold;
 }
+
 .letterssection {
     display: none;
 }
+
 .searchlistlistlist,
 .searchlistlistlistempty {
     min-height: 42px;
@@ -465,9 +511,11 @@
     border-bottom: 1px solid var(--light_grey);
     cursor: pointer;
 }
+
 .shownmobilelebel {
     display: none;
 }
+
 .searchlistlistlistempty {
     border-bottom: 1px solid transparent;
     pointer-events: none;
@@ -486,9 +534,11 @@
     flex-grow: 10;
     overflow: auto;
 }
+
 .carouselbuttonmobileonly {
     display: none !important;
 }
+
 .videoarriconsrightwrpglobal {
     display: flex;
     gap: 32px;
@@ -505,6 +555,7 @@
 .countrylisttxtp {
     margin-left: 8px;
 }
+
 .countrylisttxtpletter {
     background: var(--pink_color);
     border-radius: 4px;
@@ -517,9 +568,11 @@
     font-weight: bold;
     border-bottom: 1px solid var(--light_grey);
 }
+
 .inputtextforcountriesandcitiesp {
     text-transform: capitalize;
 }
+
 .herobuttongetestimate {
     width: 168px;
     height: 56px;
@@ -533,6 +586,7 @@
     border-radius: 4px;
     transition-duration: 200ms;
 }
+
 .herobuttongetestimate:hover,
 .stripepaydepositbtn:hover,
 .paywithstripebutton:hover,
@@ -544,17 +598,21 @@
     background: #000;
     color: white;
 }
+
 .herobuttongetestimate:disabled {
     visibility: visible;
     background: silver;
 }
+
 .videoareatopliner {
     display: flex;
     align-items: center;
 }
+
 .transportcarouselbutton:disabled {
     background: none;
 }
+
 .videoareatopwrp {
     color: #fff;
     font-size: 3rem;
@@ -567,9 +625,11 @@
     padding: 32px 0px;
     width: 100%;
 }
+
 .videoareatopp {
     font-size: 2rem;
 }
+
 .videoareatoplinerrightwrp {
     display: flex;
     gap: 32px;
@@ -598,6 +658,7 @@
     margin: 0 auto;
     aspect-ratio: 1019/225;
 }
+
 .faqglobalwrp {
     padding: 0 16px;
     background: #ededed;
@@ -606,38 +667,46 @@
     flex-direction: column;
     padding-bottom: 56px;
 }
+
 .faqinsidewrp {
     max-width: 1232px;
     margin: 0 auto;
     width: 100%;
 }
+
 .faqfaqwrp {
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
+
 .gitpm {
     display: none;
 }
+
 .faqh3 {
     font-size: 3rem;
     color: var(--pink_color);
 }
+
 .faqfaqliner {
     background: white;
     padding: 32px;
     border-radius: 8px;
 }
+
 .faqfaqinsidep {
     font-size: 2rem;
     line-height: 1.8;
     margin-top: 24px;
 }
+
 .faqfaqinsidetop {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .faqbutton,
 .faqbuttonclicked {
     min-width: 48px;
@@ -654,6 +723,7 @@
     align-items: center;
     transition-duration: 200ms;
 }
+
 .faqbutton:hover,
 .faqbuttonclicked:hover {
     background: #000;
@@ -664,37 +734,44 @@
     background: var(--pink_color);
     color: #fff;
 }
+
 .reviewsglobalwrp {
     max-width: 1232px;
     padding: 104px 16px;
     margin: 0 auto;
     width: 100%;
 }
+
 .reviewh1 {
     font-size: 6rem;
     line-height: 1;
 }
+
 .reviewssecondwrp {
     margin-top: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .carouselstarswrapper {
     display: flex;
     gap: 4px;
     margin-bottom: 24px;
 }
+
 .carouselh2 {
     font-size: 3rem;
     color: var(--pink_color);
     margin-bottom: 24px;
 }
+
 .carouselp {
     font-size: 2rem;
     line-height: 1.7;
     margin-bottom: 24px;
 }
+
 .carouselauthorlink {
     color: #000;
     font-size: 2rem;
@@ -705,9 +782,11 @@
     width: fit-content;
     border-bottom: 1px solid transparent;
 }
+
 .carouselauthorlink:hover {
     border-bottom: 1px solid var(--pink_color);
 }
+
 .carouselauthorp {
     font-size: 2rem;
     font-weight: bold;
@@ -719,6 +798,7 @@
     overflow: hidden;
     max-width: 800px;
 }
+
 .revcarouselcenterwrp {
     min-width: 800px;
 
@@ -742,6 +822,7 @@
     align-items: center;
     gap: 40px;
 }
+
 .reviewcarouselbutton,
 .transportcarouselbutton {
     font-size: 6rem;
@@ -754,6 +835,7 @@
     cursor: pointer;
     height: 6rem;
 }
+
 .transportcarouselbutton {
     margin: 0;
     padding-bottom: 6px;
@@ -761,6 +843,7 @@
 
     color: #fff;
 }
+
 .getintouchglobalwrp {
     width: 100%;
     background: #252420;
@@ -780,13 +863,16 @@
     width: fit-content;
     margin-bottom: 24px;
 }
+
 .gitp {
     font-size: 2rem;
     margin-bottom: 24px;
 }
+
 .mobilefooter {
     display: none;
 }
+
 .giticonwhsvg {
     color: var(--pink_color);
     width: 24px;
@@ -796,23 +882,27 @@
     justify-content: center;
     align-items: center;
 }
+
 .gittitlep {
     font-size: 3rem;
     font-weight: bold;
     color: var(--pink_color);
     line-height: 1;
 }
+
 .gitleftlinerright {
     font-size: 2rem;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
+
 .gitworkinghoursliner {
     display: flex;
     align-items: flex-start;
     gap: 8px;
 }
+
 .gitworkinghourswrp {
     display: flex;
     flex-direction: column;
@@ -823,29 +913,35 @@
     border-bottom: 1px solid transparent;
     transition-duration: 200ms;
 }
+
 .gitleftlinerright a:hover {
     border-bottom: 1px solid var(--pink_color);
 }
+
 .gitcenterwrp {
     display: grid;
     grid-template-columns: 280px 1fr;
     gap: 128px;
 }
+
 .gitformtop {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     margin-bottom: 24px;
 }
+
 .gitformlabel {
     display: flex;
     flex-direction: column;
     gap: 8px;
     font-size: 2rem;
 }
-.gitformtop > :first-child {
+
+.gitformtop> :first-child {
     grid-column: 1/3;
 }
+
 .formlabelinput,
 .formlabelinputrequired {
     height: 56px;
@@ -869,12 +965,14 @@
     white-space: pre-wrap;
     word-wrap: break-word;
 }
+
 .gitcheckboxwrp {
     font-size: 2rem;
     display: flex;
     align-items: center;
     gap: 24px;
 }
+
 .gitcheckbox,
 .gitcheckboxch {
     min-width: 24px;
@@ -886,9 +984,11 @@
     justify-content: center;
     align-items: center;
 }
+
 .gitcheckboxch {
     background: var(--pink_color);
 }
+
 .gitsendbutton {
     height: 48px;
     width: 168px;
@@ -905,25 +1005,30 @@
     margin-bottom: 80px;
     transition-duration: 200ms;
 }
+
 .gitsendbutton:disabled {
     background: silver;
     visibility: visible;
     color: var(--dark_grey);
 }
+
 .gitfooterwrp {
     font-size: 2rem;
 }
+
 .footerwrptopwrp {
     display: flex;
     gap: 16px;
     justify-content: center;
     margin-bottom: 4px;
 }
+
 .footerwrpp {
     border-bottom: 1px solid transparent;
     cursor: pointer;
     width: fit-content;
 }
+
 .footerwrpp:hover {
     border-bottom: 1px solid var(--pink_color);
 }
@@ -939,6 +1044,7 @@
 
     display: flex;
 }
+
 .closebuttonandscrollwrp {
     overflow: hidden;
     background: #fff;
@@ -949,29 +1055,36 @@
     margin: auto auto;
     height: 90vh;
 }
+
 .alotoftext {
     overflow-y: auto;
     height: 100%;
     padding: 24px;
     line-height: 1.7;
 }
+
 .alotoftext div {
     margin-bottom: 40px;
 }
+
 .alotoftext h3 {
     margin-bottom: 16px;
 }
+
 .alotoftext ul {
     list-style-type: none;
 }
+
 .alotoftext p {
     margin-bottom: 16px;
 }
+
 .alotoftext table {
     border-collapse: collapse;
     border: 1px solid silver;
     margin-bottom: 16px;
 }
+
 .alotoftext tr,
 td,
 th {
@@ -983,6 +1096,7 @@ th {
 .no-scroll {
     overflow: hidden;
 }
+
 .alotoftexttopwrp {
     display: flex;
     padding: 16px;
@@ -1000,13 +1114,16 @@ th {
 
     cursor: pointer;
 }
+
 .alotoftextclosebutton:hover {
     transform: scale(1.1);
 }
+
 .alotoftextprohibited {
     padding-left: 8px;
     padding-right: 8px;
 }
+
 .alotoftextbuttons button {
     background: none;
     font-size: inherit;
@@ -1015,21 +1132,26 @@ th {
     cursor: pointer;
     transition-duration: 200ms;
 }
+
 .alotoftextbuttons button:hover {
     border-bottom: 1px solid var(--pink_color);
 }
+
 .footerlastp {
     width: 100%;
     text-align: center;
     padding-bottom: 24px;
 }
+
 .githumanboximg {
     margin-top: auto;
 }
+
 .gitcenterleftwrp {
     display: flex;
     flex-direction: column;
 }
+
 .offertopbarwrp,
 .offerbookingdetailswrp,
 .offercolldeliverywrp,
@@ -1041,6 +1163,7 @@ th {
     width: 100%;
     margin: 0 auto;
 }
+
 .offerglobalwrp {
     display: flex;
     flex-direction: column;
@@ -1048,21 +1171,25 @@ th {
     background: var(--light_grey);
     min-height: 100vh;
 }
+
 .offerbookingdetailswrp {
     background: #fff;
     padding: 24px;
 
     position: relative;
 }
+
 .offercolldeliverywrp {
     margin-top: 24px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 24px;
 }
+
 .offereditglobalsection {
     background: white;
 }
+
 .offerdeliveryleft,
 .offerdeliveryrigth {
     background: white;
@@ -1074,6 +1201,7 @@ th {
     height: 100%;
     z-index: 10;
 }
+
 .bookingdetailsinput,
 .bookingdetailsinputmarket {
     height: 48px;
@@ -1081,18 +1209,22 @@ th {
     border: none;
     padding: 0px 16px;
 }
+
 .bookingdetailsinputmarket {
     outline: 2px solid var(--pink_color);
 }
+
 .bookingdetailsh3 {
     margin-bottom: 16px;
 }
+
 .offerbookingdetailsinputswrp {
     display: grid;
 
     grid-template-columns: 504px 1fr 1fr;
     column-gap: 24px;
 }
+
 .offerhpewrp {
     position: absolute;
     top: 0;
@@ -1100,6 +1232,7 @@ th {
     transform: translateY(-50%);
     min-width: 228px;
 }
+
 .headerpinkphone {
     width: 24px;
     height: 48px;
@@ -1110,6 +1243,7 @@ th {
     flex-direction: column;
     font-size: 2rem;
 }
+
 .offerdeliveryinput {
     text-transform: capitalize;
     height: 48px;
@@ -1117,11 +1251,13 @@ th {
     align-items: center;
     font-weight: bold;
 }
+
 .offerdeliverytitlewrp {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .offerdeliveryeditbtn {
     height: 32px;
     width: 72px;
@@ -1131,27 +1267,32 @@ th {
     color: #fff;
     cursor: pointer;
 }
+
 .offerboxesandluggage,
 .offerboxesandluggagemarked {
     background: #fff;
 
     margin-top: 24px;
 }
+
 .offerboxesandluggage h3,
 .offerboxesandluggagemarked h3 {
     margin-bottom: 24px;
     padding: 24px;
     padding-bottom: 0;
 }
+
 .offerboxesandluggagemarked {
     outline: 2px solid var(--pink_color);
 }
+
 .offercollectiondatewrp {
     margin-top: 24px;
     color: #fff;
     position: relative;
     overflow: hidden;
 }
+
 .collectiondaterightwrp,
 .collectiondateleftwrp {
     font-size: 2rem;
@@ -1160,9 +1301,11 @@ th {
     width: 100%;
     padding: 24px;
 }
+
 .collectiondateleftwrp {
     background: var(--pink_color);
 }
+
 .collectiondaterightwrp {
     background: var(--light_black);
 }
@@ -1170,6 +1313,7 @@ th {
 .collectiondateh3 {
     color: white;
 }
+
 .collectiondateh3 {
     margin-bottom: 24px;
 }
@@ -1179,14 +1323,17 @@ th {
     border: none !important;
     margin-top: 24px;
 }
+
 .react-calendar__navigation__label {
     pointer-events: none;
     font-weight: bold;
     font-size: 2rem;
 }
+
 .react-calendar__navigation__arrow {
     font-size: 3rem;
 }
+
 .react-calendar__month-view__weekdays__weekday {
     border-bottom: 1px solid var(--dark_grey);
 }
@@ -1195,6 +1342,7 @@ th {
     background: none !important;
     outline: 1px solid var(--pink_color) !important;
 }
+
 .react-calendar__tile--active {
     background: var(--pink_color) !important;
     outline: 1px solid var(--pink_color) !important;
@@ -1208,6 +1356,7 @@ th {
     justify-content: flex-end;
     gap: 40px;
 }
+
 .getestimatebutton,
 .resetbutton {
     background: var(--pink_color);
@@ -1222,12 +1371,14 @@ th {
     font-weight: bold;
     font-size: 2rem;
 }
+
 .resetbutton {
     background: none;
     color: var(--pink_color);
     transition-duration: 200ms;
     display: none;
 }
+
 .resetbutton:hover {
     outline: 1px solid var(--pink_color);
     transition-duration: 200ms;
@@ -1240,6 +1391,7 @@ th {
     gap: 24px;
     padding: 24px;
 }
+
 .boxesluggageliner {
     display: grid;
     grid-template-columns: min-content auto auto min-content;
@@ -1251,11 +1403,13 @@ th {
 .boxesluggagelinerwrp2 {
     font-size: 2rem;
 }
+
 .boxesluggagekg {
     font-size: 2rem;
     font-weight: bold;
     color: var(--dark_grey);
 }
+
 .boxesluggageplusbutton {
     width: 144px;
     height: 48px;
@@ -1268,6 +1422,7 @@ th {
     font-weight: bold;
     cursor: pointer;
 }
+
 .boxesluggageaddonbuttonwrp {
     width: 144px;
     height: 48px;
@@ -1276,12 +1431,14 @@ th {
 
     background: var(--light_grey);
 }
+
 .boxeslugagequatityp {
     font-size: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .boxesluggagebuttonaddorminus {
     font-size: 2rem;
     color: var(--pink_color);
@@ -1291,6 +1448,7 @@ th {
     align-items: center;
     font-weight: bold;
 }
+
 .customitemaddbutton {
     background: var(--pink_color);
     font-size: 2rem;
@@ -1303,11 +1461,13 @@ th {
     width: 144px;
     cursor: pointer;
 }
+
 .customiteminput {
     height: 48px;
     background: var(--light_grey);
     padding: 0px 16px;
 }
+
 .ownitemwrp {
     display: grid;
     grid-template-columns: 208px 192px repeat(auto-fit, minmax(0, min-content));
@@ -1318,6 +1478,7 @@ th {
     align-items: center;
     padding: 8px 24px;
 }
+
 .addownitemp {
     display: flex;
     align-items: center;
@@ -1329,9 +1490,11 @@ th {
 .customiteminput:required {
     outline: 1px solid var(--pink_color);
 }
+
 .ownitemsshowwrp {
     margin-top: 40px;
 }
+
 .offeritemsmissingwrapper {
     position: fixed;
     width: 100%;
@@ -1343,6 +1506,7 @@ th {
     align-items: center;
     top: 0;
 }
+
 .messagesentp {
     max-width: 60ch;
     line-height: 1.7;
@@ -1355,22 +1519,26 @@ th {
     overflow: hidden;
     position: relative;
 }
+
 .missingitemh3 {
     color: var(--pink_color);
 
     padding-right: 32px;
 }
+
 .sofa2notfilledwrpimgwrp {
     position: relative;
 
     aspect-ratio: 274/111;
     transform: translateY(24px);
 }
+
 .offeritemsmissingul {
     font-size: 2rem;
     margin-top: 24px;
     padding-left: 20px;
 }
+
 .offerpopupglobalwrp,
 .nopricepopupglobalwrp {
     width: 100%;
@@ -1385,9 +1553,11 @@ th {
     align-items: center;
     overflow-y: auto;
 }
+
 .offerpopupcenterwrp {
     position: relative;
 }
+
 .methodoftravelmobile {
     position: absolute;
     font-size: 3rem;
@@ -1406,6 +1576,7 @@ th {
     align-items: center;
     gap: 8px;
 }
+
 .paymentreceivedcheckmark {
     width: 24px;
     height: 24px;
@@ -1415,6 +1586,7 @@ th {
     align-items: center;
     border: 2px solid var(--green);
 }
+
 .offerpopupstripetopwrp {
     display: flex;
     align-items: center;
@@ -1428,37 +1600,46 @@ th {
     max-width: 640px;
     flex-grow: 10;
 }
+
 .nopricepopupcenterwrp {
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
+
 .offerpopupcenterwrpstripe p {
     margin-top: 24px;
     line-height: 1.7;
 }
+
 .paymentreceiverdlink {
     margin-left: auto;
 }
+
 .nopricepopupcenterwrp h3 {
     margin-bottom: 40px;
     margin-top: 24px;
 }
+
 .nopricepopupcenterwrp p {
     margin-bottom: 40px;
 }
+
 .nopricepopupcenterwrp a {
     color: var(--pink_color);
 }
+
 .nopriceofferssofaimg {
     transform: translateY(26px);
     margin: 0 auto;
 }
+
 .nopricepopupimagewrp {
     position: relative;
     width: 100%;
     aspect-ratio: 274/111;
 }
+
 .offerpopupselectionliner,
 .offerpopupselectionlinerselected {
     display: grid;
@@ -1469,6 +1650,7 @@ th {
     background: var(--light_grey);
     cursor: pointer;
 }
+
 .offerpopuptoptitles {
     display: flex;
     justify-content: space-around;
@@ -1487,6 +1669,7 @@ th {
     flex-direction: column;
     gap: 24px;
 }
+
 .offfepopupselectionsign,
 .offfepopupselectionsignselected {
     width: 24px;
@@ -1501,22 +1684,27 @@ th {
     background: #fff;
     color: var(--dark_grey);
 }
+
 .offfepopupselectionsignselected {
     background: var(--green);
     color: #fff;
 }
+
 .offerpopupselectionlinercenterwrp h3 {
     margin-bottom: 8px;
 }
+
 .offerpopouppricewrp,
 .offerpopouppricewrpselected {
     display: flex;
     gap: 4px;
 }
+
 .offerpopouppricewrp p,
 .offerpopouppricewrpselected p {
     font-weight: bold;
 }
+
 .offerpopouppricewrpselected {
     color: var(--green);
 }
@@ -1527,6 +1715,7 @@ th {
     margin-top: 24px;
     align-items: center;
 }
+
 .paywithstripebutton {
     width: 424px;
     height: 40px;
@@ -1538,9 +1727,11 @@ th {
     text-decoration: underline;
     cursor: pointer;
 }
+
 .stripepopupcountriesnames {
     text-transform: capitalize;
 }
+
 .stripepaydepositbtn {
     width: 240px;
     height: 40px;
@@ -1549,12 +1740,14 @@ th {
     margin-top: 8px;
     cursor: pointer;
 }
+
 .stripecardelelemtn {
     outline: 1px solid var(--light_grey);
     padding: 16px;
     font-size: 2rem;
     margin-top: 8px;
 }
+
 .offerstripeerror {
     margin-top: 42px;
     min-height: 28px;
@@ -1564,6 +1757,7 @@ th {
     display: flex;
     align-items: center;
 }
+
 .stripepaydepositbtn:disabled {
     visibility: visible;
 }
@@ -1579,6 +1773,7 @@ th {
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
 }
+
 .cityspinner {
     margin-top: 38px;
     width: 40px;
@@ -1597,6 +1792,7 @@ th {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -1609,9 +1805,11 @@ th {
 .empyboxesleftwrpnaniniani {
     margin-bottom: 16px;
 }
+
 .offerreactcalendarwrapper {
     margin-top: auto;
 }
+
 .idontneddemptyboxesbutton,
 .idontneddemptyboxesbuttonhidden {
     max-width: 350px;
@@ -1626,6 +1824,7 @@ th {
     visibility: hidden;
     pointer-events: none;
 }
+
 .messagesenth3 {
     color: #000 !important;
 }
@@ -1640,6 +1839,7 @@ th {
     text-decoration: underline;
     margin-top: 24px;
 }
+
 .manualcityinput {
     width: 100%;
     height: 100%;
@@ -1647,6 +1847,7 @@ th {
     padding-left: 16px;
     outline: none;
 }
+
 .offerdeliveryedit {
     height: fit-content;
     position: absolute;
@@ -1660,11 +1861,13 @@ th {
 .offerstripeerror {
     margin-top: 8px !important;
 }
+
 .alotoftextclosebuttonmissing {
     position: absolute;
     top: 20px;
     right: 24px;
 }
+
 .missingitemh3 {
     margin-top: 0;
 }

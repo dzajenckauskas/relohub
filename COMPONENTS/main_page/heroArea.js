@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import HeroInputs from "./heroInputs";
-import {useEffect, useState} from "react";
-import {useRouter} from "next/navigation";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function MainPAgeHeroArea() {
     const router = useRouter();
@@ -23,14 +23,14 @@ export default function MainPAgeHeroArea() {
     return (
         <section className="mainpageheroareaglobalwrp">
             <div className="mainpageheroarealeftwrp">
-                <Image
+                {/* <Image
                     width={74}
                     height={93}
                     src={"/logo.png"}
                     alt="logo"
                     style={{objectFit: "contain"}}
-                />
-                <div className="logospacer"></div>
+                /> */}
+                {/* <div className="logospacer"></div> */}
                 <div className="heroareatitlewrp">
                     <div>We promise</div>
                     <span>{"to "}</span>

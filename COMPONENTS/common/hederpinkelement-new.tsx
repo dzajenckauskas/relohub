@@ -2,13 +2,16 @@ import React from "react";
 
 export default function HeaderPinkElementNew() {
     return (
-        <div className="headerpinkelementwrp"
+        <div
+            className="headerpinkelementwrp"
             style={{
                 height: 90, position: 'relative', zIndex: 99,
-                display: 'flex', flexDirection: 'column'
+                display: 'flex', flexDirection: 'column',
+                borderBottomLeftRadius: 3,
+                borderBottomRightRadius: 3,
             }}>
             <p style={{
-                fontSize: '1.6rem', letterSpacing: 1
+                fontSize: '1.6rem', letterSpacing: 1, paddingTop: 8
             }}>have questions? call us</p>
             <div>
                 <svg

@@ -29,13 +29,16 @@ export default function Header() {
                     gap: 80,
                     alignItems: 'center'
                 }}>
-                    <Link passHref href={'/'} style={{ fontWeight: 600, fontSize: 14, cursor: 'pointer' }}>
+                    <Link passHref href={'/'}
+                        style={{ fontWeight: 600, fontSize: 14, cursor: 'pointer' }}>
                         Home
                     </Link>
-                    <Link passHref href={'/blog'} style={{ fontWeight: 600, fontSize: 14, cursor: 'pointer' }}>
+                    <Link passHref href={'/blog'}
+                        style={{ fontWeight: 600, fontSize: 14, cursor: 'pointer' }}>
                         Guides
                     </Link>
-                    <Link passHref href={'/about-us'} style={{ fontWeight: 600, fontSize: 14, cursor: 'pointer' }}>
+                    <Link passHref href={'/about-us'}
+                        style={{ fontWeight: 600, fontSize: 14, cursor: 'pointer' }}>
                         About us
                     </Link>
                 </div>
@@ -43,12 +46,10 @@ export default function Header() {
                     display: 'flex', flexDirection: 'row', gap: 15,
                     alignItems: 'center',
                 }}>
-
                     <div style={{
                     }}>
                         <button style={{
                             border: '1px solid #ccc',
-                            // padding: '10px 15px',
                             borderRadius: 2, fontWeight: 700,
                             fontSize: 12,
                             fontFamily: 'inherit'
