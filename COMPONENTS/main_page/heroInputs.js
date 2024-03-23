@@ -1,0 +1,858 @@
+"use client";
+
+import Image from "next/image";
+import {useEffect, useRef, useState} from "react";
+import {FixedSizeList as List} from "react-window";
+
+const countries = [
+    {country: "A"},
+    {country: "australia", iso: "AU"},
+    {country: "austria", iso: "AT"},
+    {country: "B"},
+    {country: "belgium", iso: "BE"},
+    {country: "bulgaria", iso: "BG"},
+    {country: "C"},
+    {country: "canada", iso: "CA"},
+    {country: "croatia", iso: "HR"},
+    {country: "cyprus", iso: "CY"},
+    {country: "czech republic", iso: "CZ"},
+    {country: "D"},
+    {country: "denmark", iso: "DK"},
+    {country: "E"},
+    {country: "egypt", iso: "EG"},
+    {country: "estonia", iso: "EE"},
+    {country: "F"},
+    {country: "finland", iso: "FI"},
+    {country: "france", iso: "FR"},
+    {country: "G"},
+    {country: "georgia", iso: "GE"},
+    {country: "germany", iso: "DE"},
+    {country: "gibraltar", iso: "GI"},
+    {country: "greece", iso: "GR"},
+    {country: "H"},
+    {country: "hong kong", iso: "HK"},
+    {country: "hungary", iso: "HU"},
+    {country: "I"},
+    {country: "iceland", iso: "IS"},
+    {country: "india", iso: "IN"},
+    {country: "ireland", iso: "IE"},
+    {country: "italy", iso: "IT"},
+    {country: "J"},
+    {country: "japan", iso: "JP"},
+    {country: "L"},
+    {country: "latvia", iso: "LV"},
+    {country: "lithuania", iso: "LT"},
+    {country: "luxembourg", iso: "LU"},
+    {country: "M"},
+    {country: "malaysia", iso: "MY"},
+    {country: "malta", iso: "MT"},
+    {country: "monaco", iso: "MC"},
+    {country: "montenegro", iso: "ME"},
+    {country: "N"},
+    {country: "netherlands", iso: "NL"},
+    {country: "new zealand", iso: "NZ"},
+    {country: "norway", iso: "NO"},
+    {country: "P"},
+    {country: "philippines", iso: "PH"},
+    {country: "poland", iso: "PL"},
+    {country: "portugal", iso: "PT"},
+    {country: "Q"},
+    {country: "qatar", iso: "QA"},
+    {country: "R"},
+    {country: "romania", iso: "RO"},
+    {country: "S"},
+    {country: "serbia", iso: "RS"},
+    {country: "singapore", iso: "SG"},
+    {country: "slovakia", iso: "SK"},
+    {country: "slovenia", iso: "SI"},
+    {country: "south africa", iso: "ZA"},
+    {country: "spain", iso: "ES"},
+    {country: "sweden", iso: "SE"},
+    {country: "switzerland", iso: "CH"},
+    {country: "T"},
+    {country: "thailand", iso: "TH"},
+    {country: "U"},
+    {country: "united arab emirates", iso: "AE"},
+    {country: "united kingdom", iso: "GB"},
+    {country: "united states", iso: "US"},
+];
+
+export default function HeroInputs({enableButton, edit, newstate}) {
+    const listRef = useRef(null);
+    const zipfocus = useRef(null);
+    const zipfocusdest = useRef(null);
+    const inpt = [
+        {label: "Collection Country", field: "from_country"},
+        {label: "Destination Country", field: "to_country"},
+        {label: "Collection City", field: "from_city"},
+        {label: "Destination City", field: "to_city"},
+    ];
+
+    const [inputs, setinputs] = useState([]);
+    const [width, setwidth] = useState(false);
+    const [state, setstate] = useState({
+        from_city: "",
+        from_country: "",
+        to_city: "",
+        to_country: "",
+        from_postCode: "",
+        to_postCode: "",
+    });
+    const [selectedField, setSelectedField] = useState(null);
+    const [inputvalue, setinputvalue] = useState("");
+    const [citiesfrom, setcitiesfrom] = useState([]);
+    const [citiesto, setcitiesto] = useState([]);
+    const [inputletter, setinputletter] = useState("");
+    const [listrefheight, setlistrefheight] = useState(230);
+    const [manualCity, setManualCity] = useState(false);
+    const [citiesletters, setcitiesletters] = useState([]);
+    const [fetching, setfetching] = useState(false);
+    const [zipinputfocused, setzipinputfocused] = useState(false);
+    const [zipinputfocuseddest, setzipinputfocuseddest] = useState(false);
+
+    useEffect(() => {
+        if (listRef.current) {
+            const height = listRef.current.offsetHeight;
+            setlistrefheight(height);
+        }
+    }, [listRef.current]);
+
+    useEffect(() => {
+        setwidth(window.innerWidth);
+        function resized() {
+            setwidth(window.innerWidth);
+        }
+        window.addEventListener("resize", resized);
+
+        return () => {
+            window.removeEventListener("resize", resized);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (state.from_country && !edit) {
+            setinputvalue("");
+            setSelectedField(inpt[2].label);
+        }
+    }, [state.from_country, edit]);
+    useEffect(() => {
+        if (state.to_country && !edit) {
+            setinputvalue("");
+            setSelectedField(inpt[3].label);
+        }
+    }, [state.to_country, edit]);
+
+    async function fetchcity(country, ft) {
+        let res = await fetch("/api/cities", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({country}),
+        });
+
+        if (res.ok) {
+            let data = await res.json();
+
+            let letters = [];
+            let letter;
+            for (const [i, el] of data.entries()) {
+                if (el.name.charAt(0).toLowerCase() !== letter) {
+                    letter = el.name.charAt(0).toLowerCase();
+
+                    letters.push(letter.toUpperCase());
+                    data.splice(i, 0, letter);
+                }
+            }
+
+            setcitiesletters(letters);
+            if (ft === "from") {
+                setcitiesfrom(data);
+            } else {
+                setcitiesto(data);
+            }
+            setfetching(false);
+        }
+    }
+
+    useEffect(() => {
+        if (newstate) {
+            setstate(newstate);
+        }
+    }, [newstate]);
+
+    useEffect(() => {
+        if (edit) {
+            let c = [...inpt];
+            if (edit === "from") {
+                c.splice(1, 1);
+                c.splice(2, 1);
+            }
+            if (edit === "to") {
+                c.splice(0, 1);
+                c.splice(1, 1);
+            }
+            setinputs(c);
+        } else {
+            setinputs(inpt);
+        }
+    }, [edit]);
+
+    useEffect(() => {
+        if (state.from_country) {
+            setfetching(true);
+            fetchcity(state.from_country, "from");
+            setcitiesfrom([]);
+        }
+    }, [state.from_country]);
+    useEffect(() => {
+        if (state.to_country) {
+            setfetching(true);
+            fetchcity(state.to_country, "to");
+            setcitiesto([]);
+        }
+    }, [state.to_country]);
+
+    useEffect(() => {
+        let enable = true;
+        for (const input of inputs) {
+            if (!state[input.field]) {
+                enable = false;
+                break;
+            }
+        }
+        if (inputs.length === 0) {
+            enable = false;
+        }
+
+        enableButton(enable ? {...state} : false);
+    }, [state, edit]);
+
+    function citiesDropdown() {
+        let arr = [];
+        if (selectedField === inpt[2].label) {
+            if (inputletter) {
+                arr = citiesfrom.filter((city) => {
+                    if (
+                        city.name
+                            ?.toLowerCase()
+                            .startsWith(inputletter.toLowerCase()) ||
+                        (city.length === 1 &&
+                            city
+                                .toLowerCase()
+                                .startsWith(inputletter.toLowerCase()))
+                    ) {
+                        return city;
+                    }
+                });
+            } else {
+                arr = citiesfrom.filter((city) => {
+                    if (
+                        city.name
+                            ?.toLowerCase()
+                            .startsWith(inputvalue.toLowerCase()) ||
+                        (city.length === 1 &&
+                            city
+                                .toLowerCase()
+                                .startsWith(inputvalue.toLowerCase()))
+                    ) {
+                        return city;
+                    }
+                });
+            }
+        }
+        if (selectedField === inpt[3].label) {
+            if (inputletter) {
+                arr = citiesto.filter((city) => {
+                    if (
+                        city.name
+                            ?.toLowerCase()
+                            .startsWith(inputletter.toLowerCase()) ||
+                        (city.length === 1 &&
+                            city
+                                .toLowerCase()
+                                .startsWith(inputletter.toLowerCase()))
+                    ) {
+                        return city;
+                    }
+                });
+            } else {
+                arr = citiesto.filter((city) => {
+                    if (
+                        city.name
+                            ?.toLowerCase()
+                            .startsWith(inputvalue.toLowerCase()) ||
+                        (city.length === 1 &&
+                            city
+                                .toLowerCase()
+                                .startsWith(inputvalue.toLowerCase()))
+                    ) {
+                        return city;
+                    }
+                });
+            }
+        }
+
+        const Row = ({index, style}) => {
+            const el = arr[index];
+            return (
+                <li
+                    className={
+                        el.name
+                            ? "searchlistlistlist"
+                            : "searchlistlistlistempty"
+                    }
+                    key={index}
+                    style={style}
+                    onClick={() => {
+                        setinputletter("");
+                        switch (selectedField) {
+                            case inpt[2].label:
+                                if (
+                                    state.from_country === "united states" ||
+                                    state.from_country === "united kingdom"
+                                ) {
+                                    zipfocus.current.focus();
+                                }
+
+                                setstate((prevst) => {
+                                    return {
+                                        ...prevst,
+                                        from_city: el.name,
+                                    };
+                                });
+                                break;
+                            case inpt[3].label:
+                                if (
+                                    state.to_country === "united states" ||
+                                    state.to_country === "united kingdom"
+                                ) {
+                                    zipfocusdest.current.focus();
+                                }
+
+                                setstate((prevst) => {
+                                    return {
+                                        ...prevst,
+                                        to_city: el.name,
+                                    };
+                                });
+                                break;
+                            default:
+                                break;
+                        }
+                        setSelectedField(null);
+                    }}
+                >
+                    <p className={el.name ? "" : "countrylisttxtpletter"}>
+                        {el.name ? el.name : el}
+                    </p>
+                    <span className="countrylistbubble"></span>
+                </li>
+            );
+        };
+
+        return (
+            <ul className="searchlistlist" ref={listRef}>
+                {arr.length !== 0 ? (
+                    <List
+                        height={listrefheight}
+                        itemCount={arr.length}
+                        itemSize={42}
+                    >
+                        {Row}
+                    </List>
+                ) : fetching ? (
+                    <p className="cityspinner"></p>
+                ) : (
+                    <div>
+                        <p>No city has been found.</p>
+                        <button
+                            className="nocityfoundbtn"
+                            onClick={() => {
+                                if (selectedField) {
+                                    setManualCity(
+                                        JSON.parse(
+                                            JSON.stringify(selectedField),
+                                        ),
+                                    );
+                                }
+
+                                setSelectedField(null);
+                            }}
+                        >
+                            Please enter manually
+                        </button>
+                    </div>
+                )}
+            </ul>
+        );
+    }
+    function countriesDropdown(el, i) {
+        let arr = [];
+
+        if (inputletter) {
+            arr = countries.filter((el) => {
+                return el.country
+                    .toLowerCase()
+                    .startsWith(inputletter.toLowerCase());
+            });
+        } else {
+            arr = countries.filter((el, i) => {
+                if (
+                    el.country
+                        .toLowerCase()
+                        .startsWith(inputvalue.toLowerCase())
+                ) {
+                    return el;
+                }
+            });
+        }
+
+        return (
+            <ul className="searchlistlist">
+                {arr.map((el, i) => {
+                    return (
+                        <li
+                            className={
+                                el.iso
+                                    ? "searchlistlistlist"
+                                    : "searchlistlistlistempty"
+                            }
+                            key={i}
+                            onClick={() => {
+                                setinputletter("");
+                                switch (selectedField) {
+                                    case inpt[0].label:
+                                        setstate((prevst) => {
+                                            return {
+                                                ...prevst,
+                                                from_country: el.country,
+                                                from_city: "",
+                                            };
+                                        });
+
+                                        break;
+                                    case inpt[1].label:
+                                        setstate((prevst) => {
+                                            return {
+                                                ...prevst,
+                                                to_country: el.country,
+                                                to_city: "",
+                                            };
+                                        });
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                                setSelectedField(null);
+                            }}
+                        >
+                            {el.iso ? (
+                                <Image
+                                    alt={"flag"}
+                                    src={`/flags/${el.iso.toLowerCase()}.svg`}
+                                    width={24}
+                                    height={16}
+                                    style={{objectFit: "contain"}}
+                                ></Image>
+                            ) : null}
+
+                            <p
+                                className={
+                                    el.country.length === 1
+                                        ? "countrylisttxtpletter"
+                                        : "countrylisttxtp"
+                                }
+                            >
+                                {el.country}
+                            </p>
+                            <span className="countrylistbubble"></span>
+                        </li>
+                    );
+                })}
+            </ul>
+        );
+    }
+
+    function dropdown(el, i) {
+        let letters = [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z",
+        ];
+
+        let included = [];
+
+        if (
+            selectedField === inpt[0].label ||
+            selectedField === inpt[1].label
+        ) {
+            for (const countrie of countries) {
+                if (letters.includes(countrie.country)) {
+                    included.push(countrie.country);
+                }
+            }
+        } else {
+            letters = citiesletters;
+            included = citiesletters;
+        }
+
+        return (
+            <div
+                className="heroselectiondropdownwrp"
+                onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }}
+            >
+                <section className="heroareaselectionh3andclosebuttonwrp">
+                    <h3 className="heroselectionh3">{el.label}:</h3>
+                    <button
+                        className="selectionlistclosebtrn"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setSelectedField(null);
+                            setinputletter("");
+                        }}
+                    >
+                        &#x2715;
+                    </button>
+                </section>
+                <section className="letterssection">
+                    {letters.map((el, i) => {
+                        return (
+                            <p
+                                className={
+                                    included.includes(el)
+                                        ? "letttersectionletterp"
+                                        : "letttersectionletterpdisabled"
+                                }
+                                key={i}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    setinputvalue("");
+                                    setinputletter(el);
+                                }}
+                            >
+                                {el}
+                            </p>
+                        );
+                    })}
+                </section>
+
+                <input
+                    value={inputvalue}
+                    onChange={(e) => {
+                        setinputletter("");
+                        setinputvalue(e.target.value);
+                    }}
+                    placeholder="Search list"
+                    className="dropdowninputsearch"
+                ></input>
+                {selectedField === inpt[0].label ||
+                selectedField === inpt[1].label
+                    ? countriesDropdown(el, i)
+                    : citiesDropdown(el, i)}
+            </div>
+        );
+    }
+
+    useEffect(() => {
+        switch (selectedField) {
+            case inpt[2].label:
+                setstate((prevst) => {
+                    return {
+                        ...prevst,
+                        from_city: inputvalue,
+                    };
+                });
+
+                break;
+            case inpt[3].label:
+                setstate((prevst) => {
+                    return {
+                        ...prevst,
+                        to_city: inputvalue,
+                    };
+                });
+                break;
+
+            default:
+                break;
+        }
+    }, [inputvalue, selectedField]);
+
+    function editClassname(el, i) {
+        if (i === 2) {
+            if (!state.from_country) {
+                return `heroinputselectwrp heroinputselectwrpdisabled`;
+            } else {
+                return `heroinputselectwrp`;
+            }
+        }
+        if (i === 3) {
+            if (!state.to_country) {
+                return `heroinputselectwrp heroinputselectwrpdisabled`;
+            } else {
+                return `heroinputselectwrp`;
+            }
+        }
+        return `heroinputselectwrp`;
+    }
+
+    function postcodetxt(txt, frt) {
+        return `${edit ? "" : txt}${
+            frt === "from"
+                ? state.from_country === "united kingdom"
+                    ? " Post "
+                    : " Zip "
+                : frt === "to"
+                ? state.to_country === "united kingdom"
+                    ? " Post "
+                    : " Zip "
+                : ""
+        }Code${edit || width >= 500 ? ":" : ""}`;
+    }
+
+    function ifukofus() {
+        const arr = [];
+
+        if (
+            state.from_country === "united states" ||
+            state.from_country === "united kingdom"
+        ) {
+            if (!edit || edit === "from") {
+                arr.push(
+                    <label className="heroinputlabel  collpostcode" key={"a"}>
+                        <p className={edit ? "" : "hiddenmobilelabel"}>
+                            {postcodetxt("Collection", "from")}
+                        </p>
+
+                        <input
+                            ref={zipfocus}
+                            onFocus={() => {
+                                setzipinputfocused(true);
+                            }}
+                            onBlur={() => {
+                                setzipinputfocused(false);
+                            }}
+                            className="dropdowninputsearch  ifukorusinput"
+                            value={state.from_postCode}
+                            placeholder={
+                                width && width <= 500 && !edit
+                                    ? postcodetxt("Collection", "from")
+                                    : ""
+                            }
+                            onChange={(e) => {
+                                setstate({
+                                    ...state,
+                                    from_postCode: e.target.value.toUpperCase(),
+                                });
+                            }}
+                        ></input>
+                        {zipinputfocused && !edit ? (
+                            <button
+                                className="postcodeconfirmbutton"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    setzipinputfocused(false);
+                                }}
+                            >
+                                Confirm
+                            </button>
+                        ) : null}
+                    </label>,
+                );
+            }
+        }
+        if (
+            state.to_country === "united states" ||
+            state.to_country === "united kingdom"
+        ) {
+            if (!edit || edit === "to") {
+                arr.push(
+                    <label className="heroinputlabel destpostcode" key={"b"}>
+                        <p className={edit ? "" : "hiddenmobilelabel"}>
+                            {postcodetxt("Destination", "to")}
+                        </p>
+
+                        <input
+                            placeholder={
+                                width && width <= 500 && !edit
+                                    ? postcodetxt("Destination", "to")
+                                    : ""
+                            }
+                            ref={zipfocusdest}
+                            onFocus={() => {
+                                setzipinputfocuseddest(true);
+                            }}
+                            onBlur={() => {
+                                setzipinputfocuseddest(false);
+                            }}
+                            className="dropdowninputsearch  ifukorusinput"
+                            value={state.to_postCode}
+                            onChange={(e) => {
+                                setstate({
+                                    ...state,
+                                    to_postCode: e.target.value.toUpperCase(),
+                                });
+                            }}
+                        ></input>
+                        {zipinputfocuseddest && !edit ? (
+                            <button
+                                className="postcodeconfirmbutton"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    setzipinputfocused(false);
+                                }}
+                            >
+                                Confirm
+                            </button>
+                        ) : null}
+                    </label>,
+                );
+            }
+        }
+
+        return arr;
+    }
+
+    function addclassnametomobileinputs(el, i) {
+        if (el.label === `Collection City`) {
+            return `heroinputliner heroinputliner${i}  ${
+                !state.from_country ? "heroinputlinerhide" : ""
+            }`;
+        }
+        if (el.label === `Destination City`) {
+            return `heroinputliner heroinputliner${i}  ${
+                !state.to_country ? "heroinputlinerhide" : ""
+            }`;
+        }
+
+        return `heroinputliner heroinputliner${i}`;
+    }
+
+    return (
+        <div className={edit ? "heroinputswrpedit" : "heroinputswrp"}>
+            <div
+                className={
+                    edit
+                        ? "heroinputsinputsinsidewrpedit"
+                        : "heroinputsinputsinsidewrp"
+                }
+            >
+                {inputs.map((el, i) => {
+                    return (
+                        <div
+                            className={addclassnametomobileinputs(el, i)}
+                            key={i}
+                        >
+                            <label className="heroinputlabel">
+                                {edit ? (
+                                    `${el.label.split(" ").slice(1).join(" ")}:`
+                                ) : (
+                                    <p className="hiddenmobilelabel">
+                                        {el.label}:
+                                    </p>
+                                )}
+
+                                {manualCity === el.label ? (
+                                    <div className="heroinputselectwrpmanual">
+                                        <input
+                                            value={state[el.field]}
+                                            onChange={(e) => {
+                                                setstate({
+                                                    ...state,
+                                                    [el.field]: e.target.value,
+                                                });
+                                            }}
+                                            className="manualcityinput"
+                                            autoFocus
+                                        ></input>
+                                        <button
+                                            className="manualcityconfirmbutton"
+                                            onClick={() => {
+                                                setManualCity(null);
+                                            }}
+                                        >
+                                            Confirm
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div
+                                        className={editClassname(el, i)}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            e.preventDefault();
+
+                                            if (
+                                                !e.target.classList.contains(
+                                                    "heroinputselectwrpdisabled",
+                                                )
+                                            ) {
+                                                setinputvalue("");
+                                                setSelectedField(
+                                                    selectedField === el.label
+                                                        ? null
+                                                        : el.label,
+                                                );
+                                            }
+                                        }}
+                                    >
+                                        {state[el.field] ? (
+                                            <p className="inputtextforcountriesandcitiesp">
+                                                {state[el.field]}
+                                            </p>
+                                        ) : (
+                                            <div>
+                                                <p className="hiddenmobilelabel">
+                                                    Please select
+                                                </p>
+                                                <p className="shownmobilelebel">
+                                                    {el.label}
+                                                </p>
+                                            </div>
+                                        )}
+
+                                        <span className="triangledown"></span>
+                                    </div>
+                                )}
+                                {selectedField === el.label && !manualCity
+                                    ? dropdown(el, i)
+                                    : null}
+                            </label>
+                        </div>
+                    );
+                })}
+
+                {ifukofus()}
+            </div>
+        </div>
+    );
+}

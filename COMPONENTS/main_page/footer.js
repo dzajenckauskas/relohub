@@ -1,0 +1,75 @@
+"use client";
+
+import {useEffect, useState} from "react";
+import TermsAndConditions from "./footerPopups/termsConditions";
+import PrivacyPolicy from "./footerPopups/privacyPolicy";
+import InclusionsExclusions from "./footerPopups/inclusionsExclusions";
+import FAQ from "./footerPopups/faq";
+
+export default function Footer() {
+    const [clicked, setclicked] = useState(null);
+
+    const list = [
+        `Terms & conditions`,
+        `Privacy policy`,
+        `Inclusions and exclusions`,
+        "F.A.Q.",
+    ];
+
+    useEffect(() => {
+        if (clicked) {
+            document.body.classList.add("no-scroll");
+        } else {
+            document.body.classList.remove("no-scroll");
+        }
+
+        return () => {
+            document.body.classList.remove("no-scroll");
+        };
+    }, [clicked]);
+
+    return (
+        <div className="gitfooterwrp">
+            {clicked ? (
+                <section className="popupmainwrp">
+                    <div className="closebuttonandscrollwrp">
+                        <div className="alotoftexttopwrp">
+                            <h1 className="alotoftexttopwrph2">{clicked}</h1>
+
+                            <button
+                                className="alotoftextclosebutton"
+                                onClick={() => {
+                                    setclicked(null);
+                                }}
+                            >
+                                &#10006;
+                            </button>
+                        </div>
+
+                        {clicked === list[0] ? <TermsAndConditions /> : null}
+                        {clicked === list[1] ? <PrivacyPolicy /> : null}
+                        {clicked === list[2] ? <InclusionsExclusions /> : null}
+                        {clicked === list[3] ? <FAQ /> : null}
+                    </div>
+                </section>
+            ) : null}
+
+            <div className="footerwrptopwrp">
+                {list.map((el, i) => {
+                    return (
+                        <p
+                            className="footerwrpp"
+                            key={i}
+                            onClick={() => {
+                                setclicked(el);
+                            }}
+                        >
+                            {el}
+                        </p>
+                    );
+                })}
+            </div>
+            <p className="footerlastp">Deliver1 © 2019</p>
+        </div>
+    );
+}

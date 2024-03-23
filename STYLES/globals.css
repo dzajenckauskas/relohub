@@ -1,0 +1,65 @@
+:root {
+    --pink_color: #e71c5e;
+    --light_grey: #ebebeb;
+    --mid_grey: #f1f1f1;
+    --dark_grey: #636363;
+    --light_black: #202020;
+    --transparent_black_background: #000000b6;
+    --green: #00a30f;
+}
+
+html {
+    font-size: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4 {
+    line-height: 1;
+}
+h1 {
+    font-size: 6rem;
+}
+h3 {
+    font-size: 3rem;
+}
+
+button:disabled {
+    visibility: hidden;
+    pointer-events: none;
+    background: silver;
+}
+button {
+    border: none;
+    outline: none;
+    transition-duration: 200ms;
+}
+input {
+    border: none;
+    font-family: inherit;
+    font-size: 2rem;
+}
+p {
+    font-size: 2rem;
+}

@@ -1,0 +1,27 @@
+{
+    "name": "deliver1",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start -p 4000",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@stripe/react-stripe-js": "^2.4.0",
+        "@stripe/stripe-js": "^2.3.0",
+        "next": "v14.0.5-canary.60",
+        "nodemailer": "^6.9.8",
+        "react": "^18",
+        "react-calendar": "^4.8.0",
+        "react-dom": "^18",
+        "react-window": "^1.8.10",
+        "sharp": "^0.33.2",
+        "stripe": "^14.12.0"
+    },
+    "devDependencies": {
+        "eslint": "^8",
+        "eslint-config-next": "14.0.4"
+    }
+}

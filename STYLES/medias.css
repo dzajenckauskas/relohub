@@ -1,0 +1,744 @@
+@media screen and (max-width: 1200px) {
+    .carouselmainwrpoutside {
+        max-width: 600px;
+    }
+    .revcarouselcenterwrp {
+        min-width: 600px;
+    }
+    .ownitemwrp {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+    .customitemaddbutton {
+        grid-column: 3;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .offerbookingdetailsinputswrp {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .boxesandluggagestandardwrp,
+    .boxesandluggageownwrp {
+        grid-template-columns: 1fr;
+    }
+    .boxesandluggagestandardwrp > :nth-child(3) {
+        grid-row: 2;
+    }
+    .gitworkinghourswrp {
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 80px;
+    }
+    .githumanboximg {
+        display: none;
+    }
+    .pcfooter {
+        display: none;
+    }
+    .mobilefooter {
+        display: block;
+    }
+    .gitcenterwrp {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 80px;
+    }
+    .gitsendbutton {
+        margin-bottom: 0;
+    }
+    .gitpm {
+        display: block;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .gitp {
+        display: none;
+    }
+    .gith1 {
+        width: 100%;
+        text-align: center;
+    }
+    .faqwrphowitworksp {
+        margin: 0 auto;
+    }
+    .reviewh1 {
+        margin-bottom: 24px;
+    }
+    .reviewh1 br {
+        display: none;
+    }
+    .reviewssecondwrp {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .carouselmainwrpoutside {
+        max-width: 600px;
+    }
+    .revcarouselcenterwrp {
+        min-width: 600px;
+    }
+    .heropostimagecaryingimg {
+        display: none;
+    }
+    .globalWrapperheropostimage {
+        justify-content: center;
+    }
+    .videoareatopwrp {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+    }
+}
+@media screen and (max-width: 900px) {
+    .offerbuttonswrp {
+        margin: 4px 0;
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+    .offercolldeliverywrp {
+        margin-top: 4px;
+    }
+    .offerboxesandluggage {
+        margin-top: 4px;
+    }
+    .offercolldeliverywrp {
+        gap: 4px;
+    }
+    .chatimagewrp {
+        padding-left: 4px;
+    }
+    .chatwithustxt {
+        display: none;
+    }
+    .offercollectiondatewrp {
+        margin-top: 0;
+    }
+    .customiteminput {
+        width: 100%;
+    }
+    .getestimatebutton {
+        width: 100%;
+    }
+    .offerbuttonswrp {
+        width: 100%;
+        margin: 16px auto;
+        margin-top: 0;
+        margin-bottom: 24px;
+    }
+    .ownitemwrp {
+        display: flex;
+        flex-direction: column;
+    }
+    .offerhpewrp {
+        transform: translate(-50%, 16px);
+        right: unset;
+        left: 50%;
+        min-width: 228px;
+    }
+    .offerhpewrp {
+        width: 100%;
+        transform: translate(-50%, 0px);
+    }
+    .heroareatitlewrp {
+        font-size: 3rem;
+    }
+    .headerpinkelementwrp {
+        grid-template-columns: max-content max-content max-content;
+        align-items: center;
+    }
+    .headerpinkphone {
+        grid-column: 2;
+        margin-left: 16px;
+    }
+    .mainpageheroareaglobalwrp {
+        flex-direction: column;
+        align-items: center;
+    }
+    .processimagewrapper {
+        display: none;
+    }
+    .processimagewrappermob {
+        display: flex;
+
+        width: 240px;
+        aspect-ratio: 268/667;
+    }
+    .processglobalwrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 80px;
+    }
+    .processimagewrappertextwrp {
+        position: absolute;
+        grid-template-columns: repeat(2, min-content);
+        transform: translateY(100px);
+        justify-content: center;
+        justify-items: center;
+        gap: 24px;
+        width: fit-content;
+        row-gap: 168px;
+    }
+    .processtxtp {
+        transform: unset !important;
+        margin: 0;
+        padding: 0;
+    }
+    .processimagewrappertextwrp > :nth-child(3) {
+        transform: translateY(18px) !important;
+    }
+    .processimagewrappertextwrp > :nth-child(2) {
+        transform: translateY(100px) !important;
+    }
+    .processimagewrappertextwrp > :nth-child(4) {
+        transform: translateY(120px) !important;
+    }
+
+    .mainpageheroarealeftwrp {
+        width: 100%;
+        justify-content: center;
+        margin-top: 16px;
+        gap: 80px;
+        flex-direction: row;
+    }
+    .mainpageheroarearightwrp {
+        margin: 0;
+    }
+
+    .headerpinkelementwrp {
+        width: 100%;
+    }
+    .mainpageheaderwrp {
+        padding: 0;
+    }
+    .offertopbarwrp {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .offerbookingdetailswrp {
+        padding-top: 112px;
+    }
+    .headerpinkelementwrp {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .customiteminput {
+        width: 100%;
+    }
+    .idontneddemptyboxesbuttonhidden {
+        display: none;
+    }
+    .collectiondatecenterwrp {
+        flex-direction: column;
+        align-items: center;
+    }
+    .collectiondaterightwrp,
+    .collectiondateleftwrp {
+        width: 100%;
+    }
+    .offercolldeliverywrp {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .carouselmainwrpoutside {
+        max-width: 400px;
+    }
+    .revcarouselcenterwrp {
+        min-width: 400px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .processglobalwrapper,
+    .faqglobalwrp,
+    .reviewsglobalwrp,
+    .getintouchglobalwrp {
+        padding-top: 24px;
+    }
+
+    .reviewsglobalwrp {
+        padding-bottom: 24px;
+    }
+    .paywithstripebutton {
+        width: 100%;
+        height: 48px;
+    }
+    .videoareatopwrp {
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+    .stripepaymentwrp {
+        flex-direction: column;
+    }
+    .heropostimagecaryingsofaimg {
+        width: 100%;
+    }
+    .videoareatopliner {
+        min-width: 200px;
+
+        justify-content: center;
+        gap: 8px;
+    }
+    .carouselbuttonmobileonly {
+        display: flex !important;
+    }
+    .videoarriconsrightwrpglobal {
+        gap: 0;
+
+        transition-duration: 200ms;
+    }
+    .videoarriconsrightwrpglobal {
+        transition-duration: 200ms;
+    }
+
+    .videoarrtoplinericonswrp {
+        width: 200px;
+        overflow: hidden;
+    }
+    .gitworkinghourswrp {
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .gitsendbutton {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .offeritemsmissingcenterwrp {
+        padding-bottom: 80px;
+    }
+
+    .methodpopuppriceswrp h1 {
+        font-size: 3rem !important;
+    }
+    .offerpopupselectionlinercenterwrp h3 {
+        font-size: 2rem;
+    }
+    .ownitemwrp {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+    .offerbookingdetailswrp {
+        padding-top: 80px;
+    }
+
+    .logospacer {
+        display: flex;
+    }
+    .mainpageheroarealeftwrp {
+        display: grid;
+        grid-template-columns: 1fr 2px 1fr;
+        gap: 16px;
+        max-height: 93px;
+    }
+    .mainpageheroarealeftwrp > :first-child {
+        justify-self: end;
+    }
+    .heroinputlinerhide {
+        display: none;
+    }
+    .collectiondateh3 {
+        font-size: 3rem;
+    }
+    .mainpageheroareaglobalwrp {
+        gap: 128px;
+    }
+    .globalWrapperheropostimage {
+        position: absolute;
+        top: 110px;
+        z-index: -1;
+        width: 300px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .closebuttonandscrollwrp {
+        height: 100%;
+    }
+    .offeritemsmissingwrapper {
+        align-items: flex-start;
+    }
+    .offerpopuptoptitles {
+        display: none;
+    }
+    .offerpopupselectionwrp {
+        padding-top: 24px;
+    }
+
+    .offerpopouppricewrpselected,
+    .offerpopouppricewrp {
+        height: fit-content;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    .offerpopupcenterwrp {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .offeritemsmissingcenterwrp {
+        width: 100%;
+    }
+    .boxesluggageliner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .footerlastp {
+        margin-top: 24px;
+    }
+    .footerwrptopwrp {
+        flex-wrap: wrap;
+    }
+    .carouselmainwrpoutside {
+        max-width: 300px;
+    }
+    .revcarouselcenterwrp {
+        min-width: 300px;
+    }
+
+    .reviewscarouselwrp {
+        gap: 16px;
+    }
+    .videoareatopwrp p {
+        text-align: center;
+    }
+    .videopresentationtroundbutton {
+        width: 56px;
+    }
+    .playsvgbtn {
+        width: 16px;
+    }
+    .videoareaplaybtnwrp h1 {
+        font-size: 2rem;
+    }
+    .heroinputswrp {
+        width: 100%;
+    }
+    .heroinputsinputsinsidewrp {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .heroinputliner0 {
+        order: 1;
+    }
+    .heroinputliner2 {
+        order: 2;
+    }
+    .collpostcode {
+        order: 3;
+    }
+    .heroinputliner1 {
+        order: 4;
+    }
+    .heroinputliner3 {
+        order: 5;
+    }
+    .destpostcode {
+        order: 6;
+    }
+    .herobuttongetestimate {
+        margin-left: 0;
+        width: 100%;
+    }
+    .heroinputselectwrp,
+    .heroinputselectwrpmanual {
+        max-width: 100%;
+        position: unset;
+    }
+    .heroselectiondropdownwrp {
+        position: fixed;
+        top: 0;
+        max-width: 100%;
+        width: 100%;
+        left: 0;
+        background: #fff;
+        min-height: 100vh;
+        padding: 0 8px;
+    }
+
+    .ifukorusinput {
+        margin: 0;
+    }
+    .heroareaselectionh3andclosebuttonwrp {
+        display: flex;
+        margin-bottom: 24px;
+        margin-top: 0px;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    .letterssection {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        justify-content: center;
+        justify-items: center;
+        gap: 8px;
+        background: var(--light_grey);
+        padding: 16px;
+        margin-bottom: 16px;
+        margin-top: 80px;
+    }
+    .letttersectionletterp,
+    .letttersectionletterpdisabled {
+        cursor: pointer;
+        width: 100%;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+    }
+    .letttersectionletterpdisabled {
+        font-weight: 400;
+        pointer-events: none;
+        color: var(--dark_grey);
+    }
+    .collpostcode {
+        grid-row: 3;
+    }
+    .heroareatitlewrp {
+        line-height: 1.04;
+        transform: translateY(-4px);
+    }
+
+    .methodoftravelmobile {
+        display: flex;
+    }
+}
+@media screen and (max-width: 500px) {
+    .sofa2notfilledwrpimgwrp {
+        display: none;
+    }
+    .processglobalwrapper {
+        padding-bottom: 80px;
+    }
+    .gith1 {
+        font-size: 3rem;
+    }
+    .offerpopupcenterwrpstripe p {
+        margin-top: 16px;
+    }
+    .offerpopupcenterwrpstripe {
+        min-height: 100vh;
+    }
+    .offerpopupcenterwrp {
+        min-height: 100vh;
+    }
+    .offerpopupselectionlinerselected,
+    .offerpopupselectionliner {
+        grid-template-columns: min-content 1fr min-content;
+    }
+    .offfepopupselectionsign,
+    .offfepopupselectionsignselected {
+        grid-column: 3;
+        grid-row: 1;
+        margin-left: auto;
+    }
+    .offerpopupselectionlinerselected,
+    .offerpopupselectionliner {
+        padding: 8px;
+    }
+    .offerpopouppricewrp,
+    .offerpopouppricewrpselected {
+        grid-column: 3;
+        grid-row: 1;
+
+        transform: translateY(18px);
+    }
+
+    .offerpopupselectionliner,
+    .offerpopupselectionlinerselected {
+        border-radius: 0px;
+    }
+    .faqglobalwrp {
+        padding-bottom: 24px;
+    }
+    .processglobalwrapper {
+        margin-bottom: 32px;
+    }
+    .processwrptheprocess,
+    .processwrptheprocess,
+    .reviewh1 {
+        font-size: 3rem;
+        margin: 24px auto;
+        text-align: center;
+    }
+    .mainpageheroareaglobalwrp {
+        padding-bottom: 8px;
+    }
+    .postcodeconfirmbutton {
+        display: flex;
+    }
+    .mainpageheroarearightwrp {
+        width: 100%;
+    }
+    .heroinputsinputsinsidewrp {
+        gap: 16px;
+    }
+    .heroinputswrp {
+        margin-top: 16px;
+    }
+    .herobuttongetestimate {
+        margin-top: 16px;
+    }
+    .headerpinkelementwrp {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .mainpageheroareaglobalwrp {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .shownmobilelebel {
+        display: block;
+    }
+
+    .hiddenmobilelabel {
+        display: none;
+    }
+
+    .mainpageheroareawhitewrp {
+        padding-left: 8px;
+        padding-right: 8px;
+        width: 100%;
+        padding-top: 16px;
+    }
+
+    .instantquotewrp {
+        font-size: 3rem;
+        text-align: center;
+        font-weight: bold;
+    }
+    .instantquotewrp b {
+        color: var(--pink_color);
+    }
+
+    .offerpopupcenterwrpstripe {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .stripepaydepositbtn {
+        width: 100%;
+    }
+    .offerpopupglobalwrp,
+    .nopricepopupglobalwrp {
+        align-items: flex-start;
+    }
+
+    .offerpopupselectionwrp {
+        gap: 16px;
+    }
+
+    .gitformtop {
+        display: flex;
+        flex-direction: column;
+    }
+    .reviewscarouselwrp {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        justify-content: center;
+    }
+    .reviewcarouselbutton {
+        grid-row: 2;
+        grid-column: 1;
+
+        margin-left: 24px;
+        margin-right: 24px;
+    }
+    .reviewcarouselbuttonr {
+        transform: translateX(40px);
+    }
+    .reviewcarouselbuttonl {
+        transform: translateX(-40px);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .processimagewrappertextwrp {
+        column-gap: 40px;
+        transform: translateY(93px);
+    }
+
+    .offerpopupselectionlinerselected,
+    .offerpopupselectionliner {
+        gap: 8px;
+    }
+    .videoareatoplinerrightwrp {
+        width: 100%;
+        justify-content: space-between;
+        gap: 0;
+    }
+    .carouselmainwrpoutside {
+        max-width: 300px;
+    }
+    .reviewsglobalwrp {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .headerpinkelementwrp {
+        grid-template-columns: min-content max-content;
+
+        column-gap: 16px;
+    }
+
+    .headerpinkelementwrp a {
+        width: fit-content;
+    }
+    .headerpinkphone {
+        margin: 0;
+    }
+    .headerpinkelementwrpp1 {
+        width: fit-content;
+    }
+    .headerpinkphone {
+        grid-column: 1;
+    }
+
+    .offercollectiondatewrp {
+        padding-bottom: 0;
+    }
+    .react-calendar {
+        padding: 4px;
+    }
+    .carouselmainwrpoutside {
+        max-width: 300px;
+    }
+    .revcarouselcenterwrp {
+        max-width: 248px;
+    }
+
+    .processtxtp {
+        width: 136px;
+    }
+    .faqh3 {
+        font-size: 2.5rem;
+    }
+    .faqbutton,
+    .faqbuttonclicked {
+        min-width: 32px;
+        transform: translateX(0%);
+    }
+    .faqfaqliner {
+        padding: 16px;
+    }
+}

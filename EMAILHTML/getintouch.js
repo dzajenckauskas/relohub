@@ -1,0 +1,70 @@
+export function getInTouchHTML(json) {
+    let email = `<html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Deposit Payment Confirmation</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                }
+                .container {
+                    max-width: 600px;
+                    margin: 20px auto;
+                }
+                .header {
+                    padding: 20px;
+                    text-align: center;
+                }
+                .content {
+                    padding: 40px 24px;
+                    background-color: #fff;
+                }
+                .customerlist{
+                    list-style-type: none;
+                }
+                .message-text {
+                    white-space: pre-wrap;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <div class="logo">
+                        <img
+                            src="https://deliver1.co.uk/_next/image?url=%2Flogo2.png&w=256&q=75"
+                            alt="Company Logo"
+                        />
+                    </div>
+                </div>
+                <div class="content">
+                    <strong> Hi Sales!</strong>
+                    <p>
+                        A customer has just contacted us through our website.
+                    </p>
+    
+                    <ul class='customerlist' >
+                        <li><strong>Name:</strong> ${json.Name}</li>
+                        <li><strong>Phone number:</strong> ${json["Phone Number"]}</li>
+                        <li><strong>Email:</strong> ${json["Email Address"]}</li>
+                        <a href='mailto:${json["Email Address"]}'></a
+                    >
+
+           
+                    </ul>
+    
+                    <p><strong>Message:</strong></p>
+                    <p class="message-text">
+                    ${json.text}
+                  </p>
+
+                </div>
+            </div>
+        </body>
+    </html>
+    `;
+
+    return email;
+}
