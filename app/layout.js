@@ -1,17 +1,17 @@
-import {Open_Sans} from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "/STYLES/globals.css";
 import "/STYLES/elements.css";
 import "/STYLES/medias.css";
 import "react-calendar/dist/Calendar.css";
 
-const osans = Open_Sans({subsets: ["latin"]});
+const osans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata = {
     title: "Your trusted International moving provider.",
     description: `Here at Deliver1 we’re your go-to choice for International moving. We offer fast, secure, cost-effective door to door services for Sea, Road and Air freight.`,
 };
 
-export default function RootLayout({children}) {
+export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <head>
