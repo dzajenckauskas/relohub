@@ -1,13 +1,13 @@
 "use client";
-import {Elements} from "@stripe/react-stripe-js";
-import {loadStripe} from "@stripe/stripe-js";
-import HeaderPinkElement from "@/COMPONENTS/common/hederpinkelement";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import HeaderPinkElementNew from "@/COMPONENTS/common/hederpinkelement-new";
 import GetInTOuch from "@/COMPONENTS/main_page/getInTouch";
 import HeroInputs from "@/COMPONENTS/main_page/heroInputs";
 import OfferPopup from "@/COMPONENTS/offer_page/offerPopup";
 import Image from "next/image";
-import {useSearchParams} from "next/navigation";
-import {useEffect, useRef, useState} from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import Calendar from "react-calendar";
 import Link from "next/link";
 import NoPricePopup from "@/COMPONENTS/offer_page/nopricepopup";
@@ -70,7 +70,7 @@ export default function Ofer() {
     const [state, setstate] = useState(startingObj);
 
     useEffect(() => {
-        setstate({...state, Collection_Date: ""});
+        setstate({ ...state, Collection_Date: "" });
     }, [state.empty_box_delivery_date]);
 
     useEffect(() => {
@@ -80,7 +80,7 @@ export default function Ofer() {
             );
 
             if (data) {
-                let c = {...state};
+                let c = { ...state };
 
                 Object.keys(data).forEach((key) => {
                     c[key] = data[key];
@@ -139,7 +139,7 @@ export default function Ofer() {
                                     src={"/a.png"}
                                     width={40}
                                     height={40}
-                                    style={{objectFit: "contain"}}
+                                    style={{ objectFit: "contain" }}
                                     alt={el.name}
                                 />
 
@@ -215,8 +215,8 @@ export default function Ofer() {
                                                             it.quantity === ""
                                                                 ? "1"
                                                                 : parseFloat(
-                                                                      it.quantity,
-                                                                  ) + 1;
+                                                                    it.quantity,
+                                                                ) + 1;
                                                         break;
                                                     }
                                                 }
@@ -297,7 +297,7 @@ export default function Ofer() {
                                 src={el.image}
                                 width={40}
                                 height={40}
-                                style={{objectFit: "contain"}}
+                                style={{ objectFit: "contain" }}
                                 alt={el.name}
                             />
 
@@ -319,8 +319,8 @@ export default function Ofer() {
                                                     state[el.pos] === "1"
                                                         ? ""
                                                         : parseFloat(
-                                                              state[el.pos],
-                                                          ) - 1,
+                                                            state[el.pos],
+                                                        ) - 1,
                                             });
                                         }}
                                     >
@@ -347,7 +347,7 @@ export default function Ofer() {
                                 <button
                                     className="boxesluggageplusbutton"
                                     onClick={() => {
-                                        setstate({...state, [el.pos]: "1"});
+                                        setstate({ ...state, [el.pos]: "1" });
                                     }}
                                 >
                                     +
@@ -362,11 +362,11 @@ export default function Ofer() {
 
     function ownItem(params) {
         const customItemsarr = [
-            {name: "Custom item name", pos: "name", type: "text"},
-            {name: "Width (cm)", pos: "width"},
-            {name: "Height (cm)", pos: "height"},
-            {name: "Depth (cm)", pos: "depth"},
-            {name: "Weight (kg)", pos: "weight"},
+            { name: "Custom item name", pos: "name", type: "text" },
+            { name: "Width (cm)", pos: "width" },
+            { name: "Height (cm)", pos: "height" },
+            { name: "Depth (cm)", pos: "depth" },
+            { name: "Weight (kg)", pos: "weight" },
         ];
 
         return (
@@ -375,34 +375,34 @@ export default function Ofer() {
 
                 {showcustomiteminputs
                     ? customItemsarr.map((el, i) => {
-                          return (
-                              <input
-                                  value={customItem[el.pos] || ""}
-                                  onChange={(e) => {
-                                      setCustomItem({
-                                          ...customItem,
-                                          [el.pos]: e.target.value,
-                                      });
-                                      setNotFilledCustomItems(
-                                          notfilledustomItems.filter((ci) => {
-                                              return ci !== el.name;
-                                          }),
-                                      );
-                                  }}
-                                  required={
-                                      notfilledustomItems.includes(el.name)
-                                          ? true
-                                          : false
-                                  }
-                                  spellCheck={false}
-                                  className="customiteminput"
-                                  type={el.type ? el.type : "number"}
-                                  placeholder={el.name}
-                                  key={i}
-                                  min={0}
-                              ></input>
-                          );
-                      })
+                        return (
+                            <input
+                                value={customItem[el.pos] || ""}
+                                onChange={(e) => {
+                                    setCustomItem({
+                                        ...customItem,
+                                        [el.pos]: e.target.value,
+                                    });
+                                    setNotFilledCustomItems(
+                                        notfilledustomItems.filter((ci) => {
+                                            return ci !== el.name;
+                                        }),
+                                    );
+                                }}
+                                required={
+                                    notfilledustomItems.includes(el.name)
+                                        ? true
+                                        : false
+                                }
+                                spellCheck={false}
+                                className="customiteminput"
+                                type={el.type ? el.type : "number"}
+                                placeholder={el.name}
+                                key={i}
+                                min={0}
+                            ></input>
+                        );
+                    })
                     : null}
                 <button
                     className="customitemaddbutton"
@@ -579,9 +579,8 @@ export default function Ofer() {
                                 let rect = element.getBoundingClientRect();
 
                                 sectionleft.current.style.width = `${rect.width}px`;
-                                sectionleft.current.style.top = `${
-                                    rect.top + window.scrollY
-                                }px`;
+                                sectionleft.current.style.top = `${rect.top + window.scrollY
+                                    }px`;
                                 sectionleft.current.style.left = `${rect.left}px`;
 
                                 if (edit) {
@@ -651,9 +650,8 @@ export default function Ofer() {
                                 let element = globalsectionright.current;
                                 let rect = element.getBoundingClientRect();
                                 sectionright.current.style.width = `${rect.width}px`;
-                                sectionright.current.style.top = `${
-                                    rect.top + window.scrollY
-                                }px`;
+                                sectionright.current.style.top = `${rect.top + window.scrollY
+                                    }px`;
                                 sectionright.current.style.left = `${rect.left}px`;
 
                                 if (edit) {
@@ -809,14 +807,14 @@ export default function Ofer() {
                         src={"/logo2.png"}
                         width={152}
                         height={64}
-                        style={{objectFit: "contain"}}
+                        style={{ objectFit: "contain" }}
                     ></Image>
                 </Link>
             </section>
 
             <section className="offerbookingdetailswrp">
                 <div className="offerhpewrp">
-                    <HeaderPinkElement />
+                    {/* <HeaderPinkElementNew /> */}
                 </div>
                 <h3 className="bookingdetailsh3">
                     Let’s start with your booking details
@@ -837,7 +835,7 @@ export default function Ofer() {
                                         : "bookingdetailsinput"
                                 }
                                 onChange={(e) => {
-                                    let c = {...state};
+                                    let c = { ...state };
                                     c[el.f] = e.target.value;
                                     setstate(c);
                                     setNotFilledItems(
@@ -874,8 +872,8 @@ export default function Ofer() {
             <section className="offercollectiondatewrp">
                 <div className="collectiondatecenterwrp">
                     {state.from_country === "united kingdom" &&
-                    (state.Large_box || state.Standard_box) &&
-                    !hideemptyboxes ? (
+                        (state.Large_box || state.Standard_box) &&
+                        !hideemptyboxes ? (
                         <div className="collectiondateleftwrp">
                             <h1 className="collectiondateh3">
                                 Your Empty Box Delivery Date
@@ -905,7 +903,7 @@ export default function Ofer() {
 
                             <div className="offerreactcalendarwrapper">
                                 <Calendar
-                                    tileClassName={({date}) =>
+                                    tileClassName={({ date }) =>
                                         isPastOrWeekendOrFutureWorkingDay(date)
                                             ? "disabledDay"
                                             : ""
@@ -948,7 +946,7 @@ export default function Ofer() {
                         </p>
                         <div className="offerreactcalendarwrapper">
                             <Calendar
-                                tileClassName={({date}) =>
+                                tileClassName={({ date }) =>
                                     ispastdayforcollection(date)
                                         ? "disabledDay"
                                         : ""
