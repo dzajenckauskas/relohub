@@ -6,7 +6,7 @@ type Props = {
     children: React.ReactNode
 }
 
-const Layout = ({ children }: Props) => {
+const PageLayout = ({ children }: Props) => {
     return (
         <main className="mainpagemainwrp">
             <Header />
@@ -16,4 +16,4 @@ const Layout = ({ children }: Props) => {
     )
 }
 
-export default Layout
+export default PageLayout

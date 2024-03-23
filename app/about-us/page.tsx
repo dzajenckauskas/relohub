@@ -1,4 +1,4 @@
-import Layout from "@/COMPONENTS/common/Layout";
+import Layout from "@/COMPONENTS/common/PageLayout";
 import Chat from "@/COMPONENTS/common/chat";
 import FaqWrapper from "@/COMPONENTS/main_page/faqwrapper";
 import MainPAgeHeroArea from "@/COMPONENTS/main_page/heroArea";

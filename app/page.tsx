@@ -1,4 +1,4 @@
-import Layout from "@/COMPONENTS/common/Layout";
+import PageLayout from "@/COMPONENTS/common/PageLayout";
 import Chat from "@/COMPONENTS/common/chat";
 import FaqWrapper from "@/COMPONENTS/main_page/faqwrapper";
 import MainPAgeHeroArea from "@/COMPONENTS/main_page/heroArea";
@@ -7,12 +7,11 @@ import ProcessWrapper from "@/COMPONENTS/main_page/processWrapper";
 import Reviews from "@/COMPONENTS/main_page/reviews";
 import VideoArea from "@/COMPONENTS/main_page/videoarea";
 import Image from "next/image";
-import React from "react";
 
 export default async function Home() {
     return (
         <>
-            <Layout>
+            <PageLayout>
                 <Chat />
                 {/* <RemovedaDataFromCitiesJson /> */}
                 <div className="bckimagewrp">
@@ -32,7 +31,7 @@ export default async function Home() {
                 <ProcessWrapper />
                 <FaqWrapper />
                 <Reviews />
-            </Layout>
+            </PageLayout>
 
         </>
 
