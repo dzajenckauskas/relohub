@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function HeaderPinkElementNew() {
+export default function HeaderPinkElement() {
     return (
         <div
             className="headerpinkelementwrp"

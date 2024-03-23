@@ -40,7 +40,12 @@ export default function MainPAgeHeroArea() {
                 </div>
             </div>
 
-            <div className="mainpageheroarearightwrp">
+            <div className="mainpageheroarearightwrp"
+                style={{
+                    position: 'relative',
+                    top: 20,
+                    boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'
+                }}>
                 <div className="mainpageheroareawhitewrp">
                     {herotextrightwrp()}
                     <HeroInputs

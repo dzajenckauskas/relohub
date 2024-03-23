@@ -1,7 +1,6 @@
 "use client";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import HeaderPinkElementNew from "@/COMPONENTS/common/hederpinkelement-new";
 import GetInTOuch from "@/COMPONENTS/main_page/getInTouch";
 import HeroInputs from "@/COMPONENTS/main_page/heroInputs";
 import OfferPopup from "@/COMPONENTS/offer_page/offerPopup";

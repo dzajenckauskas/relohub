@@ -7,7 +7,7 @@ export default function Postheroimages() {
                 src={"/deliveri-1-1.png"}
                 width={180}
                 height={163}
-                style={{objectFit: "contain"}}
+                style={{ objectFit: "contain" }}
                 alt="human carying box"
                 className="heropostimagecaryingimg"
             ></Image>
@@ -16,7 +16,10 @@ export default function Postheroimages() {
                 src={"/deliveri-2-1.png"}
                 width={594}
                 height={226}
-                style={{objectFit: "contain"}}
+                style={{
+                    objectFit: "contain",
+                    // position: 'relative', left: -100
+                }}
                 alt="human carying stuff"
                 priority
                 className="heropostimagecaryingsofaimg"
