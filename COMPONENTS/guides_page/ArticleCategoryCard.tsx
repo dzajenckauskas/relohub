@@ -1,7 +1,7 @@
 'use client'
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 type Props = {
     category?: any;
@@ -30,7 +30,7 @@ const ArticleCategoryCard = ({ category }: Props) => {
                 <Image
                     src={`${process.env.NEXT_PUBLIC_API_URL}${category?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
                     alt={category.attributes.name}
-                    fill
+                    layout={'fill'}
                     objectFit="cover"
                 />
                 <Stack
