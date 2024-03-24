@@ -1,8 +1,8 @@
 "use client";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Footer from "./footer";
 import Image from "next/image";
-import {validateEmail, validatePhoneNumber} from "@/UTILS/helperFunctions";
+import { validateEmail, validatePhoneNumber } from "@/UTILS/helperFunctions";
 
 export default function GetInTOuch() {
     const [checkmark, setcheckmark] = useState(false);
@@ -48,7 +48,7 @@ export default function GetInTOuch() {
     async function sendMessage(params) {
         let res = await fetch("/api/email/getintouch", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(values),
         });
 
@@ -75,7 +75,7 @@ export default function GetInTOuch() {
                         Thank you for your message. We always aim to reply
                         within 2 hours during our regular business hours.Please
                         note that we are closed on weekends. If your message is
-                        urgent and it's during business hours, please call us on{" "}
+                        urgent and it&apos;s during business hours, please call us on{" "}
                         <b>
                             {" "}
                             <a href="tel:+443330907053">+44333 090 7053</a>
@@ -85,7 +85,7 @@ export default function GetInTOuch() {
                         <Image
                             alt="two men brings stuff"
                             fill={true}
-                            style={{objectFit: "contain"}}
+                            style={{ objectFit: "contain" }}
                             src={"/sofa2cut.png"}
                             sizes="600px"
                         />
@@ -188,7 +188,7 @@ export default function GetInTOuch() {
                             alt="human carying box"
                             height={400}
                             width={280}
-                            style={{objectFit: "contain"}}
+                            style={{ objectFit: "contain" }}
                             src={"/humanbox.png"}
                         ></Image>
                     </div>
@@ -204,7 +204,7 @@ export default function GetInTOuch() {
                                                 required
                                                 value={values[el] || ""}
                                                 onChange={(e) => {
-                                                    let c = {...values};
+                                                    let c = { ...values };
 
                                                     c[el] = e.target.value;
 
@@ -227,7 +227,7 @@ export default function GetInTOuch() {
                                     spellCheck={false}
                                     required
                                     onChange={(e) => {
-                                        let c = {...values};
+                                        let c = { ...values };
 
                                         c.text = e.target.value;
 

@@ -1,5 +1,5 @@
 "use client";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 const car = [
@@ -7,7 +7,7 @@ const car = [
         title: "Everything was perfect!",
         txt: (
             <>
-                They didn't damage anything and were amazing. Everything was
+                They didn&apos;t damage anything and were amazing. Everything was
                 perfect! Even glass items were all perfectly intact. Moved
                 everything very fast and very efficiently. Amazing people! Would
                 definitely recommend. Very happy with Deliver1.
@@ -102,7 +102,7 @@ const car = [
             <>
                 Easy to book appointment. Text and emails communicating with me
                 all the way through from booking to delivery. Punctual. Driver
-                and mate's presentation was good, wore mask, very polite, got on
+                and mate&apos;s presentation was good, wore mask, very polite, got on
                 with job at hand with ease and little guidance.
             </>
         ),
@@ -174,7 +174,7 @@ const Carousel = () => {
                     <div className="carouselmainwrpoutside">
                         <div
                             className="carouselmainwrp"
-                            style={{transform: getTransformValue()}}
+                            style={{ transform: getTransformValue() }}
                         >
                             {car.map((review, index) => (
                                 <div
