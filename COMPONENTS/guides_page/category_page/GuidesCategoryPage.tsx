@@ -4,6 +4,7 @@ import ArticleCard from '../ArticleCard';
 import { useState } from 'react';
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer';
 import Button from '@mui/material/Button'
+
 type Props = {
     articles?: any;
     category?: any;
@@ -46,11 +47,14 @@ const GuidesCategoryPage = ({ articles, category, articleContinents }: Props) =>
                 }}>
                     <div style={{
                         paddingTop: '40px',
-                        marginBottom: '40px',
+                        marginBottom: '80px',
                     }}>
                         <h1 style={{
                             marginBottom: '40px',
-                        }}>{category.attributes?.name}</h1>
+                        }}>
+                            {category.attributes?.name}
+                        </h1>
+
                         <div style={{
                             display: 'flex', gap: 8,
                             paddingBottom: 22,

@@ -14,11 +14,9 @@ const PageLayout = ({ children }: Props) => {
     return (
         <ThemeProvider theme={theme}>
             <Chat />
-            <main className="mainpagemainwrp">
-                <Header />
-                {children}
-                <GetInTOuch />
-            </main>
+            <Header />
+            {children}
+            <GetInTOuch />
         </ThemeProvider>
     )
 }
