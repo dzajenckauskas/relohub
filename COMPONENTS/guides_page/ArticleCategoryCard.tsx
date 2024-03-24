@@ -82,7 +82,7 @@ const ArticleCategoryCard = ({ category }: Props) => {
                                 color: '#fff',
                                 transition: 'transform 0.3s ease',
                                 ":hover": {
-                                    transform: 'rotate(180deg)',
+                                    transform: 'rotate(90deg)',
                                 }
                             }}>
                             <p style={{ fontSize: 24, padding: 0, margin: 0, position: 'relative', bottom: 1, fontWeight: 600 }}>+</p>
