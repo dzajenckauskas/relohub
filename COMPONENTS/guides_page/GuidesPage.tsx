@@ -4,7 +4,9 @@ import { MaxWidthContainer } from '../common/MaxWidthContainer';
 import PageLayout from '../common/PageLayout';
 import ArticleCard from './ArticleCard';
 import ArticleCategoryCard from './ArticleCategoryCard';
-
+import Button from '@mui/material/Button'
+import EastIcon from '@mui/icons-material/East';
+import WestIcon from '@mui/icons-material/West';
 type Props = {
     articles?: any;
     categories?: any;
@@ -43,15 +45,30 @@ const GuidesPage = ({ articles, categories }: Props) => {
                     </MaxWidthContainer>
                 </Stack>
 
+
+
                 <MaxWidthContainer sx={{
-                    paddingTop: '40px',
-                    paddingBottom: '40px',
-                    display: 'flex', flexDirection: 'column',
+                    py: 6,
+                    justifyContent: 'space-between'
                 }}>
                     <h1 style={{
-                        paddingBottom: 16
-                    }}>Latest articles</h1>
-
+                    }}>Latest Guides & Articles</h1>
+                    <Stack direction={'row'} spacing={1}>
+                        <Button variant='outlined' color='secondary'
+                            sx={{ borderRadius: 50, minWidth: 0, height: 40, width: 40 }}
+                        >
+                            <WestIcon sx={{ fontSize: 18 }} />
+                        </Button>
+                        <Button variant='outlined' color='secondary'
+                            sx={{ borderRadius: 50, minWidth: 0, height: 40, width: 40 }}
+                        >
+                            <EastIcon sx={{ fontSize: 18 }} />
+                        </Button>
+                    </Stack>
+                </MaxWidthContainer>
+                <MaxWidthContainer sx={{
+                    pb: 10
+                }}>
                     <Stack direction={{ md: 'row', xs: 'column' }} sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
                         {renderLatestArticles}
                     </Stack>

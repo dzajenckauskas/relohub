@@ -1,5 +1,4 @@
 import PageLayout from "@/COMPONENTS/common/PageLayout";
-import Chat from "@/COMPONENTS/common/chat";
 import FaqWrapper from "@/COMPONENTS/main_page/faqwrapper";
 import MainPAgeHeroArea from "@/COMPONENTS/main_page/heroArea";
 import Postheroimages from "@/COMPONENTS/main_page/postheroimages";
@@ -12,7 +11,6 @@ export default async function Home() {
     return (
         <>
             <PageLayout>
-                <Chat />
                 {/* <RemovedaDataFromCitiesJson /> */}
                 <div className="bckimagewrp">
                     <div className="heroareaimgwrp">
