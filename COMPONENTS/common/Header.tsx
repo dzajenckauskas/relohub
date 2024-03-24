@@ -1,9 +1,12 @@
-import HeaderPinkElement from "./HeaderPinkElement";
+'use client'
+import Stack from '@mui/material/Stack';
 import Image from "next/image";
-import Link from 'next/link'
-import React from "react";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import HeaderPinkElement from "./HeaderPinkElement";
 
 export default function Header() {
+    const pathname = usePathname()
     const links = [
         { id: 0, name: "Home", url: '/' },
         { id: 1, name: "Guides", url: '/guides' },
@@ -12,10 +15,22 @@ export default function Header() {
 
     const renderLinks = links.map((link) => {
         return (
-            <Link key={link.id} passHref href={link.url}
-                style={{ fontWeight: 600, fontSize: 16, cursor: 'pointer' }}>
-                {link.name}
-            </Link>
+            <Stack key={link.id}>
+                <Link passHref href={link.url} style={{ fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
+                    <Stack sx={{ position: 'relative', ':hover': { color: '#e71d5e' } }}>
+                        {link.name}
+                        {pathname === link.url && <Stack sx={{
+                            position: 'absolute',
+                            bottom: '-28.5px;',
+                            left: 0,
+                            height: '3px',
+                            width: '100%',
+                            backgroundColor: '#e71d5e',
+                            transition: 'background-color 0.3s ease',
+                        }}></Stack>}
+                    </Stack>
+                </Link>
+            </Stack >
         )
     })
     return (
