@@ -4,6 +4,7 @@ export default async function BlogPage() {
     return (
         <>
             <Layout>
+                <></>
             </Layout>
         </>
 
