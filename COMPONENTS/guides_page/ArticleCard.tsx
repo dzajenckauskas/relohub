@@ -6,13 +6,18 @@ type Props = {
 }
 
 const ArticleCard = ({ article }: Props) => {
+    const category = article.attributes.articleCategory.data.attributes.name
+    const continent = article.attributes.articleContinents.data[0].attributes.name
     return (
         <div key={article.id} style={{
-            width: '100%'
+            width: '100%',
+            backgroundColor: "#fff",
+            borderRadius: 5
         }}>
             <div style={{
                 height: '250px',
-                borderRadius: 5,
+                borderTopRightRadius: 5,
+                borderTopLeftRadius: 5,
                 width: '100%',
                 backgroundImage: `url(${process.env.NEXT_PUBLIC_API_URL}${article?.attributes?.images?.data?.[0]?.attributes?.url})`,
                 backgroundSize: 'cover',
@@ -20,26 +25,31 @@ const ArticleCard = ({ article }: Props) => {
                 alignItems: 'flex-end',
                 position: 'relative'
             }}>
-
             </div>
-            <h2 style={{
-                fontSize: '3rem',
-                paddingBottom: 8,
-                paddingTop: 8,
-            }}>{article.attributes.title}</h2>
-            <p>{article.attributes.shortContent}</p>
-            <Link href={`/guides/${article.attributes.articleCategory.data.attributes.key}/${article.attributes.slug}`} passHref>
-                <button style={{
-                    paddingTop: 16,
-                    fontSize: 14,
-                    textTransform: "uppercase",
-                    letterSpacing: 1,
-                    color: 'red',
-                    cursor: 'pointer'
-                }}>
-                    Read more
-                </button>
-            </Link>
+            <div style={{ padding: 20 }}>
+                <span style={{ color: '#9b9b9b', fontSize: 14, textTransform: 'uppercase' }}>{category} • {continent}</span>
+                <h2 style={{
+                    fontSize: '3rem',
+                    paddingBottom: 8,
+                    paddingTop: 8,
+                    color: '#e71c5e'
+                }}>{article.attributes.title}</h2>
+                <p style={{ paddingTop: 16, maxHeight: '10rem', overflow: 'hidden' }}>{article.attributes.shortContent}</p>
+                <Link href={`/guides/${article.attributes.articleCategory.data.attributes.key}/${article.attributes.slug}`} passHref>
+                    <button style={{
+                        paddingTop: 16,
+                        fontSize: 14,
+                        textTransform: "uppercase",
+                        letterSpacing: 1,
+                        color: '#e71c5e',
+                        cursor: 'pointer',
+                        backgroundColor: '#fff',
+                        fontWeight: 600
+                    }}>
+                        Read more
+                    </button>
+                </Link>
+            </div>
         </div>
 
     )
