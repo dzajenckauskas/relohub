@@ -1,6 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    distDir: 'build'
+    distDir: 'build',
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'http',
+                hostname: '154.49.136.99:1344',
+                pathname: '**',
+            },
+            {
+                protocol: 'http',
+                hostname: 'localhost',
+                pathname: '**',
+            },
+        ],
+    },
 };
 
 module.exports = nextConfig;
