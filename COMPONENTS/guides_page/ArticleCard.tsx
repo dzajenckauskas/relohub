@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
+import { theme } from '../common/Theme';
 
 type Props = {
     article?: any;
@@ -39,29 +40,31 @@ const ArticleCard = ({ article }: Props) => {
                     fontSize: '3rem',
                     paddingBottom: 8,
                     paddingTop: 8,
-                    color: '#e71c5e',
+                    color: theme.palette.secondary.main,
                     fontWeight: 700,
                     lineHeight: 1
                 }}>
                     {article.attributes.title}
                 </Typography>
-                <p style={{ paddingTop: 16, maxHeight: '10rem', overflow: 'hidden' }}>
+                <Typography variant='body2' sx={{ pt: 2, fontSize: 15, maxHeight: '10rem', overflow: 'hidden' }}>
                     {article.attributes.shortContent}
-                </p>
+                </Typography>
                 <Link
                     href={`/guides/${article.attributes.articleCategory.data.attributes.key}/${article.attributes.slug}`} passHref>
-                    <button style={{
-                        paddingTop: 20,
+
+                    <Typography sx={{
+                        pt: 2,
                         fontSize: 14,
                         textTransform: "uppercase",
                         letterSpacing: 1,
-                        color: '#e71c5e',
+                        color: theme.palette.secondary.main,
                         cursor: 'pointer',
                         backgroundColor: '#fff',
-                        fontWeight: 600
+                        fontWeight: 600,
+                        ':hover': { color: theme.palette.secondary.dark }
                     }}>
                         Read more
-                    </button>
+                    </Typography>
                 </Link>
             </Stack>
         </Paper>
