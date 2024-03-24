@@ -15,7 +15,7 @@ const GuidesPage = ({ articles, categories }: Props) => {
                 height: '450px',
                 borderRadius: 5,
                 width: '100%',
-                backgroundImage: `url(http://localhost:1340${category?.attributes?.image?.data?.attributes?.url})`, // Add background image
+                backgroundImage: `url(${process.env.NEXT_PUBLIC_API_URL}${category?.attributes?.image?.data?.attributes?.url})`, // Add background image
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 alignItems: 'flex-end',

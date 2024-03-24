@@ -14,7 +14,7 @@ const ArticleCard = ({ article }: Props) => {
                 height: '250px',
                 borderRadius: 5,
                 width: '100%',
-                backgroundImage: `url(http://localhost:1340${article?.attributes?.images?.data?.[0]?.attributes?.url})`,
+                backgroundImage: `url(${process.env.NEXT_PUBLIC_API_URL}${article?.attributes?.images?.data?.[0]?.attributes?.url})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 alignItems: 'flex-end',
