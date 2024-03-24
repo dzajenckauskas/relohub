@@ -2,7 +2,8 @@
 import PageLayout from '@/COMPONENTS/common/PageLayout';
 import ArticleCard from '../ArticleCard';
 import { useState } from 'react';
-
+import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer';
+import Button from '@mui/material/Button'
 type Props = {
     articles?: any;
     category?: any;
@@ -10,7 +11,6 @@ type Props = {
 }
 
 const GuidesCategoryPage = ({ articles, category, articleContinents }: Props) => {
-    console.log(articleContinents.data, "articleContinents");
     const [active, setActive] = useState<string | undefined>('all-posts')
     const renderLatestArticles = articles.data.map((a) => {
         return (
@@ -20,7 +20,7 @@ const GuidesCategoryPage = ({ articles, category, articleContinents }: Props) =>
     const renderArticleContinents = articleContinents.data.map((ac) => {
         const isActive = ac.attributes.key === active
         return (
-            <button key={ac.id}
+            <Button key={ac.id}
                 onClick={() => setActive(ac.attributes.key)}
                 style={{
                     padding: '12px 22px',
@@ -32,7 +32,7 @@ const GuidesCategoryPage = ({ articles, category, articleContinents }: Props) =>
                     textTransform: 'uppercase'
                 }}>
                 {ac.attributes.name}
-            </button>
+            </Button>
         )
     })
     return (
@@ -40,7 +40,7 @@ const GuidesCategoryPage = ({ articles, category, articleContinents }: Props) =>
             <main style={{
                 backgroundColor: "#efefef"
             }}>
-                <div className="mainpageheaderwrp" style={{
+                <MaxWidthContainer sx={{
                     display: 'flex', flexDirection: 'column',
                     backgroundColor: "#efefef"
                 }}>
@@ -56,7 +56,7 @@ const GuidesCategoryPage = ({ articles, category, articleContinents }: Props) =>
                             paddingBottom: 22,
                             flexWrap: 'wrap'
                         }}>
-                            <button
+                            <Button
                                 onClick={() => setActive('all-posts')}
                                 style={{
                                     padding: '12px 22px',
@@ -68,7 +68,7 @@ const GuidesCategoryPage = ({ articles, category, articleContinents }: Props) =>
                                     textTransform: 'uppercase'
                                 }}>
                                 {"all posts"}
-                            </button>
+                            </Button>
                             {renderArticleContinents}
                         </div>
                         <div style={{ display: 'flex', gap: 16, justifyContent: 'space-between' }}>
@@ -76,7 +76,7 @@ const GuidesCategoryPage = ({ articles, category, articleContinents }: Props) =>
                         </div>
                     </div>
 
-                </div>
+                </MaxWidthContainer>
             </main>
         </PageLayout >
     )

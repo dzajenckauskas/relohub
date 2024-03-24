@@ -1,8 +1,8 @@
 import { Open_Sans } from "next/font/google";
-import "/STYLES/globals.css";
-import "/STYLES/elements.css";
-import "/STYLES/medias.css";
 import "react-calendar/dist/Calendar.css";
+import "/STYLES/elements.css";
+import "/STYLES/globals.css";
+import "/STYLES/medias.css";
 
 const osans = Open_Sans({ subsets: ["latin"] });
 

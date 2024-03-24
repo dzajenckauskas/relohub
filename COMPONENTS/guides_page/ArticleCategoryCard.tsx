@@ -6,10 +6,9 @@ type Props = {
     category?: any;
 }
 
-const GuideCard = ({ category }: Props) => {
+const ArticleCategoryCard = ({ category }: Props) => {
     return (
         <Link key={category.id} href={`/guides/${category.attributes.key}`} passHref style={{
-            height: '450px',
             borderRadius: '5px',
             width: '100%',
             position: 'relative',
@@ -17,8 +16,9 @@ const GuideCard = ({ category }: Props) => {
         }}>
             <Stack
                 sx={{
+                    height: { md: '450px', xs: '250px' },
+
                     position: 'relative',
-                    height: '100%',
                     width: '100%',
                     transition: 'transform 0.3s ease',
                     ":hover": {
@@ -27,7 +27,7 @@ const GuideCard = ({ category }: Props) => {
                 }}
             >
                 <Image
-                    src={`${process.env.NEXT_PUBLIC_API_URL}${category?.attributes?.image?.data?.attributes?.formats?.small?.url}`}
+                    src={`${process.env.NEXT_PUBLIC_API_URL}${category?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
                     alt={category.attributes.name}
                     layout="fill"
                     objectFit="cover"
@@ -43,7 +43,6 @@ const GuideCard = ({ category }: Props) => {
                     }}
                 ></Stack>
             </Stack>
-
             <Stack direction={'row'}
                 sx={{
                     width: '100%',
@@ -92,4 +91,4 @@ const GuideCard = ({ category }: Props) => {
     )
 }
 
-export default GuideCard
+export default ArticleCategoryCard
