@@ -1,6 +1,6 @@
 'use client'
 import PageLayout from '@/COMPONENTS/common/PageLayout';
-import Link from 'next/link';
+import ArticleCard from '../ArticleCard';
 
 type Props = {
     articles?: any;
@@ -10,14 +10,7 @@ type Props = {
 const GuidesCategoryPage = ({ articles, category }: Props) => {
     const renderLatestArticles = articles.data.map((article) => {
         return (
-            <div key={article.id} style={{
-                border: '1px solid red', width: '100%'
-            }}>
-                <h2 style={{
-                    fontSize: '2rem'
-                }}>{article.attributes.title}</h2>
-                <p>{article.attributes.shortContent}</p>
-            </div>
+            <ArticleCard article={article} key={article.id} />
         )
     })
     return (
