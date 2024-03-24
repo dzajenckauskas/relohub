@@ -7,7 +7,7 @@ type Props = {
 
 const ArticleCard = ({ article }: Props) => {
     const category = article.attributes.articleCategory.data.attributes.name
-    const continent = article.attributes.articleContinents.data[0].attributes.name
+    const continent = article.attributes.articleContinents?.data?.[0]?.attributes.name
     return (
         <div key={article.id} style={{
             width: '100%',
@@ -27,15 +27,18 @@ const ArticleCard = ({ article }: Props) => {
             }}>
             </div>
             <div style={{ padding: 20 }}>
-                <span style={{ color: '#9b9b9b', fontSize: 14, textTransform: 'uppercase' }}>{category} • {continent}</span>
+                <span style={{ color: '#9b9b9b', fontSize: 12, textTransform: 'uppercase', fontWeight: 500 }}>{category} • {continent}</span>
                 <h2 style={{
                     fontSize: '3rem',
                     paddingBottom: 8,
                     paddingTop: 8,
                     color: '#e71c5e'
                 }}>{article.attributes.title}</h2>
-                <p style={{ paddingTop: 16, maxHeight: '10rem', overflow: 'hidden' }}>{article.attributes.shortContent}</p>
-                <Link href={`/guides/${article.attributes.articleCategory.data.attributes.key}/${article.attributes.slug}`} passHref>
+                <p style={{ paddingTop: 16, maxHeight: '10rem', overflow: 'hidden' }}>
+                    {article.attributes.shortContent}
+                </p>
+                <Link
+                    href={`/guides/${article.attributes.articleCategory.data.attributes.key}/${article.attributes.slug}`} passHref>
                     <button style={{
                         paddingTop: 16,
                         fontSize: 14,

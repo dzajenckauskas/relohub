@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import PageLayout from '../common/PageLayout'
 import ArticleCard from './ArticleCard';
+import GuideCard from './GuideCard';
 
 type Props = {
     articles?: any;
@@ -11,46 +12,7 @@ type Props = {
 const GuidesPage = ({ articles, categories }: Props) => {
     const renderCategories = categories?.data?.map((category) => {
         return (
-            <div key={category.id} style={{
-                height: '450px',
-                borderRadius: 5,
-                width: '100%',
-                backgroundImage: `url(${process.env.NEXT_PUBLIC_API_URL}${category?.attributes?.image?.data?.attributes?.url})`, // Add background image
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                alignItems: 'flex-end',
-                position: 'relative'
-            }}>
-                <Link href={`/guides/${category.attributes.key}`} passHref>
-                    <p style={{
-                        fontSize: 24,
-                        fontWeight: 600,
-                        color: '#fff',
-                        padding: 20,
-                        position: 'absolute',
-                        bottom: 5,
-                        left: 5
-                    }}>{category.attributes.name}</p>
-                </Link>
-                <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: '#e71c5e',
-                    borderRadius: 50,
-                    width: 20,
-                    height: 20,
-                    color: '#fff',
-                    padding: 20,
-                    position: 'absolute',
-                    right: 20,
-                    bottom: 20
-                }}>
-                    <Link href={`/guides/${category.attributes.key}`} passHref>
-                        <p style={{ fontSize: 20, fontWeight: 600 }}>+</p>
-                    </Link>
-                </div>
-            </div>
+            <GuideCard category={category} key={category.id} />
         )
     })
     const renderLatestArticles = articles.data.map((article) => {

@@ -1,21 +1,42 @@
 'use client'
 import PageLayout from '@/COMPONENTS/common/PageLayout';
 import ArticleCard from '../ArticleCard';
+import { useState } from 'react';
 
 type Props = {
     articles?: any;
     category?: any;
+    articleContinents?: any;
 }
 
-const GuidesCategoryPage = ({ articles, category }: Props) => {
-    const renderLatestArticles = articles.data.map((article) => {
+const GuidesCategoryPage = ({ articles, category, articleContinents }: Props) => {
+    console.log(articleContinents.data, "articleContinents");
+    const [active, setActive] = useState<string | undefined>('all-posts')
+    const renderLatestArticles = articles.data.map((a) => {
         return (
-            <ArticleCard article={article} key={article.id} />
+            <ArticleCard article={a} key={a.id} />
+        )
+    })
+    const renderArticleContinents = articleContinents.data.map((ac) => {
+        const isActive = ac.attributes.key === active
+        return (
+            <button key={ac.id}
+                onClick={() => setActive(ac.attributes.key)}
+                style={{
+                    padding: '12px 22px',
+                    borderRadius: 2,
+                    fontSize: 12,
+                    cursor: 'pointer',
+                    backgroundColor: isActive ? '#e71d5e' : '#d9d9d9',
+                    color: isActive ? '#fff' : '#e71d5e',
+                    textTransform: 'uppercase'
+                }}>
+                {ac.attributes.name}
+            </button>
         )
     })
     return (
         <PageLayout>
-
             <main style={{
                 backgroundColor: "#efefef"
             }}>
@@ -28,9 +49,29 @@ const GuidesCategoryPage = ({ articles, category }: Props) => {
                         marginBottom: '40px',
                     }}>
                         <h1 style={{
+                            marginBottom: '40px',
                         }}>{category.attributes?.name}</h1>
-
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <div style={{
+                            display: 'flex', gap: 8,
+                            paddingBottom: 22,
+                            flexWrap: 'wrap'
+                        }}>
+                            <button
+                                onClick={() => setActive('all-posts')}
+                                style={{
+                                    padding: '12px 22px',
+                                    borderRadius: 2,
+                                    fontSize: 12,
+                                    cursor: 'pointer',
+                                    backgroundColor: active == 'all-posts' ? '#e71d5e' : '#d9d9d9',
+                                    color: active == 'all-posts' ? '#fff' : '#e71d5e',
+                                    textTransform: 'uppercase'
+                                }}>
+                                {"all posts"}
+                            </button>
+                            {renderArticleContinents}
+                        </div>
+                        <div style={{ display: 'flex', gap: 16, justifyContent: 'space-between' }}>
                             {renderLatestArticles}
                         </div>
                     </div>
