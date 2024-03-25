@@ -105,7 +105,7 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                             </Grid>}
                         {articles?.data.length === 0 &&
                             <Typography color={theme.palette.secondary.main}
-                                sx={{ pt: 4, display: 'flex', gap: 16, fontSize: '18px', justifyContent: 'space-between', width: '100%', fontWeight: 600 }}>
+                                sx={{ pt: 2, display: 'flex', gap: 16, fontSize: '18px', justifyContent: 'space-between', width: '100%', fontWeight: 600 }}>
                                 No articles yet
                             </Typography>}
                     </div>
