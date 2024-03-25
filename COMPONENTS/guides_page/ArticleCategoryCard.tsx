@@ -8,6 +8,8 @@ type Props = {
 }
 
 const ArticleCategoryCard = ({ category }: Props) => {
+    console.log(`${process.env.NEXT_PUBLIC_API_URL}${category?.attributes?.image?.data?.attributes?.formats?.medium?.url}`, "`${process.env.NEXT_PUBLIC_API_URL}${category?.attributes?.image?.data?.attributes?.formats?.medium?.url}`");
+
     return (
         <Stack sx={{
             borderRadius: '5px',
