@@ -18,13 +18,15 @@ export default function Header() {
         { id: 2, name: "About us", url: '/about-us' }
     ]
 
+    const desiredPath = pathname.split('/').slice(0, 2).join('/');
+
     const renderLinks = links.map((link) => {
         return (
             <Stack key={link.id}>
                 <Link passHref href={link.url} style={{ fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
                     <Stack sx={{ position: 'relative', ':hover': { color: '#e71d5e' } }}>
                         {link.name}
-                        {pathname === link.url && <Stack sx={{
+                        {desiredPath === link.url && <Stack sx={{
                             position: 'absolute',
                             bottom: '-28.5px;',
                             left: 0,
