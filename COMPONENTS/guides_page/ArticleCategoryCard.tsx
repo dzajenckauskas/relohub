@@ -9,6 +9,7 @@ type Props = {
 
 const ArticleCategoryCard = ({ category }: Props) => {
     console.log(`${process.env.NEXT_PUBLIC_API_URL}${category?.attributes?.image?.data?.attributes?.formats?.medium?.url ?? category?.attributes?.image?.data?.attributes?.url}`, "`${process.env.NEXT_PUBLIC_API_URL}${category?.attributes?.image?.data?.attributes?.formats?.medium?.url}`");
+    console.log(category, "category");
 
     return (
         <Stack sx={{
