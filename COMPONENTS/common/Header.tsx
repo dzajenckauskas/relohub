@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 import HeaderPinkElement from "./HeaderPinkElement";
 import TopNavBar from './TopNavBar';
 import CustomerPortalIcon from './CustomerPortalIcon';
-
+import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Header() {
     const pathname = usePathname()
@@ -28,7 +28,7 @@ export default function Header() {
                         {link.name}
                         {desiredPath === link.url && <Stack sx={{
                             position: 'absolute',
-                            bottom: '-28.5px;',
+                            bottom: '-23px;',
                             left: 0,
                             height: '3px',
                             width: '100%',
@@ -56,32 +56,33 @@ export default function Header() {
                         px: { xl: 2, sm: 2, xs: 1 },
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        height: 75
+                        height: 65
                     }}>
+                    <Button sx={{
+                        display: { sm: 'none', xs: 'flex' },
+                        border: '1px solid #ccc',
+                        borderRadius: '3px', fontWeight: 700,
+                        fontSize: 14,
+                        minWidth: 20,
+                        padding: '10px 14px',
+                        alignItems: 'center',
+                        fontFamily: 'inherit',
+                        cursor: 'pointer'
+                    }}>
+                        <MenuIcon sx={{ transform: 'scale(2)' }} />
+                    </Button>
                     <Link passHref href={'/'}>
-                        <Stack sx={{ display: { md: 'none', xs: "flex" } }}>
-                            <Image
-                                width={40}
-                                height={50}
-                                src={"/logo.png"}
-                                alt="logo"
-                                style={{ objectFit: "contain" }}
-                            />
-                        </Stack>
-                        <Stack sx={{ display: { md: 'flex', xs: "none" } }}>
-                            <Image
-                                width={180}
-                                height={80}
-                                src={"/logo2.png"}
-                                alt="logo"
-                                style={{ objectFit: "contain" }}
-                            />
-                        </Stack>
+                        <Image
+                            width={160}
+                            height={70}
+                            src={"/logo2.png"}
+                            alt="logo"
+                            style={{ objectFit: "contain" }}
+                        />
                     </Link>
                     <Stack sx={{
                         display: { md: 'flex', sm: 'flex', xs: 'none' }, flexDirection: 'row',
-                        gap: 6,
-                        alignItems: 'center'
+                        alignItems: 'center', gap: { lg: 10, md: 4, sm: 6, xs: 0 }
                     }}>
                         {renderLinks}
                     </Stack>
@@ -91,11 +92,12 @@ export default function Header() {
                     }}>
                         <Link passHref href={'https://admin.deliver1.co.uk/customerPortal/login'} >
                             <Button variant='outlined' sx={{
-                                display: { md: 'flex', sm: 'flex', xs: 'none' },
+                                display: { md: 'flex', sm: 'flex', xs: 'flex' },
                                 border: '1px solid #ccc',
                                 borderRadius: '3px', fontWeight: 700,
                                 fontSize: 14,
-                                padding: '14px 20px',
+                                minWidth: 20,
+                                padding: '10px 14px',
                                 alignItems: 'center',
                                 fontFamily: 'inherit',
                                 cursor: 'pointer'
@@ -112,7 +114,7 @@ export default function Header() {
                     </Stack>
                 </Stack>
             </header>
-            <Stack sx={{ height: { md: 75, xs: 105 }, width: '100%' }}>
+            <Stack sx={{ height: { md: 65, xs: 95 }, width: '100%' }}>
             </Stack>
         </>
 

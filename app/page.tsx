@@ -1,6 +1,7 @@
+import { MaxWidthContainer } from "@/COMPONENTS/common/MaxWidthContainer";
 import PageLayout from "@/COMPONENTS/common/PageLayout";
 import FaqWrapper from "@/COMPONENTS/main_page/faqwrapper";
-import MainPAgeHeroArea from "@/COMPONENTS/main_page/heroArea";
+import MainPageHeroArea from "@/COMPONENTS/main_page/MainPageHeroArea";
 import Postheroimages from "@/COMPONENTS/main_page/postheroimages";
 import ProcessWrapper from "@/COMPONENTS/main_page/processWrapper";
 import Reviews from "@/COMPONENTS/main_page/reviews";
@@ -12,6 +13,7 @@ export default async function Home() {
         <>
             <PageLayout>
                 {/* <RemovedaDataFromCitiesJson /> */}
+
                 <div className="bckimagewrp">
                     <div className="heroareaimgwrp">
                         <Image
@@ -21,7 +23,9 @@ export default async function Home() {
                             fill={true}
                         ></Image>
                     </div>
-                    <MainPAgeHeroArea />
+                    <MaxWidthContainer>
+                        <MainPageHeroArea />
+                    </MaxWidthContainer>
                     <Postheroimages />
                 </div>
 
