@@ -21,7 +21,7 @@ const TopNavBar = () => {
                 sx={{
                     textTransform: 'uppercase',
                     fontWeight: 700,
-                    fontSize: 14,
+                    fontSize: 12,
                 }}>
                 have questions?&nbsp;call us
             </Typography>
@@ -51,7 +51,7 @@ const TopNavBar = () => {
                     sx={{
                         textTransform: 'uppercase',
                         fontWeight: 700,
-                        fontSize: 19,
+                        fontSize: 17,
                     }}>
                     0333 090 7053
                 </Typography>

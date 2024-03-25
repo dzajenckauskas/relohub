@@ -28,7 +28,7 @@ export default function Header() {
                         {link.name}
                         {desiredPath === link.url && <Stack sx={{
                             position: 'absolute',
-                            bottom: '-23px;',
+                            bottom: '-21px;',
                             left: 0,
                             height: '3px',
                             width: '100%',
@@ -56,7 +56,7 @@ export default function Header() {
                         px: { xl: 2, sm: 2, xs: 1 },
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        height: 65
+                        height: 60
                     }}>
                     <Button sx={{
                         display: { sm: 'none', xs: 'flex' },
@@ -71,10 +71,11 @@ export default function Header() {
                     }}>
                         <MenuIcon sx={{ transform: 'scale(2)' }} />
                     </Button>
+
                     <Link passHref href={'/'}>
                         <Image
-                            width={160}
-                            height={70}
+                            width={140}
+                            height={60}
                             src={"/logo2.png"}
                             alt="logo"
                             style={{ objectFit: "contain" }}
@@ -114,7 +115,7 @@ export default function Header() {
                     </Stack>
                 </Stack>
             </header>
-            <Stack sx={{ height: { md: 65, xs: 95 }, width: '100%' }}>
+            <Stack sx={{ height: { md: 60, xs: 90 }, width: '100%' }}>
             </Stack>
         </>
 
