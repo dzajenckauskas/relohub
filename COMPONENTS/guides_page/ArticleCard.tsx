@@ -7,11 +7,14 @@ import { theme } from '../common/Theme';
 
 type Props = {
     article?: any;
+    activeContinent?: string;
 }
 
-const ArticleCard = ({ article }: Props) => {
+const ArticleCard = ({ article, activeContinent }: Props) => {
     const category = article.attributes.articleCategory.data.attributes.name
-    const continent = article.attributes.articleContinents?.data?.[0]?.attributes.name
+    const continent = activeContinent ?
+        article.attributes.articleContinents?.data?.find((c) => c?.attributes?.key === activeContinent)?.attributes.name :
+        article.attributes.articleContinents?.data?.[0]?.attributes.name
     return (
         <Paper key={article.id}
             sx={{

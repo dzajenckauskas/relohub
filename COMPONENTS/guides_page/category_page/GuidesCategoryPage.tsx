@@ -35,7 +35,7 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
 
     const renderLatestArticles = articles?.data?.map((a) => {
         return (
-            <ArticleCard article={a} key={a.id} />
+            <ArticleCard article={a} key={a.id} activeContinent={active !== 'all-posts' ? active : undefined} />
         )
     })
 
