@@ -33,8 +33,6 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
     // if (isLoading) return <p>Loading...</p>
     // if (articles?.data.length > 0) return <p>No profile data</p>
 
-    console.log(articles?.data, "articles?.data");
-
     const renderLatestArticles = articles?.data?.map((a) => {
         return (
             <ArticleCard article={a} key={a.id} />
