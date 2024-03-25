@@ -52,23 +52,24 @@ const ArticleCard = ({ article, activeContinent }: Props) => {
                 <Typography variant='body2' sx={{ pt: 2, fontSize: 15, maxHeight: '10rem', overflow: 'hidden' }}>
                     {article.attributes.shortContent}
                 </Typography>
-                <Link
-                    href={`/guides/${article.attributes.articleCategory.data.attributes.key}/${article.attributes.slug}`} passHref>
 
-                    <Typography sx={{
-                        pt: 2,
-                        fontSize: 14,
-                        textTransform: "uppercase",
-                        letterSpacing: 1,
-                        color: theme.palette.secondary.main,
-                        cursor: 'pointer',
-                        backgroundColor: '#fff',
-                        fontWeight: 600,
-                        ':hover': { color: theme.palette.secondary.dark }
-                    }}>
+                <Typography sx={{
+                    mt: 2,
+                    width: 'fit-content',
+                    fontSize: 14,
+                    textTransform: "uppercase",
+                    letterSpacing: 1,
+                    color: theme.palette.secondary.main,
+                    cursor: 'pointer',
+                    backgroundColor: '#fff',
+                    fontWeight: 600,
+                    ':hover': { color: theme.palette.secondary.dark }
+                }}>
+                    <Link
+                        href={`/guides/${article.attributes.articleCategory.data.attributes.key}/${article.attributes.slug}`} passHref>
                         Read more
-                    </Typography>
-                </Link>
+                    </Link>
+                </Typography>
             </Stack>
         </Paper>
 

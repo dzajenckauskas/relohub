@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import ArticleCard from '../ArticleCard';
 import { theme } from '@/COMPONENTS/common/Theme';
+import Grid from '@mui/material/Grid';
 
 type Props = {
     category?: any;
@@ -30,12 +31,11 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
             })
     }, [active])
 
-    // if (isLoading) return <p>Loading...</p>
-    // if (articles?.data.length > 0) return <p>No profile data</p>
-
     const renderLatestArticles = articles?.data?.map((a) => {
         return (
-            <ArticleCard article={a} key={a.id} activeContinent={active !== 'all-posts' ? active : undefined} />
+            <Grid item lg={3} md={4} sm={6} xs={12} sx={{}}>
+                <ArticleCard article={a} key={a.id} activeContinent={active !== 'all-posts' ? active : undefined} />
+            </Grid>
         )
     })
 
@@ -99,11 +99,13 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                             </Button>
                             {renderArticleContinents}
                         </div>
-                        {articles?.data.length > 0 && <div style={{ display: 'flex', gap: 16, justifyContent: 'space-between' }}>
-                            {renderLatestArticles}
-                        </div>}
+                        {articles?.data.length > 0 &&
+                            <Grid container spacing={2} sx={{ display: 'flex', }}>
+                                {renderLatestArticles}
+                            </Grid>}
                         {articles?.data.length === 0 &&
-                            <Typography color={theme.palette.secondary.main} sx={{ display: 'flex', gap: 16, fontSize: '18px', justifyContent: 'space-between', width: '100%' }}>
+                            <Typography color={theme.palette.secondary.main}
+                                sx={{ pt: 4, display: 'flex', gap: 16, fontSize: '18px', justifyContent: 'space-between', width: '100%', fontWeight: 600 }}>
                                 No articles yet
                             </Typography>}
                     </div>
