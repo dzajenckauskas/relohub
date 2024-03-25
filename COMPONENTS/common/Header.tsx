@@ -72,10 +72,11 @@ export default function Header() {
                         <MenuIcon sx={{ transform: 'scale(2)' }} />
                     </Button>
 
-                    <Link passHref href={'/'}>
+                    <Link passHref href={'/'} style={{ position: 'relative', width: 140, height: 50 }}>
                         <Image
-                            width={140}
-                            height={60}
+                            layout='fill'
+                            // width={140}
+                            // height={50}
                             src={"/logo2.png"}
                             alt="logo"
                             style={{ objectFit: "contain" }}
