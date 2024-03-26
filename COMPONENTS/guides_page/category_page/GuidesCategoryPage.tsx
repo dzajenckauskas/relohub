@@ -10,6 +10,7 @@ import Grid from '@mui/material/Grid';
 import { CategoryDataType } from '@/COMPONENTS/types/CategoryTypes';
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes';
 import { ArticleDataType } from '@/COMPONENTS/types/ArticleTypes';
+import Stack from '@mui/material/Stack';
 
 
 type Props = {
@@ -51,7 +52,7 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                 onClick={() => setActive(ac.attributes.key)}
                 style={{
                     padding: '12px 22px',
-                    borderRadius: 2,
+                    borderRadius: '2px',
                     fontSize: 12,
                     cursor: 'pointer',
                     backgroundColor: isActive ? '#e71d5e' : '#d9d9d9',
@@ -72,27 +73,26 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                     backgroundColor: "#efefef",
                     width: '100%'
                 }}>
-                    <div style={{
+                    <Stack sx={{
                         paddingTop: '40px',
                         marginBottom: '80px',
                         width: '100%'
                     }}>
-                        <h1 style={{
-                            marginBottom: '40px',
-                        }}>
+                        <Typography variant='h1' sx={{ pb: 4 }}>
                             {category.attributes?.name}
-                        </h1>
+                        </Typography>
 
-                        <div style={{
-                            display: 'flex', gap: 8,
-                            paddingBottom: 22,
+                        <Stack direction={'row'} sx={{
+                            display: 'flex',
+                            paddingBottom: 3,
+                            gap: 1,
                             flexWrap: 'wrap'
                         }}>
                             <Button
                                 onClick={() => setActive('all-posts')}
                                 style={{
                                     padding: '12px 22px',
-                                    borderRadius: 2,
+                                    borderRadius: '2px',
                                     fontSize: 12,
                                     cursor: 'pointer',
                                     backgroundColor: active == 'all-posts' ? '#e71d5e' : '#d9d9d9',
@@ -102,7 +102,7 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                                 {"all posts"}
                             </Button>
                             {renderArticleContinents}
-                        </div>
+                        </Stack>
                         {articles?.data.length > 0 &&
                             <Grid container spacing={2} sx={{ display: 'flex', }}>
                                 {renderLatestArticles}
@@ -112,7 +112,7 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                                 sx={{ pt: 2, display: 'flex', gap: 16, fontSize: '18px', justifyContent: 'space-between', width: '100%', fontWeight: 600 }}>
                                 No articles yet
                             </Typography>}
-                    </div>
+                    </Stack>
 
                 </MaxWidthContainer>
             </main>

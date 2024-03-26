@@ -2,7 +2,7 @@ import { createTheme } from '@mui/material/styles';
 import { Open_Sans, Rubik } from "next/font/google";
 
 // const rubik = Rubik({ weight: ["300", "400", "500", "600"], subsets: ['latin-ext'] })
-// const openSans = Open_Sans({ weight: ["300", "400", "500", "600", "700", "800"], subsets: ['latin-ext'] })
+const openSans = Open_Sans({ weight: ["300", "400", "500", "600", "700", "800"], subsets: ['latin-ext'] })
 
 export const theme = createTheme({
     // components: {
@@ -47,34 +47,36 @@ export const theme = createTheme({
     // },
     typography: {
         h1: {
-            // fontFamily: openSans.style.fontFamily,
-            fontSize: 72,
+            fontFamily: openSans.style.fontFamily,
+            fontSize: 48,
+            fontWeight: 700
         },
         h2: {
-            // fontFamily: openSans.style.fontFamily,
+            fontFamily: openSans.style.fontFamily,
+            fontSize: 48,
         },
         h3: {
-            // fontFamily: openSans.style.fontFamily,
+            fontFamily: openSans.style.fontFamily,
         },
         h4: {
-            // fontFamily: openSans.style.fontFamily,
+            fontFamily: openSans.style.fontFamily,
         },
         h5: {
-            // fontFamily: openSans.style.fontFamily,
+            fontFamily: openSans.style.fontFamily,
         },
         h6: {
-            // fontFamily: openSans.style.fontFamily,
+            fontFamily: openSans.style.fontFamily,
         },
         body1: {
-            // fontFamily: openSans.style.fontFamily,
+            fontFamily: openSans.style.fontFamily,
 
         },
         body2: {
-            // fontFamily: openSans.style.fontFamily,
+            fontFamily: openSans.style.fontFamily,
 
         },
         caption: {
-            // fontFamily: openSans.style.fontFamily,
+            fontFamily: openSans.style.fontFamily,
 
         }
     },

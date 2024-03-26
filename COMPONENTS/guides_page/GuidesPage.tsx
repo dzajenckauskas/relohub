@@ -9,6 +9,7 @@ import EastIcon from '@mui/icons-material/East';
 import WestIcon from '@mui/icons-material/West';
 import { CategoriesResponseType } from '../types/CategoryTypes';
 import { ArticlesResponseType } from '../types/ArticleTypes';
+import { Typography } from '@mui/material';
 
 type Props = {
     articles?: ArticlesResponseType;
@@ -34,7 +35,7 @@ const GuidesPage = ({ articles, categories }: Props) => {
                         paddingBottom: '40px',
                         display: 'flex', flexDirection: 'column',
                     }}>
-                        <h1>Guides</h1>
+                        <Typography variant='h1'>Guides</Typography>
                     </Stack>
                 </MaxWidthContainer>
                 <Stack sx={{
@@ -55,8 +56,7 @@ const GuidesPage = ({ articles, categories }: Props) => {
                     py: 6,
                     justifyContent: 'space-between'
                 }}>
-                    <h1 style={{
-                    }}>Latest Guides & Articles</h1>
+                    <Typography variant='h2' sx={{ fontWeight: 700 }}>Latest Guides & Articles</Typography>
                     <Stack direction={'row'} spacing={1}>
                         <Button variant='outlined' color='secondary'
                             sx={{ borderRadius: 50, minWidth: 0, height: 40, width: 40 }}

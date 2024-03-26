@@ -1,9 +1,9 @@
 'use client'
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider, responsiveFontSizes } from '@mui/material/styles';
 import React from 'react';
 import GetInTOuch from '../main_page/getInTouch';
 import Header from './Header';
-import { theme } from './Theme';
+import { getTheme } from './Theme';
 import Chat from './chat';
 
 type Props = {
@@ -11,6 +11,8 @@ type Props = {
 }
 
 const PageLayout = ({ children }: Props) => {
+    let theme = getTheme()
+    // theme = responsiveFontSizes(theme);
     return (
         <ThemeProvider theme={theme}>
             <Chat />

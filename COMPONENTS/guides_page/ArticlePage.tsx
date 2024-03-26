@@ -1,7 +1,10 @@
 'use client'
+import Stack from '@mui/material/Stack';
+import { MaxWidthContainer } from '../common/MaxWidthContainer';
 import PageLayout from '../common/PageLayout';
 import { ArticleResponseType, ArticlesResponseType } from '../types/ArticleTypes';
 import ArticleCard from './ArticleCard';
+import { Typography } from '@mui/material';
 
 type Props = {
     article?: ArticleResponseType;
@@ -16,34 +19,39 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
     })
     return (
         <PageLayout>
-            <main style={{
+            <Stack sx={{
+                width: '100%',
                 backgroundColor: "#efefef"
             }}>
-                <div className="mainpageheaderwrp" style={{
-                    paddingTop: '40px',
-                    paddingBottom: '40px',
-                    display: 'flex', flexDirection: 'column',
-                }}>
-                    <h1 style={{
-                    }}>{article?.data?.attributes?.title}</h1>
-                    <div dangerouslySetInnerHTML={{ __html: article?.data.attributes.fullContent }} />
-                </div>
+                <MaxWidthContainer>
+                    <Stack style={{
+                        paddingTop: '40px',
+                        paddingBottom: '40px',
+                        display: 'flex', flexDirection: 'column',
+                    }}>
+                        <Typography variant='h1' fontWeight={700}>{article?.data?.attributes?.title}</Typography>
+                        <div dangerouslySetInnerHTML={{ __html: article?.data.attributes.fullContent }} />
+                    </Stack>
+                </MaxWidthContainer>
+                <MaxWidthContainer>
+                    <Stack style={{
+                        paddingTop: '40px',
+                        paddingBottom: '40px',
+                        display: 'flex', flexDirection: 'column',
+                    }}>
+                        <Typography variant='h2'
+                            sx={{
+                                fontWeight: 700
+                            }}>
+                            Latest articles
+                        </Typography>
 
-                <div className="mainpageheaderwrp" style={{
-                    paddingTop: '40px',
-                    paddingBottom: '40px',
-                    display: 'flex', flexDirection: 'column',
-                }}>
-                    <h1 style={{
-                        paddingBottom: 30
-                    }}>Latest articles</h1>
-
-                    <div style={{ display: 'flex', justifyContent: 'space-between', gap: 35 }}>
-                        {renderLatestArticles}
-                    </div>
-                </div>
-
-            </main>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 35 }}>
+                            {renderLatestArticles}
+                        </div>
+                    </Stack>
+                </MaxWidthContainer>
+            </Stack>
         </PageLayout>
     )
 }

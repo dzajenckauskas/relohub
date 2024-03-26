@@ -5,13 +5,6 @@ import "/STYLES/globals.css";
 import "/STYLES/medias.css";
 
 const osans = Open_Sans({ subsets: ["latin"] });
-
-export const metadata = {
-    title: "Your trusted International moving provider.",
-    description: `Here at Deliver1 we’re your go-to choice for International moving. We offer fast, secure, cost-effective door to door services for Sea, Road and Air freight.`,
-    keywords: `moving, deliver, international, fast, secure, cost-effective, sea, road, air, freight`
-};
-
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
