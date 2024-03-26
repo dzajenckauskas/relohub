@@ -1,6 +1,8 @@
 "use client";
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { MaxWidthContainer } from "../common/MaxWidthContainer";
+import { Stack } from "@mui/material";
 
 export default function VideoArea() {
     const videoRef = useRef();
@@ -48,91 +50,95 @@ export default function VideoArea() {
     }
 
     return (
-        <section className="videoareaglobalwrp">
-            <div className="videoareatopwrp">
-                <p>Transportation of your belongings by:</p>
+        <Stack sx={{ backgroundColor: '#202020' }}>
+            <MaxWidthContainer>
+                <section className="videoareaglobalwrp">
+                    <div className="videoareatopwrp">
+                        <p>Transportation of your belongings by:</p>
 
-                <div className="videoareatoplinerrightwrp">
-                    <button
-                        className="transportcarouselbutton carouselbuttonmobileonly"
-                        disabled={currentSlide === 0}
-                        onClick={() => {
-                            setCurrentSlide(currentSlide - 1);
-                        }}
-                    >
-                        &#x2039;
-                    </button>
-                    <div className="videoarrtoplinericonswrp">
-                        <div
-                            className="videoarriconsrightwrpglobal"
-                            ref={slideelement}
-                        >
-                            <div className="videoareatopliner">
-                                <Image
-                                    src={"/Road.png"}
-                                    style={{objectFit: "contain"}}
-                                    width={80}
-                                    height={32}
-                                    alt="road"
-                                ></Image>
-                                <p className="videoareatopp">Road Freight</p>
+                        <div className="videoareatoplinerrightwrp">
+                            <button
+                                className="transportcarouselbutton carouselbuttonmobileonly"
+                                disabled={currentSlide === 0}
+                                onClick={() => {
+                                    setCurrentSlide(currentSlide - 1);
+                                }}
+                            >
+                                &#x2039;
+                            </button>
+                            <div className="videoarrtoplinericonswrp">
+                                <div
+                                    className="videoarriconsrightwrpglobal"
+                                    ref={slideelement}
+                                >
+                                    <div className="videoareatopliner">
+                                        <Image
+                                            src={"/Road.png"}
+                                            style={{ objectFit: "contain" }}
+                                            width={80}
+                                            height={32}
+                                            alt="road"
+                                        ></Image>
+                                        <p className="videoareatopp">Road Freight</p>
+                                    </div>
+                                    <div className="videoareatopliner">
+                                        <Image
+                                            src={"/sea.png"}
+                                            style={{ objectFit: "contain" }}
+                                            width={80}
+                                            height={32}
+                                            alt="sea"
+                                        ></Image>
+                                        <p className="videoareatopp">Sea Freight</p>
+                                    </div>
+                                    <div className="videoareatopliner">
+                                        <Image
+                                            src={"/air.png"}
+                                            style={{ objectFit: "contain" }}
+                                            width={80}
+                                            height={32}
+                                            alt="air"
+                                        ></Image>
+                                        <p className="videoareatopp">Air Freight</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="videoareatopliner">
-                                <Image
-                                    src={"/sea.png"}
-                                    style={{objectFit: "contain"}}
-                                    width={80}
-                                    height={32}
-                                    alt="sea"
-                                ></Image>
-                                <p className="videoareatopp">Sea Freight</p>
-                            </div>
-                            <div className="videoareatopliner">
-                                <Image
-                                    src={"/air.png"}
-                                    style={{objectFit: "contain"}}
-                                    width={80}
-                                    height={32}
-                                    alt="air"
-                                ></Image>
-                                <p className="videoareatopp">Air Freight</p>
-                            </div>
+                            <button
+                                className="transportcarouselbutton carouselbuttonmobileonly"
+                                disabled={currentSlide === 2}
+                                onClick={() => {
+                                    setCurrentSlide(currentSlide + 1);
+                                }}
+                            >
+                                &#x203A;
+                            </button>
                         </div>
                     </div>
-                    <button
-                        className="transportcarouselbutton carouselbuttonmobileonly"
-                        disabled={currentSlide === 2}
-                        onClick={() => {
-                            setCurrentSlide(currentSlide + 1);
-                        }}
-                    >
-                        &#x203A;
-                    </button>
-                </div>
-            </div>
 
-            <div className="videoareavideowrp">
-                {showvideohide ? (
-                    <div className="videoareaplaybtnwrp">
-                        <h1>View Our Presentation</h1>
-                        <button
-                            className="videopresentationtroundbutton"
-                            onClick={handleButtonClick}
-                        >
-                            <Image
-                                src={"/play.svg"}
-                                style={{objectFit: "contain"}}
-                                className="playsvgbtn"
-                                width={40}
-                                height={40}
-                                alt="play button"
-                            ></Image>
-                        </button>
+                    <div className="videoareavideowrp">
+                        {showvideohide ? (
+                            <div className="videoareaplaybtnwrp">
+                                <h1>View Our Presentation</h1>
+                                <button
+                                    className="videopresentationtroundbutton"
+                                    onClick={handleButtonClick}
+                                >
+                                    <Image
+                                        src={"/play.svg"}
+                                        style={{ objectFit: "contain" }}
+                                        className="playsvgbtn"
+                                        width={40}
+                                        height={40}
+                                        alt="play button"
+                                    ></Image>
+                                </button>
+                            </div>
+                        ) : null}
+
+                        {vide()}
                     </div>
-                ) : null}
-
-                {vide()}
-            </div>
-        </section>
+                </section>
+            </MaxWidthContainer>
+        </Stack>
     );
 }

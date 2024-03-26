@@ -1,5 +1,6 @@
 "use client";
-import {useState} from "react";
+import { useState } from "react";
+import { MaxWidthContainer } from "../common/MaxWidthContainer";
 
 export default function FaqWrapper() {
     const [clicked, setclicked] = useState(null);
@@ -92,43 +93,45 @@ export default function FaqWrapper() {
 
     return (
         <section className="faqglobalwrp">
-            <div className="faqinsidewrp">
-                <p className="faqwrphowitworksp">F.A.Q</p>
-                <h1 className="processwrptheprocess">
-                    Frequently Asked Questions
-                </h1>
+            <MaxWidthContainer>
+                <div className="faqinsidewrp">
+                    <p className="faqwrphowitworksp">F.A.Q</p>
+                    <h1 className="processwrptheprocess">
+                        Frequently Asked Questions
+                    </h1>
 
-                <div className="faqfaqwrp">
-                    {qa.map((el, i) => {
-                        return (
-                            <div className="faqfaqliner" key={i}>
-                                <div className="faqfaqinsidetop">
-                                    <h3 className="faqh3">{el.q}</h3>
+                    <div className="faqfaqwrp">
+                        {qa.map((el, i) => {
+                            return (
+                                <div className="faqfaqliner" key={i}>
+                                    <div className="faqfaqinsidetop">
+                                        <h3 className="faqh3">{el.q}</h3>
 
-                                    <button
-                                        className={
-                                            clicked === el.q
-                                                ? "faqbuttonclicked"
-                                                : "faqbutton"
-                                        }
-                                        onClick={() => {
-                                            setclicked(
-                                                clicked === el.q ? null : el.q,
-                                            );
-                                        }}
-                                    >
-                                        {clicked === el.q ? "+" : "-"}
-                                    </button>
+                                        <button
+                                            className={
+                                                clicked === el.q
+                                                    ? "faqbuttonclicked"
+                                                    : "faqbutton"
+                                            }
+                                            onClick={() => {
+                                                setclicked(
+                                                    clicked === el.q ? null : el.q,
+                                                );
+                                            }}
+                                        >
+                                            {clicked === el.q ? "+" : "-"}
+                                        </button>
+                                    </div>
+
+                                    {clicked === el.q ? (
+                                        <p className="faqfaqinsidep">{el.a}</p>
+                                    ) : null}
                                 </div>
-
-                                {clicked === el.q ? (
-                                    <p className="faqfaqinsidep">{el.a}</p>
-                                ) : null}
-                            </div>
-                        );
-                    })}
+                            );
+                        })}
+                    </div>
                 </div>
-            </div>
+            </MaxWidthContainer>
         </section>
     );
 }

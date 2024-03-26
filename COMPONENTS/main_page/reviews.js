@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { MaxWidthContainer } from "../common/MaxWidthContainer";
 
 const car = [
     {
@@ -154,67 +155,69 @@ const Carousel = () => {
     };
 
     return (
-        <section className="reviewsglobalwrp">
-            <p className="faqwrphowitworksp">REVIEWS</p>
+        <MaxWidthContainer>
+            <section className="reviewsglobalwrp">
+                <p className="faqwrphowitworksp">REVIEWS</p>
 
-            <div className="reviewssecondwrp">
-                <h1 className="reviewh1">
-                    What<br></br> People<br></br> Say
-                </h1>
+                <div className="reviewssecondwrp">
+                    <h1 className="reviewh1">
+                        What<br></br> People<br></br> Say
+                    </h1>
 
-                <div className="reviewscarouselwrp">
-                    <button
-                        className="reviewcarouselbutton reviewcarouselbuttonl"
-                        disabled={currentSlide === 0}
-                        onClick={goToPrevSlide}
-                    >
-                        &#x2039;
-                    </button>
-
-                    <div className="carouselmainwrpoutside">
-                        <div
-                            className="carouselmainwrp"
-                            style={{ transform: getTransformValue() }}
+                    <div className="reviewscarouselwrp">
+                        <button
+                            className="reviewcarouselbutton reviewcarouselbuttonl"
+                            disabled={currentSlide === 0}
+                            onClick={goToPrevSlide}
                         >
-                            {car.map((review, index) => (
-                                <div
-                                    key={index}
-                                    className={`revcarouselcenterwrp`}
-                                >
-                                    <div className="carouselstarswrapper">
-                                        {stars()}
+                            &#x2039;
+                        </button>
+
+                        <div className="carouselmainwrpoutside">
+                            <div
+                                className="carouselmainwrp"
+                                style={{ transform: getTransformValue() }}
+                            >
+                                {car.map((review, index) => (
+                                    <div
+                                        key={index}
+                                        className={`revcarouselcenterwrp`}
+                                    >
+                                        <div className="carouselstarswrapper">
+                                            {stars()}
+                                        </div>
+                                        <h2 className="carouselh2">
+                                            {review.title}
+                                        </h2>
+                                        <p className="carouselp">{review.txt}</p>
+                                        {review.link ? (
+                                            <a
+                                                className="carouselauthorlink"
+                                                href={review.link}
+                                                target="_blank"
+                                            >
+                                                {review.author}
+                                            </a>
+                                        ) : (
+                                            <p className="carouselauthorp">
+                                                {review.author}
+                                            </p>
+                                        )}
                                     </div>
-                                    <h2 className="carouselh2">
-                                        {review.title}
-                                    </h2>
-                                    <p className="carouselp">{review.txt}</p>
-                                    {review.link ? (
-                                        <a
-                                            className="carouselauthorlink"
-                                            href={review.link}
-                                            target="_blank"
-                                        >
-                                            {review.author}
-                                        </a>
-                                    ) : (
-                                        <p className="carouselauthorp">
-                                            {review.author}
-                                        </p>
-                                    )}
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
+                        <button
+                            className="reviewcarouselbutton reviewcarouselbuttonr"
+                            disabled={currentSlide === car.length - 1}
+                            onClick={goToNextSlide}
+                        >
+                            &#x203A;
+                        </button>
                     </div>
-                    <button
-                        className="reviewcarouselbutton reviewcarouselbuttonr"
-                        disabled={currentSlide === car.length - 1}
-                        onClick={goToNextSlide}
-                    >
-                        &#x203A;
-                    </button>
                 </div>
-            </div>
-        </section>
+            </section>
+        </MaxWidthContainer>
     );
 };
 

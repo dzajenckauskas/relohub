@@ -33,7 +33,8 @@
     "**/*.ts",
     "**/*.tsx",
     "app/offer/page.js",
-    "build/types/**/*.ts"
+    "build/types/**/*.ts",
+    "COMPONENTS/main_page/getInTouch.js"
   ],
   "exclude": [
     "node_modules"

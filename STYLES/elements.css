@@ -74,7 +74,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0 16px;
     padding-bottom: 32px;
     overflow: hidden;
 }
@@ -660,7 +659,7 @@
 }
 
 .faqglobalwrp {
-    padding: 0 16px;
+    /* padding: 0 16px; */
     background: #ededed;
     padding-top: 104px;
     display: flex;
@@ -737,7 +736,7 @@
 
 .reviewsglobalwrp {
     max-width: 1232px;
-    padding: 104px 16px;
+    padding: 104px 0px;
     margin: 0 auto;
     width: 100%;
 }
@@ -847,7 +846,7 @@
 .getintouchglobalwrp {
     width: 100%;
     background: #252420;
-    padding: 0 16px;
+    /* padding: 0 16px; */
     padding-top: 104px;
     display: flex;
     justify-content: center;
