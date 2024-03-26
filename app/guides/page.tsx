@@ -12,7 +12,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 }
 
 export default async function Guides() {
-    const articles = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,images,articleCategory,articleContinents&first=3`)
+    const articles = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents`)
     const categories = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/article-categories?populate=image`)
     return (
         <GuidesPage articles={articles} categories={categories} />
