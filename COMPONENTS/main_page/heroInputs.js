@@ -1,91 +1,91 @@
 "use client";
 
 import Image from "next/image";
-import {useEffect, useRef, useState} from "react";
-import {FixedSizeList as List} from "react-window";
+import { useEffect, useRef, useState } from "react";
+import { FixedSizeList as List } from "react-window";
 
-const countries = [
-    {country: "A"},
-    {country: "australia", iso: "AU"},
-    {country: "austria", iso: "AT"},
-    {country: "B"},
-    {country: "belgium", iso: "BE"},
-    {country: "bulgaria", iso: "BG"},
-    {country: "C"},
-    {country: "canada", iso: "CA"},
-    {country: "croatia", iso: "HR"},
-    {country: "cyprus", iso: "CY"},
-    {country: "czech republic", iso: "CZ"},
-    {country: "D"},
-    {country: "denmark", iso: "DK"},
-    {country: "E"},
-    {country: "egypt", iso: "EG"},
-    {country: "estonia", iso: "EE"},
-    {country: "F"},
-    {country: "finland", iso: "FI"},
-    {country: "france", iso: "FR"},
-    {country: "G"},
-    {country: "georgia", iso: "GE"},
-    {country: "germany", iso: "DE"},
-    {country: "gibraltar", iso: "GI"},
-    {country: "greece", iso: "GR"},
-    {country: "H"},
-    {country: "hong kong", iso: "HK"},
-    {country: "hungary", iso: "HU"},
-    {country: "I"},
-    {country: "iceland", iso: "IS"},
-    {country: "india", iso: "IN"},
-    {country: "ireland", iso: "IE"},
-    {country: "italy", iso: "IT"},
-    {country: "J"},
-    {country: "japan", iso: "JP"},
-    {country: "L"},
-    {country: "latvia", iso: "LV"},
-    {country: "lithuania", iso: "LT"},
-    {country: "luxembourg", iso: "LU"},
-    {country: "M"},
-    {country: "malaysia", iso: "MY"},
-    {country: "malta", iso: "MT"},
-    {country: "monaco", iso: "MC"},
-    {country: "montenegro", iso: "ME"},
-    {country: "N"},
-    {country: "netherlands", iso: "NL"},
-    {country: "new zealand", iso: "NZ"},
-    {country: "norway", iso: "NO"},
-    {country: "P"},
-    {country: "philippines", iso: "PH"},
-    {country: "poland", iso: "PL"},
-    {country: "portugal", iso: "PT"},
-    {country: "Q"},
-    {country: "qatar", iso: "QA"},
-    {country: "R"},
-    {country: "romania", iso: "RO"},
-    {country: "S"},
-    {country: "serbia", iso: "RS"},
-    {country: "singapore", iso: "SG"},
-    {country: "slovakia", iso: "SK"},
-    {country: "slovenia", iso: "SI"},
-    {country: "south africa", iso: "ZA"},
-    {country: "spain", iso: "ES"},
-    {country: "sweden", iso: "SE"},
-    {country: "switzerland", iso: "CH"},
-    {country: "T"},
-    {country: "thailand", iso: "TH"},
-    {country: "U"},
-    {country: "united arab emirates", iso: "AE"},
-    {country: "united kingdom", iso: "GB"},
-    {country: "united states", iso: "US"},
+export const countries = [
+    { country: "A" },
+    { country: "australia", iso: "AU", continent: "Oceania" },
+    { country: "austria", iso: "AT", continent: "Europe" },
+    { country: "B" },
+    { country: "belgium", iso: "BE", continent: "Europe" },
+    { country: "bulgaria", iso: "BG", continent: "Europe" },
+    { country: "C" },
+    { country: "canada", iso: "CA", continent: "North America" },
+    { country: "croatia", iso: "HR", continent: "Europe" },
+    { country: "cyprus", iso: "CY", continent: "Europe" },
+    { country: "czech republic", iso: "CZ", continent: "Europe" },
+    { country: "D" },
+    { country: "denmark", iso: "DK", continent: "Europe" },
+    { country: "E" },
+    { country: "egypt", iso: "EG", continent: "Africa" },
+    { country: "estonia", iso: "EE", continent: "Europe" },
+    { country: "F" },
+    { country: "finland", iso: "FI", continent: "Europe" },
+    { country: "france", iso: "FR", continent: "Europe" },
+    { country: "G" },
+    { country: "georgia", iso: "GE", continent: "Europe" },
+    { country: "germany", iso: "DE", continent: "Europe" },
+    { country: "gibraltar", iso: "GI", continent: "Europe" },
+    { country: "greece", iso: "GR", continent: "Europe" },
+    { country: "H" },
+    { country: "hong kong", iso: "HK", continent: "Asia" },
+    { country: "hungary", iso: "HU", continent: "Europe" },
+    { country: "I" },
+    { country: "iceland", iso: "IS", continent: "Europe" },
+    { country: "india", iso: "IN", continent: "Asia" },
+    { country: "ireland", iso: "IE", continent: "Europe" },
+    { country: "italy", iso: "IT", continent: "Europe" },
+    { country: "J" },
+    { country: "japan", iso: "JP", continent: "Asia" },
+    { country: "L" },
+    { country: "latvia", iso: "LV", continent: "Europe" },
+    { country: "lithuania", iso: "LT", continent: "Europe" },
+    { country: "luxembourg", iso: "LU", continent: "Europe" },
+    { country: "M" },
+    { country: "malaysia", iso: "MY", continent: "Asia" },
+    { country: "malta", iso: "MT", continent: "Europe" },
+    { country: "monaco", iso: "MC", continent: "Europe" },
+    { country: "montenegro", iso: "ME", continent: "Europe" },
+    { country: "N" },
+    { country: "netherlands", iso: "NL", continent: "Europe" },
+    { country: "new zealand", iso: "NZ", continent: "Oceania" },
+    { country: "norway", iso: "NO", continent: "Europe" },
+    { country: "P" },
+    { country: "philippines", iso: "PH", continent: "Asia" },
+    { country: "poland", iso: "PL", continent: "Europe" },
+    { country: "portugal", iso: "PT", continent: "Europe" },
+    { country: "Q" },
+    { country: "qatar", iso: "QA", continent: "Asia" },
+    { country: "R" },
+    { country: "romania", iso: "RO", continent: "Europe" },
+    { country: "S" },
+    { country: "serbia", iso: "RS", continent: "Europe" },
+    { country: "singapore", iso: "SG", continent: "Asia" },
+    { country: "slovakia", iso: "SK", continent: "Europe" },
+    { country: "slovenia", iso: "SI", continent: "Europe" },
+    { country: "south africa", iso: "ZA", continent: "Africa" },
+    { country: "spain", iso: "ES", continent: "Europe" },
+    { country: "sweden", iso: "SE", continent: "Europe" },
+    { country: "switzerland", iso: "CH", continent: "Europe" },
+    { country: "T" },
+    { country: "thailand", iso: "TH", continent: "Asia" },
+    { country: "U" },
+    { country: "united arab emirates", iso: "AE", continent: "Asia" },
+    { country: "united kingdom", iso: "GB", continent: "Europe" },
+    { country: "united states", iso: "US", continent: "North America" },
 ];
 
-export default function HeroInputs({enableButton, edit, newstate}) {
+export default function HeroInputs({ enableButton, edit, newstate }) {
     const listRef = useRef(null);
     const zipfocus = useRef(null);
     const zipfocusdest = useRef(null);
     const inpt = [
-        {label: "Collection Country", field: "from_country"},
-        {label: "Destination Country", field: "to_country"},
-        {label: "Collection City", field: "from_city"},
-        {label: "Destination City", field: "to_city"},
+        { label: "Collection Country", field: "from_country" },
+        { label: "Destination Country", field: "to_country" },
+        { label: "Collection City", field: "from_city" },
+        { label: "Destination City", field: "to_city" },
     ];
 
     const [inputs, setinputs] = useState([]);
@@ -145,8 +145,8 @@ export default function HeroInputs({enableButton, edit, newstate}) {
     async function fetchcity(country, ft) {
         let res = await fetch("/api/cities", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({country}),
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ country }),
         });
 
         if (res.ok) {
@@ -223,7 +223,7 @@ export default function HeroInputs({enableButton, edit, newstate}) {
             enable = false;
         }
 
-        enableButton(enable ? {...state} : false);
+        enableButton(enable ? { ...state } : false);
     }, [state, edit]);
 
     function citiesDropdown() {
@@ -291,7 +291,7 @@ export default function HeroInputs({enableButton, edit, newstate}) {
             }
         }
 
-        const Row = ({index, style}) => {
+        const Row = ({ index, style }) => {
             const el = arr[index];
             return (
                 <li
@@ -452,7 +452,7 @@ export default function HeroInputs({enableButton, edit, newstate}) {
                                     src={`/flags/${el.iso.toLowerCase()}.svg`}
                                     width={24}
                                     height={16}
-                                    style={{objectFit: "contain"}}
+                                    style={{ objectFit: "contain" }}
                                 ></Image>
                             ) : null}
 
@@ -574,7 +574,7 @@ export default function HeroInputs({enableButton, edit, newstate}) {
                     className="dropdowninputsearch"
                 ></input>
                 {selectedField === inpt[0].label ||
-                selectedField === inpt[1].label
+                    selectedField === inpt[1].label
                     ? countriesDropdown(el, i)
                     : citiesDropdown(el, i)}
             </div>
@@ -625,17 +625,16 @@ export default function HeroInputs({enableButton, edit, newstate}) {
     }
 
     function postcodetxt(txt, frt) {
-        return `${edit ? "" : txt}${
-            frt === "from"
+        return `${edit ? "" : txt}${frt === "from"
                 ? state.from_country === "united kingdom"
                     ? " Post "
                     : " Zip "
                 : frt === "to"
-                ? state.to_country === "united kingdom"
-                    ? " Post "
-                    : " Zip "
-                : ""
-        }Code${edit || width >= 500 ? ":" : ""}`;
+                    ? state.to_country === "united kingdom"
+                        ? " Post "
+                        : " Zip "
+                    : ""
+            }Code${edit || width >= 500 ? ":" : ""}`;
     }
 
     function ifukofus() {
@@ -745,14 +744,12 @@ export default function HeroInputs({enableButton, edit, newstate}) {
 
     function addclassnametomobileinputs(el, i) {
         if (el.label === `Collection City`) {
-            return `heroinputliner heroinputliner${i}  ${
-                !state.from_country ? "heroinputlinerhide" : ""
-            }`;
+            return `heroinputliner heroinputliner${i}  ${!state.from_country ? "heroinputlinerhide" : ""
+                }`;
         }
         if (el.label === `Destination City`) {
-            return `heroinputliner heroinputliner${i}  ${
-                !state.to_country ? "heroinputlinerhide" : ""
-            }`;
+            return `heroinputliner heroinputliner${i}  ${!state.to_country ? "heroinputlinerhide" : ""
+                }`;
         }
 
         return `heroinputliner heroinputliner${i}`;

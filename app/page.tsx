@@ -10,7 +10,7 @@ import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
 import Image from "next/image";
 
-export async function generateMetadata({ params }): Promise<Metadata> {
+export async function generateMetadata({ }): Promise<Metadata> {
     const homePage = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/home-page?populate=seo`)
     return {
         title: homePage?.data?.attributes?.seo?.seoTitle,
@@ -21,32 +21,26 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
 export default async function Home() {
     return (
-        <>
-            <PageLayout>
-                {/* <RemovedaDataFromCitiesJson /> */}
-
-                <div className="bckimagewrp">
-                    <div className="heroareaimgwrp">
-                        <Image
-                            className="herobckgimg"
-                            alt="backgorund"
-                            src={"/herobg.svg"}
-                            fill={true}
-                        ></Image>
-                    </div>
-                    <MaxWidthContainer>
-                        <MainPageHeroArea />
-                    </MaxWidthContainer>
-                    <Postheroimages />
+        <PageLayout>
+            {/* <RemovedaDataFromCitiesJson /> */}
+            <div className="bckimagewrp">
+                <div className="heroareaimgwrp">
+                    <Image
+                        className="herobckgimg"
+                        alt="backgorund"
+                        src={"/herobg.svg"}
+                        fill={true}
+                    ></Image>
                 </div>
-
-                <VideoArea />
-                <ProcessWrapper />
-                <FaqWrapper />
-                <Reviews />
-            </PageLayout>
-
-        </>
-
+                <MaxWidthContainer>
+                    <MainPageHeroArea />
+                </MaxWidthContainer>
+                <Postheroimages />
+            </div>
+            <VideoArea />
+            <ProcessWrapper />
+            <FaqWrapper />
+            <Reviews />
+        </PageLayout>
     );
 }
