@@ -29,7 +29,7 @@ const ArticleCard = ({ article, activeContinent }: Props) => {
                 borderTopRightRadius: '5px',
                 borderTopLeftRadius: '5px',
                 width: '100%',
-                backgroundImage: `url(${process.env.NEXT_PUBLIC_API_URL}${article?.attributes?.images?.data?.[0]?.attributes?.url})`,
+                backgroundImage: `url(${process.env.NEXT_PUBLIC_API_URL}${article?.attributes?.image?.data?.attributes?.url})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 alignItems: 'flex-end',

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import Footer from "./Footer";
+import Footer from "../common/Footer";
 import Image from "next/image";
 import { validateEmail, validatePhoneNumber } from "@/UTILS/helperFunctions";
 import { MaxWidthContainer } from "../common/MaxWidthContainer";

@@ -17,6 +17,7 @@
         "@stripe/stripe-js": "^2.3.0",
         "axios": "^1.6.8",
         "next": "v14.0.5-canary.60",
+        "next-share": "^0.27.0",
         "nodemailer": "^6.9.8",
         "react": "^18",
         "react-calendar": "^4.8.0",

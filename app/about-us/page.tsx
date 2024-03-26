@@ -4,8 +4,6 @@ import { Metadata } from "next";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
     const aboutPage = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/about-page?populate=seo`)
-    console.log(aboutPage, "aboutPage");
-
     return {
         title: aboutPage?.data?.attributes?.seo?.seoTitle,
         description: aboutPage?.data?.attributes?.seo?.seoDescription,

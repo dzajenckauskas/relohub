@@ -1,14 +1,14 @@
 'use client'
 import Stack from '@mui/material/Stack';
-import { MaxWidthContainer } from '../common/MaxWidthContainer';
-import PageLayout from '../common/PageLayout';
-import ArticleCard from './ArticleCard';
-import ArticleCategoryCard from './ArticleCategoryCard';
+import { MaxWidthContainer } from '../../COMPONENTS/common/MaxWidthContainer';
+import PageLayout from '../../COMPONENTS/common/PageLayout';
+import ArticleCard from '../../COMPONENTS/guides/ArticleCard';
+import ArticleCategoryCard from '../../COMPONENTS/guides/ArticleCategoryCard';
 import Button from '@mui/material/Button'
 import EastIcon from '@mui/icons-material/East';
 import WestIcon from '@mui/icons-material/West';
-import { CategoriesResponseType } from '../types/CategoryTypes';
-import { ArticlesResponseType } from '../types/ArticleTypes';
+import { CategoriesResponseType } from '../../COMPONENTS/types/CategoryTypes';
+import { ArticlesResponseType } from '../../COMPONENTS/types/ArticleTypes';
 import { Typography } from '@mui/material';
 
 type Props = {

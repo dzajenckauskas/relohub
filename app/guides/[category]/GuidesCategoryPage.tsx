@@ -4,7 +4,7 @@ import PageLayout from '@/COMPONENTS/common/PageLayout';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
-import ArticleCard from '../ArticleCard';
+import ArticleCard from '../../../COMPONENTS/guides/ArticleCard';
 import { theme } from '@/COMPONENTS/common/Theme';
 import Grid from '@mui/material/Grid';
 import { CategoryDataType } from '@/COMPONENTS/types/CategoryTypes';

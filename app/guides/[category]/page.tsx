@@ -1,4 +1,4 @@
-import GuidesCategoryPage from "@/COMPONENTS/guides_page/category_page/GuidesCategoryPage";
+import GuidesCategoryPage from "@/app/guides/[category]/GuidesCategoryPage";
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
 

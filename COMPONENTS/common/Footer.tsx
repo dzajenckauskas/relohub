@@ -1,10 +1,10 @@
 "use client";
 
-import {useEffect, useState} from "react";
-import TermsAndConditions from "./footerPopups/termsConditions";
-import PrivacyPolicy from "./footerPopups/privacyPolicy";
-import InclusionsExclusions from "./footerPopups/inclusionsExclusions";
-import FAQ from "./footerPopups/faq";
+import { useEffect, useState } from "react";
+import TermsAndConditions from "../main_page/footerPopups/termsConditions";
+import PrivacyPolicy from "../main_page/footerPopups/privacyPolicy";
+import InclusionsExclusions from "../main_page/footerPopups/inclusionsExclusions";
+import FAQ from "../main_page/footerPopups/faq";
 
 export default function Footer() {
     const [clicked, setclicked] = useState(null);

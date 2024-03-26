@@ -1,4 +1,4 @@
-import GuidesPage from "@/COMPONENTS/guides_page/GuidesPage";
+import GuidesPage from "@/app/guides/GuidesPage";
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
 

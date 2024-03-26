@@ -1,6 +1,6 @@
 import { CategoryResponseType } from "./CategoryTypes";
 import { ContinentsResponseType } from "./ContinentTypes";
-import { ImagesType } from "./ImageTypes";
+import { SingleImageType } from "./ImageTypes";
 import { MetaType } from "./MetaTypes";
 import { SeoType } from "./PageType";
 
@@ -25,7 +25,7 @@ export type ArticleAttributesType = {
     createdAt: Date;
     updatedAt: Date;
     publishedAt: Date;
-    images: ImagesType;
+    image: SingleImageType;
     articleCategory?: CategoryResponseType;
     articleContinents?: ContinentsResponseType;
     seo?: SeoType;

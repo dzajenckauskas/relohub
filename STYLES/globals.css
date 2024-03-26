@@ -8,6 +8,16 @@
     --green: #00a30f;
 }
 
+.dynamicContent img {
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+}
+
+.dynamicContent a {
+    color: var(--pink_color);
+    text-decoration: underline;
+}
 
 html {
     font-size: 8px;
