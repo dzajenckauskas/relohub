@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { theme } from '../common/Theme';
 import { ArticleDataType } from '../types/ArticleTypes';
+import Image from 'next/legacy/image';
 
 type Props = {
     article?: ArticleDataType;
@@ -29,12 +30,15 @@ const ArticleCard = ({ article, activeContinent }: Props) => {
                 borderTopRightRadius: '5px',
                 borderTopLeftRadius: '5px',
                 width: '100%',
-                backgroundImage: `url(${process.env.NEXT_PUBLIC_API_URL}${article?.attributes?.image?.data?.attributes?.url})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
                 alignItems: 'flex-end',
                 position: 'relative'
             }}>
+                <Image
+                    src={`${process.env.NEXT_PUBLIC_API_URL}${article?.attributes?.image?.data?.attributes?.formats?.medium?.url ?? article?.attributes?.image?.data?.attributes?.url ?? '/'}`}
+                    alt={article?.attributes?.image?.data?.attributes?.alternativeText}
+                    layout={'fill'}
+                    objectFit="cover"
+                />
             </Stack>
             <Stack sx={{ p: 3 }}>
                 <Typography sx={{ color: '#9b9b9b', fontSize: 12, textTransform: 'uppercase', fontWeight: 500, letterSpacing: 1 }}>
