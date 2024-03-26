@@ -2,6 +2,7 @@ import { CategoryResponseType } from "./CategoryTypes";
 import { ContinentsResponseType } from "./ContinentTypes";
 import { ImagesType } from "./ImageTypes";
 import { MetaType } from "./MetaTypes";
+import { SeoType } from "./PageType";
 
 export type ArticleResponseType = {
     data: ArticleDataType;
@@ -27,4 +28,5 @@ export type ArticleAttributesType = {
     images: ImagesType;
     articleCategory?: CategoryResponseType;
     articleContinents?: ContinentsResponseType;
+    seo?: SeoType;
 }
