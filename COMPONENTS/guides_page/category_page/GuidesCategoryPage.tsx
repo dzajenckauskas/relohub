@@ -7,10 +7,14 @@ import { useEffect, useState } from 'react';
 import ArticleCard from '../ArticleCard';
 import { theme } from '@/COMPONENTS/common/Theme';
 import Grid from '@mui/material/Grid';
+import { CategoryDataType } from '@/COMPONENTS/types/CategoryTypes';
+import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes';
+import { ArticleDataType } from '@/COMPONENTS/types/ArticleTypes';
+
 
 type Props = {
-    category?: any;
-    articleContinents?: any;
+    category?: CategoryDataType;
+    articleContinents?: ContinentsResponseType;
 }
 
 const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
@@ -29,11 +33,11 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                 setData(data)
                 setLoading(false)
             })
-    }, [active])
+    }, [active, category.attributes.key, url])
 
-    const renderLatestArticles = articles?.data?.map((a) => {
+    const renderLatestArticles = articles?.data?.map((a: ArticleDataType) => {
         return (
-            <Grid item lg={3} md={4} sm={6} xs={12} sx={{}}>
+            <Grid item lg={3} md={4} sm={6} xs={12} key={a.id}>
                 <ArticleCard article={a} key={a.id} activeContinent={active !== 'all-posts' ? active : undefined} />
             </Grid>
         )

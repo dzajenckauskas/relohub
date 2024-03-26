@@ -7,9 +7,12 @@ import ArticleCategoryCard from './ArticleCategoryCard';
 import Button from '@mui/material/Button'
 import EastIcon from '@mui/icons-material/East';
 import WestIcon from '@mui/icons-material/West';
+import { CategoriesResponseType } from '../types/CategoryTypes';
+import { ArticlesResponseType } from '../types/ArticleTypes';
+
 type Props = {
-    articles?: any;
-    categories?: any;
+    articles?: ArticlesResponseType;
+    categories?: CategoriesResponseType;
 }
 
 const GuidesPage = ({ articles, categories }: Props) => {

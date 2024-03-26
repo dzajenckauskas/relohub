@@ -3,8 +3,9 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
+import { CategoryDataType } from '../types/CategoryTypes';
 type Props = {
-    category?: any;
+    category?: CategoryDataType;
 }
 
 const ArticleCategoryCard = ({ category }: Props) => {

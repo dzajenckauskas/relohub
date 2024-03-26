@@ -1,14 +1,15 @@
 'use client'
 import PageLayout from '../common/PageLayout';
+import { ArticleResponseType, ArticlesResponseType } from '../types/ArticleTypes';
 import ArticleCard from './ArticleCard';
 
 type Props = {
-    article?: any;
-    latestArticles?: any;
+    article?: ArticleResponseType;
+    latestArticles?: ArticlesResponseType;
 }
 
 const ArticlePage = ({ article, latestArticles }: Props) => {
-    const renderLatestArticles = latestArticles.map((article) => {
+    const renderLatestArticles = latestArticles?.data?.map((article) => {
         return (
             <ArticleCard article={article} key={article.id} />
         )

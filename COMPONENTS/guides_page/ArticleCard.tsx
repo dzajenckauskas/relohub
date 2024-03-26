@@ -4,14 +4,15 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { theme } from '../common/Theme';
+import { ArticleDataType } from '../types/ArticleTypes';
 
 type Props = {
-    article?: any;
+    article?: ArticleDataType;
     activeContinent?: string;
 }
 
 const ArticleCard = ({ article, activeContinent }: Props) => {
-    const category = article.attributes.articleCategory.data.attributes.name
+    const category = article.attributes.articleCategory.data?.attributes.name
     const continent = activeContinent ?
         article.attributes.articleContinents?.data?.find((c) => c?.attributes?.key === activeContinent)?.attributes.name :
         article.attributes.articleContinents?.data?.[0]?.attributes.name
