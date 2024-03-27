@@ -1,8 +1,10 @@
 'use client'
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer'
 import PageLayout from '@/COMPONENTS/common/PageLayout'
+import { theme } from '@/COMPONENTS/common/Theme'
 import { countries } from '@/COMPONENTS/main_page/heroInputs'
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes'
+import { Grid } from '@mui/material'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
@@ -22,7 +24,55 @@ const AboutUsPage = ({ articleContinents }: Props) => {
             </Stack>
         )
     })
+    const services = [
+        {
+            name: "Road freight",
+            slogan: "door-to-door",
+            number: "01"
+        },
 
+        {
+            name: "Sea freight",
+            slogan: "door-to-door",
+            number: "02"
+        },
+        {
+            name: "Air freight",
+            slogan: "door-to-door",
+            number: "03"
+        },
+        {
+            name: "Air freight",
+            slogan: "door-to-door",
+            number: "04"
+        },
+        {
+            name: "Air courier",
+            slogan: "door-to-door",
+            number: "05"
+        }
+    ]
+    const renderServices = services.map((s) => {
+        return (
+            <Grid item xs={6} key={s.number} sx={{
+                position: 'relative',
+                width: '50%',
+                borderRadius: 1.5,
+                p: 3,
+                backgroundColor: theme.palette.secondary.main
+            }}>
+                <Typography variant='body2' sx={{ color: '#fff', position: 'absolute', right: 16, top: 16 }}>
+                    {s.number}
+                </Typography>
+                <Typography variant='h3' sx={{ color: '#fff', fontWeight: 600 }}>
+                    {s.name}
+                </Typography>
+                <Typography variant='h3' sx={{ color: '#fff', fontWeight: 600 }}>
+                    {s.slogan}
+                </Typography>
+            </Grid>
+        )
+    })
 
     // Move the "Europe" continent to the beginning of the array if found
     const europeIndex = articleContinents.data.findIndex(ac => ac.attributes.key === 'europe');
@@ -52,14 +102,14 @@ const AboutUsPage = ({ articleContinents }: Props) => {
     return (
         <PageLayout>
             <Stack sx={{ backgroundColor: '#f1f1f1' }}>
-                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column' }}>
+                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', py: 6 }}>
                     <Stack>
-                        <Typography variant={'h1'}>
+                        <Typography variant={'h1'} sx={{ pb: 2 }}>
                             About us
                         </Typography>
                         <Stack direction={'row'}>
                             <Stack sx={{ width: '50%' }}>
-                                <Typography variant={'h2'}>
+                                <Typography variant={'h2'} sx={{ pb: 1 }}>
                                     Exceptional moving services
                                 </Typography>
                                 <Typography sx={{ fontSize: 14 }}>
@@ -73,15 +123,18 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                 </MaxWidthContainer>
             </Stack>
             <Stack sx={{ backgroundColor: '#fff' }}>
-                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <Stack direction={'row'} width={'100%'}>
-                        <Stack sx={{ width: '50%' }}>
-                            <Typography variant={'h2'}>
+                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', py: 6 }}>
+                    <Stack spacing={10} direction={'row'} width={'100%'}>
+                        <Stack sx={{ width: '50%', }}>
+                            <Typography variant={'h2'} sx={{ pb: 1 }}>
                                 Services we offer
                             </Typography>
+                            <Grid container pt={2} rowGap={2} direction={'row'} sx={{ width: '100%' }}>
+                                {renderServices}
+                            </Grid>
                         </Stack>
                         <Stack sx={{ width: '50%' }}>
-                            <Typography variant={'h2'}>
+                            <Typography variant={'h2'} sx={{ pb: 1 }}>
                                 Other services we offer include:
                             </Typography>
                             <Typography sx={{ fontSize: 14 }}>
@@ -101,9 +154,9 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                 </MaxWidthContainer>
             </Stack>
             <Stack sx={{ backgroundColor: '#f1f1f1' }}>
-                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column' }}>
+                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', py: 6 }}>
                     <Stack sx={{ width: '100%' }}>
-                        <Typography variant={'h2'}>
+                        <Typography variant={'h2'} sx={{ pb: 1 }}>
                             Countries that we cover:
                         </Typography>
                         <Stack direction={'row'} spacing={1}>

@@ -53,7 +53,7 @@ export const theme = createTheme({
         },
         h2: {
             fontFamily: openSans.style.fontFamily,
-            fontSize: 42,
+            fontSize: 28,
             fontWeight: 700
         },
         h3: {
