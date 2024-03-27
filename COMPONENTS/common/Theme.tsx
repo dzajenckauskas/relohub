@@ -48,15 +48,18 @@ export const theme = createTheme({
     typography: {
         h1: {
             fontFamily: openSans.style.fontFamily,
-            fontSize: 48,
+            fontSize: 42,
             fontWeight: 700
         },
         h2: {
             fontFamily: openSans.style.fontFamily,
-            fontSize: 48,
+            fontSize: 42,
+            fontWeight: 700
         },
         h3: {
             fontFamily: openSans.style.fontFamily,
+            fontSize: 24,
+            fontWeight: 700
         },
         h4: {
             fontFamily: openSans.style.fontFamily,
@@ -69,14 +72,16 @@ export const theme = createTheme({
         },
         body1: {
             fontFamily: openSans.style.fontFamily,
+            fontSize: 16
 
         },
         body2: {
             fontFamily: openSans.style.fontFamily,
-
+            fontSize: 14
         },
         caption: {
             fontFamily: openSans.style.fontFamily,
+            fontSize: 10
 
         }
     },

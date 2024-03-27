@@ -1,6 +1,7 @@
 import Layout from "@/COMPONENTS/common/PageLayout";
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
+import AboutUsPage from "./AboutUsPage";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
     const aboutPage = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/about-page?populate=seo`)
@@ -12,12 +13,9 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 }
 
 export default async function BlogPage() {
-    return (
-        <>
-            <Layout>
-                <></>
-            </Layout>
-        </>
+    const articleContinents = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/article-continents`)
 
+    return (
+        <AboutUsPage articleContinents={articleContinents} />
     );
 }
