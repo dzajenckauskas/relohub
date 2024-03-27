@@ -21,6 +21,7 @@ type Props = {
 const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
     const [active, setActive] = useState<string | undefined>('all-posts')
 
+    // TODO: https://swr.vercel.app/
     const [articles, setData] = useState(null)
     const [isLoading, setLoading] = useState(true)
     const url = `/api/articles?populate=seo,image,articleCategory,articleContinents&filters[articleCategory][key][$eq]=${category.attributes.key}`
