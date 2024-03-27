@@ -350,7 +350,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
         };
 
         return (
-            <ul className="searchlistlist" ref={listRef}>
+            <ul className="searchlistlist" ref={listRef} >
                 {arr.length !== 0 ? (
                     <List
                         height={listrefheight}
@@ -521,13 +521,14 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
 
         return (
             <div
+                style={{ marginTop: 20, zIndex: 100 }}
                 className="heroselectiondropdownwrp"
                 onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
                 }}
             >
-                <section className="heroareaselectionh3andclosebuttonwrp">
+                <section className="heroareaselectionh3andclosebuttonwrp" style={{ top: 90, zIndex: 100 }}>
                     <h3 className="heroselectionh3">{el.label}:</h3>
                     <button
                         className="selectionlistclosebtrn"
@@ -541,7 +542,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                         &#x2715;
                     </button>
                 </section>
-                <section className="letterssection">
+                <section className="letterssection" style={{ marginTop: 143 }}>
                     {letters.map((el, i) => {
                         return (
                             <p
@@ -626,14 +627,14 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
 
     function postcodetxt(txt, frt) {
         return `${edit ? "" : txt}${frt === "from"
-                ? state.from_country === "united kingdom"
+            ? state.from_country === "united kingdom"
+                ? " Post "
+                : " Zip "
+            : frt === "to"
+                ? state.to_country === "united kingdom"
                     ? " Post "
                     : " Zip "
-                : frt === "to"
-                    ? state.to_country === "united kingdom"
-                        ? " Post "
-                        : " Zip "
-                    : ""
+                : ""
             }Code${edit || width >= 500 ? ":" : ""}`;
     }
 
@@ -754,6 +755,17 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
 
         return `heroinputliner heroinputliner${i}`;
     }
+
+    // useEffect(() => {
+    //     if (state.) {
+    //         document.body.style.overflow = 'hidden';
+    //     } else {
+    //         document.body.style.overflow = 'auto';
+    //     }
+    //     return () => {
+    //         document.body.style.overflow = 'auto';
+    //     };
+    // }, [state.]);
 
     return (
         <div className={edit ? "heroinputswrpedit" : "heroinputswrp"}>
