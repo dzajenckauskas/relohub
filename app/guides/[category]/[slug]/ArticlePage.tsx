@@ -11,6 +11,9 @@ import Link from 'next/link';
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from 'next-share';
 import { usePathname } from 'next/navigation';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import FacebookIcon from '@/COMPONENTS/common/FacebookIcon';
+import XIcon from '@/COMPONENTS/common/XIcon';
+
 type Props = {
     article?: ArticleResponseType;
     latestArticles?: ArticlesResponseType;
@@ -69,14 +72,6 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                                     {category} • {continent} • {'01 JAN 2024'}
                                 </Typography>
                                 <Stack direction={'row'} spacing={1.5} px={2}>
-                                    <FacebookShareButton
-                                        url={url}
-                                        quote={article?.data?.attributes?.title}
-                                    >
-                                        <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff' }}>
-                                            <WhatsAppIcon sx={{ fontSize: 20 }} />
-                                        </Stack>
-                                    </FacebookShareButton>
                                     <WhatsappShareButton
                                         url={url}
                                         title={article?.data?.attributes?.title}
@@ -86,12 +81,21 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                                             <WhatsAppIcon sx={{ fontSize: 20 }} />
                                         </Stack>
                                     </WhatsappShareButton>
+                                    <FacebookShareButton
+                                        url={url}
+                                        quote={article?.data?.attributes?.title}
+                                    >
+                                        <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff' }}>
+
+                                            <FacebookIcon color={'#000'} />
+                                        </Stack>
+                                    </FacebookShareButton>
                                     <TwitterShareButton
                                         url={url}
                                         title={article?.data?.attributes?.title}
                                     >
                                         <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff' }}>
-                                            <WhatsAppIcon sx={{ fontSize: 20 }} />
+                                            <XIcon color='#000' />
                                         </Stack>
                                     </TwitterShareButton>
                                 </Stack>
@@ -129,14 +133,6 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                         </Stack>
                         <Stack direction={'row'} justifyContent={'flex-start'} pt={4} alignItems={'center'} spacing={2}>
                             <Stack direction={'row'} spacing={1.5}>
-                                <FacebookShareButton
-                                    url={url}
-                                    quote={article?.data?.attributes?.title}
-                                >
-                                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000' }}>
-                                        <WhatsAppIcon sx={{ fontSize: 20, color: '#fff' }} />
-                                    </Stack>
-                                </FacebookShareButton>
                                 <WhatsappShareButton
                                     url={url}
                                     title={article?.data?.attributes?.title}
@@ -146,12 +142,21 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                                         <WhatsAppIcon sx={{ fontSize: 20, color: '#fff' }} />
                                     </Stack>
                                 </WhatsappShareButton>
+                                <FacebookShareButton
+                                    url={url}
+                                    quote={article?.data?.attributes?.title}
+                                >
+                                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000' }}>
+
+                                        <FacebookIcon color={'#fff'} />
+                                    </Stack>
+                                </FacebookShareButton>
                                 <TwitterShareButton
                                     url={url}
                                     title={article?.data?.attributes?.title}
                                 >
                                     <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000' }}>
-                                        <WhatsAppIcon sx={{ fontSize: 20, color: '#fff' }} />
+                                        <XIcon color='#fff' />
                                     </Stack>
                                 </TwitterShareButton>
                             </Stack>
