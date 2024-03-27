@@ -23,7 +23,7 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
 
     const [articles, setData] = useState(null)
     const [isLoading, setLoading] = useState(true)
-    const url = `/api/articles?populate=seo,images,articleCategory,articleContinents&filters[articleCategory][key][$eq]=${category.attributes.key}`
+    const url = `/api/articles?populate=seo,image,articleCategory,articleContinents&filters[articleCategory][key][$eq]=${category.attributes.key}`
     useEffect(() => {
         fetch(
             active !== 'all-posts' ?
