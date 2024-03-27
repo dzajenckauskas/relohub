@@ -15,7 +15,7 @@ import TopNavBar from './TopNavBar';
 import { theme } from './Theme';
 
 export default function Header() {
-
+    const loginUrl = 'https://admin.deliver1.co.uk/customerPortal/login'
     const [open, setOpen] = useState(false)
     const pathname = usePathname()
     const links = [
@@ -25,12 +25,11 @@ export default function Header() {
     ]
     useEffect(() => {
         if (open) {
-            document.body.style.overflow = 'hidden'; // Disable scrolling
+            document.body.style.overflow = 'hidden';
         } else {
-            document.body.style.overflow = 'auto'; // Enable scrolling
+            document.body.style.overflow = 'auto';
         }
         return () => {
-            // Cleanup: Restore default overflow when component unmounts
             document.body.style.overflow = 'auto';
         };
     }, [open]);
@@ -122,7 +121,7 @@ export default function Header() {
                         display: 'flex', flexDirection: 'row', gap: 15,
                         alignItems: 'center',
                     }}>
-                        <Link passHref href={'https://admin.deliver1.co.uk/customerPortal/login'} >
+                        <Link passHref href={loginUrl} >
                             <Button variant='outlined' sx={{
                                 display: { md: 'flex', sm: 'flex', xs: 'flex' },
                                 border: '1px solid #ccc',
@@ -160,9 +159,8 @@ export default function Header() {
                     }}>
                         <Stack spacing={3} sx={{ position: 'fixed', textTransform: 'uppercase', pl: { sm: 4, xs: 2 }, pr: { md: 4, xs: 2 }, py: 4 }}>
                             {renderMobileLinks}
-                            <Link passHref href={'https://admin.deliver1.co.uk/customerPortal/login'} >
+                            <Link passHref href={loginUrl} >
                                 <Button variant='outlined' sx={{
-                                    // display: { md: 'flex', sm: 'flex', xs: 'flex' },
                                     border: '1px solid #ccc',
                                     borderRadius: '3px', fontWeight: 700,
                                     fontSize: 14,
