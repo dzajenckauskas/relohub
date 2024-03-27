@@ -27,8 +27,8 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
             <ArticleCard article={article} key={article.id} />
         )
     })
-    const category = article?.data?.attributes?.articleCategory.data?.attributes.name
-    const continent = article?.data?.attributes.articleContinents?.data?.[0]?.attributes.name
+    const category = article?.data?.attributes?.articleCategory?.data?.attributes?.name
+    const continent = article?.data?.attributes?.articleContinents?.data?.[0]?.attributes?.name
 
     return (
         <PageLayout>
