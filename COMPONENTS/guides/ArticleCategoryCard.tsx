@@ -32,6 +32,7 @@ const ArticleCategoryCard = ({ category }: Props) => {
                     src={`${process.env.NEXT_PUBLIC_API_URL}${category?.attributes?.image?.data?.attributes?.formats?.medium?.url ?? category?.attributes?.image?.data?.attributes?.url}`}
                     alt={category.attributes.name}
                     layout={'fill'}
+                    priority
                     objectFit="cover"
                 />
                 <Stack
