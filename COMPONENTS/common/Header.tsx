@@ -17,6 +17,9 @@ import { theme } from './Theme';
 export default function Header() {
     const loginUrl = 'https://admin.deliver1.co.uk/customerPortal/login'
     const [open, setOpen] = useState(false)
+    const toggleOpen = () => {
+        setOpen(!open)
+    }
     const pathname = usePathname()
     const links = [
         { id: 0, name: "Home", url: '/' },
@@ -59,7 +62,7 @@ export default function Header() {
     const renderMobileLinks = links.map((link) => {
         return (
             <Stack key={link.id}>
-                <Link passHref href={link.url} style={{ fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
+                <Link onClick={toggleOpen} passHref href={link.url} style={{ fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
                     <Stack sx={{ color: path === link.url ? theme.palette.secondary.main : 'inherit', position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
                         {link.name}
                     </Stack>
@@ -85,9 +88,9 @@ export default function Header() {
                         alignItems: 'center',
                         height: 60
                     }}>
-                    <Button
+                    {!open && <Button
                         aria-label="Mobile menu"
-                        onClick={() => setOpen(!open)}
+                        onClick={toggleOpen}
                         sx={{
                             display: { sm: 'none', xs: 'flex' },
                             border: '1px solid #ccc',
@@ -100,9 +103,25 @@ export default function Header() {
                             fontFamily: 'inherit',
                             cursor: 'pointer'
                         }}>
-                        {!open && <MenuRoundedIcon sx={{ transform: 'scale(2)' }} />}
-                        {open && <CloseRoundedIcon sx={{ transform: 'scale(1.8)' }} />}
-                    </Button>
+                        <MenuRoundedIcon sx={{ transform: 'scale(2)' }} />
+                    </Button>}
+                    {open && <Button
+                        aria-label="Mobile menu"
+                        onClick={toggleOpen}
+                        sx={{
+                            display: { sm: 'none', xs: 'flex' },
+                            border: '1px solid #ccc',
+                            borderRadius: '3px', fontWeight: 700,
+                            fontSize: 14,
+                            minWidth: 20,
+                            height: 38,
+                            padding: '10px 14px',
+                            alignItems: 'center',
+                            fontFamily: 'inherit',
+                            cursor: 'pointer'
+                        }}>
+                        <CloseRoundedIcon sx={{ transform: 'scale(1.8)' }} />
+                    </Button>}
 
                     <Link passHref href={'/'} style={{ position: 'relative', width: 140, height: 40 }}>
                         <Image
@@ -149,38 +168,36 @@ export default function Header() {
             <Stack sx={{ height: { md: 60, xs: 90 }, width: '100%' }}>
             </Stack>
             {open &&
-                <ClickAwayListener onClickAway={() => setOpen(!open)}>
-                    <Stack sx={{
-                        display: { sm: 'none', xs: 'flex' }, position: 'fixed', zIndex: 12,
-                        top: 74, width: { xs: '100% ' }, left: 0,
-                        pt: 4,
-                        backgroundColor: '#f1f1f1',
-                        height: 'calc(100vh - 28px)',
-                        boxShadow: 'rgba(0, 0, 0, 0.08) 0px 4px 12px;'
-                    }}>
-                        <Stack spacing={3} sx={{ position: 'fixed', textTransform: 'uppercase', pl: { sm: 4, xs: 2 }, pr: { md: 4, xs: 2 }, py: 4 }}>
-                            {renderMobileLinks}
-                            <Link passHref href={loginUrl} >
-                                <Button aria-label="Customer portal" variant='outlined' sx={{
-                                    border: '1px solid #ccc',
-                                    borderRadius: '3px', fontWeight: 700,
-                                    fontSize: 14,
-                                    minWidth: 20,
-                                    padding: '10px 14px',
-                                    alignItems: 'center',
-                                    fontFamily: 'inherit',
-                                    cursor: 'pointer'
-                                }}>
-                                    <CustomerPortalIcon />
-                                    <Typography variant='h5' component={'p'} fontWeight={600} sx={{ pl: 1, }}>
-                                        CUSTOMER PORTAL
-                                    </Typography>
-                                </Button>
-                            </Link>
-                        </Stack>
+                <Stack sx={{
+                    display: { sm: 'none', xs: 'flex' }, position: 'fixed', zIndex: 12,
+                    top: 74, width: { xs: '100% ' }, left: 0,
+                    pt: 4,
+                    backgroundColor: '#f1f1f1',
+                    height: 'calc(100vh - 28px)',
+                    boxShadow: 'rgba(0, 0, 0, 0.08) 0px 4px 12px;'
+                }}>
+                    <Stack spacing={3} sx={{ position: 'fixed', textTransform: 'uppercase', pl: { sm: 4, xs: 2 }, pr: { md: 4, xs: 2 }, py: 4 }}>
+                        {renderMobileLinks}
+                        <Link passHref href={loginUrl} >
+                            <Button aria-label="Customer portal" variant='outlined' sx={{
+                                border: '1px solid #ccc',
+                                borderRadius: '3px', fontWeight: 700,
+                                fontSize: 14,
+                                minWidth: 20,
+                                padding: '10px 14px',
+                                alignItems: 'center',
+                                fontFamily: 'inherit',
+                                cursor: 'pointer'
+                            }}>
+                                <CustomerPortalIcon />
+                                <Typography variant='h5' component={'p'} fontWeight={600} sx={{ pl: 1, }}>
+                                    CUSTOMER PORTAL
+                                </Typography>
+                            </Button>
+                        </Link>
                     </Stack>
-
-                </ClickAwayListener>}
+                </Stack>
+            }
         </>
 
     );
