@@ -5,6 +5,7 @@ import TermsAndConditions from "../main_page/footerPopups/termsConditions";
 import PrivacyPolicy from "../main_page/footerPopups/privacyPolicy";
 import InclusionsExclusions from "../main_page/footerPopups/inclusionsExclusions";
 import FAQ from "../main_page/footerPopups/faq";
+import Stack from "@mui/material/Stack";
 
 export default function Footer() {
     const [clicked, setclicked] = useState(null);
@@ -32,7 +33,7 @@ export default function Footer() {
         <div className="gitfooterwrp">
             {clicked ? (
                 <section className="popupmainwrp">
-                    <div className="closebuttonandscrollwrp">
+                    <Stack className="closebuttonandscrollwrp" sx={{ position: 'relative', top: { xs: 90, sm: 0 } }}>
                         <div className="alotoftexttopwrp">
                             <h1 className="alotoftexttopwrph2">{clicked}</h1>
 
@@ -50,7 +51,7 @@ export default function Footer() {
                         {clicked === list[1] ? <PrivacyPolicy /> : null}
                         {clicked === list[2] ? <InclusionsExclusions /> : null}
                         {clicked === list[3] ? <FAQ /> : null}
-                    </div>
+                    </Stack>
                 </section>
             ) : null}
 
