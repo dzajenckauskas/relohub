@@ -22,11 +22,12 @@ const AboutUsPage = ({ articleContinents }: Props) => {
             return str.replace(/\b\w/g, (char: string) => char.toUpperCase());
         };
         return (
-            <Stack key={c.country}>
+            <Grid item xs={6} sm={4} md={3} key={c.country}>
                 <Typography variant='body1' sx={{ alignItems: 'center', display: 'flex', gap: 1 }}>
-                    <EastIcon fontSize='large' />     {capitalizeEachWord(c.country)}
+                    <EastIcon fontSize='large' />
+                    {capitalizeEachWord(c.country)}
                 </Typography>
-            </Stack>
+            </Grid>
         )
     })
     const services = [
@@ -62,17 +63,17 @@ const AboutUsPage = ({ articleContinents }: Props) => {
             <Stack key={s.number} sx={{
                 position: 'relative',
                 borderRadius: 1.5,
-                width: { sm: 'calc(50% - 8px)', xs: 'calc(100% - 8px)' },
+                width: { md: 'calc(50% - 8px)', sm: 'calc(50% - 8px)', xs: 'calc(50% - 8px)' },
                 p: 3,
                 backgroundColor: theme.palette.secondary.main
             }}>
                 <Typography variant='body2' sx={{ color: '#fff', position: 'absolute', right: 16, top: 16 }}>
                     {s.number}
                 </Typography>
-                <Typography variant='h3' sx={{ color: '#fff', fontWeight: 600 }}>
+                <Typography variant='h4' sx={{ color: '#fff', fontWeight: 600 }}>
                     {s.name}
                 </Typography>
-                <Typography variant='h3' sx={{ color: '#fff', fontWeight: 600 }}>
+                <Typography variant='h4' sx={{ color: '#fff', fontWeight: 600 }}>
                     {s.slogan}
                 </Typography>
             </Stack>
@@ -135,8 +136,8 @@ const AboutUsPage = ({ articleContinents }: Props) => {
             </Stack>
             <Stack sx={{ backgroundColor: '#fff' }}>
                 <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', py: 6 }}>
-                    <Stack spacing={10} direction={{ md: 'row', xs: 'column' }} width={'100%'}>
-                        <Stack sx={{ width: '100%', }}>
+                    <Stack spacing={{ lg: 10, xs: 10 }} direction={{ md: 'row', xs: 'column' }} width={'100%'}>
+                        <Stack sx={{ width: { lg: '55%', xs: '100%' }, }}>
                             <Typography variant={'h2'} sx={{ pb: 1 }}>
                                 Services we offer
                             </Typography>
@@ -144,7 +145,7 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                                 {renderServices}
                             </Stack>
                         </Stack>
-                        <Stack sx={{ width: '100%' }}>
+                        <Stack sx={{ width: { lg: '45%', xs: '100%' }, }}>
                             <Typography variant={'h2'} sx={{ pb: 2 }}>
                                 Other services we offer include:
                             </Typography>
@@ -162,7 +163,7 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                                     <EastIcon fontSize='large' />   Furniture disassembly and assembly
                                 </Typography>
                             </Stack>
-                            <Stack sx={{ width: '100%', height: { md: 300, xs: 300 }, position: 'relative', top: { md: 88, xs: 48 } }}>
+                            <Stack sx={{ width: '100%', height: { md: 300, xs: 300 }, position: 'relative', top: { md: 99, sm: 120, xs: 48 } }}>
                                 <Image
                                     alt="backgorund"
                                     src={"/sofa2cut.png"}
@@ -174,18 +175,18 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                 </MaxWidthContainer>
             </Stack>
             <Stack sx={{ backgroundColor: '#f1f1f1' }}>
-                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', py: 6 }}>
+                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', pt: 6, pb: 10 }}>
                     <Stack sx={{ width: '100%' }}>
                         <Typography variant={'h2'} sx={{ pb: 1 }}>
                             Countries that we cover:
                         </Typography>
-                        <Stack direction={'row'} spacing={1}>
+                        <Stack direction={'row'} gap={1} pt={1} sx={{ flexWrap: 'wrap' }}>
                             {renderArticleContinents}
                         </Stack>
 
-                        <Stack spacing={1} pt={2}>
+                        <Grid container spacing={1} pt={4}>
                             {renderCountries}
-                        </Stack>
+                        </Grid>
                     </Stack>
                 </MaxWidthContainer>
             </Stack>
