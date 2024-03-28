@@ -1,5 +1,5 @@
 'use client'
-import LatestArticles from '@/COMPONENTS/main_page/LatestArticles';
+import LatestArticlesCarousel from '@/COMPONENTS/main_page/LatestArticlesCarousel';
 import { Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import { MaxWidthContainer } from '../../COMPONENTS/common/MaxWidthContainer';
@@ -41,7 +41,7 @@ const GuidesPage = ({ categories }: Props) => {
                         {renderCategories}
                     </MaxWidthContainer>
                 </Stack>
-                <LatestArticles />
+                <LatestArticlesCarousel />
             </main>
         </PageLayout>
     )
