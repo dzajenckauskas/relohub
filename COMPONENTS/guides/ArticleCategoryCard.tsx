@@ -52,7 +52,7 @@ const ArticleCategoryCard = ({ category }: Props) => {
                     position: 'absolute',
                     bottom: 0,
                     left: 0,
-                    padding: 4,
+                    p: { xs: 2, md: 4 },
                     zIndex: 1,
                     color: '#fff',
                 }}>

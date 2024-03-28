@@ -41,8 +41,8 @@ const ArticleCard = ({ article, activeContinent }: Props) => {
                     objectFit="cover"
                 />
             </Stack>
-            <Stack sx={{ p: 3 }}>
-                <Typography sx={{ color: '#9b9b9b', fontSize: 12, textTransform: 'uppercase', fontWeight: 500, letterSpacing: 1 }}>
+            <Stack sx={{ p: { xs: 2, md: 3 } }}>
+                <Typography variant='body2' sx={{ color: '#9b9b9b', textTransform: 'uppercase', fontWeight: 500, letterSpacing: 1 }}>
                     {category} • {continent}
                 </Typography>
                 <Typography style={{
@@ -55,7 +55,7 @@ const ArticleCard = ({ article, activeContinent }: Props) => {
                 }}>
                     {article.attributes.title}
                 </Typography>
-                <Typography variant='body2' sx={{ pt: 2, fontSize: 15, maxHeight: '10rem', overflow: 'hidden' }}>
+                <Typography variant='body1' sx={{ pt: 2, maxHeight: '11rem', overflow: 'hidden' }}>
                     {article.attributes.shortContent}
                 </Typography>
 

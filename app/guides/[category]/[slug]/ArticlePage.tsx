@@ -13,6 +13,8 @@ import { usePathname } from 'next/navigation';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import FacebookIcon from '@/COMPONENTS/common/FacebookIcon';
 import XIcon from '@/COMPONENTS/common/XIcon';
+import { useEffect, useRef } from 'react';
+import React from 'react';
 
 type Props = {
     article?: ArticleResponseType;
@@ -29,6 +31,28 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
     })
     const category = article?.data?.attributes?.articleCategory?.data?.attributes?.name
     const continent = article?.data?.attributes?.articleContinents?.data?.[0]?.attributes?.name
+    const date = article?.data?.attributes?.createdAt
+    function formatDate(dateString) {
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = months[date.getMonth()];
+        const year = date.getFullYear();
+
+        return `${day} ${month} ${year}`;
+    }
+    const formattedDate = formatDate(date);
+
+    const textRef = useRef(null);
+
+    useEffect(() => {
+        const width = textRef.current.offsetWidth;
+
+        const shareBox = document.getElementById('share-box');
+        if (shareBox) {
+            shareBox.style.width = `${width - 145}px`;
+        }
+    }, [category, continent, formattedDate]);
 
     return (
         <PageLayout>
@@ -36,13 +60,13 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                 width: '100%',
                 backgroundColor: "#efefef"
             }}>
-                <MaxWidthContainer sx={{ flexDirection: 'column', pt: 4 }}>
+                <MaxWidthContainer sx={{ flexDirection: 'column', pt: { xs: 2, md: 4 } }}>
                     <Stack sx={{
                         mx: 'auto',
-                        mb: 8,
+                        mb: { xs: 4, md: 6 },
                         position: 'relative',
                         width: '100%',
-                        height: 600,
+                        height: { xs: 300, sm: 400, md: 600 },
                         justifyContent: 'flex-end',
                         borderRadius: '5px',
                         overflow: 'hidden'
@@ -63,55 +87,62 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                                 background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%)',
                             }}
                         />
-                        <Stack sx={{ pb: 3, position: 'relative', zIndex: 2, mx: 'auto' }}>
-                            <Typography sx={{ maxWidth: 'md', position: 'relative', zIndex: 2, textAlign: 'center', color: '#fff' }}
+                        <Stack direction={{ xs: 'column-reverse', md: 'column' }} sx={{ px: 2, pb: 3, position: 'relative', zIndex: 2, mx: 'auto' }}>
+                            <Typography sx={{ maxWidth: 'md', position: 'relative', zIndex: 2, textAlign: { xs: 'left', md: 'center' }, color: '#fff' }}
                                 variant='h1' fontWeight={700}>{article?.data?.attributes?.title}</Typography>
 
-                            <Stack direction={'row'} justifyContent={'center'} pt={3} alignItems={'center'} spacing={2}>
-                                <Typography sx={{ color: '#fff', fontSize: 14, textTransform: 'uppercase', fontWeight: 500, letterSpacing: 1 }}>
-                                    {category} • {continent} • {'01 JAN 2024'}
+                            <Stack direction={'row'} justifyContent={{ xs: 'flex-start', md: 'center' }} pt={3} alignItems={'center'} spacing={2}>
+                                <Typography ref={textRef}
+                                    sx={{
+                                        color: '#fff', fontSize: 14, textTransform: 'uppercase',
+                                        fontWeight: 500, letterSpacing: 1
+                                    }}>
+                                    {category} • {continent} • {formattedDate}
                                 </Typography>
-                                <Stack direction={'row'} spacing={1.5} px={2}>
-                                    <WhatsappShareButton
-                                        url={url}
-                                        title={article?.data?.attributes?.title}
-                                        separator=":: "
-                                    >
-                                        <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff' }}>
-                                            <WhatsAppIcon sx={{ fontSize: 20 }} />
-                                        </Stack>
-                                    </WhatsappShareButton>
-                                    <FacebookShareButton
-                                        url={url}
-                                        quote={article?.data?.attributes?.title}
-                                    >
-                                        <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff' }}>
+                                <Stack direction={'row'} alignItems={'center'} spacing={2}
+                                    sx={{
+                                        display: { xs: 'none', md: 'flex' }
+                                    }}>
+                                    <Stack direction={'row'} spacing={1.5} px={2} sx={{ justifyContent: 'center' }}>
+                                        <WhatsappShareButton
+                                            url={url}
+                                            title={article?.data?.attributes?.title}
+                                            separator=":: "
+                                        >
+                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff' }}>
+                                                <WhatsAppIcon sx={{ fontSize: 20 }} />
+                                            </Stack>
+                                        </WhatsappShareButton>
+                                        <FacebookShareButton
+                                            url={url}
+                                            quote={article?.data?.attributes?.title}
+                                        >
+                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff' }}>
+                                                <FacebookIcon color={'#000'} />
+                                            </Stack>
+                                        </FacebookShareButton>
+                                        <TwitterShareButton
+                                            url={url}
+                                            title={article?.data?.attributes?.title}
+                                        >
+                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff' }}>
+                                                <XIcon color='#000' />
+                                            </Stack>
+                                        </TwitterShareButton>
+                                    </Stack>
 
-                                            <FacebookIcon color={'#000'} />
-                                        </Stack>
-                                    </FacebookShareButton>
-                                    <TwitterShareButton
-                                        url={url}
-                                        title={article?.data?.attributes?.title}
-                                    >
-                                        <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff' }}>
-                                            <XIcon color='#000' />
-                                        </Stack>
-                                    </TwitterShareButton>
+                                    <Box id="share-box" sx={{ width: '60px', height: '1px', backgroundColor: '#fff' }}></Box>
+                                    <Typography sx={{ color: '#fff', fontSize: 14, fontWeight: 500, letterSpacing: 1 }}>
+                                        {'Share this article'}
+                                    </Typography>
                                 </Stack>
-
-
-                                <Box sx={{ width: 140, height: '1px', backgroundColor: '#fff' }}></Box>
-                                <Typography sx={{ color: '#fff', fontSize: 14, fontWeight: 500, letterSpacing: 1 }}>
-                                    {'Share this article'}
-                                </Typography>
                             </Stack>
                         </Stack>
                     </Stack>
-                    <Stack sx={{ maxWidth: 'md' }}>
+                    <Stack sx={{ maxWidth: 'md', px: { xs: 2, md: 0 } }}>
                         <div className='dynamicContent' dangerouslySetInnerHTML={{ __html: article?.data.attributes.fullContent }} />
                     </Stack>
-                    <Stack width={'100%'} sx={{ maxWidth: 'md' }}>
+                    <Stack width={'100%'} sx={{ maxWidth: 'md', px: { xs: 2, md: 0 } }}>
                         <Stack direction={'row'} justifyContent={'flex-start'} width={'100%'}>
                             <Typography sx={{
                                 mt: 4,
@@ -138,7 +169,7 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                                     title={article?.data?.attributes?.title}
                                     separator=":: "
                                 >
-                                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000' }}>
+                                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000', cursor: 'pointer', ":hover": { opacity: .8 } }}>
                                         <WhatsAppIcon sx={{ fontSize: 20, color: '#fff' }} />
                                     </Stack>
                                 </WhatsappShareButton>
@@ -146,7 +177,7 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                                     url={url}
                                     quote={article?.data?.attributes?.title}
                                 >
-                                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000' }}>
+                                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000', cursor: 'pointer', ":hover": { opacity: .8 } }}>
 
                                         <FacebookIcon color={'#fff'} />
                                     </Stack>
@@ -155,7 +186,7 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                                     url={url}
                                     title={article?.data?.attributes?.title}
                                 >
-                                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000' }}>
+                                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000', cursor: 'pointer', ":hover": { opacity: .8 } }}>
                                         <XIcon color='#fff' />
                                     </Stack>
                                 </TwitterShareButton>
