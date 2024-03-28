@@ -86,7 +86,7 @@ const AboutUsPage = ({ articleContinents }: Props) => {
         const europeContinent = articleContinents.data.splice(europeIndex, 1)[0];
         articleContinents.data.unshift(europeContinent);
     }
-    const renderArticleContinents = articleContinents.data.map(ac => {
+    const renderArticleContinents = articleContinents.data.filter(ac => ac.attributes.key !== 'north-america')?.map(ac => {
         const isActive = ac.attributes.key === active;
         return (
             <Button
