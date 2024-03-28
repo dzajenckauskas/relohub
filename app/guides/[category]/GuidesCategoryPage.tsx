@@ -107,7 +107,7 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                         <Grid container spacing={2} sx={{ display: 'flex', }}>
                             {(!articles || isLoading) ? renderLatestArticlesLoading : renderLatestArticles}
                         </Grid>
-                        {filteredArticles?.length === 0 &&
+                        {(active !== 'all-posts' && filteredArticles?.length === 0) &&
                             <Typography color={theme.palette.secondary.main}
                                 sx={{ pt: 2, display: 'flex', gap: 16, fontSize: '18px', justifyContent: 'space-between', width: '100%', fontWeight: 600 }}>
                                 {error ? error : "No articles yet"}
