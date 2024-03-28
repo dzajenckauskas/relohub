@@ -127,6 +127,7 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                                     alt="backgorund"
                                     src={"/box-img.png"}
                                     objectFit='cover'
+                                    style={{ borderRadius: 4 }}
                                     objectPosition='center'
                                     fill />
                             </Stack>
