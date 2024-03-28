@@ -109,7 +109,7 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                                             title={article?.data?.attributes?.title}
                                             separator=":: "
                                         >
-                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff' }}>
+                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff', cursor: 'pointer', ":hover": { opacity: .8 } }}>
                                                 <WhatsAppIcon sx={{ fontSize: 20 }} />
                                             </Stack>
                                         </WhatsappShareButton>
@@ -117,7 +117,7 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                                             url={url}
                                             quote={article?.data?.attributes?.title}
                                         >
-                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff' }}>
+                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff', cursor: 'pointer', ":hover": { opacity: .8 } }}>
                                                 <FacebookIcon color={'#000'} />
                                             </Stack>
                                         </FacebookShareButton>
@@ -125,7 +125,7 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                                             url={url}
                                             title={article?.data?.attributes?.title}
                                         >
-                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff' }}>
+                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff', cursor: 'pointer', ":hover": { opacity: .8 } }}>
                                                 <XIcon color='#000' />
                                             </Stack>
                                         </TwitterShareButton>
