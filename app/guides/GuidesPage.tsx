@@ -25,8 +25,8 @@ const GuidesPage = ({ categories }: Props) => {
         fetcher
     );
 
-    if (error) return "An error has occurred.";
-    if (isLoading) return "Loading...";
+    // if (error) return "An error has occurred.";
+    // if (isLoading) return "Loading...";
 
     const renderCategories = categories?.data
         ?.sort((a, b) => a.attributes.name.localeCompare(b.attributes.name))
