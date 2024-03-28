@@ -11,6 +11,7 @@ import { CategoryDataType } from '@/COMPONENTS/types/CategoryTypes';
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes';
 import { ArticleDataType } from '@/COMPONENTS/types/ArticleTypes';
 import Stack from '@mui/material/Stack';
+import useSWR from 'swr';
 
 
 type Props = {
@@ -20,23 +21,17 @@ type Props = {
 
 const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
     const [active, setActive] = useState<string | undefined>('all-posts')
-
-    // TODO: https://swr.vercel.app/
-    const [articles, setData] = useState(null)
-    const [isLoading, setLoading] = useState(true)
     const url = `/api/articles?populate=seo,image,articleCategory,articleContinents&filters[articleCategory][key][$eq]=${category.attributes.key}`
-    useEffect(() => {
-        fetch(
-            active !== 'all-posts' ?
-                `${process.env.NEXT_PUBLIC_API_URL}${url}&filters[articleContinents][key][$eq]=${active}` :
-                `${process.env.NEXT_PUBLIC_API_URL}${url}&filters[articleCategory][key][$eq]=${category.attributes.key}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setData(data)
-                setLoading(false)
-            })
-    }, [active, category.attributes.key, url])
 
+    const fetcher = (url: string) => fetch(url).then((res) => res.json());
+    const articlesUrl = active !== 'all-posts' ?
+        `${process.env.NEXT_PUBLIC_API_URL}${url}&filters[articleContinents][key][$eq]=${active}` :
+        `${process.env.NEXT_PUBLIC_API_URL}${url}&filters[articleCategory][key][$eq]=${category.attributes.key}`
+
+    const { data: articles, error, isLoading } = useSWR(
+        articlesUrl,
+        fetcher
+    );
     const renderLatestArticles = articles?.data?.map((a: ArticleDataType) => {
         return (
             <Grid item lg={3} md={4} sm={6} xs={12} key={a.id}>

@@ -62,7 +62,7 @@ const ArticleCard = ({ article, activeContinent }: Props) => {
                     {category} • {continent}
                 </Typography>
                 <Link href={url} passHref>
-                    <Typography variant='h4' sx={{
+                    <Typography variant='h4' component={'h2'} sx={{
                         py: 1,
                         color: theme.palette.secondary.main,
                         fontWeight: 700,

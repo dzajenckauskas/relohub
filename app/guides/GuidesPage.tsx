@@ -15,9 +15,9 @@ import useSWR from 'swr';
 type Props = {
     categories?: CategoriesResponseType;
 }
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const GuidesPage = ({ categories }: Props) => {
+    const fetcher = (url: string) => fetch(url).then((res) => res.json());
     const articlesUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents`
 
     const { data, error, isLoading } = useSWR(
@@ -60,21 +60,18 @@ const GuidesPage = ({ categories }: Props) => {
                         {renderCategories}
                     </MaxWidthContainer>
                 </Stack>
-
-
-
                 <MaxWidthContainer sx={{
                     py: 6,
                     justifyContent: 'space-between'
                 }}>
                     <Typography variant='h2' sx={{ fontWeight: 700 }}>Latest Guides & Articles</Typography>
                     <Stack direction={'row'} spacing={1}>
-                        <Button variant='outlined' color='secondary'
+                        <Button variant='outlined' color='secondary' aria-label="Previous article"
                             sx={{ borderRadius: 50, minWidth: 0, height: 40, width: 40 }}
                         >
                             <WestIcon sx={{ fontSize: 18 }} />
                         </Button>
-                        <Button variant='outlined' color='secondary'
+                        <Button variant='outlined' color='secondary' aria-label="Next article"
                             sx={{ borderRadius: 50, minWidth: 0, height: 40, width: 40 }}
                         >
                             <EastIcon sx={{ fontSize: 18 }} />

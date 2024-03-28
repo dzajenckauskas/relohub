@@ -134,7 +134,7 @@ export default function Header() {
                                 cursor: 'pointer'
                             }}>
                                 <CustomerPortalIcon />
-                                <Typography variant='h5' fontWeight={600} sx={{ pl: 1, display: { md: 'flex', xs: 'none' }, }}>
+                                <Typography variant='h5' component={'p'} fontWeight={600} sx={{ pl: 1, display: { md: 'flex', xs: 'none' }, }}>
                                     CUSTOMER PORTAL
                                 </Typography>
                             </Button>
@@ -171,7 +171,7 @@ export default function Header() {
                                     cursor: 'pointer'
                                 }}>
                                     <CustomerPortalIcon />
-                                    <Typography variant='h5' fontWeight={600} sx={{ pl: 1, }}>
+                                    <Typography variant='h5' component={'p'} fontWeight={600} sx={{ pl: 1, }}>
                                         CUSTOMER PORTAL
                                     </Typography>
                                 </Button>
