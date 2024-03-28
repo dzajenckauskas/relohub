@@ -9,17 +9,20 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { useState } from 'react'
-
+import EastIcon from '@mui/icons-material/East';
 type Props = {
     articleContinents?: ContinentsResponseType;
 }
 const AboutUsPage = ({ articleContinents }: Props) => {
     const [active, setActive] = useState<string | undefined>('europe')
     const renderCountries = countries.filter((c) => c.continent && c.continent?.toLowerCase() === active)?.map((c) => {
+        const capitalizeEachWord = (str) => {
+            return str.replace(/\b\w/g, (char) => char.toUpperCase());
+        };
         return (
             <Stack key={c.country}>
                 <Typography>
-                    {c.country}
+                    <EastIcon />  {capitalizeEachWord(c.country)}
                 </Typography>
             </Stack>
         )
@@ -54,10 +57,10 @@ const AboutUsPage = ({ articleContinents }: Props) => {
     ]
     const renderServices = services.map((s) => {
         return (
-            <Grid item xs={6} key={s.number} sx={{
+            <Stack key={s.number} sx={{
                 position: 'relative',
-                width: '50%',
                 borderRadius: 1.5,
+                width: { sm: 'calc(50% - 8px)', xs: 'calc(100% - 8px)' },
                 p: 3,
                 backgroundColor: theme.palette.secondary.main
             }}>
@@ -70,7 +73,7 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                 <Typography variant='h3' sx={{ color: '#fff', fontWeight: 600 }}>
                     {s.slogan}
                 </Typography>
-            </Grid>
+            </Stack>
         )
     })
 
@@ -129,26 +132,28 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                             <Typography variant={'h2'} sx={{ pb: 1 }}>
                                 Services we offer
                             </Typography>
-                            <Grid container pt={2} rowGap={2} direction={'row'} sx={{ width: '100%' }}>
+                            <Stack gap={2} pt={2} direction={'row'} sx={{ flexWrap: 'wrap', width: '100%' }}>
                                 {renderServices}
-                            </Grid>
+                            </Stack>
                         </Stack>
                         <Stack sx={{ width: '50%' }}>
-                            <Typography variant={'h2'} sx={{ pb: 1 }}>
+                            <Typography variant={'h2'} sx={{ pb: 2 }}>
                                 Other services we offer include:
                             </Typography>
-                            <Typography sx={{ fontSize: 14 }}>
-                                Storage solutions
-                            </Typography>
-                            <Typography sx={{ fontSize: 14 }}>
-                                Storage solutions
-                            </Typography>
-                            <Typography sx={{ fontSize: 14 }}>
-                                Storage solutions
-                            </Typography>
-                            <Typography sx={{ fontSize: 14 }}>
-                                Storage solutions
-                            </Typography>
+                            <Stack spacing={1}>
+                                <Typography variant='body1'>
+                                    <EastIcon />     Storage solutions
+                                </Typography>
+                                <Typography variant='body1'>
+                                    <EastIcon />   Storage solutions
+                                </Typography>
+                                <Typography variant='body1'>
+                                    <EastIcon />   Storage solutions
+                                </Typography>
+                                <Typography variant='body1'>
+                                    <EastIcon />   Storage solutions
+                                </Typography>
+                            </Stack>
                         </Stack>
                     </Stack>
                 </MaxWidthContainer>
@@ -163,9 +168,8 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                             {renderArticleContinents}
                         </Stack>
 
-                        <Stack>
+                        <Stack spacing={1} pt={2}>
                             {renderCountries}
-
                         </Stack>
                     </Stack>
                 </MaxWidthContainer>

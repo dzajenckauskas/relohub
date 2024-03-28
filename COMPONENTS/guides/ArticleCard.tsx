@@ -31,7 +31,8 @@ const ArticleCard = ({ article, activeContinent }: Props) => {
                 borderTopLeftRadius: '5px',
                 width: '100%',
                 alignItems: 'flex-end',
-                position: 'relative'
+                position: 'relative',
+                overflow: 'hidden'
             }}>
                 <Image
                     src={`${process.env.NEXT_PUBLIC_API_URL}${article?.attributes?.image?.data?.attributes?.formats?.medium?.url ?? article?.attributes?.image?.data?.attributes?.url ?? '/'}`}
