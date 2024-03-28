@@ -2,54 +2,27 @@
 import FacebookIcon from '@/COMPONENTS/common/FacebookIcon';
 import { theme } from '@/COMPONENTS/common/Theme';
 import XIcon from '@/COMPONENTS/common/XIcon';
+import LatestArticles from '@/COMPONENTS/main_page/LatestArticles';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from 'next-share';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
-import useSWR from 'swr';
 import { MaxWidthContainer } from '../../../../COMPONENTS/common/MaxWidthContainer';
 import PageLayout from '../../../../COMPONENTS/common/PageLayout';
-import ArticleCard from '../../../../COMPONENTS/guides/ArticleCard';
-import { ArticleDataType, ArticleResponseType } from '../../../../COMPONENTS/types/ArticleTypes';
+import { ArticleResponseType } from '../../../../COMPONENTS/types/ArticleTypes';
 
 type Props = {
     article?: ArticleResponseType;
     slug?: string;
 }
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const ArticlePage = ({ article }: Props) => {
-    const latestArticlesUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents&pagination[page]=1&pagination[pageSize]=3`
-
     const pathname = usePathname()
     const url = process.env.NEXT_PUBLIC_DOMAIN_URL + pathname
-
-    const { data: latestArticles, isLoading } = useSWR(
-        latestArticlesUrl,
-        fetcher
-    );
-
-    const renderLatestArticles = latestArticles?.data?.map((article: ArticleDataType) => {
-        return (
-            <Grid item lg={4} md={4} sm={12} xs={12} key={article.id}>
-                <ArticleCard article={article} />
-            </Grid>
-        )
-    })
-    // console.log(latestArticles, "latestArticles");
-
-    // const renderLatestArticlesLoading = Array.from({ length: 3 })?.map((_, index) => {
-    //     return (
-    //         <Grid item lg={4} md={4} sm={12} xs={12} key={index}>
-    //             <ArticleCard loading />
-    //         </Grid>
-    //     )
-    // })
-
 
     const category = article?.data?.attributes?.articleCategory?.data?.attributes?.name
     const continent = article?.data?.attributes?.articleContinents?.data?.[0]?.attributes?.name
@@ -221,55 +194,7 @@ const ArticlePage = ({ article }: Props) => {
                         </Stack>
                     </Stack>
                 </MaxWidthContainer>
-                <Stack sx={{ width: '100%', backgroundColor: '#fff', mt: 6 }}>
-                    <MaxWidthContainer>
-                        <Stack sx={{
-                            py: 8,
-                            display: 'flex', flexDirection: 'column',
-                        }}>
-                            <Typography variant='h2'
-                                sx={{
-                                    textAlign: 'center',
-                                    fontWeight: 700
-                                }}>
-                                Latest articles
-                            </Typography>
-
-
-                            <Stack direction={'row'} spacing={3} sx={{ mt: 2, justifyContent: 'center', width: '100%' }}>
-                                <Grid container spacing={2} sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
-                                    {/* {(!latestArticles || isLoading) ? renderLatestArticlesLoading : renderLatestArticles} */}
-                                    {renderLatestArticles}
-                                </Grid>
-                            </Stack>
-                            <Stack direction={'row'} spacing={3} sx={{ mt: 2, justifyContent: 'center', width: '100%' }}>
-                                <Grid container spacing={2} sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
-                                    <Grid item lg={4} md={4} sm={6} xs={12}>
-                                        <Link aria-label="View all articles" passHref href={'/guides'} style={{ paddingTop: 32, display: 'flex', justifyContent: 'center', width: '100%' }}>
-                                            <Button
-                                                aria-label="View all articles"
-                                                style={{
-                                                    padding: '12px 22px',
-                                                    borderRadius: '2px',
-                                                    fontSize: 12,
-                                                    cursor: 'pointer',
-                                                    backgroundColor: '#e71d5e',
-                                                    color: '#fff',
-                                                    textTransform: 'uppercase',
-                                                    width: '100%'
-                                                    // width: 'calc(33.33% - 16px)'
-                                                }}>
-                                                View all articles
-                                            </Button>
-                                        </Link>
-                                    </Grid>
-                                </Grid>
-                            </Stack>
-
-
-                        </Stack>
-                    </MaxWidthContainer>
-                </Stack>
+                <LatestArticles />
 
             </Stack>
         </PageLayout>

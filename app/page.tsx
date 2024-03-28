@@ -1,6 +1,7 @@
 import { MaxWidthContainer } from "@/COMPONENTS/common/MaxWidthContainer";
 import PageLayout from "@/COMPONENTS/common/PageLayout";
 import FaqWrapper from "@/COMPONENTS/main_page/faqwrapper";
+import LatestArticles from "@/COMPONENTS/main_page/LatestArticles";
 import MainPageHeroArea from "@/COMPONENTS/main_page/MainPageHeroArea";
 import Postheroimages from "@/COMPONENTS/main_page/postheroimages";
 import ProcessWrapper from "@/COMPONENTS/main_page/processWrapper";
@@ -18,7 +19,6 @@ export async function generateMetadata({ }): Promise<Metadata> {
         keywords: homePage?.data?.attributes?.seo?.seoKeywords,
     }
 }
-
 export default async function Home() {
     return (
         <PageLayout>
@@ -40,6 +40,7 @@ export default async function Home() {
             <VideoArea />
             <ProcessWrapper />
             <FaqWrapper />
+            <LatestArticles />
             <Reviews />
         </PageLayout>
     );
