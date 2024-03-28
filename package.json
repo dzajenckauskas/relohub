@@ -24,7 +24,8 @@
         "react-dom": "^18",
         "react-window": "^1.8.10",
         "sharp": "^0.33.2",
-        "stripe": "^14.12.0"
+        "stripe": "^14.12.0",
+        "swr": "^2.2.5"
     },
     "devDependencies": {
         "@types/react": "18.2.69",

@@ -10,18 +10,29 @@ import WestIcon from '@mui/icons-material/West';
 import { CategoriesResponseType } from '../../COMPONENTS/types/CategoryTypes';
 import { ArticlesResponseType } from '../../COMPONENTS/types/ArticleTypes';
 import { Typography } from '@mui/material';
+import useSWR from 'swr';
 
 type Props = {
-    articles?: ArticlesResponseType;
     categories?: CategoriesResponseType;
 }
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
-const GuidesPage = ({ articles, categories }: Props) => {
+const GuidesPage = ({ categories }: Props) => {
+    const articlesUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents`
+
+    const { data, error, isLoading } = useSWR(
+        articlesUrl,
+        fetcher
+    );
+
+    if (error) return "An error has occurred.";
+    if (isLoading) return "Loading...";
+
     const renderCategories = categories?.data
         ?.sort((a, b) => a.attributes.name.localeCompare(b.attributes.name))
         ?.map((category) => <ArticleCategoryCard category={category} key={category.id} />);
 
-    const renderLatestArticles = articles.data.map((article) =>
+    const renderLatestArticles = data?.data?.map((article) =>
         <ArticleCard article={article} key={article.id} />
     )
     return (
@@ -77,11 +88,7 @@ const GuidesPage = ({ articles, categories }: Props) => {
                         {renderLatestArticles}
                     </Stack>
                 </MaxWidthContainer>
-
-
             </main>
-
-
         </PageLayout>
     )
 }
