@@ -61,7 +61,7 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                 </Stack>
             </Link>
 
-            <Stack sx={{ p: { xs: 2, md: 3 } }}>
+            <Stack sx={{ p: { xs: 2, md: 3 }, width: '100%' }}>
                 <Typography variant='body2' sx={{ color: '#9b9b9b', textTransform: 'uppercase', fontWeight: 500, letterSpacing: 1 }}>
                     {loading ? <Skeleton /> : <> {category} • {continent}</>}
                 </Typography>

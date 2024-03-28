@@ -14,8 +14,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
 export default async function BlogCategoryPage({ params }) {
     const article = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/articles/${params.slug}?populate=seo,image,articleCategory,articleContinents`)
-    const latestArticles = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents&first=3`)
     return (
-        <ArticlePage article={article} latestArticles={latestArticles} />
+        <ArticlePage article={article} />
     );
 }

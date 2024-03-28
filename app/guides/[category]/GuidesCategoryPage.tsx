@@ -1,17 +1,17 @@
 'use client'
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer';
 import PageLayout from '@/COMPONENTS/common/PageLayout';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
-import ArticleCard from '../../../COMPONENTS/guides/ArticleCard';
 import { theme } from '@/COMPONENTS/common/Theme';
-import Grid from '@mui/material/Grid';
+import { ArticleDataType } from '@/COMPONENTS/types/ArticleTypes';
 import { CategoryDataType } from '@/COMPONENTS/types/CategoryTypes';
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes';
-import { ArticleDataType } from '@/COMPONENTS/types/ArticleTypes';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { useState } from 'react';
 import useSWR from 'swr';
+import ArticleCard from '../../../COMPONENTS/guides/ArticleCard';
 
 type Props = {
     category?: CategoryDataType;

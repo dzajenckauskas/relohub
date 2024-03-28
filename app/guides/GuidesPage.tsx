@@ -19,7 +19,7 @@ const GuidesPage = ({ categories }: Props) => {
     const fetcher = (url: string) => fetch(url).then((res) => res.json());
     const articlesUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents`
 
-    const { data, error, isLoading } = useSWR(
+    const { data } = useSWR(
         articlesUrl,
         fetcher
     );
