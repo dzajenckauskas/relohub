@@ -15,7 +15,7 @@ import useSWR from 'swr';
 type Props = {
     categories?: CategoriesResponseType;
 }
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const GuidesPage = ({ categories }: Props) => {
     const articlesUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents`
