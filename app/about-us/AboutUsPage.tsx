@@ -63,8 +63,8 @@ const AboutUsPage = ({ articleContinents }: Props) => {
             <Stack key={s.number} sx={{
                 position: 'relative',
                 borderRadius: 1.5,
-                width: { md: 'calc(50% - 8px)', sm: 'calc(50% - 8px)', xs: 'calc(50% - 8px)' },
-                p: 3,
+                width: { md: 'calc(50% - 8px)', sm: 'calc(50% - 8px)', xs: 'calc(100%)' },
+                p: { xs: 2, md: 3 },
                 backgroundColor: theme.palette.secondary.main
             }}>
                 <Typography variant='body2' sx={{ color: '#fff', position: 'absolute', right: 16, top: 16 }}>
@@ -110,12 +110,12 @@ const AboutUsPage = ({ articleContinents }: Props) => {
             <Stack sx={{ backgroundColor: '#f1f1f1' }}>
                 <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', py: 6 }}>
                     <Stack>
-                        <Typography variant={'h1'} sx={{ pb: 2 }}>
+                        <Typography variant={'h1'} sx={{ pb: 4 }}>
                             About us
                         </Typography>
-                        <Stack direction={{ md: 'row', xs: 'column' }} spacing={4}>
+                        <Stack direction={{ md: 'row', xs: 'column' }} spacing={{ xs: 4, md: 8 }}>
                             <Stack sx={{ width: '100%' }}>
-                                <Typography variant={'h2'} sx={{ pb: 1 }}>
+                                <Typography variant={'h2'} sx={{ pb: 2 }}>
                                     Exceptional moving services
                                 </Typography>
                                 <Typography variant='body1'>
@@ -142,7 +142,7 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                             <Typography variant={'h2'} sx={{ pb: 1 }}>
                                 Services we offer
                             </Typography>
-                            <Stack gap={2} pt={2} direction={'row'} sx={{ flexWrap: 'wrap', width: '100%' }}>
+                            <Stack gap={{ xs: 1, sm: 2 }} pt={2} direction={'row'} sx={{ flexWrap: 'wrap', width: '100%' }}>
                                 {renderServices}
                             </Stack>
                         </Stack>
@@ -164,7 +164,7 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                                     <EastIcon fontSize='large' />   Furniture disassembly and assembly
                                 </Typography>
                             </Stack>
-                            <Stack sx={{ width: '100%', height: { md: 300, xs: 300 }, position: 'relative', top: { md: 48, sm: 48, xs: 48 } }}>
+                            <Stack sx={{ width: '100%', height: { md: 300, xs: 200 }, position: 'relative', top: { md: 48, sm: 48, xs: 48 } }}>
                                 <Image
                                     alt="backgorund"
                                     src={"/sofa2cut.png"}
