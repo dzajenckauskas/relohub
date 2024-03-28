@@ -164,11 +164,12 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                                     <EastIcon fontSize='large' />   Furniture disassembly and assembly
                                 </Typography>
                             </Stack>
-                            <Stack sx={{ width: '100%', height: { md: 300, xs: 300 }, position: 'relative', top: { md: 99, sm: 120, xs: 48 } }}>
+                            <Stack sx={{ width: '100%', height: { md: 300, xs: 300 }, position: 'relative', top: { md: 48, sm: 48, xs: 48 } }}>
                                 <Image
                                     alt="backgorund"
                                     src={"/sofa2cut.png"}
                                     objectFit='contain'
+                                    objectPosition='bottom'
                                     fill />
                             </Stack>
                         </Stack>
