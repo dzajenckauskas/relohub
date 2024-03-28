@@ -13,33 +13,38 @@ import { ArticleDataType } from '@/COMPONENTS/types/ArticleTypes';
 import Stack from '@mui/material/Stack';
 import useSWR from 'swr';
 
-
 type Props = {
     category?: CategoryDataType;
     articleContinents?: ContinentsResponseType;
 }
 
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
     const [active, setActive] = useState<string | undefined>('all-posts')
-    const url = `/api/articles?populate=seo,image,articleCategory,articleContinents&filters[articleCategory][key][$eq]=${category.attributes.key}`
+    const url = `/api/articles?populate=seo,image,articleCategory,articleContinents`
 
-    const fetcher = (url: string) => fetch(url).then((res) => res.json());
-    const articlesUrl = active !== 'all-posts' ?
-        `${process.env.NEXT_PUBLIC_API_URL}${url}&filters[articleContinents][key][$eq]=${active}` :
-        `${process.env.NEXT_PUBLIC_API_URL}${url}&filters[articleCategory][key][$eq]=${category.attributes.key}`
-
+    const articlesUrl = `${process.env.NEXT_PUBLIC_API_URL}${url}`
     const { data: articles, error, isLoading } = useSWR(
         articlesUrl,
         fetcher
     );
-    const renderLatestArticles = articles?.data?.map((a: ArticleDataType) => {
+
+    const renderLatestArticlesLoading = Array.from({ length: 8 })?.map((_, index) => {
+        return (
+            <Grid item lg={3} md={4} sm={6} xs={12} key={index}>
+                <ArticleCard loading />
+            </Grid>
+        )
+    })
+
+    const filteredArticles = articles?.data.filter((a: ArticleDataType) => a.attributes?.articleContinents?.data?.find((a) => a.attributes.key === (active)))
+    const renderLatestArticles = (active === 'all-posts' ? articles?.data : filteredArticles)?.map((a: ArticleDataType) => {
         return (
             <Grid item lg={3} md={4} sm={6} xs={12} key={a.id}>
                 <ArticleCard article={a} key={a.id} activeContinent={active !== 'all-posts' ? active : undefined} />
             </Grid>
         )
     })
-
 
     const renderArticleContinents = articleContinents.data.map((ac) => {
         const isActive = ac.attributes.key === active
@@ -99,14 +104,13 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                             </Button>
                             {renderArticleContinents}
                         </Stack>
-                        {articles?.data.length > 0 &&
-                            <Grid container spacing={2} sx={{ display: 'flex', }}>
-                                {renderLatestArticles}
-                            </Grid>}
-                        {articles?.data.length === 0 &&
+                        <Grid container spacing={2} sx={{ display: 'flex', }}>
+                            {(!articles || isLoading) ? renderLatestArticlesLoading : renderLatestArticles}
+                        </Grid>
+                        {filteredArticles?.length === 0 &&
                             <Typography color={theme.palette.secondary.main}
                                 sx={{ pt: 2, display: 'flex', gap: 16, fontSize: '18px', justifyContent: 'space-between', width: '100%', fontWeight: 600 }}>
-                                No articles yet
+                                {error ? error : "No articles yet"}
                             </Typography>}
                     </Stack>
 

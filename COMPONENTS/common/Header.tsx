@@ -86,6 +86,7 @@ export default function Header() {
                         height: 60
                     }}>
                     <Button
+                        aria-label="Mobile menu"
                         onClick={() => setOpen(!open)}
                         sx={{
                             display: { sm: 'none', xs: 'flex' },
@@ -103,7 +104,7 @@ export default function Header() {
                         {open && <CloseRoundedIcon sx={{ transform: 'scale(1.8)' }} />}
                     </Button>
 
-                    <Link passHref href={'/'} style={{ position: 'relative', width: 140, height: 50 }}>
+                    <Link passHref href={'/'} style={{ position: 'relative', width: 140, height: 40 }}>
                         <Image
                             layout='fill'
                             src={"/logo2.png"}
@@ -122,7 +123,7 @@ export default function Header() {
                         alignItems: 'center',
                     }}>
                         <Link passHref href={loginUrl} >
-                            <Button variant='outlined' sx={{
+                            <Button aria-label="Customer portal" variant='outlined' sx={{
                                 display: { md: 'flex', sm: 'flex', xs: 'flex' },
                                 border: '1px solid #ccc',
                                 borderRadius: '3px', fontWeight: 700,
@@ -160,7 +161,7 @@ export default function Header() {
                         <Stack spacing={3} sx={{ position: 'fixed', textTransform: 'uppercase', pl: { sm: 4, xs: 2 }, pr: { md: 4, xs: 2 }, py: 4 }}>
                             {renderMobileLinks}
                             <Link passHref href={loginUrl} >
-                                <Button variant='outlined' sx={{
+                                <Button aria-label="Customer portal" variant='outlined' sx={{
                                     border: '1px solid #ccc',
                                     borderRadius: '3px', fontWeight: 700,
                                     fontSize: 14,

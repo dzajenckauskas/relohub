@@ -72,8 +72,9 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                         overflow: 'hidden'
                     }}>
                         <Image
+                            priority
                             src={`${process.env.NEXT_PUBLIC_API_URL}${article?.data?.attributes?.image?.data?.attributes?.url ?? article?.data?.attributes?.image?.data?.attributes?.url}`}
-                            alt={article?.data?.attributes?.image?.data?.attributes?.alternativeText}
+                            alt={article?.data?.attributes?.image?.data?.attributes?.alternativeText ?? article?.data?.attributes?.title}
                             layout={'fill'}
                             objectFit="cover"
                         />
@@ -156,7 +157,7 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                                 textAlign: 'left',
                                 ':hover': { color: theme.palette.secondary.dark }
                             }}>
-                                <Link
+                                <Link aria-label="Back to articles"
                                     href={`/guides/${article?.data?.attributes?.articleCategory?.data.attributes.key}}`} passHref>
                                     Back to articles
                                 </Link>
@@ -219,8 +220,9 @@ const ArticlePage = ({ article, latestArticles }: Props) => {
                                 {renderLatestArticles?.[1]}
                                 {renderLatestArticles?.[2]}
                             </Stack>
-                            <Link passHref href={'/guides'} style={{ paddingTop: 32, display: 'flex', justifyContent: 'center', width: '100%' }}>
+                            <Link aria-label="View all articles" passHref href={'/guides'} style={{ paddingTop: 32, display: 'flex', justifyContent: 'center', width: '100%' }}>
                                 <Button
+                                    aria-label="View all articles"
                                     style={{
                                         padding: '12px 22px',
                                         borderRadius: '2px',
