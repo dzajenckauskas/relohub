@@ -1,4 +1,3 @@
-import Typography from "@mui/material/Typography";
 import Image from "next/image";
 
 export default function ProcessWrapper() {
@@ -13,7 +12,7 @@ export default function ProcessWrapper() {
     return (
         <section className="processglobalwrapper">
             <p className="processwrphowitworksp">HOW IT WORKS</p>
-            <Typography variant="h2" className="processwrptheprocess">The Process</Typography>
+            <h2 className="processwrptheprocess">The Process</h2>
             <div className="procesimagewrappermainwrp">
                 <div className="processimagewrapper">
                     <Image

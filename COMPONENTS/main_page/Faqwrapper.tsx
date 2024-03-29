@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { MaxWidthContainer } from "../common/MaxWidthContainer";
 import Typography from '@mui/material/Typography'
+import { theme } from "../common/Theme";
 
 export default function FaqWrapper() {
     const [clicked, setclicked] = useState(null);
@@ -106,7 +107,7 @@ export default function FaqWrapper() {
                             return (
                                 <div className="faqfaqliner" key={i}>
                                     <div className="faqfaqinsidetop">
-                                        <Typography sx={{ fontWeight: 700 }} className="faqh3">{el.q}</Typography>
+                                        <Typography variant={'h4'} sx={{ fontWeight: 700, color: theme.palette.secondary.main }}>{el.q}</Typography>
 
                                         <button
                                             className={

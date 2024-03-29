@@ -102,7 +102,7 @@ export default function GetInTOuch() {
             <MaxWidthContainer>
                 {sendpopu ? messageSendpopup() : null}
                 <div className="getintouchglobalinsidewrp">
-                    <Typography variant="h1" component={'h2'} className="gith1">Get In Touch</Typography>
+                    <h2 className="gith1">Get In Touch</h2>
                     <p className="gitpm">
                         We love hearing from you-so please get in touch with any
                         questions or queries.

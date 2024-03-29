@@ -1,46 +1,91 @@
 import { createTheme } from '@mui/material/styles';
-import { Open_Sans } from "next/font/google";
-
-const openSans = Open_Sans({ weight: ["300", "400", "500", "600", "700", "800"], subsets: ['latin-ext'] })
 
 export const theme = createTheme({
     typography: {
         h1: {
-            fontFamily: openSans.style.fontFamily,
-            fontSize: 42,
-            fontWeight: 700
+            fontFamily: 'inherit',
+            fontWeight: 700,
+            fontSize: 32,
+            '@media (min-width:600px)': {
+                fontSize: 32,
+            },
+            '@media (min-width:960px)': {
+                fontSize: 36,
+            },
+            '@media (min-width:1280px)': {
+                fontSize: 42,
+            },
+            '@media (min-width:1920px)': {
+                fontSize: 48,
+            },
         },
         h2: {
-            fontFamily: openSans.style.fontFamily,
-            fontSize: 28,
-            fontWeight: 700
+            fontFamily: 'inherit',
+            fontWeight: 700,
+            fontSize: 24,
+            '@media (min-width:600px)': {
+                fontSize: 28,
+            },
+            '@media (min-width:960px)': {
+                fontSize: 32,
+            },
+            '@media (min-width:1280px)': {
+                fontSize: 36,
+            },
+            '@media (min-width:1920px)': {
+                fontSize: 40,
+            },
         },
         h3: {
-            fontFamily: openSans.style.fontFamily,
-            fontSize: 24,
-            fontWeight: 700
+            fontFamily: 'inherit',
+            fontWeight: 700,
+            fontSize: 20,
+            '@media (min-width:600px)': {
+                fontSize: 24,
+            },
+            '@media (min-width:960px)': {
+                fontSize: 28,
+            },
+            '@media (min-width:1280px)': {
+                fontSize: 32,
+            },
+            '@media (min-width:1920px)': {
+                fontSize: 36,
+            },
         },
         h4: {
-            fontFamily: openSans.style.fontFamily,
-            fontSize: 22,
+            fontFamily: 'inherit',
+            fontSize: 18,
+            '@media (min-width:600px)': {
+                fontSize: 20,
+            },
+            '@media (min-width:960px)': {
+                fontSize: 22,
+            },
+            '@media (min-width:1280px)': {
+                fontSize: 24,
+            },
+            '@media (min-width:1920px)': {
+                fontSize: 26,
+            },
         },
         h5: {
-            fontFamily: openSans.style.fontFamily,
+            fontFamily: 'inherit',
         },
         h6: {
-            fontFamily: openSans.style.fontFamily,
+            fontFamily: 'inherit',
         },
         body1: {
-            fontFamily: openSans.style.fontFamily,
+            fontFamily: 'inherit',
             fontSize: 16
 
         },
         body2: {
-            fontFamily: openSans.style.fontFamily,
+            fontFamily: 'inherit',
             fontSize: 14
         },
         caption: {
-            fontFamily: openSans.style.fontFamily,
+            fontFamily: 'inherit',
             fontSize: 10
 
         }

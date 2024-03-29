@@ -164,9 +164,9 @@ const Carousel = () => {
                     <p className="faqwrphowitworksp">REVIEWS</p>
 
                     <div className="reviewssecondwrp">
-                        <Typography variant={'h1'} component={'h2'} className="reviewh1">
+                        <h2 className="reviewh1">
                             What<br></br> People<br></br> Say
-                        </Typography>
+                        </h2>
 
                         <div className="reviewscarouselwrp">
                             <button
