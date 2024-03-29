@@ -159,7 +159,7 @@ const AboutUsPage = ({ articleContinents }: Props) => {
             </Stack>
             <Stack sx={{ backgroundColor: '#fff' }}>
                 <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', py: 6 }}>
-                    <Stack spacing={{ lg: 10, xs: 10 }} direction={{ md: 'row', xs: 'column' }} width={'100%'}>
+                    <Stack spacing={{ lg: 10, xs: 6 }} direction={{ md: 'row', xs: 'column' }} width={'100%'}>
                         <Stack sx={{ width: { lg: '55%', xs: '100%' }, }}>
                             <Typography variant={'h2'} sx={{ pb: 1 }}>
                                 Services we offer

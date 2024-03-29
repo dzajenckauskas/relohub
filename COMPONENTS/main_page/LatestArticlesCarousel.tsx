@@ -30,14 +30,12 @@ const LatestArticlesCarousel = () => {
         setStartIndex((prevIndex) => (prevIndex - 1 + latestArticles?.data?.length) % (latestArticles?.data?.length || 1)); // Decrement the starting index by 1, and use modulo to loop back to the end when reaching 0
     };
 
-    // Create an array of indices for the three cards to display, ensuring that they wrap around the array when necessary
     const cardIndices = [
         (startIndex - 1 + latestArticles?.data?.length) % (latestArticles?.data?.length || 1),
         startIndex,
         (startIndex + 1) % (latestArticles?.data?.length || 1)
     ];
 
-    // Render the ArticleCard components for the three indices
     const displayedArticles = cardIndices.map((index: number) => {
         return (
             <Stack key={latestArticles?.data[index]?.id} width={'100%'}>
@@ -46,7 +44,6 @@ const LatestArticlesCarousel = () => {
         );
     });
 
-    // Render loading placeholders when isLoading is true
     const renderLatestArticlesLoading = Array.from({ length: 3 }).map((_, index) => {
         return (
             <Stack key={index} width={'100%'}>
@@ -56,9 +53,9 @@ const LatestArticlesCarousel = () => {
     });
 
     return (
-        <Stack sx={{ width: '100%', backgroundColor: '#fff', mt: 6 }}>
+        <Stack sx={{ width: '100%', backgroundColor: '#fff', mt: 0 }}>
             <MaxWidthContainer sx={{
-                pt: 6,
+                pt: 4,
                 justifyContent: 'space-between',
             }}>
                 <Typography variant='h1' component={'h2'} sx={{ fontWeight: 700 }}>Latest Guides & Articles</Typography>
@@ -78,7 +75,7 @@ const LatestArticlesCarousel = () => {
                 </Stack>
             </MaxWidthContainer>
             <MaxWidthContainer sx={{
-                pb: 10
+                pb: { xs: 4, md: 8 }
             }}>
                 {isLoading ? (
                     <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mt: 4, justifyContent: 'center', width: '100%' }}>

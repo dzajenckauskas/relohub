@@ -52,7 +52,8 @@ const GuidesPage = ({ categories }: Props) => {
                 }}>
                     <MaxWidthContainer
                         sx={{
-                            py: 4, gap: 2,
+                            pt: 4,
+                            pb: 4, gap: 2,
                             flexDirection: { md: 'row', xs: "column" }
                         }}>
                         {renderCategories}

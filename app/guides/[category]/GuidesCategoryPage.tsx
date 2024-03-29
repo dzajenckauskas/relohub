@@ -105,7 +105,8 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                 <MaxWidthContainer sx={{
                     display: 'flex', flexDirection: 'column',
                     backgroundColor: "#efefef",
-                    width: '100%'
+                    width: '100%',
+                    pb: 6
                 }}>
                     <Stack sx={{
                         width: '100%'
