@@ -6,7 +6,7 @@ import LatestArticles from '@/COMPONENTS/main_page/LatestArticles';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Stack from '@mui/material/Stack';
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from 'next-share';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
@@ -71,7 +71,7 @@ const ArticlePage = ({ article }: Props) => {
                             priority
                             src={`${process.env.NEXT_PUBLIC_API_URL}${article?.data?.attributes?.image?.data?.attributes?.url ?? article?.data?.attributes?.image?.data?.attributes?.url}`}
                             alt={article?.data?.attributes?.image?.data?.attributes?.alternativeText ?? article?.data?.attributes?.title}
-                            layout={'fill'}
+                            fill
                             objectFit="cover"
                         />
                         <Stack

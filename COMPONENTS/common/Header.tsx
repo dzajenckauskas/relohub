@@ -125,7 +125,7 @@ export default function Header() {
 
                     <Link passHref href={'/'} style={{ position: 'relative', width: 140, height: 40 }}>
                         <Image
-                            layout='fill'
+                            fill
                             src={"/logo2.png"}
                             alt="logo"
                             style={{ objectFit: "contain" }}

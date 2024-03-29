@@ -1,4 +1,4 @@
-@media screen and (max-width: 1200px) {
+@media screen and (width <= 1200px) {
     .carouselmainwrpoutside {
         max-width: 600px;
     }
@@ -19,7 +19,7 @@
     }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (width <= 1100px) {
     .offerbookingdetailsinputswrp {
         display: flex;
         flex-direction: column;
@@ -27,8 +27,7 @@
     }
 }
 
-@media screen and (max-width: 1000px) {
-
+@media screen and (width <= 1000px) {
     .boxesandluggagestandardwrp,
     .boxesandluggageownwrp {
         grid-template-columns: 1fr;
@@ -121,7 +120,7 @@
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (width <= 900px) {
     .offerbuttonswrp {
         margin: 4px 0;
         margin-top: 0;
@@ -181,7 +180,7 @@
 
     .offerhpewrp {
         width: 100%;
-        transform: translate(-50%, 0px);
+        transform: translate(-50%, 0);
     }
 
     .heroareatitlewrp {
@@ -209,7 +208,6 @@
 
     .processimagewrappermob {
         display: flex;
-
         width: 240px;
         aspect-ratio: 268/667;
     }
@@ -286,7 +284,7 @@
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (width <= 800px) {
     .customiteminput {
         width: 100%;
     }
@@ -319,8 +317,7 @@
     }
 }
 
-@media screen and (max-width: 700px) {
-
+@media screen and (width <= 700px) {
     .processglobalwrapper,
     .faqglobalwrp,
     .reviewsglobalwrp,
@@ -339,7 +336,6 @@
 
     .videoareatopwrp {
         flex-direction: column;
-
         align-items: center;
         justify-content: center;
     }
@@ -354,7 +350,6 @@
 
     .videoareatopliner {
         min-width: 200px;
-
         justify-content: center;
         gap: 8px;
     }
@@ -365,7 +360,6 @@
 
     .videoarriconsrightwrpglobal {
         gap: 0;
-
         transition-duration: 200ms;
     }
 
@@ -391,7 +385,7 @@
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (width <= 600px) {
     .offeritemsmissingcenterwrp {
         padding-bottom: 80px;
     }
@@ -584,7 +578,7 @@
     .heroareaselectionh3andclosebuttonwrp {
         display: flex;
         margin-bottom: 24px;
-        margin-top: 0px;
+        margin-top: 0;
         justify-content: space-between;
         align-items: center;
         position: fixed;
@@ -608,7 +602,6 @@
     .letttersectionletterp,
     .letttersectionletterpdisabled {
         cursor: pointer;
-        width: 100%;
         font-weight: 600;
         display: flex;
         justify-content: center;
@@ -637,7 +630,7 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (width <= 500px) {
     .sofa2notfilledwrpimgwrp {
         display: none;
     }
@@ -683,13 +676,12 @@
     .offerpopouppricewrpselected {
         grid-column: 3;
         grid-row: 1;
-
         transform: translateY(18px);
     }
 
     .offerpopupselectionliner,
     .offerpopupselectionlinerselected {
-        border-radius: 0px;
+        border-radius: 0;
     }
 
     .faqglobalwrp {
@@ -800,7 +792,6 @@
     .reviewcarouselbutton {
         grid-row: 2;
         grid-column: 1;
-
         margin-left: 24px;
         margin-right: 24px;
     }
@@ -814,7 +805,7 @@
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (width <= 400px) {
     .processimagewrappertextwrp {
         column-gap: 40px;
         transform: translateY(93px);
@@ -842,7 +833,6 @@
 
     .headerpinkelementwrp {
         grid-template-columns: min-content max-content;
-
         column-gap: 16px;
     }
 

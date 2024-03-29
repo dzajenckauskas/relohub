@@ -1,13 +1,12 @@
 'use client'
 import Paper from '@mui/material/Paper';
+import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import Image from 'next/image';
 import Link from 'next/link';
 import { theme } from '../common/Theme';
 import { ArticleDataType } from '../types/ArticleTypes';
-import Image from 'next/legacy/image';
-import Skeleton from '@mui/material/Skeleton';
-import Button from '@mui/material/Button';
 
 type Props = {
     article?: ArticleDataType;
@@ -30,12 +29,12 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                 width: '100%',
                 backgroundColor: "#fff",
                 borderRadius: '5px',
+                overflow: 'hidden',
 
             }}>
             <Link href={url} passHref aria-label={'Read more'}>
                 <Stack sx={{
                     overflow: 'hidden',
-
                 }}>
                     <Stack sx={{
                         height: '250px',
@@ -55,7 +54,7 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                             src={imgSrc}
                             alt={imgAlt}
                             priority
-                            layout={'fill'}
+                            fill
                             objectFit="cover"
                         />}
                     </Stack>
