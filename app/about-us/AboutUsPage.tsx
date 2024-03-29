@@ -125,10 +125,10 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                             <Stack sx={{ width: '100%', height: { md: 'auto', xs: 300 }, position: 'relative' }}>
                                 <Image
                                     alt="backgorund"
-                                    src={"/box-img.png"}
+                                    src={"/cover-img.jpg"}
                                     objectFit='cover'
                                     style={{ borderRadius: 4 }}
-                                    objectPosition='center'
+                                    objectPosition='top'
                                     fill />
                             </Stack>
                         </Stack>
