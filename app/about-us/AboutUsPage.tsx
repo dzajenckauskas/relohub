@@ -4,8 +4,8 @@ import PageLayout from '@/COMPONENTS/common/PageLayout'
 import { theme } from '@/COMPONENTS/common/Theme'
 import { countries } from '@/COMPONENTS/main_page/heroInputs'
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes'
-import { Grid } from '@mui/material'
 import Button from '@mui/material/Button'
+import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { useState } from 'react'
@@ -70,10 +70,10 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                 <Typography variant='body2' sx={{ color: '#fff', position: 'absolute', right: 16, top: 16 }}>
                     {s.number}
                 </Typography>
-                <Typography variant='h4' sx={{ color: '#fff', fontWeight: 600 }}>
+                <Typography variant='h4' component={'h2'} sx={{ color: '#fff', fontWeight: 600 }}>
                     {s.name}
                 </Typography>
-                <Typography variant='h4' sx={{ color: '#fff', fontWeight: 600 }}>
+                <Typography variant='h4' component={'h2'} sx={{ color: '#fff', fontWeight: 600 }}>
                     {s.slogan}
                 </Typography>
             </Stack>

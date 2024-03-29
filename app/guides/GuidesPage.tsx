@@ -1,11 +1,11 @@
 'use client'
 import LatestArticlesCarousel from '@/COMPONENTS/main_page/LatestArticlesCarousel';
-import { Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import { MaxWidthContainer } from '../../COMPONENTS/common/MaxWidthContainer';
 import PageLayout from '../../COMPONENTS/common/PageLayout';
 import ArticleCategoryCard from '../../COMPONENTS/guides/ArticleCategoryCard';
 import { CategoriesResponseType } from '../../COMPONENTS/types/CategoryTypes';
+import Typography from '@mui/material/Typography';
 
 type Props = {
     categories?: CategoriesResponseType;

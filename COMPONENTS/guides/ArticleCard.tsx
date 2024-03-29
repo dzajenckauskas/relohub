@@ -7,6 +7,7 @@ import { theme } from '../common/Theme';
 import { ArticleDataType } from '../types/ArticleTypes';
 import Image from 'next/legacy/image';
 import Skeleton from '@mui/material/Skeleton';
+import Button from '@mui/material/Button';
 
 type Props = {
     article?: ArticleDataType;
@@ -73,7 +74,7 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                         lineHeight: 1.2
                     }}>
                         {loading ? <>
-                            <Skeleton height={80} />
+                            <Skeleton height={53} />
                         </> : article?.attributes.title}
                     </Typography>
                 </Link>
@@ -99,11 +100,10 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                     ':hover': { color: theme.palette.secondary.dark }
                 }}>
                     {loading ?
-                        <Skeleton width={100} />
+                        <Skeleton width={100} aria-label="Read more about the topic" />
                         :
-                        <Link aria-label={'Read more'}
-                            href={url} passHref>
-                            Read more
+                        <Link aria-label="Read more about the topic" href={url} passHref>
+                            Read article
                         </Link>}
                 </Typography>
             </Stack>

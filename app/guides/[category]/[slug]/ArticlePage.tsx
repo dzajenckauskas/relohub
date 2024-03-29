@@ -4,7 +4,6 @@ import { theme } from '@/COMPONENTS/common/Theme';
 import XIcon from '@/COMPONENTS/common/XIcon';
 import LatestArticles from '@/COMPONENTS/main_page/LatestArticles';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import { Box, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from 'next-share';
 import Image from 'next/legacy/image';
@@ -14,6 +13,8 @@ import { useEffect, useRef } from 'react';
 import { MaxWidthContainer } from '../../../../COMPONENTS/common/MaxWidthContainer';
 import PageLayout from '../../../../COMPONENTS/common/PageLayout';
 import { ArticleResponseType } from '../../../../COMPONENTS/types/ArticleTypes';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 type Props = {
     article?: ArticleResponseType;
