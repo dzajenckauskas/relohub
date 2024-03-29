@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography'
 import React, { useState } from 'react'
 import EastIcon from '@mui/icons-material/East';
 import Image from 'next/image'
+import Link from 'next/link'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
@@ -107,12 +108,34 @@ const AboutUsPage = ({ articleContinents }: Props) => {
     });
     return (
         <PageLayout>
-            <Stack sx={{ backgroundColor: '#f1f1f1' }}>
-                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', py: 6 }}>
+            <Stack sx={{ backgroundColor: '#efefef' }}>
+                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', pb: 6 }}>
                     <Stack>
-                        <Typography variant={'h1'} sx={{ pb: 4 }}>
-                            About us
-                        </Typography>
+                        <Stack sx={{
+                            display: 'flex', flexDirection: 'column',
+                        }}>
+                            <Stack direction={'row'} justifyContent={'flex-start'} spacing={1} sx={{
+                                paddingTop: '10px',
+                                marginBottom: '20px',
+                                alignItems: 'center'
+                            }}>
+                                <Link passHref href={'/'}>
+                                    <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
+                                        Home
+                                    </Typography>
+                                </Link>
+                                <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
+                                    {'/'}
+                                </Typography>
+                                <Typography variant='body2' sx={{ fontWeight: 500, color: theme.palette.primary.main }}>
+                                    About us
+                                </Typography>
+                            </Stack>
+
+                            <Typography variant={'h1'} sx={{ pt: 1, pb: 2 }}>
+                                About us
+                            </Typography>
+                        </Stack>
                         <Stack direction={{ md: 'row', xs: 'column' }} spacing={{ xs: 4, md: 8 }}>
                             <Stack sx={{ width: '100%' }}>
                                 <Typography variant={'h2'} sx={{ pb: 2 }}>

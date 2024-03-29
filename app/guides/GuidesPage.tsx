@@ -6,6 +6,8 @@ import PageLayout from '../../COMPONENTS/common/PageLayout';
 import ArticleCategoryCard from '../../COMPONENTS/guides/ArticleCategoryCard';
 import { CategoriesResponseType } from '../../COMPONENTS/types/CategoryTypes';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
+import { theme } from '@/COMPONENTS/common/Theme';
 
 type Props = {
     categories?: CategoriesResponseType;
@@ -22,12 +24,29 @@ const GuidesPage = ({ categories }: Props) => {
                 backgroundColor: "#efefef"
             }}>
                 <MaxWidthContainer>
+
                     <Stack sx={{
-                        paddingTop: '40px',
-                        paddingBottom: '30px',
                         display: 'flex', flexDirection: 'column',
                     }}>
-                        <Typography variant='h1'>Guides categories</Typography>
+                        <Stack direction={'row'} justifyContent={'flex-start'} spacing={1} sx={{
+                            paddingTop: '10px',
+                            marginBottom: '20px',
+                            alignItems: 'center'
+                        }}>
+                            <Link passHref href={'/'}>
+                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
+                                    Home
+                                </Typography>
+                            </Link>
+                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
+                                {'/'}
+                            </Typography>
+                            <Typography variant='body2' sx={{ fontWeight: 500, color: theme.palette.primary.main }}>
+                                Guides
+                            </Typography>
+                        </Stack>
+
+                        <Typography variant='h1' sx={{ pb: 2 }}>Guides categories</Typography>
                     </Stack>
                 </MaxWidthContainer>
                 <Stack sx={{

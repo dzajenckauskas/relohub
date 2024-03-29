@@ -165,7 +165,7 @@ export default function Header() {
                     </Stack>
                 </Stack>
             </header>
-            <Stack sx={{ height: { md: 60, xs: 90 }, width: '100%' }}>
+            <Stack sx={{ height: { md: 60, xs: 90 }, width: '100%', backgroundColor: '#efefef' }}>
             </Stack>
             {open &&
                 <Stack sx={{

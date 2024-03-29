@@ -56,7 +56,44 @@ const ArticlePage = ({ article }: Props) => {
                 width: '100%',
                 backgroundColor: "#efefef"
             }}>
-                <MaxWidthContainer sx={{ flexDirection: 'column', pt: { xs: 2, md: 4 } }}>
+                <MaxWidthContainer sx={{ flexDirection: 'column', }}>
+                    <Stack direction={'row'} sx={{ width: '100%' }}>
+                        <Stack direction={'row'} justifyContent={'flex-start'} spacing={1} sx={{
+                            // paddingTop: '10px',
+                            overflowY: 'scroll',
+                            pt: { xs: 2, md: 4 },
+                            marginBottom: '20px',
+                            alignItems: 'center'
+                        }}>
+                            <Link passHref href={'/'}>
+                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
+                                    Home
+                                </Typography>
+                            </Link>
+                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
+                                {'/'}
+                            </Typography>
+                            <Link passHref href={'/guides'}>
+                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
+                                    Guides
+                                </Typography>
+                            </Link>
+                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
+                                {'/'}
+                            </Typography>
+                            <Link passHref href={'/guides/' + category?.toLowerCase()}>
+                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
+                                    {category}
+                                </Typography>
+                            </Link>
+                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
+                                {'/'}
+                            </Typography>
+                            <Typography variant='body2' sx={{ fontWeight: 400, }}>
+                                {article?.data?.attributes?.title}
+                            </Typography>
+                        </Stack>
+                    </Stack>
                     <Stack sx={{
                         mx: 'auto',
                         mb: { xs: 4, md: 6 },

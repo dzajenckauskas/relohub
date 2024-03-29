@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import useSWR from 'swr';
 import ArticleCard from '../../../COMPONENTS/guides/ArticleCard';
+import Link from 'next/link';
 
 type Props = {
     category?: CategoryDataType;
@@ -75,11 +76,34 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                     width: '100%'
                 }}>
                     <Stack sx={{
-                        paddingTop: '40px',
-                        marginBottom: '80px',
                         width: '100%'
                     }}>
-                        <Typography variant='h1' sx={{ pb: 4 }}>
+                        <Stack direction={'row'} justifyContent={'flex-start'} spacing={1} sx={{
+                            paddingTop: '10px',
+                            marginBottom: '20px',
+                            alignItems: 'center'
+                        }}>
+                            <Link passHref href={'/'}>
+                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
+                                    Home
+                                </Typography>
+                            </Link>
+                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
+                                {'/'}
+                            </Typography>
+                            <Link passHref href={'/guides'}>
+                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
+                                    Guides
+                                </Typography>
+                            </Link>
+                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
+                                {'/'}
+                            </Typography>
+                            <Typography variant='body2' sx={{ fontWeight: 400, }}>
+                                {category.attributes?.name}
+                            </Typography>
+                        </Stack>
+                        <Typography variant='h1' sx={{ pt: 0, pb: 2 }}>
                             {category.attributes?.name}
                         </Typography>
                         <Typography variant='body2' color={theme.palette.secondary.main} sx={{ pb: 2, fontWeight: 600 }}>
