@@ -59,7 +59,7 @@ const ArticlePage = ({ article }: Props) => {
         }
 
         const maxLength = Math.floor((availableWidth - ellipsisLength) / textWidth);
-        const truncatedText = text.substring(30, maxLength) + '...';
+        const truncatedText = text.substring(20, maxLength) + '...';
         return truncatedText;
     }
 
