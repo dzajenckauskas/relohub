@@ -68,27 +68,24 @@ const ArticlePage = ({ article }: Props) => {
         return text.length * charWidth;
     }
     const containerRef = useRef(null);
-    function getAvailableWidth() {
-        const [availableWidth, setAvailableWidth] = useState(0);
+    const [availableWidth, setAvailableWidth] = useState(0);
 
-        useEffect(() => {
-            const observer = new ResizeObserver((entries) => {
-                const { contentRect } = entries[0];
-                setAvailableWidth(contentRect.width);
-            });
-            if (containerRef.current) {
-                observer.observe(containerRef.current);
+    useEffect(() => {
+        const observer = new ResizeObserver((entries) => {
+            const { contentRect } = entries[0];
+            setAvailableWidth(contentRect.width);
+        });
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+
+        return () => {
+            if (observer) {
+                observer.disconnect();
             }
+        };
+    }, [containerRef]);
 
-            return () => {
-                if (observer) {
-                    observer.disconnect();
-                }
-            };
-        }, [containerRef]);
-
-        return availableWidth;
-    }
     return (
         <PageLayout>
             <Stack sx={{
@@ -128,7 +125,7 @@ const ArticlePage = ({ article }: Props) => {
                                 {' / '}
                             </Typography>
                             <Typography variant='body2' noWrap title={article?.data?.attributes?.title}> {/* Added title attribute for full text on hover */}
-                                {getTruncatedText(article?.data?.attributes?.title, getAvailableWidth())}
+                                {getTruncatedText(article?.data?.attributes?.title, availableWidth)}
                             </Typography>
                         </Stack>
                     </Stack>
