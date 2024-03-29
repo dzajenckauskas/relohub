@@ -73,7 +73,7 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                         lineHeight: 1.2
                     }}>
                         {loading ? <>
-                            <Skeleton height={53} />
+                            <Skeleton height={80} />
                         </> : article?.attributes.title}
                     </Typography>
                 </Link>
