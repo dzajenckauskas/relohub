@@ -10,6 +10,7 @@ import { useEffect, useRef, useState } from "react";
 import Calendar from "react-calendar";
 import Link from "next/link";
 import NoPricePopup from "@/COMPONENTS/offer_page/nopricepopup";
+import PageLayout from "@/COMPONENTS/common/PageLayout";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC);
 
 export default function Ofer() {
@@ -752,230 +753,221 @@ export default function Ofer() {
     }
 
     return (
-        <div className="offerglobalwrp">
-            {edit ? <section className="offereditdarkbckg"></section> : null}
+        <PageLayout>
+            <div className="offerglobalwrp">
+                {edit ? <section className="offereditdarkbckg"></section> : null}
 
-            {showpopupofprices ? (
-                <Elements stripe={stripePromise}>
-                    <OfferPopup
-                        hidePopup={(v) => {
-                            setshowpopupofprices(v);
-                        }}
-                        state={state}
-                        prices={prices}
-                    />
-                </Elements>
-            ) : null}
-            {nopricepopup ? (
-                <NoPricePopup
-                    setshownopricepopup={(v) => {
-                        setshownopricepopup(v);
-                    }}
-                />
-            ) : null}
-
-            {shownotfilledpopup ? (
-                <section className="offeritemsmissingwrapper">
-                    <div className="offeritemsmissingcenterwrp">
-                        <button
-                            className="alotoftextclosebutton alotoftextclosebuttonmissing"
-                            onClick={() => {
-                                setshownotfilledpopup(false);
+                {showpopupofprices ? (
+                    <Elements stripe={stripePromise}>
+                        <OfferPopup
+                            hidePopup={(v) => {
+                                setshowpopupofprices(v);
                             }}
-                        >
-                            {" "}
-                            &#10006;
-                        </button>
-                        <h3 className="missingitemh3">
-                            We still need the following essential details:
-                        </h3>
+                            state={state}
+                            prices={prices}
+                        />
+                    </Elements>
+                ) : null}
+                {nopricepopup ? (
+                    <NoPricePopup
+                        setshownopricepopup={(v) => {
+                            setshownopricepopup(v);
+                        }}
+                    />
+                ) : null}
 
-                        <ul className="offeritemsmissingul">
-                            {notfilledItems.map((el, i) => {
-                                return <li key={i}>{el}</li>;
-                            })}
-                        </ul>
+                {shownotfilledpopup ? (
+                    <section className="offeritemsmissingwrapper">
+                        <div className="offeritemsmissingcenterwrp">
+                            <button
+                                className="alotoftextclosebutton alotoftextclosebuttonmissing"
+                                onClick={() => {
+                                    setshownotfilledpopup(false);
+                                }}
+                            >
+                                {" "}
+                                &#10006;
+                            </button>
+                            <h3 className="missingitemh3">
+                                We still need the following essential details:
+                            </h3>
+
+                            <ul className="offeritemsmissingul">
+                                {notfilledItems.map((el, i) => {
+                                    return <li key={i}>{el}</li>;
+                                })}
+                            </ul>
+                        </div>
+                    </section>
+                ) : null}
+
+
+                <section className="offerbookingdetailswrp">
+                    <div className="offerhpewrp">
+                        {/* <HeaderPinkElementNew /> */}
+                    </div>
+                    <h3 className="bookingdetailsh3">
+                        Let’s start with your booking details
+                    </h3>
+
+                    <div className="offerbookingdetailsinputswrp">
+                        {bkgdtlarr.map((el, i) => {
+                            return (
+                                <input
+                                    key={i}
+                                    spellCheck={false}
+                                    value={state[el.f] || ""}
+                                    placeholder={el.p}
+                                    type={el.t}
+                                    className={
+                                        notfilledItems.includes(el.p)
+                                            ? "bookingdetailsinputmarket"
+                                            : "bookingdetailsinput"
+                                    }
+                                    onChange={(e) => {
+                                        let c = { ...state };
+                                        c[el.f] = e.target.value;
+                                        setstate(c);
+                                        setNotFilledItems(
+                                            notfilledItems.filter((it, i) => {
+                                                return it !== el.p;
+                                            }),
+                                        );
+                                    }}
+                                />
+                            );
+                        })}
                     </div>
                 </section>
-            ) : null}
+                <section className="offercolldeliverywrp">
+                    {editLeftWrp()}
+                    {editRightWrp()}
+                </section>
 
-            <section className="offertopbarwrp">
-                <Link href={"/"} className="offerlogoimglink">
-                    <Image
-                        alt="logo"
-                        src={"/logo2.png"}
-                        width={152}
-                        height={64}
-                        style={{ objectFit: "contain" }}
-                    ></Image>
-                </Link>
-            </section>
+                <section
+                    className={
+                        notfilledItems.includes(
+                            "Select at least one box, suitcase, or own item",
+                        )
+                            ? `offerboxesandluggagemarked`
+                            : `offerboxesandluggage`
+                    }
+                >
+                    <h3>Boxes & Luggage</h3>
 
-            <section className="offerbookingdetailswrp">
-                <div className="offerhpewrp">
-                    {/* <HeaderPinkElementNew /> */}
-                </div>
-                <h3 className="bookingdetailsh3">
-                    Let’s start with your booking details
-                </h3>
+                    {standardItem()}
+                    {state.Own_items?.length !== 0 ? ownItemsShow() : null}
+                    {ownItem()}
+                </section>
+                <section className="offercollectiondatewrp">
+                    <div className="collectiondatecenterwrp">
+                        {state.from_country === "united kingdom" &&
+                            (state.Large_box || state.Standard_box) &&
+                            !hideemptyboxes ? (
+                            <div className="collectiondateleftwrp">
+                                <h1 className="collectiondateh3">
+                                    Your Empty Box Delivery Date
+                                </h1>
+                                <p className="empyboxesleftwrpnaniniani">
+                                    You have selected{" "}
+                                    <strong>
+                                        {state.Standard_box
+                                            ? state.Standard_box
+                                            : 0}{" "}
+                                        standard
+                                    </strong>{" "}
+                                    <strong>
+                                        and {state.Large_box ? state.Large_box : 0}{" "}
+                                        large boxes.{" "}
+                                    </strong>
+                                    We will supply you with {countBoxes()} high
+                                    quality boxes for you to pack your items.
+                                </p>
+                                <p>
+                                    Please select the date you would prefer the
+                                    boxes to be delivered{" "}
+                                </p>
+                                <p>
+                                    <b>(delivery is between 9am and 6pm daily).</b>
+                                </p>
 
-                <div className="offerbookingdetailsinputswrp">
-                    {bkgdtlarr.map((el, i) => {
-                        return (
-                            <input
-                                key={i}
-                                spellCheck={false}
-                                value={state[el.f] || ""}
-                                placeholder={el.p}
-                                type={el.t}
-                                className={
-                                    notfilledItems.includes(el.p)
-                                        ? "bookingdetailsinputmarket"
-                                        : "bookingdetailsinput"
-                                }
-                                onChange={(e) => {
-                                    let c = { ...state };
-                                    c[el.f] = e.target.value;
-                                    setstate(c);
-                                    setNotFilledItems(
-                                        notfilledItems.filter((it, i) => {
-                                            return it !== el.p;
-                                        }),
-                                    );
-                                }}
-                            />
-                        );
-                    })}
-                </div>
-            </section>
-            <section className="offercolldeliverywrp">
-                {editLeftWrp()}
-                {editRightWrp()}
-            </section>
+                                <div className="offerreactcalendarwrapper">
+                                    <Calendar
+                                        tileClassName={({ date }) =>
+                                            isPastOrWeekendOrFutureWorkingDay(date)
+                                                ? "disabledDay"
+                                                : ""
+                                        }
+                                        onChange={(e) => {
+                                            setstate({
+                                                ...state,
+                                                empty_box_delivery_date:
+                                                    e.toLocaleDateString("lt-LT"),
+                                            });
+                                        }}
+                                        value={state.empty_box_delivery_date}
+                                    />
+                                </div>
+                                <button
+                                    className="idontneddemptyboxesbutton"
+                                    onClick={() => {
+                                        setstate({
+                                            ...state,
+                                            empty_box_delivery_date: "",
+                                        });
+                                        sethideemptyboxes(true);
+                                    }}
+                                >
+                                    I don&apos;t need empty boxes.
+                                </button>
+                            </div>
+                        ) : null}
 
-            <section
-                className={
-                    notfilledItems.includes(
-                        "Select at least one box, suitcase, or own item",
-                    )
-                        ? `offerboxesandluggagemarked`
-                        : `offerboxesandluggage`
-                }
-            >
-                <h3>Boxes & Luggage</h3>
-
-                {standardItem()}
-                {state.Own_items?.length !== 0 ? ownItemsShow() : null}
-                {ownItem()}
-            </section>
-            <section className="offercollectiondatewrp">
-                <div className="collectiondatecenterwrp">
-                    {state.from_country === "united kingdom" &&
-                        (state.Large_box || state.Standard_box) &&
-                        !hideemptyboxes ? (
-                        <div className="collectiondateleftwrp">
+                        <div className="collectiondaterightwrp">
                             <h1 className="collectiondateh3">
-                                Your Empty Box Delivery Date
+                                Select Your Collection Date
                             </h1>
-                            <p className="empyboxesleftwrpnaniniani">
-                                You have selected{" "}
-                                <strong>
-                                    {state.Standard_box
-                                        ? state.Standard_box
-                                        : 0}{" "}
-                                    standard
-                                </strong>{" "}
-                                <strong>
-                                    and {state.Large_box ? state.Large_box : 0}{" "}
-                                    large boxes.{" "}
-                                </strong>
-                                We will supply you with {countBoxes()} high
-                                quality boxes for you to pack your items.
+                            <p>
+                                Please select the date you would prefer your items
+                                to be collected.
                             </p>
                             <p>
-                                Please select the date you would prefer the
-                                boxes to be delivered{" "}
+                                <b>(collection is between 9am and 6pm daily).</b>
                             </p>
-                            <p>
-                                <b>(delivery is between 9am and 6pm daily).</b>
-                            </p>
-
                             <div className="offerreactcalendarwrapper">
                                 <Calendar
                                     tileClassName={({ date }) =>
-                                        isPastOrWeekendOrFutureWorkingDay(date)
+                                        ispastdayforcollection(date)
                                             ? "disabledDay"
                                             : ""
                                     }
                                     onChange={(e) => {
                                         setstate({
                                             ...state,
-                                            empty_box_delivery_date:
+                                            Collection_Date:
                                                 e.toLocaleDateString("lt-LT"),
                                         });
                                     }}
-                                    value={state.empty_box_delivery_date}
+                                    value={state.Collection_Date}
                                 />
                             </div>
-                            <button
-                                className="idontneddemptyboxesbutton"
-                                onClick={() => {
-                                    setstate({
-                                        ...state,
-                                        empty_box_delivery_date: "",
-                                    });
-                                    sethideemptyboxes(true);
-                                }}
-                            >
-                                I don&apos;t need empty boxes.
-                            </button>
+                            {hideemptyboxes ? null : (
+                                <div className="idontneddemptyboxesbuttonhidden"></div>
+                            )}
                         </div>
-                    ) : null}
-
-                    <div className="collectiondaterightwrp">
-                        <h1 className="collectiondateh3">
-                            Select Your Collection Date
-                        </h1>
-                        <p>
-                            Please select the date you would prefer your items
-                            to be collected.
-                        </p>
-                        <p>
-                            <b>(collection is between 9am and 6pm daily).</b>
-                        </p>
-                        <div className="offerreactcalendarwrapper">
-                            <Calendar
-                                tileClassName={({ date }) =>
-                                    ispastdayforcollection(date)
-                                        ? "disabledDay"
-                                        : ""
-                                }
-                                onChange={(e) => {
-                                    setstate({
-                                        ...state,
-                                        Collection_Date:
-                                            e.toLocaleDateString("lt-LT"),
-                                    });
-                                }}
-                                value={state.Collection_Date}
-                            />
-                        </div>
-                        {hideemptyboxes ? null : (
-                            <div className="idontneddemptyboxesbuttonhidden"></div>
-                        )}
                     </div>
-                </div>
-            </section>
-            <section className="offerbuttonswrp">
-                <button className="resetbutton">RESET</button>
-                <button
-                    className="getestimatebutton"
-                    onClick={checkIfItemsIsNotMissing}
-                >
-                    GET ESTIMATE
-                </button>
-            </section>
-            <GetInTOuch />
-        </div>
+                </section>
+                <section className="offerbuttonswrp">
+                    <button className="resetbutton">RESET</button>
+                    <button
+                        className="getestimatebutton"
+                        onClick={checkIfItemsIsNotMissing}
+                    >
+                        GET ESTIMATE
+                    </button>
+                </section>
+                {/* <GetInTOuch /> */}
+            </div>
+        </PageLayout>
     );
 }
