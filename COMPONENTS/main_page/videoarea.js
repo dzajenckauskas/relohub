@@ -2,7 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { MaxWidthContainer } from "../common/MaxWidthContainer";
-import { Stack } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
 
 export default function VideoArea() {
     const videoRef = useRef();
@@ -118,7 +119,7 @@ export default function VideoArea() {
                     <div className="videoareavideowrp">
                         {showvideohide ? (
                             <div className="videoareaplaybtnwrp">
-                                <h1>View Our Presentation</h1>
+                                <Typography variant="h1" component={'h2'}>View Our Presentation</Typography>
                                 <button
                                     className="videopresentationtroundbutton"
                                     onClick={handleButtonClick}

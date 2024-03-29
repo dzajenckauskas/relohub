@@ -1,17 +1,16 @@
 "use client";
+import PageLayout from "@/COMPONENTS/common/PageLayout";
+import HeroInputs from "@/COMPONENTS/main_page/heroInputs";
+import NoPricePopup from "@/COMPONENTS/offer_page/nopricepopup";
+import OfferPopup from "@/COMPONENTS/offer_page/offerPopup";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import GetInTOuch from "@/COMPONENTS/main_page/getInTouch";
-import HeroInputs from "@/COMPONENTS/main_page/heroInputs";
-import OfferPopup from "@/COMPONENTS/offer_page/offerPopup";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import Calendar from "react-calendar";
-import Link from "next/link";
-import NoPricePopup from "@/COMPONENTS/offer_page/nopricepopup";
-import PageLayout from "@/COMPONENTS/common/PageLayout";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC);
+import Typography from "@mui/material/Typography";
 
 export default function Ofer() {
     const globalsectionleft = useRef(null);
@@ -865,9 +864,9 @@ export default function Ofer() {
                             (state.Large_box || state.Standard_box) &&
                             !hideemptyboxes ? (
                             <div className="collectiondateleftwrp">
-                                <h1 className="collectiondateh3">
+                                <Typography variant="h1" component={'h2'} className="collectiondateh3">
                                     Your Empty Box Delivery Date
-                                </h1>
+                                </Typography>
                                 <p className="empyboxesleftwrpnaniniani">
                                     You have selected{" "}
                                     <strong>
@@ -924,9 +923,9 @@ export default function Ofer() {
                         ) : null}
 
                         <div className="collectiondaterightwrp">
-                            <h1 className="collectiondateh3">
+                            <Typography variant={'h1'} component={'h2'} className="collectiondateh3">
                                 Select Your Collection Date
-                            </h1>
+                            </Typography>
                             <p>
                                 Please select the date you would prefer your items
                                 to be collected.

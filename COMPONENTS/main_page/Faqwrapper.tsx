@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { MaxWidthContainer } from "../common/MaxWidthContainer";
+import Typography from '@mui/material/Typography'
 
 export default function FaqWrapper() {
     const [clicked, setclicked] = useState(null);
@@ -96,16 +97,16 @@ export default function FaqWrapper() {
             <MaxWidthContainer>
                 <div className="faqinsidewrp">
                     <p className="faqwrphowitworksp">F.A.Q</p>
-                    <h1 className="processwrptheprocess">
+                    <h2 className="processwrptheprocess">
                         Frequently Asked Questions
-                    </h1>
+                    </h2>
 
                     <div className="faqfaqwrp">
                         {qa.map((el, i) => {
                             return (
                                 <div className="faqfaqliner" key={i}>
                                     <div className="faqfaqinsidetop">
-                                        <h3 className="faqh3">{el.q}</h3>
+                                        <Typography sx={{ fontWeight: 700 }} className="faqh3">{el.q}</Typography>
 
                                         <button
                                             className={

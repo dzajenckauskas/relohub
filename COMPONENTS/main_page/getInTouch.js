@@ -4,6 +4,7 @@ import Footer from "../common/Footer";
 import Image from "next/image";
 import { validateEmail, validatePhoneNumber } from "@/UTILS/helperFunctions";
 import { MaxWidthContainer } from "../common/MaxWidthContainer";
+import Typography from "@mui/material/Typography";
 
 export default function GetInTOuch() {
     const [checkmark, setcheckmark] = useState(false);
@@ -101,7 +102,7 @@ export default function GetInTOuch() {
             <MaxWidthContainer>
                 {sendpopu ? messageSendpopup() : null}
                 <div className="getintouchglobalinsidewrp">
-                    <h1 className="gith1">Get In Touch</h1>
+                    <Typography variant="h1" component={'h2'} className="gith1">Get In Touch</Typography>
                     <p className="gitpm">
                         We love hearing from you-so please get in touch with any
                         questions or queries.

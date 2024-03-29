@@ -6,6 +6,7 @@ import PrivacyPolicy from "../main_page/footerPopups/privacyPolicy";
 import InclusionsExclusions from "../main_page/footerPopups/inclusionsExclusions";
 import FAQ from "../main_page/footerPopups/faq";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 export default function Footer() {
     const [clicked, setclicked] = useState(null);
@@ -35,7 +36,7 @@ export default function Footer() {
                 <section className="popupmainwrp">
                     <Stack className="closebuttonandscrollwrp" sx={{ position: 'relative', top: { xs: 90, sm: 0 } }}>
                         <div className="alotoftexttopwrp">
-                            <h1 className="alotoftexttopwrph2">{clicked}</h1>
+                            <Typography variant="h2" className="alotoftexttopwrph2">{clicked}</Typography>
 
                             <button
                                 className="alotoftextclosebutton"

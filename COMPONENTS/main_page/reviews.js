@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { MaxWidthContainer } from "../common/MaxWidthContainer";
 import { Stack } from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 const car = [
     {
@@ -163,9 +164,9 @@ const Carousel = () => {
                     <p className="faqwrphowitworksp">REVIEWS</p>
 
                     <div className="reviewssecondwrp">
-                        <h1 className="reviewh1">
+                        <Typography variant={'h1'} component={'h2'} className="reviewh1">
                             What<br></br> People<br></br> Say
-                        </h1>
+                        </Typography>
 
                         <div className="reviewscarouselwrp">
                             <button

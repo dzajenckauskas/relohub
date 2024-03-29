@@ -1,10 +1,11 @@
 "use client";
-import {useStripe, useElements, CardElement} from "@stripe/react-stripe-js";
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import Image from "next/image";
 import Link from "next/link";
-import {useState} from "react";
+import { useState } from "react";
+import Typography from "@mui/material/Typography";
 
-export default function OfferPopup({hidePopup, state, prices}) {
+export default function OfferPopup({ hidePopup, state, prices }) {
     const stripe = useStripe();
     const elements = useElements();
     const [selected, setselected] = useState(null);
@@ -21,7 +22,7 @@ export default function OfferPopup({hidePopup, state, prices}) {
 
             return (
                 <div className="methodpopuppriceswrp">
-                    <h1>£{split[0]}</h1>
+                    <Typography variant={'h1'} component={'h2'}>£{split[0]}</Typography>
                     <p>{split[1]}</p>
                 </div>
             );
@@ -117,7 +118,7 @@ export default function OfferPopup({hidePopup, state, prices}) {
             await fetch("/api/email/neworder", {
                 method: "POST",
                 body: JSON.stringify(state),
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
             });
         } catch (error) {
             console.log(error);
@@ -164,7 +165,7 @@ export default function OfferPopup({hidePopup, state, prices}) {
                                 <Image
                                     alt={el.name}
                                     src={el.image}
-                                    style={{objectFit: "contain"}}
+                                    style={{ objectFit: "contain" }}
                                     width={56}
                                     height={56}
                                 />
@@ -225,7 +226,7 @@ export default function OfferPopup({hidePopup, state, prices}) {
         }
         const cardElement = elements.getElement(CardElement);
 
-        const {error, paymentMethod} = await stripe.createPaymentMethod({
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: "card",
             card: cardElement,
             billing_details: {
@@ -391,8 +392,8 @@ export default function OfferPopup({hidePopup, state, prices}) {
             {ordercompleted
                 ? null
                 : showstripepopup
-                ? stripefn()
-                : pricesPopup()}
+                    ? stripefn()
+                    : pricesPopup()}
             {ordercompleted ? afterPayment() : null}
         </section>
     );
