@@ -29,8 +29,8 @@ export default async function Home() {
                         className="herobckgimg"
                         alt="backgorund"
                         src={"/herobg.svg"}
-                        fill={true}
-                    ></Image>
+                        fill
+                    />
                 </div>
                 <MaxWidthContainer>
                     <MainPageHeroArea />
