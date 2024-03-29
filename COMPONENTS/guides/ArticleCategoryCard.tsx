@@ -20,7 +20,7 @@ const ArticleCategoryCard = ({ category }: Props) => {
 
             <Stack
                 sx={{
-                    height: { md: '450px', sm: '200px', xs: '150px' },
+                    height: { md: '450px', sm: '200px', xs: '120px' },
                     position: 'relative',
                     width: '100%',
                     transition: 'transform 0.3s ease',

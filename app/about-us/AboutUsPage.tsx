@@ -109,33 +109,32 @@ const AboutUsPage = ({ articleContinents }: Props) => {
     return (
         <PageLayout>
             <Stack sx={{ backgroundColor: '#efefef' }}>
-                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', pb: 6 }}>
-                    <Stack>
-                        <Stack sx={{
-                            display: 'flex', flexDirection: 'column',
+                <MaxWidthContainer>
+                    <Stack sx={{
+                        display: 'flex', flexDirection: 'column',
+                    }}>
+                        <Stack direction={'row'} justifyContent={'flex-start'} spacing={1} sx={{
+                            paddingTop: '10px',
+                            marginBottom: '20px',
+                            alignItems: 'center',
                         }}>
-                            <Stack direction={'row'} justifyContent={'flex-start'} spacing={1} sx={{
-                                paddingTop: '10px',
-                                marginBottom: '20px',
-                                alignItems: 'center'
-                            }}>
-                                <Link passHref href={'/'}>
-                                    <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
-                                        Home
-                                    </Typography>
-                                </Link>
-                                <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
-                                    {'/'}
+                            <Link passHref href={'/'}>
+                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
+                                    Home
                                 </Typography>
-                                <Typography variant='body2' sx={{ fontWeight: 500, color: theme.palette.primary.main }}>
-                                    About us
-                                </Typography>
-                            </Stack>
-
-                            <Typography variant={'h1'} sx={{ pt: 1, pb: 2 }}>
-                                About us
+                            </Link>
+                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
+                                {'/'}
+                            </Typography>
+                            <Typography variant='body2' sx={{ fontWeight: 400, }}>
+                                {"About us"}
                             </Typography>
                         </Stack>
+                        <Typography variant='h1' sx={{ pb: 2 }}>{"About us"}</Typography>
+                    </Stack>
+                </MaxWidthContainer>
+                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', pb: 6 }}>
+                    <Stack>
                         <Stack direction={{ md: 'row', xs: 'column' }} spacing={{ xs: 4, md: 8 }}>
                             <Stack sx={{ width: '100%' }}>
                                 <Typography variant={'h2'} sx={{ pb: 2 }}>

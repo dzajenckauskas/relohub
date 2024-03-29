@@ -70,13 +70,9 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
             <main style={{
                 backgroundColor: "#efefef"
             }}>
-                <MaxWidthContainer sx={{
-                    display: 'flex', flexDirection: 'column',
-                    backgroundColor: "#efefef",
-                    width: '100%'
-                }}>
+                <MaxWidthContainer>
                     <Stack sx={{
-                        width: '100%'
+                        display: 'flex', flexDirection: 'column',
                     }}>
                         <Stack direction={'row'} justifyContent={'flex-start'} spacing={1} sx={{
                             paddingTop: '10px',
@@ -103,9 +99,17 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                                 {category.attributes?.name}
                             </Typography>
                         </Stack>
-                        <Typography variant='h1' sx={{ pt: 0, pb: 2 }}>
-                            {category.attributes?.name}
-                        </Typography>
+                        <Typography variant='h1' sx={{ pb: 2 }}>{category.attributes?.name}</Typography>
+                    </Stack>
+                </MaxWidthContainer>
+                <MaxWidthContainer sx={{
+                    display: 'flex', flexDirection: 'column',
+                    backgroundColor: "#efefef",
+                    width: '100%'
+                }}>
+                    <Stack sx={{
+                        width: '100%'
+                    }}>
                         <Typography variant='body2' color={theme.palette.secondary.main} sx={{ pb: 2, fontWeight: 600 }}>
                             {'Filter by continent:'}
                         </Typography>
