@@ -52,7 +52,7 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
             <Button key={ac.id}
                 onClick={() => setActive(ac.attributes.key)}
                 style={{
-                    padding: '12px 22px',
+                    padding: '10px 18px',
                     borderRadius: '2px',
                     fontSize: 12,
                     cursor: 'pointer',
@@ -82,6 +82,9 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                         <Typography variant='h1' sx={{ pb: 4 }}>
                             {category.attributes?.name}
                         </Typography>
+                        <Typography variant='body2' color={theme.palette.secondary.main} sx={{ pb: 2, fontWeight: 600 }}>
+                            {'Filter by continent:'}
+                        </Typography>
 
                         <Stack direction={'row'} sx={{
                             display: 'flex',
@@ -92,7 +95,7 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                             <Button
                                 onClick={() => setActive('all-posts')}
                                 style={{
-                                    padding: '12px 22px',
+                                    padding: '10px 18px',
                                     borderRadius: '2px',
                                     fontSize: 12,
                                     cursor: 'pointer',

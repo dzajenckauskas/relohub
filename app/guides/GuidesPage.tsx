@@ -24,10 +24,10 @@ const GuidesPage = ({ categories }: Props) => {
                 <MaxWidthContainer>
                     <Stack sx={{
                         paddingTop: '40px',
-                        paddingBottom: '40px',
+                        paddingBottom: '30px',
                         display: 'flex', flexDirection: 'column',
                     }}>
-                        <Typography variant='h1'>Guides</Typography>
+                        <Typography variant='h1'>Guides categories</Typography>
                     </Stack>
                 </MaxWidthContainer>
                 <Stack sx={{
