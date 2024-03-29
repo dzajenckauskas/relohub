@@ -113,7 +113,7 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                     <Stack sx={{
                         display: 'flex', flexDirection: 'column',
                     }}>
-                        <Stack direction={'row'} justifyContent={'flex-start'} spacing={1} sx={{
+                        <Stack direction={'row'} justifyContent={'flex-start'} spacing={.5} sx={{
                             paddingTop: '10px',
                             marginBottom: '20px',
                             alignItems: 'center',

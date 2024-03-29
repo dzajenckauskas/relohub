@@ -94,7 +94,7 @@ const ArticlePage = ({ article }: Props) => {
             }}>
                 <MaxWidthContainer>
                     <Stack ref={containerRef} sx={{ display: 'flex', flexDirection: 'column', overflowX: 'hidden' }}>
-                        <Stack direction={'row'} justifyContent={'flex-start'} spacing={1} sx={{
+                        <Stack direction={'row'} justifyContent={'flex-start'} spacing={.5} sx={{
                             paddingTop: '10px',
                             marginBottom: '20px',
                             alignItems: 'center',
@@ -124,7 +124,10 @@ const ArticlePage = ({ article }: Props) => {
                             <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
                                 {' / '}
                             </Typography>
-                            <Typography variant='body2' noWrap title={article?.data?.attributes?.title}> {/* Added title attribute for full text on hover */}
+                            <Typography sx={{ display: { xs: 'none', sm: 'flex' } }} variant='body2' noWrap title={article?.data?.attributes?.title}>
+                                {article?.data?.attributes?.title}
+                            </Typography>
+                            <Typography sx={{ display: { xs: 'flex', sm: 'none' } }} variant='body2' noWrap title={article?.data?.attributes?.title}>
                                 {getTruncatedText(article?.data?.attributes?.title, availableWidth)}
                             </Typography>
                         </Stack>
