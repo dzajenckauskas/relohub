@@ -1154,7 +1154,7 @@ th {
 .offerbookingdetailswrp {
     background: #fff;
     padding: 24px;
-    margin-top: 42px;
+    /* margin-top: -2px; */
     position: relative;
 }
 
