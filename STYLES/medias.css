@@ -1,4 +1,4 @@
-@media screen and (width <= 1200px) {
+@media screen and (width <=1200px) {
     .carouselmainwrpoutside {
         max-width: 600px;
     }
@@ -19,7 +19,7 @@
     }
 }
 
-@media screen and (width <= 1100px) {
+@media screen and (width <=1100px) {
     .offerbookingdetailsinputswrp {
         display: flex;
         flex-direction: column;
@@ -27,7 +27,8 @@
     }
 }
 
-@media screen and (width <= 1000px) {
+@media screen and (width <=1000px) {
+
     .boxesandluggagestandardwrp,
     .boxesandluggageownwrp {
         grid-template-columns: 1fr;
@@ -120,7 +121,7 @@
     }
 }
 
-@media screen and (width <= 900px) {
+@media screen and (width <=900px) {
     .offerbuttonswrp {
         margin: 4px 0;
         margin-top: 0;
@@ -157,6 +158,7 @@
 
     .getestimatebutton {
         width: 100%;
+        margin: 20px 20px 40px 20px;
     }
 
     .offerbuttonswrp {
@@ -284,7 +286,7 @@
     }
 }
 
-@media screen and (width <= 800px) {
+@media screen and (width <=800px) {
     .customiteminput {
         width: 100%;
     }
@@ -317,7 +319,8 @@
     }
 }
 
-@media screen and (width <= 700px) {
+@media screen and (width <=700px) {
+
     .processglobalwrapper,
     .faqglobalwrp,
     .reviewsglobalwrp,
@@ -385,7 +388,7 @@
     }
 }
 
-@media screen and (width <= 600px) {
+@media screen and (width <=600px) {
     .offeritemsmissingcenterwrp {
         padding-bottom: 80px;
     }
@@ -630,7 +633,7 @@
     }
 }
 
-@media screen and (width <= 500px) {
+@media screen and (width <=500px) {
     .sofa2notfilledwrpimgwrp {
         display: none;
     }
@@ -805,7 +808,7 @@
     }
 }
 
-@media screen and (width <= 400px) {
+@media screen and (width <=400px) {
     .processimagewrappertextwrp {
         column-gap: 40px;
         transform: translateY(93px);
