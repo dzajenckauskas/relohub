@@ -7,6 +7,7 @@ import { CategoryDataType } from '../types/CategoryTypes';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { ExpandButton } from '../common/ExpandButton';
+import { LinkArrowButton } from '../common/LinkArrowButton';
 type Props = {
     category?: CategoryDataType;
 }
@@ -74,7 +75,7 @@ const ArticleCategoryCard = ({ category }: Props) => {
                         }}>
                         {category.attributes.name}
                     </Typography>
-                    <ExpandButton />
+                    <LinkArrowButton />
                 </Link>
             </Stack>
             {/* </Link> */}
