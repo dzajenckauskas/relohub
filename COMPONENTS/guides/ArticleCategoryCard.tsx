@@ -4,6 +4,9 @@ import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CategoryDataType } from '../types/CategoryTypes';
+import Button from '@mui/material/Button';
+import { useState } from 'react';
+import { ExpandButton } from '../common/ExpandButton';
 type Props = {
     category?: CategoryDataType;
 }
@@ -71,23 +74,7 @@ const ArticleCategoryCard = ({ category }: Props) => {
                         }}>
                         {category.attributes.name}
                     </Typography>
-                    <Stack
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: '#e71c5e',
-                            borderRadius: 50,
-                            width: '40px',
-                            height: '40px',
-                            color: '#fff',
-                            transition: 'transform 0.3s ease',
-                            ":hover": {
-                                transform: 'rotate(90deg)',
-                            }
-                        }}>
-                        <p style={{ fontSize: 24, padding: 0, margin: 0, position: 'relative', bottom: 1, fontWeight: 600 }}>+</p>
-                    </Stack>
+                    <ExpandButton />
                 </Link>
             </Stack>
             {/* </Link> */}

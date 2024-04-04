@@ -3,6 +3,7 @@ import { useState } from "react";
 import { MaxWidthContainer } from "../common/MaxWidthContainer";
 import Typography from '@mui/material/Typography'
 import { theme } from "../common/Theme";
+import { ExpandButton } from "../common/ExpandButton";
 
 export default function FaqWrapper() {
     const [clicked, setclicked] = useState(null);
@@ -109,7 +110,7 @@ export default function FaqWrapper() {
                                     <div className="faqfaqinsidetop">
                                         <Typography variant={'h4'} sx={{ fontWeight: 700, color: theme.palette.secondary.main }}>{el.q}</Typography>
 
-                                        <button
+                                        {/* <button
                                             className={
                                                 clicked === el.q
                                                     ? "faqbuttonclicked"
@@ -122,7 +123,14 @@ export default function FaqWrapper() {
                                             }}
                                         >
                                             {clicked === el.q ? "+" : "-"}
-                                        </button>
+                                        </button> */}
+                                        <ExpandButton
+                                            onClick={() => {
+                                                setclicked(
+                                                    clicked === el.q ? null : el.q,
+                                                );
+                                            }}
+                                        />
                                     </div>
 
                                     {clicked === el.q ? (
