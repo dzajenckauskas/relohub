@@ -11,7 +11,7 @@ const TopNavBar = () => {
             sx={{
                 maxWidth: 'lg',
                 pb: .2,
-                height: 30,
+                height: { xs: 30, sm: 40 },
                 display: { md: 'none', xs: 'flex' },
                 position: 'relative', zIndex: 9,
                 backgroundColor: theme.palette.secondary.main
@@ -21,7 +21,7 @@ const TopNavBar = () => {
                 sx={{
                     textTransform: 'uppercase',
                     fontWeight: 700,
-                    fontSize: 12,
+                    fontSize: { xs: 12, sm: 16 },
                 }}>
                 have questions?&nbsp;call us
             </Typography>
@@ -51,7 +51,7 @@ const TopNavBar = () => {
                     sx={{
                         textTransform: 'uppercase',
                         fontWeight: 700,
-                        fontSize: 17,
+                        fontSize: { xs: 18, sm: 22 },
                     }}>
                     0333 090 7053
                 </Typography>

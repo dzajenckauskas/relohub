@@ -2,7 +2,6 @@
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import Button from '@mui/material/Button';
-import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Image from "next/image";
@@ -11,8 +10,8 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import CustomerPortalIcon from './CustomerPortalIcon';
 import HeaderPinkElement from "./HeaderPinkElement";
-import TopNavBar from './TopNavBar';
 import { theme } from './Theme';
+import TopNavBar from './TopNavBar';
 
 export default function Header() {
     const loginUrl = 'https://admin.deliver1.co.uk/customerPortal/login'
@@ -165,7 +164,7 @@ export default function Header() {
                     </Stack>
                 </Stack>
             </header>
-            <Stack sx={{ height: { md: 60, xs: 90 }, width: '100%', backgroundColor: '#efefef' }}>
+            <Stack sx={{ height: { md: 60, sm: 100, xs: 90 }, width: '100%', backgroundColor: '#efefef' }}>
             </Stack>
             {open &&
                 <Stack sx={{
