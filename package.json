@@ -11,6 +11,7 @@
     "dependencies": {
         "@emotion/react": "^11.11.4",
         "@emotion/styled": "^11.11.0",
+        "@hookform/resolvers": "^3.3.4",
         "@mui/icons-material": "^5.15.14",
         "@mui/material": "^5.15.14",
         "@stripe/react-stripe-js": "^2.4.0",
@@ -22,10 +23,12 @@
         "react": "^18",
         "react-calendar": "^4.8.0",
         "react-dom": "^18",
+        "react-hook-form": "^7.51.2",
         "react-window": "^1.8.10",
         "sharp": "^0.33.2",
         "stripe": "^14.12.0",
-        "swr": "^2.2.5"
+        "swr": "^2.2.5",
+        "yup": "^1.4.0"
     },
     "devDependencies": {
         "@types/react": "18.2.69",

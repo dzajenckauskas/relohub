@@ -965,7 +965,6 @@ export default function Ofer() {
                         GET ESTIMATE
                     </button>
                 </section>
-                {/* <GetInTOuch /> */}
             </div>
         </PageLayout>
     );

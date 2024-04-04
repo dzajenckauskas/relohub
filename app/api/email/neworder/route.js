@@ -1,5 +1,5 @@
-import {newOrder} from "@/EMAILHTML/newOrder";
-import {NextResponse} from "next/server";
+import { newOrder } from "@/EMAILHTML/newOrder";
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
     const json = await req.json();
@@ -17,7 +17,7 @@ export async function POST(req) {
     });
     let to =
         process.env.NODE_ENV === "development"
-            ? `aitvariux@yahoo.co.uk`
+            ? `1000kaktusu@gmail.com`
             : `operations@deliver1.co.uk`;
     let mailOptions = {
         from: process.env.EMAIL,
@@ -34,5 +34,5 @@ export async function POST(req) {
         }
     });
 
-    return NextResponse.json("", {status: 200});
+    return NextResponse.json("", { status: 200 });
 }

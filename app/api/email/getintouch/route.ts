@@ -1,5 +1,5 @@
-import {getInTouchHTML} from "@/EMAILHTML/getintouch";
-import {NextResponse} from "next/server";
+import { getInTouchHTML } from "@/EMAILHTML/getintouch";
+import { NextResponse } from "next/server";
 
 export async function POST(req, res) {
     const json = await req.json();
@@ -17,7 +17,7 @@ export async function POST(req, res) {
     });
     let to =
         process.env.NODE_ENV === "development"
-            ? `aitvariux@yahoo.co.uk`
+            ? `1000kaktusu@gmail.com`
             : `hello@deliver1.co.uk`;
     let mailOptions = {
         from: `hello@deliver1.co.uk`, // sender address
@@ -34,5 +34,5 @@ export async function POST(req, res) {
         }
     });
 
-    return NextResponse.json("", {status: 200});
+    return NextResponse.json("", { status: 200 });
 }

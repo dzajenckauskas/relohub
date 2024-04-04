@@ -1,6 +1,33 @@
 import { createTheme } from '@mui/material/styles';
 
 export const theme = createTheme({
+    components: {
+        MuiOutlinedInput: {
+            styleOverrides: {
+                root: ({ theme }) => theme.unstable_sx({
+                    'label + &': {
+                        marginTop: theme.spacing(2),
+                    },
+                    // borderRadius: 0,
+                    backgroundColor: theme.palette.info.main
+                }),
+                input: ({ theme }) => theme.unstable_sx({
+                    // backgroundColor: theme.palette.info.main
+                }),
+                multiline: ({ theme }) => theme.unstable_sx({
+                    backgroundColor: theme.palette.info.main
+                }),
+            }
+        },
+        MuiFormLabel: {
+            styleOverrides: {
+                root: ({ theme }) => theme.unstable_sx({
+                    color: `${theme.palette.info.main} !important`,
+                    // borderRadius: 0,
+                }),
+            }
+        },
+    },
     typography: {
         h1: {
             fontFamily: 'inherit',
@@ -86,7 +113,7 @@ export const theme = createTheme({
         },
         caption: {
             fontFamily: 'inherit',
-            fontSize: 10
+            fontSize: 12
 
         }
     },
@@ -107,7 +134,7 @@ export const theme = createTheme({
             disabled: '#7d7c83',
         },
         error: {
-            main: '#00F'
+            main: '#e71c5e',
         }
     }
 })

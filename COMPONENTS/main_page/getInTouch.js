@@ -1,63 +1,53 @@
 "use client";
-import { useEffect, useState } from "react";
-import Footer from "../common/Footer";
-import Image from "next/image";
-import { validateEmail, validatePhoneNumber } from "@/UTILS/helperFunctions";
-import { MaxWidthContainer } from "../common/MaxWidthContainer";
 import Typography from "@mui/material/Typography";
+import Image from "next/image";
+import { useState } from "react";
+import Footer from "../common/Footer";
+import { MaxWidthContainer } from "../common/MaxWidthContainer";
+import ContactForm from "../common/forms/ContactForm";
 
 export default function GetInTOuch() {
-    const [checkmark, setcheckmark] = useState(false);
-    const [values, setvalues] = useState({});
-    const [allowToSend, setAllowToSend] = useState(false);
+    // const [checkmark, setcheckmark] = useState(false);
+    // const [values, setvalues] = useState({});
+    // const [allowToSend, setAllowToSend] = useState(false);
     const [sendpopu, setsendpopup] = useState(false);
-    const [sending, setsending] = useState(false);
+    // const [sending, setsending] = useState(false);
 
-    const form = ["Name", "Phone Number", "Email Address"];
+    // const form = ["Name", "Phone Number", "Email Address"];
 
-    useEffect(() => {
-        let send = true;
+    // useEffect(() => {
+    //     let send = true;
 
-        Object.keys(values).forEach((key) => {
-            if (!values[key]) {
-                send = false;
-            }
+    //     Object.keys(values).forEach((key) => {
+    //         if (!values[key]) {
+    //             send = false;
+    //         }
 
-            if (!values.text) {
-                send = false;
-            }
-            if (key === "Email Address" && !validateEmail(values[key])) {
-                send = false;
-            }
-            if (key === "Phone Number" && !validatePhoneNumber(values[key])) {
-                send = false;
-            }
-        });
+    //         if (!values.text) {
+    //             send = false;
+    //         }
+    //         if (key === "Email Address" && !validateEmail(values[key])) {
+    //             send = false;
+    //         }
+    //         if (key === "Phone Number" && !validatePhoneNumber(values[key])) {
+    //             send = false;
+    //         }
+    //     });
 
-        for (const key of form) {
-            if (!values[key]) {
-                send = false;
-            }
-        }
+    //     for (const key of form) {
+    //         if (!values[key]) {
+    //             send = false;
+    //         }
+    //     }
 
-        if (!checkmark) {
-            send = false;
-        }
+    //     if (!checkmark) {
+    //         send = false;
+    //     }
 
-        setAllowToSend(send);
-    }, [values, checkmark]);
+    //     setAllowToSend(send);
+    // }, [values, checkmark]);
 
-    async function sendMessage(params) {
-        let res = await fetch("/api/email/getintouch", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(values),
-        });
 
-        if (res.ok) {
-            setsendpopup(true);
-        }
-    }
 
     function messageSendpopup() {
         return (
@@ -195,87 +185,8 @@ export default function GetInTOuch() {
                                 src={"/humanbox.png"}
                             ></Image>
                         </div>
-                        <div className="gitcenterrightwrp">
-                            <form className="gitform">
-                                <div className="gitformtop">
-                                    {form.map((el, i) => {
-                                        return (
-                                            <label className="gitformlabel" key={i}>
-                                                {el}:
-                                                <input
-                                                    spellCheck={false}
-                                                    required
-                                                    value={values[el] || ""}
-                                                    onChange={(e) => {
-                                                        let c = { ...values };
-
-                                                        c[el] = e.target.value;
-
-                                                        setvalues(c);
-                                                    }}
-                                                    type="text"
-                                                    className={
-                                                        values[el]
-                                                            ? "formlabelinput"
-                                                            : "formlabelinputrequired"
-                                                    }
-                                                ></input>
-                                            </label>
-                                        );
-                                    })}
-                                </div>
-                                <label className="gitformlabel">
-                                    How can we help?
-                                    <textarea
-                                        spellCheck={false}
-                                        required
-                                        onChange={(e) => {
-                                            let c = { ...values };
-
-                                            c.text = e.target.value;
-
-                                            setvalues(c);
-                                        }}
-                                        type="text"
-                                        className={
-                                            values.text
-                                                ? "formlabelinputtextarea"
-                                                : "formlabelinputtextareadisabled"
-                                        }
-                                    ></textarea>
-                                </label>
-                            </form>
-
-                            <div className="gitcheckboxwrp">
-                                <div
-                                    className={
-                                        checkmark ? "gitcheckboxch" : "gitcheckbox"
-                                    }
-                                    onClick={() => {
-                                        setcheckmark(checkmark ? false : true);
-                                    }}
-                                >
-                                    &#10003;
-                                </div>
-                                <p className="gitcheckboxp">
-                                    I consent to receive further communication
-                                    regarding this Contact Us request and confirm
-                                    that I agree to the storing and processing of my
-                                    personal details as described in the Privacy
-                                    Statement.
-                                </p>
-                            </div>
-                            <button
-                                disabled={!allowToSend}
-                                className="gitsendbutton"
-                                onClick={() => {
-                                    setsending(true);
-
-                                    sendMessage();
-                                }}
-                            >
-                                SEND MESSAGE
-                            </button>
+                        <div>
+                            <ContactForm />
                             <section className="pcfooter">
                                 <Footer />
                             </section>
