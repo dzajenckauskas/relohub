@@ -1,20 +1,23 @@
 import EastIcon from '@mui/icons-material/East';
 import Button from "@mui/material/Button";
 import { useState } from "react";
+import WestIcon from '@mui/icons-material/West';
+
 type Props = {
     onClick?: () => void;
+    variant?: 'contained' | 'outlined';
+    direction?: 'next' | 'back';
 }
 
-export const LinkArrowButton = ({ onClick }: Props) => {
+export const LinkArrowButton = ({ onClick, variant = 'contained', direction = 'next' }: Props) => {
     const [active, setActive] = useState(false)
     return (
         <Button
             aria-label="expand button"
-            variant={'contained'}
+            variant={variant}
             color='secondary'
             onClick={() => {
                 onClick && onClick()
-                setActive(!active)
             }}
             onMouseEnter={() => {
                 setActive(!active)
@@ -32,13 +35,20 @@ export const LinkArrowButton = ({ onClick }: Props) => {
                 height: '40px',
                 cursor: 'pointer',
             }}>
-            <EastIcon sx={{
-                width: 18,
-                height: 18,
-                transition: 'transform .8s ease',
-                transform: active ? 'scale(1.2)' : 'scale(1)'
-
-            }} />
+            {direction === 'next' &&
+                <EastIcon sx={{
+                    width: 18,
+                    height: 18,
+                    transition: 'transform .8s ease',
+                    transform: active ? 'scale(1.2)' : 'scale(1)'
+                }} />}
+            {direction === 'back' &&
+                <WestIcon sx={{
+                    width: 18,
+                    height: 18,
+                    transition: 'transform .8s ease',
+                    transform: active ? 'scale(1.2)' : 'scale(1)'
+                }} />}
         </Button>
     )
 }

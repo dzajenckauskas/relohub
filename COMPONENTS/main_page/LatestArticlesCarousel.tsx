@@ -1,13 +1,11 @@
 'use client'
-import EastIcon from '@mui/icons-material/East';
-import WestIcon from '@mui/icons-material/West';
-import { useState } from 'react';
-import useSWR from 'swr';
-import { MaxWidthContainer } from '../common/MaxWidthContainer';
-import ArticleCard from '../guides/ArticleCard';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import { useState } from 'react';
+import useSWR from 'swr';
+import { LinkArrowButton } from '../common/LinkArrowButton';
+import { MaxWidthContainer } from '../common/MaxWidthContainer';
+import ArticleCard from '../guides/ArticleCard';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -60,18 +58,20 @@ const LatestArticlesCarousel = () => {
             }}>
                 <Typography variant='h1' component={'h2'} sx={{ fontWeight: 700 }}>Latest Guides & Articles</Typography>
                 <Stack direction={'row'} spacing={1}>
-                    <Button variant='outlined' color='secondary' aria-label="Previous article"
+                    {/* <Button variant='outlined' color='secondary' aria-label="Previous article"
                         sx={{ borderRadius: 50, minWidth: 0, height: 40, width: 40 }}
                         onClick={handlePrevious}
                     >
                         <WestIcon sx={{ fontSize: 18 }} />
-                    </Button>
-                    <Button variant='outlined' color='secondary' aria-label="Next article"
+                    </Button> */}
+                    <LinkArrowButton variant={'outlined'} direction={'back'} onClick={handlePrevious} />
+                    <LinkArrowButton variant={'outlined'} direction={'next'} onClick={handleNext} />
+                    {/* <Button variant='outlined' color='secondary' aria-label="Next article"
                         sx={{ borderRadius: 50, minWidth: 0, height: 40, width: 40 }}
                         onClick={handleNext}
                     >
                         <EastIcon sx={{ fontSize: 18 }} />
-                    </Button>
+                    </Button> */}
                 </Stack>
             </MaxWidthContainer>
             <MaxWidthContainer sx={{
