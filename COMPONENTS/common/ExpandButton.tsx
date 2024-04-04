@@ -28,14 +28,24 @@ export const ExpandButton = ({ onClick }: Props) => {
                 minWidth: 40,
                 height: '40px',
                 cursor: 'pointer',
-                transition: active ? 'transform .3s ease-in' : 'transform .5s ease-in',
+                transition: active ?
+                    'transform .3s ease-in' :
+                    'transform .5s ease-in',
                 ":hover": {
-                    transform: active ? 'rotate(0deg)' : 'rotate(-90deg)',
+                    transform: active ?
+                        'rotate(0deg)' :
+                        'rotate(-90deg)',
                 }
             }}>
             {active ?
-                <RemoveIcon fontSize={'large'} /> :
-                <AddIcon fontSize={'large'} />
+                <RemoveIcon sx={{
+                    width: 22,
+                    height: 22,
+                }} /> :
+                <AddIcon sx={{
+                    width: 22,
+                    height: 22,
+                }} />
             }
         </Button>
     )
