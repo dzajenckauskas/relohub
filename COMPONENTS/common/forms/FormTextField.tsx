@@ -44,10 +44,8 @@ export const FormTextField = ({ defaultValue, multiline, rows, fullWidth, disabl
     const { register, formState: { errors } } = form
     const error = errors?.[name]
 
-
-
     return (
-        <FormControl variant="standard" color='secondary' fullWidth={fullWidth}>
+        <FormControl variant="standard" color='info' fullWidth={fullWidth}>
             <Typography component={FormLabel}
                 htmlFor={`${name}-input`}
                 variant='body1'

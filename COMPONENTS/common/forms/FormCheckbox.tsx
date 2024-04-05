@@ -23,6 +23,10 @@ const FormCheckbox = ({ control, label, name, form }: Props) => {
                     alignContent: 'flex-start',
                     display: 'flex',
                     flexDirection: 'row',
+                    '.MuiSvgIcon-root': {
+                        width: 30,
+                        height: 30
+                    }
                 }}
                     control={<Checkbox sx={{ mt: -.8, ml: -1.5 }} color={'secondary'} size='large' checked={Boolean(value)} onChange={onChange} />}
                     label={<Typography variant='body1' color={!!error?.message ? 'secondary' : '#fff'}>

@@ -37,15 +37,7 @@ export const theme = createTheme({
                     fontWeight: 600
                 }),
             }
-        },
-        MuiSvgIcon: {
-            styleOverrides: {
-                root: ({ theme }) => theme.unstable_sx({
-                    width: 30,
-                    height: 30,
-                }),
-            }
-        },
+        }
     },
     typography: {
         h1: {
