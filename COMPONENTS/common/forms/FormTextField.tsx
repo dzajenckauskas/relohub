@@ -20,52 +20,23 @@ type Props = {
     form: UseFormReturn<any, any, undefined>
 }
 
-export const BootstrapInput = styled(InputBase)(({ theme }) => ({
+export const BootstrapInput = styled(InputBase)(({ theme, error }) => ({
     'label + &': {
         marginTop: 5,
-        // color: "#fff"
     },
     '& .MuiInputBase-input': {
         borderRadius: 4,
         position: 'relative',
-        backgroundColor: theme.palette.mode === 'light' ? '#F3F6F9' : '#1A2027',
+        backgroundColor: '#fff',
         border: '1px solid',
-        // boxShadow: !!error ? `${alpha(theme.palette.secondary.main, 0.25)} 0 0 0 2px` : 'none',
-        // borderColor: !!error ? theme.palette.secondary.main : 'none',
-        // borderColor: theme.palette.mode === 'light' ? '#E0E3E7' : '#2D3843',
-        // fontSize: 16,
+        boxShadow: error ? `${alpha(theme.palette.secondary.main, 0.25)} 0 0 0 2px` : 'none',
+        borderColor: error ? theme.palette.secondary.main : 'none',
         width: '100%',
         padding: '14px 12px',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        // Use the system font instead of the default Roboto font.
-        // fontFamily: [
-        //     '-apple-system',
-        //     'BlinkMacSystemFont',
-        //     '"Segoe UI"',
-        //     'Roboto',
-        //     '"Helvetica Neue"',
-        //     'Arial',
-        //     'sans-serif',
-        //     '"Apple Color Emoji"',
-        //     '"Segoe UI Emoji"',
-        //     '"Segoe UI Symbol"',
-        // ].join(','),
         '&:focus': {
-            boxShadow: `${alpha(theme.palette.secondary.main, 0.25)} 0 0 0 2px`,
-            borderColor: theme.palette.secondary.main,
-            // borderWidth: 2
-            // boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;',
+            boxShadow: `${alpha(theme.palette.info.main, 0.15)} 0px 0px 0px 3px`,
+            borderColor: theme.palette.info.main,
         },
-        '&:error': {
-            boxShadow: `${alpha(theme.palette.secondary.main, 0.25)} 0 0 0 2px`,
-            borderColor: theme.palette.secondary.main,
-        },
-
-
     },
 }));
 
@@ -77,18 +48,13 @@ export const FormTextField = ({ defaultValue, multiline, rows, fullWidth, disabl
 
     return (
         <FormControl variant="standard" color='secondary' fullWidth={fullWidth}>
-            {/* <InputLabel sx={{
-                color: '#fff',
-            }} required={required} shrink htmlFor={`${name}-input`}> */}
             <Typography component={FormLabel}
                 htmlFor={`${name}-input`}
                 variant='body1'
                 sx={{ fontWeight: 500 }}
-                // sx={{ fontSize: "20px !important" }}
                 color={error?.message ? 'error' : theme.palette.info.main}>
                 {label}
             </Typography>
-            {/* </InputLabel> */}
             <BootstrapInput
                 type={type}
                 fullWidth={fullWidth}
@@ -105,52 +71,13 @@ export const FormTextField = ({ defaultValue, multiline, rows, fullWidth, disabl
                     "& input[type=number]": {
                         MozAppearance: "textfield",
                     },
-                    input: {
-                        backgroundColor: '#fff',
-                    }
                 }}
                 {...register(name)}
-                // onChange={(e) => {
-                //     form.setValue(name, e.target.value, { shouldValidate: true })
-                // }}
-                // value={form.getValues(name)}
                 error={!!error?.message}
                 defaultValue={defaultValue}
                 id={`${name}-input`}
             />
             <ErrorBox error={`${error?.message ?? ''}`} />
         </FormControl >
-        // <Stack>
-        //     {/* <Typography component={FormLabel}
-        //         required={required}
-        //         // variant='body1'
-        //         sx={{ fontSize: "16px !important" }}
-        //         color={error?.message ? 'error' : theme.palette.primary.dark}>
-        //         {label}
-        //     </Typography> */}
-        //     <BootstrapInput disabled={disabled} size={size}
-        //         className={!!error?.message ?
-        //             "animate__animated animate__headShake"
-        //             : ""}
-        //         type={type}
-        //         // sx={{ height: 40 }}
-        //         // label={<Typography component={FormLabel}
-        //         //     required={required}
-        //         //     // variant='body1'
-        //         //     sx={{ fontSize: "16px !important" }}
-        //         //     color={error?.message ? 'error' : theme.palette.primary.dark}>
-        //         //     {label}
-        //         // </Typography>}
-        //         rows={rows}
-        //         // InputLabelProps={{ shrink: true }}
-        //         multiline={multiline}
-        //         fullWidth={fullWidth}
-        //         {...register(name)}
-        //         name={name}
-        //         error={!!error?.message}
-        //     // helperText={error?.message && `${error?.message}`}
-        //     />
-        //     <ErrorBox error={error?.message && `${error?.message}`} />
-        // </Stack>
     )
 }
