@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Typography from '@mui/material/Typography'
 import { theme } from "../common/Theme";
 import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
 export default function MainPageHeroArea() {
     const router = useRouter();
@@ -51,7 +52,7 @@ export default function MainPageHeroArea() {
                     enableButton={(st) => {
                         setEnableButton(st);
                     }} edit={undefined} newstate={undefined} />
-                <button
+                <Button variant="contained" color="secondary"
                     disabled={!enableButton}
                     className="herobuttongetestimate"
                     onClick={() => {
@@ -62,7 +63,7 @@ export default function MainPageHeroArea() {
                         );
                     }}>
                     GET ESTIMATE
-                </button>
+                </Button>
             </Stack>
         </Stack>
     );

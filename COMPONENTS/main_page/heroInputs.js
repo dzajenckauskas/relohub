@@ -1,6 +1,6 @@
 "use client";
-
 import Image from "next/image";
+import Button from "@mui/material/Button";
 import { useEffect, useRef, useState } from "react";
 import { FixedSizeList as List } from "react-window";
 
@@ -454,19 +454,11 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                 setSelectedField(null);
                             }}
                         >
-                            {/* {el.iso &&
-                                <Image
-                                    alt={"flag"}
-
-                                    src={`/flags/${el.iso.toLowerCase()}.svg`}
-                                    width={24}
-                                    height={16}
-                                    style={{ objectFit: "cover" }}
-                                />} */}
-                            {el.iso && <img
+                            {el.iso && <Image
                                 className="flag-ico"
                                 loading="lazy"
                                 width={24}
+                                height={16}
                                 style={{ objectFit: "contain" }}
                                 src={`https://flagcdn.com/w20/${el.iso.toLowerCase()}.png`}
                                 alt={`${el.iso} flag`}
@@ -545,7 +537,9 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
             >
                 <section className="heroareaselectionh3andclosebuttonwrp" style={{ top: 90, zIndex: 100 }}>
                     <h3 className="heroselectionh3">{el.label}:</h3>
-                    <button
+                    <Button
+                        variant="contained"
+                        color="info"
                         className="selectionlistclosebtrn"
                         onClick={(e) => {
                             e.preventDefault();
@@ -555,9 +549,9 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                         }}
                     >
                         &#x2715;
-                    </button>
+                    </Button>
                 </section>
-                <section className="letterssection" style={{ marginTop: 143 }}>
+                <section className="letterssection">
                     {letters.map((el, i) => {
                         return (
                             <p
