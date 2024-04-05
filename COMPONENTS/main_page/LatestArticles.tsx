@@ -37,7 +37,6 @@ const LatestArticles = () => {
         <Stack sx={{ width: '100%', backgroundColor: '#fff', mt: 6 }}>
             <MaxWidthContainer>
                 <Stack sx={{
-                    pt: 4,
                     pb: 8,
                     width: '100%',
                     display: 'flex', flexDirection: 'column',

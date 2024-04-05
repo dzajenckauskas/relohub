@@ -65,15 +65,25 @@ const LatestArticlesCarousel = () => {
             <MaxWidthContainer sx={{
                 pb: { xs: 4, md: 8 }
             }}>
-                {isLoading ? (
-                    <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mt: 4, justifyContent: 'center', width: '100%' }}>
-                        {renderLatestArticlesLoading}
-                    </Stack>
-                ) : (
-                    <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mt: 4, justifyContent: 'center', width: '100%' }}>
-                        {displayedArticles}
-                    </Stack>
-                )}
+                {isLoading &&
+                    <>
+                        <Stack display={{ xs: 'flex', md: 'none' }} direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mt: 4, justifyContent: 'center', width: '100%' }}>
+                            {renderLatestArticlesLoading[0]}
+                        </Stack>
+                        <Stack display={{ xs: 'none', md: 'flex' }} direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mt: 4, justifyContent: 'center', width: '100%' }}>
+                            {renderLatestArticlesLoading}
+                        </Stack>
+                    </>}
+                {!isLoading &&
+                    <>
+                        <Stack display={{ xs: 'flex', md: 'none' }} direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mt: 4, justifyContent: 'center', width: '100%' }}>
+                            {displayedArticles[0]}
+                        </Stack>
+                        <Stack display={{ xs: 'none', md: 'flex' }} direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mt: 4, justifyContent: 'center', width: '100%' }}>
+                            {displayedArticles}
+                        </Stack>
+                    </>
+                }
             </MaxWidthContainer>
         </Stack>
     )
