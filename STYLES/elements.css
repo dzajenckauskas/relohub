@@ -585,9 +585,9 @@
 .paywithstripebutton:hover,
 .gitsendbutton:hover,
 .videopresentationtroundbutton:hover,
-.offerdeliveryeditbtn:hover,
-.customitemaddbutton:hover,
-.getestimatebutton:hover {
+/* .getestimatebutton:hover */
+/* .customitemaddbutton:hover, */
+.offerdeliveryeditbtn:hover {
     background: #000;
     color: white;
 }

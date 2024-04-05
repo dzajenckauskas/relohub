@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from "react";
 import Calendar from "react-calendar";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC);
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
 export default function Ofer() {
     const globalsectionleft = useRef(null);
@@ -403,7 +404,8 @@ export default function Ofer() {
                         );
                     })
                     : null}
-                <button
+                <Button
+                    variant="contained" color="secondary"
                     className="customitemaddbutton"
                     onClick={() => {
                         if (showcustomiteminputs) {
@@ -431,7 +433,7 @@ export default function Ofer() {
                     }}
                 >
                     ADD ITEM
-                </button>
+                </Button>
             </div>
         );
     }
@@ -958,12 +960,13 @@ export default function Ofer() {
                 </section>
                 <section className="offerbuttonswrp">
                     <button className="resetbutton">RESET</button>
-                    <button
+                    <Button
+                        variant="contained" color="secondary"
                         className="getestimatebutton"
                         onClick={checkIfItemsIsNotMissing}
                     >
                         GET ESTIMATE
-                    </button>
+                    </Button>
                 </section>
             </div>
         </PageLayout>
