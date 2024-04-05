@@ -688,7 +688,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                 });
                             }}
                         ></input>
-                        {state.from_postCode == '' && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.from_country === 'united states' ? "Zip" : "Post"} code is mandatory to get instant price`} />}
+                        {state.from_postCode == '' && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.from_country === 'united states' ? "Zip" : "Post"} code is mandatory`} />}
                         {/* {zipinputfocused && !edit ? (
                             <button
                                 className="postcodeconfirmbutton"
@@ -741,7 +741,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                 });
                             }}
                         ></input>
-                        {state.to_postCode == '' && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.to_country === 'united states' ? "Zip" : "Post"} code is mandatory to get instant price`} />}
+                        {state.to_postCode == '' && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.to_country === 'united states' ? "Zip" : "Post"} code is mandatory`} />}
 
                         {/* {zipinputfocuseddest && !edit ? (
                             <button
