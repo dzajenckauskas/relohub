@@ -1,5 +1,5 @@
 .mainpageheaderwrp {
-    max-width: 1232px;
+    max-width: 1168px;
     width: 100%;
     margin: 0 auto;
     padding: 0 16px;
@@ -8,7 +8,7 @@
 }
 
 .globalWrapperheropostimage {
-    max-width: 1232px;
+    max-width: 1168px;
     margin: 0 auto;
     height: 184px;
     display: flex;
@@ -119,7 +119,7 @@
 }
 
 .mainpageheroareaglobalwrp {
-    max-width: 1232px;
+    max-width: 1168px;
     width: 100%;
     margin: 0 auto;
 
@@ -181,7 +181,7 @@
 
 .videoareavideowrp {
     position: relative;
-    max-width: 1232px;
+    max-width: 1168px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -197,7 +197,7 @@
 }
 
 .processglobalwrapper {
-    max-width: 1232px;
+    max-width: 1168px;
     width: 100%;
     margin: 0 auto;
     padding: 0 16px;
@@ -612,7 +612,7 @@
     font-weight: bold;
     display: flex;
     align-items: center;
-    max-width: 1232px;
+    max-width: 1168px;
     margin: 0 auto;
     justify-content: space-between;
     padding: 32px 0;
@@ -661,7 +661,7 @@
 }
 
 .faqinsidewrp {
-    max-width: 1232px;
+    max-width: 1168px;
     margin: 0 auto;
     width: 100%;
 }
@@ -728,7 +728,7 @@
 }
 
 .reviewsglobalwrp {
-    max-width: 1232px;
+    max-width: 1168px;
     padding: 104px 0;
     margin: 0 auto;
     width: 100%;
@@ -841,7 +841,7 @@
 }
 
 .getintouchglobalinsidewrp {
-    max-width: 1232px;
+    max-width: 1168px;
     color: #fff;
     width: 100%;
 }
@@ -1144,7 +1144,7 @@ th {
 .offercollectiondatewrp,
 .offerbuttonswrp,
 .offerboxesandluggagemarked {
-    max-width: 1232px;
+    max-width: 1168px;
     width: 100%;
     margin: 0 auto;
 }
