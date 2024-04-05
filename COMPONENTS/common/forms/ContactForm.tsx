@@ -6,11 +6,10 @@ import axios from "axios";
 import { useState } from 'react';
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
-import { FormTextField } from "./FormTextField";
 import ErrorBox from "../ErrorBox";
 import { theme } from "../Theme";
 import FormCheckbox from "./FormCheckbox";
-import Link from "next/link";
+import { FormTextField } from "./FormTextField";
 
 type ContactFormInputType = {
     name: string;
@@ -37,20 +36,7 @@ const ContactForm = () => {
                 contents: JSON.stringify(data),
             }
         }
-        console.log(inputData, "inputData");
 
-        // async function sendMessage(params) {
-        //     let res = await fetch("/api/email/getintouch", {
-        //         method: "POST",
-        //         headers: { "Content-Type": "application/json" },
-        //         body: JSON.stringify(values),
-        //     });
-
-        //     if (res.ok) {
-        //         setSent(true);
-        //     }
-        // }
-        // let url = `${process.env.NEXT_PUBLIC_API_URL}/api/contact-forms`
         let url = "/api/email/getintouch"
         await axios.post(url, inputData)
             .catch((error) => {
@@ -70,7 +56,7 @@ const ContactForm = () => {
     }
 
     const contactFormSchema = yup.object({
-        email: yup.string().nullable().email(`${'Email address is required'}`).required(`${'Incorrect email format!'}`),
+        email: yup.string().nullable().email(`${'Incorrect email format!'}`).required(`${'Email address is required'}`),
         name: yup.string().required(`${'Name is required'}`),
         message: yup.string().required(`${'Message is required'}`),
         phone: yup.string().required(`${'Phone number is required'}`),
@@ -143,7 +129,7 @@ const ContactForm = () => {
                                 Your message was successfully sent!
                             </Typography>
                         </Stack>}
-                    <Grid container spacing={2} sx={{ display: 'flex', width: '100%', justifyContent: 'flex-start' }}>
+                    <Grid container spacing={{ xs: 0, sm: 2 }} sx={{ display: 'flex', width: '100%', justifyContent: 'flex-start' }}>
                         <Grid item lg={6} md={4} sm={6} xs={12}>
                             {!sent &&
                                 <Button aria-label="submit contact form" sx={{ width: '100%' }} size="large" variant="contained" color="secondary" type={'submit'}>
