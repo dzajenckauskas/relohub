@@ -34,9 +34,14 @@ export const theme = createTheme({
                     fontSize: 14,
                     py: 1.2,
                     letterSpacing: 1,
-                    fontWeight: 500,
-                    borderRadius: '2px'
+                    fontWeight: 600,
+                    borderRadius: '2px',
+                    boxShadow: 'none',
+                    '&:hover': {
+                        boxShadow: 'none' // Removing box shadow on hover
+                    }
                 }),
+
             }
         }
     },
