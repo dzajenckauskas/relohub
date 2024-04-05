@@ -30,9 +30,9 @@ export const LinkArrowButton = ({ onClick, variant = 'contained', direction = 'n
                 alignItems: 'center',
                 justifyContent: 'center',
                 borderRadius: 50,
-                width: '40px',
-                minWidth: 40,
-                height: '40px',
+                width: '36px',
+                minWidth: 36,
+                height: '36px',
                 cursor: 'pointer',
             }}>
             {direction === 'next' &&

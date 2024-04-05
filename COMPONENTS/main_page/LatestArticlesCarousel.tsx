@@ -56,22 +56,10 @@ const LatestArticlesCarousel = () => {
                 pt: 4,
                 justifyContent: 'space-between',
             }}>
-                <Typography variant='h1' component={'h2'} sx={{ fontWeight: 700 }}>Latest Guides & Articles</Typography>
+                <Typography variant='h1' component={'h2'} sx={{ fontWeight: 700, pr: 2 }}>Latest Guides & Articles</Typography>
                 <Stack direction={'row'} spacing={1}>
-                    {/* <Button variant='outlined' color='secondary' aria-label="Previous article"
-                        sx={{ borderRadius: 50, minWidth: 0, height: 40, width: 40 }}
-                        onClick={handlePrevious}
-                    >
-                        <WestIcon sx={{ fontSize: 18 }} />
-                    </Button> */}
                     <LinkArrowButton variant={'outlined'} direction={'back'} onClick={handlePrevious} />
                     <LinkArrowButton variant={'outlined'} direction={'next'} onClick={handleNext} />
-                    {/* <Button variant='outlined' color='secondary' aria-label="Next article"
-                        sx={{ borderRadius: 50, minWidth: 0, height: 40, width: 40 }}
-                        onClick={handleNext}
-                    >
-                        <EastIcon sx={{ fontSize: 18 }} />
-                    </Button> */}
                 </Stack>
             </MaxWidthContainer>
             <MaxWidthContainer sx={{

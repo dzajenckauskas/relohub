@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import axios from "axios";
@@ -10,6 +10,7 @@ import { FormTextField } from "./FormTextField";
 import ErrorBox from "../ErrorBox";
 import { theme } from "../Theme";
 import FormCheckbox from "./FormCheckbox";
+import Link from "next/link";
 
 type ContactFormInputType = {
     name: string;
@@ -142,14 +143,20 @@ const ContactForm = () => {
                                 Your message was successfully sent!
                             </Typography>
                         </Stack>}
-                    {!sent &&
-                        <Button size="large" variant="contained" color="secondary" type={'submit'}>
-                            Send message
-                        </Button>}
-                    {sent &&
-                        <Button size="large" variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
-                            Send again
-                        </Button>}
+                    <Grid container spacing={2} sx={{ display: 'flex', width: '100%', justifyContent: 'flex-start' }}>
+                        <Grid item lg={6} md={4} sm={6} xs={12}>
+                            {!sent &&
+                                <Button aria-label="submit contact form" sx={{ width: '100%' }} size="large" variant="contained" color="secondary" type={'submit'}>
+                                    Send message
+                                </Button>}
+                            {sent &&
+                                <Button aria-label="submit contact form again" sx={{ width: '100%' }} size="large" variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
+                                    Send again
+                                </Button>}
+                        </Grid>
+                    </Grid>
+
+
                 </Stack>
                 {error && <ErrorBox error={error} />}
             </Stack>

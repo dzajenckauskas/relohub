@@ -25,7 +25,7 @@ const AboutUsPage = ({ articleContinents }: Props) => {
         return (
             <Grid item xs={6} sm={4} md={3} key={c.country}>
                 <Typography variant='body1' sx={{ alignItems: 'center', display: 'flex', gap: 1 }}>
-                    <EastIcon fontSize='large' />
+                    <EastIcon fontSize='large' color='secondary' />
                     {capitalizeEachWord(c.country)}
                 </Typography>
             </Grid>
@@ -174,16 +174,16 @@ const AboutUsPage = ({ articleContinents }: Props) => {
                             </Typography>
                             <Stack spacing={1}>
                                 <Typography variant='body1' sx={{ alignItems: 'center', display: 'flex', gap: 1 }}>
-                                    <EastIcon fontSize='large' />     Storage solutions
+                                    <EastIcon fontSize='large' color='secondary' />     Storage solutions
                                 </Typography>
                                 <Typography variant='body1' sx={{ alignItems: 'center', display: 'flex', gap: 1 }}>
-                                    <EastIcon fontSize='large' />   Comprehensive professional packing
+                                    <EastIcon fontSize='large' color='secondary' />   Comprehensive professional packing
                                 </Typography>
                                 <Typography variant='body1' sx={{ alignItems: 'center', display: 'flex', gap: 1 }}>
-                                    <EastIcon fontSize='large' />   Specialized crating for delicate items
+                                    <EastIcon fontSize='large' color='secondary' />   Specialized crating for delicate items
                                 </Typography>
                                 <Typography variant='body1' sx={{ alignItems: 'center', display: 'flex', gap: 1 }}>
-                                    <EastIcon fontSize='large' />   Furniture disassembly and assembly
+                                    <EastIcon fontSize='large' color='secondary' />   Furniture disassembly and assembly
                                 </Typography>
                             </Stack>
                             <Stack sx={{ width: '100%', height: { md: 300, xs: 200 }, position: 'relative', top: { md: 48, sm: 48, xs: 48 } }}>

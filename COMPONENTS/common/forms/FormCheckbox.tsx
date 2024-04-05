@@ -27,7 +27,7 @@ const FormCheckbox = ({ control, label, name, form }: Props) => {
                         flexDirection: 'row',
                         '.MuiSvgIcon-root': {
                             width: 30,
-                            height: 30
+                            height: 30,
                         }
                     }}
                     control={
@@ -35,19 +35,22 @@ const FormCheckbox = ({ control, label, name, form }: Props) => {
                             sx={{
                                 mt: -.8,
                                 ml: -1.5,
-                                color: '#fff', // White color for unchecked state
+                                color: '#fff',
                                 '&.Mui-checked': {
-                                    color: 'secondary.main', // Change color for checked state if needed
+                                    color: 'secondary.main',
                                 },
                                 '&.MuiIconButton-root': {
-                                    border: '2px solid #fff', // White border for unchecked state
-                                    borderRadius: '5px', // Adjust border radius if needed
+                                    border: '2px solid #fff',
+                                    borderRadius: '5px',
                                 },
                                 '&.Mui-checked.MuiIconButton-root': {
-                                    border: '2px solid transparent', // Remove border for checked state
+                                    border: '2px solid transparent',
                                 },
                                 '&.Mui-checked.MuiIconButton-root:hover': {
-                                    backgroundColor: 'transparent', // Remove background color on hover for checked state
+                                    backgroundColor: 'transparent',
+                                },
+                                '&.MuiSvgIcon-root': {
+                                    fill: '#fff',
                                 },
                             }}
                             size='large'

@@ -34,7 +34,8 @@ export const theme = createTheme({
                     fontSize: 14,
                     py: 1.2,
                     letterSpacing: 1,
-                    fontWeight: 600
+                    fontWeight: 500,
+                    borderRadius: '2px'
                 }),
             }
         }

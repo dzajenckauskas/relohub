@@ -24,9 +24,9 @@ export const ExpandButton = ({ onClick }: Props) => {
                 justifyContent: 'center',
                 backgroundColor: active ? 'transparent' : '#e71c5e',
                 borderRadius: 50,
-                width: '40px',
-                minWidth: 40,
-                height: '40px',
+                width: '36px',
+                minWidth: 36,
+                height: '36px',
                 cursor: 'pointer',
                 transition: active ?
                     'transform .3s ease-in' :

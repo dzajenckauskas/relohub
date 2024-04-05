@@ -108,22 +108,7 @@ export default function FaqWrapper() {
                             return (
                                 <div className="faqfaqliner" key={i}>
                                     <div className="faqfaqinsidetop">
-                                        <Typography variant={'h4'} sx={{ fontWeight: 700, color: theme.palette.secondary.main }}>{el.q}</Typography>
-
-                                        {/* <button
-                                            className={
-                                                clicked === el.q
-                                                    ? "faqbuttonclicked"
-                                                    : "faqbutton"
-                                            }
-                                            onClick={() => {
-                                                setclicked(
-                                                    clicked === el.q ? null : el.q,
-                                                );
-                                            }}
-                                        >
-                                            {clicked === el.q ? "+" : "-"}
-                                        </button> */}
+                                        <Typography variant={'h4'} sx={{ fontWeight: 700, pr: 2, color: theme.palette.secondary.main }}>{el.q}</Typography>
                                         <ExpandButton
                                             onClick={() => {
                                                 setclicked(
