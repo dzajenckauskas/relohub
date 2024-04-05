@@ -223,6 +223,14 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
             enable = false;
         }
 
+        if ((state.from_country === "united states" || state.from_country === "united kingdom") && state.from_postCode == '') {
+            enable = false;
+        }
+
+        if ((state.to_country === "united states" || state.to_country === "united kingdom") && state.to_postCode == '') {
+            enable = false;
+        }
+
         enableButton(enable ? { ...state } : false);
     }, [state, edit]);
 
@@ -344,7 +352,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                     <p className={el.name ? "" : "countrylisttxtpletter"}>
                         {el.name ? el.name : el}
                     </p>
-                    <span className="countrylistbubble"></span>
+                    {el.iso && <span className="countrylistbubble"></span>}
                 </li>
             );
         };
