@@ -1,4 +1,7 @@
 import { createTheme } from '@mui/material/styles';
+import { Open_Sans } from "next/font/google";
+
+const openSans = Open_Sans({ weight: ["300", "400", "500", "600", "700", "800"], subsets: ['latin-ext'] })
 
 export const theme = createTheme({
     components: {
@@ -31,10 +34,11 @@ export const theme = createTheme({
         MuiButton: {
             styleOverrides: {
                 root: ({ theme }) => theme.unstable_sx({
+                    fontFamily: openSans.style.fontFamily,
                     fontSize: 14,
                     py: 1.2,
                     letterSpacing: 1,
-                    fontWeight: 600,
+                    fontWeight: 700,
                     borderRadius: '2px',
                     boxShadow: 'none',
                     '&:hover': {
@@ -47,7 +51,7 @@ export const theme = createTheme({
     },
     typography: {
         h1: {
-            fontFamily: 'inherit',
+            fontFamily: openSans.style.fontFamily,
             fontWeight: 700,
             fontSize: 32,
             '@media (min-width:600px)': {
@@ -64,7 +68,7 @@ export const theme = createTheme({
             },
         },
         h2: {
-            fontFamily: 'inherit',
+            fontFamily: openSans.style.fontFamily,
             fontWeight: 700,
             fontSize: 24,
             '@media (min-width:600px)': {
@@ -81,7 +85,7 @@ export const theme = createTheme({
             },
         },
         h3: {
-            fontFamily: 'inherit',
+            fontFamily: openSans.style.fontFamily,
             fontWeight: 700,
             fontSize: 20,
             '@media (min-width:600px)': {
@@ -98,7 +102,7 @@ export const theme = createTheme({
             },
         },
         h4: {
-            fontFamily: 'inherit',
+            fontFamily: openSans.style.fontFamily,
             fontSize: 18,
             '@media (min-width:600px)': {
                 fontSize: 20,
@@ -114,22 +118,22 @@ export const theme = createTheme({
             },
         },
         h5: {
-            fontFamily: 'inherit',
+            fontFamily: openSans.style.fontFamily,
         },
         h6: {
-            fontFamily: 'inherit',
+            fontFamily: openSans.style.fontFamily,
         },
         body1: {
-            fontFamily: 'inherit',
+            fontFamily: openSans.style.fontFamily,
             fontSize: 16
 
         },
         body2: {
-            fontFamily: 'inherit',
+            fontFamily: openSans.style.fontFamily,
             fontSize: 14
         },
         caption: {
-            fontFamily: 'inherit',
+            fontFamily: openSans.style.fontFamily,
             fontSize: 12
 
         }
