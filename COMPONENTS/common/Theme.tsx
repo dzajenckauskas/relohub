@@ -2,28 +2,47 @@ import { createTheme } from '@mui/material/styles';
 
 export const theme = createTheme({
     components: {
-        MuiOutlinedInput: {
+        MuiInputBase: {
             styleOverrides: {
                 root: ({ theme }) => theme.unstable_sx({
-                    'label + &': {
-                        marginTop: theme.spacing(2),
-                    },
+                    // 'label + &': {
+                    //     marginTop: theme.spacing(2),
+                    // },
                     // borderRadius: 0,
-                    backgroundColor: theme.palette.info.main
+                    // backgroundColor: theme.palette.info.main
                 }),
                 input: ({ theme }) => theme.unstable_sx({
                     // backgroundColor: theme.palette.info.main
                 }),
                 multiline: ({ theme }) => theme.unstable_sx({
-                    backgroundColor: theme.palette.info.main
+                    // backgroundColor: theme.palette.info.main
                 }),
             }
         },
         MuiFormLabel: {
             styleOverrides: {
                 root: ({ theme }) => theme.unstable_sx({
-                    color: `${theme.palette.info.main} !important`,
+                    // color: `${theme.palette.info.main} !important`,
+                    // fontSize: '16px !important'
                     // borderRadius: 0,
+                }),
+            }
+        },
+        MuiButton: {
+            styleOverrides: {
+                root: ({ theme }) => theme.unstable_sx({
+                    fontSize: 14,
+                    py: 1.2,
+                    letterSpacing: 1,
+                    fontWeight: 600
+                }),
+            }
+        },
+        MuiSvgIcon: {
+            styleOverrides: {
+                root: ({ theme }) => theme.unstable_sx({
+                    width: 30,
+                    height: 30,
                 }),
             }
         },

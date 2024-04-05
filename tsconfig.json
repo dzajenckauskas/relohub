@@ -34,7 +34,7 @@
     "**/*.tsx",
     "app/offer/page.js",
     "build/types/**/*.ts",
-    "COMPONENTS/main_page/GetInTouch.tsx"
+    "COMPONENTS/main_page/getInTouch.js"
   ],
   "exclude": [
     "node_modules"

@@ -46,10 +46,10 @@ export function getInTouchHTML(json) {
                     </p>
     
                     <ul class='customerlist' >
-                        <li><strong>Name:</strong> ${json.Name}</li>
-                        <li><strong>Phone number:</strong> ${json["Phone Number"]}</li>
-                        <li><strong>Email:</strong> ${json["Email Address"]}</li>
-                        <a href='mailto:${json["Email Address"]}'></a
+                        <li><strong>Name:</strong> ${json.data.name}</li>
+                        <li><strong>Phone number:</strong> ${json.data.phone}</li>
+                        <li><strong>Email:</strong> ${json.data.email}</li>
+                        <a href='mailto:${json.data.email}'></a
                     >
 
            
@@ -57,7 +57,7 @@ export function getInTouchHTML(json) {
     
                     <p><strong>Message:</strong></p>
                     <p class="message-text">
-                    ${json.text}
+                    ${json.data.message}
                   </p>
 
                 </div>

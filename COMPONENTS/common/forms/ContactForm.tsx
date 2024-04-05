@@ -9,6 +9,7 @@ import * as yup from "yup";
 import { FormTextField } from "./FormTextField";
 import ErrorBox from "../ErrorBox";
 import { theme } from "../Theme";
+import FormCheckbox from "./FormCheckbox";
 
 type ContactFormInputType = {
     name: string;
@@ -17,6 +18,7 @@ type ContactFormInputType = {
     message: string;
     url: string;
     contents: string;
+    consent: boolean;
 }
 
 const ContactForm = () => {
@@ -30,7 +32,7 @@ const ContactForm = () => {
                 name: data.name,
                 phone: data.phone,
                 message: data.message,
-                url: window.location.href,
+                consent: data.consent,
                 contents: JSON.stringify(data),
             }
         }
@@ -67,39 +69,40 @@ const ContactForm = () => {
     }
 
     const contactFormSchema = yup.object({
-        email: yup.string().nullable().email(`${'Name is required'}`).required(`${'Incorrect email format!'}`),
+        email: yup.string().nullable().email(`${'Email address is required'}`).required(`${'Incorrect email format!'}`),
         name: yup.string().required(`${'Name is required'}`),
         message: yup.string().required(`${'Message is required'}`),
-        phone: yup.string().required(`${'Phone is required'}`),
+        phone: yup.string().required(`${'Phone number is required'}`),
+        consent: yup.boolean().oneOf([true], 'You have to agree with Privacy Statement'),
     }).required();
 
     const form = useForm({
+        mode: 'onBlur',
         resolver: yupResolver(contactFormSchema as any),
     });
 
-    const { reset, handleSubmit } = form
+    const { reset, handleSubmit, control } = form
     const onInvalid: SubmitErrorHandler<ContactFormInputType> = (data) => {
         console.log('invalid', data, form.getValues())
     }
     return (
         <form onSubmit={handleSubmit(submit, onInvalid)} noValidate id={'contact-form'} style={{ width: '100%', scrollMarginTop: '300px', }}>
-            <Stack direction={'column'} spacing={3} sx={{ width: '100%' }} pt={1}>
+            <Stack direction={'column'} spacing={3} sx={{ width: '100%', minHeight: '650px' }} pt={1}>
                 {!sent &&
-                    <Stack spacing={3}>
+                    <Stack spacing={2} width={'100%'}>
                         <FormTextField
                             disabled={sent}
                             name={"name"}
-                            lable={"Name"}
+                            label={"Name:"}
                             fullWidth
                             required
                             form={form}
                         />
-                        <Stack direction={{ sm: 'row', xs: 'column' }} spacing={3} width={'100%'} alignItems={'flex-end'}>
-
+                        <Stack spacing={3} width={'100%'} direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'}>
                             <FormTextField
                                 disabled={sent}
                                 name={"email"}
-                                lable={"Email"}
+                                label={"Email Address:"}
                                 fullWidth
                                 required
                                 form={form}
@@ -108,7 +111,8 @@ const ContactForm = () => {
                             <FormTextField
                                 disabled={sent}
                                 name={"phone"}
-                                lable={"Phone"}
+                                type="number"
+                                label={"Phone Number:"}
                                 fullWidth
                                 required
                                 form={form}
@@ -118,18 +122,23 @@ const ContactForm = () => {
                         <FormTextField
                             disabled={sent}
                             name={"message"}
-                            lable={"Žinutė"}
+                            label={"How can we help?"}
                             multiline
                             rows={8}
                             fullWidth
                             form={form}
                         />
+                        <FormCheckbox
+                            form={form}
+                            control={control}
+                            label={"I consent to receive further communication regarding this Contact Us request and confirm that I agree to the storing and processing of my personal details as described in the Privacy Statement."}
+                            name={"consent"} />
                     </Stack>}
 
                 <Stack width={'100%'} direction={'column'} justifyContent={'center'} >
                     {sent &&
                         <Stack direction={'row'} justifyContent={'center'} mb={2}>
-                            <Typography textAlign={'left'} fontWeight={500} color={theme.palette.primary.dark} >
+                            <Typography textAlign={'left'} fontWeight={500} color={theme.palette.info.main} >
                                 Your message was successfully sent!
                             </Typography>
                         </Stack>}
@@ -139,7 +148,6 @@ const ContactForm = () => {
                         </Button>}
                     {sent &&
                         <Button size="large" variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
-                            Send again
                             Send again
                         </Button>}
                 </Stack>

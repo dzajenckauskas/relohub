@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req, res) {
     const json = await req.json();
+    console.log(json, "json");
 
     const nodemailer = require("nodemailer");
 
@@ -22,7 +23,7 @@ export async function POST(req, res) {
     let mailOptions = {
         from: `hello@deliver1.co.uk`, // sender address
         to,
-        subject: `New message via website (${json.Name})`,
+        subject: `New message via website (${json.data.name})`,
         html: getInTouchHTML(json),
     };
 

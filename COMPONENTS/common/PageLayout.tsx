@@ -1,5 +1,5 @@
 'use client'
-import { ThemeProvider, responsiveFontSizes } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 import GetInTOuch from '../main_page/getInTouch';
 import Header from './Header';
