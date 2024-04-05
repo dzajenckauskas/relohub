@@ -454,14 +454,23 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                 setSelectedField(null);
                             }}
                         >
-                            {el.iso &&
+                            {/* {el.iso &&
                                 <Image
                                     alt={"flag"}
+
                                     src={`/flags/${el.iso.toLowerCase()}.svg`}
                                     width={24}
                                     height={16}
                                     style={{ objectFit: "cover" }}
-                                />}
+                                />} */}
+                            {el.iso && <img
+                                className="flag-ico"
+                                loading="lazy"
+                                width={24}
+                                style={{ objectFit: "contain" }}
+                                src={`https://flagcdn.com/w20/${el.iso.toLowerCase()}.png`}
+                                alt={`${el.iso} flag`}
+                            />}
                             <p
                                 className={
                                     el.country.length === 1

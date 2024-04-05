@@ -494,7 +494,7 @@
     transition-duration: 200ms;
     display: flex;
     align-items: center;
-    padding: 0 16px;
+    padding: 0 8px;
     text-transform: capitalize;
     border-bottom: 1px solid var(--light_grey);
     cursor: pointer;
