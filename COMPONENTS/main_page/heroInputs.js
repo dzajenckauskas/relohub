@@ -3,6 +3,8 @@ import Image from "next/image";
 import Button from "@mui/material/Button";
 import { useEffect, useRef, useState } from "react";
 import { FixedSizeList as List } from "react-window";
+import ErrorBox from "../common/ErrorBox";
+import { theme } from '@/COMPONENTS/common/Theme'
 
 export const countries = [
     { country: "A" },
@@ -676,6 +678,9 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                     ? postcodetxt("Collection", "from")
                                     : ""
                             }
+                            style={{
+                                border: state.from_postCode == '' ? `2px solid ${theme.palette.secondary.main}` : ''
+                            }}
                             onChange={(e) => {
                                 setstate({
                                     ...state,
@@ -683,7 +688,8 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                 });
                             }}
                         ></input>
-                        {zipinputfocused && !edit ? (
+                        {state.from_postCode == '' && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.from_country === 'united states' ? "Zip" : "Post"} code is mandatory to get instant price`} />}
+                        {/* {zipinputfocused && !edit ? (
                             <button
                                 className="postcodeconfirmbutton"
                                 onClick={(e) => {
@@ -694,7 +700,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                             >
                                 Confirm
                             </button>
-                        ) : null}
+                        ) : null} */}
                     </label>,
                 );
             }
@@ -725,6 +731,9 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                             }}
                             className="dropdowninputsearch  ifukorusinput"
                             value={state.to_postCode}
+                            style={{
+                                border: state.to_postCode == '' ? `2px solid ${theme.palette.secondary.main}` : ''
+                            }}
                             onChange={(e) => {
                                 setstate({
                                     ...state,
@@ -732,7 +741,9 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                 });
                             }}
                         ></input>
-                        {zipinputfocuseddest && !edit ? (
+                        {state.to_postCode == '' && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.to_country === 'united states' ? "Zip" : "Post"} code is mandatory to get instant price`} />}
+
+                        {/* {zipinputfocuseddest && !edit ? (
                             <button
                                 className="postcodeconfirmbutton"
                                 onClick={(e) => {
@@ -743,7 +754,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                             >
                                 Confirm
                             </button>
-                        ) : null}
+                        ) : null} */}
                     </label>,
                 );
             }

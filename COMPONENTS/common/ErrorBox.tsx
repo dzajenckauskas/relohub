@@ -1,14 +1,16 @@
 import React from "react";
 import Stack from "@mui/material/Stack";
-import { Typography } from "@mui/material";
+import { SxProps, Typography } from "@mui/material";
 
 type Props = {
   error?: string;
+  mt?: number;
+  sx?: SxProps;
 }
-const ErrorBox = ({ error }: Props) => {
+const ErrorBox = ({ sx, error, mt }: Props) => {
   return (
-    <Stack sx={{ mt: 2 }}>
-      <Typography variant="caption" color={'error'}>{error}</Typography>
+    <Stack sx={{ mt: mt ?? 0, }}>
+      <Typography sx={{ ...sx }} variant="caption" color={'error'}>{error}</Typography>
     </Stack>
   )
 

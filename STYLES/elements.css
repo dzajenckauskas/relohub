@@ -574,7 +574,7 @@
     background: var(--pink_color);
     color: white;
     cursor: pointer;
-    margin-top: 32px;
+    margin-top: 16px;
     margin-left: auto;
     border-radius: 4px;
     transition-duration: 200ms;
