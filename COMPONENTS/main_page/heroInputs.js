@@ -465,7 +465,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                             >
                                 {el.country}
                             </p>
-                            <span className="countrylistbubble"></span>
+                            {el.iso && <span className="countrylistbubble"></span>}
                         </li>
                     );
                 })}
@@ -521,7 +521,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
 
         return (
             <div
-                style={{ marginTop: 20, zIndex: 100 }}
+                style={{ marginTop: 0, zIndex: 100 }}
                 className="heroselectiondropdownwrp"
                 onClick={(e) => {
                     e.preventDefault();

@@ -539,6 +539,11 @@
     margin-left: auto;
 }
 
+.searchlistlistlist:hover .countrylistbubble {
+    border: 1px solid var(--pink_color);
+    background: var(--pink_color);
+}
+
 .countrylisttxtp {
     margin-left: 8px;
 }
