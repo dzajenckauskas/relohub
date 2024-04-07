@@ -127,6 +127,7 @@ export default function Header() {
                             fill
                             src={"/logo2.png"}
                             alt="logo"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw"
                             style={{ objectFit: "contain" }}
                         />
                     </Link>
