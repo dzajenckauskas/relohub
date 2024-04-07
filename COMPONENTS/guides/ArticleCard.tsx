@@ -37,7 +37,7 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                     overflow: 'hidden',
                 }}>
                     <Stack sx={{
-                        height: '250px',
+                        height: { xs: '200px', md: '250px' },
                         borderTopRightRadius: '5px',
                         borderTopLeftRadius: '5px',
                         width: '100%',
