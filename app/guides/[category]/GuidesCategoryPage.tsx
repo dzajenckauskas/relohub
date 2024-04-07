@@ -2,33 +2,25 @@
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer';
 import PageLayout from '@/COMPONENTS/common/PageLayout';
 import { theme } from '@/COMPONENTS/common/Theme';
-import { ArticleDataType } from '@/COMPONENTS/types/ArticleTypes';
+import { ArticleDataType, ArticlesResponseType } from '@/COMPONENTS/types/ArticleTypes';
 import { CategoryDataType } from '@/COMPONENTS/types/CategoryTypes';
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { useState } from 'react';
-import useSWR from 'swr';
-import ArticleCard from '../../../COMPONENTS/guides/ArticleCard';
 import Link from 'next/link';
+import { useState } from 'react';
+import ArticleCard from '../../../COMPONENTS/guides/ArticleCard';
 
 type Props = {
     category?: CategoryDataType;
     articleContinents?: ContinentsResponseType;
+    articles?: ArticlesResponseType;
 }
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
+const GuidesCategoryPage = ({ articles, category, articleContinents }: Props) => {
     const [active, setActive] = useState<string | undefined>('all-posts')
-    const url = `/api/articles?populate=seo,image,articleCategory,articleContinents`
-
-    const articlesUrl = `${process.env.NEXT_PUBLIC_API_URL}${url}`
-    const { data: articles, error, isLoading } = useSWR(
-        articlesUrl,
-        fetcher
-    );
 
     const renderLatestArticlesLoading = Array.from({ length: 8 })?.map((_, index) => {
         return (
@@ -137,12 +129,12 @@ const GuidesCategoryPage = ({ category, articleContinents }: Props) => {
                             {renderArticleContinents}
                         </Stack>
                         <Grid container spacing={2} sx={{ display: 'flex', }}>
-                            {(!articles || isLoading) ? renderLatestArticlesLoading : renderLatestArticles}
+                            {(!articles) ? renderLatestArticlesLoading : renderLatestArticles}
                         </Grid>
                         {(active !== 'all-posts' && filteredArticles?.length === 0) &&
                             <Typography color={theme.palette.secondary.main}
                                 sx={{ pt: 2, display: 'flex', gap: 16, fontSize: '18px', justifyContent: 'space-between', width: '100%', fontWeight: 600 }}>
-                                {error ? error : "No articles yet"}
+                                {"No articles yet"}
                             </Typography>}
                     </Stack>
 
