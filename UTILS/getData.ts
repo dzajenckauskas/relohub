@@ -1,5 +1,7 @@
 export const getData = async (url: string) => {
     const res = await fetch(url, { next: { revalidate: 60 } })
+    console.log('revalidate');
+
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
 
