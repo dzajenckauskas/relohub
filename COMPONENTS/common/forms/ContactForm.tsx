@@ -76,7 +76,7 @@ const ContactForm = () => {
         <form onSubmit={handleSubmit(submit, onInvalid)} noValidate id={'contact-form'} style={{ width: '100%', scrollMarginTop: '300px', }}>
             <Stack direction={'column'} spacing={3} sx={{ width: '100%', minHeight: '650px' }} pt={1}>
                 {!sent &&
-                    <Stack spacing={3} width={'100%'}>
+                    <Stack spacing={2} width={'100%'}>
                         <FormTextField
                             disabled={sent}
                             name={"name"}

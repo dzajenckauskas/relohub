@@ -75,7 +75,7 @@ export const FormTextField = ({ defaultValue, multiline, rows, fullWidth, disabl
                 defaultValue={defaultValue}
                 id={`${name}-input`}
             />
-            <ErrorBox error={`${error?.message ?? ''}`} />
+            <ErrorBox mt={1.75} error={`${error?.message ?? ''}`} />
         </FormControl >
     )
 }
