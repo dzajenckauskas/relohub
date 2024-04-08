@@ -1,4 +1,3 @@
-import Layout from "@/COMPONENTS/common/PageLayout";
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
 import AboutUsPage from "./AboutUsPage";

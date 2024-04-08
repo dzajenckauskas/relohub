@@ -13,7 +13,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC);
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-export default function Ofer() {
+export default function OfferPage() {
     const globalsectionleft = useRef(null);
     const globalsectionright = useRef(null);
     const sectionleft = useRef(null);

@@ -32,9 +32,10 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "app/offer/page.js",
+    "app/offer/page.ts",
     "build/types/**/*.ts",
-    "COMPONENTS/main_page/getInTouch.js"
+    "COMPONENTS/main_page/getInTouch.js",
+    "app/offer/OfferPage.js"
   ],
   "exclude": [
     "node_modules"
