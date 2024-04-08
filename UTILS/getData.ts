@@ -1,14 +1,16 @@
 export const getData = async (url: string) => {
-    const res = await fetch(url, { next: { revalidate: 300 } })
-    console.log('revalidate');
+    try {
+        const res = await fetch(url, { next: { revalidate: 300 } });
+        console.log('revalidate');
 
-    // The return value is *not* serialized
-    // You can return Date, Map, Set, etc.
+        if (!res.ok) {
+            // This will activate the closest `error.js` Error Boundary
+            throw new Error(`Failed to fetch data. Status: ${res.status}`);
+        }
 
-    if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
-        throw new Error('Failed to fetch data')
+        return res.json();
+    } catch (error) {
+        // Handle any errors that occur during fetch operation
+        throw new Error(`Failed to fetch data: ${error.message}`);
     }
-
-    return res.json()
 }

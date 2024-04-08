@@ -9,10 +9,15 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import { SxProps } from '@mui/material';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const LatestArticles = () => {
+type Props = {
+    sx?: SxProps;
+}
+
+const LatestArticles = ({ sx }: Props) => {
     const latestArticlesUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents&pagination[page]=1&pagination[pageSize]=3`
 
     const { data: latestArticles, isLoading } = useSWR(
@@ -34,7 +39,7 @@ const LatestArticles = () => {
         )
     })
     return (
-        <Stack sx={{ width: '100%', backgroundColor: '#fff', mt: 6 }}>
+        <Stack sx={{ width: '100%', backgroundColor: '#fff', pt: { xs: 4, md: 6 }, ...sx }}>
             <MaxWidthContainer>
                 <Stack sx={{
                     pb: 8,

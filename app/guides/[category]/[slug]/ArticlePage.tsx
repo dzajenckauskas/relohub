@@ -134,7 +134,7 @@ const ArticlePage = ({ article }: Props) => {
                     </Stack>
                 </MaxWidthContainer>
 
-                <MaxWidthContainer sx={{ flexDirection: 'column', }}>
+                <MaxWidthContainer sx={{ pb: { xs: 4, md: 8 }, flexDirection: 'column', }}>
                     <Stack sx={{
                         mx: 'auto',
                         mb: { xs: 4, md: 6 },
@@ -273,8 +273,7 @@ const ArticlePage = ({ article }: Props) => {
                         </Stack>
                     </Stack>
                 </MaxWidthContainer>
-                <LatestArticles />
-
+                <LatestArticles sx={{}} />
             </Stack>
         </PageLayout>
     )
