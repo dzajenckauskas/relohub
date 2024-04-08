@@ -1,5 +1,5 @@
 export const getData = async (url: string) => {
-    const res = await fetch(url, { next: { revalidate: 60 } })
+    const res = await fetch(url, { next: { revalidate: 300 } })
     console.log('revalidate');
 
     // The return value is *not* serialized
