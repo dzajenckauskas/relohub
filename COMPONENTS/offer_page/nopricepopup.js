@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function NoPricePopup({setshownopricepopup}) {
+export default function NoPricePopup({ setshownopricepopup }) {
     return (
         <section className="nopricepopupglobalwrp">
             <div className="nopricepopupcenterwrp">
@@ -21,7 +21,7 @@ export default function NoPricePopup({setshownopricepopup}) {
                     If you are feeling very inpatient or your move is imminent,
                     please call us on{" "}
                     <strong>
-                        <a href="tel:03330907053">0333 090 7053</a>
+                        <a href="tel:+443330907053">0333 090 7053</a>
                     </strong>{" "}
                     or email{" "}
                     <strong>
@@ -36,7 +36,7 @@ export default function NoPricePopup({setshownopricepopup}) {
                         fill={true}
                         className="nopriceofferssofaimg"
                         alt="sofa"
-                        style={{objectFit: "contain"}}
+                        style={{ objectFit: "contain" }}
                         src={"/sofa2cut.png"}
                         quality={100}
                     ></Image>
