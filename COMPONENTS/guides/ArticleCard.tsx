@@ -37,7 +37,7 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                     overflow: 'hidden',
                 }}>
                     <Stack sx={{
-                        height: '250px',
+                        height: { xs: '200px', md: '250px' },
                         borderTopRightRadius: '5px',
                         borderTopLeftRadius: '5px',
                         width: '100%',
@@ -55,7 +55,10 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                             alt={imgAlt}
                             priority
                             fill
-                            objectFit="cover"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            style={{
+                                objectFit: 'cover'
+                            }}
                         />}
                     </Stack>
                 </Stack>
@@ -73,7 +76,7 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                         lineHeight: 1.2
                     }}>
                         {loading ? <>
-                            <Skeleton height={80} />
+                            <Skeleton height={86} />
                         </> : article?.attributes.title}
                     </Typography>
                 </Link>

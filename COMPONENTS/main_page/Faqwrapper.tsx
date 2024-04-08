@@ -108,7 +108,7 @@ export default function FaqWrapper() {
                             return (
                                 <div className="faqfaqliner" key={i}>
                                     <div className="faqfaqinsidetop">
-                                        <Typography variant={'h4'} sx={{ fontWeight: 700, pr: 2, color: theme.palette.secondary.main }}>{el.q}</Typography>
+                                        <Typography variant={'h4'} component={'p'} sx={{ fontWeight: 700, pr: 2, color: theme.palette.secondary.main }}>{el.q}</Typography>
                                         <ExpandButton
                                             onClick={() => {
                                                 setclicked(

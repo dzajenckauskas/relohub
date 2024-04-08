@@ -2,7 +2,7 @@
 const nextConfig = {
     distDir: 'build',
     images: {
-        domains: ["154.49.136.99:4000", "154.49.136.99", "154.49.136.99:1344", "flagcdn.com"],
+        domains: ["154.49.136.99:4000", "154.49.136.99", "154.49.136.99:1344", "flagcdn.com", 'api.deliver1.co.uk'],
     },
     // images: {
     //     remotePatterns: [

@@ -15,7 +15,6 @@ import PageLayout from '../../../../COMPONENTS/common/PageLayout';
 import { ArticleResponseType } from '../../../../COMPONENTS/types/ArticleTypes';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 
 type Props = {
     article?: ArticleResponseType;
@@ -185,25 +184,25 @@ const ArticlePage = ({ article }: Props) => {
                                             title={article?.data?.attributes?.title}
                                             separator=":: "
                                         >
-                                            <Button variant='contained' color='info' sx={{ width: 40, height: 40, minWidth: 40, borderRadius: 50, }}>
+                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff', cursor: 'pointer', ":hover": { opacity: .8 } }}>
                                                 <WhatsAppIcon sx={{ fontSize: 22 }} />
-                                            </Button>
+                                            </Stack>
                                         </WhatsappShareButton>
                                         <FacebookShareButton
                                             url={url}
                                             quote={article?.data?.attributes?.title}
                                         >
-                                            <Button variant='contained' color='info' sx={{ width: 40, height: 40, minWidth: 40, borderRadius: 50, }}>
+                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff', cursor: 'pointer', ":hover": { opacity: .8 } }}>
                                                 <FacebookIcon color={'#000'} />
-                                            </Button>
+                                            </Stack>
                                         </FacebookShareButton>
                                         <TwitterShareButton
                                             url={url}
                                             title={article?.data?.attributes?.title}
                                         >
-                                            <Button variant='contained' color='info' sx={{ width: 40, height: 40, minWidth: 40, borderRadius: 50, }}>
+                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff', cursor: 'pointer', ":hover": { opacity: .8 } }}>
                                                 <XIcon color='#000' />
-                                            </Button>
+                                            </Stack>
                                         </TwitterShareButton>
                                     </Stack>
 
@@ -245,25 +244,26 @@ const ArticlePage = ({ article }: Props) => {
                                     title={article?.data?.attributes?.title}
                                     separator=":: "
                                 >
-                                    <Button variant='contained' color='primary' sx={{ width: 40, height: 40, minWidth: 40, borderRadius: 50, }}>
+                                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000', cursor: 'pointer', ":hover": { opacity: .8 } }}>
                                         <WhatsAppIcon sx={{ fontSize: 22, color: '#fff' }} />
-                                    </Button>
+                                    </Stack>
                                 </WhatsappShareButton>
                                 <FacebookShareButton
                                     url={url}
                                     quote={article?.data?.attributes?.title}
                                 >
-                                    <Button variant='contained' color='primary' sx={{ width: 40, height: 40, minWidth: 40, borderRadius: 50, }}>
+                                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000', cursor: 'pointer', ":hover": { opacity: .8 } }}>
+
                                         <FacebookIcon color={'#fff'} />
-                                    </Button>
+                                    </Stack>
                                 </FacebookShareButton>
                                 <TwitterShareButton
                                     url={url}
                                     title={article?.data?.attributes?.title}
                                 >
-                                    <Button variant='contained' color='primary' sx={{ width: 40, height: 40, minWidth: 40, borderRadius: 50, }}>
+                                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000', cursor: 'pointer', ":hover": { opacity: .8 } }}>
                                         <XIcon color='#fff' />
-                                    </Button>
+                                    </Stack>
                                 </TwitterShareButton>
                             </Stack>
                             <Box sx={{ width: { sm: 90, xs: 30 }, height: '1px', backgroundColor: '#000' }}></Box>

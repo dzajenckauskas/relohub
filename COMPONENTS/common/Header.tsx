@@ -127,6 +127,7 @@ export default function Header() {
                             fill
                             src={"/logo2.png"}
                             alt="logo"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw"
                             style={{ objectFit: "contain" }}
                         />
                     </Link>
@@ -175,7 +176,7 @@ export default function Header() {
                     height: 'calc(100vh - 28px)',
                     boxShadow: 'rgba(0, 0, 0, 0.08) 0px 4px 12px;'
                 }}>
-                    <Stack spacing={3} sx={{ position: 'fixed', textTransform: 'uppercase', pl: { sm: 4, xs: 2 }, pr: { md: 4, xs: 2 }, py: 4 }}>
+                    <Stack spacing={3} sx={{ position: 'fixed', textTransform: 'uppercase', pl: { sm: 4, xs: 2 }, pr: { md: 4, xs: 2 }, py: 2 }}>
                         {renderMobileLinks}
                         <Link passHref href={loginUrl} >
                             <Button aria-label="Customer portal" variant='outlined' sx={{
