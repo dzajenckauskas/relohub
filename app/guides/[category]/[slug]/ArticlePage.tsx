@@ -232,7 +232,7 @@ const ArticlePage = ({ article }: Props) => {
                                 ':hover': { color: theme.palette.secondary.dark }
                             }}>
                                 <Link aria-label="Back to articles"
-                                    href={`/guides/${article?.data?.attributes?.articleCategory?.data.attributes.key}}`} passHref>
+                                    href={`/guides/${article?.data?.attributes?.articleCategory?.data.attributes.key}`} passHref>
                                     Back to articles
                                 </Link>
                             </Typography>
