@@ -1,6 +1,6 @@
 export const getData = async (url: string) => {
     try {
-        const res = await fetch(url, { next: { revalidate: 300 } });
+        const res = await fetch(url, { next: { revalidate: 30 } });
         console.log('revalidate');
 
         if (!res.ok) {

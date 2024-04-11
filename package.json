@@ -6,7 +6,8 @@
         "dev": "next dev -p 4000",
         "build": "next build",
         "start": "next start -p 5000",
-        "lint": "next lint"
+        "lint": "next lint",
+        "circular": "npx madge --extensions ts,tsx --circular ."
     },
     "dependencies": {
         "@emotion/react": "^11.11.4",
