@@ -8,6 +8,58 @@
     --green: #00a30f;
 }
 
+.dynamicContent li::marker {
+    color: var(--pink_color);
+}
+
+.dynamicContent li {
+    padding-bottom: 1rem;
+}
+
+.dynamicContent td {
+    padding: 1rem !important;
+}
+
+.dynamicContent table {
+    border: 2px solid #000;
+}
+
+.dynamicContent table {
+    border-spacing: 0px;
+    width: 100% !important;
+    border-width: 1px;
+}
+
+.dynamicContent td {
+    background-color: transparent !important;
+}
+
+.table {
+    float: none !important;
+    font-size: 16px;
+}
+
+.dynamicContent h2 {
+    font-size: 28px;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+
+.dynamicContent h3 {
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.dynamicContent p {
+    font-size: 16px;
+    padding-bottom: 2rem;
+}
+
+.dynamicContent li {
+    font-size: 16px;
+    margin-left: 16px;
+}
+
 .dynamicContent img {
     width: 100%;
     object-fit: cover;
