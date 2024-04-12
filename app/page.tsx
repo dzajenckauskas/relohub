@@ -17,6 +17,9 @@ export async function generateMetadata({ }): Promise<Metadata> {
         title: homePage?.data?.attributes?.seo?.seoTitle,
         description: homePage?.data?.attributes?.seo?.seoDescription,
         keywords: homePage?.data?.attributes?.seo?.seoKeywords,
+        alternates: {
+            canonical: process.env.NEXT_PUBLIC_DOMAIN_URL,
+        }
     }
 }
 export default async function Home() {
