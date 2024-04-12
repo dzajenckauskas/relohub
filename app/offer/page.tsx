@@ -8,6 +8,9 @@ export async function generateMetadata({ params }): Promise<Metadata> {
         title: offerPage?.data?.attributes?.seo?.seoTitle,
         description: offerPage?.data?.attributes?.seo?.seoDescription,
         keywords: offerPage?.data?.attributes?.seo?.seoKeywords,
+        alternates: {
+            canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/offer`,
+        }
     }
 }
 
