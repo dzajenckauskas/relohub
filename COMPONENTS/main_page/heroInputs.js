@@ -689,7 +689,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                             }}
                         ></input>
                         {state.from_postCode == '' && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.from_country === 'united states' ? "Zip" : "Post"} code is mandatory`} />}
-                        {/* {zipinputfocused && !edit ? (
+                        {zipinputfocused && !edit ? (
                             <button
                                 className="postcodeconfirmbutton"
                                 onClick={(e) => {
@@ -700,7 +700,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                             >
                                 Confirm
                             </button>
-                        ) : null} */}
+                        ) : null}
                     </label>,
                 );
             }
@@ -743,7 +743,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                         ></input>
                         {state.to_postCode == '' && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.to_country === 'united states' ? "Zip" : "Post"} code is mandatory`} />}
 
-                        {/* {zipinputfocuseddest && !edit ? (
+                        {zipinputfocuseddest && !edit ? (
                             <button
                                 className="postcodeconfirmbutton"
                                 onClick={(e) => {
@@ -754,7 +754,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                             >
                                 Confirm
                             </button>
-                        ) : null} */}
+                        ) : null}
                     </label>,
                 );
             }

@@ -510,6 +510,8 @@
 
     .videopresentationtroundbutton {
         width: 56px;
+        position: relative;
+        top: -25px;
     }
 
     .playsvgbtn {
