@@ -158,21 +158,21 @@ const ArticlePage = ({ article }: Props) => {
                                 bottom: 0,
                                 left: 0,
                                 width: '100%',
-                                height: '50%',
+                                height: '70%',
                                 background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%)',
                             }}
                         />
-                        <Stack direction={{ xs: 'column-reverse', md: 'column' }} sx={{ px: 2, pb: 3, position: 'relative', zIndex: 2, mx: 'auto' }}>
-                            <Typography sx={{ maxWidth: 'md', position: 'relative', zIndex: 2, textAlign: { xs: 'left', md: 'center' }, color: '#fff', fontSize: { xs: 28, sm: 34, md: 42 } }}
+                        <Stack direction={{ xs: 'column-reverse', md: 'column' }} sx={{ px: 2, pb: 3, position: 'relative', zIndex: 2, mx: { xs: 0, md: 'auto' } }}>
+                            <Typography sx={{ maxWidth: 'md', position: 'relative', zIndex: 2, textAlign: { xs: 'left', sm: 'left', md: 'center' }, color: '#fff', fontSize: { xs: 28, sm: 34, md: 42 } }}
                                 variant='h1' fontWeight={700}>{article?.data?.attributes?.title}</Typography>
 
-                            <Stack direction={'row'} justifyContent={{ xs: 'flex-start', md: 'center' }} pt={3} alignItems={'center'} spacing={2}>
+                            <Stack direction={'row'} justifyContent={{ xs: 'flex-start', sm: 'flex-start', md: 'center' }} pt={3} alignItems={'center'} spacing={2}>
                                 <Typography ref={textRef}
                                     sx={{
                                         color: '#fff', fontSize: 14, textTransform: 'uppercase',
                                         fontWeight: 500, letterSpacing: 1
                                     }}>
-                                    {category} • {continent} • {formattedDate}
+                                    {category} {continent && <>• {continent}</>} • {formattedDate}
                                 </Typography>
                                 <Stack direction={'row'} alignItems={'center'} spacing={2}
                                     sx={{
@@ -214,8 +214,8 @@ const ArticlePage = ({ article }: Props) => {
                             </Stack>
                         </Stack>
                     </Stack>
-                    <Stack sx={{ maxWidth: 'md', px: { xs: 2, md: 0 } }}>
-                        <div className='dynamicContent' dangerouslySetInnerHTML={{ __html: article?.data.attributes.fullContent }} />
+                    <Stack sx={{ maxWidth: 'md', }}>
+                        <Typography component={'div'} className='dynamicContent' dangerouslySetInnerHTML={{ __html: article?.data.attributes.fullContent }} />
                     </Stack>
                     <Stack width={'100%'} sx={{ maxWidth: 'md', px: { xs: 2, md: 0 } }}>
                         <Stack direction={'row'} justifyContent={'flex-start'} width={'100%'}>

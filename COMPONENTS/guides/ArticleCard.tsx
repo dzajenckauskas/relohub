@@ -66,7 +66,7 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
 
             <Stack sx={{ p: { xs: 2, md: 3 }, width: '100%' }}>
                 <Typography variant='body2' sx={{ color: '#9b9b9b', textTransform: 'uppercase', fontWeight: 500, letterSpacing: 1 }}>
-                    {loading ? <Skeleton /> : <> {category} • {continent}</>}
+                    {loading ? <Skeleton /> : <> {category} {continent && <>• {continent}</>}</>}
                 </Typography>
                 <Link href={url} passHref aria-label={'Read more'}>
                     <Typography variant='h4' component={'h2'} sx={{

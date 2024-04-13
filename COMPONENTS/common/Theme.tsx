@@ -125,7 +125,7 @@ export const theme = createTheme({
         },
         body1: {
             fontFamily: openSans.style.fontFamily,
-            fontSize: 16
+            fontSize: 16,
 
         },
         body2: {
