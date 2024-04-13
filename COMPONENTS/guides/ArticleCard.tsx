@@ -74,7 +74,7 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                         color: theme.palette.secondary.main,
                         fontWeight: 700,
                         lineHeight: 1.2,
-                        minHeight: { xs: 0, md: '95px' }
+                        minHeight: { xs: 0, md: '102px' }
                     }}>
                         {loading ? <>
                             <Skeleton height={86} />
