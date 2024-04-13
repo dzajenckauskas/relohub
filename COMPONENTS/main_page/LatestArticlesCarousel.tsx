@@ -10,7 +10,7 @@ import ArticleCard from '../guides/ArticleCard';
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const LatestArticlesCarousel = () => {
-    const latestArticlesUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents`
+    const latestArticlesUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents&sort[0]=updatedAt:asc`
 
     const { data: latestArticles, isLoading } = useSWR(
         latestArticlesUrl,

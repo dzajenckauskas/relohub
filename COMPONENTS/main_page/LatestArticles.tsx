@@ -18,7 +18,7 @@ type Props = {
 }
 
 const LatestArticles = ({ sx }: Props) => {
-    const latestArticlesUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents&pagination[page]=1&pagination[pageSize]=3`
+    const latestArticlesUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents&sort[0]=updatedAt:desc&pagination[page]=1&pagination[pageSize]=3`
 
     const { data: latestArticles, isLoading } = useSWR(
         latestArticlesUrl,

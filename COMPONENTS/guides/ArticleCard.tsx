@@ -30,7 +30,7 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                 backgroundColor: "#fff",
                 borderRadius: '5px',
                 overflow: 'hidden',
-
+                height: '100%',
             }}>
             <Link href={url} passHref aria-label={'Read more'}>
                 <Stack sx={{
@@ -64,16 +64,17 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                 </Stack>
             </Link>
 
-            <Stack sx={{ p: { xs: 2, md: 3 }, width: '100%' }}>
+            <Stack sx={{ p: { xs: 2, md: 3 }, width: '100%', position: 'relative' }}>
                 <Typography variant='body2' sx={{ color: '#9b9b9b', textTransform: 'uppercase', fontWeight: 500, letterSpacing: 1 }}>
-                    {loading ? <Skeleton /> : <> {category} • {continent}</>}
+                    {loading ? <Skeleton /> : <> {category} {continent && <>• {continent}</>}</>}
                 </Typography>
                 <Link href={url} passHref aria-label={'Read more'}>
                     <Typography variant='h4' component={'h2'} sx={{
                         py: 1,
                         color: theme.palette.secondary.main,
                         fontWeight: 700,
-                        lineHeight: 1.2
+                        lineHeight: 1.2,
+                        minHeight: { xs: 0, md: '102px' }
                     }}>
                         {loading ? <>
                             <Skeleton height={86} />
@@ -91,10 +92,12 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
 
                 <Typography sx={{
                     mt: 2,
+                    height: '100%',
                     width: 'fit-content',
                     fontSize: 14,
                     textTransform: "uppercase",
                     letterSpacing: 1,
+                    justifySelf: 'flex-end',
                     color: theme.palette.secondary.main,
                     cursor: 'pointer',
                     backgroundColor: '#fff',
