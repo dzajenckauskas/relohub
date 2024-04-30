@@ -21,10 +21,10 @@ export async function generateMetadata({ }): Promise<Metadata> {
             canonical: process.env.NEXT_PUBLIC_DOMAIN_URL,
         },
         openGraph: {
-            images: [`${process.env.NEXT_PUBLIC_DOMAIN_URL}og-image.jpeg`]
+            images: [`${process.env.NEXT_PUBLIC_DOMAIN_URL}/og-image.jpeg`]
         },
         twitter: {
-            images: [`${process.env.NEXT_PUBLIC_DOMAIN_URL}og-image.jpeg`]
+            images: [`${process.env.NEXT_PUBLIC_DOMAIN_URL}/og-image.jpeg`]
         }
     }
 }
