@@ -13,10 +13,10 @@ export async function generateMetadata({ params }): Promise<Metadata> {
             canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/guides/${category?.data?.attributes.key}`,
         },
         openGraph: {
-            images: [imageUrl]
+            images: [`${process.env.NEXT_PUBLIC_DOMAIN_URL}og-image.jpeg`]
         },
         twitter: {
-            images: [imageUrl]
+            images: [`${process.env.NEXT_PUBLIC_DOMAIN_URL}og-image.jpeg`]
         }
     }
 }

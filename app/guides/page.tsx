@@ -12,10 +12,10 @@ export async function generateMetadata({ params }): Promise<Metadata> {
             canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/guides`,
         },
         openGraph: {
-            images: ['/og-image.jpeg']
+            images: [`${process.env.NEXT_PUBLIC_DOMAIN_URL}og-image.jpeg`]
         },
         twitter: {
-            images: ['/og-image.jpeg']
+            images: [`${process.env.NEXT_PUBLIC_DOMAIN_URL}og-image.jpeg`]
         }
     }
 }
