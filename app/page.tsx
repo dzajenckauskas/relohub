@@ -19,6 +19,12 @@ export async function generateMetadata({ }): Promise<Metadata> {
         keywords: homePage?.data?.attributes?.seo?.seoKeywords,
         alternates: {
             canonical: process.env.NEXT_PUBLIC_DOMAIN_URL,
+        },
+        openGraph: {
+            images: ['/og-image.jpeg']
+        },
+        twitter: {
+            images: ['/og-image.jpeg']
         }
     }
 }

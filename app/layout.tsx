@@ -11,8 +11,6 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <head>
-                <meta property="og:image" content="https://deliver1.co.uk/sofa2cut.png" />
-                <meta name="twitter:image" content="https://deliver1.co.uk/sofa2cut.png" />
                 {gaId && <Script
                     src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
                     strategy="afterInteractive"

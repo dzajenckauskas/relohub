@@ -10,6 +10,12 @@ export async function generateMetadata({ params }): Promise<Metadata> {
         keywords: offerPage?.data?.attributes?.seo?.seoKeywords,
         alternates: {
             canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/offer`,
+        },
+        openGraph: {
+            images: ['/og-image.jpeg']
+        },
+        twitter: {
+            images: ['/og-image.jpeg']
         }
     }
 }
