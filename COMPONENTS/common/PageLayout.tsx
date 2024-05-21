@@ -2,7 +2,7 @@
 import { ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 import GetInTOuch from '../main_page/getInTouch';
-import Header from './Header';
+import Header from './header/Header';
 import { getTheme } from './Theme';
 import Chat from './chat';
 

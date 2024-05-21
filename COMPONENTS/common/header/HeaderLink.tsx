@@ -1,0 +1,89 @@
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import Stack from "@mui/material/Stack";
+import Link from "next/link";
+import { theme } from "../Theme";
+import { useState } from 'react';
+
+export type HeaderLinkType = {
+    id?: number;
+    name?: string;
+    url?: string;
+    links?: {
+        id?: number;
+        name?: string;
+        url?: string;
+    }[]
+}
+type Props = {
+    link: HeaderLinkType;
+    path: string;
+    toggleOpen: () => void;
+    open: boolean;
+}
+export const HeaderLink = ({ link, path, toggleOpen, open }: Props) => {
+    return (
+        <Stack key={link.id}>
+            {link.url &&
+                <Link passHref href={link.url ?? undefined} style={{ fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none', }}>
+                    <Stack sx={{ position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
+                        {link.name ?? <HomeOutlinedIcon fontSize={'large'} />}
+                        {!open && path === link?.url && <Stack sx={{
+                            position: 'absolute',
+                            bottom: '-21px;',
+                            left: 0,
+                            height: '3px',
+                            width: '100%',
+                            backgroundColor: theme.palette.secondary.main,
+                            transition: 'background-color 0.3s ease',
+                        }}></Stack>}
+                    </Stack>
+                </Link>}
+            {!link.url &&
+                <Stack
+                    onClick={() => toggleOpen()}
+                    sx={{
+                        fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none',
+                        position: 'relative',
+                    }}>
+                    <Stack direction={'row'} alignItems={'center'} sx={{ color: open && theme.palette.secondary.main, ':hover': { color: theme.palette.secondary.main } }}>
+                        {link.name}
+                        {link.links && <KeyboardArrowDownIcon fontSize='large'
+                            sx={{ position: 'relative', top: 1, ml: .25 }} />}
+                    </Stack>
+                    {path === link?.url && <Stack sx={{
+                        position: 'absolute',
+                        bottom: '-21px;',
+                        left: 0,
+                        height: '3px',
+                        width: '100%',
+                        backgroundColor: theme.palette.secondary.main,
+                        transition: 'background-color 0.3s ease',
+                    }}>
+                    </Stack>}
+                    {open && <Stack sx={{
+                        position: 'absolute',
+                        bottom: '-21px;',
+                        left: 0,
+                        height: '3px',
+                        width: '100%',
+                        backgroundColor: theme.palette.secondary.main,
+                        transition: 'background-color 0.3s ease',
+                    }}>
+                        <Stack sx={{ backgroundColor: '#fff', mt: '3px' }}>
+                            {link.links.map((l) => {
+                                return (
+                                    <Stack sx={{ py: 1, px: 1, ':hover': { color: '#fff', backgroundColor: theme.palette.secondary.main } }}>
+                                        <Link passHref href={l.url} style={{ fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none', }}>
+                                            {l.name}
+                                        </Link>
+                                    </Stack>
+                                )
+                            })}
+                        </Stack>
+                    </Stack>}
+                </Stack>
+            }
+        </Stack>
+    )
+}

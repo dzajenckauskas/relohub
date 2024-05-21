@@ -8,22 +8,40 @@ import Image from "next/image";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import CustomerPortalIcon from './CustomerPortalIcon';
+import CustomerPortalIcon from '../CustomerPortalIcon';
 import HeaderPinkElement from "./HeaderPinkElement";
-import { theme } from './Theme';
-import TopNavBar from './TopNavBar';
+import { theme } from '../Theme';
+import TopNavBar from '../TopNavBar';
+
+import { HeaderLink, HeaderLinkType } from './HeaderLink';
 
 export default function Header() {
     const loginUrl = 'https://admin.deliver1.co.uk/customerPortal/login'
     const [open, setOpen] = useState(false)
+    const [openNavigationDropdown, setOpenNavigationDropdown] = useState(false)
+    const toggleOpenNavigationDropdown = () => {
+        setOpenNavigationDropdown(!openNavigationDropdown)
+    }
     const toggleOpen = () => {
         setOpen(!open)
     }
     const pathname = usePathname()
-    const links = [
-        { id: 0, name: "Home", url: '/' },
+    const links: HeaderLinkType[] = [
+        { id: 0, url: '/' },
         { id: 1, name: "Guides", url: '/guides' },
-        { id: 2, name: "About us", url: '/about-us' }
+        {
+            id: 2, name: "International Moving",
+            links: [
+                { name: 'Moving Overseas', url: '/moving-overseas' },
+                { name: 'Moving within Europe', url: '/moving-within-europe' }]
+        },
+        {
+            id: 3, name: "Other Services",
+            links: [
+                { id: 0, name: '⁠Moving services', url: '/moving-services' },
+                { id: 1, name: '⁠Relocation services', url: '/⁠Relocation-services' }]
+        },
+        { id: 4, name: "About us", url: '/about-us' }
     ]
     useEffect(() => {
         if (open) {
@@ -40,22 +58,7 @@ export default function Header() {
 
     const renderLinks = links.map((link) => {
         return (
-            <Stack key={link.id}>
-                <Link passHref href={link.url} style={{ fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
-                    <Stack sx={{ position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
-                        {link.name}
-                        {path === link.url && <Stack sx={{
-                            position: 'absolute',
-                            bottom: '-21px;',
-                            left: 0,
-                            height: '3px',
-                            width: '100%',
-                            backgroundColor: theme.palette.secondary.main,
-                            transition: 'background-color 0.3s ease',
-                        }}></Stack>}
-                    </Stack>
-                </Link>
-            </Stack>
+            <HeaderLink toggleOpen={toggleOpenNavigationDropdown} open={openNavigationDropdown} key={link?.id} path={path} link={link} />
         )
     })
     const renderMobileLinks = links.map((link) => {
@@ -133,7 +136,9 @@ export default function Header() {
                     </Link>
                     <Stack sx={{
                         display: { md: 'flex', sm: 'flex', xs: 'none' }, flexDirection: 'row',
-                        alignItems: 'center', gap: { lg: 10, md: 4, sm: 6, xs: 0 }
+                        alignItems: 'center',
+                        gap: 2
+                        //  gap: { lg: 10, md: 4, sm: 6, xs: 0 }
                     }}>
                         {renderLinks}
                     </Stack>
