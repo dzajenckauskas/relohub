@@ -27,21 +27,34 @@ export default function Header() {
     }
     const pathname = usePathname()
     const links: HeaderLinkType[] = [
-        { id: 0, url: '/' },
-        { id: 1, name: "Guides", url: '/guides' },
         {
-            id: 2, name: "International Moving",
-            links: [
-                { name: 'Moving Overseas', url: '/moving-overseas' },
-                { name: 'Moving within Europe', url: '/moving-within-europe' }]
+            id: 0,
+            url: '/'
         },
         {
-            id: 3, name: "Other Services",
+            id: 1,
+            name: "Guides",
+            url: '/guides'
+        },
+        {
+            id: 2,
+            name: "International Moving",
+            links: [
+                { id: 0, name: 'Moving Overseas', url: '/moving-overseas' },
+                { id: 1, name: 'Moving within Europe', url: '/moving-within-europe' }]
+        },
+        {
+            id: 3,
+            name: "Other Services",
             links: [
                 { id: 0, name: '⁠Moving services', url: '/moving-services' },
                 { id: 1, name: '⁠Relocation services', url: '/⁠Relocation-services' }]
         },
-        { id: 4, name: "About us", url: '/about-us' }
+        {
+            id: 4,
+            name: "About us",
+            url: '/about-us'
+        }
     ]
     useEffect(() => {
         if (open) {

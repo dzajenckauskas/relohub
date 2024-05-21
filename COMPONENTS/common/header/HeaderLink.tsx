@@ -73,7 +73,7 @@ export const HeaderLink = ({ link, path, toggleOpen, open }: Props) => {
                         <Stack sx={{ backgroundColor: '#fff', mt: '3px' }}>
                             {link.links.map((l) => {
                                 return (
-                                    <Stack sx={{ py: 1, px: 1, ':hover': { color: '#fff', backgroundColor: theme.palette.secondary.main } }}>
+                                    <Stack key={l.id} sx={{ py: 1, px: 1, ':hover': { color: '#fff', backgroundColor: theme.palette.secondary.main } }}>
                                         <Link passHref href={l.url} style={{ fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none', }}>
                                             {l.name}
                                         </Link>
