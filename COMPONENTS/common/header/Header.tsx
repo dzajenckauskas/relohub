@@ -29,11 +29,7 @@ export default function Header() {
             id: 0,
             url: '/'
         },
-        {
-            id: 1,
-            name: "Guides",
-            url: '/guides'
-        },
+
         {
             id: 2,
             name: "International Moving",
@@ -47,6 +43,11 @@ export default function Header() {
             links: [
                 { id: 0, name: '⁠Moving services', url: '/moving-services' },
                 { id: 1, name: '⁠Relocation services', url: '/relocation-services' }]
+        },
+        {
+            id: 1,
+            name: "Guides",
+            url: '/guides'
         },
         {
             id: 4,
@@ -149,8 +150,8 @@ export default function Header() {
                     <Stack sx={{
                         display: { md: 'flex', sm: 'flex', xs: 'none' }, flexDirection: 'row',
                         alignItems: 'center',
-                        gap: 2
-                        //  gap: { lg: 10, md: 4, sm: 6, xs: 0 }
+                        // gap: 4
+                        gap: { lg: 6, md: 1, sm: 2, xs: 0 }
                     }}>
                         {renderLinks}
                     </Stack>
@@ -171,9 +172,9 @@ export default function Header() {
                                 cursor: 'pointer'
                             }}>
                                 <CustomerPortalIcon />
-                                <Typography variant='h5' component={'p'} fontWeight={600} sx={{ pl: 1, display: { md: 'flex', xs: 'none' }, }}>
+                                {/* <Typography variant='h5' component={'p'} fontWeight={600} sx={{ pl: 1, display: { md: 'flex', xs: 'none' }, }}>
                                     CUSTOMER PORTAL
-                                </Typography>
+                                </Typography> */}
                             </Button>
                         </Link>
                         <Stack sx={{ display: { md: 'flex', xs: 'none' } }}>

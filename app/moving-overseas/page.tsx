@@ -27,4 +27,6 @@ export default async function BlogPage() {
     return (
         <MovingOverseasPage countriesdata={countries} articleContinents={articleContinents} />
     );
+
+
 }

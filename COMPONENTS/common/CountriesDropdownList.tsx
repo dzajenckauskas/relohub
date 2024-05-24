@@ -1,11 +1,10 @@
 'use client'
-import Stack from '@mui/material/Stack'
-import React from 'react'
-import { CountriesResponseType } from '../types/CountryType'
-import Link from 'next/link'
 import { Typography } from '@mui/material'
-import { MaxWidthContainer } from '../common/MaxWidthContainer'
-import { theme } from '../common/Theme'
+import Stack from '@mui/material/Stack'
+import Link from 'next/link'
+import { CountriesResponseType } from '../types/CountryType'
+import { MaxWidthContainer } from './MaxWidthContainer'
+import { theme } from './Theme'
 
 type Props = {
     countriesdata: CountriesResponseType;
@@ -22,7 +21,9 @@ export const CountriesDropdownList = ({ countriesdata }: Props) => {
     return (
         <Stack sx={{ backgroundColor: theme.palette.secondary.main, py: 4 }}>
             <MaxWidthContainer>
-                {renderCountriesLinks}
+                <Stack direction={'row'} width={'100%'} justifyContent={'flex-end'}>
+                    {renderCountriesLinks}
+                </Stack>
             </MaxWidthContainer>
         </Stack>
     )

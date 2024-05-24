@@ -12,6 +12,8 @@ import React, { useState } from 'react'
 import EastIcon from '@mui/icons-material/East';
 import Image from 'next/image'
 import Link from 'next/link'
+import Postheroimages from '@/COMPONENTS/main_page/postheroimages'
+import MovingToPageHero from './MovingToPageHero'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
@@ -108,112 +110,20 @@ const MovingToPage = ({ articleContinents }: Props) => {
     });
     return (
         <PageLayout>
-            <Stack sx={{ backgroundColor: '#efefef' }}>
+            <div className="bckimagewrp">
+                <div className="heroareaimgwrp">
+                    <Image
+                        className="herobckgimg"
+                        alt="backgorund"
+                        src={"/herobg.svg"}
+                        fill
+                    />
+                </div>
                 <MaxWidthContainer>
-                    <Stack sx={{
-                        display: 'flex', flexDirection: 'column',
-                    }}>
-                        <Stack direction={'row'} justifyContent={'flex-start'} spacing={.5} sx={{
-                            paddingTop: '10px',
-                            marginBottom: '20px',
-                            alignItems: 'center',
-                        }}>
-                            <Link passHref href={'/'}>
-                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
-                                    Home
-                                </Typography>
-                            </Link>
-                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
-                                {'/'}
-                            </Typography>
-                            <Typography variant='body2' sx={{ fontWeight: 400, }}>
-                                {"About us"}
-                            </Typography>
-                        </Stack>
-                        <Typography variant='h1' sx={{ pb: 2 }}>{"About us"}</Typography>
-                    </Stack>
+                    <MovingToPageHero />
                 </MaxWidthContainer>
-                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', pb: 6 }}>
-                    <Stack>
-                        <Stack direction={{ md: 'row', xs: 'column' }} spacing={{ xs: 4, md: 8 }}>
-                            <Stack sx={{ width: '100%' }}>
-                                <Typography variant={'h2'} sx={{ pb: 2 }}>
-                                    Exceptional moving services
-                                </Typography>
-                                <Typography variant='body1'>
-                                    Deliver1 was founded by Charlie Beck and Robertas Gailaitis, who have been active in the industry since 2013. Through their extensive experience, they recognized a significant gap in the market: a scarcity of moving companies that successfully blend value for money with high-quality service. Motivated to fill this niche, Beck and Gailaitis established Deliver1 in early 2019. Their mission was clear - to offer clients exceptional moving services without compromising on affordability or quality. Since its inception, Deliver1 has been committed to redefining the moving industry by consistently delivering excellence in every aspect of its service.
-                                </Typography>
-                            </Stack>
-                            <Stack sx={{ width: '100%', height: { md: 'auto', xs: 300 }, position: 'relative' }}>
-                                <Image
-                                    alt="backgorund"
-                                    src={"/cover-img.jpg"}
-                                    objectFit='cover'
-                                    style={{ borderRadius: 4 }}
-                                    objectPosition='top'
-                                    fill />
-                            </Stack>
-                        </Stack>
-                    </Stack>
-                </MaxWidthContainer>
-            </Stack>
-            <Stack sx={{ backgroundColor: '#fff' }}>
-                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', py: 6 }}>
-                    <Stack spacing={{ lg: 10, xs: 6 }} direction={{ md: 'row', xs: 'column' }} width={'100%'}>
-                        <Stack sx={{ width: { lg: '55%', xs: '100%' }, }}>
-                            <Typography variant={'h2'} sx={{ pb: 1 }}>
-                                Services we offer
-                            </Typography>
-                            <Stack gap={{ xs: 1, sm: 2 }} pt={2} direction={'row'} sx={{ flexWrap: 'wrap', width: '100%' }}>
-                                {renderServices}
-                            </Stack>
-                        </Stack>
-                        <Stack sx={{ width: { lg: '45%', xs: '100%' }, }}>
-                            <Typography variant={'h2'} sx={{ pb: 2 }}>
-                                Other services we offer include:
-                            </Typography>
-                            <Stack spacing={1}>
-                                <Typography variant='body1' sx={{ alignItems: 'center', display: 'flex', gap: 1 }}>
-                                    <EastIcon fontSize='large' color='secondary' />     Storage solutions
-                                </Typography>
-                                <Typography variant='body1' sx={{ alignItems: 'center', display: 'flex', gap: 1 }}>
-                                    <EastIcon fontSize='large' color='secondary' />   Comprehensive professional packing
-                                </Typography>
-                                <Typography variant='body1' sx={{ alignItems: 'center', display: 'flex', gap: 1 }}>
-                                    <EastIcon fontSize='large' color='secondary' />   Specialized crating for delicate items
-                                </Typography>
-                                <Typography variant='body1' sx={{ alignItems: 'center', display: 'flex', gap: 1 }}>
-                                    <EastIcon fontSize='large' color='secondary' />   Furniture disassembly and assembly
-                                </Typography>
-                            </Stack>
-                            <Stack sx={{ width: '100%', height: { md: 300, xs: 200 }, position: 'relative', top: { md: 48, sm: 48, xs: 48 } }}>
-                                <Image
-                                    alt="backgorund"
-                                    src={"/sofa2cut.png"}
-                                    objectFit='contain'
-                                    objectPosition='bottom'
-                                    fill />
-                            </Stack>
-                        </Stack>
-                    </Stack>
-                </MaxWidthContainer>
-            </Stack>
-            <Stack sx={{ backgroundColor: '#f1f1f1' }}>
-                <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', pt: 6, pb: 10 }}>
-                    <Stack sx={{ width: '100%' }}>
-                        <Typography variant={'h2'} sx={{ pb: 1 }}>
-                            Countries that we cover:
-                        </Typography>
-                        <Stack direction={'row'} gap={1} pt={1} sx={{ flexWrap: 'wrap' }}>
-                            {renderArticleContinents}
-                        </Stack>
-
-                        <Grid container spacing={1} pt={4}>
-                            {renderCountries}
-                        </Grid>
-                    </Stack>
-                </MaxWidthContainer>
-            </Stack>
+                <Postheroimages />
+            </div>
         </PageLayout>
     )
 }
