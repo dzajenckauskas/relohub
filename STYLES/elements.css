@@ -51,11 +51,17 @@
     color: #fff;
     padding: 4px;
     border-radius: 8px;
-    padding-left: 8px;
+    padding-left: 12px;
+    letter-spacing: 1px;
 }
 
 .chatwithustxt {
     margin-right: 4px;
+}
+
+.chatwithustxt p {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
 }
 
 .chatinsideimgwrp {
