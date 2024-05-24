@@ -27,6 +27,7 @@ const ArticlePage = ({ article }: Props) => {
     const url = process.env.NEXT_PUBLIC_DOMAIN_URL + pathname
 
     const category = article?.data?.attributes?.articleCategory?.data?.attributes?.name
+    const categoryUrl = article?.data?.attributes?.articleCategory?.data?.attributes?.key
     const continent = article?.data?.attributes?.articleContinents?.data?.[0]?.attributes?.name
     const date = article?.data?.attributes?.createdAt
     function formatDate(dateString) {
@@ -117,7 +118,7 @@ const ArticlePage = ({ article }: Props) => {
                             <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
                                 {' / '}
                             </Typography>
-                            <Link passHref href={'/guides/' + category?.toLowerCase()}>
+                            <Link passHref href={'/guides/' + categoryUrl?.toLowerCase()}>
                                 <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
                                     {category}
                                 </Typography>
