@@ -3,14 +3,13 @@ import PageLayout from "@/COMPONENTS/common/PageLayout";
 import FaqWrapper from "@/COMPONENTS/main_page/Faqwrapper";
 import LatestArticles from "@/COMPONENTS/main_page/LatestArticles";
 import MainPageHeroArea from "@/COMPONENTS/main_page/MainPageHeroArea";
-import Postheroimages from "@/COMPONENTS/main_page/postheroimages";
 import ProcessWrapper from "@/COMPONENTS/main_page/ProcessWrapper";
+import Postheroimages from "@/COMPONENTS/main_page/postheroimages";
 import Reviews from "@/COMPONENTS/main_page/reviews";
 import VideoArea from "@/COMPONENTS/main_page/videoarea";
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
 import Image from "next/image";
-
 export async function generateMetadata({ }): Promise<Metadata> {
     const homePage = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/home-page?populate=seo`)
     return {

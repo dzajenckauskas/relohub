@@ -16,13 +16,15 @@ import Postheroimages from '@/COMPONENTS/main_page/postheroimages'
 import MovingToPageHero from './MovingToPageHero'
 import { FlagIllustration } from '@/COMPONENTS/FlagIllustration'
 import "/STYLES/svg-style.css";
-import { CountryResponseType } from '@/COMPONENTS/types/CountryType'
+import { CountriesResponseType, CountryResponseType } from '@/COMPONENTS/types/CountryType'
+import { CountriesDropdownList } from '@/COMPONENTS/common/CountriesDropdownList'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
     country?: CountryResponseType;
+    countriesdata?: CountriesResponseType;
 }
-const MovingToPage = ({ articleContinents, country }: Props) => {
+const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
     const [active, setActive] = useState<string | undefined>('europe')
     const renderCountries = countries.filter((c) => c.continent && c.continent?.toLowerCase() === active)?.map((c) => {
         const capitalizeEachWord = (str: string) => {
@@ -126,14 +128,12 @@ const MovingToPage = ({ articleContinents, country }: Props) => {
                 <MaxWidthContainer>
                     <MovingToPageHero countryName={country?.data?.attributes?.name} />
                 </MaxWidthContainer>
-                {/* <Postheroimages /> */}
-
                 <section className="globalWrapperheropostimage">
-                    <FlagIllustration iso={country?.data?.attributes?.iso2} />
+                    <FlagIllustration iso={country?.data?.attributes?.iso2?.toLowerCase()} />
                 </section>
-
             </div>
-        </PageLayout >
+            <CountriesDropdownList countriesdata={countriesdata} />
+        </PageLayout>
     )
 }
 

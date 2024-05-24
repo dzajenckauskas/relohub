@@ -12,6 +12,8 @@ import React, { useState } from 'react'
 import EastIcon from '@mui/icons-material/East';
 import Image from 'next/image'
 import Link from 'next/link'
+import axios from 'axios'
+import { countriesData } from '../countriesData'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
@@ -106,8 +108,54 @@ const AboutUsPage = ({ articleContinents }: Props) => {
             </Button>
         );
     });
+
+
+
+
+    const dd = countriesData()
+
+    // console.log(), "dd");
+    // const renderdata = dd.map((c) => {
+    //     return {
+    //         data: {
+    //             name: c.name,
+    //             iso2: c.iso2,
+    //             url: c.name?.toLowerCase(),
+    //             collection: true,
+    //             destination: true,
+    //             continent: "Europe",
+    //             seo: {
+    //                 seoTitle: `Moving to or from ${c.name}`,
+    //                 seoDescription: `Moving to or from ${c.name}`,
+    //                 seoKeywords: `Moving to or from ${c.name}`
+    //             },
+    //             // cities: c.cities
+    //         }
+    //     }
+    // })
+
+
+
+
+    const post = async () => {
+
+        // renderdata.forEach(async (d) => {
+        //     console.log(d)
+        //     try {
+        //         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/countries`, d);
+        //         console.log('API Response:', response.request);
+        //     } catch (error) {
+        //         console.error('Error calling external API:', error);
+        //     }
+        // })
+    }
+
     return (
         <PageLayout>
+            {/* 
+            <button onClick={() => post()}>
+                POST
+            </button> */}
             <Stack sx={{ backgroundColor: '#efefef' }}>
                 <MaxWidthContainer>
                     <Stack sx={{
