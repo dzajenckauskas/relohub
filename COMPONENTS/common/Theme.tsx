@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material/styles';
-import { Open_Sans } from "next/font/google";
+// import { Uniform } from "next/font/google";
 
-const openSans = Open_Sans({ weight: ["300", "400", "500", "600", "700", "800"], subsets: ['latin-ext'] })
+// const openSans = Open_Sans({ weight: ["300", "400", "500", "600", "700", "800"], subsets: ['latin-ext'] })
 
 export const theme = createTheme({
     components: {
@@ -34,7 +34,7 @@ export const theme = createTheme({
         MuiButton: {
             styleOverrides: {
                 root: ({ theme }) => theme.unstable_sx({
-                    fontFamily: openSans.style.fontFamily,
+                    fontFamily: 'Uniform',
                     fontSize: 14,
                     py: 1.2,
                     letterSpacing: 1,
@@ -51,7 +51,7 @@ export const theme = createTheme({
     },
     typography: {
         h1: {
-            fontFamily: openSans.style.fontFamily,
+            fontFamily: 'Uniform',
             fontWeight: 700,
             fontSize: 32,
             '@media (min-width:600px)': {
@@ -68,7 +68,7 @@ export const theme = createTheme({
             },
         },
         h2: {
-            fontFamily: openSans.style.fontFamily,
+            fontFamily: 'Uniform',
             fontWeight: 700,
             fontSize: 24,
             '@media (min-width:600px)': {
@@ -85,7 +85,7 @@ export const theme = createTheme({
             },
         },
         h3: {
-            fontFamily: openSans.style.fontFamily,
+            fontFamily: 'Uniform',
             fontWeight: 700,
             fontSize: 20,
             '@media (min-width:600px)': {
@@ -102,7 +102,7 @@ export const theme = createTheme({
             },
         },
         h4: {
-            fontFamily: openSans.style.fontFamily,
+            fontFamily: 'Uniform',
             fontSize: 18,
             '@media (min-width:600px)': {
                 fontSize: 20,
@@ -118,22 +118,22 @@ export const theme = createTheme({
             },
         },
         h5: {
-            fontFamily: openSans.style.fontFamily,
+            fontFamily: 'Uniform',
         },
         h6: {
-            fontFamily: openSans.style.fontFamily,
+            fontFamily: 'Uniform',
         },
         body1: {
-            fontFamily: openSans.style.fontFamily,
+            fontFamily: 'Uniform',
             fontSize: 16,
 
         },
         body2: {
-            fontFamily: openSans.style.fontFamily,
+            fontFamily: 'Uniform',
             fontSize: 14
         },
         caption: {
-            fontFamily: openSans.style.fontFamily,
+            fontFamily: 'Uniform',
             fontSize: 12
 
         }

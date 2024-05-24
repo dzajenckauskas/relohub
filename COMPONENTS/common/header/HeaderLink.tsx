@@ -24,7 +24,7 @@ export const HeaderLink = ({ link, path, setOpenDropdown, openDropdown }: Props)
     return (
         <Stack key={link.id}>
             {link.url &&
-                <Link passHref href={link.url ?? undefined} style={{ fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none', }}>
+                <Link passHref href={link.url ?? undefined} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none', }}>
                     <Stack sx={{ px: 1, position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
                         {link.name ?? <HomeOutlinedIcon fontSize={'large'} />}
                         {openDropdown !== link.id && path === link?.url && <Stack sx={{
@@ -44,7 +44,7 @@ export const HeaderLink = ({ link, path, setOpenDropdown, openDropdown }: Props)
                         openDropdown ? setOpenDropdown(undefined) : setOpenDropdown(link.id)
                     }}
                     sx={{
-                        fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none',
+                        fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none',
                         position: 'relative',
                     }}>
                     <Stack direction={'row'} alignItems={'center'} sx={{ px: 1, color: openDropdown === link.id && theme.palette.secondary.main, ':hover': { color: theme.palette.secondary.main } }}>
@@ -75,7 +75,7 @@ export const HeaderLink = ({ link, path, setOpenDropdown, openDropdown }: Props)
                             {link.links.map((l) => {
                                 return (
                                     <Stack key={l.id} sx={{ py: 1, px: 1, ':hover': { color: '#fff', backgroundColor: theme.palette.secondary.main } }}>
-                                        <Link passHref href={l.url} style={{ fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none', }}>
+                                        <Link passHref href={l.url} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none', }}>
                                             {l.name}
                                         </Link>
                                     </Stack>

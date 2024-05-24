@@ -1,3 +1,52 @@
+@font-face {
+    font-family: Uniform;
+    src:
+        url('/fonts/Uniform-Condensed.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Uniform;
+    src:
+        url('/fonts/Uniform-Condensed-Black.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Uniform;
+    src:
+        url('/fonts/Uniform-Condensed-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Uniform;
+    src:
+        url('/fonts/Uniform-Condensed-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Uniform;
+    src:
+        url('/fonts/Uniform-Condensed-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: Uniform;
+}
+
 :root {
     --pink_color: #e71c5e;
     --light_grey: #ebebeb;

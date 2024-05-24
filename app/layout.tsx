@@ -1,11 +1,9 @@
-import { Open_Sans } from "next/font/google";
 import "react-calendar/dist/Calendar.css";
 import "/STYLES/elements.css";
 import "/STYLES/globals.css";
 import "/STYLES/medias.css";
 import Script from "next/script";
 
-const osans = Open_Sans({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
     const gaId = 'GTM-MNL6VBLH'
     return (
@@ -48,7 +46,7 @@ export default function RootLayout({ children }) {
                 />
             </head>
 
-            <body className={osans.className}>
+            <body>
                 {children}
             </body>
         </html>
