@@ -16,11 +16,13 @@ import Postheroimages from '@/COMPONENTS/main_page/postheroimages'
 import MovingToPageHero from './MovingToPageHero'
 import { FlagIllustration } from '@/COMPONENTS/FlagIllustration'
 import "/STYLES/svg-style.css";
+import { CountryResponseType } from '@/COMPONENTS/types/CountryType'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
+    country?: CountryResponseType;
 }
-const MovingToPage = ({ articleContinents }: Props) => {
+const MovingToPage = ({ articleContinents, country }: Props) => {
     const [active, setActive] = useState<string | undefined>('europe')
     const renderCountries = countries.filter((c) => c.continent && c.continent?.toLowerCase() === active)?.map((c) => {
         const capitalizeEachWord = (str: string) => {
@@ -122,33 +124,12 @@ const MovingToPage = ({ articleContinents }: Props) => {
                     />
                 </div>
                 <MaxWidthContainer>
-                    <MovingToPageHero />
+                    <MovingToPageHero countryName={country?.data?.attributes?.name} />
                 </MaxWidthContainer>
                 {/* <Postheroimages /> */}
 
                 <section className="globalWrapperheropostimage">
-                    <FlagIllustration country={'lt'} />
-                    {/* <Image
-                        src={"/deliveri-1-1.png"}
-                        width={180}
-                        height={163}
-                        style={{ objectFit: "contain" }}
-                        alt="human carying box"
-                        className="heropostimagecaryingimg"
-                        priority
-                    />
-
-                    <Image
-                        src={"/deliveri-2-1.png"}
-                        width={594}
-                        height={226}
-                        style={{
-                            objectFit: "contain",
-                        }}
-                        alt="human carying stuff"
-                        priority
-                        className="heropostimagecaryingsofaimg"
-                    /> */}
+                    <FlagIllustration iso={country?.data?.attributes?.iso2} />
                 </section>
 
             </div>

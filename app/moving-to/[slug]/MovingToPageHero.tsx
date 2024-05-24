@@ -4,7 +4,11 @@ import { theme } from "@/COMPONENTS/common/Theme";
 import Stack from "@mui/material/Stack";
 import Typography from '@mui/material/Typography';
 
-export default function MovingEuropePageHero() {
+type Props = {
+    countryName: string;
+}
+
+export default function MovingEuropePageHero({ countryName }: Props) {
     return (
         <Stack direction={{ md: 'row', xs: 'column' }} pt={6} mx={'auto'} width={'100%'}>
             <Typography component={'h1'} sx={{
@@ -26,7 +30,7 @@ export default function MovingEuropePageHero() {
                         fontWeight: 700, lineHeight: 1.1, fontSize: { lg: 60, md: 52, sm: 42, xs: 32 },
                         color: theme.palette.secondary.main
                     }}>
-                    Lithuania
+                    {countryName}
                 </Typography>
             </Typography>
             <Stack maxWidth={{ md: 'none', xs: 'sm' }}

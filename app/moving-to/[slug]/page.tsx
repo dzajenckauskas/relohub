@@ -1,15 +1,16 @@
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
 import MovingServicesPage from "./MovingToPage";
+import MovingToPage from "./MovingToPage";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
-    const aboutPage = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/about-page?populate=seo`)
+    const country = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/countries/${params.slug}`)
     return {
-        title: aboutPage?.data?.attributes?.seo?.seoTitle,
-        description: aboutPage?.data?.attributes?.seo?.seoDescription,
-        keywords: aboutPage?.data?.attributes?.seo?.seoKeywords,
+        title: country?.data?.attributes?.seo?.seoTitle,
+        description: country?.data?.attributes?.seo?.seoDescription,
+        keywords: country?.data?.attributes?.seo?.seoKeywords,
         alternates: {
-            canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/about-us`,
+            canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/moving-to/${country?.data?.attributes?.url}`,
         },
         openGraph: {
             images: [`${process.env.NEXT_PUBLIC_DOMAIN_URL}/og-image.jpeg`]
@@ -20,10 +21,11 @@ export async function generateMetadata({ params }): Promise<Metadata> {
     }
 }
 
-export default async function MovingTo() {
+export default async function MovingTo({ params }) {
     const articleContinents = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/article-continents`)
+    const country = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/countries/${params.slug}`)
 
     return (
-        <MovingServicesPage articleContinents={articleContinents} />
+        <MovingToPage articleContinents={articleContinents} country={country} />
     );
 }
