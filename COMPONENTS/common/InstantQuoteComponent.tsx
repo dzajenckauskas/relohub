@@ -12,7 +12,9 @@ export const InstantQuoteComponent = () => {
     const router = useRouter();
     const [enableButton, setEnableButton] = useState(false);
     return (
-        <>
+        <Stack sx={{
+            minHeight: 330
+        }}>
             <h2 className="instantquotewrp">
                 <span>{"Get an "}</span>
                 <span style={{ fontWeight: 800 }}>
@@ -36,6 +38,6 @@ export const InstantQuoteComponent = () => {
                 }}>
                 GET ESTIMATE
             </Button>
-        </>
+        </Stack>
     )
 }

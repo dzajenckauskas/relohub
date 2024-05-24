@@ -33,7 +33,7 @@ export default function MovingEuropePageHero({ countryName }: Props) {
                     {countryName}
                 </Typography>
             </Typography>
-            <Stack maxWidth={{ md: 'none', xs: 'sm' }}
+            <Stack className="" maxWidth={{ md: 'none', xs: 'sm' }}
                 sx={{
                     width: '100%',
                     mx: 'auto',
