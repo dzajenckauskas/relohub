@@ -18,10 +18,8 @@ import { HeaderLink, HeaderLinkType } from './HeaderLink';
 export default function Header() {
     const loginUrl = 'https://admin.deliver1.co.uk/customerPortal/login'
     const [open, setOpen] = useState(false)
-    const [openNavigationDropdown, setOpenNavigationDropdown] = useState(false)
-    const toggleOpenNavigationDropdown = () => {
-        setOpenNavigationDropdown(!openNavigationDropdown)
-    }
+    const [openDropdown, setOpenDropdown] = useState<number | undefined>()
+
     const toggleOpen = () => {
         setOpen(!open)
     }
@@ -71,7 +69,8 @@ export default function Header() {
 
     const renderLinks = links.map((link) => {
         return (
-            <HeaderLink toggleOpen={toggleOpenNavigationDropdown} open={openNavigationDropdown} key={link?.id} path={path} link={link} />
+            <HeaderLink setOpenDropdown={setOpenDropdown} openDropdown={openDropdown}
+                key={link?.id} path={path} link={link} />
         )
     })
     const renderMobileLinks = links.map((link) => {
