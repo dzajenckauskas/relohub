@@ -2,28 +2,21 @@
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer'
 import PageLayout from '@/COMPONENTS/common/PageLayout'
 import { theme } from '@/COMPONENTS/common/Theme'
-import { CountriesDropdownList } from '@/COMPONENTS/main_page/CountriesDropdownList'
 import { countries } from '@/COMPONENTS/main_page/heroInputs'
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes'
-import { CountriesResponseType } from '@/COMPONENTS/types/CountryType'
-import EastIcon from '@mui/icons-material/East'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
+import React, { useState } from 'react'
+import EastIcon from '@mui/icons-material/East';
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
-    countriesdata?: CountriesResponseType;
 }
-const MovingOverseasPage = ({ articleContinents, countriesdata }: Props) => {
-
-    console.log(countriesdata, "countriesdata");
-
-
+const MovingToPage = ({ articleContinents }: Props) => {
     const [active, setActive] = useState<string | undefined>('europe')
     const renderCountries = countries.filter((c) => c.continent && c.continent?.toLowerCase() === active)?.map((c) => {
         const capitalizeEachWord = (str: string) => {
@@ -134,10 +127,10 @@ const MovingOverseasPage = ({ articleContinents, countriesdata }: Props) => {
                                 {'/'}
                             </Typography>
                             <Typography variant='body2' sx={{ fontWeight: 400, }}>
-                                {"Moving overseas"}
+                                {"About us"}
                             </Typography>
                         </Stack>
-                        <Typography variant='h1' sx={{ pb: 2 }}>{"Moving overseas"}</Typography>
+                        <Typography variant='h1' sx={{ pb: 2 }}>{"About us"}</Typography>
                     </Stack>
                 </MaxWidthContainer>
                 <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', pb: 6 }}>
@@ -164,9 +157,6 @@ const MovingOverseasPage = ({ articleContinents, countriesdata }: Props) => {
                     </Stack>
                 </MaxWidthContainer>
             </Stack>
-
-            <CountriesDropdownList countriesdata={countriesdata} />
-
             <Stack sx={{ backgroundColor: '#fff' }}>
                 <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', py: 6 }}>
                     <Stack spacing={{ lg: 10, xs: 6 }} direction={{ md: 'row', xs: 'column' }} width={'100%'}>
@@ -228,4 +218,4 @@ const MovingOverseasPage = ({ articleContinents, countriesdata }: Props) => {
     )
 }
 
-export default MovingOverseasPage
+export default MovingToPage

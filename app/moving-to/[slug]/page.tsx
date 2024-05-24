@@ -1,6 +1,6 @@
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
-import MovingOverseasPage from "./MovingOverseasPage";
+import MovingServicesPage from "./MovingToPage";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
     const aboutPage = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/about-page?populate=seo`)
@@ -20,11 +20,10 @@ export async function generateMetadata({ params }): Promise<Metadata> {
     }
 }
 
-export default async function BlogPage() {
+export default async function MovingTo() {
     const articleContinents = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/article-continents`)
-    const countries = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/countries`)
 
     return (
-        <MovingOverseasPage countriesdata={countries} articleContinents={articleContinents} />
+        <MovingServicesPage articleContinents={articleContinents} />
     );
 }
