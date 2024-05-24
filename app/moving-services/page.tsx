@@ -1,6 +1,6 @@
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
-import AboutUsPage from "../about-us/AboutUsPage";
+import MovingServicesPage from "./MovingServicesPage";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
     const aboutPage = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/about-page?populate=seo`)
@@ -24,6 +24,6 @@ export default async function BlogPage() {
     const articleContinents = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/article-continents`)
 
     return (
-        <AboutUsPage articleContinents={articleContinents} />
+        <MovingServicesPage articleContinents={articleContinents} />
     );
 }
