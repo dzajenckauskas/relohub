@@ -1,15 +1,10 @@
 "use client";
-import HeroInputs from "./heroInputs";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Typography from '@mui/material/Typography'
-import { theme } from "../common/Theme";
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
+import Typography from '@mui/material/Typography';
+import { InstantQuoteComponent } from "../common/InstantQuoteComponent";
+import { theme } from "../common/Theme";
 
 export default function MainPageHeroArea() {
-    const router = useRouter();
-    const [enableButton, setEnableButton] = useState(false);
     return (
         <Stack direction={{ md: 'row', xs: 'column' }} pt={6} mx={'auto'} width={'100%'}>
             <Typography component={'h1'} sx={{
@@ -41,29 +36,7 @@ export default function MainPageHeroArea() {
                     borderRadius: 2,
                     boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'
                 }}>
-                <h2 className="instantquotewrp">
-                    <span>{"Get an "}</span>
-                    <span>
-                        <b>Instant Quote</b>
-                    </span>
-                    <span>{" now"}</span>
-                </h2>
-                <HeroInputs
-                    enableButton={(st) => {
-                        setEnableButton(st);
-                    }} edit={undefined} newstate={undefined} />
-                <Button variant="contained" color="secondary"
-                    disabled={!enableButton}
-                    className="herobuttongetestimate"
-                    onClick={() => {
-                        router.push(
-                            `/offer?data=${encodeURIComponent(
-                                JSON.stringify(enableButton),
-                            )}`,
-                        );
-                    }}>
-                    GET ESTIMATE
-                </Button>
+                <InstantQuoteComponent />
             </Stack>
         </Stack>
     );

@@ -15,6 +15,7 @@ import PageLayout from '../../../../COMPONENTS/common/PageLayout';
 import { ArticleResponseType } from '../../../../COMPONENTS/types/ArticleTypes';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { InstantQuoteComponent } from '@/COMPONENTS/common/InstantQuoteComponent';
 
 type Props = {
     article?: ArticleResponseType;
@@ -270,6 +271,20 @@ const ArticlePage = ({ article }: Props) => {
                             <Typography sx={{ color: '#000', fontSize: 14, fontWeight: 500, letterSpacing: 1 }}>
                                 {'Share this article'}
                             </Typography>
+                        </Stack>
+                        <Stack direction='row' justifyContent={'center'} width={'100%'} sx={{ mt: 8, maxWidth: 'sm', mx: 'auto' }}>
+                            <Stack maxWidth={{ md: 'none', xs: 'sm' }}
+                                sx={{
+                                    width: '100%',
+                                    mx: 'auto',
+                                    p: { md: 6, xs: 2 },
+                                    mb: 3,
+                                    backgroundColor: '#fff',
+                                    borderRadius: 2,
+                                    boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'
+                                }}>
+                                <InstantQuoteComponent />
+                            </Stack>
                         </Stack>
                     </Stack>
                 </MaxWidthContainer>
