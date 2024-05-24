@@ -3,7 +3,6 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Stack from "@mui/material/Stack";
 import Link from "next/link";
 import { theme } from "../Theme";
-import { useState } from 'react';
 
 export type HeaderLinkType = {
     id?: number;
@@ -26,7 +25,7 @@ export const HeaderLink = ({ link, path, setOpenDropdown, openDropdown }: Props)
         <Stack key={link.id}>
             {link.url &&
                 <Link passHref href={link.url ?? undefined} style={{ fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none', }}>
-                    <Stack sx={{ position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
+                    <Stack sx={{ px: 1, position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
                         {link.name ?? <HomeOutlinedIcon fontSize={'large'} />}
                         {openDropdown !== link.id && path === link?.url && <Stack sx={{
                             position: 'absolute',
@@ -48,7 +47,7 @@ export const HeaderLink = ({ link, path, setOpenDropdown, openDropdown }: Props)
                         fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none',
                         position: 'relative',
                     }}>
-                    <Stack direction={'row'} alignItems={'center'} sx={{ color: openDropdown === link.id && theme.palette.secondary.main, ':hover': { color: theme.palette.secondary.main } }}>
+                    <Stack direction={'row'} alignItems={'center'} sx={{ px: 1, color: openDropdown === link.id && theme.palette.secondary.main, ':hover': { color: theme.palette.secondary.main } }}>
                         {link.name}
                         {link.links && <KeyboardArrowDownIcon fontSize='large'
                             sx={{ position: 'relative', top: 1, ml: .25 }} />}

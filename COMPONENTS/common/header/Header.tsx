@@ -46,7 +46,7 @@ export default function Header() {
             name: "Other Services",
             links: [
                 { id: 0, name: '⁠Moving services', url: '/moving-services' },
-                { id: 1, name: '⁠Relocation services', url: '/⁠Relocation-services' }]
+                { id: 1, name: '⁠Relocation services', url: '/relocation-services' }]
         },
         {
             id: 4,
