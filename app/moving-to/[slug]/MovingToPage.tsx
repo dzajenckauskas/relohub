@@ -132,7 +132,7 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                     <FlagIllustration iso={country?.data?.attributes?.iso2?.toLowerCase()} />
                 </section>
             </div>
-            <CountriesDropdownList countriesdata={countriesdata} />
+            <CountriesDropdownList />
         </PageLayout>
     )
 }
