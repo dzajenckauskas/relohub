@@ -18,6 +18,8 @@
         "@stripe/react-stripe-js": "^2.4.0",
         "@stripe/stripe-js": "^2.3.0",
         "axios": "^1.6.8",
+        "axios-hooks": "^5.0.2",
+        "lodash": "^4.17.21",
         "next": "v14.0.5-canary.60",
         "next-share": "^0.27.0",
         "nodemailer": "^6.9.8",
@@ -29,6 +31,7 @@
         "sharp": "^0.33.2",
         "stripe": "^14.12.0",
         "swr": "^2.2.5",
+        "throttle": "^1.0.3",
         "yup": "^1.4.0"
     },
     "devDependencies": {

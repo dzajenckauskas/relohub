@@ -5,6 +5,7 @@ import Postheroimages from '@/COMPONENTS/main_page/postheroimages'
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes'
 import Image from 'next/image'
 import MovingEuropePageHero from './MovingEuropePageHero'
+import { CountriesDropdownList } from '@/COMPONENTS/common/CountriesDropdownList'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
@@ -27,6 +28,7 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
                 </MaxWidthContainer>
                 <Postheroimages />
             </div>
+            <CountriesDropdownList />
         </PageLayout>
     )
 }

@@ -21,11 +21,8 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 }
 
 export default async function BlogPage() {
-    const articleContinents = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/article-continents`)
-    const countries = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/countries?pagination[limit]=100&sort[0]=name:asc`)
-
     return (
-        <MovingOverseasPage countriesdata={countries} articleContinents={articleContinents} />
+        <MovingOverseasPage />
     );
 
 

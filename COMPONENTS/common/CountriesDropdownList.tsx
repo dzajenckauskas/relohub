@@ -1,6 +1,6 @@
 'use client'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
-import { Autocomplete, TextField, Typography } from '@mui/material'
+import { TextField, Typography } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import { styled } from '@mui/system'
 import Image from "next/image"
@@ -9,22 +9,24 @@ import { useParams, useRouter } from 'next/navigation'
 import { CountriesResponseType } from '../types/CountryType'
 import { MaxWidthContainer } from './MaxWidthContainer'
 import { theme } from './Theme'
+import Autocomplete from '@mui/material/Autocomplete';
+import { useEffect, useState } from 'react'
+import useAxios from 'axios-hooks';
+import { throttle } from 'lodash'
+import CloseIcon from '@mui/icons-material/Close';
+
 type Props = {
-    countriesdata: CountriesResponseType;
 }
 
-export const CountriesDropdownList = ({ countriesdata }: Props) => {
+export const CountriesDropdownList = ({ }: Props) => {
 
     const params = useParams()
     const router = useRouter()
     const GroupHeader = styled('div')(({ theme }) => ({
-        // position: 'sticky',
-        // top: '-8px',
         padding: '4px 14px',
         marginTop: 8,
         marginBottom: 8,
         textAlign: 'center',
-        // color: theme.palette.primary.main,
         width: 56,
         marginLeft: 16,
         borderRadius: 5,
@@ -38,6 +40,35 @@ export const CountriesDropdownList = ({ countriesdata }: Props) => {
 
     });
 
+    const [input, setInput] = useState('');
+    const setThrottledInput = throttle(setInput, 300, { leading: false })
+    const [open, setOpen] = useState(false);
+
+    const [{ data, loading: listLoading, error }, get] = useAxios<CountriesResponseType>(
+        {
+            url: `${process.env.NEXT_PUBLIC_API_URL}/api/countries?pagination[limit]=100&sort[0]=name:asc`
+        },
+        {
+            useCache: false,
+            manual: true,
+        }
+    );
+
+    useEffect(() => {
+        if (!open) {
+        } else {
+            (async () => {
+                try {
+                    await get();
+                } catch (err) {
+                    console.log(err);
+                }
+            })()
+        }
+        return () => {
+        }
+    }, [open, get, input]);
+
     return (
         <Stack sx={{ backgroundColor: theme.palette.secondary.main, py: 4 }}>
             <MaxWidthContainer>
@@ -47,22 +78,52 @@ export const CountriesDropdownList = ({ countriesdata }: Props) => {
                     </Typography>
 
                     <Autocomplete
-                        popupIcon={<ArrowDropDownIcon fontSize='large' />}
+                        open={open}
+                        popupIcon={<ArrowDropDownIcon sx={{ fontSize: 30 }} />}
+                        clearIcon={<CloseIcon sx={{ fontSize: 20 }} />}
                         disablePortal
-                        defaultValue={countriesdata.data.find((c) => c.attributes.url === params.slug)}
-                        getOptionLabel={(option) => option.attributes.name}
+                        // defaultValue={{
+                        //     id: 1,
+                        //     attributes: {
+                        //         name: Array.isArray(params?.slug) ? params?.slug[0]?.toLocaleUpperCase() : params?.slug?.toLocaleUpperCase(),
+                        //         continent: '',
+                        //         iso2: '',
+                        //         url: '',
+                        //         collection: false,
+                        //         destination: false,
+                        //         createdAt: undefined,
+                        //         updatedAt: undefined,
+                        //         publishedAt: undefined
+                        //     }
+                        // }}
+                        getOptionLabel={(option) => option?.attributes?.name}
                         id="combo-box-demo"
-                        options={countriesdata?.data}
+                        options={data?.data ?? []}
                         sx={{ maxWidth: 596, width: '100%' }}
-                        groupBy={(option) => option.attributes.name[0]}
-                        onChange={(e, option) => router.push(`/moving-to/${option.attributes.url}`)}
-                        renderInput={(params) => <TextField sx={{ backgroundColor: '#fff !important', borderRadius: 1 }} color='info' placeholder='Please select' {...params} />}
+                        groupBy={(option) => option?.attributes?.name?.[0]}
+                        renderInput={(params) => <TextField helperText={error?.message} sx={{ backgroundColor: '#fff !important', borderRadius: 1 }} color='info' placeholder='Please select' {...params} />}
                         renderGroup={(params) => (
                             <li key={params.key}>
                                 <GroupHeader>{params.group}</GroupHeader>
                                 <GroupItems>{params.children}</GroupItems>
                             </li>
                         )}
+                        onOpen={(_e) => {
+                            setOpen(true);
+                            setThrottledInput('')
+                        }}
+                        onClose={() => {
+                            setOpen(false);
+                        }}
+                        onInputChange={(event, newInputValue) => {
+                            if (event?.type === 'change') {
+                                setThrottledInput(newInputValue)
+                            }
+                        }}
+                        onChange={(_event: any, option) => {
+                            router.push(`/moving-to/${option.attributes.url}`)
+                        }}
+                        loading={listLoading}
                         renderOption={(props, option) => {
                             return (
                                 <Link key={option.id} href={`/moving-to/${option.attributes.url}`}>

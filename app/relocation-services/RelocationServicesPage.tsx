@@ -14,6 +14,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Postheroimages from '@/COMPONENTS/main_page/postheroimages'
 import RelocationServicesPageHero from './RelocationServicesPageHero'
+import { CountriesDropdownList } from '@/COMPONENTS/common/CountriesDropdownList'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
@@ -124,6 +125,7 @@ const RelocationServicesPage = ({ articleContinents }: Props) => {
                 </MaxWidthContainer>
                 <Postheroimages />
             </div>
+            <CountriesDropdownList />
         </PageLayout>
     )
 }

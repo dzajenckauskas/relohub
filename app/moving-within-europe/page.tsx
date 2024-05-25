@@ -22,7 +22,6 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
 export default async function BlogPage() {
     const articleContinents = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/article-continents`)
-
     return (
         <MovingWithinEuropePage articleContinents={articleContinents} />
     );
