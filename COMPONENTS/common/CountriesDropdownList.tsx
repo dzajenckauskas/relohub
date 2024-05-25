@@ -65,7 +65,7 @@ export const CountriesDropdownList = ({ countriesdata }: Props) => {
                                                 width={24}
                                                 height={16}
                                                 style={{ objectFit: "contain" }}
-                                                src={`https://flagcdn.com/w20/${option.attributes.iso2.toLowerCase()}.png`}
+                                                src={`https://flagcdn.com/40x30/${option.attributes.iso2.toLowerCase()}.png`}
                                                 alt={`${option.attributes.iso2} flag`}
                                             />
                                             <Typography key={option.id}>

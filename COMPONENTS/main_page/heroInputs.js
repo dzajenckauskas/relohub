@@ -462,7 +462,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                 width={24}
                                 height={16}
                                 style={{ objectFit: "contain" }}
-                                src={`https://flagcdn.com/w20/${el.iso.toLowerCase()}.png`}
+                                src={`https://flagcdn.com/40x30/${el.iso.toLowerCase()}.png`}
                                 alt={`${el.iso} flag`}
                             />}
                             <p
