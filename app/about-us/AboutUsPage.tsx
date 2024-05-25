@@ -2,7 +2,6 @@
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer'
 import PageLayout from '@/COMPONENTS/common/PageLayout'
 import { theme } from '@/COMPONENTS/common/Theme'
-import { countries } from '@/COMPONENTS/main_page/heroInputs'
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
@@ -12,23 +11,25 @@ import React, { useState } from 'react'
 import EastIcon from '@mui/icons-material/East';
 import Image from 'next/image'
 import Link from 'next/link'
-import axios from 'axios'
 import { countriesData } from '../countriesData'
+import { CountriesResponseType } from '@/COMPONENTS/types/CountryType'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
+    countries?: CountriesResponseType;
 }
-const AboutUsPage = ({ articleContinents }: Props) => {
+
+const AboutUsPage = ({ articleContinents, countries }: Props) => {
     const [active, setActive] = useState<string | undefined>('europe')
-    const renderCountries = countries.filter((c) => c.continent && c.continent?.toLowerCase() === active)?.map((c) => {
+    const renderCountries = countries?.data?.filter((c) => c?.attributes?.continent && c?.attributes?.continent?.toLowerCase() === active)?.map((c) => {
         const capitalizeEachWord = (str: string) => {
             return str.replace(/\b\w/g, (char: string) => char.toUpperCase());
         };
         return (
-            <Grid item xs={6} sm={4} md={3} key={c.country}>
+            <Grid item xs={6} sm={4} md={3} key={c?.id}>
                 <Typography variant='body1' sx={{ alignItems: 'center', display: 'flex', gap: 1 }}>
                     <EastIcon fontSize='large' color='secondary' />
-                    {capitalizeEachWord(c.country)}
+                    {capitalizeEachWord(c?.attributes?.name)}
                 </Typography>
             </Grid>
         )
@@ -89,7 +90,7 @@ const AboutUsPage = ({ articleContinents }: Props) => {
         const europeContinent = articleContinents.data.splice(europeIndex, 1)[0];
         articleContinents.data.unshift(europeContinent);
     }
-    const renderArticleContinents = articleContinents.data.filter(ac => ac.attributes.key !== 'north-america')?.map(ac => {
+    const renderArticleContinents = articleContinents?.data?.filter(ac => ac.attributes.key !== 'north-america')?.map(ac => {
         const isActive = ac.attributes.key === active;
         return (
             <Button
