@@ -47,8 +47,24 @@ export const theme = createTheme({
                 }),
 
             }
-        }
+        },
+        MuiAutocomplete: {
+            styleOverrides: {
+                popper: ({ theme }) => theme.unstable_sx({
+                    boxShadow: '0 0 20px #ebebeb',
+                }),
+            }
+        },
+        MuiSvgIcon: {
+            styleOverrides: {
+                root: ({ theme }) => theme.unstable_sx({
+                    // fontSize: '28px',
+                }),
+
+            }
+        },
     },
+
     typography: {
         h1: {
             fontFamily: 'Uniform',

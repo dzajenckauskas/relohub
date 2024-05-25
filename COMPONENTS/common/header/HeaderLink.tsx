@@ -49,8 +49,8 @@ export const HeaderLink = ({ link, path, setOpenDropdown, openDropdown }: Props)
                     }}>
                     <Stack direction={'row'} alignItems={'center'} sx={{ px: 1, color: openDropdown === link.id && theme.palette.secondary.main, ':hover': { color: theme.palette.secondary.main } }}>
                         {link.name}
-                        {link.links && <KeyboardArrowDownIcon fontSize='large'
-                            sx={{ position: 'relative', top: 1, ml: .25 }} />}
+                        {link.links && <KeyboardArrowDownIcon
+                            sx={{ position: 'relative', top: 1, ml: .25, fontSize: '18px !important' }} />}
                     </Stack>
                     {path === link?.url && <Stack sx={{
                         position: 'absolute',

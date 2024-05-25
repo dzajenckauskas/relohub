@@ -29,6 +29,7 @@ export const InstantQuoteComponent = () => {
             <Button variant="contained" color="secondary"
                 disabled={!enableButton}
                 className="herobuttongetestimate"
+                sx={{ fontSize: 14 }}
                 onClick={() => {
                     router.push(
                         `/offer?data=${encodeURIComponent(

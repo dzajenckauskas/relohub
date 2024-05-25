@@ -1,3 +1,4 @@
+import { CountriesDropdownList } from "@/COMPONENTS/common/CountriesDropdownList";
 import { MaxWidthContainer } from "@/COMPONENTS/common/MaxWidthContainer";
 import PageLayout from "@/COMPONENTS/common/PageLayout";
 import FaqWrapper from "@/COMPONENTS/main_page/Faqwrapper";
@@ -10,6 +11,8 @@ import VideoArea from "@/COMPONENTS/main_page/videoarea";
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
 import Image from "next/image";
+
+
 export async function generateMetadata({ }): Promise<Metadata> {
     const homePage = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/home-page?populate=seo`)
     return {
@@ -27,6 +30,8 @@ export async function generateMetadata({ }): Promise<Metadata> {
         }
     }
 }
+
+
 export default async function Home() {
     return (
         <PageLayout>
@@ -45,7 +50,7 @@ export default async function Home() {
                 </MaxWidthContainer>
                 <Postheroimages />
             </div>
-            {/* <CountriesDropdownList /> */}
+            {/* <CountriesDropdownList countriesdata={countriesdata} /> */}
             <VideoArea />
             <ProcessWrapper />
             <FaqWrapper />

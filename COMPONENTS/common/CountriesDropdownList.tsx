@@ -1,19 +1,21 @@
 'use client'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { Autocomplete, TextField, Typography } from '@mui/material'
 import Stack from '@mui/material/Stack'
+import { styled } from '@mui/system'
+import Image from "next/image"
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { CountriesResponseType } from '../types/CountryType'
 import { MaxWidthContainer } from './MaxWidthContainer'
 import { theme } from './Theme'
-import Image from "next/image";
-import { styled, lighten, darken } from '@mui/system';
-
 type Props = {
     countriesdata: CountriesResponseType;
 }
 
 export const CountriesDropdownList = ({ countriesdata }: Props) => {
+
+    const params = useParams()
     const router = useRouter()
     const GroupHeader = styled('div')(({ theme }) => ({
         // position: 'sticky',
@@ -39,16 +41,22 @@ export const CountriesDropdownList = ({ countriesdata }: Props) => {
     return (
         <Stack sx={{ backgroundColor: theme.palette.secondary.main, py: 4 }}>
             <MaxWidthContainer>
-                <Stack direction={'row'} width={'100%'} justifyContent={'flex-end'}>
+                <Stack direction={'row'} width={'100%'} justifyContent={'space-between'} alignItems={'center'}>
+                    <Typography color={"#fff"}>
+                        <b>Select Country</b> that you are moving to:
+                    </Typography>
+
                     <Autocomplete
+                        popupIcon={<ArrowDropDownIcon fontSize='large' />}
                         disablePortal
+                        defaultValue={countriesdata.data.find((c) => c.attributes.url === params.slug)}
                         getOptionLabel={(option) => option.attributes.name}
                         id="combo-box-demo"
                         options={countriesdata?.data}
-                        sx={{ width: 300 }}
+                        sx={{ maxWidth: 596, width: '100%' }}
                         groupBy={(option) => option.attributes.name[0]}
                         onChange={(e, option) => router.push(`/moving-to/${option.attributes.url}`)}
-                        renderInput={(params) => <TextField sx={{ backgroundColor: '#fff !important', borderRadius: 1 }} placeholder='Select country' {...params} />}
+                        renderInput={(params) => <TextField sx={{ backgroundColor: '#fff !important', borderRadius: 1 }} color='info' placeholder='Please select' {...params} />}
                         renderGroup={(params) => (
                             <li key={params.key}>
                                 <GroupHeader>{params.group}</GroupHeader>
@@ -57,8 +65,8 @@ export const CountriesDropdownList = ({ countriesdata }: Props) => {
                         )}
                         renderOption={(props, option) => {
                             return (
-                                <Link href={`/moving-to/${option.attributes.url}`}>
-                                    <li {...props} key={option.id} style={{ borderBottom: '1px solid #EBEBEB', paddingTop: 8, paddingBottom: 8, width: '94%', margin: '0 auto' }}>
+                                <Link key={option.id} href={`/moving-to/${option.attributes.url}`}>
+                                    <li {...props} style={{ borderBottom: '1px solid #EBEBEB', paddingTop: 8, paddingBottom: 8, width: '94%', margin: '0 auto' }}>
                                         <Stack direction={'row'} alignItems={'center'} spacing={1} sx={{ width: '100%' }}>
                                             <Image
                                                 loading="lazy"
