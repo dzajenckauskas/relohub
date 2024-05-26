@@ -3,7 +3,7 @@ type Props = {
 }
 export const FlagIllustration = ({ iso }: Props) => {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 380.2 183.7" transform="scale(.65)" style={{ position: 'relative', top: 100, left: -200 }}>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 380.2 183.7">
             {/* <style type="text/css">
             
         </style> */}

@@ -25,95 +25,6 @@ type Props = {
     countriesdata?: CountriesResponseType;
 }
 const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
-    const [active, setActive] = useState<string | undefined>('europe')
-    const renderCountries = countries.filter((c) => c.continent && c.continent?.toLowerCase() === active)?.map((c) => {
-        const capitalizeEachWord = (str: string) => {
-            return str.replace(/\b\w/g, (char: string) => char.toUpperCase());
-        };
-        return (
-            <Grid item xs={6} sm={4} md={3} key={c.country}>
-                <Typography variant='body1' sx={{ alignItems: 'center', display: 'flex', gap: 1 }}>
-                    <EastIcon fontSize='large' color='secondary' />
-                    {capitalizeEachWord(c.country)}
-                </Typography>
-            </Grid>
-        )
-    })
-    const services = [
-        {
-            name: "Road freight",
-            slogan: "door-to-door",
-            number: "01"
-        },
-
-        {
-            name: "Sea freight",
-            slogan: "door-to-door",
-            number: "02"
-        },
-        {
-            name: "Air freight",
-            slogan: "door-to-door",
-            number: "03"
-        },
-        {
-            name: "Air freight",
-            slogan: "door-to-door",
-            number: "04"
-        },
-        {
-            name: "Air courier",
-            slogan: "door-to-door",
-            number: "05"
-        }
-    ]
-    const renderServices = services.map((s) => {
-        return (
-            <Stack key={s.number} sx={{
-                position: 'relative',
-                borderRadius: 1.5,
-                width: { md: 'calc(50% - 8px)', sm: 'calc(50% - 8px)', xs: 'calc(100%)' },
-                p: { xs: 2, md: 3 },
-                backgroundColor: theme.palette.secondary.main
-            }}>
-                <Typography variant='body2' sx={{ color: '#fff', position: 'absolute', right: 16, top: 16 }}>
-                    {s.number}
-                </Typography>
-                <Typography variant='h4' component={'h2'} sx={{ color: '#fff', fontWeight: 600 }}>
-                    {s.name}
-                </Typography>
-                <Typography variant='h4' component={'h2'} sx={{ color: '#fff', fontWeight: 600 }}>
-                    {s.slogan}
-                </Typography>
-            </Stack>
-        )
-    })
-
-    // Move the "Europe" continent to the beginning of the array if found
-    const europeIndex = articleContinents.data.findIndex(ac => ac.attributes.key === 'europe');
-    if (europeIndex !== -1) {
-        const europeContinent = articleContinents.data.splice(europeIndex, 1)[0];
-        articleContinents.data.unshift(europeContinent);
-    }
-    const renderArticleContinents = articleContinents.data.filter(ac => ac.attributes.key !== 'north-america')?.map(ac => {
-        const isActive = ac.attributes.key === active;
-        return (
-            <Button
-                key={ac.id}
-                onClick={() => setActive(ac.attributes.key)}
-                style={{
-                    padding: '12px 22px',
-                    borderRadius: '2px',
-                    fontSize: 12,
-                    cursor: 'pointer',
-                    backgroundColor: isActive ? '#e71d5e' : '#d9d9d9',
-                    color: isActive ? '#fff' : '#e71d5e',
-                    textTransform: 'uppercase'
-                }}>
-                {ac.attributes.name}
-            </Button>
-        );
-    });
     return (
         <PageLayout>
             <div className="bckimagewrp">
@@ -126,11 +37,22 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                     />
                 </div>
                 <MaxWidthContainer>
-                    <MovingToPageHero countryName={country?.data?.attributes?.name} />
+                    <MovingToPageHero country={country} />
                 </MaxWidthContainer>
-                <section className="globalWrapperheropostimage">
-                    <FlagIllustration iso={country?.data?.attributes?.iso2?.toLowerCase()} />
-                </section>
+                <Stack sx={{ margin: '0 auto', maxWidth: 'lg', px: 4, display: { xs: 'none', sm: 'flex' } }}>
+                    <Stack sx={{
+                        maxWidth: "1168px",
+                        height: '400px',
+                        mt: { lg: -18, md: -18, sm: -18, xs: 0 },
+                        alignItems: 'flex-start',
+                        justifyContent: 'flex-end',
+                        position: 'relative',
+                        pointerEvents: 'none',
+                        top: { lg: 0, md: 0, sm: 0 },
+                    }}>
+                        <FlagIllustration iso={country?.data?.attributes?.iso2?.toLowerCase()} />
+                    </Stack>
+                </Stack>
             </div>
             <CountriesDropdownList />
         </PageLayout>

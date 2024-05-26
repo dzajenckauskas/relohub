@@ -13,7 +13,7 @@ export const InstantQuoteComponent = () => {
     const [enableButton, setEnableButton] = useState(false);
     return (
         <Stack sx={{
-            minHeight: 330
+            minHeight: { xs: 0, sm: 330 }
         }}>
             <h2 className="instantquotewrp">
                 <span>{"Get an "}</span>
