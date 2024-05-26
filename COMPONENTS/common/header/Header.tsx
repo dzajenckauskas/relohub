@@ -150,8 +150,7 @@ export default function Header() {
                     <Stack sx={{
                         display: { md: 'flex', sm: 'flex', xs: 'none' }, flexDirection: 'row',
                         alignItems: 'center',
-                        // gap: 4
-                        gap: { lg: 6, md: 1, sm: 2, xs: 0 }
+                        gap: { lg: 6, md: 0, sm: 0, xs: 0 }
                     }}>
                         {renderLinks}
                     </Stack>

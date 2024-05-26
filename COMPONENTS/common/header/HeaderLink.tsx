@@ -26,7 +26,7 @@ export const HeaderLink = ({ link, path, setOpenDropdown, openDropdown }: Props)
             {link.url &&
                 <Link passHref href={link.url ?? undefined} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none', }}>
                     <Stack sx={{ px: 1, position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
-                        {link.name ?? <HomeOutlinedIcon fontSize={'large'} sx={{ width: 19, height: 19 }} />}
+                        {link.name ?? <HomeOutlinedIcon fontSize={'large'} sx={{ width: 19, height: 19, display: { lg: 'flex', md: 'none', sm: 'none' } }} />}
                         {openDropdown !== link.id && path === link?.url && <Stack sx={{
                             position: 'absolute',
                             bottom: '-21px;',
