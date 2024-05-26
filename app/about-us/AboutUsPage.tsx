@@ -21,7 +21,7 @@ type Props = {
 
 const AboutUsPage = ({ articleContinents, countries }: Props) => {
     const [active, setActive] = useState<string | undefined>('europe')
-    const renderCountries = countries?.data?.filter((c) => c?.attributes?.continent && c?.attributes?.continent?.toLowerCase() === active)?.map((c) => {
+    const renderCountries = countries?.data?.filter((c) => c?.attributes?.continent && c?.attributes?.continent?.toLowerCase() === active?.toLowerCase())?.map((c) => {
         const capitalizeEachWord = (str: string) => {
             return str.replace(/\b\w/g, (char: string) => char.toUpperCase());
         };
@@ -90,12 +90,12 @@ const AboutUsPage = ({ articleContinents, countries }: Props) => {
         const europeContinent = articleContinents.data.splice(europeIndex, 1)[0];
         articleContinents.data.unshift(europeContinent);
     }
-    const renderArticleContinents = articleContinents?.data?.filter(ac => ac.attributes.key !== 'north-america')?.map(ac => {
+    const renderArticleContinents = articleContinents?.data?.map(ac => {
         const isActive = ac.attributes.key === active;
         return (
             <Button
                 key={ac.id}
-                onClick={() => setActive(ac.attributes.key)}
+                onClick={() => setActive(ac.attributes.name)}
                 style={{
                     padding: '12px 22px',
                     borderRadius: '2px',
