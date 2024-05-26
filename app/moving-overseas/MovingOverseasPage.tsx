@@ -39,9 +39,8 @@ const MovingOverseasPage = () => {
                                 objectFit: "contain",
                                 objectPosition: 'bottom'
                             }}
-                            alt="human carying stuff"
+                            alt="moving overseas"
                             priority
-                            className="heropostimagecaryingsofaimg"
                         />
                     </Stack>
                 </Stack>

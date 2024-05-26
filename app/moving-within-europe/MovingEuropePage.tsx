@@ -1,12 +1,11 @@
 'use client'
+import { CountriesDropdownList } from '@/COMPONENTS/common/CountriesDropdownList'
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer'
 import PageLayout from '@/COMPONENTS/common/PageLayout'
-import Postheroimages from '@/COMPONENTS/main_page/postheroimages'
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes'
+import Stack from '@mui/material/Stack'
 import Image from 'next/image'
 import MovingEuropePageHero from './MovingEuropePageHero'
-import { CountriesDropdownList } from '@/COMPONENTS/common/CountriesDropdownList'
-import Stack from '@mui/material/Stack'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
@@ -28,17 +27,16 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
                     <MovingEuropePageHero />
                 </MaxWidthContainer>
 
-                <Stack sx={{ margin: '0 auto', maxWidth: 'xl', px: 4 }}>
+                <Stack sx={{ margin: '0 auto', maxWidth: 'lg', px: 4, display: { xs: 'none', sm: 'flex' } }}>
                     <Stack sx={{
                         maxWidth: "1168px",
-                        height: '200px',
-                        // display: 'flex',
-                        mt: -8,
-                        // alignItems: 'flex-start',
+                        height: '400px',
+                        mt: { lg: -26, md: -26, sm: -26, xs: 0 },
+                        alignItems: 'flex-start',
+                        justifyContent: 'flex-end',
                         position: 'relative',
-                        // right: '0px',
                         pointerEvents: 'none',
-                        top: '1px'
+                        top: { lg: '1px', md: '1px', sm: '1px' },
                     }}>
                         <Image
                             src={"/WithinEurope.svg"}
@@ -47,9 +45,8 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
                                 objectFit: "contain",
                                 objectPosition: 'bottom'
                             }}
-                            alt="human carying stuff"
+                            alt="mowing within europe"
                             priority
-                            className="heropostimagecaryingsofaimg"
                         />
                     </Stack>
                 </Stack>

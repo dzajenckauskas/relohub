@@ -62,9 +62,8 @@ export default function MovingOverseasPageHero() {
                             objectFit: "contain",
                             objectPosition: 'bottom'
                         }}
-                        alt="human carying stuff"
+                        alt="moving overseas"
                         priority
-                        className="heropostimagecaryingsofaimg"
                     />                </Stack>
             </Stack>
             <Stack maxWidth={{ md: 'none', xs: 'sm' }}
