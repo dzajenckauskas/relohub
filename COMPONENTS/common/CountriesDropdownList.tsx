@@ -70,32 +70,17 @@ export const CountriesDropdownList = ({ }: Props) => {
     }, [open, get, input]);
 
     return (
-        <Stack sx={{ backgroundColor: theme.palette.secondary.main, py: 4 }}>
+        <Stack sx={{ backgroundColor: theme.palette.secondary.main, py: 3, pb: { xs: 4, sm: 3 } }}>
             <MaxWidthContainer>
-                <Stack direction={'row'} width={'100%'} justifyContent={'space-between'} alignItems={'center'}>
-                    <Typography color={"#fff"}>
+                <Stack direction={{ xs: 'column', md: 'row' }} width={'100%'} justifyContent={'space-between'} alignItems={'center'}>
+                    <Typography color={"#fff"} variant='subtitle1' pb={{ xs: 2, md: 0 }}>
                         <b>Select Country</b> that you are moving to:
                     </Typography>
-
                     <Autocomplete
                         open={open}
                         popupIcon={<ArrowDropDownIcon sx={{ fontSize: 30 }} />}
                         clearIcon={<CloseIcon sx={{ fontSize: 20 }} />}
                         disablePortal
-                        // defaultValue={{
-                        //     id: 1,
-                        //     attributes: {
-                        //         name: Array.isArray(params?.slug) ? params?.slug[0]?.toLocaleUpperCase() : params?.slug?.toLocaleUpperCase(),
-                        //         continent: '',
-                        //         iso2: '',
-                        //         url: '',
-                        //         collection: false,
-                        //         destination: false,
-                        //         createdAt: undefined,
-                        //         updatedAt: undefined,
-                        //         publishedAt: undefined
-                        //     }
-                        // }}
                         getOptionLabel={(option) => option?.attributes?.name}
                         id="combo-box-demo"
                         options={data?.data ?? []}

@@ -139,6 +139,22 @@ export const theme = createTheme({
         h6: {
             fontFamily: 'Uniform',
         },
+        subtitle1: {
+            fontFamily: 'Uniform',
+            fontSize: 18,
+            '@media (min-width:600px)': {
+                fontSize: 18,
+            },
+            '@media (min-width:960px)': {
+                fontSize: 18,
+            },
+            '@media (min-width:1280px)': {
+                fontSize: 20,
+            },
+            '@media (min-width:1920px)': {
+                fontSize: 22,
+            },
+        },
         body1: {
             fontFamily: 'Uniform',
             fontSize: 16,
