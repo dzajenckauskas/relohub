@@ -1,23 +1,14 @@
 'use client'
+import { FlagIllustration } from '@/COMPONENTS/FlagIllustration'
+import { CountriesDropdownList } from '@/COMPONENTS/common/CountriesDropdownList'
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer'
 import PageLayout from '@/COMPONENTS/common/PageLayout'
-import { theme } from '@/COMPONENTS/common/Theme'
-import { countries } from '@/COMPONENTS/main_page/heroInputs'
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes'
-import Button from '@mui/material/Button'
-import Grid from '@mui/material/Grid'
-import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
-import React, { useState } from 'react'
-import EastIcon from '@mui/icons-material/East';
-import Image from 'next/image'
-import Link from 'next/link'
-import Postheroimages from '@/COMPONENTS/main_page/postheroimages'
-import MovingToPageHero from './MovingToPageHero'
-import { FlagIllustration } from '@/COMPONENTS/FlagIllustration'
-import "/STYLES/svg-style.css";
 import { CountriesResponseType, CountryResponseType } from '@/COMPONENTS/types/CountryType'
-import { CountriesDropdownList } from '@/COMPONENTS/common/CountriesDropdownList'
+import Stack from '@mui/material/Stack'
+import Image from 'next/image'
+import MovingToPageHero from './MovingToPageHero'
+import "/STYLES/svg-style.css"
 
 type Props = {
     articleContinents?: ContinentsResponseType;

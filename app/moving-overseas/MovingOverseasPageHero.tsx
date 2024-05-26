@@ -1,8 +1,10 @@
 "use client";
 import { InstantQuoteComponent } from "@/COMPONENTS/common/InstantQuoteComponent";
 import { theme } from "@/COMPONENTS/common/Theme";
+import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from '@mui/material/Typography';
+import Image from "next/image";
 
 export default function MovingOverseasPageHero() {
     return (
@@ -18,17 +20,53 @@ export default function MovingOverseasPageHero() {
                 textAlign: { md: 'left', xs: 'center' },
                 width: '100%',
             }}>
-                We&lsquo;ll move
-                <br />you to a new
-                <br />
-                <Typography component={'span'}
-                    sx={{
-                        fontWeight: 700, lineHeight: 1.1, fontSize: { lg: 60, md: 52, sm: 42, xs: 32 },
-                        color: theme.palette.secondary.main
-                    }}>
-                    <span style={{ color: '#000' }}>life</span> overseas
-                </Typography>
+                <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+                    We&lsquo;ll move you
+                    <br />to a new life
+                    <br />
+                    <Typography component={'span'}
+                        sx={{
+                            fontWeight: 700, lineHeight: 1.1, fontSize: { lg: 60, md: 52, sm: 42, xs: 32 },
+                            color: theme.palette.secondary.main
+                        }}>
+                        overseas
+                    </Typography>
+                </Box>
+                <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+                    We&lsquo;ll move
+                    <br />you to a new
+                    <br />
+                    <Typography component={'span'}
+                        sx={{
+                            fontWeight: 700, lineHeight: 1.1, fontSize: { lg: 60, md: 52, sm: 42, xs: 32 },
+                            color: theme.palette.secondary.main
+                        }}>
+                        <span style={{ color: '#000' }}>life</span> overseas
+                    </Typography>
+                </Box>
             </Typography>
+            <Stack sx={{ display: { xs: 'flex', sm: 'none' } }}>
+                <Stack sx={{
+                    maxWidth: "1168px",
+                    height: '200px',
+                    mt: { xs: -16 },
+                    alignItems: 'center',
+                    justifyContent: 'flex-end',
+                    position: 'relative',
+                    pointerEvents: 'none',
+                }}>
+                    <Image
+                        src={"/Overseas.svg"}
+                        fill
+                        style={{
+                            objectFit: "contain",
+                            objectPosition: 'bottom'
+                        }}
+                        alt="human carying stuff"
+                        priority
+                        className="heropostimagecaryingsofaimg"
+                    />                </Stack>
+            </Stack>
             <Stack maxWidth={{ md: 'none', xs: 'sm' }}
                 sx={{
                     width: '100%',
