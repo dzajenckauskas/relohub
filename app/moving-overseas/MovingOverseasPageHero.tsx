@@ -64,7 +64,8 @@ export default function MovingOverseasPageHero() {
                         }}
                         alt="moving overseas"
                         priority
-                    />                </Stack>
+                    />
+                </Stack>
             </Stack>
             <Stack maxWidth={{ md: 'none', xs: 'sm' }}
                 sx={{

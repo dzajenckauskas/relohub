@@ -1,8 +1,10 @@
 "use client";
 import { InstantQuoteComponent } from "@/COMPONENTS/common/InstantQuoteComponent";
 import { theme } from "@/COMPONENTS/common/Theme";
+import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from '@mui/material/Typography';
+import Image from 'next/image'
 
 export default function RelocationServicesPageHero() {
     return (
@@ -18,13 +20,48 @@ export default function RelocationServicesPageHero() {
                 textAlign: { md: 'left', xs: 'center' },
                 width: '100%',
             }}>
-                Personalized
-                Relocation
-                <br />
-                <span style={{ color: theme.palette.secondary.main }}>Support</span>
-                <br />
-                <span style={{ color: theme.palette.secondary.main }}>Services</span>
+
+                <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+                    Personalized
+                    <br />
+                    Relocation
+                    <br />
+                    <span style={{ color: theme.palette.secondary.main }}>Support</span>
+                    &nbsp;
+                    <span style={{ color: theme.palette.secondary.main }}>Services</span>
+                </Box>
+                <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+                    Personalized
+                    <br />
+                    Relocation
+                    <br />
+                    <span style={{ color: theme.palette.secondary.main }}>Support</span>
+                    <br />
+                    <span style={{ color: theme.palette.secondary.main }}>Services</span>
+                </Box>
             </Typography>
+            <Stack sx={{ display: { xs: 'flex', sm: 'none' } }}>
+                <Stack sx={{
+                    maxWidth: "1168px",
+                    height: '200px',
+                    mt: { xs: -16 },
+                    alignItems: 'center',
+                    justifyContent: 'flex-end',
+                    position: 'relative',
+                    pointerEvents: 'none',
+                }}>
+                    <Image
+                        src={"/RelocationServices.svg"}
+                        fill
+                        style={{
+                            objectFit: "contain",
+                            objectPosition: 'bottom'
+                        }}
+                        alt="Relocation services"
+                        priority
+                    />
+                </Stack>
+            </Stack>
             <Stack maxWidth={{ md: 'none', xs: 'sm' }}
                 sx={{
                     width: '100%',
