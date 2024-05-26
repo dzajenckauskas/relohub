@@ -27,7 +27,8 @@ export default function Header() {
     const links: HeaderLinkType[] = [
         {
             id: 0,
-            url: '/'
+            url: '/',
+            name: "Home"
         },
 
         {
@@ -77,11 +78,25 @@ export default function Header() {
     const renderMobileLinks = links.map((link) => {
         return (
             <Stack key={link.id}>
-                <Link onClick={toggleOpen} passHref href={link.url} style={{ fontWeight: 600, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
+                {link?.url && <Link onClick={toggleOpen} passHref href={link?.url} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
                     <Stack sx={{ color: path === link.url ? theme.palette.secondary.main : 'inherit', position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
                         {link.name}
                     </Stack>
-                </Link>
+                </Link>}
+                {!link.url &&
+                    <Stack spacing={3} sx={{
+                    }}>
+                        {link.links.map((l) => {
+                            return (
+                                <Link onClick={toggleOpen} passHref href={l?.url} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
+                                    <Stack sx={{ color: path === l.url ? theme.palette.secondary.main : 'inherit', position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
+                                        {l.name}
+                                    </Stack>
+                                </Link>
+                            )
+                        })}
+                    </Stack>
+                }
             </Stack>
         )
     })
