@@ -12,7 +12,7 @@ export default function RelocationServicesPageHero() {
                 fontSize: { lg: 60, md: 50, sm: 40, xs: 30 },
                 position: 'relative',
                 top: { sm: 0, xs: -30 },
-                pt: { md: 16, sm: 0, xs: 0 },
+                pt: { md: 2, sm: 0, xs: 0 },
                 pb: { md: 4, sm: 4, xs: 11 },
                 lineHeight: 1.1,
                 textAlign: { md: 'left', xs: 'center' },

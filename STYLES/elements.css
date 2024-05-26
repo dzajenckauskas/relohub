@@ -7,6 +7,18 @@
     justify-content: flex-end;
 }
 
+.overseas {
+    max-width: 1168px;
+    margin: 0 auto;
+    height: 184px;
+    display: flex;
+    align-items: flex-end;
+    /* gap: 100%; */
+    position: relative;
+    right: -240px;
+    pointer-events: none;
+}
+
 .globalWrapperheropostimage {
     max-width: 1168px;
     margin: 0 auto;

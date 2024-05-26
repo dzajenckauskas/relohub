@@ -123,7 +123,29 @@ const MovingServicesPage = ({ articleContinents }: Props) => {
                 <MaxWidthContainer>
                     <MovingServicesPageHero />
                 </MaxWidthContainer>
-                <Postheroimages />
+
+                <Stack sx={{ margin: '0 auto', maxWidth: 'xl', px: 4 }}>
+                    <Stack sx={{
+                        maxWidth: "1168px",
+                        height: '360px',
+                        mt: -16,
+                        position: 'relative',
+                        pointerEvents: 'none',
+                        top: '1px',
+                        left: '70px'
+                    }}>
+                        <Image
+                            src={"/MovingServices.svg"}
+                            fill
+                            style={{
+                                objectFit: "contain",
+                                objectPosition: 'bottom'
+                            }}
+                            alt="Movin services"
+                            priority
+                        />
+                    </Stack>
+                </Stack>
             </div>
             <CountriesDropdownList />
         </PageLayout>

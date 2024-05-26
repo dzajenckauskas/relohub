@@ -110,6 +110,10 @@
         display: none;
     }
 
+    .overseas {
+        justify-content: center;
+    }
+
     .globalWrapperheropostimage {
         justify-content: center;
     }
@@ -437,6 +441,24 @@
 
     .mainpageheroareaglobalwrp {
         gap: 128px;
+    }
+
+    .withinEurope {
+        position: absolute;
+        top: 110px;
+        z-index: -1;
+        width: 300px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .overseas {
+        position: absolute;
+        top: 110px;
+        z-index: -1;
+        width: 300px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .globalWrapperheropostimage {
