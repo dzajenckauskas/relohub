@@ -29,9 +29,9 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
 
                 <Stack sx={{ margin: '0 auto', maxWidth: 'lg', px: 4, display: { xs: 'none', sm: 'flex' } }}>
                     <Stack sx={{
-                        maxWidth: "1168px",
-                        height: '400px',
-                        mt: { lg: -26, md: -26, sm: -26, xs: 0 },
+                        maxWidth: "900px",
+                        height: '300px',
+                        mt: { lg: -21, md: -21, sm: -19, xs: 0 },
                         alignItems: 'flex-start',
                         justifyContent: 'flex-end',
                         position: 'relative',
