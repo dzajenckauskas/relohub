@@ -1,7 +1,7 @@
 'use client'
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer';
 import PageLayout from '@/COMPONENTS/common/PageLayout';
-import { theme } from '@/COMPONENTS/common/Theme';
+import { theme } from '@/COMPONENTS/common/shared/Theme';
 import { ArticleDataType, ArticlesResponseType } from '@/COMPONENTS/types/ArticleTypes';
 import { CategoryDataType } from '@/COMPONENTS/types/CategoryTypes';
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes';

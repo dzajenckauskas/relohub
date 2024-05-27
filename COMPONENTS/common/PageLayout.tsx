@@ -2,8 +2,8 @@
 import { ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 import GetInTOuch from '../main_page/getInTouch';
-import Header from './header/Header';
-import { getTheme } from './Theme';
+import Header from './shared/header/Header';
+import { getTheme } from './shared/Theme';
 import Chat from './chat';
 
 type Props = {

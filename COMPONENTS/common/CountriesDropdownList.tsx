@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 import { CountriesResponseType } from '../types/CountryType'
 import { MaxWidthContainer } from './MaxWidthContainer'
-import { theme } from './Theme'
+import { theme } from './shared/Theme'
 import Autocomplete from '@mui/material/Autocomplete';
 import { useEffect, useState } from 'react'
 import useAxios from 'axios-hooks';

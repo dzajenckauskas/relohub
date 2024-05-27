@@ -1,7 +1,7 @@
 "use client";
 import { FlagIllustration } from "@/COMPONENTS/FlagIllustration";
 import { InstantQuoteComponent } from "@/COMPONENTS/common/InstantQuoteComponent";
-import { theme } from "@/COMPONENTS/common/Theme";
+import { theme } from "@/COMPONENTS/common/shared/Theme";
 import { CountryResponseType } from "@/COMPONENTS/types/CountryType";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";

@@ -2,9 +2,9 @@ import FormLabel from '@mui/material/FormLabel';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { UseFormReturn } from 'react-hook-form';
-import { theme } from '../Theme';
+import { theme } from '../shared/Theme';
 import { FormControl, InputBase, InputLabel, Stack, alpha, styled } from '@mui/material';
-import ErrorBox from '../ErrorBox';
+import ErrorBox from '../shared/ErrorBox';
 
 type Props = {
     name: string;

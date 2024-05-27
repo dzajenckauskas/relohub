@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import TermsAndConditions from "../main_page/footerPopups/termsConditions";
-import PrivacyPolicy from "../main_page/footerPopups/privacyPolicy";
-import InclusionsExclusions from "../main_page/footerPopups/inclusionsExclusions";
-import FAQ from "../main_page/footerPopups/faq";
+import TermsAndConditions from "../../main_page/footerPopups/termsConditions";
+import PrivacyPolicy from "../../main_page/footerPopups/privacyPolicy";
+import InclusionsExclusions from "../../main_page/footerPopups/inclusionsExclusions";
+import FAQ from "../../main_page/footerPopups/faq";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 

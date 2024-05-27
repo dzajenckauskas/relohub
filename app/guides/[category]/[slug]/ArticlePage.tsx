@@ -1,6 +1,6 @@
 'use client'
 import FacebookIcon from '@/COMPONENTS/common/FacebookIcon';
-import { theme } from '@/COMPONENTS/common/Theme';
+import { theme } from '@/COMPONENTS/common/shared/Theme';
 import XIcon from '@/COMPONENTS/common/XIcon';
 import LatestArticles from '@/COMPONENTS/main_page/LatestArticles';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';

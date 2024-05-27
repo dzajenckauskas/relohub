@@ -3,8 +3,8 @@ import Image from "next/image";
 import Button from "@mui/material/Button";
 import { useEffect, useRef, useState } from "react";
 import { FixedSizeList as List } from "react-window";
-import ErrorBox from "../common/ErrorBox";
-import { theme } from '@/COMPONENTS/common/Theme'
+import ErrorBox from "../common/shared/ErrorBox";
+import { theme } from '@/COMPONENTS/common/shared/Theme'
 
 export const countries = [
     { country: "A" },

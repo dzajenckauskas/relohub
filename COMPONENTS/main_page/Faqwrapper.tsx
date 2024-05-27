@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { MaxWidthContainer } from "../common/MaxWidthContainer";
 import Typography from '@mui/material/Typography'
-import { theme } from "../common/Theme";
+import { theme } from "../common/shared/Theme";
 import { ExpandButton } from "../common/ExpandButton";
 
 export default function FaqWrapper() {

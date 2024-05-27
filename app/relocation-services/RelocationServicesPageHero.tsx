@@ -1,6 +1,6 @@
 "use client";
 import { InstantQuoteComponent } from "@/COMPONENTS/common/InstantQuoteComponent";
-import { theme } from "@/COMPONENTS/common/Theme";
+import { theme } from "@/COMPONENTS/common/shared/Theme";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from '@mui/material/Typography';

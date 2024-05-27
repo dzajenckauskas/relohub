@@ -7,7 +7,7 @@ import ArticleCategoryCard from '../../COMPONENTS/guides/ArticleCategoryCard';
 import { CategoriesResponseType } from '../../COMPONENTS/types/CategoryTypes';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
-import { theme } from '@/COMPONENTS/common/Theme';
+import { theme } from '@/COMPONENTS/common/shared/Theme';
 
 type Props = {
     categories?: CategoriesResponseType;

@@ -2,7 +2,7 @@
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
-import { theme } from './Theme';
+import { theme } from './shared/Theme';
 const TopNavBar = () => {
     return (
         <Stack direction={'row'}

@@ -2,7 +2,7 @@
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { useState } from "react";
-import Footer from "../common/Footer";
+import Footer from "../common/shared/Footer";
 import { MaxWidthContainer } from "../common/MaxWidthContainer";
 import ContactForm from "../common/forms/ContactForm";
 

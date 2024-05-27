@@ -6,8 +6,8 @@ import axios from "axios";
 import { useState } from 'react';
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
-import ErrorBox from "../ErrorBox";
-import { theme } from "../Theme";
+import ErrorBox from "../shared/ErrorBox";
+import { theme } from "../shared/Theme";
 import FormCheckbox from "./FormCheckbox";
 import { FormTextField } from "./FormTextField";
 

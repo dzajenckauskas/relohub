@@ -1,7 +1,7 @@
 'use client'
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer'
 import PageLayout from '@/COMPONENTS/common/PageLayout'
-import { theme } from '@/COMPONENTS/common/Theme'
+import { theme } from '@/COMPONENTS/common/shared/Theme'
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'

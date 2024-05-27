@@ -2,7 +2,7 @@
 import Stack from "@mui/material/Stack";
 import Typography from '@mui/material/Typography';
 import { InstantQuoteComponent } from "../common/InstantQuoteComponent";
-import { theme } from "../common/Theme";
+import { theme } from "../common/shared/Theme";
 
 export default function MainPageHeroArea() {
     return (

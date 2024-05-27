@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 import Link from 'next/link';
-import { theme } from '../common/Theme';
+import { theme } from '../common/shared/Theme';
 import { ArticleDataType } from '../types/ArticleTypes';
 
 type Props = {

@@ -8,10 +8,10 @@ import Image from "next/image";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import CustomerPortalIcon from '../CustomerPortalIcon';
+import CustomerPortalIcon from '../../CustomerPortalIcon';
 import HeaderPinkElement from "./HeaderPinkElement";
 import { theme } from '../Theme';
-import TopNavBar from '../TopNavBar';
+import TopNavBar from '../../TopNavBar';
 
 import { HeaderLink, HeaderLinkType } from './HeaderLink';
 
