@@ -105,8 +105,10 @@ export const CountriesDropdownList = ({ }: Props) => {
                                 setThrottledInput(newInputValue)
                             }
                         }}
-                        onChange={(_event: any, option) => {
-                            router.push(`/moving-to/${option.attributes.url}`)
+                        onChange={(e: any, option) => {
+                            if (e.key === 'Enter') {
+                                router.push(`/moving-to/${option.attributes.url}`)
+                            }
                         }}
                         loading={listLoading}
                         renderOption={(props, option) => {
