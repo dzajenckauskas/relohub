@@ -88,7 +88,7 @@ export default function GetInTOuch() {
     }
 
     return (
-        <section className="getintouchglobalwrp">
+        <section className="getintouchglobalwrp" id={'get-in-touch'}>
             <MaxWidthContainer>
                 {sendpopu ? messageSendpopup() : null}
                 <div className="getintouchglobalinsidewrp">

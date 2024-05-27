@@ -1,6 +1,10 @@
 import Image from "next/image";
 
-export default function ProcessWrapper() {
+type Props = {
+    title?: string
+}
+
+export default function ProcessWrapper({ title }: Props) {
     const txt = [
         { txt: "Get a free door to door quotation online", top: -40 },
         { txt: "Delivery of packing materials (if required)", top: -8 },
@@ -11,8 +15,8 @@ export default function ProcessWrapper() {
 
     return (
         <section className="processglobalwrapper">
-            <p className="processwrphowitworksp">HOW IT WORKS</p>
-            <h2 className="processwrptheprocess">The Process</h2>
+            {!title && <p className="processwrphowitworksp">HOW IT WORKS</p>}
+            <h2 className="processwrptheprocess">{title ?? 'The Process'}</h2>
             <div className="procesimagewrappermainwrp">
                 <div className="processimagewrapper">
                     <Image

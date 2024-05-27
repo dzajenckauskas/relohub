@@ -17,11 +17,15 @@ type Props = {
 const ArticleCard = ({ loading, article, activeContinent }: Props) => {
     const category = article?.attributes?.articleCategory?.data?.attributes?.name
     const continent = activeContinent ?
-        article?.attributes.articleContinents?.data?.find((c) => c?.attributes?.key === activeContinent)?.attributes.name :
-        article?.attributes.articleContinents?.data?.[0]?.attributes.name
+        article?.attributes.articleContinents?.data
+            ?.find((c) => c?.attributes?.key === activeContinent)?.attributes.name
+        : article?.attributes.articleContinents?.data?.[0]?.attributes.name
     const url = `/guides/${article?.attributes.articleCategory.data.attributes.key}/${article?.attributes.slug}`
-    const imgSrc = `${process.env.NEXT_PUBLIC_API_URL}${article?.attributes?.image?.data?.attributes?.formats?.medium?.url ?? article?.attributes?.image?.data?.attributes?.url ?? '/'}`
-    const imgAlt = article?.attributes?.image?.data?.attributes?.alternativeText ?? article?.attributes.title
+    const imgSrc = `${process.env.NEXT_PUBLIC_API_URL}${article?.attributes?.image?.data?.attributes?.formats?.medium?.url
+        ?? article?.attributes?.image?.data?.attributes?.url
+        ?? '/'}`
+    const imgAlt = article?.attributes?.image?.data?.attributes?.alternativeText
+        ?? article?.attributes.title
     return (
         <Paper key={article?.id}
             sx={{

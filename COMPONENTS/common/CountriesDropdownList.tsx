@@ -70,7 +70,7 @@ export const CountriesDropdownList = ({ }: Props) => {
     }, [open, get, input]);
 
     return (
-        <Stack sx={{ backgroundColor: theme.palette.secondary.main, py: 3, pb: { xs: 4, sm: 3 } }}>
+        <Stack sx={{ backgroundColor: theme.palette.secondary.main, py: 3, pb: { xs: 4, sm: 6 } }}>
             <MaxWidthContainer>
                 <Stack direction={{ xs: 'column', md: 'row' }} width={'100%'} justifyContent={'space-between'} alignItems={'center'}>
                     <Typography color={"#fff"} variant='subtitle1' pb={{ xs: 2, md: 0 }}>
