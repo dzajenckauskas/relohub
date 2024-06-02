@@ -74,44 +74,44 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
 
 
             <MaxWidthContainer>
-                <Stack py={5} gap={8} direction={'row'}>
-                    <Typography variant='h2' component={'h2'} width={'30%'}>
+                <Stack py={5} gap={{ sm: 6, xs: 4 }} direction={{ md: 'row', xs: 'column' }}>
+                    <Typography variant='h2' component={'h2'} width={{ md: '30%', xs: '100%' }}>
                         Complete European <br /> Moving Solutions
                     </Typography>
-                    <Stack spacing={2}>
-                        <Stack direction={'row'} gap={4}
+                    <Stack spacing={2} pt={1}>
+                        <Stack direction={{ sm: 'row', xs: 'column' }} gap={{ sm: 4, xs: 1 }}
                             sx={{ borderBottom: '1px solid #c2c2c2', pb: 2 }}>
-                            <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: '35%', fontWeight: 500 }}>
+                            <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: { sm: '35%', xs: '100%' }, fontWeight: 500 }}>
                                 Professional Packing
                             </Typography>
-                            <Typography variant='body1' sx={{ width: '75%' }}>
+                            <Typography variant='body1' sx={{ width: { sm: '75', xs: '100%' } }}>
                                 Our expert team ensures your possessions are meticulously packed and protected for their journey.
                             </Typography>
                         </Stack>
-                        <Stack direction={'row'} gap={4}
+                        <Stack direction={{ sm: 'row', xs: 'column' }} gap={{ sm: 4, xs: 1 }}
                             sx={{ borderBottom: '1px solid #c2c2c2', pb: 2 }}>
-                            <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: '35%', fontWeight: 500 }}>
+                            <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: { sm: '35%', xs: '100%' }, fontWeight: 500 }}>
                                 Flexible Transport Options
                             </Typography>
-                            <Typography variant='body1' sx={{ width: '75%' }}>
+                            <Typography variant='body1' sx={{ width: { sm: '75', xs: '100%' } }}>
                                 Choose from road or sea freight options to suit your timeline and budget.
                             </Typography>
                         </Stack>
-                        <Stack direction={'row'} gap={4}
+                        <Stack direction={{ sm: 'row', xs: 'column' }} gap={{ sm: 4, xs: 1 }}
                             sx={{ borderBottom: '1px solid #c2c2c2', pb: 2 }}>
-                            <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: '35%', fontWeight: 500 }}>
+                            <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: { sm: '35%', xs: '100%' }, fontWeight: 500 }}>
                                 Secure Storage
                             </Typography>
-                            <Typography variant='body1' sx={{ width: '75%' }}>
+                            <Typography variant='body1' sx={{ width: { sm: '75', xs: '100%' } }}>
                                 We offer safe and convenient storage solutions in your home country and your new European destination.
                             </Typography>
                         </Stack>
-                        <Stack direction={'row'} gap={4}
+                        <Stack direction={{ sm: 'row', xs: 'column' }} gap={{ sm: 4, xs: 1 }}
                             sx={{ borderBottom: '1px solid transparent', pb: 2 }}>
-                            <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: '35%', fontWeight: 500 }}>
+                            <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: { sm: '35%', xs: '100%' }, fontWeight: 500 }}>
                                 Specialised Services
                             </Typography>
-                            <Typography variant='body1' sx={{ width: '75%' }}>
+                            <Typography variant='body1' sx={{ width: { sm: '75', xs: '100%' } }}>
                                 We provide tailored services for delicate items, furniture disassembly and assembly, and more.
                             </Typography>
                         </Stack>
