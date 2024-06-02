@@ -9,7 +9,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
         description: movingOverseasPage?.data?.attributes?.seo?.seoDescription,
         keywords: movingOverseasPage?.data?.attributes?.seo?.seoKeywords,
         alternates: {
-            canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/moving-overseas`,
+            canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/international-moving`,
         },
         openGraph: {
             images: [`${process.env.NEXT_PUBLIC_DOMAIN_URL}/og-image.jpeg`]
