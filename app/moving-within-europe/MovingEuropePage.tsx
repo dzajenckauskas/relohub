@@ -11,6 +11,11 @@ import IconsSection from '../../COMPONENTS/common/sections/IconsSection'
 import SectionCard from '../../COMPONENTS/common/sections/SectionCard'
 import MovingEuropePageHero from './MovingEuropePageHero'
 import TextSection from '@/COMPONENTS/common/sections/TextSection'
+import { theme } from '@/COMPONENTS/common/shared/Theme'
+import Typography from '@mui/material/Typography'
+import Link from 'next/link'
+import VideoArea from '@/COMPONENTS/main_page/videoarea'
+import LatestArticles from '@/COMPONENTS/main_page/LatestArticles'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
@@ -31,7 +36,7 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
         { title: "Comprehensive Solutions", text: "We cover every aspect of your European move, from packing to storage", icon: 'icon5.png' },
         { title: "Reliable and Trustworthy", text: "Founded by industry veterans committed to excellence and customer satisfaction", icon: 'icon6.png' },
     ];
-    const iconsSection2Content = [
+    const listContent2 = [
         { title: "European Road Freight", text: "Efficient and reliable door-to-door transport across the continent.", icon: 'icon7.png' },
         { title: "European Sea Freight", text: "Cost-effective door-to-door shipping for larger moves or coastal destinations.", icon: 'icon8.png' },
         { title: "Storage Solutions in Europe", text: "Secure storage options in your home country and your new European residence.", icon: 'icon9.png' },
@@ -44,6 +49,16 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
         { title: "Flexible Transport Options", text: "Choose from road or sea freight options to suit your timeline and budget." },
         { title: "Secure Storage", text: "We offer safe and convenient storage solutions in your home country and your new European destination." },
         { title: "Specialised Services", text: "We provide tailored services for delicate items, furniture disassembly and assembly, and more." },
+    ];
+    const iconsSectionContent2 = [
+        { title: "Global Reach", text: "Deliver1 connects you with countries worldwide, handling shipping, paperwork, and logistics for a smooth moving experience.", icon: 'icon7.png' },
+        { title: "Experienced Team", text: "Founded in 2019, we've perfected our processes to make your international move stress-free and efficient.", icon: 'icon8.png' },
+        { title: "Door-to-Door Service", text: "We take care of everything from your current home to your new one, so you can focus on your new adventure.", icon: 'icon9.png' },
+        { title: "Skilled Professionals", text: "Our team provides top packing materials and uses best practices to pack and transport your belongings safely.", icon: 'icon10.png' },
+        { title: "Complete Management", text: "We manage all the details, including packing lists, shipments, and customs, so you don’t have to worry.", icon: 'icon11.png' },
+        { title: "Secure Storage", text: "With secure storage facilities, your belongings are safe even if your plans change.", icon: 'icon12.png' },
+        { title: "Protection Plans", text: "Our comprehensive insurance options means your belongings are covered, giving you peace of mind regardless of your budget or destination.", icon: 'icon13.png' },
+        { title: "Quick and Easy Moves", text: "Our team works efficiently to pack and unpack your items, ensuring minimal disruption to your life.", icon: 'icon14.png' },
     ];
     return (
         <PageLayout>
@@ -116,9 +131,43 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
                         shortContent='Charlie Beck and Robertas Gailaitis founded Deliver1 in 2019. With extensive industry experience since 2013, they saw a need for moving services that combine value for money with high quality. Deliver1 was created to fill this gap, offering exceptional services without compromising on affordability.' />
                 </Stack>
             </MaxWidthContainer>
+            <ListSection content={listContent2} title='Services Tailored for Your European Move' />
 
-            <IconsSection backgroundColor={'#ededed'} color='#000' align={'flex-start'} textAlign={'left'}
-                title={"Services Tailored for Your European Move"} content={iconsSection2Content} />
+            <MaxWidthContainer>
+                <Stack py={5} spacing={4}>
+                    <SectionCard
+                        title={'European Destinations We Cover'}
+                        shortContent={"Deliver1 specialises in European removals, offering comprehensive services to and from all countries within the European Union and beyond. Whether you're moving to a bustling city centre in Spain or a charming countryside village in Sweden, our network and expertise ensure a seamless relocation across Europe."}
+                    />
+                    <SectionCard reverse title='Your European Journey Starts Today'>
+                        <Typography variant='body1' sx={{ pt: 1 }}>
+                            Ready to embark on your European adventure? Contact Deliver1 today for a free quote and consultation.
+                            <br />
+                            <br />
+                            Let us handle the logistics so you can focus on embracing your new life in Europe. With Deliver1, your European move is in expert hands.
+                        </Typography>
+                    </SectionCard>
+                    <SectionCard title={'Get in Touch'} buttonText='Get in touch' url='#get-in-touch'>
+                        <Stack>
+                            <Typography variant='body1' sx={{ pt: 1 }}>
+                                Contact us now to discuss your European moving needs and discover how Deliver1 can make your relocation a success.
+                                <br />
+                                <br />
+                                <b>
+                                    Phone: <Link style={{ color: theme.palette.secondary.main }} href="tel:+443330907053">0333 090 7053</Link><br />
+                                    Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@deliver1.co.uk">hello@deliver1.co.uk</Link> <br />
+                                    Working Hours: <span style={{ fontWeight: 400 }}>Mon - Sat: 08:00 - 17:00; Sun: <span style={{ color: theme.palette.secondary.main }}>Closed</span></span><br />
+                                </b>
+                            </Typography>
+                        </Stack>
+
+                    </SectionCard>
+                </Stack>
+            </MaxWidthContainer>
+            <IconsSection lg={3} md={3} sm={6} xs={12} backgroundColor={'#ededed'} color='#000' align={'flex-start'} textAlign={'left'}
+                title={"Services Tailored for Your European Move"} content={iconsSectionContent2} />
+            <VideoArea hideIcons />
+            <LatestArticles />
         </PageLayout>
     )
 }

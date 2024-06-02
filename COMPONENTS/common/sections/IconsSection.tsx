@@ -39,7 +39,7 @@ const IconsSection = ({ content, title, backgroundColor, color, align, textAlign
                         objectFit: 'contain'
                     }}
                 />
-                <Typography variant='subtitle2' textAlign={'center'} color={color ?? '#fff'}
+                <Typography variant='subtitle2' textAlign={textAlign ?? 'center'} color={color ?? '#fff'}
                     fontWeight={600} lineHeight={1.2} pt={2} pb={1}>
                     {c.title}
                 </Typography>
