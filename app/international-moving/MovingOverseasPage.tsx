@@ -82,9 +82,7 @@ const MovingOverseasPage = () => {
             </div>
             <CountriesDropdownList />
 
-
             <MaxWidthContainer>
-
                 <Stack py={5} spacing={4}>
                     <SectionCard reverse
                         title={'International Removals with Deliver1'}
@@ -96,7 +94,6 @@ const MovingOverseasPage = () => {
                         shortContent='At Deliver1, we understand that every move is unique. Our intuitive customer portal simplifies the process, allowing you to plan, book, and manage your move easily. From getting a quote to tracking your belongings, everything is handled online, ensuring a quick and seamless experience tailored to your needs.' />
                 </Stack>
             </MaxWidthContainer>
-
 
             <IconsSection lg={3} md={3} sm={6} xs={12} backgroundColor={'#ededed'}
                 color='#000' align={'flex-start'} textAlign={'left'}
