@@ -27,7 +27,7 @@ export const HeaderLink = ({ link, path, setOpenDropdown, openDropdown }: Props)
                 <Link passHref href={link.url ?? undefined} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
                     <Stack sx={{ px: 1, position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
                         {link.name !== "Home" ? link.name : <HomeOutlinedIcon fontSize={'large'} sx={{ width: 19, height: 19 }} />}
-                        {openDropdown !== link.id && path === link?.url &&
+                        {!!!openDropdown && path === link?.url &&
                             <Stack sx={{
                                 position: 'absolute',
                                 bottom: '-21px;',
@@ -68,6 +68,7 @@ export const HeaderLink = ({ link, path, setOpenDropdown, openDropdown }: Props)
                         bottom: '-21px;',
                         left: 0,
                         height: '3px',
+                        minWidth: '150px',
                         width: 'fit-content',
                         backgroundColor: theme.palette.secondary.main,
                         transition: 'background-color 0.3s ease',
@@ -75,11 +76,11 @@ export const HeaderLink = ({ link, path, setOpenDropdown, openDropdown }: Props)
                         <Stack sx={{ backgroundColor: '#fff', mt: '3px' }}>
                             {link.links.map((l) => {
                                 return (
-                                    <Stack key={l.id} sx={{ py: 1, px: 1, ':hover': { color: '#fff', backgroundColor: theme.palette.secondary.main } }}>
-                                        <Link passHref href={l.url} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none', }}>
+                                    <Link key={l.id} passHref href={l.url} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none', }}>
+                                        <Stack sx={{ py: 1, px: 1, ':hover': { color: '#fff', backgroundColor: theme.palette.secondary.main } }}>
                                             {l.name}
-                                        </Link>
-                                    </Stack>
+                                        </Stack>
+                                    </Link>
                                 )
                             })}
                         </Stack>
