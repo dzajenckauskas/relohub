@@ -9,8 +9,8 @@ import Typography from '@mui/material/Typography'
 import Image from 'next/image'
 import Link from 'next/link'
 import { countriesData } from '../countriesData'
-import { ServicesSection } from './ServicesSection'
-import { CoveredCountriesSection } from './CoveredCountriesSection'
+import { ServicesSection } from '../../COMPONENTS/common/sections/ServicesSection'
+import { CoveredCountriesSection } from '../../COMPONENTS/common/sections/CoveredCountriesSection'
 
 type Props = {
     articleContinents?: ContinentsResponseType;

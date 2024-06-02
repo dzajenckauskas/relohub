@@ -2,18 +2,15 @@
 import { CountriesDropdownList } from '@/COMPONENTS/common/CountriesDropdownList'
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer'
 import PageLayout from '@/COMPONENTS/common/PageLayout'
+import ListSection from '@/COMPONENTS/common/sections/ListSection'
+import ProcessWrapper from '@/COMPONENTS/main_page/ProcessWrapper'
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes'
 import Stack from '@mui/material/Stack'
 import Image from 'next/image'
+import IconsSection from '../../COMPONENTS/common/sections/IconsSection'
+import SectionCard from '../../COMPONENTS/common/sections/SectionCard'
 import MovingEuropePageHero from './MovingEuropePageHero'
-import SectionCard from '../moving-overseas/SectionCard'
-import TextSection from '../moving-overseas/TextSection'
-import Typography from '@mui/material/Typography'
-import { theme } from '@/COMPONENTS/common/shared/Theme'
-import ProcessWrapper from '@/COMPONENTS/main_page/ProcessWrapper'
-import Grid from '@mui/material/Grid'
-import IconsSection from './IconsSection'
-import ListSection from './ListSection'
+import TextSection from '@/COMPONENTS/common/sections/TextSection'
 
 type Props = {
     articleContinents?: ContinentsResponseType;

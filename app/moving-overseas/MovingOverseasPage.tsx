@@ -5,10 +5,10 @@ import PageLayout from '@/COMPONENTS/common/PageLayout'
 import ProcessWrapper from '@/COMPONENTS/main_page/ProcessWrapper'
 import Stack from '@mui/material/Stack'
 import Image from "next/image"
-import { ServicesSection } from '../about-us/ServicesSection'
+import { ServicesSection } from '../../COMPONENTS/common/sections/ServicesSection'
 import MovingOverseasPageHero from './MovingOverseasPageHero'
-import SectionCard from './SectionCard'
-import TextSection from './TextSection'
+import SectionCard from '../../COMPONENTS/common/sections/SectionCard'
+import TextSection from '@/COMPONENTS/common/sections/TextSection'
 
 const MovingOverseasPage = () => {
     return (

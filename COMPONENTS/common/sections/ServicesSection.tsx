@@ -10,7 +10,7 @@ import React, { useState } from 'react'
 import EastIcon from '@mui/icons-material/East';
 import Image from 'next/image'
 import Link from 'next/link'
-import { countriesData } from '../countriesData'
+import { countriesData } from '../../../app/countriesData'
 import { CountriesResponseType } from '@/COMPONENTS/types/CountryType'
 import Stack from "@mui/material/Stack"
 type Props = {
