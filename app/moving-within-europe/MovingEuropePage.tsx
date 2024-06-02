@@ -13,6 +13,7 @@ import { theme } from '@/COMPONENTS/common/shared/Theme'
 import ProcessWrapper from '@/COMPONENTS/main_page/ProcessWrapper'
 import Grid from '@mui/material/Grid'
 import IconsSection from './IconsSection'
+import ListSection from './ListSection'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
@@ -32,6 +33,20 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
         { title: "Personalised Service", text: "Customised moving plans tailored to your specific needs", icon: 'icon4.png' },
         { title: "Comprehensive Solutions", text: "We cover every aspect of your European move, from packing to storage", icon: 'icon5.png' },
         { title: "Reliable and Trustworthy", text: "Founded by industry veterans committed to excellence and customer satisfaction", icon: 'icon6.png' },
+    ];
+    const iconsSection2Content = [
+        { title: "European Road Freight", text: "Efficient and reliable door-to-door transport across the continent.", icon: 'icon7.png' },
+        { title: "European Sea Freight", text: "Cost-effective door-to-door shipping for larger moves or coastal destinations.", icon: 'icon8.png' },
+        { title: "Storage Solutions in Europe", text: "Secure storage options in your home country and your new European residence.", icon: 'icon9.png' },
+        { title: "Professional Packing", text: "Expert packing services designed to protect your belongings during transit.", icon: 'icon10.png' },
+        { title: "Specialised Crating", text: "Bespoke crating solutions for fragile or valuable items.", icon: 'icon11.png' },
+        { title: "Furniture Disassembly and Assembly", text: "Hassle-free dismantling and reassembly of your furniture.", icon: 'icon12.png' },
+    ];
+    const listContent = [
+        { title: "Professional Packing", text: "Our expert team ensures your possessions are meticulously packed and protected for their journey." },
+        { title: "Flexible Transport Options", text: "Choose from road or sea freight options to suit your timeline and budget." },
+        { title: "Secure Storage", text: "We offer safe and convenient storage solutions in your home country and your new European destination." },
+        { title: "Specialised Services", text: "We provide tailored services for delicate items, furniture disassembly and assembly, and more." },
     ];
     return (
         <PageLayout>
@@ -89,57 +104,24 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
             <TextSection title={`Extensive European Network`}
                 text={`Our trusted network of experienced professionals across Europe provides you with the local expertise and resources needed for a smooth move. We are well-versed in customs regulations and the logistical challenges associated with European removals, ensuring your belongings arrive safely and on time.`} />
 
-            <Stack sx={{ backgroundColor: '#ededed' }}>
-                <MaxWidthContainer>
-                    <Stack py={5} gap={{ sm: 6, xs: 4 }} direction={{ md: 'row', xs: 'column' }}>
-                        <Typography variant='h2' component={'h2'} width={{ md: '30%', xs: '100%' }}>
-                            Complete European <br /> Moving Solutions
-                        </Typography>
-                        <Stack spacing={2} pt={1}>
-                            <Stack direction={{ sm: 'row', xs: 'column' }} gap={{ sm: 4, xs: 1 }}
-                                sx={{ borderBottom: '1px solid #c2c2c2', pb: 2 }}>
-                                <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: { sm: '35%', xs: '100%' }, fontWeight: 500 }}>
-                                    Professional Packing
-                                </Typography>
-                                <Typography variant='body1' sx={{ width: { sm: '75', xs: '100%' } }}>
-                                    Our expert team ensures your possessions are meticulously packed and protected for their journey.
-                                </Typography>
-                            </Stack>
-                            <Stack direction={{ sm: 'row', xs: 'column' }} gap={{ sm: 4, xs: 1 }}
-                                sx={{ borderBottom: '1px solid #c2c2c2', pb: 2 }}>
-                                <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: { sm: '35%', xs: '100%' }, fontWeight: 500 }}>
-                                    Flexible Transport Options
-                                </Typography>
-                                <Typography variant='body1' sx={{ width: { sm: '75', xs: '100%' } }}>
-                                    Choose from road or sea freight options to suit your timeline and budget.
-                                </Typography>
-                            </Stack>
-                            <Stack direction={{ sm: 'row', xs: 'column' }} gap={{ sm: 4, xs: 1 }}
-                                sx={{ borderBottom: '1px solid #c2c2c2', pb: 2 }}>
-                                <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: { sm: '35%', xs: '100%' }, fontWeight: 500 }}>
-                                    Secure Storage
-                                </Typography>
-                                <Typography variant='body1' sx={{ width: { sm: '75', xs: '100%' } }}>
-                                    We offer safe and convenient storage solutions in your home country and your new European destination.
-                                </Typography>
-                            </Stack>
-                            <Stack direction={{ sm: 'row', xs: 'column' }} gap={{ sm: 4, xs: 1 }}
-                                sx={{ borderBottom: '1px solid transparent', pb: 2 }}>
-                                <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: { sm: '35%', xs: '100%' }, fontWeight: 500 }}>
-                                    Specialised Services
-                                </Typography>
-                                <Typography variant='body1' sx={{ width: { sm: '75', xs: '100%' } }}>
-                                    We provide tailored services for delicate items, furniture disassembly and assembly, and more.
-                                </Typography>
-                            </Stack>
-                        </Stack>
-                    </Stack>
-                </MaxWidthContainer>
-            </Stack>
+            <ListSection content={listContent} title='Complete European Moving Solutions' />
 
             <ProcessWrapper title='How it works?' content={processContent} />
-
             <IconsSection title={"Why Choose Deliver1 for Your European Move?"} content={iconsSectionContent} />
+
+            <MaxWidthContainer>
+                <Stack py={5} spacing={4}>
+                    <SectionCard
+                        buttonText='Get in touch'
+                        url='#get-in-touch'
+                        title='Our background'
+                        shortContent='Charlie Beck and Robertas Gailaitis founded Deliver1 in 2019. With extensive industry experience since 2013, they saw a need for moving services that combine value for money with high quality. Deliver1 was created to fill this gap, offering exceptional services without compromising on affordability.' />
+
+                </Stack>
+            </MaxWidthContainer>
+
+            <IconsSection backgroundColor={'#ededed'} color='#000' align={'flex-start'} textAlign={'left'}
+                title={"Services Tailored for Your European Move"} content={iconsSection2Content} />
         </PageLayout>
     )
 }
