@@ -6,6 +6,8 @@ import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes'
 import Stack from '@mui/material/Stack'
 import Image from 'next/image'
 import MovingEuropePageHero from './MovingEuropePageHero'
+import SectionCard from '../moving-overseas/SectionCard'
+import TextSection from '../moving-overseas/TextSection'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
@@ -53,6 +55,21 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
 
             </div>
             <CountriesDropdownList />
+            <MaxWidthContainer>
+                <Stack py={5} spacing={4}>
+                    <SectionCard reverse
+                        title={'European Removals Made Easy with Deliver1'}
+                        shortContent={"Moving to a new country in Europe is an exciting adventure, and at Deliver1, we're dedicated to making your move seamless and stress-free. With our comprehensive European removals service, we take care of every detail, allowing you to focus on exploring your new home."}
+                    />
+                    <SectionCard
+                        title='Simple and Efficient Moving Process'
+                        shortContent='We understand that every move is unique. Our intuitive online platform simplifies your move, making it easy to plan, book, and manage your European relocation. From obtaining a quote to tracking your belongings, everything is handled online, ensuring a streamlined and personalised experience.' />
+
+                </Stack>
+            </MaxWidthContainer>
+            <TextSection title={`Extensive European Network`}
+                text={`Our trusted network of experienced professionals across Europe provides you with the local expertise and resources needed for a smooth move. We are well-versed in customs regulations and the logistical challenges associated with European removals, ensuring your belongings arrive safely and on time.`} />
+
         </PageLayout>
     )
 }

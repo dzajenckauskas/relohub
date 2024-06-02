@@ -3,13 +3,13 @@ import { Metadata } from "next";
 import MovingWithinEuropePage from "./MovingEuropePage";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
-    const aboutPage = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/about-page?populate=seo`)
+    const movingWithinEurope = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/moving-within-europe-page?populate=seo`)
     return {
-        title: aboutPage?.data?.attributes?.seo?.seoTitle,
-        description: aboutPage?.data?.attributes?.seo?.seoDescription,
-        keywords: aboutPage?.data?.attributes?.seo?.seoKeywords,
+        title: movingWithinEurope?.data?.attributes?.seo?.seoTitle,
+        description: movingWithinEurope?.data?.attributes?.seo?.seoDescription,
+        keywords: movingWithinEurope?.data?.attributes?.seo?.seoKeywords,
         alternates: {
-            canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/about-us`,
+            canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/moving-within-europe`,
         },
         openGraph: {
             images: [`${process.env.NEXT_PUBLIC_DOMAIN_URL}/og-image.jpeg`]
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
     }
 }
 
-export default async function BlogPage() {
+export default async function MovingWithinEurope() {
     const articleContinents = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/article-continents`)
     return (
         <MovingWithinEuropePage articleContinents={articleContinents} />

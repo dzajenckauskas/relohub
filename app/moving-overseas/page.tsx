@@ -3,13 +3,13 @@ import { Metadata } from "next";
 import MovingOverseasPage from "./MovingOverseasPage";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
-    const aboutPage = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/about-page?populate=seo`)
+    const movingOverseasPage = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/moving-overseas-page?populate=seo`)
     return {
-        title: aboutPage?.data?.attributes?.seo?.seoTitle,
-        description: aboutPage?.data?.attributes?.seo?.seoDescription,
-        keywords: aboutPage?.data?.attributes?.seo?.seoKeywords,
+        title: movingOverseasPage?.data?.attributes?.seo?.seoTitle,
+        description: movingOverseasPage?.data?.attributes?.seo?.seoDescription,
+        keywords: movingOverseasPage?.data?.attributes?.seo?.seoKeywords,
         alternates: {
-            canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/about-us`,
+            canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/moving-overseas`,
         },
         openGraph: {
             images: [`${process.env.NEXT_PUBLIC_DOMAIN_URL}/og-image.jpeg`]
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
     }
 }
 
-export default async function BlogPage() {
+export default async function MovingOverseas() {
     return (
         <MovingOverseasPage />
     );
