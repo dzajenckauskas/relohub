@@ -12,6 +12,10 @@ type Props = {
     color?: string;
     align?: string;
     textAlign?: any;
+    lg?: number;
+    md?: number;
+    sm?: number;
+    xs?: number;
     content: {
         title: string;
         text: string;
@@ -19,10 +23,10 @@ type Props = {
     }[];
 }
 
-const IconsSection = ({ content, title, backgroundColor, color, align, textAlign }: Props) => {
+const IconsSection = ({ content, title, backgroundColor, color, align, textAlign, lg, md, sm, xs }: Props) => {
     const renderList = content.map((c, i) => {
         return (
-            <Grid key={i} item lg={2} md={4} sm={6} xs={12}
+            <Grid key={i} item lg={lg ?? 2} md={md ?? 4} sm={sm ?? 6} xs={xs ?? 12}
                 sx={{ display: 'flex', flexDirection: 'column', alignItems: align ?? 'center' }} width={'100%'}>
                 <Image
                     src={`/icons/${c.icon}`}

@@ -18,11 +18,13 @@ type Props = {
     url?: string;
     title?: string;
     shortContent?: string;
+    backgroundColor?: string;
     imgSrc?: string;
     imgAlt?: string;
+    children?: React.ReactNode
 }
 
-const SectionCard = ({ buttonText, url, title, shortContent, imgSrc, imgAlt, reverse, loading, }: Props) => {
+const SectionCard = ({ backgroundColor, buttonText, url, title, shortContent, imgSrc, imgAlt, reverse, loading, children }: Props) => {
 
     return (
         <Stack
@@ -30,10 +32,8 @@ const SectionCard = ({ buttonText, url, title, shortContent, imgSrc, imgAlt, rev
             sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', sm: reverse ? 'row-reverse' : 'row', },
-                // justifyContent: 'row',
-                // boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;',
                 width: '100%',
-                backgroundColor: "transparent",
+                backgroundColor: backgroundColor ?? "transparent",
                 borderRadius: '5px',
                 overflow: 'hidden',
                 height: '100%',
@@ -45,8 +45,7 @@ const SectionCard = ({ buttonText, url, title, shortContent, imgSrc, imgAlt, rev
                 <Stack sx={{
                     minHeight: { xs: '200px', sm: '250px' },
                     height: '100%',
-                    borderTopRightRadius: '5px',
-                    borderTopLeftRadius: '5px',
+                    borderRadius: backgroundColor ? '0px' : '5px',
                     width: '100%',
                     alignItems: 'flex-end',
                     position: 'relative',
@@ -97,7 +96,7 @@ const SectionCard = ({ buttonText, url, title, shortContent, imgSrc, imgAlt, rev
                         <Skeleton />
                     </> : `${shortContent}`}
                 </Typography>}
-
+                {children}
                 {url && <Typography sx={{
                     mt: 2,
                     height: '100%',

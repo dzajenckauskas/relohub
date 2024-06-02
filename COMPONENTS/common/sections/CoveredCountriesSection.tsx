@@ -61,7 +61,7 @@ export const CoveredCountriesSection = ({ articleContinents, countries }: Props)
 
     return (
 
-        <Stack sx={{ backgroundColor: '#f1f1f1' }}>
+        <Stack sx={{ backgroundColor: '#f1f1f1' }} id={'countries-we-cover'}>
             <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', pt: 6, pb: 10 }}>
                 <Stack sx={{ width: '100%' }}>
                     <Typography variant={'h2'} sx={{ pb: 1 }}>

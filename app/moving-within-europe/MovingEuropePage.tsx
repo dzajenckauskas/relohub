@@ -59,7 +59,6 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
                 <MaxWidthContainer>
                     <MovingEuropePageHero />
                 </MaxWidthContainer>
-
                 <Stack sx={{ margin: '0 auto', maxWidth: 'lg', px: 4, display: { xs: 'none', sm: 'flex' } }}>
                     <Stack sx={{
                         maxWidth: "900px",
@@ -83,9 +82,10 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
                         />
                     </Stack>
                 </Stack>
-
             </div>
+
             <CountriesDropdownList />
+
             <MaxWidthContainer>
                 <Stack py={5} spacing={4}>
                     <SectionCard reverse
@@ -95,15 +95,16 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
                     <SectionCard
                         title='Simple and Efficient Moving Process'
                         shortContent='We understand that every move is unique. Our intuitive online platform simplifies your move, making it easy to plan, book, and manage your European relocation. From obtaining a quote to tracking your belongings, everything is handled online, ensuring a streamlined and personalised experience.' />
-
                 </Stack>
             </MaxWidthContainer>
+
             <TextSection title={`Extensive European Network`}
                 text={`Our trusted network of experienced professionals across Europe provides you with the local expertise and resources needed for a smooth move. We are well-versed in customs regulations and the logistical challenges associated with European removals, ensuring your belongings arrive safely and on time.`} />
 
             <ListSection content={listContent} title='Complete European Moving Solutions' />
 
             <ProcessWrapper title='How it works?' content={processContent} />
+
             <IconsSection title={"Why Choose Deliver1 for Your European Move?"} content={iconsSectionContent} />
 
             <MaxWidthContainer>
@@ -113,7 +114,6 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
                         url='#get-in-touch'
                         title='Our background'
                         shortContent='Charlie Beck and Robertas Gailaitis founded Deliver1 in 2019. With extensive industry experience since 2013, they saw a need for moving services that combine value for money with high quality. Deliver1 was created to fill this gap, offering exceptional services without compromising on affordability.' />
-
                 </Stack>
             </MaxWidthContainer>
 

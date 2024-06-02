@@ -9,8 +9,37 @@ import { ServicesSection } from '../../COMPONENTS/common/sections/ServicesSectio
 import MovingOverseasPageHero from './MovingOverseasPageHero'
 import SectionCard from '../../COMPONENTS/common/sections/SectionCard'
 import TextSection from '@/COMPONENTS/common/sections/TextSection'
+import IconsSection from '@/COMPONENTS/common/sections/IconsSection'
+import ListSection from '@/COMPONENTS/common/sections/ListSection'
+import Typography from '@mui/material/Typography'
+import { theme } from '@/COMPONENTS/common/shared/Theme'
+import Link from 'next/link'
 
 const MovingOverseasPage = () => {
+    const iconsSection2Content = [
+        { title: "Global Reach", text: "Deliver1 connects you with countries worldwide, handling shipping, paperwork, and logistics for a smooth moving experience.", icon: 'icon7.png' },
+        { title: "Experienced Team", text: "Founded in 2019, we've perfected our processes to make your international move stress-free and efficient.", icon: 'icon8.png' },
+        { title: "Door-to-Door Service", text: "We take care of everything from your current home to your new one, so you can focus on your new adventure.", icon: 'icon9.png' },
+        { title: "Skilled Professionals", text: "Our team provides top packing materials and uses best practices to pack and transport your belongings safely.", icon: 'icon10.png' },
+        { title: "Complete Management", text: "We manage all the details, including packing lists, shipments, and customs, so you don’t have to worry.", icon: 'icon11.png' },
+        { title: "Secure Storage", text: "With secure storage facilities, your belongings are safe even if your plans change.", icon: 'icon12.png' },
+        { title: "Protection Plans", text: "Our comprehensive insurance options means your belongings are covered, giving you peace of mind regardless of your budget or destination.", icon: 'icon13.png' },
+        { title: "Quick and Easy Moves", text: "Our team works efficiently to pack and unpack your items, ensuring minimal disruption to your life.", icon: 'icon14.png' },
+    ];
+    const listContent = [
+        { title: "Professional Packing", text: "Our expert movers ensure your belongings are safe during transit and delivered in one piece." },
+        { title: "Flexible Transport Options", text: "Choose from air, sea, or road transport to fit your schedule and budget." },
+        { title: "Pet Relocation", text: "Your pets are part of the family, and our specialised pet relocation services ensure they travel safely and comfortably." },
+        { title: "Secure Storage", text: "We offer safe storage options both at home and abroad." },
+    ];
+    const iconsSectionContent = [
+        { title: "Convenient Online Customer Portal", text: "Manage your move easily from your computer or phone.", icon: 'icon1.png' },
+        { title: "Experienced Professionals", text: "Our team has extensive expertise in international relocations.", icon: 'icon2.png' },
+        { title: "Competitive Pricing", text: "Exceptional service that fits your budget.", icon: 'icon3.png' },
+        { title: "Personalised Service", text: "Customised moving plans tailored to your unique needs.", icon: 'icon4.png' },
+        { title: "Comprehensive Solutions", text: "From packing to storage, we cover all aspects of your move.", icon: 'icon5.png' },
+        { title: "Reliable and Trustworthy", text: "Founded by industry veterans committed to high standards and customer satisfaction.", icon: 'icon6.png' },
+    ];
     return (
         <PageLayout>
             <div className="bckimagewrp">
@@ -67,7 +96,16 @@ const MovingOverseasPage = () => {
             </MaxWidthContainer>
 
 
-            <TextSection title={`Extensive Removal Network`} text={`Our network ensures that no matter where you're moving, we have the local expertise and resources to manage your move efficiently. Our experienced team is well-versed in customs regulations and logistical challenges of international relocations.`} />
+            <IconsSection lg={3} md={3} sm={6} xs={12} backgroundColor={'#ededed'}
+                color='#000' align={'flex-start'} textAlign={'left'}
+                title={"Our goal will always be a moving experience"}
+                content={iconsSection2Content} />
+
+            <TextSection title={`Extensive Removal Network`}
+                text={`Our network ensures that no matter where you're moving, we have the local expertise and resources to manage your move efficiently. Our experienced team is well-versed in customs regulations and logistical challenges of international relocations.`} />
+            <ListSection content={listContent}
+                title='Complete Moving Solutions' />
+
             <ProcessWrapper title='How it works?' />
 
             <Stack sx={{ backgroundColor: '#efefef' }}>
@@ -88,9 +126,46 @@ const MovingOverseasPage = () => {
 
             <ServicesSection />
 
-            {/* 
+            <IconsSection title={"Why Choose Deliver1 for Your European Move?"} content={iconsSectionContent} />
 
-*/}
+            <Stack sx={{ backgroundColor: '#efefef' }}>
+                <MaxWidthContainer>
+                    <Stack>
+                        <Stack py={8}>
+                            <SectionCard reverse backgroundColor="#fff"
+                                buttonText='View countries we cover'
+                                url='/about-us#countries-we-cover'
+                                title={'Countries We Cover'}
+                                shortContent={"Deliver1 can help you move to almost every country on earth. No matter where your destination is, our extensive network and experienced team ensure a smooth and efficient relocation process."}
+                            />
+                        </Stack>
+                        <Stack pb={8}>
+                            <SectionCard
+                                buttonText='Get Started'
+                                url='#countries-we-cover'
+                                title={'Start Your Journey Today'}
+                            >
+                                <Stack>
+                                    <Typography variant='body1' sx={{ pt: 1 }}>
+                                        Ready to move? Contact us today for a free quote and consultation. Let us handle the logistics so you can focus on your new life abroad. With Deliver1, your international move is in expert hands.
+                                        <br />
+                                        <br />
+                                        Contact us now to discuss your moving needs and see how Deliver1 can make your international relocation a success. We’re excited to help you start this new chapter in your life.
+                                        <br />
+                                        <br />
+                                        <b>
+                                            Phone: <Link style={{ color: theme.palette.secondary.main }} href="tel:+443330907053">0333 090 7053</Link><br />
+                                            Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@deliver1.co.uk">hello@deliver1.co.uk</Link> <br />
+                                            Working Hours: <span style={{ fontWeight: 400 }}>Mon - Sat: 08:00 - 17:00; Sun: <span style={{ color: theme.palette.secondary.main }}>Closed</span></span><br />
+                                        </b>
+                                    </Typography>
+                                </Stack>
+
+                            </SectionCard>
+                        </Stack>
+                    </Stack>
+                </MaxWidthContainer>
+            </Stack>
 
         </PageLayout>
     )
