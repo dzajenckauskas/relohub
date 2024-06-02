@@ -8,6 +8,8 @@ import Image from 'next/image'
 import MovingEuropePageHero from './MovingEuropePageHero'
 import SectionCard from '../moving-overseas/SectionCard'
 import TextSection from '../moving-overseas/TextSection'
+import Typography from '@mui/material/Typography'
+import { theme } from '@/COMPONENTS/common/shared/Theme'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
@@ -70,6 +72,52 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
             <TextSection title={`Extensive European Network`}
                 text={`Our trusted network of experienced professionals across Europe provides you with the local expertise and resources needed for a smooth move. We are well-versed in customs regulations and the logistical challenges associated with European removals, ensuring your belongings arrive safely and on time.`} />
 
+
+            <MaxWidthContainer>
+                <Stack py={5} gap={8} direction={'row'}>
+                    <Typography variant='h2' component={'h2'} width={'30%'}>
+                        Complete European <br /> Moving Solutions
+                    </Typography>
+                    <Stack spacing={2}>
+                        <Stack direction={'row'} gap={4}
+                            sx={{ borderBottom: '1px solid #c2c2c2', pb: 2 }}>
+                            <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: '35%', fontWeight: 500 }}>
+                                Professional Packing
+                            </Typography>
+                            <Typography variant='body1' sx={{ width: '75%' }}>
+                                Our expert team ensures your possessions are meticulously packed and protected for their journey.
+                            </Typography>
+                        </Stack>
+                        <Stack direction={'row'} gap={4}
+                            sx={{ borderBottom: '1px solid #c2c2c2', pb: 2 }}>
+                            <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: '35%', fontWeight: 500 }}>
+                                Flexible Transport Options
+                            </Typography>
+                            <Typography variant='body1' sx={{ width: '75%' }}>
+                                Choose from road or sea freight options to suit your timeline and budget.
+                            </Typography>
+                        </Stack>
+                        <Stack direction={'row'} gap={4}
+                            sx={{ borderBottom: '1px solid #c2c2c2', pb: 2 }}>
+                            <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: '35%', fontWeight: 500 }}>
+                                Secure Storage
+                            </Typography>
+                            <Typography variant='body1' sx={{ width: '75%' }}>
+                                We offer safe and convenient storage solutions in your home country and your new European destination.
+                            </Typography>
+                        </Stack>
+                        <Stack direction={'row'} gap={4}
+                            sx={{ borderBottom: '1px solid transparent', pb: 2 }}>
+                            <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main} sx={{ width: '35%', fontWeight: 500 }}>
+                                Specialised Services
+                            </Typography>
+                            <Typography variant='body1' sx={{ width: '75%' }}>
+                                We provide tailored services for delicate items, furniture disassembly and assembly, and more.
+                            </Typography>
+                        </Stack>
+                    </Stack>
+                </Stack>
+            </MaxWidthContainer>
         </PageLayout>
     )
 }

@@ -135,6 +135,7 @@ export const theme = createTheme({
         },
         h5: {
             fontFamily: 'Uniform',
+            fontSize: 20
         },
         h6: {
             fontFamily: 'Uniform',

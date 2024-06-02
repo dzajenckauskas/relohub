@@ -1,6 +1,5 @@
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
-import MovingServicesPage from "./MovingToPage";
 import MovingToPage from "./MovingToPage";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
