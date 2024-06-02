@@ -287,9 +287,34 @@ const ArticlePage = ({ article }: Props) => {
                                 <InstantQuoteComponent />
                             </Stack>
                         </Stack>
+
+                        <Stack direction={'row'} sx={{
+                            width: '100%',
+                            maxWidth: { md: 900, xs: 600 },
+                            height: { md: 300, sm: 250, xs: 200 },
+                            mt: { lg: -15, md: -16, sm: -14, xs: 0 },
+                            mb: { md: '-64px', xs: '-32px' },
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            position: 'relative',
+                            pointerEvents: 'none',
+                            left: { lg: 0, md: 0, sm: 20, xs: 0 },
+                            // top: { lg: 0, md: 0, sm: 0 },
+                        }}>
+                            <Image
+                                src={"/MovingServices.svg"}
+                                fill
+                                style={{
+                                    objectFit: "contain",
+                                    objectPosition: 'bottom'
+                                }}
+                                alt="Movin services"
+                                priority
+                            />
+                        </Stack>
                     </Stack>
                 </MaxWidthContainer>
-                <LatestArticles sx={{}} />
+                <LatestArticles />
             </Stack>
         </PageLayout>
     )
