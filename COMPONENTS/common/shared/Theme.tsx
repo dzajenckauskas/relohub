@@ -156,6 +156,10 @@ export const theme = createTheme({
                 fontSize: 22,
             },
         },
+        subtitle2: {
+            fontFamily: 'Uniform',
+            fontSize: 18,
+        },
         body1: {
             fontFamily: 'Uniform',
             fontSize: 16,
