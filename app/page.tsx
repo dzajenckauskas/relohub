@@ -51,7 +51,7 @@ export default async function Home() {
                 <Postheroimages />
             </div>
             <CountriesDropdownList />
-            <VideoArea />
+            <VideoArea hideIcons={false} />
             <ProcessWrapper />
             <FaqWrapper />
             <LatestArticles />

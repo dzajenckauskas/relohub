@@ -5,7 +5,7 @@ import { MaxWidthContainer } from "../common/MaxWidthContainer";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 
-export default function VideoArea() {
+export default function VideoArea({ hideIcons }) {
     const videoRef = useRef();
     const slideelement = useRef(null);
     const [showvideohide, setshowvideohide] = useState(true);
@@ -51,10 +51,10 @@ export default function VideoArea() {
     }
 
     return (
-        <Stack sx={{ backgroundColor: '#202020' }}>
+        <Stack sx={{ backgroundColor: '#202020', pt: hideIcons ? 6 : 0, pb: hideIcons ? 3 : 0 }}>
             <MaxWidthContainer>
                 <section className="videoareaglobalwrp">
-                    <div className="videoareatopwrp">
+                    {!hideIcons && <div className="videoareatopwrp">
                         <p>Transportation of your belongings by:</p>
 
                         <div className="videoareatoplinerrightwrp">
@@ -114,7 +114,7 @@ export default function VideoArea() {
                                 &#x203A;
                             </button>
                         </div>
-                    </div>
+                    </div>}
 
                     <div className="videoareavideowrp">
                         {showvideohide ? (

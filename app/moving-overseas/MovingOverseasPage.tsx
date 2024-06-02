@@ -14,6 +14,8 @@ import ListSection from '@/COMPONENTS/common/sections/ListSection'
 import Typography from '@mui/material/Typography'
 import { theme } from '@/COMPONENTS/common/shared/Theme'
 import Link from 'next/link'
+import VideoArea from '@/COMPONENTS/main_page/videoarea'
+import LatestArticles from '@/COMPONENTS/main_page/LatestArticles'
 
 const MovingOverseasPage = () => {
     const iconsSection2Content = [
@@ -160,13 +162,13 @@ const MovingOverseasPage = () => {
                                         </b>
                                     </Typography>
                                 </Stack>
-
                             </SectionCard>
                         </Stack>
                     </Stack>
                 </MaxWidthContainer>
             </Stack>
-
+            <VideoArea hideIcons />
+            <LatestArticles />
         </PageLayout>
     )
 }
