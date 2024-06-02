@@ -86,9 +86,9 @@ export default function Header() {
                 {!link.url &&
                     <Stack spacing={3} sx={{
                     }}>
-                        {link.links.map((l) => {
+                        {link.links.map((l, i) => {
                             return (
-                                <Link onClick={toggleOpen} passHref href={l?.url} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
+                                <Link key={i} onClick={toggleOpen} passHref href={l?.url} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
                                     <Stack sx={{ color: path === l.url ? theme.palette.secondary.main : 'inherit', position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
                                         {l.name}
                                     </Stack>

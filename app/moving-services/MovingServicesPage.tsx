@@ -82,18 +82,19 @@ const MovingServicesPage = ({ articleContinents }: Props) => {
 
             <MaxWidthContainer>
                 <Stack py={5} spacing={4}>
-                    <Typography variant='h2' component={'h2'} sx={{
-                        py: 1,
-                        // color: theme.palette.secondary.main,
-                        fontWeight: 700,
-                        lineHeight: 1.2,
-                        width: { xs: '100%', sm: '80%', md: '80%' },
-                    }}>
-                        Deliver1's Removal Services
-                    </Typography>
-                    <Typography width={'50%'}>
-                        Whether you're moving across Europe or embarking on an international adventure, Deliver1 offers a range of tailored services to simplify your relocation:
-                    </Typography>
+                    <Stack>
+                        <Typography variant='h2' component={'h2'} sx={{
+                            py: 1,
+                            fontWeight: 700,
+                            lineHeight: 1.2,
+                            width: { xs: '100%', sm: '80%', md: '80%' },
+                        }}>
+                            Deliver1&apos;s Removal Services
+                        </Typography>
+                        <Typography width={{ lg: '50%', sm: '100%' }} variant='subtitle2' color={theme.palette.secondary.main}>
+                            Whether you&apos;re moving across Europe or embarking on an international adventure, Deliver1 offers a range of tailored services to simplify your relocation:
+                        </Typography>
+                    </Stack>
                     <SectionCard
                         title={'European Road Freight: Door-to-Door Delivery Across the Continent'}
                         shortContent={"Our extensive road freight network ensures efficient and secure transportation of your belongings to any destination within Europe. With door-to-door delivery, we handle every aspect of the journey, from collection to final delivery, providing peace of mind and convenience."}
@@ -186,12 +187,7 @@ const MovingServicesPage = ({ articleContinents }: Props) => {
                 title={"Our goal will always be a moving experience"}
                 content={iconsSection2Content} />
             <VideoArea hideIcons />
-
             <LatestArticles />
-
-
-
-
         </PageLayout>
     )
 }
