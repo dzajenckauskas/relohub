@@ -70,7 +70,7 @@ export const CountriesDropdownList = ({ }: Props) => {
     }, [open, get, input]);
 
     return (
-        <Stack sx={{ backgroundColor: theme.palette.secondary.main, py: 3, pb: { xs: 4, sm: 6 } }}>
+        <Stack sx={{ backgroundColor: theme.palette.secondary.main, py: 3, pb: { xs: 4, sm: 6, md: 3 } }}>
             <MaxWidthContainer>
                 <Stack direction={{ xs: 'column', md: 'row' }} width={'100%'} justifyContent={'space-between'} alignItems={'center'}>
                     <Typography color={"#fff"} variant='subtitle1' pb={{ xs: 2, md: 0 }}>
@@ -84,7 +84,7 @@ export const CountriesDropdownList = ({ }: Props) => {
                         getOptionLabel={(option) => option?.attributes?.name}
                         id="combo-box-demo"
                         options={data?.data ?? []}
-                        sx={{ maxWidth: 596, width: '100%' }}
+                        sx={{ maxWidth: { lg: 596, md: 552, sm: 596, }, width: '100%' }}
                         groupBy={(option) => option?.attributes?.name?.[0]}
                         renderInput={(params) => <TextField helperText={error?.message} sx={{ backgroundColor: '#fff !important', borderRadius: 1 }} color='info' placeholder='Please select' {...params} />}
                         renderGroup={(params) => (
