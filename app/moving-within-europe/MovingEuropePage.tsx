@@ -21,13 +21,6 @@ type Props = {
     articleContinents?: ContinentsResponseType;
 }
 const MovingEuropePage = ({ articleContinents }: Props) => {
-    const processContent = [
-        { title: "Get a Free Quote", txt: "Request a personalised quote online", top: -45 },
-        { title: "Packing Materials", txt: "We deliver packing materials if you need them", top: -18 },
-        { title: "Pack Your Goods", txt: "Pack your belongings, then fill in our easy to use customer portal", top: -32 },
-        { title: "Collection", txt: "We collect your packed items from your doorstep", top: -80 },
-        { title: "Transport and Updates", txt: "We keep you informed every step of the way as your belongings are transported to your new European home", top: -46 },
-    ];
     const iconsSectionContent = [
         { title: "Convenient Online Customer Portal", text: "Manage your move effortlessly from any device", icon: 'icon1.png' },
         { title: "European Expertise", text: "Our team possesses extensive knowledge of European removals", icon: 'icon2.png' },
@@ -118,7 +111,7 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
 
             <ListSection content={listContent} title='Complete European Moving Solutions' />
 
-            <ProcessWrapper title='How it works?' content={processContent} />
+            <ProcessWrapper title='How it works?' />
 
             <IconsSection title={"Why Choose Deliver1 for Your European Move?"} content={iconsSectionContent} />
 

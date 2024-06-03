@@ -2,14 +2,9 @@ import Image from "next/image";
 
 type Props = {
     title?: string;
-    content?: {
-        title: any;
-        txt: string;
-        top: number;
-    }[]
 }
 
-export default function ProcessWrapper({ title, content }: Props) {
+export default function ProcessWrapper({ title }: Props) {
     const txt = [
         { title: null, txt: "Get a free door to door quotation online", top: -40 },
         { title: null, txt: "Delivery of packing materials (if required)", top: -8 },
@@ -40,7 +35,7 @@ export default function ProcessWrapper({ title, content }: Props) {
                     ></Image>
                 </div>
                 <div className="processimagewrappertextwrp">
-                    {(content ?? txt).map((el, i) => {
+                    {(txt).map((el, i) => {
                         return (
                             <p
                                 className="processtxtp"
