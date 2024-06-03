@@ -73,7 +73,7 @@ export const HeaderLink = ({ link, path, setOpenDropdown, openDropdown }: Props)
                         backgroundColor: theme.palette.secondary.main,
                         transition: 'background-color 0.3s ease',
                     }}>
-                        <Stack sx={{ backgroundColor: '#fff', mt: '3px' }}>
+                        <Stack sx={{ backgroundColor: '#fff', mt: '3px', boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;', }}>
                             {link.links.map((l) => {
                                 return (
                                     <Link key={l.id} passHref href={l.url} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none', }}>
