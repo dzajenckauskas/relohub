@@ -1,3 +1,4 @@
+"use client"
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
