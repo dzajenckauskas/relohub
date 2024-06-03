@@ -1,13 +1,13 @@
 'use client'
+import BreadcrumbsComponent from '@/COMPONENTS/common/shared/BreadcrumbsComponent';
+import { theme } from '@/COMPONENTS/common/shared/Theme';
 import LatestArticlesCarousel from '@/COMPONENTS/main_page/LatestArticlesCarousel';
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import { MaxWidthContainer } from '../../COMPONENTS/common/MaxWidthContainer';
 import PageLayout from '../../COMPONENTS/common/PageLayout';
 import ArticleCategoryCard from '../../COMPONENTS/guides/ArticleCategoryCard';
 import { CategoriesResponseType } from '../../COMPONENTS/types/CategoryTypes';
-import Typography from '@mui/material/Typography';
-import Link from 'next/link';
-import { theme } from '@/COMPONENTS/common/shared/Theme';
 
 type Props = {
     categories?: CategoriesResponseType;
@@ -24,26 +24,12 @@ const GuidesPage = ({ categories }: Props) => {
                 backgroundColor: "#efefef"
             }}>
                 <MaxWidthContainer>
-                    <Stack sx={{
-                        display: 'flex', flexDirection: 'column',
-                    }}>
-                        <Stack direction={'row'} justifyContent={'flex-start'} spacing={.5} sx={{
-                            paddingTop: '10px',
-                            marginBottom: '20px',
-                            alignItems: 'center'
-                        }}>
-                            <Link passHref href={'/'}>
-                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
-                                    Home
-                                </Typography>
-                            </Link>
-                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
-                                {'/'}
-                            </Typography>
+                    <Stack sx={{ display: 'flex', flexDirection: 'column' }}>
+                        <BreadcrumbsComponent>
                             <Typography variant='body2' sx={{ fontWeight: 500, color: theme.palette.primary.main }}>
                                 Guides
                             </Typography>
-                        </Stack>
+                        </BreadcrumbsComponent>
                         <Typography variant='h1' sx={{ pb: 2 }}>Guides categories</Typography>
                     </Stack>
                 </MaxWidthContainer>

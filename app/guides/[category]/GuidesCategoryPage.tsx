@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { useState } from 'react';
 import ArticleCard from '../../../COMPONENTS/guides/ArticleCard';
+import BreadcrumbsComponent from '@/COMPONENTS/common/shared/BreadcrumbsComponent';
 
 type Props = {
     category?: CategoryDataType;
@@ -66,31 +67,21 @@ const GuidesCategoryPage = ({ articles, category, articleContinents }: Props) =>
                     <Stack sx={{
                         display: 'flex', flexDirection: 'column',
                     }}>
-                        <Stack direction={'row'} justifyContent={'flex-start'} spacing={.5} sx={{
-                            paddingTop: '10px',
-                            marginBottom: '20px',
-                            alignItems: 'center'
-                        }}>
-                            <Link passHref href={'/'}>
-                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
-                                    Home
+                        <BreadcrumbsComponent>
+                            <>
+                                <Link passHref href={'/guides'}>
+                                    <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
+                                        Guides
+                                    </Typography>
+                                </Link>
+                                <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
+                                    {'/'}
                                 </Typography>
-                            </Link>
-                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
-                                {'/'}
-                            </Typography>
-                            <Link passHref href={'/guides'}>
-                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
-                                    Guides
+                                <Typography variant='body2' sx={{ fontWeight: 400, }}>
+                                    {category.attributes?.name}
                                 </Typography>
-                            </Link>
-                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
-                                {'/'}
-                            </Typography>
-                            <Typography variant='body2' sx={{ fontWeight: 400, }}>
-                                {category.attributes?.name}
-                            </Typography>
-                        </Stack>
+                            </>
+                        </BreadcrumbsComponent>
                         <Typography variant='h1' sx={{ pb: 2 }}>{category.attributes?.name}</Typography>
                     </Stack>
                 </MaxWidthContainer>

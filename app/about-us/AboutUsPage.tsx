@@ -11,6 +11,7 @@ import Link from 'next/link'
 import { countriesData } from '../countriesData'
 import { ServicesSection } from '../../COMPONENTS/common/sections/ServicesSection'
 import { CoveredCountriesSection } from '../../COMPONENTS/common/sections/CoveredCountriesSection'
+import BreadcrumbsComponent from '@/COMPONENTS/common/shared/BreadcrumbsComponent'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
@@ -67,26 +68,12 @@ const AboutUsPage = ({ articleContinents, countries }: Props) => {
             </button> */}
             <Stack sx={{ backgroundColor: '#efefef' }}>
                 <MaxWidthContainer>
-                    <Stack sx={{
-                        display: 'flex', flexDirection: 'column',
-                    }}>
-                        <Stack direction={'row'} justifyContent={'flex-start'} spacing={.5} sx={{
-                            paddingTop: '10px',
-                            marginBottom: '20px',
-                            alignItems: 'center',
-                        }}>
-                            <Link passHref href={'/'}>
-                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
-                                    Home
-                                </Typography>
-                            </Link>
-                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
-                                {'/'}
-                            </Typography>
+                    <Stack sx={{ display: 'flex', flexDirection: 'column' }}>
+                        <BreadcrumbsComponent>
                             <Typography variant='body2' sx={{ fontWeight: 400, }}>
                                 {"About us"}
                             </Typography>
-                        </Stack>
+                        </BreadcrumbsComponent>
                         <Typography variant='h1' sx={{ pb: 2 }}>{"About us"}</Typography>
                     </Stack>
                 </MaxWidthContainer>

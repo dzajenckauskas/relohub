@@ -16,6 +16,7 @@ import { ArticleResponseType } from '../../../../COMPONENTS/types/ArticleTypes';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { InstantQuoteComponent } from '@/COMPONENTS/common/InstantQuoteComponent';
+import BreadcrumbsComponent from '@/COMPONENTS/common/shared/BreadcrumbsComponent';
 
 type Props = {
     article?: ArticleResponseType;
@@ -96,43 +97,32 @@ const ArticlePage = ({ article }: Props) => {
             }}>
                 <MaxWidthContainer>
                     <Stack ref={containerRef} sx={{ display: 'flex', flexDirection: 'column', overflowX: 'hidden' }}>
-                        <Stack direction={'row'} justifyContent={'flex-start'} spacing={.5} sx={{
-                            paddingTop: '10px',
-                            marginBottom: '20px',
-                            alignItems: 'center',
-                            width: 'max-content',
-                        }}>
-                            <Link passHref href={'/'}>
-                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
-                                    Home
+                        <BreadcrumbsComponent>
+                            <>
+                                <Link passHref href={'/guides'}>
+                                    <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
+                                        Guides
+                                    </Typography>
+                                </Link>
+                                <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
+                                    {' / '}
                                 </Typography>
-                            </Link>
-                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
-                                {' / '}
-                            </Typography>
-                            <Link passHref href={'/guides'}>
-                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
-                                    Guides
+                                <Link passHref href={'/guides/' + categoryUrl?.toLowerCase()}>
+                                    <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
+                                        {category}
+                                    </Typography>
+                                </Link>
+                                <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
+                                    {' / '}
                                 </Typography>
-                            </Link>
-                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
-                                {' / '}
-                            </Typography>
-                            <Link passHref href={'/guides/' + categoryUrl?.toLowerCase()}>
-                                <Typography variant='body2' sx={{ ':hover': { textDecoration: 'underline' }, fontWeight: 500, color: theme.palette.secondary.main }}>
-                                    {category}
+                                <Typography sx={{ display: { xs: 'none', sm: 'flex' } }} variant='body2' noWrap title={article?.data?.attributes?.title}>
+                                    {article?.data?.attributes?.title}
                                 </Typography>
-                            </Link>
-                            <Typography variant='body2' sx={{ fontWeight: 400, color: theme.palette.secondary.main }}>
-                                {' / '}
-                            </Typography>
-                            <Typography sx={{ display: { xs: 'none', sm: 'flex' } }} variant='body2' noWrap title={article?.data?.attributes?.title}>
-                                {article?.data?.attributes?.title}
-                            </Typography>
-                            <Typography sx={{ display: { xs: 'flex', sm: 'none' } }} variant='body2' noWrap title={article?.data?.attributes?.title}>
-                                {getTruncatedText(article?.data?.attributes?.title, availableWidth)}
-                            </Typography>
-                        </Stack>
+                                <Typography sx={{ display: { xs: 'flex', sm: 'none' } }} variant='body2' noWrap title={article?.data?.attributes?.title}>
+                                    {getTruncatedText(article?.data?.attributes?.title, availableWidth)}
+                                </Typography>
+                            </>
+                        </BreadcrumbsComponent>
                     </Stack>
                 </MaxWidthContainer>
 
