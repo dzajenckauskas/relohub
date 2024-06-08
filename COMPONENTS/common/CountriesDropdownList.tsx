@@ -86,7 +86,8 @@ export const CountriesDropdownList = ({ }: Props) => {
                         options={data?.data ?? []}
                         sx={{ maxWidth: { lg: 596, md: 552, sm: 596, }, width: '100%' }}
                         groupBy={(option) => option?.attributes?.name?.[0]}
-                        renderInput={(params) => <TextField helperText={error?.message} sx={{ backgroundColor: '#fff !important', borderRadius: 1 }} color='info' placeholder='Please select' {...params} />}
+                        renderInput={(params) => <TextField helperText={error?.message} sx={{ backgroundColor: '#fff !important', borderRadius: 1 }}
+                            color='info' placeholder='Please select' {...params} />}
                         renderGroup={(params) => (
                             <li key={params.key}>
                                 <GroupHeader>{params.group}</GroupHeader>
@@ -113,8 +114,8 @@ export const CountriesDropdownList = ({ }: Props) => {
                         loading={listLoading}
                         renderOption={(props, option) => {
                             return (
-                                <Link passHref key={option.id} href={`/moving-to/${option.attributes.url}`}>
-                                    <li {...props} style={{ borderBottom: '1px solid #EBEBEB', paddingTop: 8, paddingBottom: 8, width: '94%', margin: '0 auto' }}>
+                                <li {...props} style={{ borderBottom: '1px solid #EBEBEB', paddingTop: 8, paddingBottom: 8, width: '94%', margin: '0 auto' }}>
+                                    <Link passHref key={option.id} href={`/moving-to/${option.attributes.url}`} style={{ width: '100%' }}>
                                         <Stack direction={'row'} alignItems={'center'} spacing={1} sx={{ width: '100%' }}>
                                             <Image
                                                 loading="lazy"
@@ -128,8 +129,8 @@ export const CountriesDropdownList = ({ }: Props) => {
                                                 {option.attributes.name}
                                             </Typography>
                                         </Stack>
-                                    </li>
-                                </Link>
+                                    </Link>
+                                </li>
                             )
                         }}
                     />

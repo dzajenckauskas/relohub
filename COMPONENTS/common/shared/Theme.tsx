@@ -51,7 +51,7 @@ export const theme = createTheme({
         MuiAutocomplete: {
             styleOverrides: {
                 popper: ({ theme }) => theme.unstable_sx({
-                    boxShadow: '0 0 20px #ebebeb',
+                    boxShadow: '0 0 10px #0000001A',
                 }),
             }
         },
