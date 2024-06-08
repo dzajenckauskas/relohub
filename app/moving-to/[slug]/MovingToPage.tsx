@@ -20,6 +20,8 @@ import { theme } from '@/COMPONENTS/common/shared/Theme'
 import VideoArea from '@/COMPONENTS/main_page/videoarea'
 import LatestArticles from '@/COMPONENTS/main_page/LatestArticles'
 import Link from 'next/link'
+import { useState } from 'react'
+import { ExpandButton } from '@/COMPONENTS/common/ExpandButton'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
@@ -51,6 +53,36 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
         { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa.", icon: 'icon5.png' },
         { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", icon: 'icon6.png' },
     ];
+
+    const [clicked, setclicked] = useState(null);
+
+
+    const renderFAQs = country.data.attributes.faqs?.map((faq) => {
+        return (
+            <div className="faqfaqliner" key={faq.id}>
+                <div className="faqfaqinsidetop" style={{ cursor: 'pointer' }} onClick={() => {
+                    setclicked(
+                        clicked === faq.question ? null : faq.question,
+                    );
+                }}>
+                    <Typography variant={'h4'} component={'p'} sx={{ fontWeight: 700, pr: 2, color: theme.palette.secondary.main }}>{faq.question}</Typography>
+                    <ExpandButton
+                        active={clicked === faq.question}
+                        setActive={setclicked}
+                        onClick={() => {
+                            setclicked(
+                                clicked === faq.question ? null : faq.question,
+                            );
+                        }}
+                    />
+                </div>
+
+                {clicked === faq.question ? (
+                    <p className="faqfaqinsidep">{faq.answer}</p>
+                ) : null}
+            </div>
+        )
+    })
     return (
         <PageLayout>
             <div className="bckimagewrp">
@@ -163,6 +195,20 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                     </Stack>
                 </MaxWidthContainer>
             </Stack>
+            <section className="faqglobalwrp">
+                <MaxWidthContainer>
+                    <div className="faqinsidewrp">
+                        <p className="faqwrphowitworksp">F.A.Q</p>
+                        <h2 className="processwrptheprocess">
+                            Frequently Asked Questions
+                        </h2>
+
+                        <div className="faqfaqwrp">
+                            {renderFAQs}
+                        </div>
+                    </div>
+                </MaxWidthContainer>
+            </section>
             <VideoArea hideIcons />
             <LatestArticles />
         </PageLayout>

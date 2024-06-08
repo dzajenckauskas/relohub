@@ -22,4 +22,13 @@ export type CountryAttributesType = {
     createdAt: Date;
     updatedAt: Date;
     publishedAt: Date;
+    fullContent: string;
+    faqs: FaqType[];
+}
+
+export type FaqType = {
+    id: number;
+    question: string;
+    answer: string;
+    fullAnswer: string;
 }

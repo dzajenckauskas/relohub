@@ -57,8 +57,8 @@ const SectionCard = ({ backgroundColor, buttonText, url, title, shortContent, im
                 }}>
                     {loading && <Skeleton variant="rectangular" width={'100%'} height={'100%'} />}
                     {!loading && <Image
-                        src={imgSrc}
-                        alt={imgAlt}
+                        src={imgSrc ?? '/placeholder-image.webp'}
+                        alt={imgAlt ?? '/placeholder-image.webp'}
                         priority
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

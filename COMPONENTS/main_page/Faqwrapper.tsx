@@ -107,9 +107,15 @@ export default function FaqWrapper() {
                         {qa.map((el, i) => {
                             return (
                                 <div className="faqfaqliner" key={i}>
-                                    <div className="faqfaqinsidetop">
+                                    <div className="faqfaqinsidetop" style={{ cursor: 'pointer' }} onClick={() => {
+                                        setclicked(
+                                            clicked === el.q ? null : el.q,
+                                        );
+                                    }}>
                                         <Typography variant={'h4'} component={'p'} sx={{ fontWeight: 700, pr: 2, color: theme.palette.secondary.main }}>{el.q}</Typography>
                                         <ExpandButton
+                                            active={clicked === el.q}
+                                            setActive={setclicked}
                                             onClick={() => {
                                                 setclicked(
                                                     clicked === el.q ? null : el.q,

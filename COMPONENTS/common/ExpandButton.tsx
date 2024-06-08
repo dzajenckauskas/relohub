@@ -5,10 +5,11 @@ import { useState } from "react";
 
 type Props = {
     onClick?: () => void;
+    active: boolean;
+    setActive: (v: boolean) => void;
 }
 
-export const ExpandButton = ({ onClick }: Props) => {
-    const [active, setActive] = useState(false)
+export const ExpandButton = ({ onClick, active, setActive }: Props) => {
     return (
         <Button
             aria-label="expand button"
