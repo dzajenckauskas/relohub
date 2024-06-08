@@ -1,27 +1,27 @@
 'use client'
 import { FlagIllustration } from '@/COMPONENTS/FlagIllustration'
 import { CountriesDropdownList } from '@/COMPONENTS/common/CountriesDropdownList'
+import { ExpandButton } from '@/COMPONENTS/common/ExpandButton'
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer'
 import PageLayout from '@/COMPONENTS/common/PageLayout'
+import IconsSection from '@/COMPONENTS/common/sections/IconsSection'
+import ListSection from '@/COMPONENTS/common/sections/ListSection'
+import SectionCard from '@/COMPONENTS/common/sections/SectionCard'
+import { ServicesSection } from '@/COMPONENTS/common/sections/ServicesSection'
+import { theme } from '@/COMPONENTS/common/shared/Theme'
+import LatestArticles from '@/COMPONENTS/main_page/LatestArticles'
+import ProcessWrapper from '@/COMPONENTS/main_page/ProcessWrapper'
+import VideoArea from '@/COMPONENTS/main_page/videoarea'
 import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes'
 import { CountriesResponseType, CountryResponseType } from '@/COMPONENTS/types/CountryType'
 import Stack from '@mui/material/Stack'
-import Image from 'next/image'
-import MovingToPageHero from './MovingToPageHero'
-import "/STYLES/svg-style.css"
-import SectionCard from '@/COMPONENTS/common/sections/SectionCard'
-import IconsSection from '@/COMPONENTS/common/sections/IconsSection'
-import TextSection from '@/COMPONENTS/common/sections/TextSection'
-import ListSection from '@/COMPONENTS/common/sections/ListSection'
-import ProcessWrapper from '@/COMPONENTS/main_page/ProcessWrapper'
-import { ServicesSection } from '@/COMPONENTS/common/sections/ServicesSection'
 import Typography from '@mui/material/Typography'
-import { theme } from '@/COMPONENTS/common/shared/Theme'
-import VideoArea from '@/COMPONENTS/main_page/videoarea'
-import LatestArticles from '@/COMPONENTS/main_page/LatestArticles'
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from 'next-share'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import { ExpandButton } from '@/COMPONENTS/common/ExpandButton'
+import MovingToPageHero from './MovingToPageHero'
+import "/STYLES/svg-style.css"
 
 type Props = {
     articleContinents?: ContinentsResponseType;
@@ -29,29 +29,17 @@ type Props = {
     countriesdata?: CountriesResponseType;
 }
 const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
-    const iconsSection2Content = [
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante. Nulla bibendum massa id dui pulvinar, sed sollicitudin purus imperdiet.", icon: 'icon7.png' },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante. Nulla bibendum massa id dui pulvinar, sed sollicitudin purus imperdiet.", icon: 'icon8.png' },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante. Nulla bibendum massa id dui pulvinar, sed sollicitudin purus imperdiet.", icon: 'icon9.png' },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante.", icon: 'icon10.png' },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante.", icon: 'icon11.png' },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum.", icon: 'icon12.png' },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante.", icon: 'icon13.png' },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante.", icon: 'icon14.png' },
-    ];
     const listContent = [
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum." },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa." },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante." },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada." },
+        { title: "Professional Handling Services", text: "Our skilled team will meticulously handle your possessions, using high-quality materials and proven techniques to safeguard your items throughout their journey.", icon: 'icon10.png' },
+        { title: "Stress-Free Door-to-Door Delivery", text: "Sit back and relax as we manage every aspect of your move, from collection at your current residence to delivery and unpacking at your new home in Spain.", icon: 'icon9.png' },
+        { title: "Expert Customs Clearance", text: "We streamline the customs clearance process, taking care of all necessary paperwork and documentation to minimise delays and ensure a smooth arrival for your shipment.", icon: 'icon14.png' },
     ];
-    const iconsSectionContent = [
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa.", icon: 'icon1.png' },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada.", icon: 'icon2.png' },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa.", icon: 'icon3.png' },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa.", icon: 'icon4.png' },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa.", icon: 'icon5.png' },
-        { title: "Lorem ipsum dolor sit amet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", icon: 'icon6.png' },
+    const listContent2 = [
+        { title: "Real-Time Shipment Tracking", text: "Stay connected with your belongings every step of the way, with up-to-date tracking information and notifications directly to your device." },
+        { title: "Personalised Service for Your Unique Needs", text: "We understand that no two moves are alike. Our team will work closely with you to design a customised moving plan that caters to your specific requirements and budget." },
+        { title: "24/7 Customer Support", text: "We're here for you whenever you need us. Our dedicated customer support team is available around the clock to answer your questions, address any concerns, and provide expert guidance throughout your moving journey." },
+        { title: "Experience the Deliver1 Difference", text: "At Deliver1, we believe that moving to Spain should be an exciting adventure, not a stressful ordeal. Choose us for a seamless, transparent, and personalised moving experience that exceeds your expectations." },
+        { title: "Ready to Start Your Journey?", text: "Contact us today for a free, no-obligation quote and let us help you turn your dream of living in Spain into a reality." },
     ];
 
     const [clicked, setclicked] = useState(null);
@@ -116,73 +104,54 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
             <MaxWidthContainer>
                 <Stack py={5} spacing={4}>
                     <SectionCard reverse
-                        title={'Lorem ipsum dolor sit amet, consectetur'}
-                        shortContent={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante. Nulla bibendum massa id dui pulvinar, sed sollicitudin purus imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."}
+                        title={`Removals to ${country.data.attributes.name} with Deliver1`}
+                        shortContent={`Welcome to Deliver1 - Your reliable partner for stress-free and efficient international removals to ${country.data.attributes.name}. Whether you are relocating for work, family, or adventure, our comprehensive moving services ensure your belongings reach safely and on time.`}
                     />
-                    <SectionCard url='#get-in-touch'
-                        buttonText={'Get in touch'}
-                        title='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-                        shortContent='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante. Nulla bibendum massa id dui pulvinar, sed sollicitudin purus imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.' />
+                    <SectionCard
+                        title={'Experience and Expertise You Can Trust'}
+                        shortContent={`With over 20 years of combined experience in international removals, Deliver1 is your trusted partner in navigating the complexities of moving to ${country.data.attributes.name}. Our team of experts possesses in-depth knowledge of ${country.data.attributes.name}'s logistics and customs regulations, ensuring a seamless and efficient transition for your belongings.`}
+                    />
                 </Stack>
             </MaxWidthContainer>
 
-            <IconsSection lg={3} md={3} sm={6} xs={12} backgroundColor={'#ededed'}
+            <IconsSection lg={4} md={4} sm={6} xs={12} backgroundColor={'#ededed'}
                 color='#000' align={'flex-start'} textAlign={'left'}
-                title={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
-                content={iconsSection2Content} />
-
-            <TextSection title={`Lorem ipsum dolor sit amet`}
-                text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante. Nulla bibendum massa id dui pulvinar, sed sollicitudin purus imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.`} />
-            <ListSection content={listContent}
-                title='Lorem ipsum dolor sit amet.' />
+                title={"Comprehensive Moving Services Tailored to You"}
+                content={listContent} />
 
             <ProcessWrapper title='How it works?' />
 
+            <ListSection content={listContent2}
+                title='A Customer-Centric Approach That Puts You First' />
+            <MaxWidthContainer>
+                <Typography component={'div'} className='dynamicContent' sx={{ py: 8 }} dangerouslySetInnerHTML={{ __html: country?.data.attributes.fullContent }} />
+            </MaxWidthContainer>
             <Stack sx={{ backgroundColor: '#efefef' }}>
                 <MaxWidthContainer>
-                    <Stack py={5} spacing={4}>
-                        <SectionCard reverse
-                            url='#get-in-touch'
-                            buttonText={'Get in touch'}
-                            title={'Lorem ipsum'}
-                            shortContent={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante. Nulla bibendum massa id dui pulvinar, sed sollicitudin purus imperdiet."}
-                        />
-                        <SectionCard
-                            title='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-                            shortContent='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante. Nulla bibendum massa id dui pulvinar, sed sollicitudin purus imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.' />
-                    </Stack>
-                </MaxWidthContainer>
-            </Stack>
-
-            <ServicesSection />
-
-            <IconsSection title={"Lorem ipsum dolor sit amet, consectetur adipiscing elit?"} content={iconsSectionContent} />
-
-            <Stack sx={{ backgroundColor: '#efefef' }}>
-                <MaxWidthContainer>
-                    <Stack>
+                    <Stack >
                         <Stack py={8}>
-                            <SectionCard reverse backgroundColor="#fff"
-                                buttonText='Lorem ipsum dolor'
-                                url='/about-us#countries-we-cover'
-                                title={'Lorem ipsum dolor sit amet'}
-                                shortContent={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante. Nulla bibendum massa id dui pulvinar."}
-                            />
-                        </Stack>
-                        <Stack pb={8}>
                             <SectionCard
-                                buttonText='Lorem ipsum dolor'
-                                url='#countries-we-cover'
-                                title={'Lorem ipsum dolor sit'}
+                                textWidth={'80%'}
+                                buttonText='Get in touch'
+                                url='#get-in-touch'
+                                title={'Get Started Today!'}
                             >
                                 <Stack>
-                                    <Typography variant='body1' sx={{ pt: 1 }}>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante. Nulla bibendum massa id dui pulvinar, sed sollicitudin purus imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                                    <Typography variant='body1' sx={{ pt: 1 }} component={'div'}>
+                                        Ready to make your move to Spain? Contact us now for a free quote and let Deliver1 take the stress out of your international relocation.
                                         <br />
                                         <br />
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis efficitur massa. Quisque in tellus malesuada, blandit enim vestibulum, dictum ante. Nulla bibendum massa id dui pulvinar, sed sollicitudin purus imperdiet.
-                                        <br />
-                                        <br />
+                                        <Typography variant='subtitle1' fontWeight={600} pb={1}>
+                                            Follow Us on Social Media:
+                                        </Typography>
+                                        <Stack direction={'row'} pb={2} spacing={2}>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.facebook.com/deliver1uk/'}><FacebookIcon /></Link>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://uk.linkedin.com/company/deliver1'}><LinkedinIcon /></Link>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.instagram.com/deliver1_uk/'}><InstagramIcon /></Link>
+                                        </Stack>
+                                        <Typography variant='subtitle1' fontWeight={600} pb={1}>
+                                            Contact Us:
+                                        </Typography>
                                         <b>
                                             Phone: <Link style={{ color: theme.palette.secondary.main }} href="tel:+443330907053">0333 090 7053</Link><br />
                                             Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@deliver1.co.uk">hello@deliver1.co.uk</Link> <br />
@@ -195,6 +164,7 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                     </Stack>
                 </MaxWidthContainer>
             </Stack>
+            <ServicesSection />
             <section className="faqglobalwrp">
                 <MaxWidthContainer>
                     <div className="faqinsidewrp">
@@ -210,6 +180,8 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                 </MaxWidthContainer>
             </section>
             <VideoArea hideIcons />
+
+
             <LatestArticles />
         </PageLayout>
     )

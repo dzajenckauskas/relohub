@@ -112,6 +112,8 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
     const [zipinputfocused, setzipinputfocused] = useState(false);
     const [zipinputfocuseddest, setzipinputfocuseddest] = useState(false);
 
+
+    console.log(selectedField);
     useEffect(() => {
         if (listRef.current) {
             const height = listRef.current.offsetHeight;
@@ -812,7 +814,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                 )}
 
                                 {manualCity === el.label ? (
-                                    <div className="heroinputselectwrpmanual">
+                                    <div className={`heroinputselectwrpmanual`}>
                                         <input
                                             value={state[el.field]}
                                             onChange={(e) => {

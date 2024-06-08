@@ -2,7 +2,6 @@
 import { theme } from '@/COMPONENTS/common/shared/Theme';
 import { ArticleDataType } from '@/COMPONENTS/types/ArticleTypes';
 import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
@@ -21,10 +20,11 @@ type Props = {
     backgroundColor?: string;
     imgSrc?: string;
     imgAlt?: string;
+    textWidth?: string;
     children?: React.ReactNode
 }
 
-const SectionCard = ({ backgroundColor, buttonText, url, title, shortContent, imgSrc, imgAlt, reverse, loading, children }: Props) => {
+const SectionCard = ({ textWidth, backgroundColor, buttonText, url, title, shortContent, imgSrc, imgAlt, reverse, loading, children }: Props) => {
 
     return (
         <Stack
@@ -70,7 +70,7 @@ const SectionCard = ({ backgroundColor, buttonText, url, title, shortContent, im
                 </Stack>
             </Stack>
 
-            <Stack sx={{ p: { xs: 2, md: 3 }, width: '100%', position: 'relative' }}>
+            <Stack sx={{ p: { xs: 2, md: 3 }, width: textWidth ?? '100%', position: 'relative' }}>
                 {/* <Typography variant='body2' sx={{ color: '#9b9b9b', textTransform: 'uppercase', fontWeight: 500, letterSpacing: 1 }}>
                     {loading ? <Skeleton /> : <> {category} {continent && <>• {continent}</>}</>}
                 </Typography> */}

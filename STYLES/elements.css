@@ -248,7 +248,7 @@
     font-weight: bold;
     margin: 0 auto;
     margin-top: 24px;
-    margin-bottom: 80px;
+    margin-bottom: 48px;
 }
 
 .videoareaplaybtnwrp {
@@ -381,6 +381,11 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    /* border: 2px solid var(--pink_color) */
+}
+
+.notSelected {
+    border: 2px solid var(--pink_color)
 }
 
 .heroinputselectwrpmanual {
@@ -417,6 +422,8 @@
 
 .heroinputselectwrpdisabled {
     cursor: not-allowed;
+    opacity: 50%;
+    border: 0px solid var(--pink_color) !important
 }
 
 .collpostcode {
@@ -674,10 +681,10 @@
 .faqglobalwrp {
     /* padding: 0 16px; */
     background: #ededed;
-    padding-top: 104px;
+    padding-top: 56px;
     display: flex;
     flex-direction: column;
-    padding-bottom: 56px;
+    padding-bottom: 72px;
 }
 
 .faqinsidewrp {

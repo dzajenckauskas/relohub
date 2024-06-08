@@ -44,7 +44,7 @@
 }
 
 body {
-    font-family: Uniform;
+    font-family: Uniform !important;
 }
 
 :root {
