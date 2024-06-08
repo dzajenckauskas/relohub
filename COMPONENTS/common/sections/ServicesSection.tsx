@@ -104,8 +104,7 @@ export const ServicesSection = ({ }: Props) => {
                             <Image
                                 alt="backgorund"
                                 src={"/sofa2cut.png"}
-                                objectFit='contain'
-                                objectPosition='bottom'
+                                style={{ objectFit: "contain", objectPosition: 'bottom' }}
                                 fill />
                         </Stack>
                     </Stack>
