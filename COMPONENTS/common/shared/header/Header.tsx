@@ -222,7 +222,7 @@ export default function Header() {
                                 cursor: 'pointer'
                             }}>
                                 <CustomerPortalIcon />
-                                <Typography variant='h5' component={'p'} fontWeight={600} sx={{ pl: 1, }}>
+                                <Typography variant='h5' component={'p'} fontWeight={500} sx={{ pl: 1, fontSize: 16 }}>
                                     CUSTOMER PORTAL
                                 </Typography>
                             </Button>

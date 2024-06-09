@@ -81,57 +81,68 @@ const MovingServicesPage = ({ articleContinents }: Props) => {
             <CountriesDropdownList />
 
             <MaxWidthContainer>
-                <Stack py={5} spacing={4}>
-                    <Stack>
+                <Stack py={8} spacing={4}>
+                    <Stack width={'100%'} pb={6}>
                         <Typography variant='h2' component={'h2'} sx={{
                             py: 1,
                             fontWeight: 700,
+                            textAlign: 'center',
                             lineHeight: 1.2,
-                            width: { xs: '100%', sm: '80%', md: '80%' },
+                            width: { xs: '100%', sm: '100%', md: '100%' },
                         }}>
                             Deliver1&apos;s Removal Services
                         </Typography>
-                        <Typography width={{ lg: '50%', sm: '100%' }} variant='subtitle2' color={theme.palette.secondary.main}>
-                            Whether you&apos;re moving across Europe or embarking on an international adventure, Deliver1 offers a range of tailored services to simplify your relocation:
-                        </Typography>
+                        <Stack alignItems={'center'}>
+                            <Typography textAlign={"center"} width={{ lg: '60%', sm: '80%' }} variant='subtitle2' color={theme.palette.secondary.main}>
+                                Whether you&apos;re moving across Europe or embarking on an international adventure, Deliver1 offers a range of tailored services to simplify your relocation:
+                            </Typography>
+                        </Stack>
                     </Stack>
                     <SectionCard
+                        imgSrc='/images/moving-services/door-to-door.png'
+                        imgAlt='door to door'
                         title={'European Road Freight: Door-to-Door Delivery Across the Continent'}
                         shortContent={"Our extensive road freight network ensures efficient and secure transportation of your belongings to any destination within Europe. With door-to-door delivery, we handle every aspect of the journey, from collection to final delivery, providing peace of mind and convenience."}
                     />
-                    <SectionCard reverse
+                    <SectionCard
+                        imgSrc='/images/moving-services/sea-freight.png'
+                        imgAlt='sea freight'
+                        reverse
                         title='European Sea Freight: Cost-Effective Shipping for Larger Moves'
                         shortContent='For larger shipments or coastal destinations, our sea freight services offer a cost-effective and reliable solution. We manage the entire process, including customs clearance and documentation, ensuring your belongings arrive safely and on time.'
                     />
                     <SectionCard
+                        imgSrc='/images/moving-services/air-freight.png'
+                        imgAlt='air freight'
                         title='Air Freight: Expedited Worldwide Shipping'
                         shortContent='When time is of the essence, our air freight services provide expedited shipping to destinations worldwide. We partner with reputable carriers to ensure your belongings are handled with care and delivered promptly.'
                     />
-                    <SectionCard reverse
-                        title='European Sea Freight: Cost-Effective Shipping for Larger Moves'
-                        shortContent='For larger shipments or coastal destinations, our sea freight services offer a cost-effective and reliable solution. We manage the entire process, including customs clearance and documentation, ensuring your belongings arrive safely and on time.'
-                    />
                     <SectionCard
+                        reverse
+                        // imgSrc='/images/moving-services/door-to-door.png'
+                        // imgAlt='door to door'
                         title='Air Courier: Door-to-Door Delivery for Urgent Shipments'
                         shortContent='For urgent or time-sensitive shipments, our air courier service offers door-to-door delivery with the fastest possible transit times. We prioritise speed and efficiency to meet your specific needs.'
                     />
-                    <SectionCard reverse
+                    <SectionCard
                         title='Secure Storage Solutions in Europe and Beyond'
                         shortContent={`Whether you require temporary storage during your move or a long-term solution, we offer secure and convenient storage facilities in Europe and select international locations. Your belongings will be stored in a safe and climate-controlled environment until you're ready to receive them.`}
                     />
                     <SectionCard
+                        reverse
                         title='Professional Packing Services: Expert Care for Your Belongings'
                         shortContent={`Our experienced packers take the stress out of packing, ensuring your belongings are carefully wrapped, protected, and organised for safe transportation. We use high-quality packing materials and techniques to minimise the risk of damage during transit.`}
                     />
-                    <SectionCard reverse
+                    <SectionCard
                         title='Specialised Crating for Delicate Items'
                         shortContent={`For valuable or fragile items, we offer specialised crating services to provide an extra layer of protection. Our custom-built crates are designed to safeguard your most precious possessions, ensuring they arrive in pristine condition.`}
                     />
                     <SectionCard
+                        reverse
                         title='Furniture Disassembly and Assembly'
                         shortContent={`We can disassemble your furniture before your move and reassemble it in your new home, saving you time and effort. Our team is skilled in handling a wide range of furniture types, ensuring your pieces are properly disassembled and reassembled with care.`}
                     />
-                    <SectionCard reverse
+                    <SectionCard
                         title='Your Move, Simplified with Deliver1'
                         shortContent={`With Deliver1's comprehensive range of removal services, your relocation is in expert hands. We tailor our solutions to your specific needs, providing a seamless and stress-free experience from start to finish.`}
                     />
@@ -150,6 +161,8 @@ const MovingServicesPage = ({ articleContinents }: Props) => {
                         <Stack py={8}>
                             <SectionCard reverse backgroundColor="#fff"
                                 buttonText='View countries we cover'
+                                imgSrc='/images/moving-overseas/countries-we-cover.png'
+                                imgAlt='View countries we cover'
                                 url='/about-us#countries-we-cover'
                                 title={'Countries We Cover'}
                                 shortContent={"Deliver1 can help you move to almost every country on earth - from Iceland to South Africa, and Japan to Qatar. No matter where your destination is, our extensive network and experienced team ensure a smooth and efficient relocation process."}
@@ -157,10 +170,14 @@ const MovingServicesPage = ({ articleContinents }: Props) => {
                         </Stack>
                         <Stack pb={8} spacing={4}>
                             <SectionCard
+                                // imgSrc='/images/moving-overseas/start-journey.png'
+                                // imgAlt='View countries we cover'
                                 title={'Your Next Adventure Starts Today'}
                                 shortContent={"Contact Deliver1 today for a free quote and consultation. Let us handle the logistics so you can focus on embracing your new life in a new country. With Deliver1, your next adventure is in expert hands."}
                             />
                             <SectionCard reverse
+                                imgSrc='/images/moving-to-europe/get-in-touch-today.png'
+                                imgAlt='View countries we cover'
                                 buttonText='Get in Touch'
                                 url='#get-in-touch'
                                 title={'Get in Touch'}
