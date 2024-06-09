@@ -103,6 +103,7 @@ export default function FaqWrapper() {
                         Frequently Asked Questions
                     </h2>
 
+
                     <div className="faqfaqwrp">
                         {qa.map((el, i) => {
                             return (

@@ -131,21 +131,28 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                 <Typography component={'div'} className='dynamicContent' sx={{ py: 8 }} dangerouslySetInnerHTML={{ __html: country?.data.attributes.fullContent }} />
             </MaxWidthContainer> */}
 
-            <MaxWidthContainer sx={{ pb: { xs: 4, md: 8 }, flexDirection: 'column', }}>
+            <MaxWidthContainer sx={{ py: { xs: 4, md: 8 }, flexDirection: 'column', }}>
                 <Stack sx={{
                     mx: 'auto',
-                    mb: { xs: 4, md: 6 },
+                    mb: { xs: 0, md: 0 },
                     position: 'relative',
                     width: '100%',
-                    height: { xs: 300, sm: 400, md: 600 },
+                    height: { xs: 300, sm: 400, md: 400 },
                     justifyContent: 'flex-end',
                     borderRadius: '5px',
                     overflow: 'hidden'
                 }}>
+                    <Image
+                        priority
+                        src='/images/moving-overseas/start-journey.png'
+                        alt='start journey'
+                        fill
+                        objectFit="cover"
+                    />
                     {/* <Image
                             priority
-                            src={`${process.env.NEXT_PUBLIC_API_URL}${article?.data?.attributes?.image?.data?.attributes?.url ?? article?.data?.attributes?.image?.data?.attributes?.url}`}
-                            alt={article?.data?.attributes?.image?.data?.attributes?.alternativeText ?? article?.data?.attributes?.title}
+                            src={`${process.env.NEXT_PUBLIC_API_URL}${country?.data?.attributes?.image?.data?.attributes?.url ?? country?.data?.attributes?.image?.data?.attributes?.url}`}
+                            alt={country?.data?.attributes?.image?.data?.attributes?.alternativeText ?? country?.data?.attributes?.title}
                             fill
                             objectFit="cover"
                         /> */}
@@ -159,160 +166,11 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                             background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%)',
                         }}
                     />
-                    {/* <Stack direction={{ xs: 'column-reverse', md: 'column' }} sx={{ px: 2, pb: 3, position: 'relative', zIndex: 2, mx: { xs: 0, md: 'auto' } }}>
-                            <Typography sx={{ maxWidth: 'md', position: 'relative', zIndex: 2, textAlign: { xs: 'left', sm: 'left', md: 'center' }, color: '#fff', fontSize: { xs: 28, sm: 34, md: 42 } }}
-                                variant='h1' fontWeight={700}>{article?.data?.attributes?.title}</Typography>
-
-                            <Stack direction={'row'} justifyContent={{ xs: 'flex-start', sm: 'flex-start', md: 'center' }} pt={3} alignItems={'center'} spacing={2}>
-                                <Typography ref={textRef}
-                                    sx={{
-                                        color: '#fff', fontSize: 14, textTransform: 'uppercase',
-                                        fontWeight: 500, letterSpacing: 1
-                                    }}>
-                                    {category} {continent && <>• {continent}</>} • {formattedDate}
-                                </Typography>
-                                <Stack direction={'row'} alignItems={'center'} spacing={2}
-                                    sx={{
-                                        display: { xs: 'none', md: 'flex' }
-                                    }}>
-                                    <Stack direction={'row'} spacing={1.5} px={2} sx={{ justifyContent: 'center' }}>
-                                        <WhatsappShareButton
-                                            url={url}
-                                            title={article?.data?.attributes?.title}
-                                            separator=":: "
-                                        >
-                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff', cursor: 'pointer', ":hover": { opacity: .8 } }}>
-                                                <WhatsAppIcon sx={{ fontSize: 22 }} />
-                                            </Stack>
-                                        </WhatsappShareButton>
-                                        <FacebookShareButton
-                                            url={url}
-                                            quote={article?.data?.attributes?.title}
-                                        >
-                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff', cursor: 'pointer', ":hover": { opacity: .8 } }}>
-                                                <FacebookIcon color={'#000'} />
-                                            </Stack>
-                                        </FacebookShareButton>
-                                        <TwitterShareButton
-                                            url={url}
-                                            title={article?.data?.attributes?.title}
-                                        >
-                                            <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff', cursor: 'pointer', ":hover": { opacity: .8 } }}>
-                                                <XIcon color='#000' />
-                                            </Stack>
-                                        </TwitterShareButton>
-                                    </Stack>
-
-                                    <Box id="share-box" sx={{ width: '60px', height: '1px', backgroundColor: '#fff' }}></Box>
-                                    <Typography sx={{ color: '#fff', fontSize: 14, fontWeight: 500, letterSpacing: 1 }}>
-                                        {'Share this article'}
-                                    </Typography>
-                                </Stack>
-                            </Stack>
-                        </Stack> */}
                 </Stack>
                 <Stack sx={{ maxWidth: 'md', }}>
                     <Typography component={'div'} className='dynamicContent' dangerouslySetInnerHTML={{ __html: country?.data.attributes.fullContent }} />
                 </Stack>
-                <Stack width={'100%'} sx={{ maxWidth: 'md', px: { xs: 2, md: 0 } }}>
-                    {/* <Stack direction={'row'} justifyContent={'flex-start'} width={'100%'}>
-                            <Typography sx={{
-                                mt: 4,
-                                width: 'fit-content',
-                                fontSize: 14,
-                                textTransform: "uppercase",
-                                letterSpacing: 1,
-                                color: theme.palette.secondary.main,
-                                cursor: 'pointer',
-                                fontWeight: 600,
-                                textAlign: 'left',
-                                ':hover': { color: theme.palette.secondary.dark }
-                            }}>
-                                <Link aria-label="Back to articles"
-                                    href={`/guides/${countriesdata?.data?.attributes?.articleCategory?.data.attributes.key}`} passHref>
-                                    Back to articles
-                                </Link>
-                            </Typography>
-                        </Stack> */}
-                    <Stack direction={'row'} justifyContent={'flex-start'} pt={4} alignItems={'center'} spacing={2}>
-                        {/* <Stack direction={'row'} spacing={1.5}>
-                                <WhatsappShareButton
-                                    url={url}
-                                    title={article?.data?.attributes?.title}
-                                    separator=":: "
-                                >
-                                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000', cursor: 'pointer', ":hover": { opacity: .8 } }}>
-                                        <WhatsAppIcon sx={{ fontSize: 22, color: '#fff' }} />
-                                    </Stack>
-                                </WhatsappShareButton>
-                                <FacebookShareButton
-                                    url={url}
-                                    quote={article?.data?.attributes?.title}
-                                >
-                                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000', cursor: 'pointer', ":hover": { opacity: .8 } }}>
-
-                                        <FacebookIcon color={'#fff'} />
-                                    </Stack>
-                                </FacebookShareButton>
-                                <TwitterShareButton
-                                    url={url}
-                                    title={article?.data?.attributes?.title}
-                                >
-                                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#000', cursor: 'pointer', ":hover": { opacity: .8 } }}>
-                                        <XIcon color='#fff' />
-                                    </Stack>
-                                </TwitterShareButton>
-                            </Stack> */}
-                        {/* <Box sx={{ width: { sm: 90, xs: 30 }, height: '1px', backgroundColor: '#000' }}></Box>
-                            <Typography sx={{ color: '#000', fontSize: 14, fontWeight: 500, letterSpacing: 1 }}>
-                                {'Share this article'}
-                            </Typography> */}
-                    </Stack>
-                    <Stack direction='row' justifyContent={'center'} width={'100%'} sx={{ mt: 8, maxWidth: 'sm', mx: 'auto' }}>
-                        <Stack maxWidth={{ md: 'none', xs: 'sm' }}
-                            sx={{
-                                width: '100%',
-                                mx: 'auto',
-                                p: { md: 6, xs: 2 },
-                                mb: 3,
-                                backgroundColor: '#fff',
-                                borderRadius: 2,
-                                boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'
-                            }}>
-                            <InstantQuoteComponent />
-                        </Stack>
-                    </Stack>
-
-                    <Stack direction={'row'} sx={{
-                        width: '100%',
-                        maxWidth: { md: 900, xs: 600 },
-                        height: { md: 300, sm: 250, xs: 200 },
-                        mt: { lg: -15, md: -16, sm: -14, xs: 0 },
-                        mb: { md: '-64px', xs: '-32px' },
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        position: 'relative',
-                        pointerEvents: 'none',
-                        left: { lg: 0, md: 0, sm: 20, xs: 0 },
-                        // top: { lg: 0, md: 0, sm: 0 },
-                    }}>
-                        <Image
-                            src={"/MovingServices.svg"}
-                            fill
-                            style={{
-                                objectFit: "contain",
-                                objectPosition: 'bottom'
-                            }}
-                            alt="Movin services"
-                            priority
-                        />
-                    </Stack>
-                </Stack>
             </MaxWidthContainer>
-
-
-
-
 
             <Stack sx={{ backgroundColor: '#efefef' }}>
                 <MaxWidthContainer>
@@ -322,6 +180,8 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                                 textWidth={'80%'}
                                 buttonText='Get in touch'
                                 url='#get-in-touch'
+                                imgSrc='/images/moving-overseas/start-journey.png'
+                                imgAlt='start journey'
                                 title={'Get Started Today!'}
                             >
                                 <Stack>
@@ -356,11 +216,8 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
             <section className="faqglobalwrp">
                 <MaxWidthContainer>
                     <div className="faqinsidewrp">
-                        <p className="faqwrphowitworksp">F.A.Q</p>
-                        <h2 className="processwrptheprocess">
-                            Frequently Asked Questions
-                        </h2>
-
+                        <Typography variant="h2" textAlign={'center'} pt={0}
+                            pb={{ xs: 4, sm: 4 }}>{'Frequently Asked Questions'}</Typography>
                         <div className="faqfaqwrp">
                             {renderFAQs}
                         </div>
