@@ -210,6 +210,9 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.bgOnHover:hover {
+    background-color: #ebebeb !important;
+}
 
 a {
     color: inherit;

@@ -114,14 +114,12 @@ export const CountriesDropdownList = ({ }: Props) => {
                         loading={listLoading}
                         renderOption={(props, option) => {
                             return (
-                                <li {...props}
-                                    onClick={(_e: any) => {
-                                        router.push(`/moving-to/${option.attributes.url}`)
-                                    }}
-                                    style={{ borderBottom: '1px solid #EBEBEB', paddingTop: 8, paddingBottom: 8, width: '94%', margin: '0 auto' }}>
-                                    <Link passHref key={option.id} href={`/moving-to/${option.attributes.url}`} style={{ width: '100%' }}>
-                                        <Stack
-                                            direction={'row'} alignItems={'center'} spacing={1} sx={{ width: '100%' }}>
+                                <Link passHref key={option.id} href={`/moving-to/${option.attributes.url}`} style={{ width: '100%' }}>
+                                    <Stack
+                                        className='bgOnHover'
+                                        sx={{ borderBottom: '1px solid #EBEBEB', width: '100%', mx: 1 }}>
+                                        <Stack direction={'row'} alignItems={'center'} spacing={1}
+                                            sx={{ width: '94%', margin: '0 auto', py: 1, px: .5 }}>
                                             <Image
                                                 loading="lazy"
                                                 width={24}
@@ -134,8 +132,9 @@ export const CountriesDropdownList = ({ }: Props) => {
                                                 {option.attributes.name}
                                             </Typography>
                                         </Stack>
-                                    </Link>
-                                </li>
+                                    </Stack>
+                                </Link>
+
                             )
                         }}
                     />
