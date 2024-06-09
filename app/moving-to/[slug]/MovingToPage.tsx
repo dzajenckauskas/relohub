@@ -131,8 +131,9 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                 <Typography component={'div'} className='dynamicContent' sx={{ py: 8 }} dangerouslySetInnerHTML={{ __html: country?.data.attributes.fullContent }} />
             </MaxWidthContainer> */}
 
-            <MaxWidthContainer sx={{ py: { xs: 4, md: 8 }, flexDirection: 'column', }}>
-                {/* <Stack sx={{
+            {country?.data.attributes.fullContent &&
+                <MaxWidthContainer sx={{ py: { xs: 4, md: 8 }, flexDirection: 'column', }}>
+                    {/* <Stack sx={{
                     mx: 'auto',
                     mb: { xs: 0, md: 0 },
                     position: 'relative',
@@ -167,10 +168,10 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                         }}
                     />
                 </Stack> */}
-                <Stack sx={{ maxWidth: 'md', }}>
-                    <Typography component={'div'} className='dynamicContent' dangerouslySetInnerHTML={{ __html: country?.data.attributes.fullContent }} />
-                </Stack>
-            </MaxWidthContainer>
+                    <Stack sx={{ maxWidth: 'md', }}>
+                        <Typography component={'div'} className='dynamicContent' dangerouslySetInnerHTML={{ __html: country?.data.attributes.fullContent }} />
+                    </Stack>
+                </MaxWidthContainer>}
 
             <Stack sx={{ backgroundColor: '#efefef' }}>
                 <MaxWidthContainer>
@@ -213,7 +214,7 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                 </MaxWidthContainer>
             </Stack>
             <ServicesSection />
-            <section className="faqglobalwrp">
+            {renderFAQs && <section className="faqglobalwrp">
                 <MaxWidthContainer>
                     <div className="faqinsidewrp">
                         <Typography variant="h2" textAlign={'center'} pt={0}
@@ -223,7 +224,7 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                         </div>
                     </div>
                 </MaxWidthContainer>
-            </section>
+            </section>}
             <VideoArea hideIcons />
 
 
