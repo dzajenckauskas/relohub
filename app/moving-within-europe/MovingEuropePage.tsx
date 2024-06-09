@@ -97,10 +97,14 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
             <MaxWidthContainer>
                 <Stack py={5} spacing={4}>
                     <SectionCard reverse
+                        imgSrc='/images/moving-to-europe/removals-made-easy.png'
+                        imgAlt='removals made easy'
                         title={'European Removals Made Easy with Deliver1'}
                         shortContent={"Moving to a new country in Europe is an exciting adventure, and at Deliver1, we're dedicated to making your move seamless and stress-free. With our comprehensive European removals service, we take care of every detail, allowing you to focus on exploring your new home."}
                     />
                     <SectionCard
+                        imgSrc='/images/moving-to-europe/simple-and-efficient.png'
+                        imgAlt='simple and efficient'
                         title='Simple and Efficient Moving Process'
                         shortContent='We understand that every move is unique. Our intuitive online platform simplifies your move, making it easy to plan, book, and manage your European relocation. From obtaining a quote to tracking your belongings, everything is handled online, ensuring a streamlined and personalised experience.' />
                 </Stack>
@@ -118,6 +122,8 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
             <MaxWidthContainer>
                 <Stack py={5} spacing={4}>
                     <SectionCard
+                        imgSrc='/images/moving-to-europe/our-background.png'
+                        imgAlt='our background'
                         buttonText='Get in touch'
                         url='#get-in-touch'
                         title='Our background'
@@ -129,10 +135,15 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
             <MaxWidthContainer>
                 <Stack py={5} spacing={4}>
                     <SectionCard
+                        imgSrc='/images/moving-to-europe/european-destinations.png'
+                        imgAlt='european destinations'
                         title={'European Destinations We Cover'}
                         shortContent={"Deliver1 specialises in European removals, offering comprehensive services to and from all countries within the European Union and beyond. Whether you're moving to a bustling city centre in Spain or a charming countryside village in Sweden, our network and expertise ensure a seamless relocation across Europe."}
                     />
-                    <SectionCard reverse title='Your European Journey Starts Today'>
+                    <SectionCard
+                        imgSrc='/images/moving-to-europe/your-european-journey.png'
+                        imgAlt='your european journey'
+                        reverse title='Your European Journey Starts Today'>
                         <Typography variant='body1' sx={{ pt: 1 }}>
                             Ready to embark on your European adventure? Contact Deliver1 today for a free quote and consultation.
                             <br />
@@ -140,7 +151,11 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
                             Let us handle the logistics so you can focus on embracing your new life in Europe. With Deliver1, your European move is in expert hands.
                         </Typography>
                     </SectionCard>
-                    <SectionCard title={'Get in Touch'} buttonText='Get in touch' url='#get-in-touch'>
+                    <SectionCard
+                        imgSrc='/images/moving-to-europe/get-in-touch-today.png'
+                        imgAlt='get in touch today'
+                        title={'Get in Touch Today'} buttonText='Get in touch'
+                        url='#get-in-touch'>
                         <Stack>
                             <Typography variant='body1' sx={{ pt: 1 }}>
                                 Contact us now to discuss your European moving needs and discover how Deliver1 can make your relocation a success.

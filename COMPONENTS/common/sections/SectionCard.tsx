@@ -64,7 +64,8 @@ const SectionCard = ({ textWidth, backgroundColor, buttonText, url, title, short
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         style={{
                             backgroundColor: '#a2a2a2',
-                            objectFit: 'cover'
+                            objectFit: 'cover',
+                            objectPosition: 'center'
                         }}
                     />}
                 </Stack>
