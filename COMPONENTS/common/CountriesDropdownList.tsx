@@ -112,7 +112,7 @@ export const CountriesDropdownList = ({ }: Props) => {
                             }
                         }}
                         loading={listLoading}
-                        renderOption={(props, option) => {
+                        renderOption={(_props, option) => {
                             return (
                                 <Link passHref key={option.id} href={`/moving-to/${option.attributes.url}`} style={{ width: '100%' }}>
                                     <Stack
