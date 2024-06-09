@@ -8,6 +8,7 @@ import ProcessWrapper from "@/COMPONENTS/main_page/ProcessWrapper";
 import Postheroimages from "@/COMPONENTS/main_page/postheroimages";
 import Reviews from "@/COMPONENTS/main_page/reviews";
 import VideoArea from "@/COMPONENTS/main_page/videoarea";
+import { CountriesResponseType } from "@/COMPONENTS/types/CountryType";
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
 import Image from "next/image";
@@ -33,6 +34,8 @@ export async function generateMetadata({ }): Promise<Metadata> {
 
 
 export default async function Home() {
+    const countriesData = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/countries?pagination[limit]=100&sort[0]=name:asc`)
+
     return (
         <PageLayout>
             {/* <RemovedaDataFromCitiesJson /> */}
@@ -50,7 +53,7 @@ export default async function Home() {
                 </MaxWidthContainer>
                 <Postheroimages />
             </div>
-            <CountriesDropdownList />
+            <CountriesDropdownList countriesData={countriesData} />
             <VideoArea hideIcons={false} />
             <ProcessWrapper />
             <FaqWrapper />

@@ -1,26 +1,22 @@
 'use client'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+import CloseIcon from '@mui/icons-material/Close'
 import { TextField, Typography } from '@mui/material'
+import Autocomplete from '@mui/material/Autocomplete'
 import Stack from '@mui/material/Stack'
 import { styled } from '@mui/system'
 import Image from "next/image"
-import Link from 'next/link'
-import { useParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { CountriesResponseType } from '../types/CountryType'
 import { MaxWidthContainer } from './MaxWidthContainer'
 import { theme } from './shared/Theme'
-import Autocomplete from '@mui/material/Autocomplete';
-import { useEffect, useState } from 'react'
-import useAxios from 'axios-hooks';
-import { throttle } from 'lodash'
-import CloseIcon from '@mui/icons-material/Close';
 
 type Props = {
+    countriesData: CountriesResponseType;
 }
 
-export const CountriesDropdownList = ({ }: Props) => {
-
-    const params = useParams()
+export const CountriesDropdownList = ({ countriesData }: Props) => {
     const router = useRouter()
     const GroupHeader = styled('div')(({ theme }) => ({
         padding: '4px 14px',
@@ -40,35 +36,7 @@ export const CountriesDropdownList = ({ }: Props) => {
 
     });
 
-    const [input, setInput] = useState('');
-    const setThrottledInput = throttle(setInput, 300, { leading: false })
     const [open, setOpen] = useState(false);
-
-    const [{ data, loading: listLoading, error }, get] = useAxios<CountriesResponseType>(
-        {
-            url: `${process.env.NEXT_PUBLIC_API_URL}/api/countries?pagination[limit]=100&sort[0]=name:asc`
-        },
-        {
-            useCache: false,
-            manual: true,
-        }
-    );
-
-    useEffect(() => {
-        if (!open) {
-        } else {
-            (async () => {
-                try {
-                    await get();
-                } catch (err) {
-                    console.log(err);
-                }
-            })()
-        }
-        return () => {
-        }
-    }, [open, get, input]);
-
     return (
         <Stack sx={{ backgroundColor: theme.palette.secondary.main, py: 3, pb: { xs: 4, sm: 6, md: 3 } }}>
             <MaxWidthContainer>
@@ -83,10 +51,10 @@ export const CountriesDropdownList = ({ }: Props) => {
                         disablePortal
                         getOptionLabel={(option) => option?.attributes?.name}
                         id="combo-box-demo"
-                        options={data?.data ?? []}
+                        options={countriesData?.data ?? []}
                         sx={{ maxWidth: { lg: 596, md: 552, sm: 596, }, width: '100%' }}
                         groupBy={(option) => option?.attributes?.name?.[0]}
-                        renderInput={(params) => <TextField helperText={error?.message} sx={{ backgroundColor: '#fff !important', borderRadius: 1 }}
+                        renderInput={(params) => <TextField sx={{ backgroundColor: '#fff !important', borderRadius: 1 }}
                             color='info' placeholder='Please select' {...params} />}
                         renderGroup={(params) => (
                             <li key={params.key}>
@@ -96,29 +64,19 @@ export const CountriesDropdownList = ({ }: Props) => {
                         )}
                         onOpen={(_e) => {
                             setOpen(true);
-                            setThrottledInput('')
                         }}
                         onClose={() => {
                             setOpen(false);
                         }}
-                        // onInputChange={(event, newInputValue) => {
-                        //     if (event?.type === 'change') {
-                        //         setThrottledInput(newInputValue)
-                        //     }
-                        // }}
-                        onChange={(e: any, option) => {
-                            // if (e.key === 'Enter') {
+
+                        onChange={(_e, option) => {
                             router.push(`/moving-to/${option.attributes.url}`)
-                            // }
                         }}
-                        loading={listLoading}
                         renderOption={(props, option) => {
                             return (
                                 <li {...props} key={option.id} style={{ borderBottom: '1px solid #EBEBEB', }}>
-
                                     {/* // <Link passHref href={`/moving-to/${option.attributes.url}`} style={{ width: '100%' }}> */}
                                     <Stack
-                                        // className='bgOnHover'
                                         sx={{ width: '100%', cursor: 'pointer', margin: '4px auto' }}>
                                         <Stack direction={'row'} alignItems={'center'} spacing={1}
                                             sx={{ width: '94%' }}>

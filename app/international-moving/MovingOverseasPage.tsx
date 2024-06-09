@@ -16,8 +16,11 @@ import { theme } from '@/COMPONENTS/common/shared/Theme'
 import Link from 'next/link'
 import VideoArea from '@/COMPONENTS/main_page/videoarea'
 import LatestArticles from '@/COMPONENTS/main_page/LatestArticles'
-
-const MovingOverseasPage = () => {
+import { CountriesResponseType } from '@/COMPONENTS/types/CountryType'
+type Props = {
+    countriesData?: CountriesResponseType;
+}
+const MovingOverseasPage = ({ countriesData }: Props) => {
     const iconsSection2Content = [
         { title: "Global Reach", text: "Deliver1 connects you with countries worldwide, handling shipping, paperwork, and logistics for a smooth moving experience.", icon: 'icon7.png' },
         { title: "Experienced Team", text: "Founded in 2019, we've perfected our processes to make your international move stress-free and efficient.", icon: 'icon8.png' },
@@ -80,7 +83,7 @@ const MovingOverseasPage = () => {
                     </Stack>
                 </Stack>
             </div>
-            <CountriesDropdownList />
+            <CountriesDropdownList countriesData={countriesData} />
 
             <MaxWidthContainer>
                 <Stack py={5} spacing={4}>

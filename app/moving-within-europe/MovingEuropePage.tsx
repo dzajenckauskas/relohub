@@ -16,11 +16,12 @@ import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import VideoArea from '@/COMPONENTS/main_page/videoarea'
 import LatestArticles from '@/COMPONENTS/main_page/LatestArticles'
+import { CountriesResponseType } from '@/COMPONENTS/types/CountryType'
 
 type Props = {
-    articleContinents?: ContinentsResponseType;
+    countriesData?: CountriesResponseType;
 }
-const MovingEuropePage = ({ articleContinents }: Props) => {
+const MovingEuropePage = ({ countriesData }: Props) => {
     const iconsSectionContent = [
         { title: "Convenient Online Customer Portal", text: "Manage your move effortlessly from any device", icon: 'icon1.png' },
         { title: "European Expertise", text: "Our team possesses extensive knowledge of European removals", icon: 'icon2.png' },
@@ -92,7 +93,7 @@ const MovingEuropePage = ({ articleContinents }: Props) => {
                 </Stack>
             </div>
 
-            <CountriesDropdownList />
+            <CountriesDropdownList countriesData={countriesData} />
 
             <MaxWidthContainer>
                 <Stack py={5} spacing={4}>

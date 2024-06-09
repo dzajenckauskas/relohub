@@ -2,23 +2,23 @@
 import { CountriesDropdownList } from '@/COMPONENTS/common/CountriesDropdownList'
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer'
 import PageLayout from '@/COMPONENTS/common/PageLayout'
-import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes'
-import Stack from '@mui/material/Stack'
-import Image from 'next/image'
-import RelocationServicesPageHero from './RelocationServicesPageHero'
 import IconsSection from '@/COMPONENTS/common/sections/IconsSection'
-import VideoArea from '@/COMPONENTS/main_page/videoarea'
-import LatestArticles from '@/COMPONENTS/main_page/LatestArticles'
-import SectionCard from '@/COMPONENTS/common/sections/SectionCard'
-import Typography from '@mui/material/Typography'
-import Link from 'next/link'
-import { theme } from '@/COMPONENTS/common/shared/Theme'
 import ListSection from '@/COMPONENTS/common/sections/ListSection'
+import SectionCard from '@/COMPONENTS/common/sections/SectionCard'
+import { theme } from '@/COMPONENTS/common/shared/Theme'
+import LatestArticles from '@/COMPONENTS/main_page/LatestArticles'
+import VideoArea from '@/COMPONENTS/main_page/videoarea'
+import { CountriesResponseType } from '@/COMPONENTS/types/CountryType'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import Image from 'next/image'
+import Link from 'next/link'
+import RelocationServicesPageHero from './RelocationServicesPageHero'
 
 type Props = {
-    articleContinents?: ContinentsResponseType;
+    countriesData?: CountriesResponseType;
 }
-const RelocationServicesPage = ({ articleContinents }: Props) => {
+const RelocationServicesPage = ({ countriesData }: Props) => {
     const iconsSection2Content = [
         { title: "Global Reach", text: "Deliver1 connects you with countries worldwide, handling shipping, paperwork, and logistics for a smooth moving experience.", icon: 'icon7.png' },
         { title: "Experienced Team", text: "Founded in 2019, we've perfected our processes to make your international move stress-free and efficient.", icon: 'icon8.png' },
@@ -81,7 +81,7 @@ const RelocationServicesPage = ({ articleContinents }: Props) => {
                     </Stack>
                 </Stack>
             </div>
-            <CountriesDropdownList />
+            <CountriesDropdownList countriesData={countriesData} />
 
             <MaxWidthContainer sx={{ py: 8 }}>
                 <SectionCard title={'Relocation Assistance'}>

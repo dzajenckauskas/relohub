@@ -21,9 +21,8 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 }
 
 export default async function MovingServices() {
-    const articleContinents = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/article-continents`)
-
+    const countriesData = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/countries?pagination[limit]=100&sort[0]=name:asc`)
     return (
-        <MovingServicesPage articleContinents={articleContinents} />
+        <MovingServicesPage countriesData={countriesData} />
     );
 }

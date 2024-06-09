@@ -12,7 +12,6 @@ import { theme } from '@/COMPONENTS/common/shared/Theme'
 import LatestArticles from '@/COMPONENTS/main_page/LatestArticles'
 import ProcessWrapper from '@/COMPONENTS/main_page/ProcessWrapper'
 import VideoArea from '@/COMPONENTS/main_page/videoarea'
-import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes'
 import { CountriesResponseType, CountryResponseType } from '@/COMPONENTS/types/CountryType'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
@@ -22,14 +21,12 @@ import Link from 'next/link'
 import { useState } from 'react'
 import MovingToPageHero from './MovingToPageHero'
 import "/STYLES/svg-style.css"
-import { InstantQuoteComponent } from '@/COMPONENTS/common/InstantQuoteComponent'
 
 type Props = {
-    articleContinents?: ContinentsResponseType;
     country?: CountryResponseType;
-    countriesdata?: CountriesResponseType;
+    countriesData?: CountriesResponseType;
 }
-const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
+const MovingToPage = ({ country, countriesData }: Props) => {
     const listContent = [
         { title: "Professional Handling Services", text: "Our skilled team will meticulously handle your possessions, using high-quality materials and proven techniques to safeguard your items throughout their journey.", icon: 'icon10.png' },
         { title: "Stress-Free Door-to-Door Delivery", text: "Sit back and relax as we manage every aspect of your move, from collection at your current residence to delivery and unpacking at your new home in Spain.", icon: 'icon9.png' },
@@ -44,7 +41,6 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
     ];
 
     const [clicked, setclicked] = useState(null);
-
 
     const renderFAQs = country.data.attributes.faqs?.map((faq) => {
         return (
@@ -101,7 +97,7 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                     </Stack>
                 </Stack>
             </div>
-            <CountriesDropdownList />
+            <CountriesDropdownList countriesData={countriesData} />
             {country?.data !== null && <MaxWidthContainer >
                 <Stack py={8} spacing={4}>
                     <SectionCard reverse

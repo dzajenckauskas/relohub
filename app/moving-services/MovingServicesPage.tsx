@@ -2,24 +2,24 @@
 import { CountriesDropdownList } from '@/COMPONENTS/common/CountriesDropdownList'
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer'
 import PageLayout from '@/COMPONENTS/common/PageLayout'
+import IconsSection from '@/COMPONENTS/common/sections/IconsSection'
+import ListSection from '@/COMPONENTS/common/sections/ListSection'
 import SectionCard from '@/COMPONENTS/common/sections/SectionCard'
+import { theme } from '@/COMPONENTS/common/shared/Theme'
+import LatestArticles from '@/COMPONENTS/main_page/LatestArticles'
 import ProcessWrapper from '@/COMPONENTS/main_page/ProcessWrapper'
-import { ContinentsResponseType } from '@/COMPONENTS/types/ContinentTypes'
+import VideoArea from '@/COMPONENTS/main_page/videoarea'
+import { CountriesResponseType } from '@/COMPONENTS/types/CountryType'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Image from 'next/image'
-import MovingServicesPageHero from './MovingServicesPageHero'
-import ListSection from '@/COMPONENTS/common/sections/ListSection'
-import VideoArea from '@/COMPONENTS/main_page/videoarea'
-import LatestArticles from '@/COMPONENTS/main_page/LatestArticles'
-import { theme } from '@/COMPONENTS/common/shared/Theme'
 import Link from 'next/link'
-import IconsSection from '@/COMPONENTS/common/sections/IconsSection'
+import MovingServicesPageHero from './MovingServicesPageHero'
 
 type Props = {
-    articleContinents?: ContinentsResponseType;
+    countriesData?: CountriesResponseType;
 }
-const MovingServicesPage = ({ articleContinents }: Props) => {
+const MovingServicesPage = ({ countriesData }: Props) => {
     const listContent = [
         { title: "Your Move, Your Way", text: "We understand that no two moves are alike. Our personalised approach ensures your relocation plan is tailored to your specific needs and preferences." },
         { title: "Seamless Experience, Start to Finish", text: "From the initial quote to unpacking in your new home, we handle every step of your move with meticulous attention to detail, providing a stress-free and seamless experience." },
@@ -78,7 +78,7 @@ const MovingServicesPage = ({ articleContinents }: Props) => {
                     </Stack>
                 </Stack>
             </div>
-            <CountriesDropdownList />
+            <CountriesDropdownList countriesData={countriesData} />
 
             <MaxWidthContainer>
                 <Stack py={8} spacing={4}>
