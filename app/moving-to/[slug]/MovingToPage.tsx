@@ -72,6 +72,7 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
             </div>
         )
     })
+
     return (
         <PageLayout>
             <div className="bckimagewrp">
@@ -103,12 +104,16 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
             </div>
             <CountriesDropdownList />
             <MaxWidthContainer>
-                <Stack py={5} spacing={4}>
+                <Stack py={8} spacing={4}>
                     <SectionCard reverse
+                        imgSrc={`${process.env.NEXT_PUBLIC_API_URL}${country?.data?.attributes?.images?.data?.[0]?.attributes?.url ?? country?.data?.attributes?.images?.data?.[0]?.attributes?.url}`}
+                        imgAlt={country?.data?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? country?.data?.attributes?.name}
                         title={`Removals to ${country.data.attributes.name} with Deliver1`}
                         shortContent={`Welcome to Deliver1 - Your reliable partner for stress-free and efficient international removals to ${country.data.attributes.name}. Whether you are relocating for work, family, or adventure, our comprehensive moving services ensure your belongings reach safely and on time.`}
                     />
                     <SectionCard
+                        imgSrc={`${process.env.NEXT_PUBLIC_API_URL}${country?.data?.attributes?.images?.data?.[1]?.attributes?.url ?? country?.data?.attributes?.images?.data?.[1]?.attributes?.url}`}
+                        imgAlt={country?.data?.attributes?.images?.data?.[1]?.attributes?.alternativeText ?? country?.data?.attributes?.name}
                         title={'Experience and Expertise You Can Trust'}
                         shortContent={`With over 20 years of combined experience in international removals, Deliver1 is your trusted partner in navigating the complexities of moving to ${country.data.attributes.name}. Our team of experts possesses in-depth knowledge of ${country.data.attributes.name}'s logistics and customs regulations, ensuring a seamless and efficient transition for your belongings.`}
                     />

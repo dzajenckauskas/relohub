@@ -1,3 +1,4 @@
+import { ImagesType } from "./ImageTypes";
 import { MetaType } from "./MetaTypes";
 
 export type CountriesResponseType = {
@@ -24,6 +25,7 @@ export type CountryAttributesType = {
     publishedAt: Date;
     fullContent: string;
     faqs: FaqType[];
+    images: ImagesType;
 }
 
 export type FaqType = {
