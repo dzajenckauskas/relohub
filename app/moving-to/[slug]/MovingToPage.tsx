@@ -114,8 +114,8 @@ const MovingToPage = ({ country, countriesData }: Props) => {
                     <SectionCard
                         imgSrc={`${country?.data?.attributes?.images?.data?.[1]
                             ? process.env.NEXT_PUBLIC_API_URL
-                            : ''}${country?.data?.attributes?.images?.data?.[0]?.attributes?.url
-                            ?? country?.data?.attributes?.images?.data?.[0]?.attributes?.url
+                            : ''}${country?.data?.attributes?.images?.data?.[1]?.attributes?.url
+                            ?? country?.data?.attributes?.images?.data?.[1]?.attributes?.url
                             ?? '/placeholder-image.webp'}`}
                         imgAlt={country?.data?.attributes?.images?.data?.[1]?.attributes?.alternativeText
                             ?? country?.data?.attributes?.name}
