@@ -28,7 +28,7 @@ const SectionCard = ({ textWidth, backgroundColor, buttonText, url, title, short
 
     return (
         <Stack
-            gap={{ xs: 1, sm: 2, md: 4, lg: 6 }}
+            gap={{ xs: 1, sm: 4, md: 4, lg: 6 }}
             sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', sm: reverse ? 'row-reverse' : 'row', },
@@ -70,12 +70,12 @@ const SectionCard = ({ textWidth, backgroundColor, buttonText, url, title, short
                 </Stack>
             </Stack>
 
-            <Stack sx={{ p: { xs: 2, md: 3 }, width: textWidth ?? '100%', position: 'relative' }}>
+            <Stack sx={{ p: { xs: 0, md: 2 }, width: textWidth ?? '100%', position: 'relative' }}>
                 {/* <Typography variant='body2' sx={{ color: '#9b9b9b', textTransform: 'uppercase', fontWeight: 500, letterSpacing: 1 }}>
                     {loading ? <Skeleton /> : <> {category} {continent && <>• {continent}</>}</>}
                 </Typography> */}
                 {title && <Typography variant='h2' component={'h2'} sx={{
-                    py: 1,
+                    pt: 2,
                     // color: theme.palette.secondary.main,
                     fontWeight: 700,
                     lineHeight: 1.2,

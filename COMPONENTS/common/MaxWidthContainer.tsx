@@ -15,7 +15,7 @@ export const MaxWidthContainer = ({ children, sx, spacing }: Props) => {
                 mx: 'auto',
                 maxWidth: 'lg',
                 width: '100%',
-                px: { xl: 2, sm: 2, xs: 1 },
+                px: { xl: 2, sm: 2, xs: 2 },
                 alignItems: 'center',
             }}>
             {children}

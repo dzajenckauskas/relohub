@@ -113,7 +113,7 @@ export default function Header() {
                     maxWidth={'lg'}
                     mx={'auto'}
                     sx={{
-                        px: { xl: 2, sm: 2, xs: 1 },
+                        px: { xl: 2, sm: 2, xs: 2 },
                         justifyContent: 'space-between',
                         alignItems: 'center',
                         height: 60
