@@ -10,11 +10,11 @@ type Props = {
 
 export default function ProcessWrapper({ title }: Props) {
     const txt = [
-        { title: "Get a Free Quote", txt: "Get a free door to door quotation online", top: -40 },
-        { title: "Packing Materials", txt: "Delivery of packing materials (if required)", top: -8 },
-        { title: "Pack Your Goods", txt: "Pack your goods and complete customer portal", top: -42 },
-        { title: "Collection", txt: "We will come and collect your belongings", top: -90 },
-        { title: "Transport and Updates", txt: "Transport with updates until delivery is made", top: -46 },
+        { title: "Get a Free Quote", txt: "Get a free door to door quotation online", top: -14, topxs: -66, left: -50 },
+        { title: "Packing Materials", txt: "Delivery of packing materials (if required)", top: 12, topxs: 26, left: 50 },
+        { title: "Pack Your Goods", txt: "Pack your goods and complete customer portal", top: -14, topxs: 124, left: -50 },
+        { title: "Collection", txt: "We will come and collect your belongings", top: -46, topxs: 226, left: 50 },
+        { title: "Transport and Updates", txt: "Transport with updates until delivery is made", top: -14, topxs: 270, left: -50 },
     ];
 
     return (
@@ -39,22 +39,19 @@ export default function ProcessWrapper({ title }: Props) {
                             alt="process image"
                         ></Image>
                     </div>
-                    <div className="processimagewrappertextwrp">
+                    <div
+                        className="processimagewrappertextwrp"
+                    >
                         {(txt).map((el, i) => {
                             return (
-                                // <p
-                                //     className="processtxtp"
-                                //     key={i}
-                                //     style={{ transform: `translateY(${el.top}px)` }}
-                                // >
-                                //     {el.txt}
-                                // </p>
-                                <Stack className="processtxtp" key={i} style={{ transform: `translateY(${el.top}px)` }}>
+                                <Stack className="processtxtp" key={i}
+                                    sx={{ transform: { xs: `translateY(${el.topxs}px)`, sm: `translateY(${el.topxs}px) translateX(${el.left}px)`, md: `translateY(${el.top}px)` } }}
+                                >
                                     {el.title &&
-                                        <Typography sx={{ textAlign: "center", color: theme.palette.secondary.main, fontWeight: 600, mb: { md: 0, xs: -.25 } }}>
+                                        <Typography sx={{ lineHeight: 1, pb: .5, textAlign: "center", color: theme.palette.secondary.main, fontWeight: 600, mb: { md: 0, xs: -.25 } }}>
                                             {el.title}
                                         </Typography>}
-                                    <p >
+                                    <p style={{ textAlign: 'center' }}>
                                         {el.txt}
                                     </p>
                                 </Stack>

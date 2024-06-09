@@ -228,21 +228,14 @@
     .processimagewrappertextwrp {
         position: absolute;
         grid-template-columns: repeat(2, min-content);
-        transform: translateY(100px);
         justify-content: center;
         justify-items: center;
-        gap: 24px;
         width: fit-content;
-        row-gap: 168px;
+        /* row-gap: 168px; */
     }
 
-    .processtxtp {
-        transform: unset !important;
-        margin: 0;
-        padding: 0;
-    }
 
-    .processimagewrappertextwrp> :nth-child(3) {
+    /* .processimagewrappertextwrp> :nth-child(3) {
         transform: translateY(18px) !important;
     }
 
@@ -252,7 +245,7 @@
 
     .processimagewrappertextwrp> :nth-child(4) {
         transform: translateY(120px) !important;
-    }
+    } */
 
     .mainpageheroarealeftwrp {
         width: 100%;
@@ -839,7 +832,7 @@
 @media screen and (width <=400px) {
     .processimagewrappertextwrp {
         column-gap: 40px;
-        transform: translateY(93px);
+        /* transform: translateY(93px); */
     }
 
     .offerpopupselectionlinerselected,
@@ -899,9 +892,9 @@
         max-width: 248px;
     }
 
-    .processtxtp {
+    /* .processtxtp {
         width: 136px;
-    }
+    } */
 
     .faqh3 {
         font-size: 2.5rem;
