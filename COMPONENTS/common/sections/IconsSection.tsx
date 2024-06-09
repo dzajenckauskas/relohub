@@ -39,11 +39,12 @@ const IconsSection = ({ content, title, backgroundColor, color, align, textAlign
                         objectFit: 'contain'
                     }}
                 />
-                <Typography variant='subtitle2' textAlign={textAlign ?? 'center'} color={color ?? '#fff'}
-                    fontWeight={600} lineHeight={1.2} pt={2} pb={1}>
+                <Typography variant='subtitle2' textAlign={textAlign ?? 'center'} maxWidth={textAlign ?? { xs: '70%', lg: '100%' }}
+                    color={color ?? '#fff'}
+                    fontWeight={600} lineHeight={1.2} pt={2} pb={.5}>
                     {c.title}
                 </Typography>
-                <Typography textAlign={textAlign ?? 'center'} color={color ?? '#fff'} lineHeight={1.2}>
+                <Typography textAlign={textAlign ?? 'center'} color={color ?? '#fff'} maxWidth={textAlign ? { xs: '90%', lg: '100%' } : { xs: '60%', lg: '80%' }} lineHeight={1.2}>
                     {c.text}
                 </Typography>
             </Grid>
@@ -56,7 +57,7 @@ const IconsSection = ({ content, title, backgroundColor, color, align, textAlign
                     <Typography variant='h2' component={'h2'} textAlign={textAlign ?? 'center'} color={color ?? '#fff'} pb={2}>
                         {title}
                     </Typography>
-                    <Grid container flexDirection={'row'} pt={4} spacing={4}>
+                    <Grid container flexDirection={'row'} pt={4} spacing={textAlign ? 6 : 0} rowSpacing={{ xs: 6 }}>
                         {renderList}
                     </Grid>
                 </Stack>

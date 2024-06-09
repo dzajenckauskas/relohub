@@ -85,10 +85,14 @@ const MovingOverseasPage = () => {
             <MaxWidthContainer>
                 <Stack py={5} spacing={4}>
                     <SectionCard reverse
+                        imgSrc='/images/moving-overseas/international-removals-with-deliver1.png'
+                        imgAlt='international removals with deliver1'
                         title={'International Removals with Deliver1'}
                         shortContent={"Relocating to another country is an exciting but challenging experience. At Deliver1, we're dedicated to making your international move smooth and stress-free. With our comprehensive services, we handle all the details so you can focus on starting your new adventure."}
                     />
                     <SectionCard url='#get-in-touch'
+                        imgSrc='/images/moving-overseas/simple-and-efficient-moving.png'
+                        imgAlt='simple and efficient moving'
                         buttonText={'Get in touch'}
                         title='Simple and Efficient Moving Process'
                         shortContent='At Deliver1, we understand that every move is unique. Our intuitive customer portal simplifies the process, allowing you to plan, book, and manage your move easily. From getting a quote to tracking your belongings, everything is handled online, ensuring a quick and seamless experience tailored to your needs.' />
@@ -102,6 +106,7 @@ const MovingOverseasPage = () => {
 
             <TextSection title={`Extensive Removal Network`}
                 text={`Our network ensures that no matter where you're moving, we have the local expertise and resources to manage your move efficiently. Our experienced team is well-versed in customs regulations and logistical challenges of international relocations.`} />
+
             <ListSection content={listContent}
                 title='Complete Moving Solutions' />
 
@@ -109,14 +114,18 @@ const MovingOverseasPage = () => {
 
             <Stack sx={{ backgroundColor: '#efefef' }}>
                 <MaxWidthContainer>
-                    <Stack py={5} spacing={4}>
+                    <Stack py={6} spacing={6}>
                         <SectionCard reverse
                             url='#get-in-touch'
                             buttonText={'Get in touch'}
+                            imgSrc='/images/moving-overseas/our-background.png'
+                            imgAlt='our background'
                             title={'Our background'}
                             shortContent={"Relocating to another country is an exciting but challenging experience. At Deliver1, we're dedicated to making your international move smooth and stress-free. With our comprehensive services, we handle all the details so you can focus on starting your new adventure."}
                         />
                         <SectionCard
+                            imgSrc='/images/moving-overseas/customer-portal.png'
+                            imgAlt='customer-portal'
                             title='Simple and Intuitive Customer Portal'
                             shortContent='At Deliver1, we understand that every move is unique. Our intuitive customer portal simplifies the process, allowing you to plan, book, and manage your move easily. From getting a quote to tracking your belongings, everything is handled online, ensuring a quick and seamless experience tailored to your needs.' />
                     </Stack>
@@ -125,7 +134,9 @@ const MovingOverseasPage = () => {
 
             <ServicesSection />
 
-            <IconsSection title={"Why Choose Deliver1 for Your European Move?"} content={iconsSectionContent} />
+            <IconsSection title={"Why Choose Deliver1 for Your European Move?"}
+                lg={4}
+                content={iconsSectionContent} />
 
             <Stack sx={{ backgroundColor: '#efefef' }}>
                 <MaxWidthContainer>
@@ -134,12 +145,16 @@ const MovingOverseasPage = () => {
                             <SectionCard reverse backgroundColor="#fff"
                                 buttonText='View countries we cover'
                                 url='/about-us#countries-we-cover'
+                                imgSrc='/images/moving-overseas/countries-we-cover.png'
+                                imgAlt='countries we cover'
                                 title={'Countries We Cover'}
                                 shortContent={"Deliver1 can help you move to almost every country on earth. No matter where your destination is, our extensive network and experienced team ensure a smooth and efficient relocation process."}
                             />
                         </Stack>
                         <Stack pb={8}>
                             <SectionCard
+                                imgSrc='/images/moving-overseas/start-journey.png'
+                                imgAlt='start journey'
                                 buttonText='Get Started'
                                 url='#countries-we-cover'
                                 title={'Start Your Journey Today'}

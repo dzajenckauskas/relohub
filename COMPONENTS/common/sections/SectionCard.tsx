@@ -70,12 +70,12 @@ const SectionCard = ({ textWidth, backgroundColor, buttonText, url, title, short
                 </Stack>
             </Stack>
 
-            <Stack sx={{ p: { xs: 0, md: 2 }, width: textWidth ?? '100%', position: 'relative' }}>
+            <Stack sx={{ p: { xs: 0, md: 2 }, ml: backgroundColor ? 2 : 0, my: 2, mb: 4, width: textWidth ?? '100%', position: 'relative' }}>
                 {/* <Typography variant='body2' sx={{ color: '#9b9b9b', textTransform: 'uppercase', fontWeight: 500, letterSpacing: 1 }}>
                     {loading ? <Skeleton /> : <> {category} {continent && <>• {continent}</>}</>}
                 </Typography> */}
                 {title && <Typography variant='h2' component={'h2'} sx={{
-                    pt: 2,
+                    pt: 1,
                     // color: theme.palette.secondary.main,
                     fontWeight: 700,
                     lineHeight: 1.2,
@@ -101,7 +101,7 @@ const SectionCard = ({ textWidth, backgroundColor, buttonText, url, title, short
                     mt: 2,
                     height: '100%',
                     // width: 'fit-content',
-                    width: { md: '50%', sm: 'fit-content', xs: '100%' },
+                    width: { md: 'fit-content', sm: 'fit-content', xs: '100%' },
                     fontSize: 14,
                     textTransform: "uppercase",
                     letterSpacing: 1,
@@ -121,13 +121,13 @@ const SectionCard = ({ textWidth, backgroundColor, buttonText, url, title, short
                         // </Link>
                         <>
 
-                            <Link aria-label="Get in touch" passHref href={url ?? '/'}
+                            <Link aria-label={buttonText} passHref href={url ?? '/'}
                                 style={{
                                     paddingTop: 16, display: 'flex',
                                     justifyContent: 'center', width: '100%',
                                 }}>
                                 <Button variant='contained' color='secondary'
-                                    aria-label="Get in touch"
+                                    aria-label={buttonText}
                                     size="large"
                                     sx={{
                                         width: '100%'

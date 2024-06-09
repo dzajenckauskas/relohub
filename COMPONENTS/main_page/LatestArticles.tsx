@@ -39,10 +39,9 @@ const LatestArticles = ({ sx }: Props) => {
         )
     })
     return (
-        <Stack sx={{ width: '100%', backgroundColor: '#fff', pt: { xs: 4, md: 6 }, ...sx }}>
+        <Stack sx={{ width: '100%', backgroundColor: '#fff', py: { xs: 6, md: 6 }, ...sx }}>
             <MaxWidthContainer>
                 <Stack sx={{
-                    pb: 8,
                     width: '100%',
                     display: 'flex', flexDirection: 'column',
                 }}>

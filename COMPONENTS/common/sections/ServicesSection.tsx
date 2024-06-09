@@ -73,9 +73,9 @@ export const ServicesSection = ({ }: Props) => {
     return (
         <Stack sx={{ backgroundColor: '#fff' }}>
             <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', py: 6 }}>
-                <Stack spacing={{ lg: 10, xs: 6 }} direction={{ md: 'row', xs: 'column' }} width={'100%'}>
+                <Stack spacing={{ lg: 10, xs: 8 }} direction={{ md: 'row', xs: 'column' }} width={'100%'}>
                     <Stack sx={{ width: { lg: '55%', xs: '100%' }, }}>
-                        <Typography variant={'h2'} sx={{ pb: 1 }}>
+                        <Typography variant={'h2'} sx={{ pb: 2 }}>
                             Services we offer
                         </Typography>
                         <Stack gap={{ xs: 1, sm: 2 }} pt={2} direction={'row'} sx={{ flexWrap: 'wrap', width: '100%' }}>
@@ -83,7 +83,7 @@ export const ServicesSection = ({ }: Props) => {
                         </Stack>
                     </Stack>
                     <Stack sx={{ width: { lg: '45%', xs: '100%' }, }}>
-                        <Typography variant={'h2'} sx={{ pb: 2 }}>
+                        <Typography variant={'h2'} sx={{ pb: 3 }}>
                             Other services we offer include:
                         </Typography>
                         <Stack spacing={1}>
