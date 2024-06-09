@@ -75,12 +75,10 @@ const SectionCard = ({ textWidth, backgroundColor, buttonText, url, title, short
                     {loading ? <Skeleton /> : <> {category} {continent && <>• {continent}</>}</>}
                 </Typography> */}
                 {title && <Typography variant='h2' component={'h2'} sx={{
-                    pt: 1,
                     // color: theme.palette.secondary.main,
                     fontWeight: 700,
                     lineHeight: 1.2,
                     width: { xs: '100%', sm: '80%', md: '80%' },
-                    // minHeight: { xs: 0, md: '102px' }
                 }}>
                     {loading ? <>
                         <Skeleton height={86} />

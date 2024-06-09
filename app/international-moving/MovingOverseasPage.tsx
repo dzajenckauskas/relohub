@@ -114,7 +114,7 @@ const MovingOverseasPage = () => {
 
             <Stack sx={{ backgroundColor: '#efefef' }}>
                 <MaxWidthContainer>
-                    <Stack py={6} spacing={6}>
+                    <Stack py={8} spacing={6}>
                         <SectionCard reverse
                             url='#get-in-touch'
                             buttonText={'Get in touch'}
