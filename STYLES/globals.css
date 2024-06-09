@@ -107,7 +107,7 @@ body {
 }
 
 .dynamicContent h2 {
-    /* font-size: 28px; */
+    font-size: 32px;
     padding-top: 3rem;
     padding-bottom: 2rem;
 }
