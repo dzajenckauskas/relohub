@@ -101,25 +101,27 @@ export const CountriesDropdownList = ({ }: Props) => {
                         onClose={() => {
                             setOpen(false);
                         }}
-                        onInputChange={(event, newInputValue) => {
-                            if (event?.type === 'change') {
-                                setThrottledInput(newInputValue)
-                            }
-                        }}
+                        // onInputChange={(event, newInputValue) => {
+                        //     if (event?.type === 'change') {
+                        //         setThrottledInput(newInputValue)
+                        //     }
+                        // }}
                         onChange={(e: any, option) => {
-                            if (e.key === 'Enter') {
-                                router.push(`/moving-to/${option.attributes.url}`)
-                            }
+                            // if (e.key === 'Enter') {
+                            router.push(`/moving-to/${option.attributes.url}`)
+                            // }
                         }}
                         loading={listLoading}
-                        renderOption={(_props, option) => {
+                        renderOption={(props, option) => {
                             return (
-                                <Link passHref key={option.id} href={`/moving-to/${option.attributes.url}`} style={{ width: '100%' }}>
+                                <li {...props} key={option.id} style={{ borderBottom: '1px solid #EBEBEB', }}>
+
+                                    {/* // <Link passHref href={`/moving-to/${option.attributes.url}`} style={{ width: '100%' }}> */}
                                     <Stack
-                                        className='bgOnHover'
-                                        sx={{ borderBottom: '1px solid #EBEBEB', width: '100%', mx: 1 }}>
+                                        // className='bgOnHover'
+                                        sx={{ width: '100%', cursor: 'pointer', margin: '4px auto' }}>
                                         <Stack direction={'row'} alignItems={'center'} spacing={1}
-                                            sx={{ width: '94%', margin: '0 auto', py: 1, px: .5 }}>
+                                            sx={{ width: '94%' }}>
                                             <Image
                                                 loading="lazy"
                                                 width={24}
@@ -133,13 +135,14 @@ export const CountriesDropdownList = ({ }: Props) => {
                                             </Typography>
                                         </Stack>
                                     </Stack>
-                                </Link>
+                                </li>
+
 
                             )
                         }}
                     />
                 </Stack>
-            </MaxWidthContainer>
-        </Stack>
+            </MaxWidthContainer >
+        </Stack >
     )
 }
