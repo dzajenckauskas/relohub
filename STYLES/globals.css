@@ -92,6 +92,11 @@ body {
     background-color: transparent !important;
 }
 
+.dynamicContent td p {
+    /* background-color: transparent !important; */
+    padding-bottom: 0 !important;
+}
+
 .dynamicContent th {
     font-weight: bold !important;
 }

@@ -132,7 +132,7 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
             </MaxWidthContainer> */}
 
             <MaxWidthContainer sx={{ py: { xs: 4, md: 8 }, flexDirection: 'column', }}>
-                <Stack sx={{
+                {/* <Stack sx={{
                     mx: 'auto',
                     mb: { xs: 0, md: 0 },
                     position: 'relative',
@@ -149,13 +149,13 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                         fill
                         objectFit="cover"
                     />
-                    {/* <Image
+                    <Image
                             priority
                             src={`${process.env.NEXT_PUBLIC_API_URL}${country?.data?.attributes?.image?.data?.attributes?.url ?? country?.data?.attributes?.image?.data?.attributes?.url}`}
                             alt={country?.data?.attributes?.image?.data?.attributes?.alternativeText ?? country?.data?.attributes?.title}
                             fill
                             objectFit="cover"
-                        /> */}
+                        />
                     <Stack
                         sx={{
                             position: 'absolute',
@@ -166,7 +166,7 @@ const MovingToPage = ({ articleContinents, country, countriesdata }: Props) => {
                             background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%)',
                         }}
                     />
-                </Stack>
+                </Stack> */}
                 <Stack sx={{ maxWidth: 'md', }}>
                     <Typography component={'div'} className='dynamicContent' dangerouslySetInnerHTML={{ __html: country?.data.attributes.fullContent }} />
                 </Stack>
