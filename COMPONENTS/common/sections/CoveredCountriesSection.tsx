@@ -8,8 +8,9 @@ import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import Stack from "@mui/material/Stack"
 import Typography from '@mui/material/Typography'
-import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
+
 type Props = {
     articleContinents?: ContinentsResponseType;
     countries?: CountriesResponseType;
@@ -23,10 +24,12 @@ export const CoveredCountriesSection = ({ articleContinents, countries }: Props)
         };
         return (
             <Grid item xs={6} sm={4} md={3} key={c?.id}>
-                <Typography variant='body1' sx={{ alignItems: 'center', display: 'flex', gap: 1 }}>
-                    <EastIcon fontSize='large' color='secondary' />
-                    {capitalizeEachWord(c?.attributes?.name)}
-                </Typography>
+                <Link passHref href={`/moving-to/${c.attributes.url}`}>
+                    <Typography variant='body1' sx={{ ':hover': { color: theme.palette.secondary.main }, alignItems: 'center', display: 'flex', gap: 1 }}>
+                        <EastIcon fontSize='large' color='secondary' />
+                        {capitalizeEachWord(c?.attributes?.name)}
+                    </Typography>
+                </Link>
             </Grid>
         )
     })
