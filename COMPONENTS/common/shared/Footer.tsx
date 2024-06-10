@@ -9,6 +9,12 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 export default function Footer() {
+
+    const getCurrentYear = (): number => {
+        const currentDate = new Date();
+        return currentDate.getFullYear();
+    };
+
     const [clicked, setclicked] = useState(null);
 
     const list = [
@@ -71,7 +77,7 @@ export default function Footer() {
                     );
                 })}
             </div>
-            <p className="footerlastp">Deliver1 © 2019</p>
+            <p className="footerlastp">Deliver1 © {getCurrentYear()}</p>
         </div>
     );
 }
