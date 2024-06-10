@@ -107,7 +107,7 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
                 <Stack py={8}>
                     <SectionCard reverse backgroundColor="#fff"
                         buttonText='Login to customer portal'
-                        url='https://admin.deliver1.co.uk/customerPortal/'
+                        url='https://admin.deliver1.co.uk/customerPortal/login'
                         title={'How to Book'}>
                         <Typography>
                             Your move with Deliver1 opens the door to more than just exceptional service. Head over to your <Link passHref href={'https://admin.deliver1.co.uk/customerPortal/'} style={{ color: theme.palette.secondary.main }}>customer portal</Link> – your one-stop shop for managing your move – and discover a world of additional services designed to make your relocation even smoother.
