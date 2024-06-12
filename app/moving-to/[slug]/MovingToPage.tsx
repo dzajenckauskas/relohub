@@ -125,24 +125,8 @@ const MovingToPage = ({ country, countriesData }: Props) => {
                 </Stack>
             </MaxWidthContainer>}
 
-            <IconsSection lg={4} md={4} sm={6} xs={12} backgroundColor={'#ededed'}
-                color='#000' align={'flex-start'} textAlign={'left'}
-                title={"Comprehensive Moving Services Tailored to You"}
-                content={listContent} />
 
-            <ProcessWrapper title='How it works?' />
 
-            <ListSection content={listContent2}
-                title='A Customer-Centric Approach That Puts You First' />
-
-            {
-                country?.data.attributes.fullContent &&
-                <MaxWidthContainer sx={{ py: { xs: 4, md: 8 }, flexDirection: 'column', }}>
-                    <Stack sx={{ maxWidth: 'md', }}>
-                        <Typography component={'div'} className='dynamicContent' dangerouslySetInnerHTML={{ __html: country?.data.attributes.fullContent }} />
-                    </Stack>
-                </MaxWidthContainer>
-            }
             {
                 renderFAQs?.length > 0 && <section className="faqglobalwrp">
                     <MaxWidthContainer>
@@ -156,6 +140,24 @@ const MovingToPage = ({ country, countriesData }: Props) => {
                     </MaxWidthContainer>
                 </section>
             }
+
+            {
+                country?.data.attributes.fullContent &&
+                <MaxWidthContainer sx={{ py: { xs: 4, md: 8 }, flexDirection: 'column', }}>
+                    <Stack sx={{ maxWidth: 'md', }}>
+                        <Typography component={'div'} className='dynamicContent' dangerouslySetInnerHTML={{ __html: country?.data.attributes.fullContent }} />
+                    </Stack>
+                </MaxWidthContainer>
+            }
+            <IconsSection lg={4} md={4} sm={6} xs={12} backgroundColor={'#ededed'}
+                color='#000' align={'flex-start'} textAlign={'left'}
+                title={"Comprehensive Moving Services Tailored to You"}
+                content={listContent} />
+            <ProcessWrapper title='How it works?' />
+
+            <ListSection content={listContent2}
+                title='A Customer-Centric Approach That Puts You First' />
+
             <ServicesSection />
 
             <Stack sx={{ backgroundColor: '#efefef' }}>
