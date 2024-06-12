@@ -27,17 +27,18 @@ type Props = {
     countriesData?: CountriesResponseType;
 }
 const MovingToPage = ({ country, countriesData }: Props) => {
+    const countryName = country.data.attributes.name
     const listContent = [
         { title: "Professional Handling Services", text: "Our skilled team will meticulously handle your possessions, using high-quality materials and proven techniques to safeguard your items throughout their journey.", icon: 'icon10.png' },
-        { title: "Stress-Free Door-to-Door Delivery", text: "Sit back and relax as we manage every aspect of your move, from collection at your current residence to delivery and unpacking at your new home in Spain.", icon: 'icon9.png' },
+        { title: "Stress-Free Door-to-Door Delivery", text: `Sit back and relax as we manage every aspect of your move, from collection at your current residence to delivery and unpacking at your new home in ${countryName}.`, icon: 'icon9.png' },
         { title: "Expert Customs Clearance", text: "We streamline the customs clearance process, taking care of all necessary paperwork and documentation to minimise delays and ensure a smooth arrival for your shipment.", icon: 'icon14.png' },
     ];
     const listContent2 = [
         { title: "Real-Time Shipment Tracking", text: "Stay connected with your belongings every step of the way, with up-to-date tracking information and notifications directly to your device." },
         { title: "Personalised Service for Your Unique Needs", text: "We understand that no two moves are alike. Our team will work closely with you to design a customised moving plan that caters to your specific requirements and budget." },
         { title: "24/7 Customer Support", text: "We're here for you whenever you need us. Our dedicated customer support team is available around the clock to answer your questions, address any concerns, and provide expert guidance throughout your moving journey." },
-        { title: "Experience the Deliver1 Difference", text: "At Deliver1, we believe that moving to Spain should be an exciting adventure, not a stressful ordeal. Choose us for a seamless, transparent, and personalised moving experience that exceeds your expectations." },
-        { title: "Ready to Start Your Journey?", text: "Contact us today for a free, no-obligation quote and let us help you turn your dream of living in Spain into a reality." },
+        { title: "Experience the Deliver1 Difference", text: `At Deliver1, we believe that moving to ${countryName} should be an exciting adventure, not a stressful ordeal. Choose us for a seamless, transparent, and personalised moving experience that exceeds your expectations.` },
+        { title: "Ready to Start Your Journey?", text: `Contact us today for a free, no-obligation quote and let us help you turn your dream of living in ${countryName} into a reality.` },
     ];
 
     const [clicked, setclicked] = useState(null);
@@ -108,8 +109,8 @@ const MovingToPage = ({ country, countriesData }: Props) => {
                             ?? '/placeholder-image.webp'}`}
                         imgAlt={country?.data?.attributes?.images?.data?.[0]?.attributes?.alternativeText
                             ?? country?.data?.attributes?.name}
-                        title={`Removals to ${country.data.attributes.name} with Deliver1`}
-                        shortContent={`Welcome to Deliver1 - Your reliable partner for stress-free and efficient international removals to ${country.data.attributes.name}. Whether you are relocating for work, family, or adventure, our comprehensive moving services ensure your belongings reach safely and on time.`}
+                        title={`Removals to ${countryName} with Deliver1`}
+                        shortContent={`Welcome to Deliver1 - Your reliable partner for stress-free and efficient international removals to ${countryName}. Whether you are relocating for work, family, or adventure, our comprehensive moving services ensure your belongings reach safely and on time.`}
                     />
                     <SectionCard
                         imgSrc={`${country?.data?.attributes?.images?.data?.[1]
@@ -120,7 +121,7 @@ const MovingToPage = ({ country, countriesData }: Props) => {
                         imgAlt={country?.data?.attributes?.images?.data?.[1]?.attributes?.alternativeText
                             ?? country?.data?.attributes?.name}
                         title={'Experience and Expertise You Can Trust'}
-                        shortContent={`With over 20 years of combined experience in international removals, Deliver1 is your trusted partner in navigating the complexities of moving to ${country.data.attributes.name}. Our team of experts possesses in-depth knowledge of ${country.data.attributes.name}'s logistics and customs regulations, ensuring a seamless and efficient transition for your belongings.`}
+                        shortContent={`With over 20 years of combined experience in international removals, Deliver1 is your trusted partner in navigating the complexities of moving to ${countryName}. Our team of experts possesses in-depth knowledge of ${countryName}'s logistics and customs regulations, ensuring a seamless and efficient transition for your belongings.`}
                     />
                 </Stack>
             </MaxWidthContainer>}
