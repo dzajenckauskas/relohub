@@ -1,4 +1,4 @@
-import { ImagesType } from "./ImageTypes";
+import { ImagesType, SingleImageType } from "./ImageTypes";
 import { MetaType } from "./MetaTypes";
 
 export type CountriesResponseType = {
@@ -25,7 +25,9 @@ export type CountryAttributesType = {
     publishedAt: Date;
     fullContent: string;
     faqs: FaqType[];
-    images: ImagesType;
+    cardsSection: SectionType;
+    iconsSection: SectionType;
+    listSection: SectionType;
 }
 
 export type FaqType = {
@@ -33,4 +35,22 @@ export type FaqType = {
     question: string;
     answer: string;
     fullAnswer: string;
+}
+
+export type SectionType = {
+    id: number;
+    sectionTitle: string;
+    sectionSubitle: string;
+    sectionCards: SectionCardType[];
+    active: boolean;
+}
+
+export type SectionCardType = {
+    id: number;
+    title: string;
+    shortContent: string;
+    buttonText: string | null;
+    url: string | null;
+    richText: string | null;
+    image: SingleImageType;
 }
