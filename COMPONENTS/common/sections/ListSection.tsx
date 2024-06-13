@@ -9,7 +9,7 @@ type Props = {
     listSection?: SectionType;
     title?: string;
     subtitle?: string;
-    content: {
+    content?: {
         title: string;
         text: string;
     }[]
