@@ -21,6 +21,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import MovingToPageHero from './MovingToPageHero'
 import "/STYLES/svg-style.css"
+import FaqSection from './FaqSection'
+import FullContentSection from './FullContentSection'
 
 type Props = {
     country?: CountryResponseType;
@@ -41,34 +43,7 @@ const MovingToPage = ({ country, countriesData }: Props) => {
         { title: "Ready to Start Your Journey?", text: `Contact us today for a free, no-obligation quote and let us help you turn your dream of living in ${countryName} into a reality.` },
     ];
 
-    const [clicked, setclicked] = useState(null);
 
-    const renderFAQs = country.data.attributes.faqs?.map((faq) => {
-        return (
-            <div className="faqfaqliner" key={faq.id}>
-                <div className="faqfaqinsidetop" style={{ cursor: 'pointer' }} onClick={() => {
-                    setclicked(
-                        clicked === faq.question ? null : faq.question,
-                    );
-                }}>
-                    <Typography variant={'h4'} component={'p'} sx={{ fontWeight: 700, pr: 2, color: theme.palette.secondary.main }}>{faq.question}</Typography>
-                    <ExpandButton
-                        active={clicked === faq.question}
-                        setActive={setclicked}
-                        onClick={() => {
-                            setclicked(
-                                clicked === faq.question ? null : faq.question,
-                            );
-                        }}
-                    />
-                </div>
-
-                {clicked === faq.question ? (
-                    <p className="faqfaqinsidep">{faq.answer}</p>
-                ) : null}
-            </div>
-        )
-    })
     return (
         <PageLayout>
             <div className="bckimagewrp">
@@ -99,65 +74,36 @@ const MovingToPage = ({ country, countriesData }: Props) => {
                 </Stack>
             </div>
             <CountriesDropdownList countriesData={countriesData} />
-            {country?.data !== null && <MaxWidthContainer >
-                <Stack py={8} spacing={4}>
-                    <SectionCard reverse
-                        imgSrc={`${country?.data?.attributes?.images?.data?.[0]
-                            ? process.env.NEXT_PUBLIC_API_URL
-                            : ''}${country?.data?.attributes?.images?.data?.[0]?.attributes?.url
-                            ?? country?.data?.attributes?.images?.data?.[0]?.attributes?.url
-                            ?? '/placeholder-image.webp'}`}
-                        imgAlt={country?.data?.attributes?.images?.data?.[0]?.attributes?.alternativeText
-                            ?? country?.data?.attributes?.name}
-                        title={`Removals to ${countryName} with Deliver1`}
-                        shortContent={`Welcome to Deliver1 - Your reliable partner for stress-free and efficient international removals to ${countryName}. Whether you are relocating for work, family, or adventure, our comprehensive moving services ensure your belongings reach safely and on time.`}
-                    />
-                    <SectionCard
-                        imgSrc={`${country?.data?.attributes?.images?.data?.[1]
-                            ? process.env.NEXT_PUBLIC_API_URL
-                            : ''}${country?.data?.attributes?.images?.data?.[1]?.attributes?.url
-                            ?? country?.data?.attributes?.images?.data?.[1]?.attributes?.url
-                            ?? '/placeholder-image.webp'}`}
-                        imgAlt={country?.data?.attributes?.images?.data?.[1]?.attributes?.alternativeText
-                            ?? country?.data?.attributes?.name}
-                        title={'Experience and Expertise You Can Trust'}
-                        shortContent={`With over 20 years of combined experience in international removals, Deliver1 is your trusted partner in navigating the complexities of moving to ${countryName}. Our team of experts possesses in-depth knowledge of ${countryName}'s logistics and customs regulations, ensuring a seamless and efficient transition for your belongings.`}
-                    />
-                </Stack>
-            </MaxWidthContainer>}
-
-
-
-            {
-                renderFAQs?.length > 0 && <section className="faqglobalwrp">
-                    <MaxWidthContainer>
-                        <div className="faqinsidewrp">
-                            <Typography variant="h2" textAlign={'center'} pt={0}
-                                pb={{ xs: 4, sm: 4 }}>{'Frequently Asked Questions'}</Typography>
-                            <div className="faqfaqwrp">
-                                {renderFAQs}
-                            </div>
-                        </div>
-                    </MaxWidthContainer>
-                </section>
-            }
-
-            {
-                country?.data.attributes.fullContent &&
-                <MaxWidthContainer sx={{ py: { xs: 4, md: 8 }, flexDirection: 'column', }}>
-                    <Stack sx={{ maxWidth: 'md', }}>
-                        <Typography component={'div'} className='dynamicContent' dangerouslySetInnerHTML={{ __html: country?.data.attributes.fullContent }} />
+            {country?.data !== null &&
+                <MaxWidthContainer >
+                    <Stack py={8} spacing={4}>
+                        <SectionCard reverse
+                            imgSrc={'/placeholder-image.webp'}
+                            imgAlt={country?.data?.attributes?.name}
+                            title={`Removals to ${countryName} with Deliver1`}
+                            shortContent={`Welcome to Deliver1 - Your reliable partner for stress-free and efficient international removals to ${countryName}. Whether you are relocating for work, family, or adventure, our comprehensive moving services ensure your belongings reach safely and on time.`}
+                        />
+                        <SectionCard
+                            imgSrc={'/placeholder-image.webp'}
+                            imgAlt={country?.data?.attributes?.name}
+                            title={'Experience and Expertise You Can Trust'}
+                            shortContent={`With over 20 years of combined experience in international removals, Deliver1 is your trusted partner in navigating the complexities of moving to ${countryName}. Our team of experts possesses in-depth knowledge of ${countryName}'s logistics and customs regulations, ensuring a seamless and efficient transition for your belongings.`}
+                        />
                     </Stack>
-                </MaxWidthContainer>
-            }
+                </MaxWidthContainer>}
+
+            <FaqSection faqs={country.data.attributes.faqs} />
+
+            <FullContentSection fullContent={country?.data.attributes.fullContent} />
+
             <IconsSection lg={4} md={4} sm={6} xs={12} backgroundColor={'#ededed'}
                 color='#000' align={'flex-start'} textAlign={'left'}
                 title={"Comprehensive Moving Services Tailored to You"}
                 content={listContent} />
+
             <ProcessWrapper title='How it works?' />
 
-            <ListSection content={listContent2}
-                title='A Customer-Centric Approach That Puts You First' />
+            <ListSection listSection={country?.data.attributes?.listSection} content={listContent2} title='A Customer-Centric Approach That Puts You First' />
 
             <ServicesSection />
 

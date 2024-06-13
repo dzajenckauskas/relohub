@@ -40,7 +40,7 @@ export type FaqType = {
 export type SectionType = {
     id: number;
     sectionTitle: string;
-    sectionSubitle: string;
+    sectionSubtitle: string;
     sectionCards: SectionCardType[];
     active: boolean;
 }
