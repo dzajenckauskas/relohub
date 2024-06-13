@@ -20,7 +20,7 @@ const ListSection = ({ content, subtitle, title, listSection }: Props) => {
         const isLast = content?.length - 1 === i
         return (
             <Stack key={i} direction={{ sm: 'row', xs: 'column' }} gap={{ sm: 4, xs: 1 }}
-                sx={{ borderBottom: isLast ? 'none' : '1px solid #c2c2c2', pb: 3 }}>
+                sx={{ borderBottom: isLast ? 'none' : '1px solid #c2c2c2', pb: isLast ? 0 : 3 }}>
                 <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main}
                     sx={{ width: { sm: '60%', xs: '100%' }, fontWeight: 500 }}>
                     {c.title}
@@ -33,9 +33,10 @@ const ListSection = ({ content, subtitle, title, listSection }: Props) => {
     })
     const renderListSection = listSection?.sectionCards?.map((c, i) => {
         const isLast = listSection?.sectionCards?.length - 1 === i
+
         return (
             <Stack key={i} direction={{ sm: 'row', xs: 'column' }} gap={{ sm: 4, xs: 1 }}
-                sx={{ borderBottom: isLast ? 'none' : '1px solid #c2c2c2', pb: 3 }}>
+                sx={{ borderBottom: isLast ? 'none' : '1px solid #c2c2c2', pb: isLast ? 0 : 3 }}>
                 <Typography variant='h5' component={'h5'} color={theme.palette.secondary.main}
                     sx={{ width: { sm: '60%', xs: '100%' }, fontWeight: 500 }}>
                     {c.title}
