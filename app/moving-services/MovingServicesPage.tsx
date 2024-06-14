@@ -142,10 +142,6 @@ const MovingServicesPage = ({ countriesData }: Props) => {
                         title='Furniture Disassembly and Assembly'
                         shortContent={`We can disassemble your furniture before your move and reassemble it in your new home, saving you time and effort. Our team is skilled in handling a wide range of furniture types, ensuring your pieces are properly disassembled and reassembled with care.`}
                     />
-                    <SectionCard
-                        title='Your Move, Simplified with Deliver1'
-                        shortContent={`With Deliver1's comprehensive range of removal services, your relocation is in expert hands. We tailor our solutions to your specific needs, providing a seamless and stress-free experience from start to finish.`}
-                    />
                 </Stack>
             </MaxWidthContainer>
 
@@ -170,12 +166,6 @@ const MovingServicesPage = ({ countriesData }: Props) => {
                         </Stack>
                         <Stack pb={8} spacing={4}>
                             <SectionCard
-                                // imgSrc='/images/moving-overseas/start-journey.png'
-                                // imgAlt='View countries we cover'
-                                title={'Your Next Adventure Starts Today'}
-                                shortContent={"Contact Deliver1 today for a free quote and consultation. Let us handle the logistics so you can focus on embracing your new life in a new country. With Deliver1, your next adventure is in expert hands."}
-                            />
-                            <SectionCard reverse
                                 imgSrc='/images/moving-to-europe/get-in-touch-today.png'
                                 imgAlt='View countries we cover'
                                 buttonText='Get in Touch'
