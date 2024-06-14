@@ -24,7 +24,7 @@ export const HeaderLink = ({ link, path, setOpenDropdown, openDropdown }: Props)
     return (
         <Stack key={link.id}>
             {link.url &&
-                <Link passHref href={link.url ?? undefined} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
+                <Link aria-label={link.name} passHref href={link.url ?? undefined} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
                     <Stack sx={{ px: 1, position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
                         {link.name !== "Home" ? link.name : <HomeOutlinedIcon fontSize={'large'} sx={{ width: 19, height: 19 }} />}
                         {!!!openDropdown && path === link?.url &&
@@ -76,7 +76,7 @@ export const HeaderLink = ({ link, path, setOpenDropdown, openDropdown }: Props)
                         <Stack sx={{ backgroundColor: '#fff', mt: '3px', boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;', }}>
                             {link.links.map((l) => {
                                 return (
-                                    <Link key={l.id} passHref href={l.url} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none', }}>
+                                    <Link key={l.id} aria-label={l.name} passHref href={l.url} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none', }}>
                                         <Stack sx={{ py: 1, px: 1, ':hover': { color: '#fff', backgroundColor: theme.palette.secondary.main } }}>
                                             {l.name}
                                         </Stack>

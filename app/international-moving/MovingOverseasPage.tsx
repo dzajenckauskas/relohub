@@ -17,6 +17,7 @@ import Link from 'next/link'
 import VideoArea from '@/COMPONENTS/main_page/videoarea'
 import LatestArticles from '@/COMPONENTS/main_page/LatestArticles'
 import { CountriesResponseType } from '@/COMPONENTS/types/CountryType'
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from 'next-share'
 type Props = {
     countriesData?: CountriesResponseType;
 }
@@ -94,6 +95,7 @@ const MovingOverseasPage = ({ countriesData }: Props) => {
                         shortContent={"Relocating to another country is an exciting but challenging experience. At Deliver1, we're dedicated to making your international move smooth and stress-free. With our comprehensive services, we handle all the details so you can focus on starting your new adventure."}
                     />
                     <SectionCard url='#get-in-touch'
+                        objectPosition='top'
                         imgSrc='/images/moving-overseas/simple-and-efficient-moving.png'
                         imgAlt='simple and efficient moving'
                         buttonText={'Get in touch'}
@@ -121,7 +123,8 @@ const MovingOverseasPage = ({ countriesData }: Props) => {
                         <SectionCard reverse
                             url='#get-in-touch'
                             buttonText={'Get in touch'}
-                            imgSrc='/images/moving-overseas/our-background.png'
+                            imgSrc='/cover-img.jpg'
+                            objectPosition={'top'}
                             imgAlt='our background'
                             title={'Our background'}
                             shortContent={"Relocating to another country is an exciting but challenging experience. At Deliver1, we're dedicated to making your international move smooth and stress-free. With our comprehensive services, we handle all the details so you can focus on starting your new adventure."}
@@ -129,6 +132,7 @@ const MovingOverseasPage = ({ countriesData }: Props) => {
                         <SectionCard
                             imgSrc='/images/moving-overseas/customer-portal.png'
                             imgAlt='customer-portal'
+                            objectPosition={'left'}
                             title='Simple and Intuitive Customer Portal'
                             shortContent='At Deliver1, we understand that every move is unique. Our intuitive customer portal simplifies the process, allowing you to plan, book, and manage your move easily. From getting a quote to tracking your belongings, everything is handled online, ensuring a quick and seamless experience tailored to your needs.' />
                     </Stack>
@@ -146,6 +150,7 @@ const MovingOverseasPage = ({ countriesData }: Props) => {
                     <Stack>
                         <Stack py={8}>
                             <SectionCard reverse backgroundColor="#fff"
+                                sm='column'
                                 buttonText='View countries we cover'
                                 url='/about-us#countries-we-cover'
                                 imgSrc='/images/moving-overseas/countries-we-cover.png'
@@ -156,6 +161,8 @@ const MovingOverseasPage = ({ countriesData }: Props) => {
                         </Stack>
                         <Stack pb={8}>
                             <SectionCard
+                                objectPosition='top'
+                                sm='column'
                                 imgSrc='/images/moving-overseas/start-journey.png'
                                 imgAlt='start journey'
                                 buttonText='Get Started'
@@ -163,13 +170,24 @@ const MovingOverseasPage = ({ countriesData }: Props) => {
                                 title={'Start Your Journey Today'}
                             >
                                 <Stack>
-                                    <Typography variant='body1' sx={{ pt: 1 }}>
+                                    <Typography variant='body1' sx={{ pt: 1 }} component={'div'} >
                                         Ready to move? Contact us today for a free quote and consultation. Let us handle the logistics so you can focus on your new life abroad. With Deliver1, your international move is in expert hands.
                                         <br />
                                         <br />
                                         Contact us now to discuss your moving needs and see how Deliver1 can make your international relocation a success. We’re excited to help you start this new chapter in your life.
                                         <br />
                                         <br />
+                                        <Typography variant='subtitle1' fontWeight={600} pb={1}>
+                                            Follow Us on Social Media:
+                                        </Typography>
+                                        <Stack direction={'row'} pb={2} spacing={2}>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.facebook.com/deliver1uk/'}><FacebookIcon /></Link>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://uk.linkedin.com/company/deliver1'}><LinkedinIcon /></Link>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.instagram.com/deliver1_uk/'}><InstagramIcon /></Link>
+                                        </Stack>
+                                        <Typography variant='subtitle1' fontWeight={600} pb={1}>
+                                            Contact Us:
+                                        </Typography>
                                         <b>
                                             Phone: <Link style={{ color: theme.palette.secondary.main }} href="tel:+443330907053">0333 090 7053</Link><br />
                                             Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@deliver1.co.uk">hello@deliver1.co.uk</Link> <br />

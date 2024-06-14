@@ -40,7 +40,7 @@ export default function Header() {
         },
         {
             id: 3,
-            name: "Other Services",
+            name: "Services",
             links: [
                 { id: 0, name: '⁠Moving services', url: '/moving-services' },
                 { id: 1, name: '⁠Relocation services', url: '/relocation-services' }]
@@ -122,7 +122,7 @@ export default function Header() {
                         aria-label="Mobile menu"
                         onClick={toggleOpen}
                         sx={{
-                            display: { sm: 'none', xs: 'flex' },
+                            display: { md: 'none', xs: 'flex' },
                             border: '1px solid #ccc',
                             borderRadius: '3px', fontWeight: 700,
                             fontSize: 14,
@@ -139,7 +139,7 @@ export default function Header() {
                         aria-label="Mobile menu"
                         onClick={toggleOpen}
                         sx={{
-                            display: { sm: 'none', xs: 'flex' },
+                            display: { md: 'none', xs: 'flex' },
                             border: '1px solid #ccc',
                             borderRadius: '3px', fontWeight: 700,
                             fontSize: 14,
@@ -163,9 +163,9 @@ export default function Header() {
                         />
                     </Link>
                     <Stack sx={{
-                        display: { md: 'flex', sm: 'flex', xs: 'none' }, flexDirection: 'row',
+                        display: { md: 'flex', sm: 'none', xs: 'none' }, flexDirection: 'row',
                         alignItems: 'center',
-                        gap: { lg: 6, md: 0, sm: 0, xs: 0 }
+                        gap: { lg: 4, md: .5, sm: 0, xs: 0 }
                     }}>
                         {renderLinks}
                     </Stack>
@@ -201,7 +201,7 @@ export default function Header() {
             </Stack>
             {open &&
                 <Stack sx={{
-                    display: { sm: 'none', xs: 'flex' }, position: 'fixed', zIndex: 12,
+                    display: { md: 'none', xs: 'flex' }, position: 'fixed', zIndex: 12,
                     top: 74, width: { xs: '100% ' }, left: 0,
                     pt: 4,
                     backgroundColor: '#f1f1f1',

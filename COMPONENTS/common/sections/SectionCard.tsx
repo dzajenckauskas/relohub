@@ -21,17 +21,20 @@ type Props = {
     imgSrc?: string;
     imgAlt?: string;
     textWidth?: string;
-    children?: React.ReactNode
+    objectPosition?: string;
+    children?: React.ReactNode;
+    sm?: string;
+    minHeight?: { xs?: number; sm?: number; md?: number; lg?: number }
 }
 
-const SectionCard = ({ textWidth, backgroundColor, buttonText, url, title, shortContent, imgSrc, imgAlt, reverse, loading, children }: Props) => {
+const SectionCard = ({ minHeight, sm, objectPosition, textWidth, backgroundColor, buttonText, url, title, shortContent, imgSrc, imgAlt, reverse, loading, children }: Props) => {
 
     return (
         <Stack
             gap={{ xs: 1, sm: 4, md: 4, lg: 6 }}
             sx={{
                 display: 'flex',
-                flexDirection: { xs: 'column', sm: reverse ? 'row-reverse' : 'row', },
+                flexDirection: { xs: 'column', sm: reverse ? (sm ? sm : 'row-reverse') : (sm ? sm : 'row'), md: reverse ? ('row-reverse') : ('row'), },
                 width: '100%',
                 backgroundColor: backgroundColor ?? "transparent",
                 borderRadius: '5px',
@@ -43,7 +46,7 @@ const SectionCard = ({ textWidth, backgroundColor, buttonText, url, title, short
                 width: '100%'
             }}>
                 <Stack sx={{
-                    minHeight: { xs: '200px', sm: '250px' },
+                    minHeight: minHeight ?? { xs: '200px', sm: '250px' },
                     height: '100%',
                     borderRadius: backgroundColor ? '0px' : '5px',
                     width: '100%',
@@ -65,13 +68,13 @@ const SectionCard = ({ textWidth, backgroundColor, buttonText, url, title, short
                         style={{
                             backgroundColor: '#a2a2a2',
                             objectFit: 'cover',
-                            objectPosition: 'center'
+                            objectPosition: objectPosition ?? 'center'
                         }}
                     />}
                 </Stack>
             </Stack>
 
-            <Stack sx={{ p: { xs: 0, md: 2 }, ml: backgroundColor ? 2 : 0, my: 2, mb: 4, width: textWidth ?? '100%', position: 'relative' }}>
+            <Stack sx={{ p: { xs: 2, sm: 2, md: 4 }, mb: 4, width: textWidth ?? '100%', position: 'relative' }}>
                 {/* <Typography variant='body2' sx={{ color: '#9b9b9b', textTransform: 'uppercase', fontWeight: 500, letterSpacing: 1 }}>
                     {loading ? <Skeleton /> : <> {category} {continent && <>• {continent}</>}</>}
                 </Typography> */}

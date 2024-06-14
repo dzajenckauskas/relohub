@@ -17,6 +17,7 @@ import Link from 'next/link'
 import VideoArea from '@/COMPONENTS/main_page/videoarea'
 import LatestArticles from '@/COMPONENTS/main_page/LatestArticles'
 import { CountriesResponseType } from '@/COMPONENTS/types/CountryType'
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from 'next-share'
 
 type Props = {
     countriesData?: CountriesResponseType;
@@ -123,7 +124,7 @@ const MovingEuropePage = ({ countriesData }: Props) => {
             <MaxWidthContainer>
                 <Stack py={5} spacing={4}>
                     <SectionCard
-                        imgSrc='/images/moving-to-europe/our-background.png'
+                        imgSrc='/cover-img.jpg'
                         imgAlt='our background'
                         buttonText='Get in touch'
                         url='#get-in-touch'
@@ -136,6 +137,7 @@ const MovingEuropePage = ({ countriesData }: Props) => {
             <MaxWidthContainer>
                 <Stack py={5} spacing={4}>
                     <SectionCard
+                        sm='column'
                         imgSrc='/images/moving-to-europe/european-destinations.png'
                         imgAlt='european destinations'
                         title={'European Destinations We Cover'}
@@ -162,6 +164,17 @@ const MovingEuropePage = ({ countriesData }: Props) => {
                                 Contact us now to discuss your European moving needs and discover how Deliver1 can make your relocation a success.
                                 <br />
                                 <br />
+                                <Typography variant='subtitle1' fontWeight={600} pb={1}>
+                                    Follow Us on Social Media:
+                                </Typography>
+                                <Stack direction={'row'} pb={2} spacing={2}>
+                                    <Link style={{ color: theme.palette.secondary.main }} href={'https://www.facebook.com/deliver1uk/'}><FacebookIcon /></Link>
+                                    <Link style={{ color: theme.palette.secondary.main }} href={'https://uk.linkedin.com/company/deliver1'}><LinkedinIcon /></Link>
+                                    <Link style={{ color: theme.palette.secondary.main }} href={'https://www.instagram.com/deliver1_uk/'}><InstagramIcon /></Link>
+                                </Stack>
+                                <Typography variant='subtitle1' fontWeight={600} pb={1}>
+                                    Contact Us:
+                                </Typography>
                                 <b>
                                     Phone: <Link style={{ color: theme.palette.secondary.main }} href="tel:+443330907053">0333 090 7053</Link><br />
                                     Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@deliver1.co.uk">hello@deliver1.co.uk</Link> <br />

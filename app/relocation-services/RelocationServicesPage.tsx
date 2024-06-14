@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography'
 import Image from 'next/image'
 import Link from 'next/link'
 import RelocationServicesPageHero from './RelocationServicesPageHero'
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from 'next-share'
 
 type Props = {
     countriesData?: CountriesResponseType;
@@ -85,6 +86,9 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
 
             <MaxWidthContainer sx={{ py: 8 }}>
                 <SectionCard
+                    sm='column'
+                    objectPosition='top'
+                    minHeight={{ sm: 400 }}
                     imgSrc='/images/relocation-services/relocation-assistance.png'
                     imgAlt='relocation assistance'
                     title={'Relocation Assistance'}>
@@ -136,10 +140,22 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
                             title={'Get in Touch'}
                         >
                             <Stack>
-                                <Typography variant='body1' sx={{ pt: 1 }}>
+                                <Typography variant='body1' sx={{ pt: 1 }} component={'div'}>
                                     Contact us now to discuss your moving and storage needs and discover how Deliver1 can make your relocation a success.
                                     <br />
                                     <br />
+
+                                    <Typography variant='subtitle1' fontWeight={600} pb={1}>
+                                        Follow Us on Social Media:
+                                    </Typography>
+                                    <Stack direction={'row'} pb={2} spacing={2}>
+                                        <Link style={{ color: theme.palette.secondary.main }} href={'https://www.facebook.com/deliver1uk/'}><FacebookIcon /></Link>
+                                        <Link style={{ color: theme.palette.secondary.main }} href={'https://uk.linkedin.com/company/deliver1'}><LinkedinIcon /></Link>
+                                        <Link style={{ color: theme.palette.secondary.main }} href={'https://www.instagram.com/deliver1_uk/'}><InstagramIcon /></Link>
+                                    </Stack>
+                                    <Typography variant='subtitle1' fontWeight={600} pb={1}>
+                                        Contact Us:
+                                    </Typography>
                                     <b>
                                         Phone: <Link style={{ color: theme.palette.secondary.main }} href="tel:+443330907053">0333 090 7053</Link><br />
                                         Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@deliver1.co.uk">hello@deliver1.co.uk</Link> <br />
