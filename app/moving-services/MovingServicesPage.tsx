@@ -119,25 +119,33 @@ const MovingServicesPage = ({ countriesData }: Props) => {
                     />
                     <SectionCard
                         reverse
-                        // imgSrc='/images/moving-services/door-to-door.png'
-                        // imgAlt='door to door'
+                        imgSrc='/images/moving-services/air-courier.png'
+                        imgAlt='air courier'
                         title='Air Courier: Door-to-Door Delivery for Urgent Shipments'
                         shortContent='For urgent or time-sensitive shipments, our air courier service offers door-to-door delivery with the fastest possible transit times. We prioritise speed and efficiency to meet your specific needs.'
                     />
                     <SectionCard
+                        imgSrc='/images/moving-services/storage.png'
+                        imgAlt='storage'
                         title='Secure Storage Solutions in Europe and Beyond'
                         shortContent={`Whether you require temporary storage during your move or a long-term solution, we offer secure and convenient storage facilities in Europe and select international locations. Your belongings will be stored in a safe and climate-controlled environment until you're ready to receive them.`}
                     />
                     <SectionCard
+                        imgSrc='/images/moving-services/export-pack.png'
+                        imgAlt='expert pack'
                         reverse
                         title='Professional Packing Services: Expert Care for Your Belongings'
                         shortContent={`Our experienced packers take the stress out of packing, ensuring your belongings are carefully wrapped, protected, and organised for safe transportation. We use high-quality packing materials and techniques to minimise the risk of damage during transit.`}
                     />
                     <SectionCard
+                        imgSrc='/images/moving-services/specialised-crating.png'
+                        imgAlt='specialised crating'
                         title='Specialised Crating for Delicate Items'
                         shortContent={`For valuable or fragile items, we offer specialised crating services to provide an extra layer of protection. Our custom-built crates are designed to safeguard your most precious possessions, ensuring they arrive in pristine condition.`}
                     />
                     <SectionCard
+                        imgSrc='/images/moving-services/assembly.png'
+                        imgAlt='Furniture Disassembly and Assembly'
                         reverse
                         title='Furniture Disassembly and Assembly'
                         shortContent={`We can disassemble your furniture before your move and reassemble it in your new home, saving you time and effort. Our team is skilled in handling a wide range of furniture types, ensuring your pieces are properly disassembled and reassembled with care.`}

@@ -84,7 +84,10 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
             <CountriesDropdownList countriesData={countriesData} />
 
             <MaxWidthContainer sx={{ py: 8 }}>
-                <SectionCard title={'Relocation Assistance'}>
+                <SectionCard
+                    imgSrc='/images/relocation-services/relocation-assistance.png'
+                    imgAlt='relocation assistance'
+                    title={'Relocation Assistance'}>
                     <Typography>
                         Moving to a new country is an adventure filled with excitement and new beginnings. At Deliver1, we understand the challenges that come with relocating, and we&apos;re here to make your journey as smooth as possible.
                         <br />
@@ -106,6 +109,8 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
             <MaxWidthContainer>
                 <Stack py={8}>
                     <SectionCard reverse backgroundColor="#fff"
+                        imgSrc='/images/relocation-services/how-to-book.png'
+                        imgAlt='how to book'
                         buttonText='Login to customer portal'
                         url='https://admin.deliver1.co.uk/customerPortal/login'
                         title={'How to Book'}>
@@ -124,6 +129,8 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
                 <MaxWidthContainer>
                     <Stack pb={8} pt={8} spacing={4} width={'100%'}>
                         <SectionCard
+                            imgSrc='/images/moving-to-europe/get-in-touch-today.png'
+                            imgAlt='get-in-touch-today'
                             buttonText='Get in Touch'
                             url='#get-in-touch'
                             title={'Get in Touch'}
