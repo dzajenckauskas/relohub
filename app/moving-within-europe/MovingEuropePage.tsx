@@ -186,7 +186,7 @@ const MovingEuropePage = ({ countriesData }: Props) => {
                     </SectionCard>
                 </Stack>
             </MaxWidthContainer>
-            <IconsSection lg={3} md={3} sm={6} xs={12} backgroundColor={'#ededed'} color='#000' align={'flex-start'} textAlign={'left'}
+            <IconsSection mobileCenter lg={3} md={3} sm={6} xs={12} backgroundColor={'#ededed'} color='#000' align={'flex-start'} textAlign={'left'}
                 title={"Services Tailored for Your European Move"} content={iconsSectionContent2} />
             <VideoArea hideIcons />
             <LatestArticles />

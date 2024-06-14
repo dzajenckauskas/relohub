@@ -210,7 +210,7 @@ const MovingServicesPage = ({ countriesData }: Props) => {
                     </Stack>
                 </MaxWidthContainer>
             </Stack>
-            <IconsSection lg={3} md={3} sm={6} xs={12} backgroundColor={'#fff'}
+            <IconsSection mobileCenter lg={3} md={3} sm={6} xs={12} backgroundColor={'#fff'}
                 color='#000' align={'flex-start'} textAlign={'left'}
                 title={"Our goal will always be a moving experience"}
                 content={iconsSection2Content} />

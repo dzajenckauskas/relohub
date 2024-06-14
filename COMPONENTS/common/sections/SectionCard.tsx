@@ -24,7 +24,7 @@ type Props = {
     objectPosition?: string;
     children?: React.ReactNode;
     sm?: string;
-    minHeight?: { xs?: number; sm?: number; md?: number; lg?: number }
+    minHeight?: { xs?: number; sm?: number; md?: number; lg?: number; xl?: number }
 }
 
 const SectionCard = ({ minHeight, sm, objectPosition, textWidth, backgroundColor, buttonText, url, title, shortContent, imgSrc, imgAlt, reverse, loading, children }: Props) => {
@@ -46,7 +46,7 @@ const SectionCard = ({ minHeight, sm, objectPosition, textWidth, backgroundColor
                 width: '100%'
             }}>
                 <Stack sx={{
-                    minHeight: minHeight ?? { xs: '200px', sm: '250px' },
+                    minHeight: minHeight ?? { xs: '200px', sm: '300px' },
                     height: '100%',
                     borderRadius: backgroundColor ? '0px' : '5px',
                     width: '100%',
@@ -90,7 +90,7 @@ const SectionCard = ({ minHeight, sm, objectPosition, textWidth, backgroundColor
                 </Typography>}
 
                 {shortContent && <Typography variant='body1'
-                    sx={{ pt: 1 }}
+                    sx={{ pt: 2 }}
                 >
                     {loading ? <>
                         <Skeleton />
@@ -98,7 +98,9 @@ const SectionCard = ({ minHeight, sm, objectPosition, textWidth, backgroundColor
                         <Skeleton />
                     </> : `${shortContent}`}
                 </Typography>}
-                {children}
+                <Stack pt={2}>
+                    {children}
+                </Stack>
                 {url && <Typography sx={{
                     mt: 2,
                     height: '100%',

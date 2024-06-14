@@ -88,8 +88,8 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
                 <SectionCard
                     sm='column'
                     objectPosition='top'
-                    minHeight={{ sm: 400 }}
-                    imgSrc='/images/relocation-services/relocation-assistance.png'
+                    minHeight={{ xs: 300, sm: 400, md: 400, lg: 400, xl: 400 }}
+                    imgSrc='/images/relocation-services/where-to-start.png'
                     imgAlt='relocation assistance'
                     title={'Relocation Assistance'}>
                     <Typography>
@@ -168,10 +168,11 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
                 </MaxWidthContainer>
             </Stack>
 
-            <IconsSection lg={3} md={3} sm={6} xs={12} backgroundColor={'#fff'}
+            <IconsSection mobileCenter lg={3} md={3} sm={6} xs={12} backgroundColor={'#fff'}
                 color='#000' align={'flex-start'} textAlign={'left'}
                 title={"Our goal will always be a moving experience"}
                 content={iconsSection2Content} />
+
             <VideoArea hideIcons />
             <LatestArticles />
         </PageLayout>

@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { SectionType } from '@/COMPONENTS/types/CountryType'
 
 type Props = {
+    mobileCenter?: boolean;
     iconsSection?: SectionType
     title?: string;
     subtitle?: string;
@@ -26,11 +27,11 @@ type Props = {
     }[];
 }
 
-const IconsSection = ({ iconsSection, subtitle, content, title, backgroundColor, color, align, textAlign, lg, md, sm, xs }: Props) => {
+const IconsSection = ({ mobileCenter, iconsSection, subtitle, content, title, backgroundColor, color, align, textAlign, lg, md, sm, xs }: Props) => {
     const renderListSection = iconsSection?.sectionCards?.map((c, i) => {
         return (
             <Grid key={i} item lg={lg ?? 2} md={md ?? 4} sm={sm ?? 6} xs={xs ?? 12}
-                sx={{ display: 'flex', flexDirection: 'column', alignItems: align ?? 'center' }} width={'100%'}>
+                sx={{ display: 'flex', flexDirection: 'column', alignItems: (mobileCenter ? { xs: 'center', sm: 'flex-start' } : align) ?? 'center' }} width={'100%'}>
                 <Image
                     src={process.env.NEXT_PUBLIC_API_URL + c.image?.data?.attributes?.url ?? undefined}
                     alt={c.image?.data?.attributes?.alternativeText ?? c.title}
@@ -47,7 +48,7 @@ const IconsSection = ({ iconsSection, subtitle, content, title, backgroundColor,
                     fontWeight={600} lineHeight={1.2} pt={2} pb={.5}>
                     {c.title}
                 </Typography>
-                <Typography textAlign={textAlign ?? 'center'} color={color ?? '#fff'} maxWidth={textAlign ? { xs: '90%', lg: '100%' } : { xs: '60%', lg: '80%' }} lineHeight={1.2}>
+                <Typography textAlign={(mobileCenter ? { xs: 'center', sm: 'flex-start' } : textAlign) ?? 'center'} color={color ?? '#fff'} maxWidth={textAlign ? { xs: '90%', lg: '100%' } : { xs: '60%', lg: '80%' }} lineHeight={1.2}>
                     {c.shortContent}
                 </Typography>
             </Grid>
@@ -56,7 +57,7 @@ const IconsSection = ({ iconsSection, subtitle, content, title, backgroundColor,
     const renderList = content?.map((c, i) => {
         return (
             <Grid key={i} item lg={lg ?? 2} md={md ?? 4} sm={sm ?? 6} xs={xs ?? 12}
-                sx={{ display: 'flex', flexDirection: 'column', alignItems: align ?? 'center' }} width={'100%'}>
+                sx={{ display: 'flex', flexDirection: 'column', alignItems: (mobileCenter ? { xs: 'center', sm: 'flex-start' } : align) ?? 'center' }} width={'100%'}>
                 <Image
                     src={`/icons/${c.icon}`}
                     alt={c.title}
@@ -73,7 +74,7 @@ const IconsSection = ({ iconsSection, subtitle, content, title, backgroundColor,
                     fontWeight={600} lineHeight={1.2} pt={2} pb={.5}>
                     {c.title}
                 </Typography>
-                <Typography textAlign={textAlign ?? 'center'} color={color ?? '#fff'} maxWidth={textAlign ? { xs: '90%', lg: '100%' } : { xs: '60%', lg: '80%' }} lineHeight={1.2}>
+                <Typography textAlign={(mobileCenter ? { xs: 'center', sm: 'left' } : textAlign) ?? 'center'} color={color ?? '#fff'} maxWidth={textAlign ? { xs: '90%', lg: '100%' } : { xs: '60%', lg: '80%' }} lineHeight={1.2}>
                     {c.text}
                 </Typography>
             </Grid>
@@ -92,7 +93,7 @@ const IconsSection = ({ iconsSection, subtitle, content, title, backgroundColor,
                                 {iconsSection?.sectionSubtitle ?? subtitle}
                             </Typography>}
                     </Stack>
-                    <Grid container flexDirection={'row'} pt={4} spacing={textAlign ? 6 : 0} rowSpacing={{ xs: 6 }}>
+                    <Grid container flexDirection={'row'} pt={4} spacing={textAlign ? 6 : 1} rowSpacing={{ xs: 6 }}>
                         {iconsSection ? renderListSection : renderList}
                     </Grid>
                 </Stack>
