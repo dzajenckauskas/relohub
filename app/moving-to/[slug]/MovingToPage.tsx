@@ -81,7 +81,7 @@ const MovingToPage = ({ country, countriesData }: Props) => {
 
             <FullContentSection fullContent={country?.data.attributes.fullContent} />
 
-            <IconsSection lg={4} md={4} sm={6} xs={12} backgroundColor={'#ededed'}
+            <IconsSection mobileCenter lg={3} md={3} sm={6} xs={12} backgroundColor={'#ededed'}
                 color='#000' align={'flex-start'} textAlign={'left'}
                 title={"Comprehensive Moving Services Tailored to You"}
                 content={listContent} iconsSection={country?.data.attributes?.iconsSection} />

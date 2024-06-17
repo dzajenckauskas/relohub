@@ -168,6 +168,7 @@ body {
 }
 
 .dynamicContent img {
+    padding-top: 18px;
     width: 100%;
     object-fit: cover;
     height: auto;

@@ -48,7 +48,7 @@ const IconsSection = ({ mobileCenter, iconsSection, subtitle, content, title, ba
                     fontWeight={600} lineHeight={1.2} pt={2} pb={.5}>
                     {c.title}
                 </Typography>
-                <Typography textAlign={(mobileCenter ? { xs: 'center', sm: 'flex-start' } : textAlign) ?? 'center'} color={color ?? '#fff'} maxWidth={textAlign ? { xs: '90%', lg: '100%' } : { xs: '60%', lg: '80%' }} lineHeight={1.2}>
+                <Typography textAlign={(mobileCenter ? { xs: 'center', sm: 'left' } : textAlign) ?? 'center'} color={color ?? '#fff'} maxWidth={textAlign ? { xs: '90%', lg: '100%' } : { xs: '60%', lg: '80%' }} lineHeight={1.2}>
                     {c.shortContent}
                 </Typography>
             </Grid>
