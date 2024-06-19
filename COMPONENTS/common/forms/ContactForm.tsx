@@ -46,7 +46,7 @@ const ContactForm = () => {
                 }
             })
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 if (response) {
                     setError(undefined)
                     setSent(true)

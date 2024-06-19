@@ -113,7 +113,6 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
     const [zipinputfocuseddest, setzipinputfocuseddest] = useState(false);
 
 
-    console.log(selectedField);
     useEffect(() => {
         if (listRef.current) {
             const height = listRef.current.offsetHeight;

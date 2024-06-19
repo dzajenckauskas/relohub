@@ -23,6 +23,50 @@ export default function RootLayout({ children }) {
                     `}
                 </Script>}
                 <link
+                    rel="preload"
+                    href="/logo2.png"
+                    as="image"
+                />
+                <link
+                    rel="preload"
+                    href="/fonts/Uniform-Condensed.ttf"
+                    as="font"
+                    type="font/ttf"
+                    crossOrigin="anonymous"
+                />
+                <link
+                    rel="preload"
+                    href="/fonts/Uniform-Condensed-Medium.ttf"
+                    as="font"
+                    type="font/ttf"
+                    crossOrigin="anonymous"
+                />
+                <link
+                    rel="preload"
+                    href="/fonts/Uniform-Condensed-Light.ttf"
+                    as="font"
+                    type="font/ttf"
+                    crossOrigin="anonymous"
+                />
+                <link
+                    rel="preload"
+                    href="/fonts/Uniform-Condensed-Bold.ttf"
+                    as="font"
+                    type="font/ttf"
+                    crossOrigin="anonymous"
+                />
+                <link
+                    rel="preload"
+                    href="/fonts/Uniform-Condensed-Black.ttf"
+                    as="font"
+                    type="font/ttf"
+                    crossOrigin="anonymous"
+                />
+
+
+
+
+                <link
                     rel="apple-touch-icon"
                     sizes="180x180"
                     href="/favicons/apple-touch-icon.png"

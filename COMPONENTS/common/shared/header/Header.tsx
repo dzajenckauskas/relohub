@@ -155,10 +155,11 @@ export default function Header() {
 
                     <Link passHref href={'/'} style={{ position: 'relative', width: 140, height: 40 }}>
                         <Image
-                            fill
-                            src={"/logo2.png"}
+                            src="/logo2.png"
                             alt="logo"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw"
+                            width={140}
+                            height={40}
+                            priority // This helps in preloading the image
                             style={{ objectFit: "contain" }}
                         />
                     </Link>
@@ -234,6 +235,3 @@ export default function Header() {
 
     );
 }
-
-
-{/* <svg className="MuiSvgIcon-root MuiSvgIcon-colorSecondary MuiSvgIcon-fontSizeLarge css-kstv82-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="EastIcon"><path d="m15 5-1.41 1.41L18.17 11H2v2h16.17l-4.59 4.59L15 19l7-7z"></path></svg> */ }
