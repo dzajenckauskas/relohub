@@ -63,9 +63,6 @@ export default function RootLayout({ children }) {
                     crossOrigin="anonymous"
                 />
 
-
-
-
                 <link
                     rel="apple-touch-icon"
                     sizes="180x180"
@@ -89,7 +86,6 @@ export default function RootLayout({ children }) {
                     content="9OrdpSBzrVlAPw36L_LZtXnMywNGG2R59g0Ix6ZFQzc"
                 />
             </head>
-
             <body>
                 {children}
             </body>
