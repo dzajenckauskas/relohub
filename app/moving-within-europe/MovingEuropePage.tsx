@@ -155,6 +155,7 @@ const MovingEuropePage = ({ countriesData }: Props) => {
                         </Typography>
                     </SectionCard>
                     <SectionCard
+                        minHeight={{ xs: 400, sm: 400, md: 300, lg: 300, xl: 300 }}
                         imgSrc='/images/moving-to-europe/get-in-touch-today.png'
                         imgAlt='get in touch today'
                         title={'Get in Touch Today'} buttonText='Get in touch'

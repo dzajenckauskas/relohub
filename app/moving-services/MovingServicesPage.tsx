@@ -176,6 +176,7 @@ const MovingServicesPage = ({ countriesData }: Props) => {
                         </Stack>
                         <Stack pb={8} spacing={4}>
                             <SectionCard
+                                minHeight={{ xs: 400, sm: 400, md: 300, lg: 300, xl: 300 }}
                                 imgSrc='/images/moving-to-europe/get-in-touch-today.png'
                                 imgAlt='get in touch'
                                 buttonText='Get in Touch'

@@ -162,6 +162,7 @@ const MovingOverseasPage = ({ countriesData }: Props) => {
                         <Stack pb={8}>
                             <SectionCard
                                 objectPosition='top'
+                                minHeight={{ xs: 400, sm: 400, md: 300, lg: 300, xl: 300 }}
                                 sm='column'
                                 imgSrc='/images/moving-overseas/start-journey.png'
                                 imgAlt='start journey'

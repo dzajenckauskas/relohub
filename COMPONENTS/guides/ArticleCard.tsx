@@ -41,7 +41,7 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                     overflow: 'hidden',
                 }}>
                     <Stack sx={{
-                        height: { xs: '200px', md: '250px' },
+                        height: { xs: '250px', md: '250px' },
                         borderTopRightRadius: '5px',
                         borderTopLeftRadius: '5px',
                         width: '100%',
@@ -61,7 +61,7 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             style={{
-                                objectFit: 'cover'
+                                objectFit: 'cover',
                             }}
                         />}
                     </Stack>
@@ -86,7 +86,7 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
                     </Typography>
                 </Link>
 
-                <Typography variant='body1' sx={{ pt: 1, minHeight: '10rem', maxHeight: '10rem', overflow: 'hidden' }}>
+                <Typography variant='body1' sx={{ pt: 1, minHeight: { xs: '6rem', sm: '6rem', md: '10rem' }, maxHeight: '10rem', overflow: 'hidden' }}>
                     {loading ? <>
                         <Skeleton />
                         <Skeleton />

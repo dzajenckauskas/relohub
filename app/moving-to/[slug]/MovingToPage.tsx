@@ -97,6 +97,7 @@ const MovingToPage = ({ country, countriesData }: Props) => {
                     <Stack >
                         <Stack py={8}>
                             <SectionCard
+                                minHeight={{ xs: 400, sm: 400, md: 300, lg: 300, xl: 300 }}
                                 textWidth={'80%'}
                                 buttonText='Get in touch'
                                 url='#get-in-touch'

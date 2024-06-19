@@ -133,6 +133,7 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
                 <MaxWidthContainer>
                     <Stack pb={8} pt={8} spacing={4} width={'100%'}>
                         <SectionCard
+                            minHeight={{ xs: 400, sm: 400, md: 300, lg: 300, xl: 300 }}
                             imgSrc='/images/moving-to-europe/get-in-touch-today.png'
                             imgAlt='get-in-touch-today'
                             buttonText='Get in Touch'
