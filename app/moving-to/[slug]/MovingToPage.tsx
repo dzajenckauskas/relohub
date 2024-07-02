@@ -1,7 +1,6 @@
 'use client'
 import { FlagIllustration } from '@/COMPONENTS/FlagIllustration'
 import { CountriesDropdownList } from '@/COMPONENTS/common/CountriesDropdownList'
-import { ExpandButton } from '@/COMPONENTS/common/ExpandButton'
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer'
 import PageLayout from '@/COMPONENTS/common/PageLayout'
 import IconsSection from '@/COMPONENTS/common/sections/IconsSection'
@@ -18,12 +17,11 @@ import Typography from '@mui/material/Typography'
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from 'next-share'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
-import MovingToPageHero from './MovingToPageHero'
-import "/STYLES/svg-style.css"
+import CardsSection from './CardsSection'
 import FaqSection from './FaqSection'
 import FullContentSection from './FullContentSection'
-import CardsSection from './CardsSection'
+import MovingToPageHero from './MovingToPageHero'
+import "/STYLES/svg-style.css"
 
 type Props = {
     country?: CountryResponseType;
@@ -81,7 +79,7 @@ const MovingToPage = ({ country, countriesData }: Props) => {
 
             <FullContentSection fullContent={country?.data.attributes.fullContent} />
 
-            <IconsSection mobileCenter lg={3} md={3} sm={6} xs={12} backgroundColor={'#ededed'}
+            <IconsSection mobileCenter lg={4} md={4} sm={12} xs={12} backgroundColor={'#ededed'}
                 color='#000' align={'flex-start'} textAlign={'left'}
                 title={"Comprehensive Moving Services Tailored to You"}
                 content={listContent} iconsSection={country?.data.attributes?.iconsSection} />

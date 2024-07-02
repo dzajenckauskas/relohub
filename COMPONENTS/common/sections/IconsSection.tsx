@@ -31,7 +31,7 @@ const IconsSection = ({ mobileCenter, iconsSection, subtitle, content, title, ba
     const renderListSection = iconsSection?.sectionCards?.map((c, i) => {
         return (
             <Grid key={i} item lg={lg ?? 2} md={md ?? 4} sm={sm ?? 6} xs={xs ?? 12}
-                sx={{ display: 'flex', flexDirection: 'column', alignItems: (mobileCenter ? { xs: 'center', sm: 'flex-start' } : align) ?? 'center' }} width={'100%'}>
+                sx={{ display: 'flex', flexDirection: 'column', alignItems: (mobileCenter ? { xs: 'center', md: 'flex-start' } : align) ?? 'center' }} width={'100%'}>
                 <Image
                     src={process.env.NEXT_PUBLIC_API_URL + c.image?.data?.attributes?.url ?? undefined}
                     alt={c.image?.data?.attributes?.alternativeText ?? c.title}
@@ -48,7 +48,7 @@ const IconsSection = ({ mobileCenter, iconsSection, subtitle, content, title, ba
                     fontWeight={600} lineHeight={1.2} pt={2} pb={.5}>
                     {c.title}
                 </Typography>
-                <Typography textAlign={(mobileCenter ? { xs: 'center', sm: 'left' } : textAlign) ?? 'center'} color={color ?? '#fff'} maxWidth={textAlign ? { xs: '90%', lg: '100%' } : { xs: '60%', lg: '80%' }} lineHeight={1.2}>
+                <Typography textAlign={(mobileCenter ? { xs: 'center', md: 'left' } : textAlign) ?? 'center'} color={color ?? '#fff'} maxWidth={textAlign ? { xs: '90%', lg: '100%' } : { xs: '60%', lg: '80%' }} lineHeight={1.2}>
                     {c.shortContent}
                 </Typography>
             </Grid>
@@ -57,7 +57,7 @@ const IconsSection = ({ mobileCenter, iconsSection, subtitle, content, title, ba
     const renderList = content?.map((c, i) => {
         return (
             <Grid key={i} item lg={lg ?? 2} md={md ?? 4} sm={sm ?? 6} xs={xs ?? 12}
-                sx={{ display: 'flex', flexDirection: 'column', alignItems: (mobileCenter ? { xs: 'center', sm: 'flex-start' } : align) ?? 'center' }} width={'100%'}>
+                sx={{ display: 'flex', flexDirection: 'column', alignItems: (mobileCenter ? { xs: 'center', md: 'flex-start' } : align) ?? 'center' }} width={'100%'}>
                 <Image
                     src={`/icons/${c.icon}`}
                     alt={c.title}
@@ -74,7 +74,7 @@ const IconsSection = ({ mobileCenter, iconsSection, subtitle, content, title, ba
                     fontWeight={600} lineHeight={1.2} pt={2} pb={.5}>
                     {c.title}
                 </Typography>
-                <Typography textAlign={(mobileCenter ? { xs: 'center', sm: 'left' } : textAlign) ?? 'center'} color={color ?? '#fff'} maxWidth={textAlign ? { xs: '90%', lg: '100%' } : { xs: '60%', lg: '80%' }} lineHeight={1.2}>
+                <Typography textAlign={(mobileCenter ? { xs: 'center', md: 'left' } : textAlign) ?? 'center'} color={color ?? '#fff'} maxWidth={textAlign ? { xs: '90%', lg: '100%' } : { xs: '60%', lg: '80%' }} lineHeight={1.2}>
                     {c.text}
                 </Typography>
             </Grid>
