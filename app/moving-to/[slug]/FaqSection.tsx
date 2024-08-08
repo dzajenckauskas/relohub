@@ -33,7 +33,7 @@ const FaqSection = ({ faqs }: Props) => {
                 </div>
 
                 {clicked === faq.question ? (
-                    <p className="faqfaqinsidep">{faq.answer}</p>
+                    <p className="dynamicContent faqfaqinsidep" dangerouslySetInnerHTML={{ __html: faq.fullAnswer }}></p>
                 ) : null}
             </div>
         )
