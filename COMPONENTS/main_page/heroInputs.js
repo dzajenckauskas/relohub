@@ -152,6 +152,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
             body: JSON.stringify({ country }),
         });
 
+
         if (res.ok) {
             let data = await res.json();
 
@@ -237,64 +238,57 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
         enableButton(enable ? { ...state } : false);
     }, [state, edit]);
 
+    function normalizeString(str) {
+        return str?.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
     function citiesDropdown() {
         let arr = [];
+        const normalizeInput = inputletter
+            ? normalizeString(inputletter.toLowerCase())
+            : normalizeString(inputvalue.toLowerCase());
+
         if (selectedField === inpt[2].label) {
             if (inputletter) {
                 arr = citiesfrom.filter((city) => {
+                    const normalizedCityName = normalizeString(city.name?.toLowerCase());
                     if (
-                        city.name
-                            ?.toLowerCase()
-                            .startsWith(inputletter.toLowerCase()) ||
-                        (city.length === 1 &&
-                            city
-                                .toLowerCase()
-                                .startsWith(inputletter.toLowerCase()))
+                        normalizedCityName?.startsWith(normalizeInput) ||
+                        (city.length === 1 && normalizeString(city.toLowerCase()).startsWith(normalizeInput))
                     ) {
                         return city;
                     }
                 });
             } else {
                 arr = citiesfrom.filter((city) => {
+                    const normalizedCityName = normalizeString(city.name?.toLowerCase());
                     if (
-                        city.name
-                            ?.toLowerCase()
-                            .startsWith(inputvalue.toLowerCase()) ||
-                        (city.length === 1 &&
-                            city
-                                .toLowerCase()
-                                .startsWith(inputvalue.toLowerCase()))
+                        normalizedCityName?.startsWith(normalizeInput) ||
+                        (city.length === 1 && normalizeString(city.toLowerCase()).startsWith(normalizeInput))
                     ) {
                         return city;
                     }
                 });
             }
         }
+
         if (selectedField === inpt[3].label) {
             if (inputletter) {
                 arr = citiesto.filter((city) => {
+                    const normalizedCityName = normalizeString(city.name?.toLowerCase());
                     if (
-                        city.name
-                            ?.toLowerCase()
-                            .startsWith(inputletter.toLowerCase()) ||
-                        (city.length === 1 &&
-                            city
-                                .toLowerCase()
-                                .startsWith(inputletter.toLowerCase()))
+                        normalizedCityName?.startsWith(normalizeInput) ||
+                        (city.length === 1 && normalizeString(city.toLowerCase()).startsWith(normalizeInput))
                     ) {
                         return city;
                     }
                 });
             } else {
                 arr = citiesto.filter((city) => {
+                    const normalizedCityName = normalizeString(city.name?.toLowerCase());
                     if (
-                        city.name
-                            ?.toLowerCase()
-                            .startsWith(inputvalue.toLowerCase()) ||
-                        (city.length === 1 &&
-                            city
-                                .toLowerCase()
-                                .startsWith(inputvalue.toLowerCase()))
+                        normalizedCityName?.startsWith(normalizeInput) ||
+                        (city.length === 1 && normalizeString(city.toLowerCase()).startsWith(normalizeInput))
                     ) {
                         return city;
                     }
