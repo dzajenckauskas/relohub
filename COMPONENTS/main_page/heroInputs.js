@@ -296,8 +296,6 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
             }
         }
 
-        console.log(arr, "arrarrarr");
-
         const Row = ({ index, style }) => {
             const el = arr[index];
             return (
