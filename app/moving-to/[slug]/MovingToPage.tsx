@@ -76,9 +76,9 @@ const MovingToPage = ({ country, countriesData }: Props) => {
             <CardsSection countryName={countryName} cardsSection={country?.data.attributes?.cardsSection} />
 
             <FaqSection faqs={country.data.attributes.faqs} />
-
-            <FullContentSection fullContent={country?.data.attributes.fullContent} />
-
+            <MaxWidthContainer sx={{ py: { xs: 4, md: 8 }, flexDirection: 'column' }}>
+                <FullContentSection fullContent={country?.data.attributes.fullContent} />
+            </MaxWidthContainer>
             <IconsSection mobileCenter lg={4} md={4} sm={12} xs={12} backgroundColor={'#ededed'}
                 color='#000' align={'flex-start'} textAlign={'left'}
                 title={"Comprehensive Moving Services Tailored to You"}

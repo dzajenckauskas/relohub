@@ -17,6 +17,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { InstantQuoteComponent } from '@/COMPONENTS/common/InstantQuoteComponent';
 import BreadcrumbsComponent from '@/COMPONENTS/common/shared/BreadcrumbsComponent';
+import FullContentSection from '@/app/moving-to/[slug]/FullContentSection';
 
 type Props = {
     article?: ArticleResponseType;
@@ -206,9 +207,10 @@ const ArticlePage = ({ article }: Props) => {
                             </Stack>
                         </Stack>
                     </Stack>
-                    <Stack sx={{ maxWidth: 'md', }}>
+                    {/* <Stack sx={{ maxWidth: 'md', }}>
                         <Typography component={'div'} className='dynamicContent' dangerouslySetInnerHTML={{ __html: article?.data.attributes.fullContent }} />
-                    </Stack>
+                    </Stack> */}
+                    <FullContentSection fullContent={article?.data.attributes.fullContent} />
                     <Stack width={'100%'} sx={{ maxWidth: 'md', px: { xs: 2, md: 0 } }}>
                         <Stack direction={'row'} justifyContent={'flex-start'} width={'100%'}>
                             <Typography sx={{
