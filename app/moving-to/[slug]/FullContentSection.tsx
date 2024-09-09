@@ -1,34 +1,54 @@
-import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer';
 import TextBanner from '@/COMPONENTS/common/sections/TextBanner';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import DOMPurify from 'dompurify'; // Library to sanitize HTML content
-import parse, { Element, HTMLReactParserOptions } from 'html-react-parser'; // Library to parse HTML and replace nodes
+import DOMPurify from 'dompurify';
+import parse, { Element, HTMLReactParserOptions } from 'html-react-parser';
+
+// SSR-safe setup for DOMPurify
+let purify;
+if (typeof window === 'undefined') {
+    const { JSDOM } = require('jsdom');
+    const window = new JSDOM('').window;
+    purify = DOMPurify(window); // SSR-compatible DOMPurify instance
+} else {
+    purify = DOMPurify;
+}
 
 type Props = {
     fullContent: string;
 };
 
 const FullContentSection = ({ fullContent }: Props) => {
-    // Sanitize the HTML to prevent XSS attacks
-    const sanitizedContent = DOMPurify.sanitize(fullContent);
-    // Define the options to replace custom HTML tags with React components
+    // Ensure safe purify usage
+    const sanitizedContent = purify ? purify.sanitize(fullContent) : fullContent;
+
     const options: HTMLReactParserOptions = {
         replace: (domNode) => {
-            // Check if the node is an instance of Element and matches <custom-component> tag
-            if (domNode instanceof Element && domNode.tagName === 'div') {
-                // Replace the custom tag with the ServicesSection React component
-                return <>
-                    <Stack sx={{ width: "100%", position: 'relative' }}>
-                        <TextBanner />
-                    </Stack>
-                </>;
+            try {
+                if (domNode instanceof Element) {
+                    if (domNode.tagName === 'div') {
+                        return (
+                            <Stack sx={{ width: '100%', position: 'relative' }}>
+                                <TextBanner />
+                            </Stack>
+                        );
+                    }
+                }
+            } catch (error) {
+                console.error('Error replacing element:', error);
+                return <Typography>Error rendering this part of the content</Typography>;
             }
         },
     };
 
-    // Parse the sanitized HTML and replace custom tags with components
-    const parsedContent = parse(sanitizedContent, options);
+    let parsedContent;
+    try {
+        parsedContent = parse(sanitizedContent, options);
+    } catch (error) {
+        console.error('Parsing error:', error);
+        parsedContent = <Typography>Error rendering content</Typography>;
+    }
+
     return (
         <Stack sx={{ maxWidth: 'md' }}>
             <Typography component="div" className="dynamicContent">
