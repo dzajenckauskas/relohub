@@ -24,7 +24,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 export default async function BlogCategoryPage({ params }) {
     const category = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/article-categories/${params.category}`)
     const articleContinents = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/article-continents`)
-    const articles = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/articles?filters[articleCategory][key][$eq]=${params.category}&populate=seo,image,articleCategory,articleContinents`)
+    const articles = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/articles?filters[articleCategory][key][$eq]=${params.category}&populate=seo,image,articleCategory,articleContinents&pagination[pageSize]=50`)
     return (
         <GuidesCategoryPage articles={articles} category={category.data} articleContinents={articleContinents} />
     );
