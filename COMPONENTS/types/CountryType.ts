@@ -1,6 +1,38 @@
 import { ImagesType, SingleImageType } from "./ImageTypes";
 import { MetaType } from "./MetaTypes";
 
+export type VideoAttributesType = {
+    name: string;
+    alternativeText: string | null;
+    caption: string | null;
+    width: number | string | null;
+    height: number | string | null;
+    formats: any;
+    hash: string;
+    ext: string;
+    mime: string;
+    size: number;
+    url: string;
+    previewUrl: string | null,
+    provider: string;
+    provider_metadata: any | null,
+    createdAt: Date;
+    updatedAt: Date;
+}
+export type VideoDataType = {
+    id?: number;
+    attributes?: VideoAttributesType;
+}
+export type VideoType = {
+    data?: VideoDataType;
+}
+export type VideSectionType = {
+    id: number;
+    title?: string;
+    subtitle?: string;
+    video?: VideoType;
+}
+
 export type CountriesResponseType = {
     data: CountryDataType[];
     meta: MetaType;
@@ -28,6 +60,7 @@ export type CountryAttributesType = {
     cardsSection: SectionType;
     iconsSection: SectionType;
     listSection: SectionType;
+    videoSection?: VideSectionType;
 }
 
 export type FaqType = {

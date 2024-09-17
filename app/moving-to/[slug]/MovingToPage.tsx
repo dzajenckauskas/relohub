@@ -22,6 +22,7 @@ import FaqSection from './FaqSection'
 import FullContentSection from './FullContentSection'
 import MovingToPageHero from './MovingToPageHero'
 import "/STYLES/svg-style.css"
+import VideoSection from '@/COMPONENTS/main_page/VideoSection'
 
 type Props = {
     country?: CountryResponseType;
@@ -41,7 +42,6 @@ const MovingToPage = ({ country, countriesData }: Props) => {
         { title: "Experience the Deliver1 Difference", text: `At Deliver1, we believe that moving to ${countryName} should be an exciting adventure, not a stressful ordeal. Choose us for a seamless, transparent, and personalised moving experience that exceeds your expectations.` },
         { title: "Ready to Start Your Journey?", text: `Contact us today for a free, no-obligation quote and let us help you turn your dream of living in ${countryName} into a reality.` },
     ];
-
 
     return (
         <PageLayout>
@@ -73,6 +73,8 @@ const MovingToPage = ({ country, countriesData }: Props) => {
                 </Stack>
             </div>
             <CountriesDropdownList countriesData={countriesData} />
+            {country?.data?.attributes?.videoSection?.video?.data?.attributes?.url && <VideoSection hideIcons videoSection={country?.data?.attributes?.videoSection} />}
+
             <CardsSection countryName={countryName} cardsSection={country?.data.attributes?.cardsSection} />
 
             <FaqSection faqs={country.data.attributes.faqs} />

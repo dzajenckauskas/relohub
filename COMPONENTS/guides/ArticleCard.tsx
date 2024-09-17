@@ -26,6 +26,7 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
         ?? '/'}`
     const imgAlt = article?.attributes?.image?.data?.attributes?.alternativeText
         ?? article?.attributes.title
+
     return (
         <Paper key={article?.id}
             sx={{
