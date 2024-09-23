@@ -12,6 +12,7 @@ import Calendar from "react-calendar";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC);
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+// import { theme } from '@/COMPONENTS/common/shared/Theme'
 
 export default function OfferPage() {
     const globalsectionleft = useRef(null);
@@ -574,6 +575,8 @@ export default function OfferPage() {
                         <h3 className="offerdeliverytitle">Collect from...</h3>
 
                         <button
+                            // disabled={!state.from_city}
+                            // style={{ pointerEvents: !state.from_city ? 'none' : 'auto', backgroundColor: !state.from_city ? 'black' : `${theme.palette.primary.main}` }}
                             className="offerdeliveryeditbtn"
                             onClick={() => {
                                 let element = globalsectionleft.current;
@@ -588,7 +591,7 @@ export default function OfferPage() {
                                     sectionleft.current.style.width = `100%`;
                                     sectionleft.current.style.top = `${0}px`;
                                     sectionleft.current.style.left = `${0}px`;
-                                    setstate(editstate);
+                                    // setstate(editstate);
                                 }
                                 setedit(edit === "from" ? null : "from");
                             }}
@@ -614,8 +617,19 @@ export default function OfferPage() {
                             </p>
                         </label>
                     )}
+                    {edit === "from" ? null : (
+                        state.from_postCode && <label className="offerdeliverylabel">
+                            {state.from_country === "united states" ? "Zip" : "Post"} code:
+                            <p className="offerdeliveryinput">
+                                {state.from_postCode || ""}
+                            </p>
+                        </label>
+                    )}
                     {edit === "from" ? (
                         <HeroInputs
+                            isOffer
+                            state={state}
+                            setstate={setstate}
                             newstate={state}
                             edit={edit}
                             enableButton={(obj) => {
@@ -657,7 +671,7 @@ export default function OfferPage() {
 
                                 if (edit) {
                                     sectionright.current.style.width = `100%`;
-                                    setstate(editstate);
+                                    // setstate(editstate);
                                 }
 
                                 setedit(edit === "to" ? null : "to");
@@ -684,8 +698,19 @@ export default function OfferPage() {
                             </p>
                         </label>
                     )}
+                    {edit === "to" ? null : (
+                        state.to_postCode && <label className="offerdeliverylabel">
+                            {state.to_country === "united states" ? "Zip" : "Post"} code:
+                            <p className="offerdeliveryinput">
+                                {state.to_postCode || ""}
+                            </p>
+                        </label>
+                    )}
                     {edit === "to" ? (
                         <HeroInputs
+                            isOffer
+                            state={state}
+                            setstate={setstate}
                             newstate={state}
                             edit={edit}
                             enableButton={(obj) => {

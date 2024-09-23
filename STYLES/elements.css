@@ -434,10 +434,13 @@
     grid-column: 2;
 }
 
+.borderRadius {
+    border-radius: 4px;
+}
+
 .dropdowninputsearch {
     height: 42px;
     width: 100%;
-    border-radius: 4px;
     outline: none;
     border: none;
     background: var(--light_grey);
