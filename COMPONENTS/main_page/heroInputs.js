@@ -105,7 +105,6 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
     const [zipinputfocused, setzipinputfocused] = useState(false);
     const [zipinputfocuseddest, setzipinputfocuseddest] = useState(false);
 
-
     useEffect(() => {
         if (listRef.current) {
             const height = listRef.current.offsetHeight;
@@ -220,11 +219,11 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
             enable = false;
         }
 
-        if ((state.from_country === "united states" || state.from_country === "united kingdom") && state.from_postCode == '') {
+        if ((state.from_country.toLowerCase() === "united states" || state.from_country.toLowerCase() === "united kingdom") && state.from_postCode == '') {
             enable = false;
         }
 
-        if ((state.to_country === "united states" || state.to_country === "united kingdom") && state.to_postCode == '') {
+        if ((state.to_country.toLowerCase() === "united states" || state.to_country.toLowerCase() === "united kingdom") && state.to_postCode == '') {
             enable = false;
         }
 
@@ -305,8 +304,8 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
                         switch (selectedField) {
                             case inpt[2].label:
                                 if (
-                                    state.from_country === "united states" ||
-                                    state.from_country === "united kingdom"
+                                    state.from_country.toLowerCase() === "united states" ||
+                                    state.from_country.toLowerCase() === "united kingdom"
                                 ) {
                                     zipfocus.current.focus();
                                 }
@@ -320,8 +319,8 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
                                 break;
                             case inpt[3].label:
                                 if (
-                                    state.to_country === "united states" ||
-                                    state.to_country === "united kingdom"
+                                    state.to_country.toLowerCase() === "united states" ||
+                                    state.to_country.toLowerCase() === "united kingdom"
                                 ) {
                                     zipfocusdest.current.focus();
                                 }
@@ -628,11 +627,11 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
 
     function postcodetxt(txt, frt) {
         return `${edit ? "" : txt}${frt === "from"
-            ? state.from_country === "united kingdom"
+            ? state.from_country.toLowerCase() === "united kingdom"
                 ? " Post "
                 : " Zip "
             : frt === "to"
-                ? state.to_country === "united kingdom"
+                ? state.to_country.toLowerCase() === "united kingdom"
                     ? " Post "
                     : " Zip "
                 : ""
@@ -643,8 +642,8 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
         const arr = [];
 
         if (
-            (state.from_country === "united states" ||
-                state.from_country === "united kingdom")
+            (state.from_country.toLowerCase() === "united states" ||
+                state.from_country.toLowerCase() === "united kingdom" || isOffer)
         ) {
             if (!edit || edit === "from") {
                 arr.push(
@@ -670,7 +669,7 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
                             }
                             style={{
                                 borderRadius: '0px !important',
-                                border: ((state.from_country === "united states" || state.from_country === "united kingdom") && state.from_postCode == '') ? `2px solid ${theme.palette.secondary.main}` : ''
+                                border: ((state.from_country.toLowerCase() === "united states" || state.from_country.toLowerCase() === "united kingdom") && state.from_postCode == '') ? `2px solid ${theme.palette.secondary.main}` : ''
                             }}
                             onChange={(e) => {
                                 setstate({
@@ -679,7 +678,7 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
                                 });
                             }}
                         ></input>
-                        {((state.from_country === "united states" || state.from_country === "united kingdom") && state.from_postCode == '') && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.from_country === 'united states' ? "Zip" : "Post"} code is mandatory`} />}
+                        {((state.from_country.toLowerCase() === "united states" || state.from_country.toLowerCase() === "united kingdom") && state.from_postCode == '') && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.from_country.toLowerCase() === 'united states' ? "Zip" : "Post"} code is mandatory`} />}
                         {zipinputfocused && !edit ? (
                             <button
                                 className="postcodeconfirmbutton"
@@ -697,8 +696,8 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
             }
         }
         if (
-            state.to_country === "united states" ||
-            state.to_country === "united kingdom"
+            state.to_country.toLowerCase() === "united states" ||
+            state.to_country.toLowerCase() === "united kingdom" || isOffer
         ) {
             if (!edit || edit === "to") {
                 arr.push(
@@ -723,7 +722,7 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
                             className="dropdowninputsearch  ifukorusinput"
                             value={state.to_postCode}
                             style={{
-                                border: (state.to_country === "united states" || state.to_country === "united kingdom") && state.to_postCode == '' ? `2px solid ${theme.palette.secondary.main}` : ''
+                                border: (state.to_country.toLowerCase() === "united states" || state.to_country.toLowerCase() === "united kingdom") && state.to_postCode == '' ? `2px solid ${theme.palette.secondary.main}` : ''
                             }}
                             onChange={(e) => {
                                 setstate({
@@ -732,7 +731,7 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
                                 });
                             }}
                         ></input>
-                        {(state.to_country === "united states" || state.to_country === "united kingdom") && state.to_postCode == '' && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.to_country === 'united states' ? "Zip" : "Post"} code is mandatory`} />}
+                        {(state.to_country.toLowerCase() === "united states" || state.to_country.toLowerCase() === "united kingdom") && state.to_postCode == '' && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.to_country.toLowerCase() === 'united states' ? "Zip" : "Post"} code is mandatory`} />}
 
                         {zipinputfocuseddest && !edit ? (
                             <button
