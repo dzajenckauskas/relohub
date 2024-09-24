@@ -40,7 +40,7 @@ const TextBanner = () => {
             <Stack width={'100%'} sx={{ position: 'relative', minHeight: { xs: 300, md: 400 } }}>
                 <Image
                     src={'/images/text-banner-image.png'}
-                    // alt={category.attributes.name}
+                    // alt={category.attributes?.name}
                     fill
                     priority
                     // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

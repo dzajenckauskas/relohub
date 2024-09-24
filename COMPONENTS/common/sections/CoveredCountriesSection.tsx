@@ -24,7 +24,7 @@ export const CoveredCountriesSection = ({ articleContinents, countries }: Props)
         };
         return (
             <Grid item xs={6} sm={4} md={3} key={c?.id}>
-                <Link passHref href={`/moving-to/${c.attributes.url}`}>
+                <Link passHref href={`/moving-to/${c.attributes?.url}`}>
                     <Typography variant='body1' sx={{ ':hover': { color: theme.palette.secondary.main }, alignItems: 'center', display: 'flex', gap: 1 }}>
                         <EastIcon fontSize='large' color='secondary' />
                         {capitalizeEachWord(c?.attributes?.name)}
@@ -36,17 +36,17 @@ export const CoveredCountriesSection = ({ articleContinents, countries }: Props)
 
 
     // Move the "Europe" continent to the beginning of the array if found
-    const europeIndex = articleContinents.data.findIndex(ac => ac.attributes.key === 'europe');
+    const europeIndex = articleContinents.data.findIndex(ac => ac.attributes?.key === 'europe');
     if (europeIndex !== -1) {
         const europeContinent = articleContinents.data.splice(europeIndex, 1)[0];
         articleContinents.data.unshift(europeContinent);
     }
     const renderArticleContinents = articleContinents?.data?.map(ac => {
-        const isActive = ac.attributes.key === active;
+        const isActive = ac.attributes?.key === active;
         return (
             <Button
                 key={ac.id}
-                onClick={() => setActive(ac.attributes.name)}
+                onClick={() => setActive(ac.attributes?.name)}
                 style={{
                     padding: '12px 22px',
                     borderRadius: '2px',
@@ -56,7 +56,7 @@ export const CoveredCountriesSection = ({ articleContinents, countries }: Props)
                     color: isActive ? '#fff' : '#e71d5e',
                     textTransform: 'uppercase'
                 }}>
-                {ac.attributes.name}
+                {ac.attributes?.name}
             </Button>
         );
     });

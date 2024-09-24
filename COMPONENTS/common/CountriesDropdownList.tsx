@@ -70,12 +70,12 @@ export const CountriesDropdownList = ({ countriesData }: Props) => {
                         }}
 
                         onChange={(_e, option) => {
-                            router.push(`/moving-to/${option.attributes.url}`)
+                            router.push(`/moving-to/${option.attributes?.url}`)
                         }}
                         renderOption={(props, option) => {
                             return (
                                 <li {...props} key={option.id} style={{ borderBottom: '1px solid #EBEBEB', }}>
-                                    {/* // <Link passHref href={`/moving-to/${option.attributes.url}`} style={{ width: '100%' }}> */}
+                                    {/* // <Link passHref href={`/moving-to/${option.attributes?.url}`} style={{ width: '100%' }}> */}
                                     <Stack
                                         sx={{ width: '100%', cursor: 'pointer', margin: '4px auto' }}>
                                         <Stack direction={'row'} alignItems={'center'} spacing={1}
@@ -85,11 +85,11 @@ export const CountriesDropdownList = ({ countriesData }: Props) => {
                                                 width={24}
                                                 height={16}
                                                 style={{ objectFit: "contain" }}
-                                                src={`https://flagcdn.com/40x30/${option.attributes.iso2.toLowerCase()}.png`}
-                                                alt={`${option.attributes.iso2} flag`}
+                                                src={`https://flagcdn.com/40x30/${option.attributes?.iso2.toLowerCase()}.png`}
+                                                alt={`${option.attributes?.iso2} flag`}
                                             />
                                             <Typography key={option.id}>
-                                                {option.attributes.name}
+                                                {option.attributes?.name}
                                             </Typography>
                                         </Stack>
                                     </Stack>

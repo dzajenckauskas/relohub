@@ -34,7 +34,7 @@ const ArticleCategoryCard = ({ category }: Props) => {
                 }}>
                 <Image
                     src={`${process.env.NEXT_PUBLIC_API_URL}${category?.attributes?.image?.data?.attributes?.formats?.medium?.url ?? category?.attributes?.image?.data?.attributes?.url}`}
-                    alt={category.attributes.name}
+                    alt={category.attributes?.name}
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -64,7 +64,7 @@ const ArticleCategoryCard = ({ category }: Props) => {
                     zIndex: 1,
                     color: '#fff',
                 }}>
-                <Link href={`/guides/${category.attributes.key}`} passHref style={{
+                <Link href={`/guides/${category.attributes?.key}`} passHref style={{
                     display: 'flex', justifyContent: 'space-between', width: '100%'
                 }}>
                     <Typography
@@ -76,7 +76,7 @@ const ArticleCategoryCard = ({ category }: Props) => {
                                 opacity: .8,
                             }
                         }}>
-                        {category.attributes.name}
+                        {category.attributes?.name}
                     </Typography>
                     <LinkArrowButton />
                 </Link>

@@ -15,7 +15,7 @@ type Props = {
 
 const GuidesPage = ({ categories }: Props) => {
     const renderCategories = categories?.data
-        ?.sort((a, b) => a.attributes.name.localeCompare(b.attributes.name))
+        ?.sort((a, b) => a.attributes?.name.localeCompare(b.attributes?.name))
         ?.map((category) => <ArticleCategoryCard category={category} key={category.id} />);
 
     return (

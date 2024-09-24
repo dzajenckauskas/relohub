@@ -29,7 +29,7 @@ type Props = {
     countriesData?: CountriesResponseType;
 }
 const MovingToPage = ({ country, countriesData }: Props) => {
-    const countryName = country.data.attributes.name
+    const countryName = country.data.attributes?.name
     const listContent = [
         { title: "Professional Handling Services", text: "Our skilled team will meticulously handle your possessions, using high-quality materials and proven techniques to safeguard your items throughout their journey.", icon: 'icon10.png' },
         { title: "Stress-Free Door-to-Door Delivery", text: `Sit back and relax as we manage every aspect of your move, from collection at your current residence to delivery and unpacking at your new home in ${countryName}.`, icon: 'icon9.png' },
@@ -77,9 +77,9 @@ const MovingToPage = ({ country, countriesData }: Props) => {
 
             <CardsSection countryName={countryName} cardsSection={country?.data.attributes?.cardsSection} />
 
-            <FaqSection faqs={country.data.attributes.faqs} />
+            <FaqSection faqs={country.data.attributes?.faqs} />
             <MaxWidthContainer sx={{ py: { xs: 4, md: 8 }, flexDirection: 'column' }}>
-                <FullContentSection fullContent={country?.data.attributes.fullContent} />
+                <FullContentSection fullContent={country?.data.attributes?.fullContent} />
             </MaxWidthContainer>
             <IconsSection mobileCenter lg={4} md={4} sm={12} xs={12} backgroundColor={'#ededed'}
                 color='#000' align={'flex-start'} textAlign={'left'}
