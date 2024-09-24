@@ -31,7 +31,7 @@ const GuidesCategoryPage = ({ articles, category, articleContinents }: Props) =>
         )
     })
 
-    const filteredArticles = articles?.data.filter((a: ArticleDataType) => a.attributes?.articleContinents?.data?.find((a) => a.attributes.key === (active)))
+    const filteredArticles = articles?.data.filter((a: ArticleDataType) => a.attributes?.articleContinents?.data?.find((a) => a.attributes?.key === (active)))
     const renderLatestArticles = (active === 'all-posts' ? articles?.data : filteredArticles)?.map((a: ArticleDataType) => {
         return (
             <Grid item lg={3} md={4} sm={6} xs={12} key={a.id}>
@@ -41,10 +41,10 @@ const GuidesCategoryPage = ({ articles, category, articleContinents }: Props) =>
     })
 
     const renderArticleContinents = articleContinents.data.map((ac) => {
-        const isActive = ac.attributes.key === active
+        const isActive = ac.attributes?.key === active
         return (
             <Button key={ac.id}
-                onClick={() => setActive(ac.attributes.key)}
+                onClick={() => setActive(ac.attributes?.key)}
                 style={{
                     padding: '10px 18px',
                     borderRadius: '2px',
@@ -54,7 +54,7 @@ const GuidesCategoryPage = ({ articles, category, articleContinents }: Props) =>
                     color: isActive ? '#fff' : '#e71d5e',
                     textTransform: 'uppercase'
                 }}>
-                {ac.attributes.name}
+                {ac.attributes?.name}
             </Button>
         )
     })

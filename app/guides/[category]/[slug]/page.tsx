@@ -4,14 +4,14 @@ import { Metadata } from "next";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
     const article = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/articles/${params.slug}?populate=seo`)
-    const imageUrl = process.env.NEXT_PUBLIC_API_URL + article.data.attributes.image.data.attributes.url
+    const imageUrl = process.env.NEXT_PUBLIC_API_URL + article.data.attributes?.image.data.attributes?.url
 
     return {
         title: article?.data?.attributes?.seo?.seoTitle,
         description: article?.data?.attributes?.seo?.seoDescription,
         keywords: article?.data?.attributes?.seo?.seoKeywords,
         alternates: {
-            canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/guides/${article?.data?.attributes.articleCategory?.data?.attributes.key}/${params.slug}`,
+            canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/guides/${article?.data?.attributes?.articleCategory?.data?.attributes?.key}/${params.slug}`,
         },
         openGraph: {
             images: [imageUrl]
