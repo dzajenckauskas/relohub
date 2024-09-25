@@ -302,6 +302,19 @@
     filter: grayscale(0);
 }
 
+.videopresentationtroundbuttonNew {
+    width: 120px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: var(--pink_color);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    filter: grayscale(0);
+}
+
 .heroareaiq {
     font-weight: bold;
 }
@@ -615,6 +628,7 @@
 .paywithstripebutton:hover,
 .gitsendbutton:hover,
 .videopresentationtroundbutton:hover,
+.videopresentationtroundbuttonNew:hover,
 /* .getestimatebutton:hover */
 /* .customitemaddbutton:hover, */
 .offerdeliveryeditbtn:hover {

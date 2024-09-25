@@ -1,9 +1,8 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { MaxWidthContainer } from "../common/MaxWidthContainer";
-import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { MaxWidthContainer } from "../common/MaxWidthContainer";
 import { VideSectionType } from "../types/CountryType";
 
 type Props = {
@@ -45,7 +44,7 @@ export default function VideoSection({ hideIcons, videoSection }: Props) {
                         {showvideohide ? (
                             <div className="videoareaplaybtnwrp">
                                 <button
-                                    className="videopresentationtroundbutton"
+                                    className="videopresentationtroundbuttonNew"
                                     onClick={handleButtonClick}
                                 >
                                     <Image
