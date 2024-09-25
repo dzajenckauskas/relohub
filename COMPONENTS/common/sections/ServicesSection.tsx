@@ -40,7 +40,7 @@ export const ServicesSection = ({ }: Props) => {
         },
         {
             name: "Air freight",
-            slogan: "door-to-door",
+            slogan: "door-to-airport",
             number: "04"
         },
         {
