@@ -842,7 +842,7 @@ export default function OfferPage() {
                                 <input
                                     key={i}
                                     spellCheck={false}
-                                    value={el.f === 'first_last_name' ? state[el.f]?.replace('_', " ") : state[el.f] || ""}
+                                    value={el.f === 'first_last_name' ? state[el.f]?.replaceAll('_', " ") : state[el.f] || ""}
                                     placeholder={el.p}
                                     type={el.t}
                                     className={
