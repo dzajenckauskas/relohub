@@ -12,6 +12,7 @@ import Calendar from "react-calendar";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC);
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { theme } from "@/COMPONENTS/common/shared/Theme";
 // import { theme } from '@/COMPONENTS/common/shared/Theme'
 
 export default function OfferPage() {
@@ -519,6 +520,10 @@ export default function OfferPage() {
             console.log("fetch error:", error);
         }
     }
+    const fromPostCodeRequired = (state.from_country.toLowerCase() === "united states" || state.from_country.toLowerCase() === "united kingdom") && state.from_postCode == ''
+    const toPostCodeRequired = (state.to_country.toLowerCase() === "united states" || state.to_country.toLowerCase() === "united kingdom") && state.to_postCode == ''
+    const toPostZipCodeCheck = state.to_country.toLowerCase() === 'united states' ? "Zip" : "Post"
+    const fromPostZipCodeCheck = state.from_country.toLowerCase() === 'united states' ? "Zip" : "Post"
 
     function checkIfItemsIsNotMissing() {
         let emptylines = [];
@@ -549,6 +554,18 @@ export default function OfferPage() {
         if (!state.Collection_Date) {
             emptylines.push("Date of Collection");
         }
+        if (fromPostCodeRequired) {
+            emptylines.push(`Missing ${fromPostZipCodeCheck} Code to get a price`);
+        }
+        if (toPostCodeRequired) {
+            emptylines.push(`Missing ${toPostZipCodeCheck} Code to get a price`);
+        }
+        if (state.from_city === '') {
+            emptylines.push(`Collection city is required`);
+        }
+        if (state.to_city === '') {
+            emptylines.push(`Delivery city is required`);
+        }
 
         setNotFilledItems(emptylines);
 
@@ -561,7 +578,7 @@ export default function OfferPage() {
 
     function editLeftWrp() {
         return (
-            <section className="offereditglobalsection" ref={globalsectionleft}>
+            <section className="offereditglobalsection" ref={globalsectionleft} style={{ border: (state.from_city === '' || state.from_country === '' || fromPostCodeRequired) && `2px solid ${theme.palette.secondary.main}` }}>
                 <div
                     className={
                         edit === "from"
@@ -604,7 +621,7 @@ export default function OfferPage() {
                         <label className="offerdeliverylabel">
                             Country:
                             <p className="offerdeliveryinput">
-                                {state.from_country || ""}
+                                {state.from_country || <span style={{ color: theme.palette.secondary.main }}>{`Country is required`}</span>}
                             </p>
                         </label>
                     )}
@@ -613,15 +630,15 @@ export default function OfferPage() {
                         <label className="offerdeliverylabel">
                             City:
                             <p className="offerdeliveryinput">
-                                {state.from_city || ""}
+                                {state.from_city || <span style={{ color: theme.palette.secondary.main }}>{`City is required`}</span>}
                             </p>
                         </label>
                     )}
                     {edit === "from" ? null : (
-                        state.from_postCode && <label className="offerdeliverylabel">
-                            {state.from_country === "united states" ? "Zip" : "Post"} code:
+                        <label className="offerdeliverylabel">
+                            {(!!state.from_postCode || fromPostCodeRequired) && <>{fromPostZipCodeCheck} code:</>}
                             <p className="offerdeliveryinput">
-                                {state.from_postCode || ""}
+                                {state.from_postCode || <span style={{ color: theme.palette.secondary.main }}>{fromPostCodeRequired && `Missing  ${fromPostZipCodeCheck} Code to get a price`}</span>}
                             </p>
                         </label>
                     )}
@@ -643,7 +660,7 @@ export default function OfferPage() {
     }
     function editRightWrp() {
         return (
-            <section
+            <section style={{ border: (state.to_city === '' || state.to_country === '' || toPostCodeRequired) && `2px solid ${theme.palette.secondary.main}` }}
                 className="offereditglobalsection"
                 ref={globalsectionright}
             >
@@ -685,7 +702,7 @@ export default function OfferPage() {
                         <label className="offerdeliverylabel">
                             Country:
                             <p className="offerdeliveryinput">
-                                {state.to_country || ""}
+                                {state.to_country || <span style={{ color: theme.palette.secondary.main }}>{`Country is required`}</span>}
                             </p>
                         </label>
                     )}
@@ -694,15 +711,15 @@ export default function OfferPage() {
                         <label className="offerdeliverylabel">
                             City:
                             <p className="offerdeliveryinput">
-                                {state.to_city || ""}
+                                {state.to_city || <span style={{ color: theme.palette.secondary.main }}>{`City is required`}</span>}
                             </p>
                         </label>
                     )}
                     {edit === "to" ? null : (
-                        state.to_postCode && <label className="offerdeliverylabel">
-                            {state.to_country === "united states" ? "Zip" : "Post"} code:
+                        <label className="offerdeliverylabel">
+                            {(!!state.to_postCode || toPostCodeRequired) && <>{toPostZipCodeCheck} code:</>}
                             <p className="offerdeliveryinput">
-                                {state.to_postCode || ""}
+                                {state.to_postCode || <span style={{ color: theme.palette.secondary.main }}>{toPostCodeRequired && `Missing ${toPostZipCodeCheck} Code to get a price`}</span>}
                             </p>
                         </label>
                     )}

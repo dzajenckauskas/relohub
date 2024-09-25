@@ -1,17 +1,21 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function NoPricePopup({ setshownopricepopup }) {
     return (
         <section className="nopricepopupglobalwrp">
             <div className="nopricepopupcenterwrp">
-                <button
-                    className="alotoftextclosebutton"
-                    onClick={() => {
-                        setshownopricepopup(false);
-                    }}
-                >
-                    &#10006;
-                </button>
+                <Link href={'/'} passHref>
+                    <button
+                        className="alotoftextclosebutton"
+                        onClick={() => {
+                            setshownopricepopup(false);
+                        }}
+                    >
+                        &#10006;
+                    </button>
+                </Link>
+
                 <h3>Request has been received</h3>
                 <p>
                     Sit tight, our sales team are looking for the best options
