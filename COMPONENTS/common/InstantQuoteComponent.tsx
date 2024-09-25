@@ -11,6 +11,14 @@ import "/STYLES/medias.css";
 export const InstantQuoteComponent = () => {
     const router = useRouter();
     const [enableButton, setEnableButton] = useState(false);
+    const [state, setstate] = useState({
+        from_city: "",
+        from_country: "",
+        to_city: "",
+        to_country: "",
+        from_postCode: "",
+        to_postCode: "",
+    });
     return (
         <Stack sx={{
             minHeight: { xs: 0, sm: 330 }
@@ -22,7 +30,9 @@ export const InstantQuoteComponent = () => {
                 </span>
                 <span>{" now"}</span>
             </h2>
-            <HeroInputs
+            <HeroInputs isOffer={false}
+                state={state}
+                setstate={setstate}
                 enableButton={(st) => {
                     setEnableButton(st);
                 }} edit={undefined} newstate={undefined} />

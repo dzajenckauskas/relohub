@@ -79,7 +79,7 @@ export const countries = [
     { country: "united states", iso: "US", continent: "North America" },
 ];
 
-export default function HeroInputs({ enableButton, edit, newstate }) {
+export default function HeroInputs({ enableButton, edit, newstate, isOffer, state, setstate }) {
     const listRef = useRef(null);
     const zipfocus = useRef(null);
     const zipfocusdest = useRef(null);
@@ -92,14 +92,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
 
     const [inputs, setinputs] = useState([]);
     const [width, setwidth] = useState(false);
-    const [state, setstate] = useState({
-        from_city: "",
-        from_country: "",
-        to_city: "",
-        to_country: "",
-        from_postCode: "",
-        to_postCode: "",
-    });
+
     const [selectedField, setSelectedField] = useState(null);
     const [inputvalue, setinputvalue] = useState("");
     const [citiesfrom, setcitiesfrom] = useState([]);
@@ -111,7 +104,6 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
     const [fetching, setfetching] = useState(false);
     const [zipinputfocused, setzipinputfocused] = useState(false);
     const [zipinputfocuseddest, setzipinputfocuseddest] = useState(false);
-
 
     useEffect(() => {
         if (listRef.current) {
@@ -227,11 +219,11 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
             enable = false;
         }
 
-        if ((state.from_country === "united states" || state.from_country === "united kingdom") && state.from_postCode == '') {
+        if ((state.from_country.toLowerCase() === "united states" || state.from_country.toLowerCase() === "united kingdom") && state.from_postCode == '') {
             enable = false;
         }
 
-        if ((state.to_country === "united states" || state.to_country === "united kingdom") && state.to_postCode == '') {
+        if ((state.to_country.toLowerCase() === "united states" || state.to_country.toLowerCase() === "united kingdom") && state.to_postCode == '') {
             enable = false;
         }
 
@@ -312,8 +304,8 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                         switch (selectedField) {
                             case inpt[2].label:
                                 if (
-                                    state.from_country === "united states" ||
-                                    state.from_country === "united kingdom"
+                                    state.from_country.toLowerCase() === "united states" ||
+                                    state.from_country.toLowerCase() === "united kingdom"
                                 ) {
                                     zipfocus.current.focus();
                                 }
@@ -327,8 +319,8 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                 break;
                             case inpt[3].label:
                                 if (
-                                    state.to_country === "united states" ||
-                                    state.to_country === "united kingdom"
+                                    state.to_country.toLowerCase() === "united states" ||
+                                    state.to_country.toLowerCase() === "united kingdom"
                                 ) {
                                     zipfocusdest.current.focus();
                                 }
@@ -431,6 +423,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                                 ...prevst,
                                                 from_country: el.country,
                                                 from_city: "",
+                                                from_postCode: "",
                                             };
                                         });
 
@@ -441,6 +434,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                                 ...prevst,
                                                 to_country: el.country,
                                                 to_city: "",
+                                                to_postCode: ""
                                             };
                                         });
                                         break;
@@ -578,7 +572,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                         setinputvalue(e.target.value);
                     }}
                     placeholder="Search list"
-                    className="dropdowninputsearch"
+                    className="dropdowninputsearch borderRadius"
                 ></input>
                 {selectedField === inpt[0].label ||
                     selectedField === inpt[1].label
@@ -633,11 +627,11 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
 
     function postcodetxt(txt, frt) {
         return `${edit ? "" : txt}${frt === "from"
-            ? state.from_country === "united kingdom"
+            ? state.from_country.toLowerCase() === "united kingdom"
                 ? " Post "
                 : " Zip "
             : frt === "to"
-                ? state.to_country === "united kingdom"
+                ? state.to_country.toLowerCase() === "united kingdom"
                     ? " Post "
                     : " Zip "
                 : ""
@@ -648,8 +642,8 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
         const arr = [];
 
         if (
-            state.from_country === "united states" ||
-            state.from_country === "united kingdom"
+            (state.from_country.toLowerCase() === "united states" ||
+                state.from_country.toLowerCase() === "united kingdom" || isOffer)
         ) {
             if (!edit || edit === "from") {
                 arr.push(
@@ -674,7 +668,8 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                     : ""
                             }
                             style={{
-                                border: state.from_postCode == '' ? `2px solid ${theme.palette.secondary.main}` : ''
+                                borderRadius: '0px !important',
+                                border: ((state.from_country.toLowerCase() === "united states" || state.from_country.toLowerCase() === "united kingdom") && state.from_postCode == '') ? `2px solid ${theme.palette.secondary.main}` : ''
                             }}
                             onChange={(e) => {
                                 setstate({
@@ -683,7 +678,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                 });
                             }}
                         ></input>
-                        {state.from_postCode == '' && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.from_country === 'united states' ? "Zip" : "Post"} code is mandatory`} />}
+                        {((state.from_country.toLowerCase() === "united states" || state.from_country.toLowerCase() === "united kingdom") && state.from_postCode == '') && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.from_country.toLowerCase() === 'united states' ? "Zip" : "Post"} code is mandatory`} />}
                         {zipinputfocused && !edit ? (
                             <button
                                 className="postcodeconfirmbutton"
@@ -701,8 +696,8 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
             }
         }
         if (
-            state.to_country === "united states" ||
-            state.to_country === "united kingdom"
+            state.to_country.toLowerCase() === "united states" ||
+            state.to_country.toLowerCase() === "united kingdom" || isOffer
         ) {
             if (!edit || edit === "to") {
                 arr.push(
@@ -727,7 +722,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                             className="dropdowninputsearch  ifukorusinput"
                             value={state.to_postCode}
                             style={{
-                                border: state.to_postCode == '' ? `2px solid ${theme.palette.secondary.main}` : ''
+                                border: (state.to_country.toLowerCase() === "united states" || state.to_country.toLowerCase() === "united kingdom") && state.to_postCode == '' ? `2px solid ${theme.palette.secondary.main}` : ''
                             }}
                             onChange={(e) => {
                                 setstate({
@@ -736,7 +731,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                 });
                             }}
                         ></input>
-                        {state.to_postCode == '' && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.to_country === 'united states' ? "Zip" : "Post"} code is mandatory`} />}
+                        {(state.to_country.toLowerCase() === "united states" || state.to_country.toLowerCase() === "united kingdom") && state.to_postCode == '' && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.to_country.toLowerCase() === 'united states' ? "Zip" : "Post"} code is mandatory`} />}
 
                         {zipinputfocuseddest && !edit ? (
                             <button
@@ -831,6 +826,7 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                 ) : (
                                     <div
                                         className={editClassname(el, i)}
+                                        style={{ border: (!state[el.field] && isOffer) ? `2px solid ${theme.palette.secondary.main}` : '' }}
                                         onClick={(e) => {
                                             e.stopPropagation();
                                             e.preventDefault();
@@ -855,7 +851,9 @@ export default function HeroInputs({ enableButton, edit, newstate }) {
                                             </p>
                                         ) : (
                                             <div>
-                                                <p className="hiddenmobilelabel">
+                                                <p className="hiddenmobilelabel"
+                                                    style={{ color: (!state[el.field] && isOffer) ? `${theme.palette.secondary.main}` : '' }}
+                                                >
                                                     Please select
                                                 </p>
                                                 <p className="shownmobilelebel">

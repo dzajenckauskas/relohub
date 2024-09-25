@@ -208,9 +208,9 @@ const ArticlePage = ({ article }: Props) => {
                         </Stack>
                     </Stack>
                     {/* <Stack sx={{ maxWidth: 'md', }}>
-                        <Typography component={'div'} className='dynamicContent' dangerouslySetInnerHTML={{ __html: article?.data.attributes.fullContent }} />
+                        <Typography component={'div'} className='dynamicContent' dangerouslySetInnerHTML={{ __html: article?.data.attributes?.fullContent }} />
                     </Stack> */}
-                    <FullContentSection fullContent={article?.data.attributes.fullContent} />
+                    <FullContentSection fullContent={article?.data.attributes?.fullContent} />
                     <Stack width={'100%'} sx={{ maxWidth: 'md', px: { xs: 2, md: 0 } }}>
                         <Stack direction={'row'} justifyContent={'flex-start'} width={'100%'}>
                             <Typography sx={{
@@ -226,7 +226,7 @@ const ArticlePage = ({ article }: Props) => {
                                 ':hover': { color: theme.palette.secondary.dark }
                             }}>
                                 <Link aria-label="Back to articles"
-                                    href={`/guides/${article?.data?.attributes?.articleCategory?.data.attributes.key}`} passHref>
+                                    href={`/guides/${article?.data?.attributes?.articleCategory?.data.attributes?.key}`} passHref>
                                     Back to articles
                                 </Link>
                             </Typography>
