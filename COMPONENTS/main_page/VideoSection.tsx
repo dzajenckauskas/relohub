@@ -41,24 +41,6 @@ export default function VideoSection({ hideIcons, videoSection }: Props) {
             <MaxWidthContainer>
                 <section className="videoareaglobalwrp">
                     <div className="videoareavideowrp">
-                        {showvideohide ? (
-                            <div className="videoareaplaybtnwrp">
-                                <button
-                                    className="videopresentationtroundbuttonNew"
-                                    onClick={handleButtonClick}
-                                >
-                                    <Image
-                                        src={"/play.svg"}
-                                        style={{ objectFit: "contain" }}
-                                        className="playsvgbtn"
-                                        width={40}
-                                        height={40}
-                                        alt="play button"
-                                    ></Image>
-                                </button>
-                            </div>
-                        ) : null}
-
                         {videoSection?.video?.data?.attributes?.url &&
                             <video
                                 ref={videoRef}
