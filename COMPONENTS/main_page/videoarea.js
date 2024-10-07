@@ -42,9 +42,10 @@ export default function VideoArea({ hideIcons }) {
 
         return (
             <video
+                preload="metadata"
                 ref={videoRef}
                 className="videoelm"
-                src={src}
+                src={src + '#t=0.001'}
                 controls
             ></video>
         );

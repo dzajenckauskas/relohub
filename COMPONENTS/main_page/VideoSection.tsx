@@ -43,9 +43,10 @@ export default function VideoSection({ hideIcons, videoSection }: Props) {
                     <div className="videoareavideowrp">
                         {videoSection?.video?.data?.attributes?.url &&
                             <video
+                                preload="metadata"
                                 ref={videoRef}
                                 className="videoelm"
-                                src={`${process.env.NEXT_PUBLIC_API_URL}${videoSection?.video?.data?.attributes?.url}`}
+                                src={`${process.env.NEXT_PUBLIC_API_URL}${videoSection?.video?.data?.attributes?.url}` + '#t=0.001'}
                                 controls
                             ></video>}
                     </div>
