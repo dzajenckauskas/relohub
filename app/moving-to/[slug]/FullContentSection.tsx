@@ -26,12 +26,22 @@ const FullContentSection = ({ fullContent }: Props) => {
         replace: (domNode) => {
             try {
                 if (domNode instanceof Element) {
-                    if (domNode.tagName === 'div') {
-                        return (
-                            <Stack sx={{ width: '100%', position: 'relative' }}>
-                                <TextBanner />
-                            </Stack>
+                    if (domNode.tagName === 'div' && domNode.children.length > 0) {
+                        // Check if any child has the class 'banner'
+                        const hasBannerChild = Array.from(domNode.children).some(
+                            (child) =>
+                                child instanceof Element &&
+                                child.attribs?.class?.includes('banner')
                         );
+
+                        if (hasBannerChild) {
+                            // console.log(domNode.childNodes, "domnodes with child containing class 'banner'");
+                            return (
+                                <Stack sx={{ width: '100%', position: 'relative' }}>
+                                    <TextBanner />
+                                </Stack>
+                            );
+                        }
                     }
                 }
             } catch (error) {
@@ -40,6 +50,7 @@ const FullContentSection = ({ fullContent }: Props) => {
             }
         },
     };
+
 
     let parsedContent;
     try {
