@@ -20,14 +20,12 @@ type Props = {
 
 const FullContentSection = ({ fullContent }: Props) => {
     // Ensure safe purify usage
-    const sanitizedContent = purify ? purify.sanitize(fullContent) : fullContent;
 
     const options: HTMLReactParserOptions = {
         replace: (domNode) => {
             try {
                 if (domNode instanceof Element) {
                     if (domNode.tagName === 'div' && domNode.children.length > 0) {
-                        // Check if any child has the class 'banner'
                         const hasBannerChild = Array.from(domNode.children).some(
                             (child) =>
                                 child instanceof Element &&
@@ -35,7 +33,6 @@ const FullContentSection = ({ fullContent }: Props) => {
                         );
 
                         if (hasBannerChild) {
-                            // console.log(domNode.childNodes, "domnodes with child containing class 'banner'");
                             return (
                                 <Stack sx={{ width: '100%', position: 'relative' }}>
                                     <TextBanner />
@@ -52,6 +49,21 @@ const FullContentSection = ({ fullContent }: Props) => {
     };
 
 
+    purify.setConfig({
+        ALLOWED_TAGS: [
+            'iframe', 'div', 'p', 'span', 'a', 'b', 'i', 'strong', 'em', 'ul', 'ol', 'li',
+            'br', 'hr', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'pre', 'code',
+            'img', 'table', 'thead', 'tbody', 'tr', 'th', 'td'
+        ],
+        ALLOWED_ATTR: [
+            'src', 'width', 'height', 'frameborder', 'allow', 'allowfullscreen',
+            'style', 'class', 'alt', 'title', 'href', 'target', 'align', 'colspan', 'rowspan'
+        ],
+        ADD_ATTR: ['target'], // Custom attributes if needed
+    });
+
+    // Clean and parse the content
+    const sanitizedContent = purify ? purify.sanitize(fullContent) : fullContent;
     let parsedContent;
     try {
         parsedContent = parse(sanitizedContent, options);
