@@ -263,7 +263,7 @@ export default function OfferPage() {
     function standardItem() {
         const bandlgarr = [
             {
-                name: "Standart box",
+                name: "Standard box",
                 size: `41 x 41 x 41 cm`,
                 maxw: 20,
                 image: "/sb.png",
