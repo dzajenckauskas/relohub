@@ -51,7 +51,7 @@ const PageLayout = ({ children }: { children: React.ReactNode }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowPopUp(true);
-        }, 5000);
+        }, 10000);
         return () => clearTimeout(timer);
     }, []);
 
