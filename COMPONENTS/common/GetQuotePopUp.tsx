@@ -21,16 +21,11 @@ const GetQuotePopUp = () => {
                 ref={ref}
                 {...other}
                 direction="right"
-                style={{
-                    // transformOrigin: 'bottom right', // Set transform origin to toggle button
-                }}
-                timeout={{ enter: 500, exit: 300 }} // Adjust duration for smoother animation
+                timeout={{ enter: 500, exit: 300 }}
             >
                 {React.cloneElement(children, {
                     style: {
                         ...children.props.style,
-                        // marginBottom: 'calc(50vh - 20px)', // Matches the button's position
-                        // marginLeft: 20,
                         borderRadius: theme.shape.borderRadius,
                     },
                 })}
@@ -43,40 +38,51 @@ const GetQuotePopUp = () => {
     const togglePopUp = () => setShowPopUp(!showPopUp);
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setShowPopUp(true);
-        }, 10000);
-        return () => clearTimeout(timer);
-    }, [setTimeout]);
+        const popUpShown = sessionStorage.getItem('quotePopUpShown');
+        if (!popUpShown) {
+            const timer = setTimeout(() => {
+                setShowPopUp(true);
+                sessionStorage.setItem('quotePopUpShown', 'true');
+            }, 15000);
+            return () => clearTimeout(timer);
+        }
+    }, []);
 
     return (
         <>
-            <Stack
-                alignItems={'center'}
-                onClick={togglePopUp}
-                sx={{
-                    cursor: 'pointer',
-                    position: 'fixed',
-                    zIndex: 9,
-                    left: 8,
-                    bottom: 'calc(50vh - 33px)',
-                    backgroundColor: theme.palette.secondary.main,
-                    borderRadius: '8px',
-                    padding: { xs: 1 },
-                    boxShadow: 3,
-                    color: theme.palette.primary.contrastText,
-                    textAlign: 'center',
-                    transition: 'all 0.3s ease',
-                    maxWidth: 65,
-                    maxHeight: 94
-                }}
-            >
-                <div style={{ paddingTop: 1 }}>
-                    <h3 style={{ textAlign: 'center', position: 'relative', left: -.5 }}>FREE</h3>
-                    <p style={{ fontSize: 14, letterSpacing: 2, padding: 0, textAlign: 'center', paddingLeft: 1.5, paddingTop: 1 }}>QUOTE</p>
-                </div>
-                <FormatQuoteIcon sx={{ fontSize: 62, position: 'relative', top: -11, left: -1 }} />
-            </Stack>
+            {!showPopUp &&
+                <Stack
+                    alignItems={'center'}
+                    onClick={togglePopUp}
+                    sx={{
+                        cursor: 'pointer',
+                        position: 'fixed',
+                        zIndex: 9,
+                        left: 0,
+                        bottom: { xs: 10, md: 'calc(50vh - 33px)' },
+                        backgroundColor: theme.palette.secondary.main,
+                        borderRadius: '0px 8px 8px 0px ',
+                        padding: { xs: 1 },
+                        boxShadow: 3,
+                        color: theme.palette.primary.contrastText,
+                        textAlign: 'center',
+                        transition: 'transform 0.3s ease-in-out',
+                        maxWidth: 65,
+                        maxHeight: { xs: 94, md: 136 },
+                    }}
+                >
+                    <div style={{ paddingTop: 1 }}>
+                        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                            <p style={{ fontSize: 14, letterSpacing: 3, padding: 0, textAlign: 'center', paddingLeft: 1.5, paddingTop: 1 }}>GET A</p>
+                        </Box>
+                        <h3 style={{ textAlign: 'center', position: 'relative', left: -.5 }}>FREE</h3>
+                        <p style={{ fontSize: 14, letterSpacing: 2, padding: 0, textAlign: 'center', paddingLeft: 1.5, paddingTop: 1 }}>QUOTE</p>
+                        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                            <h3 style={{ textAlign: 'center', position: 'relative', left: -.5 }}>NOW</h3>
+                        </Box>
+                    </div>
+                    <FormatQuoteIcon sx={{ fontSize: 62, position: 'relative', top: -11, left: -1 }} />
+                </Stack>}
 
             {showPopUp &&
                 <Dialog
@@ -107,4 +113,4 @@ const GetQuotePopUp = () => {
     )
 }
 
-export default GetQuotePopUp
+export default GetQuotePopUp;

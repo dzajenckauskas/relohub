@@ -40,7 +40,7 @@
 .showchatglobalwtp {
     padding: 8px;
     box-sizing: content-box;
-    background: var(--pink_color);
+    background: var(--light_black);
     border-radius: 8px;
 }
 
@@ -57,7 +57,7 @@
 
 .chatimagewrp {
     cursor: pointer;
-    background: var(--pink_color);
+    background: var(--light_black);
     display: flex;
     align-items: center;
     color: #fff;
