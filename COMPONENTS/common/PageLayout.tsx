@@ -24,17 +24,17 @@ const Transition = React.forwardRef(function Transition(
         <Slide
             ref={ref}
             {...other}
-            direction="up"
+            direction="right"
             style={{
-                transformOrigin: 'bottom right', // Set transform origin to toggle button
+                // transformOrigin: 'bottom right', // Set transform origin to toggle button
             }}
             timeout={{ enter: 500, exit: 300 }} // Adjust duration for smoother animation
         >
             {React.cloneElement(children, {
                 style: {
                     ...children.props.style,
-                    marginBottom: 120, // Matches the button's position
-                    marginRight: 20,
+                    // marginBottom: 'calc(50vh - 20px)', // Matches the button's position
+                    // marginLeft: 20,
                     borderRadius: theme.shape.borderRadius,
                 },
             })}
@@ -59,33 +59,31 @@ const PageLayout = ({ children }: { children: React.ReactNode }) => {
         <ThemeProvider theme={theme}>
             <Chat />
             <Stack
-                justifyContent={'space-between'}
                 alignItems={'center'}
-                direction={'row'}
                 onClick={togglePopUp}
                 sx={{
                     cursor: 'pointer',
                     position: 'fixed',
                     zIndex: 99,
-                    right: 8,
-                    bottom: 80,
+                    left: 8,
+                    bottom: 'calc(50vh - 33px)',
                     backgroundColor: theme.palette.secondary.main,
                     borderRadius: '8px',
-                    padding: { xs: 1, md: 1.5 },
+                    padding: { xs: 1 },
                     boxShadow: 3,
                     color: theme.palette.primary.contrastText,
                     textAlign: 'center',
                     transition: 'all 0.3s ease',
-                    maxWidth: 130,
-                    maxHeight: 64
+                    maxWidth: 65,
+                    maxHeight: 95
                 }}
             >
-                <div className="chatwithustxt">
-                    <h3 style={{ textAlign: 'left' }}>FREE</h3>
-                    <p style={{ letterSpacing: 4.5, padding: 0 }}>QUOTE</p>
+                <div style={{ paddingTop: 1 }}>
+                    <h3 style={{ textAlign: 'center' }}>FREE</h3>
+                    <p style={{ fontSize: 14, letterSpacing: 2, padding: 0, textAlign: 'center', paddingLeft: 3 }}>QUOTE</p>
                 </div>
 
-                <FormatQuoteIcon sx={{ fontSize: { xs: 48, md: '64px' }, ml: { xs: 0, md: -.5 } }} />
+                <FormatQuoteIcon sx={{ fontSize: 62, position: 'relative', top: -9 }} />
             </Stack>
 
             <Dialog
@@ -95,7 +93,7 @@ const PageLayout = ({ children }: { children: React.ReactNode }) => {
                 onClose={togglePopUp}
                 PaperProps={{
                     style: {
-                        overflow: 'visible', // Prevent cutting off content
+                        overflow: 'visible'
                     },
                 }}
             >
@@ -115,7 +113,7 @@ const PageLayout = ({ children }: { children: React.ReactNode }) => {
             <Header />
             {children}
             <GetInTOuch />
-        </ThemeProvider>
+        </ThemeProvider >
     );
 };
 
