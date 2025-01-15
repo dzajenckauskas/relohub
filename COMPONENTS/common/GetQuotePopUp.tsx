@@ -72,10 +72,10 @@ const GetQuotePopUp = () => {
                 }}
             >
                 <div style={{ paddingTop: 1 }}>
-                    <h3 style={{ textAlign: 'center' }}>FREE</h3>
-                    <p style={{ fontSize: 14, letterSpacing: 2, padding: 0, textAlign: 'center', paddingLeft: 3, paddingTop: 1 }}>QUOTE</p>
+                    <h3 style={{ textAlign: 'center', position: 'relative', left: -.5 }}>FREE</h3>
+                    <p style={{ fontSize: 14, letterSpacing: 2, padding: 0, textAlign: 'center', paddingLeft: 1.5, paddingTop: 1 }}>QUOTE</p>
                 </div>
-                <FormatQuoteIcon sx={{ fontSize: 62, position: 'relative', top: -11 }} />
+                <FormatQuoteIcon sx={{ fontSize: 62, position: 'relative', top: -11, left: -1 }} />
             </Stack>
 
             {showPopUp &&

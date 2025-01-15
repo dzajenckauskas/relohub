@@ -9,13 +9,13 @@ import Header from './shared/header/Header';
 
 
 
-const PageLayout = ({ children }: { children: React.ReactNode }) => {
+const PageLayout = ({ children, hidePopUpButton }: { children: React.ReactNode, hidePopUpButton: boolean }) => {
     const theme = getTheme();
 
     return (
         <ThemeProvider theme={theme}>
             <Chat />
-            <GetQuotePopUp />
+            {!hidePopUpButton && <GetQuotePopUp />}
 
             <Header />
             {children}

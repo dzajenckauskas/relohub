@@ -800,7 +800,7 @@ export default function OfferPage() {
     }
 
     return (
-        <PageLayout>
+        <PageLayout hidePopUpButton>
             <div className="offerglobalwrp">
                 {edit ? <section className="offereditdarkbckg"></section> : null}
 
