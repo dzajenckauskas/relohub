@@ -68,14 +68,14 @@ const GetQuotePopUp = () => {
                     textAlign: 'center',
                     transition: 'all 0.3s ease',
                     maxWidth: 65,
-                    maxHeight: 95
+                    maxHeight: 94
                 }}
             >
                 <div style={{ paddingTop: 1 }}>
                     <h3 style={{ textAlign: 'center' }}>FREE</h3>
-                    <p style={{ fontSize: 14, letterSpacing: 2, padding: 0, textAlign: 'center', paddingLeft: 3 }}>QUOTE</p>
+                    <p style={{ fontSize: 14, letterSpacing: 2, padding: 0, textAlign: 'center', paddingLeft: 3, paddingTop: 1 }}>QUOTE</p>
                 </div>
-                <FormatQuoteIcon sx={{ fontSize: 62, position: 'relative', top: -9 }} />
+                <FormatQuoteIcon sx={{ fontSize: 62, position: 'relative', top: -11 }} />
             </Stack>
 
             {showPopUp &&
