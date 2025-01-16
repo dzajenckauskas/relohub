@@ -1,5 +1,5 @@
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
-import { Box, Dialog, Stack, useTheme } from '@mui/material';
+import { Box, Dialog, Stack, useMediaQuery, useTheme } from '@mui/material';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import React, { useEffect, useState } from 'react';
@@ -7,7 +7,9 @@ import { InstantQuoteComponent } from './InstantQuoteComponent';
 import { theme } from './shared/Theme';
 
 const GetQuotePopUp = () => {
-    const Transition = React.forwardRef(function Transition(
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+    const TransitionDesktop = React.forwardRef(function Transition(
         props: TransitionProps & {
             children: React.ReactElement<any, any>;
         },
@@ -21,6 +23,31 @@ const GetQuotePopUp = () => {
                 ref={ref}
                 {...other}
                 direction="right"
+                timeout={{ enter: 500, exit: 300 }}
+            >
+                {React.cloneElement(children, {
+                    style: {
+                        ...children.props.style,
+                        borderRadius: theme.shape.borderRadius,
+                    },
+                })}
+            </Slide>
+        );
+    });
+    const TransitionMobile = React.forwardRef(function Transition(
+        props: TransitionProps & {
+            children: React.ReactElement<any, any>;
+        },
+        ref: React.Ref<unknown>,
+    ) {
+        const { children, ...other } = props;
+        const theme = useTheme();
+
+        return (
+            <Slide
+                ref={ref}
+                {...other}
+                direction="up"
                 timeout={{ enter: 500, exit: 300 }}
             >
                 {React.cloneElement(children, {
@@ -88,7 +115,7 @@ const GetQuotePopUp = () => {
                 <Dialog
                     sx={{ zIndex: 10 }}
                     open={showPopUp}
-                    TransitionComponent={Transition}
+                    TransitionComponent={isMobile ? TransitionMobile : TransitionDesktop}
                     keepMounted
                     onClose={togglePopUp}
                     PaperProps={{
