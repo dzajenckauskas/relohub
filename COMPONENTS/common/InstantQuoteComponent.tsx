@@ -28,7 +28,7 @@ export const InstantQuoteComponent = ({ togglePopUp, title }: Props) => {
         <Stack sx={{
             minHeight: { xs: 0, sm: 330 }
         }}>
-            <Stack direction={'row'}>
+            <Stack direction={'row'} justifyContent={{ xs: togglePopUp ? 'flex-start' : 'center', md: 'flex-start' }}>
                 {title ?? <h2 className="instantquotewrp">
                     <span>{"Get an "}</span>
                     <span style={{ fontWeight: 800 }}>
@@ -38,6 +38,7 @@ export const InstantQuoteComponent = ({ togglePopUp, title }: Props) => {
                 </h2>}
                 {togglePopUp && <button
                     className="alotoftextclosebutton"
+                    style={{ position: 'relative', top: -2 }}
                     onClick={() => {
                         togglePopUp();
                     }}
