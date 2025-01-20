@@ -28,24 +28,32 @@ export const InstantQuoteComponent = ({ togglePopUp, title }: Props) => {
         <Stack sx={{
             minHeight: { xs: 0, sm: 330 }
         }}>
-            <Stack direction={'row'} justifyContent={{ xs: togglePopUp ? 'flex-start' : 'center', md: 'flex-start' }}>
-                {title ?? <h2 className="instantquotewrp">
-                    <span>{"Get an "}</span>
-                    <span style={{ fontWeight: 800 }}>
-                        <b>Instant Quote</b>
-                    </span>
-                    <span>{" now"}</span>
-                </h2>}
-                {togglePopUp && <button
-                    className="alotoftextclosebutton"
-                    style={{ position: 'relative', top: -2 }}
-                    onClick={() => {
-                        togglePopUp();
-                    }}
-                >
-                    &#10006;
-                </button>}
+            <Stack
+                direction={'row'}
+                justifyContent={{ xs: togglePopUp ? 'space-between' : 'center', md: 'flex-start' }}
+                alignItems="center"
+            >
+                {title ?? (
+                    <h2 className="instantquotewrp">
+                        <span>{"Get an "}</span>
+                        <span style={{ fontWeight: 800 }}>
+                            <b>Instant Quote</b>
+                        </span>
+                        <span>{" now"}</span>
+                    </h2>
+                )}
+                {togglePopUp && (
+                    <button
+                        className="instantQuoteCloseButton"
+                        onClick={() => {
+                            togglePopUp();
+                        }}
+                    >
+                        &#10006;
+                    </button>
+                )}
             </Stack>
+
             <HeroInputs isOffer={false}
                 state={state}
                 setstate={setstate}
