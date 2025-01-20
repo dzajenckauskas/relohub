@@ -124,7 +124,7 @@ const GetQuotePopUp = () => {
                         },
                     }}
                 >
-                    <Box sx={{ p: 4, width: { xs: '90vw', sm: 'sm', md: 'sm', lg: 'sm', xl: 'sm' }, maxWidth: { xs: '90vw', sm: 'sm', md: 'sm', lg: 'sm', xl: 'sm' } }}>
+                    <Box sx={{ p: 4, width: { xs: '95vw', sm: 'sm', md: 'sm', lg: 'sm', xl: 'sm' }, maxWidth: { xs: '95vw', sm: 'sm', md: 'sm', lg: 'sm', xl: 'sm' } }}>
                         <InstantQuoteComponent togglePopUp={togglePopUp} title={
                             <h2 className="instantquotewrp">
                                 <span>{"Get a "}</span>

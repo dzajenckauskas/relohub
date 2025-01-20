@@ -1148,6 +1148,40 @@ th {
     transform: scale(1.1);
 }
 
+.alotoftextclosebuttonmissing {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+}
+
+.instantquotewrp {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+    /* Ensure there's no default margin affecting alignment */
+}
+
+.instantQuoteCloseButton {
+    margin-left: auto;
+    background: none;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.instantQuoteCloseButton:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+    .instantQuoteCloseButton {
+        margin-left: 0;
+        /* Prevent alignment issues in smaller screens */
+    }
+}
+
 .alotoftextprohibited {
     padding-left: 8px;
     padding-right: 8px;
@@ -1889,11 +1923,7 @@ th {
     margin-top: 8px !important;
 }
 
-.alotoftextclosebuttonmissing {
-    position: absolute;
-    top: 20px;
-    right: 24px;
-}
+
 
 .missingitemh3 {
     margin-top: 0;
