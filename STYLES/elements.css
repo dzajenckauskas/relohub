@@ -1162,6 +1162,8 @@ th {
 }
 
 .instantQuoteCloseButton {
+    position: relative;
+    top: -12px;
     margin-left: auto;
     background: none;
     font-size: 3rem;
