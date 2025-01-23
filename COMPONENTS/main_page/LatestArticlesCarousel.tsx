@@ -10,34 +10,35 @@ import ArticleCard from '../guides/ArticleCard';
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const LatestArticlesCarousel = () => {
-    const latestArticlesUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents&sort[0]=updatedAt:asc`
-
+    const latestArticlesUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents&sort[0]=createdAt:desc`;
     const { data: latestArticles, isLoading } = useSWR(
         latestArticlesUrl,
         fetcher
     );
 
-
-    const [startIndex, setStartIndex] = useState(0); // State to track the starting index of displayed articles
+    const filteredLatestArticles = latestArticles?.data?.sort((a, b) => {
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    })
+    const [startIndex, setStartIndex] = useState(1); // State to track the starting index of displayed articles
 
     const handleNext = () => {
-        setStartIndex((prevIndex) => (prevIndex + 1) % (latestArticles?.data?.length || 1)); // Increment the starting index by 1, and use modulo to loop back to 0 when reaching the end
+        setStartIndex((prevIndex) => (prevIndex + 1) % (filteredLatestArticles?.length || 1)); // Increment the starting index by 1, and use modulo to loop back to 0 when reaching the end
     };
 
     const handlePrevious = () => {
-        setStartIndex((prevIndex) => (prevIndex - 1 + latestArticles?.data?.length) % (latestArticles?.data?.length || 1)); // Decrement the starting index by 1, and use modulo to loop back to the end when reaching 0
+        setStartIndex((prevIndex) => (prevIndex - 1 + filteredLatestArticles?.length) % (filteredLatestArticles?.length || 1)); // Decrement the starting index by 1, and use modulo to loop back to the end when reaching 0
     };
 
     const cardIndices = [
-        (startIndex - 1 + latestArticles?.data?.length) % (latestArticles?.data?.length || 1),
+        (startIndex - 1 + filteredLatestArticles?.length) % (filteredLatestArticles?.length || 1),
         startIndex,
-        (startIndex + 1) % (latestArticles?.data?.length || 1)
+        (startIndex + 1) % (filteredLatestArticles?.length || 1)
     ];
 
     const displayedArticles = cardIndices.map((index: number) => {
         return (
-            <Stack key={latestArticles?.data[index]?.id} width={'100%'}>
-                <ArticleCard article={latestArticles?.data[index]} />
+            <Stack key={filteredLatestArticles?.[index]?.id} width={'100%'}>
+                <ArticleCard article={filteredLatestArticles?.[index]} />
             </Stack>
         );
     });
