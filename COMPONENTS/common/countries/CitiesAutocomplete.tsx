@@ -19,8 +19,9 @@ type Props = {
     name: keyof OfferFormType;  // 👈 Ensure name is a valid key
     label: string
     countryName?: string
+    disabled?: boolean;
 }
-const CitiesAutocomplete = ({ countryName, onChange, form, name, label }: Props) => {
+const CitiesAutocomplete = ({ disabled, countryName, onChange, form, name, label }: Props) => {
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
     const GroupHeader = styled('div')(({ theme }) => ({
@@ -41,13 +42,13 @@ const CitiesAutocomplete = ({ countryName, onChange, form, name, label }: Props)
 
     });
 
-    const [values, setValues] = useState()
+    const [values, setValues] = useState([])
     async function fetchcity(country) {
         setLoading(true)
 
 
         try {
-            let res = await fetch("/api/cities", {
+            let res = await fetch("/api/cities-new", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ country }),
@@ -97,6 +98,7 @@ const CitiesAutocomplete = ({ countryName, onChange, form, name, label }: Props)
 
     return (
         <Autocomplete
+            disabled={disabled}
             open={open}
             loading={loading}
             popupIcon={<ArrowDropDownIcon sx={{ fontSize: 30 }} />}
@@ -108,9 +110,10 @@ const CitiesAutocomplete = ({ countryName, onChange, form, name, label }: Props)
             options={values?.map((v) => v.name) ?? []}
             groupBy={(option) => option?.[0]}
             renderInput={(params) => <TextField
-                // type='standard'
+                // variant='filled'
                 label={label}
                 name={name}
+
                 // InputLabelProps={{
                 //     shrink: true, // Keeps label above input
                 //     sx: {

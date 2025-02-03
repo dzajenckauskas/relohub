@@ -15,6 +15,20 @@ type Props = {
 }
 
 const LocationsInformationForm = ({ countriesData, form, errors }: Props) => {
+    const collectCountry = form.watch('collectCountry')
+    const deliverCountry = form.watch('deliverCountry')
+
+    const showCollectPostcode = collectCountry === ('United Kingdom') || collectCountry === ('United States')
+    const showDeliverPostcode = deliverCountry === ('United Kingdom') || deliverCountry === ('United States')
+
+    const checkZipOrPost = (country: string) => {
+        if (country === 'United Kingdom') {
+            return "Post"
+        }
+        if (country === 'United States') {
+            return "Zip"
+        }
+    }
     return (
         <Stack direction="row" gap={2} pt={2} >
             <Box flex={1} display="flex" flexDirection="column" gap={2}>
@@ -22,52 +36,57 @@ const LocationsInformationForm = ({ countriesData, form, errors }: Props) => {
                     name={'collectCountry'}
                     label={'Collection country'}
                     onChange={(_event, option) => {
+                        form.setValue('collectCity', null);
+                        form.setValue('collectPostcode', null);
                         return form.setValue('collectCountry', option);
                     }}
                     form={form} countries={countriesData?.data}
                 />
                 <CitiesAutocomplete
+                    disabled={!collectCountry}
                     name={'collectCity'}
                     label={'Collection city'}
                     onChange={(_event, option) => {
                         return form.setValue('collectCity', option);
                     }}
-                    form={form} countryName={form.watch('collectCountry')}
+                    form={form} countryName={collectCountry}
                 />
-                <StyledTextInput
-                    //  ::TODO zip/post code if uk/us
-                    label="Collection Post Code"
-                    form={form}
-                    name="collectPostcode"
-                    error={!!errors.collectPostcode}
-                    helperText={errors.collectPostcode?.message}
-                />
+                {showCollectPostcode &&
+                    <StyledTextInput
+                        label={`Collection ${checkZipOrPost(collectCountry)} Code`}
+                        form={form}
+                        name="collectPostcode"
+                        error={!!errors.collectPostcode}
+                        helperText={errors.collectPostcode?.message}
+                    />}
             </Box>
             <Box flex={1} display="flex" flexDirection="column" gap={2}>
                 <CountriesAutocomplete
                     name={'deliverCountry'}
                     label={'Destination country'}
                     onChange={(_event, option) => {
-                        return form.setValue('collectCountry', option);
+                        form.setValue('deliverCity', null);
+                        form.setValue('deliverPostcode', null);
+                        return form.setValue('deliverCountry', option);
                     }}
                     form={form} countries={countriesData?.data}
                 />
                 <CitiesAutocomplete
+                    disabled={!deliverCountry}
                     name={'deliverCity'}
                     label={'Destination city'}
                     onChange={(_event, option) => {
                         return form.setValue('deliverCity', option);
                     }}
-                    form={form} countryName={form.watch('deliverCountry')}
+                    form={form} countryName={deliverCountry}
                 />
-                <StyledTextInput
-                    //  ::TODO zip/post code if uk/us
-                    label="Destination Post Code"
+                {showDeliverPostcode && <StyledTextInput
+                    label={`Collection ${checkZipOrPost(deliverCountry)} Code`}
                     form={form}
                     name="deliverPostcode"
                     error={!!errors.deliverPostcode}
                     helperText={errors.deliverPostcode?.message}
-                />
+                />}
             </Box>
         </Stack>
     )
