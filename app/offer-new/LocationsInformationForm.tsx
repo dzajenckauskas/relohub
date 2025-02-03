@@ -1,13 +1,11 @@
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import React from 'react'
-import StyledTextInput from './StyledTextInput';
-import { FieldErrors, UseFormReturn } from 'react-hook-form';
-import { OfferFormType } from './OfferNewPage';
-import { CountriesDropdownList } from '@/COMPONENTS/common/CountriesDropdownList';
+import CitiesAutocomplete from '@/COMPONENTS/common/countries/CitiesAutocomplete';
 import CountriesAutocomplete from '@/COMPONENTS/common/countries/CountriesAutocomplete';
 import { CountriesResponseType } from '@/COMPONENTS/types/CountryType';
-import CitiesAutocomplete from '@/COMPONENTS/common/countries/CitiesAutocomplete';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import { FieldErrors, UseFormReturn } from 'react-hook-form';
+import { OfferFormType } from './OfferNewPage';
+import StyledTextInput from './StyledTextInput';
 
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>
@@ -34,7 +32,7 @@ const LocationsInformationForm = ({ countriesData, form, errors }: Props) => {
                     onChange={(_event, option) => {
                         return form.setValue('collectCity', option);
                     }}
-                    form={form} countries={countriesData?.data}
+                    form={form} countryName={form.watch('collectCountry')}
                 />
                 <StyledTextInput
                     //  ::TODO zip/post code if uk/us
@@ -60,7 +58,7 @@ const LocationsInformationForm = ({ countriesData, form, errors }: Props) => {
                     onChange={(_event, option) => {
                         return form.setValue('deliverCity', option);
                     }}
-                    form={form} countries={countriesData?.data}
+                    form={form} countryName={form.watch('deliverCountry')}
                 />
                 <StyledTextInput
                     //  ::TODO zip/post code if uk/us
