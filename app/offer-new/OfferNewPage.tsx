@@ -12,8 +12,10 @@ import HorizontalStepper from "./HorizontalStepper";
 import OfferSummary from "./OfferSummary";
 import StyledTextInput from "./StyledTextInput";
 import { capitalizeEachWord } from "@/COMPONENTS/common/shared/capitalizeEachWord";
+import PersonalInformationForm from "./PersonalInformationForm";
+import { CountriesResponseType } from "@/COMPONENTS/types/CountryType";
 
-type OfferFormType = {
+export type OfferFormType = {
     firstName: string;
     lastName: string;
     email: string;
@@ -44,7 +46,10 @@ const stepSchemas = [
     }),
 ];
 
-export default function OfferNewPage() {
+type Props = {
+    countriesData?: CountriesResponseType;
+}
+export default function OfferNewPage({ countriesData }: Props) {
     const [activeStep, setActiveStep] = useState<number | undefined>(0);
 
 
@@ -63,7 +68,7 @@ export default function OfferNewPage() {
             collectCity: capitalizeEachWord(dataParam.from_city) ?? "London",
             collectPostcode: capitalizeEachWord(dataParam.from_postCode) ?? "HP23DS",
             deliverCountry: capitalizeEachWord(dataParam.to_country) ?? "United States",
-            deliverCity: capitalizeEachWord(dataParam.to_country) ?? "Boston",
+            deliverCity: capitalizeEachWord(dataParam.to_city) ?? "Boston",
             deliverPostcode: capitalizeEachWord(dataParam.to_postCode) ?? "BO5345",
         }
     });
@@ -97,43 +102,10 @@ export default function OfferNewPage() {
                                     <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 8 }} pb={2} width={'100%'}>
                                         <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "60%" }}>
                                             <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Personal</b> Details</Typography>
-                                            <Stack direction="row" gap={2} pb={2} pt={2} >
-                                                <Box flex={1} display="flex" flexDirection="column" gap={2}>
-                                                    <StyledTextInput
-                                                        label="Name"
-                                                        form={form}
-                                                        name="firstName"
-                                                        error={!!errors.firstName}
-                                                        helperText={errors.firstName?.message}
-                                                    />
-                                                    <StyledTextInput
-                                                        label="Surname"
-                                                        form={form}
-                                                        name="lastName"
-                                                        error={!!errors.lastName}
-                                                        helperText={errors.lastName?.message}
-                                                    />
-                                                </Box>
-                                                <Box flex={1} display="flex" flexDirection="column" gap={2}>
-                                                    <StyledTextInput
-                                                        label="Email"
-                                                        form={form}
-                                                        name="email"
-                                                        error={!!errors.email}
-                                                        helperText={errors.email?.message}
-                                                    />
-                                                    <StyledTextInput
-                                                        label="Telephone"
-                                                        form={form}
-                                                        name="phone"
-                                                        error={!!errors.phone}
-                                                        helperText={errors.phone?.message}
-                                                    />
-                                                </Box>
-                                            </Stack>
+                                            <PersonalInformationForm form={form} errors={errors} />
                                         </Stack>
                                         <Stack sx={{ maxWidth: { xs: "100%", md: '40%' }, width: '100%' }}>
-                                            <OfferSummary activeStep={activeStep} form={form} />
+                                            <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
                                         </Stack>
                                     </Stack>
                                     <Button onClick={nextStep} variant="contained" color="secondary"
@@ -162,7 +134,7 @@ export default function OfferNewPage() {
                                             </Stack>
                                         </Stack>
                                         <Stack sx={{ maxWidth: { xs: "100%", md: '40%' }, width: '100%' }}>
-                                            <OfferSummary activeStep={activeStep} form={form} />
+                                            <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
                                         </Stack>
                                     </Stack>
                                     <Button onClick={nextStep} variant="contained" color="secondary"
@@ -191,7 +163,7 @@ export default function OfferNewPage() {
                                             </Stack>
                                         </Stack>
                                         <Stack sx={{ maxWidth: { xs: "100%", md: '40%' }, width: '100%' }}>
-                                            <OfferSummary activeStep={activeStep} form={form} />
+                                            <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
                                         </Stack>
                                     </Stack>
                                     <Button type="submit" variant="contained" color="secondary"

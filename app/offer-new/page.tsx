@@ -21,8 +21,10 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 }
 
 
-export default function OfferNew() {
+export default async function OfferNew() {
+    const countriesData = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/countries?pagination[limit]=100&sort[0]=name:asc`)
+
     return (
-        <OfferNewPage />
+        <OfferNewPage countriesData={countriesData} />
     )
 }
