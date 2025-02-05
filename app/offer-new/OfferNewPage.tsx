@@ -6,7 +6,7 @@ import { Box, Button, Card, Divider, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import * as yup from "yup";
 import HorizontalStepper from "./HorizontalStepper";
 import OfferSummary from "./OfferSummary";
@@ -17,6 +17,8 @@ import { CountriesResponseType } from "@/COMPONENTS/types/CountryType";
 import LuggageItemRow from "./LuggageItemRow";
 import { Add } from "@mui/icons-material";
 import { theme } from "@/COMPONENTS/common/shared/Theme";
+import AddItemForm from "./AddItemForm";
+import CloseIcon from '@mui/icons-material/Close';
 
 export type OfferFormType = {
     firstName: string;
@@ -35,8 +37,16 @@ export type OfferFormType = {
     largeBox: number;
     suitcaseSmall: number;
     suitcaseLarge: number;
+    customItems: CustomItemType[]
 };
 
+type CustomItemType = {
+    name: string;
+    width: string;
+    height: string;
+    depth: string;
+    weight: string;
+}
 // Step-based validation schemas
 const stepSchemas = [
     yup.object({
@@ -80,7 +90,7 @@ export default function OfferNewPage({ countriesData }: Props) {
         }
     });
 
-    const { handleSubmit, formState: { errors }, trigger } = form;
+    const { handleSubmit, formState: { errors }, trigger, control } = form;
 
     const nextStep = async () => {
         const valid = await trigger(Object.keys(stepSchemas[activeStep].fields) as any); // Validate only current step fields
@@ -93,6 +103,15 @@ export default function OfferNewPage({ countriesData }: Props) {
         console.log("Form Data:", data)
         setActiveStep(undefined)
     }
+
+
+    const { fields, append, remove } = useFieldArray({
+        control,
+        name: 'customItems'
+    });
+    console.log(fields, "fields");
+
+    const customItems = form.watch('customItems')
     return (
         <PageLayout hidePopUpButton>
             <Stack sx={{ backgroundColor: "#efefef" }}>
@@ -163,18 +182,48 @@ export default function OfferNewPage({ countriesData }: Props) {
                                                         name={'suitcaseLarge'}
                                                     />
                                                     <Stack>
-                                                        <Box pb={3}>
+                                                        <Box pb={1}>
                                                             <Divider />
                                                         </Box>
-                                                        <Stack direction={'row'} justifyContent={'center'} alignItems={'center'} gap={2}>
+
+                                                        {/* {!addItem && */}
+                                                        {/* {addItem && */}
+                                                        <>
+                                                            {fields?.reverse()?.map((ci, i) => {
+                                                                return <Stack alignItems={'stretch'} pb={2}>
+                                                                    <Button sx={{
+                                                                        minWidth: 10, alignSelf: 'flex-end',
+                                                                        //  position: 'relative', top: 3, right: 3
+                                                                    }}
+                                                                        onClick={() => remove(i)}
+                                                                    >
+                                                                        <CloseIcon fontSize='large' sx={{ fontSize: 20 }} />
+                                                                    </Button>
+                                                                    <AddItemForm form={form} errors={form.formState.errors} index={i} />
+                                                                    <Box sx={{ pt: 1 }}>
+                                                                        <Divider />
+                                                                    </Box>
+                                                                </Stack>
+                                                            })}
+                                                        </>
+
+                                                        {/* } */}
+                                                        <Stack
+                                                            pt={1}
+                                                            onClick={async () => await append({} as CustomItemType)}
+
+                                                            direction={'row'}
+                                                            sx={{ cursor: 'pointer' }}
+                                                            justifyContent={'center'} alignItems={'center'} gap={2}>
                                                             <Add fontSize="large" sx={{ fill: theme.palette.secondary.main }} />
                                                             <Typography fontWeight={500} color={'secondary.main'} sx={{ letterSpacing: 1 }}>
                                                                 ADD YOUR OWN ITEM
                                                             </Typography>
                                                         </Stack>
-                                                        <Box py={3}>
+                                                        <Box pt={2}>
                                                             <Divider />
                                                         </Box>
+
                                                     </Stack>
                                                 </Box>
                                             </Stack>
