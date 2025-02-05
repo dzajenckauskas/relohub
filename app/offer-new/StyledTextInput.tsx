@@ -8,7 +8,7 @@ type Props = {
     disabled?: boolean;
     fullWidth?: boolean;
     name: string;
-    label: string;
+    label?: string;
     autoFocus?: boolean;
     onChange?: (v: any) => void;
     error?: boolean;

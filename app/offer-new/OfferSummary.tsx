@@ -20,7 +20,11 @@ const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
     const togglePopUp = () => {
         setEdit(!edit)
     }
-
+    const standardBox = form.watch('standardBox') ?? 0
+    const largeBox = form.watch('largeBox') ?? 0
+    const suitcaseSmall = form.watch('suitcaseSmall') ?? 0
+    const suitcaseLarge = form.watch('suitcaseLarge') ?? 0
+    const hasItems = (standardBox + largeBox + suitcaseSmall + suitcaseLarge) > 0
     return (
         <>
             <Box flex={1} display="flex" flexDirection="column" gap={2}
@@ -106,6 +110,30 @@ const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
                                     {form.getValues('deliverPostcode')}
                                 </Typography>}
                         </Box>
+
+                        {/* boxes */}
+                        {hasItems &&
+                            <Box>
+                                <Typography color={'white'} variant="subtitle1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500 }}>
+                                    Boxes & Luggage:
+                                </Typography>
+                                {standardBox &&
+                                    <Typography color={'white'} variant="subtitle1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                        Standard Box x {standardBox}
+                                    </Typography>}
+                                {largeBox &&
+                                    <Typography color={'white'} variant="subtitle1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                        Large Box x {largeBox}
+                                    </Typography>}
+                                {suitcaseSmall &&
+                                    <Typography color={'white'} variant="subtitle1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                        Suitcase Small x {suitcaseSmall}
+                                    </Typography>}
+                                {suitcaseLarge &&
+                                    <Typography color={'white'} variant="subtitle1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                        Suitcase Large x {suitcaseLarge}
+                                    </Typography>}
+                            </Box>}
                     </Stack>
                 </Card>
             </Box>

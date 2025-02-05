@@ -2,7 +2,7 @@
 import { MaxWidthContainer } from "@/COMPONENTS/common/MaxWidthContainer";
 import PageLayout from "@/COMPONENTS/common/PageLayout";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, Button, Card, Typography } from "@mui/material";
+import { Box, Button, Card, Divider, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -14,6 +14,9 @@ import StyledTextInput from "./StyledTextInput";
 import { capitalizeEachWord } from "@/COMPONENTS/common/shared/capitalizeEachWord";
 import PersonalInformationForm from "./PersonalInformationForm";
 import { CountriesResponseType } from "@/COMPONENTS/types/CountryType";
+import LuggageItemRow from "./LuggageItemRow";
+import { Add } from "@mui/icons-material";
+import { theme } from "@/COMPONENTS/common/shared/Theme";
 
 export type OfferFormType = {
     firstName: string;
@@ -28,6 +31,10 @@ export type OfferFormType = {
     deliverCountry: string;
     deliverCity: string;
     deliverPostcode: string;
+    standardBox: number;
+    largeBox: number;
+    suitcaseSmall: number;
+    suitcaseLarge: number;
 };
 
 // Step-based validation schemas
@@ -64,12 +71,12 @@ export default function OfferNewPage({ countriesData }: Props) {
             lastName: "Rambo",
             email: 'johhnyboy@rambo.com',
             phone: '07123903433',
-            collectCountry: capitalizeEachWord(dataParam.from_country) ?? "United Kingdom",
-            collectCity: capitalizeEachWord(dataParam.from_city) ?? "London",
-            collectPostcode: capitalizeEachWord(dataParam.from_postCode) ?? "HP23DS",
-            deliverCountry: capitalizeEachWord(dataParam.to_country) ?? "United States",
-            deliverCity: capitalizeEachWord(dataParam.to_city) ?? "Boston",
-            deliverPostcode: capitalizeEachWord(dataParam.to_postCode) ?? "BO5345",
+            collectCountry: capitalizeEachWord(dataParam?.from_country) ?? "United Kingdom",
+            collectCity: capitalizeEachWord(dataParam?.from_city) ?? "London",
+            collectPostcode: capitalizeEachWord(dataParam?.from_postCode) ?? "HP23DS",
+            deliverCountry: capitalizeEachWord(dataParam?.to_country) ?? "United States",
+            deliverCity: capitalizeEachWord(dataParam?.to_city) ?? "Boston",
+            deliverPostcode: capitalizeEachWord(dataParam?.to_postCode) ?? "BO5345",
         }
     });
 
@@ -99,12 +106,12 @@ export default function OfferNewPage({ countriesData }: Props) {
                             {/* Step 1: Personal Info */}
                             {activeStep === 0 && (
                                 <Card sx={{ p: 4, width: "100%", mx: "auto", mb: 10 }}>
-                                    <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 8 }} pb={2} width={'100%'}>
-                                        <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "60%" }}>
+                                    <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} pb={2} width={'100%'}>
+                                        <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
                                             <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Personal</b> Details</Typography>
                                             <PersonalInformationForm form={form} errors={errors} />
                                         </Stack>
-                                        <Stack sx={{ maxWidth: { xs: "100%", md: '40%' }, width: '100%' }}>
+                                        <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%' }}>
                                             <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
                                         </Stack>
                                     </Stack>
@@ -118,25 +125,65 @@ export default function OfferNewPage({ countriesData }: Props) {
                             {/* Step 2: Some Info */}
                             {activeStep === 1 && (
                                 <Card sx={{ p: 4, width: "100%", mx: "auto", mb: 10 }}>
-                                    <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 8 }} pb={2} width={'100%'}>
-                                        <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "60%" }}>
+                                    <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} pb={2} width={'100%'}>
+                                        <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
                                             <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Boxes & Luggage</b> Details</Typography>
                                             <Stack direction="row" gap={2} pb={2} pt={2} >
-                                                <Box flex={1} display="flex" flexDirection="column" gap={2}>
-                                                    <StyledTextInput
-                                                        label="Something"
+                                                <Box flex={1} display="flex" flexDirection="column" gap={3}>
+                                                    <LuggageItemRow
+                                                        primaryText="Standard"
+                                                        secondaryText="Box"
+                                                        dimensions="41 x 41 x 41 cm"
+                                                        maxWeight="20"
                                                         form={form}
-                                                        name="something"
-                                                        error={!!errors.something}
-                                                        helperText={errors.something?.message}
+                                                        name={'standardBox'}
                                                     />
+                                                    <LuggageItemRow
+                                                        primaryText="Large"
+                                                        secondaryText="Box"
+                                                        dimensions="51 x 51 x 51 cm"
+                                                        maxWeight="30"
+                                                        form={form}
+                                                        name={'largeBox'}
+                                                    />
+                                                    <LuggageItemRow
+                                                        primaryText="Suitcase"
+                                                        secondaryText="Small"
+                                                        dimensions="18 x 32 x 45 cm"
+                                                        maxWeight="20"
+                                                        form={form}
+                                                        name={'suitcaseSmall'}
+                                                    />
+                                                    <LuggageItemRow
+                                                        primaryText="Suitcase"
+                                                        secondaryText="Large"
+                                                        dimensions="36 x 47 x 70 cm"
+                                                        maxWeight="30"
+                                                        form={form}
+                                                        name={'suitcaseLarge'}
+                                                    />
+                                                    <Stack>
+                                                        <Box pb={3}>
+                                                            <Divider />
+                                                        </Box>
+                                                        <Stack direction={'row'} justifyContent={'center'} alignItems={'center'} gap={2}>
+                                                            <Add fontSize="large" sx={{ fill: theme.palette.secondary.main }} />
+                                                            <Typography fontWeight={500} color={'secondary.main'} sx={{ letterSpacing: 1 }}>
+                                                                ADD YOUR OWN ITEM
+                                                            </Typography>
+                                                        </Stack>
+                                                        <Box py={3}>
+                                                            <Divider />
+                                                        </Box>
+                                                    </Stack>
                                                 </Box>
                                             </Stack>
                                         </Stack>
-                                        <Stack sx={{ maxWidth: { xs: "100%", md: '40%' }, width: '100%' }}>
+                                        <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%' }}>
                                             <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
                                         </Stack>
                                     </Stack>
+
                                     <Button onClick={nextStep} variant="contained" color="secondary"
                                         sx={{ px: 6, py: 2 }}>
                                         Next step
@@ -147,8 +194,8 @@ export default function OfferNewPage({ countriesData }: Props) {
                             {/* Step 3: Final Info */}
                             {activeStep === 2 && (
                                 <Card sx={{ p: 4, width: "100%", mx: "auto", mb: 10 }}>
-                                    <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 8 }} pb={2} width={'100%'}>
-                                        <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "60%" }}>
+                                    <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} pb={2} width={'100%'}>
+                                        <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
                                             <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Final</b> Details</Typography>
                                             <Stack direction="row" gap={2} pb={2} pt={2} >
                                                 <Box flex={1} display="flex" flexDirection="column" gap={2}>
@@ -162,7 +209,7 @@ export default function OfferNewPage({ countriesData }: Props) {
                                                 </Box>
                                             </Stack>
                                         </Stack>
-                                        <Stack sx={{ maxWidth: { xs: "100%", md: '40%' }, width: '100%' }}>
+                                        <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%' }}>
                                             <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
                                         </Stack>
                                     </Stack>
