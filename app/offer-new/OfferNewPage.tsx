@@ -10,11 +10,11 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import DeliveryDateForm from "./DeliveryDateForm";
 import HorizontalStepper from "./HorizontalStepper";
 import LuggageInformationForm from "./LuggageInformationForm";
 import OfferSummary from "./OfferSummary";
 import PersonalInformationForm from "./PersonalInformationForm";
-import StyledTextInput from "./StyledTextInput";
 
 export type OfferFormType = {
     firstName: string;
@@ -33,7 +33,10 @@ export type OfferFormType = {
     largeBox: number;
     suitcaseSmall: number;
     suitcaseLarge: number;
-    customItems: CustomItemType[]
+    customItems: CustomItemType[];
+    collectionDate: Date;
+    deliverBoxesDate: Date;
+    emptyBoxesQuantity: number;
 };
 
 export type CustomItemType = {
@@ -44,6 +47,15 @@ export type CustomItemType = {
     weight: string;
 }
 // Step-based validation schemas
+
+const customItemSchema = yup.object().shape({
+    name: yup.string().required('Name is required'),
+    width: yup.string().required('Width is required'),
+    height: yup.string().required('Height is required'),
+    depth: yup.string().required('Depth is required'),
+    weight: yup.string().required('Weight is required'),
+});
+
 const stepSchemas = [
     yup.object({
         firstName: yup.string().required("Name is required"),
@@ -52,10 +64,42 @@ const stepSchemas = [
         phone: yup.string().nullable(),
     }),
     yup.object({
-        // something: yup.string().required("This field is required"),
-    }),
+        standardBox: yup.number().min(0),
+        largeBox: yup.number().min(0),
+        suitcaseSmall: yup.number().min(0),
+        suitcaseLarge: yup.number().min(0),
+        customItems: yup.array().of(customItemSchema).test(
+            'custom-items-required',
+            'All custom item fields are required',
+            (customItems) => {
+                if (customItems && customItems.length > 0) {
+                    return customItems.every(item =>
+                        item.name &&
+                        item.width &&
+                        item.height &&
+                        item.depth &&
+                        item.weight
+                    );
+                }
+                return true;
+            }
+        ),
+    }).test(
+        'at-least-one-box',
+        'At least one box or suitcase must be greater than 0',
+        (values) =>
+            (values.standardBox || 0) > 0 ||
+            (values.largeBox || 0) > 0 ||
+            (values.suitcaseSmall || 0) > 0 ||
+            (values.suitcaseLarge || 0) > 0
+    ),
     yup.object({
-        // somethingelse: yup.string().required("This field is required"),
+        collectionDate: yup.date().required('Collection date is required'),
+        deliverBoxesDate: yup.date().when('emptyBoxesQuantity', {
+            is: (value: number) => value > 0,
+            then: (schema) => schema.required('Delivery date of empty boxes is required'),
+            otherwise: (schema) => schema.notRequired(),
+        }),
     }),
 ];
 
@@ -73,16 +117,34 @@ export default function OfferNewPage({ countriesData }: Props) {
         resolver: yupResolver(stepSchemas[activeStep] as any) as any, // Change schema dynamically
         mode: "onTouched",
         defaultValues: {
-            firstName: "John",
-            lastName: "Rambo",
-            email: 'johhnyboy@rambo.com',
-            phone: '07123903433',
             collectCountry: capitalizeEachWord(dataParam?.from_country) ?? "United Kingdom",
             collectCity: capitalizeEachWord(dataParam?.from_city) ?? "London",
             collectPostcode: capitalizeEachWord(dataParam?.from_postCode) ?? "HP23DS",
             deliverCountry: capitalizeEachWord(dataParam?.to_country) ?? "United States",
             deliverCity: capitalizeEachWord(dataParam?.to_city) ?? "Boston",
             deliverPostcode: capitalizeEachWord(dataParam?.to_postCode) ?? "BO5345",
+
+            firstName: "John",
+            lastName: "Rambo",
+            email: 'johhnyboy@rambo.com',
+            phone: '07123903433',
+
+            // standardBox: 1,
+            // suitcaseLarge: 1,
+            // suitcaseSmall: 2,
+            // largeBox: 4,
+            // customItems: [
+            //     {
+            //         name: 'Sack of potatoes',
+            //         width: '200',
+            //         height: '200',
+            //         depth: '200',
+            //         weight: '200',
+            //     }
+            // ],
+            // emptyBoxesQuantity: 0,
+            // collectionDate: new Date('2025-02-24'),
+            // deliverBoxesDate: new Date('2025-02-20'),
         }
     });
 
@@ -159,17 +221,10 @@ export default function OfferNewPage({ countriesData }: Props) {
                                 <Card sx={{ p: 4, width: "100%", mx: "auto", mb: 10 }}>
                                     <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} pb={2} width={'100%'}>
                                         <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
-                                            <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Final</b> Details</Typography>
-                                            <Stack direction="row" gap={2} pb={2} pt={2} >
-                                                <Box flex={1} display="flex" flexDirection="column" gap={2}>
-                                                    <StyledTextInput
-                                                        label="Something else"
-                                                        form={form}
-                                                        name="somethingelse"
-                                                        error={!!errors.somethingelse}
-                                                        helperText={errors.somethingelse?.message}
-                                                    />
-                                                </Box>
+
+                                            {/* <Typography>{'(collection is between 9am and 6pm daily.)'}</Typography> */}
+                                            <Stack direction={'row'} justifyContent={'flex-start'}>
+                                                <DeliveryDateForm form={form} />
                                             </Stack>
                                         </Stack>
                                         <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%' }}>

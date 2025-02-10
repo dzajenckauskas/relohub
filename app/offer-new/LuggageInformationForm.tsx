@@ -1,5 +1,4 @@
 import { theme } from '@/COMPONENTS/common/shared/Theme';
-import { CountriesResponseType } from '@/COMPONENTS/types/CountryType';
 import Add from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
@@ -7,7 +6,7 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { FieldErrors, UseFormReturn, useFieldArray } from 'react-hook-form';
+import { UseFormReturn, useFieldArray } from 'react-hook-form';
 import AddItemForm from './AddItemForm';
 import LuggageItemRow from './LuggageItemRow';
 import { CustomItemType, OfferFormType } from './OfferNewPage';
@@ -90,15 +89,15 @@ const LuggageInformationForm = ({ form }: Props) => {
 
                         direction={'row'}
                         sx={{ cursor: 'pointer' }}
-                        justifyContent={'center'} alignItems={'center'} gap={2}>
+                        justifyContent={'flex-start'} alignItems={'center'} gap={2}>
                         <Add fontSize="large" sx={{ fill: theme.palette.secondary.main }} />
                         <Typography fontWeight={500} color={'secondary.main'} sx={{ letterSpacing: 1 }}>
                             ADD YOUR OWN ITEM
                         </Typography>
                     </Stack>
-                    <Box pt={2}>
+                    {/* <Box pt={2}>
                         <Divider />
-                    </Box>
+                    </Box> */}
 
                 </Stack>
             </Box>

@@ -7,6 +7,7 @@ import { OfferFormType } from './OfferNewPage';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
+import FormHelperText from '@mui/material/FormHelperText';
 
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>
@@ -57,6 +58,9 @@ const AddItemForm = ({ form, errors, index }: Props) => {
                 // helperText={errors.customItems.${index}.weight?.message}
                 />
             </Box>
+            {form.formState?.errors?.customItems?.[index]?.message && (
+                <FormHelperText error>{form.formState?.errors?.customItems?.[index]?.message}</FormHelperText>
+            )}
         </Stack>
     )
 }
