@@ -10,7 +10,8 @@ type Props = {
     errors: FieldErrors<OfferFormType>
 }
 
-const PersonalInformationForm = ({ form, errors }: Props) => {
+const PersonalInformationForm = ({ form }: Props) => {
+    const { formState: { errors } } = form
     return (
         <Stack direction="row" gap={2} pt={2} >
             <Box flex={1} display="flex" flexDirection="column" gap={2}>

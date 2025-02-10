@@ -49,7 +49,7 @@ const OfferSummaryFormCard = ({ countriesData, form, showPopUp, togglePopUp }: P
                 </Stack>
                 <PersonalInformationForm form={form} errors={form.formState.errors} />
                 <LocationsInformationForm countriesData={countriesData} form={form} errors={form.formState.errors} />
-                <LuggageInformationForm form={form} errors={form.formState.errors} />
+                <LuggageInformationForm form={form} />
                 {/* <h2 className="instantquotewrp">
                     <span>{"Get a "}</span>
                     <span style={{ fontWeight: 800 }}>

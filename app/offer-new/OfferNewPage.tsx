@@ -1,24 +1,20 @@
 "use client";
 import { MaxWidthContainer } from "@/COMPONENTS/common/MaxWidthContainer";
 import PageLayout from "@/COMPONENTS/common/PageLayout";
+import { capitalizeEachWord } from "@/COMPONENTS/common/shared/capitalizeEachWord";
+import { CountriesResponseType } from "@/COMPONENTS/types/CountryType";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, Button, Card, Divider, Typography } from "@mui/material";
+import { Box, Button, Card, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { useFieldArray, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import HorizontalStepper from "./HorizontalStepper";
+import LuggageInformationForm from "./LuggageInformationForm";
 import OfferSummary from "./OfferSummary";
-import StyledTextInput from "./StyledTextInput";
-import { capitalizeEachWord } from "@/COMPONENTS/common/shared/capitalizeEachWord";
 import PersonalInformationForm from "./PersonalInformationForm";
-import { CountriesResponseType } from "@/COMPONENTS/types/CountryType";
-import LuggageItemRow from "./LuggageItemRow";
-import { Add } from "@mui/icons-material";
-import { theme } from "@/COMPONENTS/common/shared/Theme";
-import AddItemForm from "./AddItemForm";
-import CloseIcon from '@mui/icons-material/Close';
+import StyledTextInput from "./StyledTextInput";
 
 export type OfferFormType = {
     firstName: string;
@@ -40,7 +36,7 @@ export type OfferFormType = {
     customItems: CustomItemType[]
 };
 
-type CustomItemType = {
+export type CustomItemType = {
     name: string;
     width: string;
     height: string;
@@ -56,10 +52,10 @@ const stepSchemas = [
         phone: yup.string().nullable(),
     }),
     yup.object({
-        something: yup.string().required("This field is required"),
+        // something: yup.string().required("This field is required"),
     }),
     yup.object({
-        somethingelse: yup.string().required("This field is required"),
+        // somethingelse: yup.string().required("This field is required"),
     }),
 ];
 
@@ -93,7 +89,11 @@ export default function OfferNewPage({ countriesData }: Props) {
     const { handleSubmit, formState: { errors }, trigger, control } = form;
 
     const nextStep = async () => {
+        console.log(form.getValues(), "form.getValues()");
+
         const valid = await trigger(Object.keys(stepSchemas[activeStep].fields) as any); // Validate only current step fields
+        console.log(stepSchemas[activeStep].fields, "stepSchemas[activeStep].fields");
+
         if (valid) {
             setActiveStep((prev) => prev + 1);
         }
@@ -105,13 +105,6 @@ export default function OfferNewPage({ countriesData }: Props) {
     }
 
 
-    const { fields, append, remove } = useFieldArray({
-        control,
-        name: 'customItems'
-    });
-    console.log(fields, "fields");
-
-    const customItems = form.watch('customItems')
     return (
         <PageLayout hidePopUpButton>
             <Stack sx={{ backgroundColor: "#efefef" }}>
@@ -147,86 +140,7 @@ export default function OfferNewPage({ countriesData }: Props) {
                                     <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} pb={2} width={'100%'}>
                                         <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
                                             <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Boxes & Luggage</b> Details</Typography>
-                                            <Stack direction="row" gap={2} pb={2} pt={2} >
-                                                <Box flex={1} display="flex" flexDirection="column" gap={3}>
-                                                    <LuggageItemRow
-                                                        primaryText="Standard"
-                                                        secondaryText="Box"
-                                                        dimensions="41 x 41 x 41 cm"
-                                                        maxWeight="20"
-                                                        form={form}
-                                                        name={'standardBox'}
-                                                    />
-                                                    <LuggageItemRow
-                                                        primaryText="Large"
-                                                        secondaryText="Box"
-                                                        dimensions="51 x 51 x 51 cm"
-                                                        maxWeight="30"
-                                                        form={form}
-                                                        name={'largeBox'}
-                                                    />
-                                                    <LuggageItemRow
-                                                        primaryText="Suitcase"
-                                                        secondaryText="Small"
-                                                        dimensions="18 x 32 x 45 cm"
-                                                        maxWeight="20"
-                                                        form={form}
-                                                        name={'suitcaseSmall'}
-                                                    />
-                                                    <LuggageItemRow
-                                                        primaryText="Suitcase"
-                                                        secondaryText="Large"
-                                                        dimensions="36 x 47 x 70 cm"
-                                                        maxWeight="30"
-                                                        form={form}
-                                                        name={'suitcaseLarge'}
-                                                    />
-                                                    <Stack>
-                                                        <Box pb={1}>
-                                                            <Divider />
-                                                        </Box>
-
-                                                        {/* {!addItem && */}
-                                                        {/* {addItem && */}
-                                                        <>
-                                                            {fields?.reverse()?.map((ci, i) => {
-                                                                return <Stack alignItems={'stretch'} pb={2}>
-                                                                    <Button sx={{
-                                                                        minWidth: 10, alignSelf: 'flex-end',
-                                                                        //  position: 'relative', top: 3, right: 3
-                                                                    }}
-                                                                        onClick={() => remove(i)}
-                                                                    >
-                                                                        <CloseIcon fontSize='large' sx={{ fontSize: 20 }} />
-                                                                    </Button>
-                                                                    <AddItemForm form={form} errors={form.formState.errors} index={i} />
-                                                                    <Box sx={{ pt: 1 }}>
-                                                                        <Divider />
-                                                                    </Box>
-                                                                </Stack>
-                                                            })}
-                                                        </>
-
-                                                        {/* } */}
-                                                        <Stack
-                                                            pt={1}
-                                                            onClick={async () => await append({} as CustomItemType)}
-
-                                                            direction={'row'}
-                                                            sx={{ cursor: 'pointer' }}
-                                                            justifyContent={'center'} alignItems={'center'} gap={2}>
-                                                            <Add fontSize="large" sx={{ fill: theme.palette.secondary.main }} />
-                                                            <Typography fontWeight={500} color={'secondary.main'} sx={{ letterSpacing: 1 }}>
-                                                                ADD YOUR OWN ITEM
-                                                            </Typography>
-                                                        </Stack>
-                                                        <Box pt={2}>
-                                                            <Divider />
-                                                        </Box>
-
-                                                    </Stack>
-                                                </Box>
-                                            </Stack>
+                                            <LuggageInformationForm form={form} />
                                         </Stack>
                                         <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%' }}>
                                             <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
