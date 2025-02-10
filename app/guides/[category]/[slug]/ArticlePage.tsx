@@ -18,6 +18,7 @@ import Box from '@mui/material/Box';
 import { InstantQuoteComponent } from '@/COMPONENTS/common/InstantQuoteComponent';
 import BreadcrumbsComponent from '@/COMPONENTS/common/shared/BreadcrumbsComponent';
 import FullContentSection from '@/app/moving-to/[slug]/FullContentSection';
+import { formatDate } from '@/COMPONENTS/common/shared/formatDate';
 
 type Props = {
     article?: ArticleResponseType;
@@ -32,15 +33,7 @@ const ArticlePage = ({ article }: Props) => {
     const categoryUrl = article?.data?.attributes?.articleCategory?.data?.attributes?.key
     const continent = article?.data?.attributes?.articleContinents?.data?.[0]?.attributes?.name
     const date = article?.data?.attributes?.createdAt
-    function formatDate(dateString) {
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        const date = new Date(dateString);
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = months[date.getMonth()];
-        const year = date.getFullYear();
 
-        return `${day} ${month} ${year}`;
-    }
     const formattedDate = formatDate(date);
 
     const textRef = useRef(null);

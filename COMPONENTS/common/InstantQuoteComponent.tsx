@@ -8,7 +8,12 @@ import "/STYLES/elements.css";
 import "/STYLES/globals.css";
 import "/STYLES/medias.css";
 
-export const InstantQuoteComponent = () => {
+type Props = {
+    togglePopUp?: () => void;
+    title?: React.ReactNode
+}
+
+export const InstantQuoteComponent = ({ togglePopUp, title }: Props) => {
     const router = useRouter();
     const [enableButton, setEnableButton] = useState(false);
     const [state, setstate] = useState({
@@ -23,13 +28,32 @@ export const InstantQuoteComponent = () => {
         <Stack sx={{
             minHeight: { xs: 0, sm: 330 }
         }}>
-            <h2 className="instantquotewrp">
-                <span>{"Get an "}</span>
-                <span style={{ fontWeight: 800 }}>
-                    <b>Instant Quote</b>
-                </span>
-                <span>{" now"}</span>
-            </h2>
+            <Stack
+                direction={'row'}
+                justifyContent={{ xs: togglePopUp ? 'space-between' : 'center', md: 'flex-start' }}
+                alignItems="center"
+            >
+                {title ?? (
+                    <h2 className="instantquotewrp">
+                        <span>{"Get an "}</span>
+                        <span style={{ fontWeight: 800 }}>
+                            <b>Instant Quote</b>
+                        </span>
+                        <span>{" now"}</span>
+                    </h2>
+                )}
+                {togglePopUp && (
+                    <button
+                        className="instantQuoteCloseButton"
+                        onClick={() => {
+                            togglePopUp();
+                        }}
+                    >
+                        &#10006;
+                    </button>
+                )}
+            </Stack>
+
             <HeroInputs isOffer={false}
                 state={state}
                 setstate={setstate}

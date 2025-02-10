@@ -105,6 +105,11 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
     const [zipinputfocused, setzipinputfocused] = useState(false);
     const [zipinputfocuseddest, setzipinputfocuseddest] = useState(false);
 
+    const fromPostCodeRequired = (state.from_country.toLowerCase() === "united states" || state.from_country.toLowerCase() === "united kingdom") && state.from_postCode == ''
+    const toPostCodeRequired = (state.to_country.toLowerCase() === "united states" || state.to_country.toLowerCase() === "united kingdom") && state.to_postCode == ''
+    const toPostZipCodeCheck = state.to_country.toLowerCase() === 'united states' ? "Zip" : "Post"
+    const fromPostZipCodeCheck = state.from_country.toLowerCase() === 'united states' ? "Zip" : "Post"
+
     useEffect(() => {
         if (listRef.current) {
             const height = listRef.current.offsetHeight;
@@ -219,11 +224,11 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
             enable = false;
         }
 
-        if ((state.from_country.toLowerCase() === "united states" || state.from_country.toLowerCase() === "united kingdom") && state.from_postCode == '') {
+        if (fromPostCodeRequired) {
             enable = false;
         }
 
-        if ((state.to_country.toLowerCase() === "united states" || state.to_country.toLowerCase() === "united kingdom") && state.to_postCode == '') {
+        if (toPostCodeRequired) {
             enable = false;
         }
 
@@ -669,7 +674,7 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
                             }
                             style={{
                                 borderRadius: '0px !important',
-                                border: ((state.from_country.toLowerCase() === "united states" || state.from_country.toLowerCase() === "united kingdom") && state.from_postCode == '') ? `2px solid ${theme.palette.secondary.main}` : ''
+                                border: fromPostCodeRequired ? `2px solid ${theme.palette.secondary.main}` : ''
                             }}
                             onChange={(e) => {
                                 setstate({
@@ -678,7 +683,7 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
                                 });
                             }}
                         ></input>
-                        {((state.from_country.toLowerCase() === "united states" || state.from_country.toLowerCase() === "united kingdom") && state.from_postCode == '') && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.from_country.toLowerCase() === 'united states' ? "Zip" : "Post"} code is mandatory`} />}
+                        {fromPostCodeRequired && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${fromPostZipCodeCheck} code is mandatory`} />}
                         {zipinputfocused && !edit ? (
                             <button
                                 className="postcodeconfirmbutton"
@@ -722,7 +727,7 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
                             className="dropdowninputsearch  ifukorusinput"
                             value={state.to_postCode}
                             style={{
-                                border: (state.to_country.toLowerCase() === "united states" || state.to_country.toLowerCase() === "united kingdom") && state.to_postCode == '' ? `2px solid ${theme.palette.secondary.main}` : ''
+                                border: toPostCodeRequired ? `2px solid ${theme.palette.secondary.main}` : ''
                             }}
                             onChange={(e) => {
                                 setstate({
@@ -731,7 +736,8 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
                                 });
                             }}
                         ></input>
-                        {(state.to_country.toLowerCase() === "united states" || state.to_country.toLowerCase() === "united kingdom") && state.to_postCode == '' && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${state.to_country.toLowerCase() === 'united states' ? "Zip" : "Post"} code is mandatory`} />}
+                        {toPostCodeRequired &&
+                            <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${toPostZipCodeCheck} code is mandatory`} />}
 
                         {zipinputfocuseddest && !edit ? (
                             <button

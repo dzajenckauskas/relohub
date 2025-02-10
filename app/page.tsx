@@ -8,7 +8,6 @@ import ProcessWrapper from "@/COMPONENTS/main_page/ProcessWrapper";
 import Postheroimages from "@/COMPONENTS/main_page/postheroimages";
 import Reviews from "@/COMPONENTS/main_page/reviews";
 import VideoArea from "@/COMPONENTS/main_page/videoarea";
-import { CountriesResponseType } from "@/COMPONENTS/types/CountryType";
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
 import Image from "next/image";

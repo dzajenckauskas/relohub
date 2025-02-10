@@ -1,9 +1,8 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { MaxWidthContainer } from "../common/MaxWidthContainer";
-import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { MaxWidthContainer } from "../common/MaxWidthContainer";
 import { VideSectionType } from "../types/CountryType";
 
 type Props = {
@@ -42,29 +41,12 @@ export default function VideoSection({ hideIcons, videoSection }: Props) {
             <MaxWidthContainer>
                 <section className="videoareaglobalwrp">
                     <div className="videoareavideowrp">
-                        {showvideohide ? (
-                            <div className="videoareaplaybtnwrp">
-                                <button
-                                    className="videopresentationtroundbutton"
-                                    onClick={handleButtonClick}
-                                >
-                                    <Image
-                                        src={"/play.svg"}
-                                        style={{ objectFit: "contain" }}
-                                        className="playsvgbtn"
-                                        width={40}
-                                        height={40}
-                                        alt="play button"
-                                    ></Image>
-                                </button>
-                            </div>
-                        ) : null}
-
                         {videoSection?.video?.data?.attributes?.url &&
                             <video
+                                preload="metadata"
                                 ref={videoRef}
                                 className="videoelm"
-                                src={`${process.env.NEXT_PUBLIC_API_URL}${videoSection?.video?.data?.attributes?.url}`}
+                                src={`${process.env.NEXT_PUBLIC_API_URL}${videoSection?.video?.data?.attributes?.url}` + '#t=0.001'}
                                 controls
                             ></video>}
                     </div>

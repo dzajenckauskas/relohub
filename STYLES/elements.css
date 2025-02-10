@@ -40,7 +40,7 @@
 .showchatglobalwtp {
     padding: 8px;
     box-sizing: content-box;
-    background: var(--pink_color);
+    background: var(--light_black);
     border-radius: 8px;
 }
 
@@ -57,7 +57,7 @@
 
 .chatimagewrp {
     cursor: pointer;
-    background: var(--pink_color);
+    background: var(--light_black);
     display: flex;
     align-items: center;
     color: #fff;
@@ -88,7 +88,7 @@
 }
 
 .videoareaglobalwrp {
-    background: var(--light_black);
+    /* background: var(--light_black); */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -253,7 +253,7 @@
 
 .videoareaplaybtnwrp {
     position: absolute;
-    background: var(--transparent_black_background);
+    /* background: var(--transparent_black_background); */
     width: 100%;
     height: 100%;
     display: flex;
@@ -290,6 +290,19 @@
 }
 
 .videopresentationtroundbutton {
+    width: 120px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: var(--pink_color);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    filter: grayscale(0);
+}
+
+.videopresentationtroundbuttonNew {
     width: 120px;
     aspect-ratio: 1/1;
     border-radius: 50%;
@@ -615,6 +628,7 @@
 .paywithstripebutton:hover,
 .gitsendbutton:hover,
 .videopresentationtroundbutton:hover,
+.videopresentationtroundbuttonNew:hover,
 /* .getestimatebutton:hover */
 /* .customitemaddbutton:hover, */
 .offerdeliveryeditbtn:hover {
@@ -1134,6 +1148,42 @@ th {
     transform: scale(1.1);
 }
 
+.alotoftextclosebuttonmissing {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+}
+
+.instantquotewrp {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+    /* Ensure there's no default margin affecting alignment */
+}
+
+.instantQuoteCloseButton {
+    position: relative;
+    top: -12px;
+    margin-left: auto;
+    background: none;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.instantQuoteCloseButton:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+    .instantQuoteCloseButton {
+        margin-left: 0;
+        /* Prevent alignment issues in smaller screens */
+    }
+}
+
 .alotoftextprohibited {
     padding-left: 8px;
     padding-right: 8px;
@@ -1185,7 +1235,7 @@ th {
     flex-direction: column;
     width: 100%;
     background: var(--light_grey);
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 .offerbookingdetailswrp {
@@ -1301,7 +1351,7 @@ th {
 }
 
 .offercollectiondatewrp {
-    margin-top: 24px;
+    margin-top: 4px;
     color: #fff;
     position: relative;
     overflow: hidden;
@@ -1314,6 +1364,7 @@ th {
     flex-direction: column;
     width: 100%;
     padding: 24px;
+    margin-bottom: 24px;
 }
 
 .collectiondateleftwrp {
@@ -1365,7 +1416,8 @@ th {
 .offerbuttonswrp {
     display: flex;
     margin-top: 24px;
-    margin-bottom: 56px;
+    /* margin-bottom: 56px; */
+    /* padding-bottom: 56px; */
     justify-content: flex-end;
     gap: 40px;
 }
@@ -1545,6 +1597,11 @@ th {
     font-size: 2rem;
     margin-top: 24px;
     padding-left: 20px;
+}
+
+.transparentBg {
+    background: var(--transparent_black_background);
+
 }
 
 .offerpopupglobalwrp,
@@ -1868,11 +1925,7 @@ th {
     margin-top: 8px !important;
 }
 
-.alotoftextclosebuttonmissing {
-    position: absolute;
-    top: 20px;
-    right: 24px;
-}
+
 
 .missingitemh3 {
     margin-top: 0;

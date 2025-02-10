@@ -2,25 +2,26 @@
 import { ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 import GetInTOuch from '../main_page/getInTouch';
-import Header from './shared/header/Header';
-import { getTheme } from './shared/Theme';
+import GetQuotePopUp from './GetQuotePopUp';
 import Chat from './chat';
+import { getTheme } from './shared/Theme';
+import Header from './shared/header/Header';
 
-type Props = {
-    children: React.ReactNode
-}
 
-const PageLayout = ({ children }: Props) => {
-    let theme = getTheme()
-    // theme = responsiveFontSizes(theme);
+
+const PageLayout = ({ children, hidePopUpButton }: { children: React.ReactNode, hidePopUpButton?: boolean }) => {
+    const theme = getTheme();
+
     return (
         <ThemeProvider theme={theme}>
             <Chat />
+            {!hidePopUpButton && <GetQuotePopUp />}
+
             <Header />
             {children}
             <GetInTOuch />
-        </ThemeProvider>
-    )
-}
+        </ThemeProvider >
+    );
+};
 
-export default PageLayout
+export default PageLayout;

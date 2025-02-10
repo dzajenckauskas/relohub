@@ -18,12 +18,17 @@ type Props = {
 }
 
 const LatestArticles = ({ sx }: Props) => {
-    const latestArticlesUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents&sort[0]=updatedAt:desc&pagination[page]=1&pagination[pageSize]=3`
+    const latestArticlesUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=seo,image,articleCategory,articleContinents&sort[0]=createdAt:desc&sort[1]=updatedAt:desc&pagination[page]=1&pagination[pageSize]=3`
 
     const { data: latestArticles, isLoading } = useSWR(
         latestArticlesUrl,
         fetcher
     );
+
+    const filteredLatestArticles = latestArticles?.data?.sort((a, b) => {
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    })
+
     const renderLatestArticlesLoading = Array.from({ length: 3 })?.map((_, index) => {
         return (
             <Stack key={index} width={'100%'}>
@@ -31,7 +36,7 @@ const LatestArticles = ({ sx }: Props) => {
             </Stack>
         )
     })
-    const renderLatestArticles = latestArticles?.data?.map((article: ArticleDataType) => {
+    const renderLatestArticles = filteredLatestArticles?.map((article: ArticleDataType) => {
         return (
             <Stack key={article.id} width={'100%'}>
                 <ArticleCard article={article} />

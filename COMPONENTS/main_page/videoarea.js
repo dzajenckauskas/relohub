@@ -42,9 +42,10 @@ export default function VideoArea({ hideIcons }) {
 
         return (
             <video
+                preload="metadata"
                 ref={videoRef}
                 className="videoelm"
-                src={src}
+                src={src + '#t=0.001'}
                 controls
             ></video>
         );
@@ -117,25 +118,6 @@ export default function VideoArea({ hideIcons }) {
                     </div>}
 
                     <div className="videoareavideowrp">
-                        {showvideohide ? (
-                            <div className="videoareaplaybtnwrp">
-                                <Typography variant="h1" component={'h2'}>View Our Presentation</Typography>
-                                <button
-                                    className="videopresentationtroundbutton"
-                                    onClick={handleButtonClick}
-                                >
-                                    <Image
-                                        src={"/play.svg"}
-                                        style={{ objectFit: "contain" }}
-                                        className="playsvgbtn"
-                                        width={40}
-                                        height={40}
-                                        alt="play button"
-                                    ></Image>
-                                </button>
-                            </div>
-                        ) : null}
-
                         {vide()}
                     </div>
                 </section>

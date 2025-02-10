@@ -36,7 +36,7 @@ export default function OfferPopup({ hidePopup, state, prices }) {
             duration: `7 - 12 DAYS TRANSIT`,
             image: `/truck.png`,
             field: `ROAD`,
-            price: prices.price.ROAD,
+            price: prices?.price.ROAD,
             smallt: "DOOR TO DOOR",
         },
         {
@@ -44,7 +44,7 @@ export default function OfferPopup({ hidePopup, state, prices }) {
             duration: `10 - 14 WEEKS TRANSIT`,
             image: `/ship.png`,
             field: `SEA`,
-            price: prices.price.SEA,
+            price: prices?.price.SEA,
             smallt: "DOOR TO DOOR",
         },
         {
@@ -52,7 +52,7 @@ export default function OfferPopup({ hidePopup, state, prices }) {
             duration: `7 - 12 DAYS TRANSIT`,
             image: `/plane.png`,
             field: `AIR COURIER`,
-            price: prices.price[`AIR COURIER`],
+            price: prices?.price[`AIR COURIER`],
             smallt: "DOOR TO DOOR",
         },
 
@@ -61,7 +61,7 @@ export default function OfferPopup({ hidePopup, state, prices }) {
             duration: `7 - 12 DAYS TRANSIT`,
             image: `/plane.png`,
             field: `AIR FREIGHT (TO-AIRPORT)`,
-            price: prices.price[`AIR FREIGHT (TO-AIRPORT)`],
+            price: prices?.price[`AIR FREIGHT (TO-AIRPORT)`],
             smallt: (
                 <>
                     {`DOOR TO `}
@@ -74,7 +74,7 @@ export default function OfferPopup({ hidePopup, state, prices }) {
             duration: `7 - 12 DAYS TRANSIT`,
             image: `/plane.png`,
             field: `AIR FREIGHT (TO-DOOR)`,
-            price: prices.price[`AIR FREIGHT (TO-DOOR)`],
+            price: prices?.price[`AIR FREIGHT (TO-DOOR)`],
             smallt: (
                 <>
                     {`DOOR TO `}

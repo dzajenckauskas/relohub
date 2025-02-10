@@ -523,6 +523,12 @@
         text-align: center;
     }
 
+    .videopresentationtroundbuttonNew {
+        width: 56px;
+        position: relative;
+        /* top: -25px; */
+    }
+
     .videopresentationtroundbutton {
         width: 56px;
         position: relative;
@@ -775,7 +781,6 @@
 
     .instantquotewrp {
         font-size: 3rem;
-        text-align: center;
         font-weight: bold;
     }
 
