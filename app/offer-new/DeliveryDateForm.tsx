@@ -92,7 +92,7 @@ const DeliveryDateForm = ({ form }: Props) => {
                                 justifyContent={'flex-start'} alignItems={'center'} gap={2}>
                                 <Remove fontSize="large" sx={{ fill: theme.palette.secondary.main }} />
                                 <Typography fontWeight={500} color={'secondary.main'} sx={{ letterSpacing: 1 }}>
-                                    I DONT'T NEED EMPTY BOXES
+                                    I DONT`&apos;`T NEED EMPTY BOXES
                                 </Typography>
                             </Stack>}
                         {!deliverBoxes &&
