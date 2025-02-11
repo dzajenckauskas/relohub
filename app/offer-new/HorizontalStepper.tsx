@@ -6,7 +6,7 @@ import StepLabel from '@mui/material/StepLabel';
 import Stepper from '@mui/material/Stepper';
 import * as React from 'react';
 
-const steps = ['Personal', 'Boxes & Luggage', 'Finish'];
+const steps = ['Contact details & Dates', 'Your inventory', 'Price options'];
 
 type Props = {
     activeStep: number;
@@ -87,10 +87,10 @@ export default function HorizontalStepper({ activeStep, setActiveStep }: Props) 
                         return (
                             <Step key={label} {...stepProps} >
                                 <StepLabel
-                                    //  onClick={() => setActiveStep(index)}
+                                    onClick={() => setActiveStep(index)}
                                     {...labelProps}
                                     sx={{
-                                        // cursor: 'pointer',
+                                        cursor: 'pointer',
                                         '& .MuiStepIcon-root': {
                                             fontSize: '5rem',
                                             // color: activeStep === index ? theme.palette.secondary.main : 'transparent',

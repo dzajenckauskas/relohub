@@ -17,8 +17,7 @@ import OfferSummary from "./OfferSummary";
 import PersonalInformationForm from "./PersonalInformationForm";
 
 export type OfferFormType = {
-    firstName: string;
-    lastName: string;
+    fullName: string;
     email: string;
     phone: string;
     something: string;
@@ -58,10 +57,10 @@ const customItemSchema = yup.object().shape({
 
 const stepSchemas = [
     yup.object({
-        firstName: yup.string().required("Name is required"),
-        lastName: yup.string().required("Surname is required"),
+        fullName: yup.string().required("Name is required"),
         email: yup.string().email("Invalid email").required("Email is required"),
         phone: yup.string().nullable(),
+        collectionDate: yup.date().required('Collection date is required'),
     }),
     yup.object({
         standardBox: yup.number().min(0),
@@ -94,12 +93,6 @@ const stepSchemas = [
             (values.suitcaseLarge || 0) > 0
     ),
     yup.object({
-        collectionDate: yup.date().required('Collection date is required'),
-        deliverBoxesDate: yup.date().when('emptyBoxesQuantity', {
-            is: (value: number) => value > 0,
-            then: (schema) => schema.required('Delivery date of empty boxes is required'),
-            otherwise: (schema) => schema.notRequired(),
-        }),
     }),
 ];
 
@@ -124,8 +117,7 @@ export default function OfferNewPage({ countriesData }: Props) {
             deliverCity: capitalizeEachWord(dataParam?.to_city) ?? "Boston",
             deliverPostcode: capitalizeEachWord(dataParam?.to_postCode) ?? "BO5345",
 
-            firstName: "John",
-            lastName: "Rambo",
+            fullName: "John Rambo",
             email: 'johhnyboy@rambo.com',
             phone: '07123903433',
 
@@ -177,13 +169,16 @@ export default function OfferNewPage({ countriesData }: Props) {
                         <form onSubmit={handleSubmit((data) => {
                             onSubmit(data)
                         })} noValidate>
-                            {/* Step 1: Personal Info */}
+                            {/* Step 1: Contact details & Dates */}
                             {activeStep === 0 && (
                                 <Card sx={{ p: 4, width: "100%", mx: "auto", mb: 10 }}>
                                     <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} pb={2} width={'100%'}>
                                         <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
                                             <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Personal</b> Details</Typography>
                                             <PersonalInformationForm form={form} errors={errors} />
+                                            <Stack direction={'row'} justifyContent={'flex-start'}>
+                                                <DeliveryDateForm form={form} />
+                                            </Stack>
                                         </Stack>
                                         <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%' }}>
                                             <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
@@ -196,7 +191,7 @@ export default function OfferNewPage({ countriesData }: Props) {
                                 </Card>
                             )}
 
-                            {/* Step 2: Some Info */}
+                            {/* Step 2: Your inventory */}
                             {activeStep === 1 && (
                                 <Card sx={{ p: 4, width: "100%", mx: "auto", mb: 10 }}>
                                     <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} pb={2} width={'100%'}>
@@ -216,16 +211,14 @@ export default function OfferNewPage({ countriesData }: Props) {
                                 </Card>
                             )}
 
-                            {/* Step 3: Final Info */}
+                            {/* Step 3: Price options */}
                             {activeStep === 2 && (
                                 <Card sx={{ p: 4, width: "100%", mx: "auto", mb: 10 }}>
                                     <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} pb={2} width={'100%'}>
                                         <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
 
                                             {/* <Typography>{'(collection is between 9am and 6pm daily.)'}</Typography> */}
-                                            <Stack direction={'row'} justifyContent={'flex-start'}>
-                                                <DeliveryDateForm form={form} />
-                                            </Stack>
+
                                         </Stack>
                                         <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%' }}>
                                             <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />

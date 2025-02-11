@@ -38,7 +38,7 @@ const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
             <Box flex={1} display="flex" flexDirection="column" gap={2}
                 sx={{ width: '100%' }}
             >
-                <Card sx={{ backgroundColor: 'black', px: 3, py: 2, pb: 3 }}>
+                <Card sx={{ backgroundColor: '#252420', px: 3, py: 2, pb: 3 }}>
                     <Stack direction={'row'} sx={{
                         width: '100%',
                         justifyContent: 'space-between',
@@ -62,7 +62,7 @@ const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
                                     Name & Surname:
                                 </Typography>
                                 <Typography color={'white'} variant="subtitle1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                    {form.getValues('firstName')} {form.getValues('lastName')}
+                                    {form.getValues('fullName')}
                                 </Typography>
                             </Box>}
 

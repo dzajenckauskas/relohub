@@ -1,9 +1,7 @@
-import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import React from 'react'
-import StyledTextInput from './StyledTextInput';
 import { FieldErrors, UseFormReturn } from 'react-hook-form';
 import { OfferFormType } from './OfferNewPage';
+import StyledTextInput from './StyledTextInput';
 
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>
@@ -13,25 +11,18 @@ type Props = {
 const PersonalInformationForm = ({ form }: Props) => {
     const { formState: { errors } } = form
     return (
-        <Stack direction="row" gap={2} pt={2} >
-            <Box flex={1} display="flex" flexDirection="column" gap={2}>
+        <Stack direction="column" gap={3} pt={2} width={'100%'}>
+            <StyledTextInput
+                label="First and Last Name"
+                fullWidth
+                form={form}
+                name="fullName"
+                error={!!errors.fullName}
+                helperText={errors.fullName?.message}
+            />
+            <Stack gap={4} direction={'row'}>
                 <StyledTextInput
-                    label="Name"
-                    form={form}
-                    name="firstName"
-                    error={!!errors.firstName}
-                    helperText={errors.firstName?.message}
-                />
-                <StyledTextInput
-                    label="Surname"
-                    form={form}
-                    name="lastName"
-                    error={!!errors.lastName}
-                    helperText={errors.lastName?.message}
-                />
-            </Box>
-            <Box flex={1} display="flex" flexDirection="column" gap={2}>
-                <StyledTextInput
+                    fullWidth
                     label="Email"
                     form={form}
                     name="email"
@@ -39,13 +30,14 @@ const PersonalInformationForm = ({ form }: Props) => {
                     helperText={errors.email?.message}
                 />
                 <StyledTextInput
+                    fullWidth
                     label="Telephone"
                     form={form}
                     name="phone"
                     error={!!errors.phone}
                     helperText={errors.phone?.message}
                 />
-            </Box>
+            </Stack>
         </Stack>
     )
 }
