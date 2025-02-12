@@ -172,36 +172,14 @@ export default function OfferNewPage({ countriesData }: Props) {
                         })} noValidate>
                             {/* Step 1: Contact details & Dates */}
                             {activeStep === 0 && (
-                                // <Card sx={{ p: 4, width: "100%", mx: "auto", mb: 10 }}>
-                                //     <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} pb={2} width={'100%'}>
-                                //         <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
-
-                                //             <Stack direction={'row'} justifyContent={'flex-start'}>
-                                //                 <DeliveryDateForm form={form} />
-                                //             </Stack>
-                                //         </Stack>
-                                //         <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%' }}>
-                                //             <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
-                                //             <Stack sx={{ position: 'relative', width: '100%', height: '100%' }}>
-                                //                 <Image
-                                //                     // className="herobckgimg"
-                                //                     alt="background"
-                                //                     src={"/illustration-1.svg"}
-                                //                     fill
-                                //                 />
-                                //             </Stack>
-                                //         </Stack>
-                                //     </Stack>
-                                //     <Button onClick={nextStep} variant="contained" color="secondary"
-                                //         sx={{ px: 6, py: 2 }}>
-                                //         Next step
-                                //     </Button>
-                                // </Card>
                                 <Card sx={{ p: 4, pb: 0, width: "100%", mx: "auto", mb: 10 }}>
                                     <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
                                         <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
                                             <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Personal</b> Details</Typography>
                                             <PersonalInformationForm form={form} errors={errors} />
+                                            <Stack direction={'row'} justifyContent={'flex-start'}>
+                                                <DeliveryDateForm form={form} />
+                                            </Stack>
                                             <Box>
                                                 <Button onClick={nextStep} variant="contained" color="secondary"
                                                     sx={{ px: 6, py: 2 }}>
@@ -209,15 +187,15 @@ export default function OfferNewPage({ countriesData }: Props) {
                                                 </Button>
                                             </Box>
                                         </Stack>
-                                        <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative', height: '100%' }}>
+                                        <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative' }}>
                                             <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
-                                            <Stack sx={{ position: 'relative', mt: -1, bottom: -1, right: 0, width: '100%' }}>
+                                            <Stack sx={{ position: 'relative', mt: 2, bottom: -24, right: 135, width: '100%' }}>
                                                 <Image
                                                     alt="background"
                                                     src={"/illustration-2.svg"}
                                                     objectFit="contain"
-                                                    width={380}
-                                                    height={200}
+                                                    width={500}
+                                                    height={310}
                                                 />
                                             </Stack>
                                         </Stack>
@@ -239,15 +217,15 @@ export default function OfferNewPage({ countriesData }: Props) {
                                                 </Button>
                                             </Box>
                                         </Stack>
-                                        <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative', height: '100%' }}>
+                                        <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative' }}>
                                             <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
-                                            <Stack sx={{ position: 'relative', mt: -12, bottom: -50, right: 152, width: '100%' }}>
+                                            <Stack sx={{ position: 'relative', mt: 0, bottom: -10, right: 150, width: '100%' }}>
                                                 <Image
                                                     alt="background"
                                                     src={"/illustration-1.svg"}
                                                     objectFit="contain"
                                                     width={480}
-                                                    height={300}
+                                                    height={250}
                                                 />
                                             </Stack>
                                         </Stack>

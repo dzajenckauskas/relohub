@@ -1,8 +1,7 @@
-import Inventory2Icon from '@mui/icons-material/Inventory2';
-import { FormHelperText, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import Typography from '@mui/material/Typography';
+import Image from 'next/image';
 import QuantityButtons from "./QuantityButtons";
-
 
 type Props = {
     form: any;
@@ -11,9 +10,10 @@ type Props = {
     primaryText: string;
     secondaryText: string;
     name: string;
+    imgSrc: string;
 }
 
-const LuggageItemRow = ({ form, dimensions, maxWeight, primaryText, secondaryText, name }: Props) => {
+const LuggageItemRow = ({ form, dimensions, maxWeight, primaryText, secondaryText, name, imgSrc }: Props) => {
 
     return (
         <>
@@ -28,8 +28,16 @@ const LuggageItemRow = ({ form, dimensions, maxWeight, primaryText, secondaryTex
                         justifyContent: 'space-between',
                         alignItems: 'center'
                     }}>
-                    <Stack>
+                    {/* <Stack>
                         <Inventory2Icon sx={{ fontSize: 62 }} />
+                    </Stack> */}
+                    <Stack sx={{ position: 'relative', mt: -1, bottom: -1, right: 0, width: 40, height: 40 }}>
+                        <Image
+                            alt="background"
+                            src={imgSrc}
+                            objectFit="contain"
+                            fill
+                        />
                     </Stack>
                     <Stack>
                         <Typography variant='subtitle2' sx={{
