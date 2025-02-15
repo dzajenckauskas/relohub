@@ -57,38 +57,40 @@ const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
                         </Button>
                     </Stack>
                     <Stack spacing={1} pt={2}>
-                        {activeStep > 0 && <>
-                            {(form.getValues('firstName') || form.getValues('lastName')) && <Box>
-                                <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                    Name & Surname:
-                                </Typography>
-                                <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                    {form.getValues('fullName')}
-                                </Typography>
-                            </Box>}
-
-                            {form.getValues('email') &&
-                                <Box>
+                        {
+                            // activeStep > 0 &&
+                            <>
+                                {(form.getValues('fullName')) && <Box>
                                     <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                        Email:
+                                        Name & Surname:
                                     </Typography>
                                     <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                        {form.getValues('email')}
+                                        {form.getValues('fullName')}
                                     </Typography>
                                 </Box>}
 
-                            {form.getValues('phone') &&
-                                <Box>
-                                    <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                        Telephone:
-                                    </Typography>
-                                    <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                        {form.getValues('phone')}
-                                    </Typography>
-                                </Box>}
+                                {form.getValues('email') &&
+                                    <Box>
+                                        <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                            Email:
+                                        </Typography>
+                                        <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                            {form.getValues('email')}
+                                        </Typography>
+                                    </Box>}
+
+                                {form.getValues('phone') &&
+                                    <Box>
+                                        <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                            Telephone:
+                                        </Typography>
+                                        <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                            {form.getValues('phone')}
+                                        </Typography>
+                                    </Box>}
 
 
-                        </>}
+                            </>}
 
 
                         {/* collect from */}

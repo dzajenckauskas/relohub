@@ -16,9 +16,10 @@ type Props = {
     onDecrease?: (item: CustomItemType) => void;
     item?: CustomItemType
     quantity?: number;
+    detailsColumn?: boolean;
 }
 
-const LuggageItemRow = ({ form, dimensions, maxWeight, primaryText, secondaryText, name, imgSrc, onIncrease, onDecrease, item, quantity }: Props) => {
+const LuggageItemRow = ({ detailsColumn, form, dimensions, maxWeight, primaryText, secondaryText, name, imgSrc, onIncrease, onDecrease, item, quantity }: Props) => {
 
     return (
         <>
@@ -62,7 +63,7 @@ const LuggageItemRow = ({ form, dimensions, maxWeight, primaryText, secondaryTex
                         </Typography>
                     </Stack>
                 </Stack>
-                <Stack direction={{ xs: 'column', md: 'row' }}>
+                <Stack direction={detailsColumn ? 'column' : { xs: 'column', md: 'row' }}>
                     <Stack sx={{ width: { xs: '100px', md: '160px' } }}>
                         <Typography variant='body2' sx={{
                             fontWeight: 500,
