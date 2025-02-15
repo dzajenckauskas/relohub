@@ -31,7 +31,7 @@ const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
     const deliverBoxesDate = form.watch('deliverBoxesDate') ?? undefined
     const emptyBoxesQuantity = form.watch('emptyBoxesQuantity')
 
-    console.log(collectionDate, "collectionDate");
+    // console.log(collectionDate, "collectionDate");
 
     return (
         <>

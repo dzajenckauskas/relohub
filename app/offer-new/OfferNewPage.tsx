@@ -8,14 +8,12 @@ import { Box, Button, Card, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitErrorHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
-import DeliveryDateForm from "./DeliveryDateForm";
 import HorizontalStepper from "./HorizontalStepper";
-import LuggageInformationForm from "./LuggageInformationForm";
-import OfferSummary from "./OfferSummary";
-import PersonalInformationForm from "./PersonalInformationForm";
-import Image from "next/image";
+import DetailsAndDatesStep from "./steps/DetailsAndDatesStep";
+import InventoryStep from "./steps/InventoryStep";
+import PriceOptionsStep from "./steps/PriceOptionsStep";
 
 export type OfferFormType = {
     fullName: string;
@@ -37,6 +35,7 @@ export type OfferFormType = {
     collectionDate: Date;
     deliverBoxesDate: Date;
     emptyBoxesQuantity: number;
+    hasItemsAdded: boolean;
 };
 
 export type CustomItemType = {
@@ -50,10 +49,10 @@ export type CustomItemType = {
 
 const customItemSchema = yup.object().shape({
     name: yup.string().required('Name is required'),
-    width: yup.string().required('Width is required'),
-    height: yup.string().required('Height is required'),
-    depth: yup.string().required('Depth is required'),
-    weight: yup.string().required('Weight is required'),
+    width: yup.number().typeError('Width must be a number').positive('Width must be greater than 0').required('Width is required'),
+    height: yup.number().typeError('Height must be a number').positive('Height must be greater than 0').required('Height is required'),
+    depth: yup.number().typeError('Depth must be a number').positive('Depth must be greater than 0').required('Depth is required'),
+    weight: yup.number().typeError('Weight must be a number').positive('Weight must be greater than 0').required('Weight is required'),
 });
 
 const stepSchemas = [
@@ -64,38 +63,22 @@ const stepSchemas = [
         collectionDate: yup.date().required('Collection date is required'),
     }),
     yup.object({
-        standardBox: yup.number().min(0),
-        largeBox: yup.number().min(0),
-        suitcaseSmall: yup.number().min(0),
-        suitcaseLarge: yup.number().min(0),
-        customItems: yup.array().of(customItemSchema).test(
-            'custom-items-required',
-            'All custom item fields are required',
-            (customItems) => {
-                if (customItems && customItems.length > 0) {
-                    return customItems.every(item =>
-                        item.name &&
-                        item.width &&
-                        item.height &&
-                        item.depth &&
-                        item.weight
-                    );
-                }
-                return true;
-            }
-        ),
-    }).test(
-        'at-least-one-box',
-        'At least one box or suitcase must be greater than 0',
-        (values) =>
-            (values.standardBox || 0) > 0 ||
-            (values.largeBox || 0) > 0 ||
-            (values.suitcaseSmall || 0) > 0 ||
-            (values.suitcaseLarge || 0) > 0
-    ),
-    yup.object({
+        customItems: yup.array().of(customItemSchema).default([]),
+        hasItemsAdded: yup.boolean().when(['customItems', 'standardBox', 'largeBox', 'suitcaseSmall', 'suitcaseLarge'], {
+            is: (customItems: any[], standardBox: number, largeBox: number, suitcaseSmall: number, suitcaseLarge: number) => {
+                const invalid = ((customItems?.length ?? 0) + (standardBox ?? 0) + (largeBox ?? 0) + (suitcaseSmall ?? 0) + (suitcaseLarge ?? 0)) <= 0
+                console.log(invalid, "invalid");
+
+                return invalid
+            },
+            then: () => yup.boolean().required(('At least one item must be selected')),
+            otherwise: () => yup.boolean().nullable()
+        }),
     }),
+    yup.object({}),
 ];
+
+
 
 type Props = {
     countriesData?: CountriesResponseType;
@@ -110,6 +93,7 @@ export default function OfferNewPage({ countriesData }: Props) {
     const form = useForm<OfferFormType>({
         resolver: yupResolver(stepSchemas[activeStep] as any) as any, // Change schema dynamically
         mode: "onTouched",
+        reValidateMode: 'onChange',
         defaultValues: {
             collectCountry: capitalizeEachWord(dataParam?.from_country) ?? "United Kingdom",
             collectCity: capitalizeEachWord(dataParam?.from_city) ?? "London",
@@ -147,7 +131,7 @@ export default function OfferNewPage({ countriesData }: Props) {
         console.log(form.getValues(), "form.getValues()");
 
         const valid = await trigger(Object.keys(stepSchemas[activeStep].fields) as any); // Validate only current step fields
-        console.log(stepSchemas[activeStep].fields, "stepSchemas[activeStep].fields");
+        // console.log(stepSchemas[activeStep].fields, "stepSchemas[activeStep].fields");
 
         if (valid) {
             setActiveStep((prev) => prev + 1);
@@ -158,7 +142,9 @@ export default function OfferNewPage({ countriesData }: Props) {
         console.log("Form Data:", data)
         setActiveStep(undefined)
     }
-
+    const onInvalid: SubmitErrorHandler<OfferFormType> = (data) => {
+        console.log('invalid', data, form.getValues())
+    }
 
     return (
         <PageLayout hidePopUpButton>
@@ -167,100 +153,22 @@ export default function OfferNewPage({ countriesData }: Props) {
                     <Stack mx="auto" maxWidth="lg" width="100%">
                         <HorizontalStepper activeStep={activeStep} setActiveStep={setActiveStep} />
 
-                        <form onSubmit={handleSubmit((data) => {
-                            onSubmit(data)
-                        })} noValidate>
+                        <form onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate>
                             {/* Step 1: Contact details & Dates */}
                             {activeStep === 0 && (
-                                <Card sx={{ p: 4, pb: 0, width: "100%", mx: "auto", mb: 10 }}>
-                                    <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
-                                        <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
-                                            <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Personal</b> Details</Typography>
-                                            <PersonalInformationForm form={form} errors={errors} />
-                                            <Stack direction={'row'} justifyContent={'flex-start'}>
-                                                <DeliveryDateForm form={form} />
-                                            </Stack>
-                                            <Box>
-                                                <Button onClick={nextStep} variant="contained" color="secondary"
-                                                    sx={{ px: 6, py: 2 }}>
-                                                    Next step
-                                                </Button>
-                                            </Box>
-                                        </Stack>
-                                        <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative' }}>
-                                            <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
-                                            <Stack sx={{ position: 'relative', mt: 2, bottom: -24, right: 135, width: '100%' }}>
-                                                <Image
-                                                    alt="background"
-                                                    src={"/illustration-2.svg"}
-                                                    objectFit="contain"
-                                                    width={500}
-                                                    height={310}
-                                                />
-                                            </Stack>
-                                        </Stack>
-                                    </Stack>
-                                </Card>
+                                <DetailsAndDatesStep form={form} countriesData={countriesData} nextStep={nextStep} activeStep={activeStep} />
                             )}
 
                             {/* Step 2: Your inventory */}
                             {activeStep === 1 && (
-                                <Card sx={{ p: 4, pb: 0, width: "100%", mx: "auto", mb: 10 }}>
-                                    <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
-                                        <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
-                                            <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Boxes & Luggage</b> Details</Typography>
-                                            <LuggageInformationForm form={form} />
-                                            <Box>
-                                                <Button onClick={nextStep} variant="contained" color="secondary"
-                                                    sx={{ px: 6, py: 2 }}>
-                                                    Next step
-                                                </Button>
-                                            </Box>
-                                        </Stack>
-                                        <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative' }}>
-                                            <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
-                                            <Stack sx={{ position: 'relative', mt: 0, bottom: -10, right: 150, width: '100%' }}>
-                                                <Image
-                                                    alt="background"
-                                                    src={"/illustration-1.svg"}
-                                                    objectFit="contain"
-                                                    width={480}
-                                                    height={250}
-                                                />
-                                            </Stack>
-                                        </Stack>
-                                    </Stack>
-                                </Card>
+                                <InventoryStep form={form} countriesData={countriesData} nextStep={nextStep} activeStep={activeStep} />
                             )}
 
                             {/* Step 3: Price options */}
                             {activeStep === 2 && (
-                                <Card sx={{ p: 4, pb: 0, width: "100%", mx: "auto", mb: 10 }}>
-                                    <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
-                                        <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
-                                            <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Price Options</b></Typography>
-                                            {/* <LuggageInformationForm form={form} /> */}
-                                            <Box>
-                                                <Button onClick={nextStep} variant="contained" color="secondary"
-                                                    sx={{ px: 6, py: 2 }}>
-                                                    Next step
-                                                </Button>
-                                            </Box>
-                                        </Stack>
-                                        <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative', height: '100%' }}>
-                                            <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
-                                            <Stack sx={{ position: 'relative', mt: -4, bottom: -50, right: 2, width: '100%' }}>
-                                                <Image
-                                                    alt="background"
-                                                    src={"/illustration-3.svg"}
-                                                    objectFit="contain"
-                                                    width={320}
-                                                    height={320}
-                                                />
-                                            </Stack>
-                                        </Stack>
-                                    </Stack>
-                                </Card>
+                                <PriceOptionsStep form={form} countriesData={countriesData} nextStep={nextStep} activeStep={activeStep} />
+
+
                             )}
 
                             {/* Step 4: Submitted */}
