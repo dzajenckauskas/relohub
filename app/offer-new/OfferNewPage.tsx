@@ -32,6 +32,7 @@ export type OfferFormType = {
     suitcaseSmall: number;
     suitcaseLarge: number;
     customItems: CustomItemType[];
+    commonItems: CustomItemType[];
     collectionDate: Date;
     deliverBoxesDate: Date;
     emptyBoxesQuantity: number;
@@ -43,6 +44,7 @@ export type CustomItemType = {
     width: string;
     height: string;
     depth: string;
+    length?: string;
     weight: string;
 }
 // Step-based validation schemas
@@ -64,9 +66,9 @@ const stepSchemas = [
     }),
     yup.object({
         customItems: yup.array().of(customItemSchema).default([]),
-        hasItemsAdded: yup.boolean().when(['customItems', 'standardBox', 'largeBox', 'suitcaseSmall', 'suitcaseLarge'], {
-            is: (customItems: any[], standardBox: number, largeBox: number, suitcaseSmall: number, suitcaseLarge: number) => {
-                const invalid = ((customItems?.length ?? 0) + (standardBox ?? 0) + (largeBox ?? 0) + (suitcaseSmall ?? 0) + (suitcaseLarge ?? 0)) <= 0
+        hasItemsAdded: yup.boolean().when(['customItems', 'commonItems', 'standardBox', 'largeBox', 'suitcaseSmall', 'suitcaseLarge'], {
+            is: (commonItems: any[], customItems: any[], standardBox: number, largeBox: number, suitcaseSmall: number, suitcaseLarge: number) => {
+                const invalid = ((commonItems?.length ?? 0) + (customItems?.length ?? 0) + (standardBox ?? 0) + (largeBox ?? 0) + (suitcaseSmall ?? 0) + (suitcaseLarge ?? 0)) <= 0
                 console.log(invalid, "invalid");
 
                 return invalid
@@ -120,8 +122,7 @@ export default function OfferNewPage({ countriesData }: Props) {
             //     }
             // ],
             // emptyBoxesQuantity: 0,
-            // collectionDate: new Date('2025-02-24'),
-            // deliverBoxesDate: new Date('2025-02-20'),
+            collectionDate: new Date('2025-02-24'),
         }
     });
 
@@ -177,7 +178,7 @@ export default function OfferNewPage({ countriesData }: Props) {
                                     <Typography variant="h2" sx={{ fontWeight: 500 }}><b>Thank you</b> for submission</Typography>
                                     <Stack direction="row" gap={2} pb={2} pt={4}>
                                         <Box flex={1} display="flex" flexDirection="column" gap={2}>
-                                            {/* <StyledTextInput
+                                            {/* <FormStyledTextInput
                                                 label="Something Else"
                                                 form={form}
                                                 name="somethingelse"

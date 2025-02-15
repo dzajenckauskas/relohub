@@ -1,7 +1,6 @@
 'use client'
 import { CountryDataType } from '@/COMPONENTS/types/CountryType'
 import { OfferFormType } from '@/app/offer-new/OfferNewPage'
-import StyledTextInput from '@/app/offer-new/StyledTextInput'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import CloseIcon from '@mui/icons-material/Close'
 import { TextField, Typography } from '@mui/material'
@@ -9,7 +8,6 @@ import Autocomplete from '@mui/material/Autocomplete'
 import Stack from '@mui/material/Stack'
 import { styled } from '@mui/system'
 import Image from "next/image"
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { UseFormReturn } from 'react-hook-form'
 

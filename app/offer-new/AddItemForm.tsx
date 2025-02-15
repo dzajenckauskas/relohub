@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import React from 'react';
-import StyledTextInput from './StyledTextInput';
+import FormStyledTextInput from './FormStyledTextInput';
 import { FieldErrors, UseFormReturn } from 'react-hook-form';
 import { OfferFormType } from './OfferNewPage';
 import FormHelperText from '@mui/material/FormHelperText';
@@ -13,12 +13,10 @@ type Props = {
 };
 
 const AddItemForm = ({ form, errors, index }: Props) => {
-    console.log(errors.customItems?.[index]?.name, "errors.customItems?.[index]?.nameerrors.customItems?.[index]?.name");
-
     return (
         <Stack direction="column" gap={2}>
             <Box flex={1} display="flex" flexDirection="column" gap={2}>
-                <StyledTextInput
+                <FormStyledTextInput
                     label="Custom Item Name"
                     form={form}
                     name={`customItems.${index}.name`}
@@ -27,28 +25,28 @@ const AddItemForm = ({ form, errors, index }: Props) => {
                 />
             </Box>
             <Box flex={1} display="flex" flexDirection="row" gap={2}>
-                <StyledTextInput
+                <FormStyledTextInput
                     label="Width (cm)"
                     form={form}
                     name={`customItems.${index}.width`}
                     error={!!errors.customItems?.[index]?.width}
                     helperText={errors.customItems?.[index]?.width?.message}
                 />
-                <StyledTextInput
+                <FormStyledTextInput
                     label="Height (cm)"
                     form={form}
                     name={`customItems.${index}.height`}
                     error={!!errors.customItems?.[index]?.height}
                     helperText={errors.customItems?.[index]?.height?.message}
                 />
-                <StyledTextInput
+                <FormStyledTextInput
                     label="Depth (cm)"
                     form={form}
                     name={`customItems.${index}.depth`}
                     error={!!errors.customItems?.[index]?.depth}
                     helperText={errors.customItems?.[index]?.depth?.message}
                 />
-                <StyledTextInput
+                <FormStyledTextInput
                     label="Weight (kg)"
                     form={form}
                     name={`customItems.${index}.weight`}

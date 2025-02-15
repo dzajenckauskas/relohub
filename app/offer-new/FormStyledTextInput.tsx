@@ -1,22 +1,31 @@
 import TextField from '@mui/material/TextField';
 
 type Props = {
+    form: any;
+    required?: boolean;
+    disabled?: boolean;
     fullWidth?: boolean;
+    name: string;
     label?: string;
+    autoFocus?: boolean;
     onChange?: (v: any) => void;
-    placeholder?: string;
-    value?: string;
+    error?: boolean;
+    helperText?: string;
 }
 
-const StyledTextInput = ({ value, onChange, label, fullWidth, placeholder }: Props) => {
+const FormStyledTextInput = ({ helperText, error, autoFocus, onChange, required, form, disabled, name, label, fullWidth }: Props) => {
+    const { register } = form;
+
     return (
         <TextField
             sx={{ pb: 2 }}
+            autoFocus={autoFocus}
+            required={required}
             label={label}
-            value={value}
-            placeholder={placeholder}
+            {...register(name)}
+            error={error}
+            helperText={helperText}
             fullWidth={fullWidth}
-            onChange={onChange}
             InputLabelProps={{
                 shrink: true, // Keeps label above input
                 sx: {
@@ -53,4 +62,4 @@ const StyledTextInput = ({ value, onChange, label, fullWidth, placeholder }: Pro
     )
 }
 
-export default StyledTextInput
+export default FormStyledTextInput

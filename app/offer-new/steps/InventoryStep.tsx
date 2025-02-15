@@ -10,6 +10,7 @@ import LuggageInformationForm from '../LuggageInformationForm';
 import { OfferFormType } from '../OfferNewPage';
 import OfferSummary from '../OfferSummary';
 import FormHelperText from '@mui/material/FormHelperText';
+import CommonItemsForm from '../CommonItemsForm';
 
 type Props = {
     countriesData?: CountriesResponseType;
@@ -25,19 +26,14 @@ const InventoryStep = ({ form, nextStep, countriesData, activeStep }: Props) => 
                 <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
                     <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Boxes & Luggage</b> Details</Typography>
                     <LuggageInformationForm form={form} />
+                    <Typography variant="h2" sx={{ fontWeight: 500 }}><b>Furniture</b> and <b>Appliances</b></Typography>
+                    <CommonItemsForm form={form} />
                     <Box>
                         <Button onClick={nextStep} variant="contained" color="secondary"
                             sx={{ px: 6, py: 2 }}>
                             Next step
                         </Button>
                     </Box>
-                    {/* {form.formState.errors.customItems?.message && (
-                        <FormHelperText error>{form.formState.errors.customItems.message}</FormHelperText>
-                    )}
-
-                    {form.formState.errors.standardBox?.message && (
-                        <FormHelperText error>{form.formState.errors.standardBox.message}</FormHelperText>
-                    )} */}
                     {form.formState.errors.hasItemsAdded?.message && (
                         <FormHelperText error>{form.formState.errors.hasItemsAdded.message}</FormHelperText>
                     )}

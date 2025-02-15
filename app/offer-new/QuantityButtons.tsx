@@ -2,25 +2,32 @@ import { Add, Remove } from "@mui/icons-material";
 import { FormHelperText, IconButton, TextField } from "@mui/material";
 import Stack from '@mui/material/Stack';
 import { Controller } from "react-hook-form";
+import { CustomItemType } from "./OfferNewPage";
 
 type Props = {
     form: any;
     name: string;
+    onDecrease?: (item: CustomItemType) => void;
+    onIncrease?: (item: CustomItemType) => void;
+    item?: CustomItemType
+    quantity?: number;
 }
 
-const QuantityButtons = ({ form, name }: Props) => {
-    const quantity = form.watch(name);
+const QuantityButtons = ({ form, name, onIncrease, onDecrease, item, quantity }: Props) => {
+    const qty = quantity ?? form.watch(name);
 
     const handleIncrement = () => {
-        const newValue = (quantity || 0) + 1;
+        const newValue = (qty || 0) + 1;
         form.setValue(name, newValue, { shouldValidate: true });
         form.trigger('hasItemsAdded'); // Manually trigger validation
+        onIncrease && onIncrease(item)
     };
 
     const handleDecrement = () => {
-        const newValue = Math.max(0, (quantity || 0) - 1);
+        const newValue = Math.max(0, (qty || 0) - 1);
         form.setValue(name, newValue, { shouldValidate: true });
         form.trigger('hasItemsAdded'); // Manually trigger validation
+        onDecrease && onDecrease(item)
     };
 
     return (
@@ -38,6 +45,7 @@ const QuantityButtons = ({ form, name }: Props) => {
                     render={({ field, fieldState }) => (
                         <TextField
                             {...field}
+                            value={quantity}
                             defaultValue={0}
                             type="text" // Prevent default number input behavior
                             error={!!fieldState.error}
@@ -84,7 +92,7 @@ const QuantityButtons = ({ form, name }: Props) => {
                             onChange={(e) => {
                                 const value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
                                 const numericValue = value ? Number(value) : "";
-                                field.onChange(numericValue); // Update field value
+                                !(onIncrease || onDecrease) && field.onChange(numericValue); // Update field value
                                 form.setValue(name, numericValue, { shouldValidate: true }); // Trigger validation
                             }}
                         />
