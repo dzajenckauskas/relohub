@@ -11,12 +11,10 @@ type Props = {
 };
 
 const CommonItemsForm = ({ form }: Props) => {
-    const { fields, append, remove } = useFieldArray({
+    const { fields, remove } = useFieldArray({
         control: form.control,
         name: 'commonItems',
     });
-    console.log(fields?.map((v) => v.name), "fields");
-
     const existingItemNames = fields?.map((v) => v.name) || [];
 
 
@@ -28,7 +26,7 @@ const CommonItemsForm = ({ form }: Props) => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch('https://admin.deliver1.co.uk/api/inventoryOptions');
+                const response = await fetch(process.env.NEXT_PUBLIC_ADMIN_API_URL + '/api/inventoryOptions');
                 const data = await response.json();
 
                 // Flatten the items from all groups
@@ -45,7 +43,6 @@ const CommonItemsForm = ({ form }: Props) => {
                 console.error('Error fetching data:', error);
             }
         }
-
         fetchData();
     }, []);
 
@@ -65,6 +62,8 @@ const CommonItemsForm = ({ form }: Props) => {
 
     // Handle search query change with throttle
     const handleSearch = throttle((event: React.ChangeEvent<HTMLInputElement>) => {
+
+        // const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         const query = event.target.value.toLowerCase(); // Normalize search input
         setSearchQuery(query);
 
@@ -82,12 +81,11 @@ const CommonItemsForm = ({ form }: Props) => {
         } else {
             setFilteredItems((items)); // Show random items if search is cleared
         }
-    }, 100); // Throttle the search by 300ms
+        // }; // Throttle the search by 300ms
+    }, 10); // Thr
 
     // Handle adding an item to the form
     const handleAddItem = (item: CustomItemType) => {
-        console.log(item, "item");
-
         // Add item to the form
         form.setValue('commonItems', [...fields, item]);
 
@@ -95,70 +93,74 @@ const CommonItemsForm = ({ form }: Props) => {
         setFilteredItems(filteredItems.filter(filteredItem => filteredItem.name !== item.name));
     };
     const handleRemoveItem = (item: CustomItemType) => {
-        console.log(item, "item");
-
         // Remove item from the form
         const index = fields.findIndex((field) => field.name === item.name); // Find the index of the item
         if (index !== -1) {
             remove(index); // Remove item from the form
         }
-
         // Remove item from filteredItems list after removing it from the form
         setFilteredItems(filteredItems.filter(filteredItem => filteredItem.name !== item.name));
     };
 
-
+    const itemOptions = filteredItems?.filter((v) => {
+        return !existingItemNames.includes(v.name) && v.name !== 'Standard box' && v.name !== 'Large box' && v.name !== 'Suitcase large' && v.name !== 'Suitcase small'
+    })
+    const fieldsValues = fields
+        ?.filter((value, index, self) =>
+            self.findIndex((item) => item.name === value.name) === index // Ensure no duplicates based on name
+        )
     return (
-        <Stack direction="row" gap={2} pb={2} pt={2}>
+        <Stack direction="row" gap={2} pb={2} pt={0}>
             <Box flex={1} display="flex" flexDirection="column" gap={1}>
-                {/* Render custom items in the form */}
-                {fields
-                    ?.filter((value, index, self) =>
-                        self.findIndex((item) => item.name === value.name) === index // Ensure no duplicates based on name
-                    )?.map((field, index) => {
-                        // Count the occurrences of this item in the fields array
-                        const quantity = fields.filter((item) => item.name === field.name).length;
-
-                        return (
-                            <Box key={field.id}>
-                                <LuggageItemRow
-                                    quantity={quantity} // Set quantity to the count of duplicates
-                                    onIncrease={() => handleAddItem(field)} // Add new item to custom items
-                                    onDecrease={() => handleRemoveItem(field)} // Add new item to custom items
-                                    primaryText={field.name} // Custom item name
-                                    dimensions={`${field.height} x ${field.width} x ${field.length} cm`} // Dimensions
-                                    maxWeight={field.weight} // Max weight
-                                    form={form}
-                                    name={field.name} // The unique identifier
-                                />
-                            </Box>
-                        );
-                    })}
+                {fieldsValues?.map((field) => {
+                    // Count the occurrences of this item in the fields array
+                    const quantity = fields.filter((item) => item.name === field.name).length;
+                    return (
+                        <Box key={field.id}>
+                            <LuggageItemRow
+                                quantity={quantity} // Set quantity to the count of duplicates
+                                onIncrease={() => handleAddItem(field)} // Add new item to custom items
+                                onDecrease={() => handleRemoveItem(field)} // Add new item to custom items
+                                primaryText={field.name} // Custom item name
+                                dimensions={`${field.height} x ${field.width} x ${field.length} cm`} // Dimensions
+                                maxWeight={field.weight} // Max weight
+                                form={form}
+                                name={field.name} // The unique identifier
+                            />
+                        </Box>
+                    );
+                })}
 
 
-
-                <Box mb={2}>
+                <Box mt={6}>
                     <StyledTextInput
-                        placeholder="Search items..."
+                        label='Search for common items'
+                        // placeholder="Enter search phrase..."
                         fullWidth
                         value={searchQuery}
                         onChange={handleSearch}
                     />
                 </Box>
 
-                {searchQuery && filteredItems?.filter((v) => !existingItemNames.includes(v.name))?.map((item) => (
-                    <LuggageItemRow
-                        item={item}
-                        onIncrease={() => handleAddItem(item)} // Add new item to custom items
-                        onDecrease={() => handleRemoveItem(item)} // Add new item to custom items
-                        key={item.id}
-                        primaryText={item.name} // Default text if name is undefined
-                        dimensions={`${item.height} x ${item.width} x ${item.length} cm`}
-                        maxWeight={item.weight}
-                        form={form}
-                        name={item.slug}
-                    />
-                ))}
+                {searchQuery && itemOptions &&
+                    <Stack spacing={2} sx={{ maxHeight: 360, overflow: 'scroll', width: 'calc(100% + 14px)', pr: '14px' }}>
+                        {itemOptions?.map((item) => {
+                            return (
+                                <LuggageItemRow
+                                    item={item}
+                                    onIncrease={() => handleAddItem(item)} // Add new item to custom items
+                                    onDecrease={() => handleRemoveItem(item)} // Add new item to custom items
+                                    key={item.id}
+                                    primaryText={item.name} // Default text if name is undefined
+                                    dimensions={`${item.height} x ${item.width} x ${item.length} cm`}
+                                    maxWeight={item.weight}
+                                    form={form}
+                                    name={item.slug}
+                                />
+                            )
+                        })}
+
+                    </Stack>}
             </Box>
         </Stack>
     );

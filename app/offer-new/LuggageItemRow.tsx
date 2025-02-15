@@ -26,7 +26,8 @@ const LuggageItemRow = ({ form, dimensions, maxWeight, primaryText, secondaryTex
                 width: '100%',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                zIndex: 1
+                zIndex: 1,
+                // px: 2
             }}>
                 <Stack direction={'row'}
                     gap={1}
@@ -37,16 +38,19 @@ const LuggageItemRow = ({ form, dimensions, maxWeight, primaryText, secondaryTex
                     {/* <Stack>
                         <Inventory2Icon sx={{ fontSize: 62 }} />
                     </Stack> */}
-                    {imgSrc &&
+                    {imgSrc && (
                         <Stack sx={{ position: 'relative', mt: -1, bottom: -1, right: 0, width: 40, height: 40 }}>
                             <Image
                                 alt="background"
                                 src={imgSrc}
-                                objectFit="contain"
+                                style={{ objectFit: "contain" }}
                                 fill
+                                sizes="40px"
                             />
-                        </Stack>}
-                    <Stack>
+                        </Stack>
+                    )}
+
+                    <Stack sx={{ width: { xs: '100px', md: '140px' } }}>
 
                         <Typography variant='subtitle2' sx={{
                             fontWeight: 600,
@@ -56,32 +60,30 @@ const LuggageItemRow = ({ form, dimensions, maxWeight, primaryText, secondaryTex
                             {secondaryText && <br />}
                             {secondaryText}
                         </Typography>
-                        {/* {text &&
-                            <Typography variant='subtitle2' sx={{
-                                fontWeight: 600,
-                                lineHeight: 1.2, maxWidth: 100
-                            }}>
-                                {text}
-                            </Typography>} */}
                     </Stack>
                 </Stack>
-                <Stack>
-                    <Typography variant='body1' sx={{
-                        fontWeight: 500
-                    }}>
-                        {dimensions}
-                    </Typography>
-                </Stack>
-                <Stack>
-                    <Typography variant='body1' sx={{
-                        fontWeight: 500
-                    }}>
-                        Max {maxWeight}Kg
-                    </Typography>
+                <Stack direction={{ xs: 'column', md: 'row' }}>
+                    <Stack sx={{ width: { xs: '100px', md: '160px' } }}>
+                        <Typography variant='body2' sx={{
+                            fontWeight: 500,
+                            fontSize: { xs: 14, md: 16 }
+                        }}>
+                            {dimensions}
+                        </Typography>
+                    </Stack>
+                    <Stack sx={{ width: { xs: '100px', md: '100px' } }}>
+                        <Typography variant='body2' sx={{
+                            fontWeight: 500,
+                            fontSize: { xs: 14, md: 16 }
+                        }}>
+                            Max {maxWeight}Kg
+                        </Typography>
+                    </Stack>
                 </Stack>
 
-
-                <QuantityButtons form={form} name={name} onIncrease={onIncrease} onDecrease={onDecrease} item={item} quantity={quantity} />
+                <Stack sx={{ width: '140px' }}>
+                    <QuantityButtons form={form} name={name} onIncrease={onIncrease} onDecrease={onDecrease} item={item} quantity={quantity} />
+                </Stack>
             </Stack>
 
         </>

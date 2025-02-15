@@ -28,7 +28,7 @@ const DetailsAndDatesStep = ({ form, nextStep, countriesData, activeStep }: Prop
                     <Stack direction={'row'} justifyContent={'flex-start'}>
                         <DeliveryDateForm form={form} />
                     </Stack>
-                    <Box>
+                    <Box pb={4} pt={2}>
                         <Button onClick={nextStep} variant="contained" color="secondary"
                             sx={{ px: 6, py: 2 }}>
                             Next step
@@ -41,9 +41,12 @@ const DetailsAndDatesStep = ({ form, nextStep, countriesData, activeStep }: Prop
                         <Image
                             alt="background"
                             src={"/illustration-2.svg"}
-                            objectFit="contain"
                             width={500}
                             height={310}
+                            style={{
+                                objectFit: "contain"
+
+                            }}
                         />
                     </Stack>
                 </Stack>

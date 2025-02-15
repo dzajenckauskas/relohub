@@ -36,7 +36,9 @@ const PriceOptionsStep = ({ form, nextStep, countriesData, activeStep }: Props) 
                         <Image
                             alt="background"
                             src={"/illustration-3.svg"}
-                            objectFit="contain"
+                            style={{
+                                objectFit: "contain"
+                            }}
                             width={320}
                             height={320}
                         />

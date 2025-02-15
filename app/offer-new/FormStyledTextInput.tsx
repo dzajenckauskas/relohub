@@ -54,6 +54,7 @@ const FormStyledTextInput = ({ helperText, error, autoFocus, onChange, required,
                     "& .MuiOutlinedInput-notchedOutline": { border: "none" }, // Remove border
                 },
             }}
+
             inputProps={{
                 // sx: { padding: "10px", color: "black" }, // Padding and white text
             }}

@@ -27,6 +27,7 @@ const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
     const suitcaseLarge = form.watch('suitcaseLarge') ?? 0
     const hasItems = (standardBox + largeBox + suitcaseSmall + suitcaseLarge) > 0
     const customItems = form.watch('customItems')
+    const commonItems = form.watch('commonItems')
     const collectionDate = form.watch('collectionDate') ?? undefined
     const deliverBoxesDate = form.watch('deliverBoxesDate') ?? undefined
     const emptyBoxesQuantity = form.watch('emptyBoxesQuantity')
@@ -161,6 +162,31 @@ const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
                                                     {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? 0} cm
                                                 </Typography>}
                                             {ci.weight && <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.3, fontSize: 14, fontWeight: 500 }}>
+                                                {ci.weight ?? 0} kg
+                                            </Typography>}
+                                        </Box>
+                                    )
+                                })}
+                            </Box>}
+                        {commonItems?.length > 0 &&
+                            <Box>
+                                {!!commonItems?.[0]?.name &&
+                                    <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500 }}>
+                                        Furniture and Appliances:
+                                    </Typography>}
+                                {commonItems?.map((ci, i) => {
+                                    return (
+                                        <Box key={ci.name} pb={.5}>
+                                            {/* {standardBox && */}
+                                            {ci.name &&
+                                                <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontWeight: 500 }}>
+                                                    {i + 1}. {ci.name}
+                                                </Typography>}
+                                            {(ci.width ?? ci.height ?? ci.debth) &&
+                                                <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontSize: 14, fontWeight: 500 }}>
+                                                    {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? 0} cm
+                                                </Typography>}
+                                            {ci.weight && <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontSize: 14, fontWeight: 500 }}>
                                                 {ci.weight ?? 0} kg
                                             </Typography>}
                                         </Box>
