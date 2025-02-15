@@ -97,16 +97,28 @@ export default function OfferNewPage({ countriesData }: Props) {
         mode: "onTouched",
         reValidateMode: 'onChange',
         defaultValues: {
-            collectCountry: capitalizeEachWord(dataParam?.from_country) ?? "United Kingdom",
-            collectCity: capitalizeEachWord(dataParam?.from_city) ?? "London",
-            collectPostcode: capitalizeEachWord(dataParam?.from_postCode) ?? "HP23DS",
-            deliverCountry: capitalizeEachWord(dataParam?.to_country) ?? "United States",
-            deliverCity: capitalizeEachWord(dataParam?.to_city) ?? "Boston",
-            deliverPostcode: capitalizeEachWord(dataParam?.to_postCode) ?? "BO5345",
+            collectCountry: capitalizeEachWord(dataParam?.from_country)
+            // ?? "United Kingdom"
+            ,
+            collectCity: capitalizeEachWord(dataParam?.from_city)
+            // ?? "London"
+            ,
+            collectPostcode: capitalizeEachWord(dataParam?.from_postCode)
+            // ?? "HP23DS"
+            ,
+            deliverCountry: capitalizeEachWord(dataParam?.to_country)
+            // ?? "United States"
+            ,
+            deliverCity: capitalizeEachWord(dataParam?.to_city)
+            // ?? "Boston"
+            ,
+            deliverPostcode: capitalizeEachWord(dataParam?.to_postCode)
+            // ?? "BO5345"
+            ,
 
-            fullName: "John Rambo",
-            email: 'johhnyboy@rambo.com',
-            phone: '07123903433',
+            // fullName: "John Rambo",
+            // email: 'johhnyboy@rambo.com',
+            // phone: '07123903433',
 
             // standardBox: 1,
             // suitcaseLarge: 1,
@@ -122,7 +134,7 @@ export default function OfferNewPage({ countriesData }: Props) {
             //     }
             // ],
             // emptyBoxesQuantity: 0,
-            collectionDate: new Date('2025-02-24'),
+            // collectionDate: new Date('2025-02-24'),
         }
     });
 

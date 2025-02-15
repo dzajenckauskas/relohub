@@ -16,7 +16,7 @@ type Props = {
     countriesData: CountriesResponseType;
 }
 
-const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
+const OfferSummary = ({ form, countriesData }: Props) => {
     const [edit, setEdit] = useState(false)
     const togglePopUp = () => {
         setEdit(!edit)
@@ -94,33 +94,35 @@ const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
 
 
                         {/* collect from */}
-                        <Box>
-                            <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                Collect from:
-                            </Typography>
-                            <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                {form.getValues('collectCountry')}, {form.getValues('collectCity')}
-                            </Typography>
-                            {form.getValues('collectPostcode') &&
+                        {form.getValues('collectCountry') &&
+                            <Box>
+                                <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                    Collect from:
+                                </Typography>
                                 <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                    {form.getValues('collectPostcode')}
-                                </Typography>}
-                        </Box>
+                                    {form.getValues('collectCountry')}, {form.getValues('collectCity')}
+                                </Typography>
+                                {form.getValues('collectPostcode') &&
+                                    <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                        {form.getValues('collectPostcode')}
+                                    </Typography>}
+                            </Box>}
 
 
                         {/* deliver to */}
-                        <Box>
-                            <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                Deliver to:
-                            </Typography>
-                            <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                {form.getValues('deliverCountry')}, {form.getValues('deliverCity')}
-                            </Typography>
-                            {form.getValues('deliverPostcode') &&
+                        {form.getValues('deliverCountry') &&
+                            <Box>
+                                <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                    Deliver to:
+                                </Typography>
                                 <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                    {form.getValues('deliverPostcode')}
-                                </Typography>}
-                        </Box>
+                                    {form.getValues('deliverCountry')}, {form.getValues('deliverCity')}
+                                </Typography>
+                                {form.getValues('deliverPostcode') &&
+                                    <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                        {form.getValues('deliverPostcode')}
+                                    </Typography>}
+                            </Box>}
 
                         {/* boxes */}
                         {hasItems &&

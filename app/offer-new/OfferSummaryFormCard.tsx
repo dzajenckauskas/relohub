@@ -11,7 +11,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import LuggageInformationForm from './LuggageInformationForm';
 import LocationsInformationForm from './LocationsInformationForm';
 import { CountriesResponseType } from '@/COMPONENTS/types/CountryType';
-import ErrorMessage from './steps/ErrorMessage';
+// import ErrorMessage from './steps/ErrorMessage';
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>
     showPopUp?: boolean;
