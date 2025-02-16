@@ -66,7 +66,7 @@ export const InstantQuoteComponent = ({ togglePopUp, title }: Props) => {
                 sx={{ fontSize: 14 }}
                 onClick={() => {
                     router.push(
-                        `/offer-new?data=${encodeURIComponent(
+                        `/offer?data=${encodeURIComponent(
                             JSON.stringify(enableButton),
                         )}`,
                     );

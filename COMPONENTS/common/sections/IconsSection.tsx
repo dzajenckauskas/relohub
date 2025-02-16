@@ -33,7 +33,7 @@ const IconsSection = ({ mobileCenter, iconsSection, subtitle, content, title, ba
             <Grid key={i} item lg={lg ?? 2} md={md ?? 4} sm={sm ?? 6} xs={xs ?? 12}
                 sx={{ display: 'flex', flexDirection: 'column', alignItems: (mobileCenter ? { xs: 'center', md: 'flex-start' } : align) ?? 'center' }} width={'100%'}>
                 <Image
-                    src={process.env.NEXT_PUBLIC_API_URL + c.image?.data?.attributes?.url ?? undefined}
+                    src={process.env.NEXT_PUBLIC_API_URL + (c.image?.data?.attributes?.url ?? undefined)}
                     alt={c.image?.data?.attributes?.alternativeText ?? c.title}
                     priority
                     width={50}

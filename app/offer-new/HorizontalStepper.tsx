@@ -91,6 +91,7 @@ export default function HorizontalStepper({ activeStep, setActiveStep }: Props) 
                                     {...labelProps}
                                     sx={{
                                         cursor: 'pointer',
+                                        // pointerEvents: !isPastStep ?'none':'auto',
                                         '& .MuiStepIcon-root': {
                                             fontSize: '5rem',
                                             // color: activeStep === index ? theme.palette.secondary.main : 'transparent',

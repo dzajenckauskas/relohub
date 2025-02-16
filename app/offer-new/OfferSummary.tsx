@@ -16,7 +16,7 @@ type Props = {
     countriesData: CountriesResponseType;
 }
 
-const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
+const OfferSummary = ({ form, countriesData, activeStep }: Props) => {
     const [edit, setEdit] = useState(false)
     const togglePopUp = () => {
         setEdit(!edit)
@@ -27,11 +27,12 @@ const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
     const suitcaseLarge = form.watch('suitcaseLarge') ?? 0
     const hasItems = (standardBox + largeBox + suitcaseSmall + suitcaseLarge) > 0
     const customItems = form.watch('customItems')
+    const commonItems = form.watch('commonItems')
     const collectionDate = form.watch('collectionDate') ?? undefined
     const deliverBoxesDate = form.watch('deliverBoxesDate') ?? undefined
     const emptyBoxesQuantity = form.watch('emptyBoxesQuantity')
 
-    console.log(collectionDate, "collectionDate");
+    // console.log(collectionDate, "collectionDate");
 
     return (
         <>
@@ -56,68 +57,72 @@ const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
                         </Button>
                     </Stack>
                     <Stack spacing={1} pt={2}>
-                        {activeStep > 0 && <>
-                            {(form.getValues('firstName') || form.getValues('lastName')) && <Box>
-                                <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                    Name & Surname:
-                                </Typography>
-                                <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                    {form.getValues('fullName')}
-                                </Typography>
-                            </Box>}
-
-                            {form.getValues('email') &&
-                                <Box>
+                        {
+                            activeStep > 0 &&
+                            <>
+                                {(form.getValues('fullName')) && <Box>
                                     <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                        Email:
+                                        Name & Surname:
                                     </Typography>
                                     <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                        {form.getValues('email')}
+                                        {form.getValues('fullName')}
                                     </Typography>
                                 </Box>}
 
-                            {form.getValues('phone') &&
-                                <Box>
-                                    <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                        Telephone:
-                                    </Typography>
-                                    <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                        {form.getValues('phone')}
-                                    </Typography>
-                                </Box>}
+                                {form.getValues('email') &&
+                                    <Box>
+                                        <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                            Email:
+                                        </Typography>
+                                        <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                            {form.getValues('email')}
+                                        </Typography>
+                                    </Box>}
+
+                                {form.getValues('phone') &&
+                                    <Box>
+                                        <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                            Telephone:
+                                        </Typography>
+                                        <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                            {form.getValues('phone')}
+                                        </Typography>
+                                    </Box>}
 
 
-                        </>}
+                            </>}
 
 
                         {/* collect from */}
-                        <Box>
-                            <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                Collect from:
-                            </Typography>
-                            <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                {form.getValues('collectCountry')}, {form.getValues('collectCity')}
-                            </Typography>
-                            {form.getValues('collectPostcode') &&
+                        {form.getValues('collectCountry') &&
+                            <Box>
+                                <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                    Collect from:
+                                </Typography>
                                 <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                    {form.getValues('collectPostcode')}
-                                </Typography>}
-                        </Box>
+                                    {form.getValues('collectCountry')}, {form.getValues('collectCity')}
+                                </Typography>
+                                {form.getValues('collectPostcode') &&
+                                    <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                        {form.getValues('collectPostcode')}
+                                    </Typography>}
+                            </Box>}
 
 
                         {/* deliver to */}
-                        <Box>
-                            <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                Deliver to:
-                            </Typography>
-                            <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                {form.getValues('deliverCountry')}, {form.getValues('deliverCity')}
-                            </Typography>
-                            {form.getValues('deliverPostcode') &&
+                        {form.getValues('deliverCountry') &&
+                            <Box>
+                                <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                    Deliver to:
+                                </Typography>
                                 <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                    {form.getValues('deliverPostcode')}
-                                </Typography>}
-                        </Box>
+                                    {form.getValues('deliverCountry')}, {form.getValues('deliverCity')}
+                                </Typography>
+                                {form.getValues('deliverPostcode') &&
+                                    <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                        {form.getValues('deliverPostcode')}
+                                    </Typography>}
+                            </Box>}
 
                         {/* boxes */}
                         {hasItems &&
@@ -150,7 +155,7 @@ const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
                                     </Typography>}
                                 {customItems?.map((ci, i) => {
                                     return (
-                                        <Box key={ci.name} pb={.5}>
+                                        <Box key={ci.name + i} pb={.5}>
                                             {/* {standardBox && */}
                                             {ci.name &&
                                                 <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.3, fontWeight: 500 }}>
@@ -161,6 +166,31 @@ const OfferSummary = ({ form, activeStep, countriesData }: Props) => {
                                                     {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? 0} cm
                                                 </Typography>}
                                             {ci.weight && <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.3, fontSize: 14, fontWeight: 500 }}>
+                                                {ci.weight ?? 0} kg
+                                            </Typography>}
+                                        </Box>
+                                    )
+                                })}
+                            </Box>}
+                        {commonItems?.length > 0 &&
+                            <Box>
+                                {!!commonItems?.[0]?.name &&
+                                    <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500 }}>
+                                        Furniture and Appliances:
+                                    </Typography>}
+                                {commonItems?.map((ci, i) => {
+                                    return (
+                                        <Box key={ci.name + i} pb={.5}>
+                                            {/* {standardBox && */}
+                                            {ci.name &&
+                                                <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontWeight: 500 }}>
+                                                    {i + 1}. {ci.name}
+                                                </Typography>}
+                                            {(ci.width ?? ci.height ?? ci.debth) &&
+                                                <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontSize: 14, fontWeight: 500 }}>
+                                                    {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? 0} cm
+                                                </Typography>}
+                                            {ci.weight && <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontSize: 14, fontWeight: 500 }}>
                                                 {ci.weight ?? 0} kg
                                             </Typography>}
                                         </Box>

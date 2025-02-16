@@ -13,9 +13,10 @@ import { CustomItemType, OfferFormType } from './OfferNewPage';
 
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>
+    detailsColumn?: boolean;
 }
 
-const LuggageInformationForm = ({ form }: Props) => {
+const LuggageInformationForm = ({ form, detailsColumn }: Props) => {
     const { fields, append, remove } = useFieldArray({
         control: form.control,
         name: 'customItems'
@@ -25,6 +26,7 @@ const LuggageInformationForm = ({ form }: Props) => {
         <Stack direction="row" gap={2} pb={2} pt={2} >
             <Box flex={1} display="flex" flexDirection="column" gap={3}>
                 <LuggageItemRow
+                    detailsColumn={detailsColumn}
                     imgSrc="/sb.png"
                     primaryText="Standard"
                     secondaryText="Box"
@@ -34,6 +36,7 @@ const LuggageInformationForm = ({ form }: Props) => {
                     name={'standardBox'}
                 />
                 <LuggageItemRow
+                    detailsColumn={detailsColumn}
                     imgSrc="/lb.png"
                     primaryText="Large"
                     secondaryText="Box"
@@ -43,6 +46,7 @@ const LuggageInformationForm = ({ form }: Props) => {
                     name={'largeBox'}
                 />
                 <LuggageItemRow
+                    detailsColumn={detailsColumn}
                     imgSrc="/ss.png"
                     primaryText="Suitcase"
                     secondaryText="Small"
@@ -52,6 +56,7 @@ const LuggageInformationForm = ({ form }: Props) => {
                     name={'suitcaseSmall'}
                 />
                 <LuggageItemRow
+                    detailsColumn={detailsColumn}
                     imgSrc="/sl.png"
                     primaryText="Suitcase"
                     secondaryText="Large"

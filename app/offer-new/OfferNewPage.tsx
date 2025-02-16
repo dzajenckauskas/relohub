@@ -8,14 +8,17 @@ import { Box, Button, Card, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitErrorHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
-import DeliveryDateForm from "./DeliveryDateForm";
 import HorizontalStepper from "./HorizontalStepper";
-import LuggageInformationForm from "./LuggageInformationForm";
-import OfferSummary from "./OfferSummary";
-import PersonalInformationForm from "./PersonalInformationForm";
-import Image from "next/image";
+import DetailsAndDatesStep from "./steps/DetailsAndDatesStep";
+import InventoryStep from "./steps/InventoryStep";
+import PriceOptionsStep from "./steps/PriceOptionsStep";
+import NoPricePopup from "@/COMPONENTS/offer_page/nopricepopup";
+import OfferPopup from "@/COMPONENTS/offer_page/offerPopup";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import ErrorBox from "@/COMPONENTS/common/shared/ErrorBox";
 
 export type OfferFormType = {
     fullName: string;
@@ -34,9 +37,11 @@ export type OfferFormType = {
     suitcaseSmall: number;
     suitcaseLarge: number;
     customItems: CustomItemType[];
+    commonItems: CustomItemType[];
     collectionDate: Date;
     deliverBoxesDate: Date;
     emptyBoxesQuantity: number;
+    hasItemsAdded: boolean;
 };
 
 export type CustomItemType = {
@@ -44,64 +49,51 @@ export type CustomItemType = {
     width: string;
     height: string;
     depth: string;
+    length?: string;
     weight: string;
 }
 // Step-based validation schemas
 
 const customItemSchema = yup.object().shape({
     name: yup.string().required('Name is required'),
-    width: yup.string().required('Width is required'),
-    height: yup.string().required('Height is required'),
-    depth: yup.string().required('Depth is required'),
-    weight: yup.string().required('Weight is required'),
+    width: yup.number().typeError('Width must be a number').positive('Width must be greater than 0').required('Width is required'),
+    height: yup.number().typeError('Height must be a number').positive('Height must be greater than 0').required('Height is required'),
+    depth: yup.number().typeError('Depth must be a number').positive('Depth must be greater than 0').required('Depth is required'),
+    weight: yup.number().typeError('Weight must be a number').positive('Weight must be greater than 0').required('Weight is required'),
 });
 
 const stepSchemas = [
     yup.object({
         fullName: yup.string().required("Name is required"),
         email: yup.string().email("Invalid email").required("Email is required"),
-        phone: yup.string().nullable(),
+        phone: yup.string().nullable().required("Phone number is required"),
         collectionDate: yup.date().required('Collection date is required'),
     }),
     yup.object({
-        standardBox: yup.number().min(0),
-        largeBox: yup.number().min(0),
-        suitcaseSmall: yup.number().min(0),
-        suitcaseLarge: yup.number().min(0),
-        customItems: yup.array().of(customItemSchema).test(
-            'custom-items-required',
-            'All custom item fields are required',
-            (customItems) => {
-                if (customItems && customItems.length > 0) {
-                    return customItems.every(item =>
-                        item.name &&
-                        item.width &&
-                        item.height &&
-                        item.depth &&
-                        item.weight
-                    );
-                }
-                return true;
-            }
-        ),
-    }).test(
-        'at-least-one-box',
-        'At least one box or suitcase must be greater than 0',
-        (values) =>
-            (values.standardBox || 0) > 0 ||
-            (values.largeBox || 0) > 0 ||
-            (values.suitcaseSmall || 0) > 0 ||
-            (values.suitcaseLarge || 0) > 0
-    ),
-    yup.object({
+        customItems: yup.array().of(customItemSchema).default([]),
+        hasItemsAdded: yup.boolean().when(['customItems', 'commonItems', 'standardBox', 'largeBox', 'suitcaseSmall', 'suitcaseLarge'], {
+            is: (commonItems: any[], customItems: any[], standardBox: number, largeBox: number, suitcaseSmall: number, suitcaseLarge: number) => {
+                const invalid = ((commonItems?.length ?? 0) + (customItems?.length ?? 0) + (standardBox ?? 0) + (largeBox ?? 0) + (suitcaseSmall ?? 0) + (suitcaseLarge ?? 0)) <= 0
+                return invalid
+            },
+            then: () => yup.boolean().required(('At least one item must be selected')),
+            otherwise: () => yup.boolean().nullable()
+        }),
     }),
+    // yup.object({}),
 ];
+
+
 
 type Props = {
     countriesData?: CountriesResponseType;
 }
 export default function OfferNewPage({ countriesData }: Props) {
+
     const [activeStep, setActiveStep] = useState<number | undefined>(0);
+    const [error, setError] = useState<string | undefined>();
+
+    const [prices, setprices] = useState(null);
 
 
     const searchParams = useSearchParams();
@@ -110,17 +102,30 @@ export default function OfferNewPage({ countriesData }: Props) {
     const form = useForm<OfferFormType>({
         resolver: yupResolver(stepSchemas[activeStep] as any) as any, // Change schema dynamically
         mode: "onTouched",
+        reValidateMode: 'onChange',
         defaultValues: {
-            collectCountry: capitalizeEachWord(dataParam?.from_country) ?? "United Kingdom",
-            collectCity: capitalizeEachWord(dataParam?.from_city) ?? "London",
-            collectPostcode: capitalizeEachWord(dataParam?.from_postCode) ?? "HP23DS",
-            deliverCountry: capitalizeEachWord(dataParam?.to_country) ?? "United States",
-            deliverCity: capitalizeEachWord(dataParam?.to_city) ?? "Boston",
-            deliverPostcode: capitalizeEachWord(dataParam?.to_postCode) ?? "BO5345",
+            collectCountry: capitalizeEachWord(dataParam?.from_country)
+            // ?? "United Kingdom"
+            ,
+            collectCity: capitalizeEachWord(dataParam?.from_city)
+            // ?? "London"
+            ,
+            collectPostcode: capitalizeEachWord(dataParam?.from_postCode)
+            // ?? "HP23DS"
+            ,
+            deliverCountry: capitalizeEachWord(dataParam?.to_country)
+            // ?? "United States"
+            ,
+            deliverCity: capitalizeEachWord(dataParam?.to_city)
+            // ?? "Boston"
+            ,
+            deliverPostcode: capitalizeEachWord(dataParam?.to_postCode)
+            // ?? "BO5345"
+            ,
 
-            fullName: "John Rambo",
-            email: 'johhnyboy@rambo.com',
-            phone: '07123903433',
+            // fullName: "John Rambo",
+            // email: 'johhnyboy@rambo.com',
+            // phone: '07123903433',
 
             // standardBox: 1,
             // suitcaseLarge: 1,
@@ -137,28 +142,147 @@ export default function OfferNewPage({ countriesData }: Props) {
             // ],
             // emptyBoxesQuantity: 0,
             // collectionDate: new Date('2025-02-24'),
-            // deliverBoxesDate: new Date('2025-02-20'),
         }
     });
 
     const { handleSubmit, formState: { errors }, trigger, control } = form;
 
     const nextStep = async () => {
-        console.log(form.getValues(), "form.getValues()");
-
         const valid = await trigger(Object.keys(stepSchemas[activeStep].fields) as any); // Validate only current step fields
-        console.log(stepSchemas[activeStep].fields, "stepSchemas[activeStep].fields");
-
         if (valid) {
             setActiveStep((prev) => prev + 1);
         }
+        // else {
+        //     setError('Check form errors')
+        // }
     };
+    const formData = form.getValues()
+    const commonItems = form.watch('commonItems')
+    const customItems = form.watch('customItems')
 
-    const onSubmit = (data: OfferFormType) => {
-        console.log("Form Data:", data)
-        setActiveStep(undefined)
+    const transformedCustomItems = customItems?.map((v) => {
+        return {
+            quantity: 1,
+            name: v.name,
+            width: v.width,
+            height: v.height,
+            depth: v.width,
+            weight: v.weight,
+        }
+    })
+    const transformedCommonItems = commonItems?.map((v) => {
+        return {
+            quantity: 1,
+            name: v.name,
+            width: v.width,
+            height: v.height,
+            depth: v.width,
+            weight: v.weight,
+        }
+    })
+    const transformedData = {
+        name: formData?.fullName,
+        email: formData?.email,
+        phone: formData?.phone,
+
+        from_city: formData?.collectCity,
+        from_country: formData?.collectCountry,
+        from_postCode: formData?.collectPostcode,
+
+        to_city: formData?.deliverCity,
+        to_country: formData?.deliverCountry,
+        to_postCode: formData?.deliverPostcode,
+
+        Collection_Date: formData?.collectionDate,
+
+        Standard_box: formData?.standardBox,
+        Large_box: formData?.largeBox,
+        Suitcase_small: formData?.suitcaseSmall,
+        Suitcase_large: formData?.suitcaseLarge,
+        Own_items: [...transformedCustomItems ?? [], ...transformedCommonItems ?? []],
+
     }
+    const onSubmit = async (data: OfferFormType) => {
+        setError(undefined)
+        // {
+        //     "name": "TEST",
+        //     "Empty_Box_Delivery_Date": "",
+        //     "email": "TEST@TEST",
+        //     "from_city": "abades",
+        //     "from_country": "spain",
+        //     "to_city": "aiseau",
+        //     "to_country": "belgium",
+        //     "Standard_box": "1",
+        //     "Large_box": "1",
+        //     "Suitcase_small": "1",
+        //     "Suitcase_large": "1",
+        //     "Own_items": [
+        //       {
+        //         "id": "1739707814201",
+        //         "quantity": "1",
+        //         "name": "TEST",
+        //         "width": "123",
+        //         "height": "123",
+        //         "depth": "123",
+        //         "weight": "123"
+        //       }
+        //     ],
+        //     "phone": "TEST",
+        //     "from_postCode": "",
+        //     "to_postCode": "",
+        //     "Collection_Date": "2025-02-28"
+        //   }
 
+        console.log(transformedData, "transformedData");
+
+        const url = process.env.NEXT_PUBLIC_FETCH_URL;
+        const hv = process.env.NEXT_PUBLIC_HEADER_VALUE;
+
+        if (process.env.NODE_ENV === "development") {
+            console.log(transformedData, 'data');
+            // setShowPopUp(!showPopUp)
+            // console.log(showPopUp, 'showPopUp');
+        }
+        try {
+            const res = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "http-referer": hv,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(transformedData),
+            });
+
+            if (res.ok) {
+                const prc = await res.json();
+                // setShowPopUp(!showPopUp)
+
+                if (process.env.NODE_ENV === "development") {
+                    console.log(prc);
+                }
+                console.log(prc, "prc");
+
+                setActiveStep(2)
+
+                if (prc.price.length === 0) {
+                    // setshownopricepopup(true);
+                } else {
+                    setprices(prc);
+                    // setshowpopupofprices(true);
+                }
+            }
+        } catch (error) {
+            console.log("fetch error:", error);
+            setError(error.message)
+        }
+
+        // console.log("Form Data:", data)
+        // setActiveStep(undefined)
+    }
+    const onInvalid: SubmitErrorHandler<OfferFormType> = (data) => {
+        console.log('invalid', data, form.getValues())
+    }
+    console.log(error, "error");
 
     return (
         <PageLayout hidePopUpButton>
@@ -167,100 +291,31 @@ export default function OfferNewPage({ countriesData }: Props) {
                     <Stack mx="auto" maxWidth="lg" width="100%">
                         <HorizontalStepper activeStep={activeStep} setActiveStep={setActiveStep} />
 
-                        <form onSubmit={handleSubmit((data) => {
-                            onSubmit(data)
-                        })} noValidate>
+                        <form onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate>
                             {/* Step 1: Contact details & Dates */}
                             {activeStep === 0 && (
-                                <Card sx={{ p: 4, pb: 0, width: "100%", mx: "auto", mb: 10 }}>
-                                    <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
-                                        <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
-                                            <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Personal</b> Details</Typography>
-                                            <PersonalInformationForm form={form} errors={errors} />
-                                            <Stack direction={'row'} justifyContent={'flex-start'}>
-                                                <DeliveryDateForm form={form} />
-                                            </Stack>
-                                            <Box>
-                                                <Button onClick={nextStep} variant="contained" color="secondary"
-                                                    sx={{ px: 6, py: 2 }}>
-                                                    Next step
-                                                </Button>
-                                            </Box>
-                                        </Stack>
-                                        <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative' }}>
-                                            <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
-                                            <Stack sx={{ position: 'relative', mt: 2, bottom: -24, right: 135, width: '100%' }}>
-                                                <Image
-                                                    alt="background"
-                                                    src={"/illustration-2.svg"}
-                                                    objectFit="contain"
-                                                    width={500}
-                                                    height={310}
-                                                />
-                                            </Stack>
-                                        </Stack>
-                                    </Stack>
-                                </Card>
+                                <DetailsAndDatesStep
+                                    error={error} form={form} countriesData={countriesData}
+                                    nextStep={nextStep} activeStep={activeStep}
+                                />
                             )}
 
                             {/* Step 2: Your inventory */}
                             {activeStep === 1 && (
-                                <Card sx={{ p: 4, pb: 0, width: "100%", mx: "auto", mb: 10 }}>
-                                    <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
-                                        <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
-                                            <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Boxes & Luggage</b> Details</Typography>
-                                            <LuggageInformationForm form={form} />
-                                            <Box>
-                                                <Button onClick={nextStep} variant="contained" color="secondary"
-                                                    sx={{ px: 6, py: 2 }}>
-                                                    Next step
-                                                </Button>
-                                            </Box>
-                                        </Stack>
-                                        <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative' }}>
-                                            <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
-                                            <Stack sx={{ position: 'relative', mt: 0, bottom: -10, right: 150, width: '100%' }}>
-                                                <Image
-                                                    alt="background"
-                                                    src={"/illustration-1.svg"}
-                                                    objectFit="contain"
-                                                    width={480}
-                                                    height={250}
-                                                />
-                                            </Stack>
-                                        </Stack>
-                                    </Stack>
-                                </Card>
+                                <InventoryStep
+                                    error={error} form={form} countriesData={countriesData}
+                                    nextStep={nextStep} activeStep={activeStep}
+                                />
                             )}
-
                             {/* Step 3: Price options */}
                             {activeStep === 2 && (
-                                <Card sx={{ p: 4, pb: 0, width: "100%", mx: "auto", mb: 10 }}>
-                                    <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
-                                        <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
-                                            <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Price Options</b></Typography>
-                                            {/* <LuggageInformationForm form={form} /> */}
-                                            <Box>
-                                                <Button onClick={nextStep} variant="contained" color="secondary"
-                                                    sx={{ px: 6, py: 2 }}>
-                                                    Next step
-                                                </Button>
-                                            </Box>
-                                        </Stack>
-                                        <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative', height: '100%' }}>
-                                            <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
-                                            <Stack sx={{ position: 'relative', mt: -4, bottom: -50, right: 2, width: '100%' }}>
-                                                <Image
-                                                    alt="background"
-                                                    src={"/illustration-3.svg"}
-                                                    objectFit="contain"
-                                                    width={320}
-                                                    height={320}
-                                                />
-                                            </Stack>
-                                        </Stack>
-                                    </Stack>
-                                </Card>
+                                <PriceOptionsStep
+                                    error={error}
+                                    prices={prices}
+                                    transformedData={transformedData}
+                                    form={form} countriesData={countriesData}
+                                    nextStep={nextStep} activeStep={activeStep}
+                                />
                             )}
 
                             {/* Step 4: Submitted */}
@@ -269,7 +324,7 @@ export default function OfferNewPage({ countriesData }: Props) {
                                     <Typography variant="h2" sx={{ fontWeight: 500 }}><b>Thank you</b> for submission</Typography>
                                     <Stack direction="row" gap={2} pb={2} pt={4}>
                                         <Box flex={1} display="flex" flexDirection="column" gap={2}>
-                                            {/* <StyledTextInput
+                                            {/* <FormStyledTextInput
                                                 label="Something Else"
                                                 form={form}
                                                 name="somethingelse"
@@ -278,15 +333,39 @@ export default function OfferNewPage({ countriesData }: Props) {
                                             /> */}
                                         </Box>
                                     </Stack>
-                                    <Button onClick={() => {
+                                    {/* <Button onClick={() => {
                                         form.reset()
                                         setActiveStep(0)
                                     }} variant="contained" color="secondary"
                                         sx={{ px: 6, py: 2 }}>
                                         Submit again
-                                    </Button>
+                                    </Button> */}
                                 </Card>
                             )}
+
+                            {/* {(!showPopUp
+                                && showpopupofprices
+                            ) ? ( */}
+                            {/* <Elements stripe={stripePromise}>
+                                <OfferPopup
+                                    hidePopup={(v) => {
+                                        setshowpopupofprices(v);
+                                    }}
+                                    state={transformedData}
+                                    prices={prices}
+                                />
+                            </Elements> */}
+                            {/* ) 
+                            : null} */}
+                            {/* {(!showPopUp
+                                && nopricepopup
+                            ) ? ( */}
+                            {/* <NoPricePopup
+                                setshownopricepopup={(v) => {
+                                    setshownopricepopup(v);
+                                }}
+                            /> */}
+                            {/* ) : null} */}
                         </form>
                     </Stack>
                 </MaxWidthContainer>
