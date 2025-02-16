@@ -10,15 +10,20 @@ import DeliveryDateForm from '../DeliveryDateForm';
 import { OfferFormType } from '../OfferNewPage';
 import OfferSummary from '../OfferSummary';
 import PersonalInformationForm from '../PersonalInformationForm';
+import ErrorMessage from './ErrorMessage';
 
 type Props = {
     countriesData?: CountriesResponseType;
     form: UseFormReturn<OfferFormType, any, undefined>;
     nextStep: () => Promise<void>;
     activeStep: number;
+    error: string;
+
 }
 
-const DetailsAndDatesStep = ({ form, nextStep, countriesData, activeStep }: Props) => {
+const DetailsAndDatesStep = ({ error, form, nextStep, countriesData, activeStep }: Props) => {
+    const hasErrors = Object.keys(form.formState.errors).length > 0;
+
     return (
         <Card sx={{ p: 4, pb: 0, width: "100%", mx: "auto", mb: 10 }}>
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
@@ -33,6 +38,8 @@ const DetailsAndDatesStep = ({ form, nextStep, countriesData, activeStep }: Prop
                             sx={{ px: 6, py: 2 }}>
                             Next step
                         </Button>
+                        {hasErrors && <ErrorMessage message={'Check form for errors'} />}
+
                     </Box>
                 </Stack>
                 <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative' }}>

@@ -8,27 +8,50 @@ import Image from 'next/image';
 import { UseFormReturn } from 'react-hook-form';
 import { OfferFormType } from '../OfferNewPage';
 import OfferSummary from '../OfferSummary';
+import { Elements } from '@stripe/react-stripe-js';
+import NoPricePopup from "@/COMPONENTS/offer_page/nopricepopup";
+import OfferPopup from "@/COMPONENTS/offer_page/offerPopup";
+import { loadStripe } from "@stripe/stripe-js";
+import PriceOffer from '../PriceOffer';
+import ErrorMessage from './ErrorMessage';
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC);
 
 type Props = {
     countriesData?: CountriesResponseType;
     form: UseFormReturn<OfferFormType, any, undefined>;
     nextStep: () => Promise<void>;
     activeStep: number;
+    prices: any;
+    transformedData: any;
+    error: string;
 }
 
-const PriceOptionsStep = ({ form, nextStep, countriesData, activeStep }: Props) => {
+const PriceOptionsStep = ({ error, transformedData, form, nextStep, countriesData, activeStep, prices }: Props) => {
+    console.log(error, "ERROR");
+
     return (
         <Card sx={{ p: 4, pb: 0, width: "100%", mx: "auto", mb: 10 }}>
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
                 <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
                     <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Price Options</b></Typography>
                     {/* <LuggageInformationForm form={form} /> */}
+                    <Elements stripe={stripePromise}>
+                        <PriceOffer
+                            hidePopup={(v) => {
+                                // setshowpopupofprices(v);
+                            }}
+                            state={transformedData}
+                            prices={prices}
+                        />
+                    </Elements>
                     <Box>
                         <Button onClick={nextStep} variant="contained" color="secondary"
                             sx={{ px: 6, py: 2 }}>
                             Next step
                         </Button>
+                        {error && <ErrorMessage message={error} />}
                     </Box>
+
                 </Stack>
                 <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative', height: '100%' }}>
                     <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />

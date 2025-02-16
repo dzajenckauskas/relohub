@@ -16,7 +16,7 @@ type Props = {
     countriesData: CountriesResponseType;
 }
 
-const OfferSummary = ({ form, countriesData }: Props) => {
+const OfferSummary = ({ form, countriesData, activeStep }: Props) => {
     const [edit, setEdit] = useState(false)
     const togglePopUp = () => {
         setEdit(!edit)
@@ -58,7 +58,7 @@ const OfferSummary = ({ form, countriesData }: Props) => {
                     </Stack>
                     <Stack spacing={1} pt={2}>
                         {
-                            // activeStep > 0 &&
+                            activeStep > 0 &&
                             <>
                                 {(form.getValues('fullName')) && <Box>
                                     <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>

@@ -18,6 +18,7 @@ import NoPricePopup from "@/COMPONENTS/offer_page/nopricepopup";
 import OfferPopup from "@/COMPONENTS/offer_page/offerPopup";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import ErrorBox from "@/COMPONENTS/common/shared/ErrorBox";
 
 export type OfferFormType = {
     fullName: string;
@@ -65,7 +66,7 @@ const stepSchemas = [
     yup.object({
         fullName: yup.string().required("Name is required"),
         email: yup.string().email("Invalid email").required("Email is required"),
-        phone: yup.string().nullable(),
+        phone: yup.string().nullable().required("Phone number is required"),
         collectionDate: yup.date().required('Collection date is required'),
     }),
     yup.object({
@@ -88,13 +89,10 @@ type Props = {
     countriesData?: CountriesResponseType;
 }
 export default function OfferNewPage({ countriesData }: Props) {
-    const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC);
 
     const [activeStep, setActiveStep] = useState<number | undefined>(0);
+    const [error, setError] = useState<string | undefined>();
 
-    const [showPopUp, setShowPopUp] = useState(false);
-    const [showpopupofprices, setshowpopupofprices] = useState(false);
-    const [nopricepopup, setshownopricepopup] = useState(false);
     const [prices, setprices] = useState(null);
 
 
@@ -154,6 +152,9 @@ export default function OfferNewPage({ countriesData }: Props) {
         if (valid) {
             setActiveStep((prev) => prev + 1);
         }
+        // else {
+        //     setError('Check form errors')
+        // }
     };
     const formData = form.getValues()
     const commonItems = form.watch('commonItems')
@@ -202,6 +203,7 @@ export default function OfferNewPage({ countriesData }: Props) {
 
     }
     const onSubmit = async (data: OfferFormType) => {
+        setError(undefined)
         // {
         //     "name": "TEST",
         //     "Empty_Box_Delivery_Date": "",
@@ -238,8 +240,8 @@ export default function OfferNewPage({ countriesData }: Props) {
 
         if (process.env.NODE_ENV === "development") {
             console.log(transformedData, 'data');
-            setShowPopUp(!showPopUp)
-            console.log(showPopUp, 'showPopUp');
+            // setShowPopUp(!showPopUp)
+            // console.log(showPopUp, 'showPopUp');
         }
         try {
             const res = await fetch(url, {
@@ -253,30 +255,34 @@ export default function OfferNewPage({ countriesData }: Props) {
 
             if (res.ok) {
                 const prc = await res.json();
-                setShowPopUp(!showPopUp)
+                // setShowPopUp(!showPopUp)
 
                 if (process.env.NODE_ENV === "development") {
                     console.log(prc);
                 }
+                console.log(prc, "prc");
+
+                setActiveStep(2)
 
                 if (prc.price.length === 0) {
-                    setshownopricepopup(true);
+                    // setshownopricepopup(true);
                 } else {
                     setprices(prc);
-                    setshowpopupofprices(true);
+                    // setshowpopupofprices(true);
                 }
             }
         } catch (error) {
             console.log("fetch error:", error);
+            setError(error.message)
         }
 
-        console.log("Form Data:", data)
-        setActiveStep(2)
+        // console.log("Form Data:", data)
         // setActiveStep(undefined)
     }
     const onInvalid: SubmitErrorHandler<OfferFormType> = (data) => {
         console.log('invalid', data, form.getValues())
     }
+    console.log(error, "error");
 
     return (
         <PageLayout hidePopUpButton>
@@ -288,17 +294,20 @@ export default function OfferNewPage({ countriesData }: Props) {
                         <form onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate>
                             {/* Step 1: Contact details & Dates */}
                             {activeStep === 0 && (
-                                <DetailsAndDatesStep form={form} countriesData={countriesData} nextStep={nextStep} activeStep={activeStep} />
+                                <DetailsAndDatesStep error={error} form={form} countriesData={countriesData} nextStep={nextStep} activeStep={activeStep} />
                             )}
 
                             {/* Step 2: Your inventory */}
                             {activeStep === 1 && (
-                                <InventoryStep form={form} countriesData={countriesData} nextStep={nextStep} activeStep={activeStep} />
+                                <InventoryStep error={error} form={form} countriesData={countriesData} nextStep={nextStep} activeStep={activeStep} />
                             )}
-
                             {/* Step 3: Price options */}
                             {activeStep === 2 && (
-                                <PriceOptionsStep form={form} countriesData={countriesData} nextStep={nextStep} activeStep={activeStep} />
+                                <PriceOptionsStep
+                                    error={error}
+                                    prices={prices}
+                                    transformedData={transformedData}
+                                    form={form} countriesData={countriesData} nextStep={nextStep} activeStep={activeStep} />
 
 
                             )}
@@ -318,20 +327,20 @@ export default function OfferNewPage({ countriesData }: Props) {
                                             /> */}
                                         </Box>
                                     </Stack>
-                                    <Button onClick={() => {
+                                    {/* <Button onClick={() => {
                                         form.reset()
                                         setActiveStep(0)
                                     }} variant="contained" color="secondary"
                                         sx={{ px: 6, py: 2 }}>
                                         Submit again
-                                    </Button>
+                                    </Button> */}
                                 </Card>
                             )}
 
                             {/* {(!showPopUp
                                 && showpopupofprices
                             ) ? ( */}
-                            <Elements stripe={stripePromise}>
+                            {/* <Elements stripe={stripePromise}>
                                 <OfferPopup
                                     hidePopup={(v) => {
                                         setshowpopupofprices(v);
@@ -339,7 +348,7 @@ export default function OfferNewPage({ countriesData }: Props) {
                                     state={transformedData}
                                     prices={prices}
                                 />
-                            </Elements>
+                            </Elements> */}
                             {/* ) 
                             : null} */}
                             {/* {(!showPopUp

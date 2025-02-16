@@ -16,9 +16,10 @@ type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>;
     nextStep: () => Promise<void>;
     activeStep: number;
+    error: string;
 }
 
-const InventoryStep = ({ form, nextStep, countriesData, activeStep }: Props) => {
+const InventoryStep = ({ error, form, nextStep, countriesData, activeStep }: Props) => {
     return (
         <Card sx={{ p: 4, pb: 0, width: "100%", mx: "auto", mb: 10 }}>
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
@@ -37,6 +38,8 @@ const InventoryStep = ({ form, nextStep, countriesData, activeStep }: Props) => 
                         {form.formState.errors.hasItemsAdded?.message && (
                             <ErrorMessage message={form.formState.errors.hasItemsAdded.message} />
                         )}
+                        {error && <ErrorMessage message={error} />}
+
                     </Box>
                 </Stack>
                 <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative' }}>
