@@ -4,8 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import ErrorMessage from "./steps/ErrorMessage";
+import Button from "@mui/material/Button";
 
-export default function PriceOffer({ hidePopup, state, prices }) {
+export default function PriceOffer({ state, prices }) {
     const stripe = useStripe();
     const elements = useElements();
     const [selected, setselected] = useState(null);
@@ -127,7 +130,7 @@ export default function PriceOffer({ hidePopup, state, prices }) {
 
     function pricesPopup() {
         return (
-            <div className="offerpopupcenterwrp">
+            <div className="offerpopupcenterwrp" style={{ paddingLeft: 0 }}>
                 <p className="methodoftravelmobile">METHOD OF TRAVEL</p>
 
                 {/* <button
@@ -205,7 +208,7 @@ export default function PriceOffer({ hidePopup, state, prices }) {
                             </strong>{" "}
                             whitch will be deducted from the final invoice.
                         </p>
-                        <button
+                        {/* <button
                             className="paywithstripebutton"
                             onClick={() => {
                                 setshowstripepopup(true);
@@ -213,8 +216,20 @@ export default function PriceOffer({ hidePopup, state, prices }) {
                             disabled={!selected}
                         >
                             Pay deposit using <strong>stripe</strong>
-                        </button>
+                        </button> */}
                     </div>
+                    <Box>
+                        <Button
+                            onClick={() => {
+                                setshowstripepopup(true);
+                            }}
+                            disabled={!selected}
+                            variant="contained" color="secondary"
+                            sx={{ px: 6, py: 2 }}>
+                            Pay deposit using stripe
+                        </Button>
+                        {error && <ErrorMessage message={String(error)} />}
+                    </Box>
                 </div>
             </div>
         );
@@ -264,7 +279,7 @@ export default function PriceOffer({ hidePopup, state, prices }) {
 
     function stripefn() {
         return (
-            <div className="offerpopupcenterwrpstripe">
+            <div className="offerpopupcenterwrpstripe" style={{ paddingLeft: 0 }}>
                 <div className="offerpopupstripetopwrp">
                     {" "}
                     <h3 className="stripepopuph3">DEPOSIT PAYMENT</h3>{" "}

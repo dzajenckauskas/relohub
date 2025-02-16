@@ -294,12 +294,18 @@ export default function OfferNewPage({ countriesData }: Props) {
                         <form onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate>
                             {/* Step 1: Contact details & Dates */}
                             {activeStep === 0 && (
-                                <DetailsAndDatesStep error={error} form={form} countriesData={countriesData} nextStep={nextStep} activeStep={activeStep} />
+                                <DetailsAndDatesStep
+                                    error={error} form={form} countriesData={countriesData}
+                                    nextStep={nextStep} activeStep={activeStep}
+                                />
                             )}
 
                             {/* Step 2: Your inventory */}
                             {activeStep === 1 && (
-                                <InventoryStep error={error} form={form} countriesData={countriesData} nextStep={nextStep} activeStep={activeStep} />
+                                <InventoryStep
+                                    error={error} form={form} countriesData={countriesData}
+                                    nextStep={nextStep} activeStep={activeStep}
+                                />
                             )}
                             {/* Step 3: Price options */}
                             {activeStep === 2 && (
@@ -307,9 +313,9 @@ export default function OfferNewPage({ countriesData }: Props) {
                                     error={error}
                                     prices={prices}
                                     transformedData={transformedData}
-                                    form={form} countriesData={countriesData} nextStep={nextStep} activeStep={activeStep} />
-
-
+                                    form={form} countriesData={countriesData}
+                                    nextStep={nextStep} activeStep={activeStep}
+                                />
                             )}
 
                             {/* Step 4: Submitted */}

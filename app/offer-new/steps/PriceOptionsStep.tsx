@@ -9,11 +9,11 @@ import { UseFormReturn } from 'react-hook-form';
 import { OfferFormType } from '../OfferNewPage';
 import OfferSummary from '../OfferSummary';
 import { Elements } from '@stripe/react-stripe-js';
-import NoPricePopup from "@/COMPONENTS/offer_page/nopricepopup";
 import OfferPopup from "@/COMPONENTS/offer_page/offerPopup";
 import { loadStripe } from "@stripe/stripe-js";
 import PriceOffer from '../PriceOffer';
 import ErrorMessage from './ErrorMessage';
+import NoPricePopup from '../NoPricePopup';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC);
 
 type Props = {
@@ -33,24 +33,40 @@ const PriceOptionsStep = ({ error, transformedData, form, nextStep, countriesDat
         <Card sx={{ p: 4, pb: 0, width: "100%", mx: "auto", mb: 10 }}>
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
                 <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
-                    <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Price Options</b></Typography>
-                    {/* <LuggageInformationForm form={form} /> */}
-                    <Elements stripe={stripePromise}>
-                        <PriceOffer
-                            hidePopup={(v) => {
-                                // setshowpopupofprices(v);
-                            }}
-                            state={transformedData}
-                            prices={prices}
-                        />
-                    </Elements>
-                    <Box>
+                    {
+                        prices?.length > 0 &&
+                        <>
+                            <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Price Options</b></Typography>
+                            <Elements stripe={stripePromise}>
+                                <PriceOffer
+                                    state={transformedData}
+                                    prices={prices}
+                                // prices={{
+                                //     price: {
+                                //         ROAD: 2113,
+                                //         SEA: 2113,
+                                //         'AIR COURIER': 2113,
+                                //         "AIR FREIGHT (TO-AIRPORT)": 2113,
+                                //     }
+                                // }}
+                                />
+                            </Elements>
+                        </>
+                    }
+                    {
+                        prices?.length === 0 &&
+                        <>
+                            <Typography variant="h2" sx={{ fontWeight: 500 }}>Request <b>has been received</b></Typography>
+                            <NoPricePopup />
+                        </>
+                    }
+                    {/* <Box>
                         <Button onClick={nextStep} variant="contained" color="secondary"
                             sx={{ px: 6, py: 2 }}>
                             Next step
                         </Button>
                         {error && <ErrorMessage message={error} />}
-                    </Box>
+                    </Box> */}
 
                 </Stack>
                 <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative', height: '100%' }}>
