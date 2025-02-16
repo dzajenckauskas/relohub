@@ -44,7 +44,7 @@ const InventoryStep = ({ error, form, nextStep, countriesData, activeStep }: Pro
                 </Stack>
                 <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative' }}>
                     <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
-                    <Stack sx={{ position: 'relative', mt: 0, bottom: -10, right: 150, width: '100%' }}>
+                    <Stack sx={{ position: 'relative', mt: 0, bottom: -12, right: { xs: 0, md: 150 }, width: '100%' }}>
                         <Image
                             alt="background"
                             src={"/illustration-1.svg"}

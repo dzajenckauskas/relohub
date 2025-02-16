@@ -44,17 +44,32 @@ const DetailsAndDatesStep = ({ validateForm, error, form, nextStep, countriesDat
                 </Stack>
                 <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative' }}>
                     <OfferSummary validateForm={validateForm} countriesData={countriesData} activeStep={activeStep} form={form} />
-                    <Stack sx={{ position: 'relative', mt: 2, bottom: -24, right: 135, width: '100%' }}>
-                        <Image
-                            alt="background"
-                            src={"/illustration-2.svg"}
-                            width={500}
-                            height={310}
-                            style={{
-                                objectFit: "contain"
+                    <Stack direction={'row'}
+                        sx={{
+                            position: 'relative', mt: 2,
+                            bottom: -46,
+                            // minHeight: 300,
+                            right: { xs: -50, md: 130 },
+                            // width: '100%'
+                        }}>
+                        <Stack sx={{
+                            // position: 'absolute', mt: 2, bottom: -24,
+                            // right: 0,
+                            //  right: { xs: -210, md: 135 },
+                            // width: '100%'
+                        }}>
+                            <Image
+                                alt="background"
+                                // src={"/illustration-2.svg"}
+                                src={"/deliveri-2-1.png"}
+                                width={600}
+                                height={320}
+                                style={{
+                                    objectFit: "contain"
 
-                            }}
-                        />
+                                }}
+                            />
+                        </Stack>
                     </Stack>
                 </Stack>
             </Stack>

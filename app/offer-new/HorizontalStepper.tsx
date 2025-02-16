@@ -11,9 +11,10 @@ const steps = ['Contact details & Dates', 'Your inventory', 'Price options'];
 type Props = {
     activeStep: number;
     setActiveStep: (v: number) => void;
+    disablePricesButton?: boolean;
 }
 
-export default function HorizontalStepper({ activeStep, setActiveStep }: Props) {
+export default function HorizontalStepper({ activeStep, setActiveStep, disablePricesButton }: Props) {
     // const [skipped, setSkipped] = React.useState(new Set<number>());
     // const theme = useTheme();
 
@@ -53,7 +54,7 @@ export default function HorizontalStepper({ activeStep, setActiveStep }: Props) 
     return (
         <Stack direction={'row'} justifyContent={'center'} sx={{ width: '100%', py: 4 }}>
             <Box sx={{ width: '100%', maxWidth: 'sm' }}>
-                <Stepper activeStep={activeStep}
+                <Stepper activeStep={activeStep} variant='outlined'
                     alternativeLabel
                     sx={{
                         '& .MuiStepConnector-line': {
@@ -91,7 +92,8 @@ export default function HorizontalStepper({ activeStep, setActiveStep }: Props) 
                                     {...labelProps}
                                     sx={{
                                         cursor: 'pointer',
-                                        // pointerEvents: !isPastStep ?'none':'auto',
+                                        pointerEvents: 'none',
+                                        // pointerEvents: (disablePricesButton && index == 2) ? 'none' : 'auto',
                                         '& .MuiStepIcon-root': {
                                             fontSize: '5rem',
                                             // color: activeStep === index ? theme.palette.secondary.main : 'transparent',

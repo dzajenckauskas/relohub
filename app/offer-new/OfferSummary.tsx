@@ -49,16 +49,33 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                             SUMMARY
                         </Typography>
                         <Button
+                            disableElevation
+                            disableFocusRipple
+                            disableRipple
+                            disableTouchRipple
+                            // variant='outlined'
                             onClick={() => {
                                 console.log(edit, 'EDIT');
-
-                                togglePopUp()
+                                togglePopUp();
                             }}
                             sx={{
-                                textTransform: 'none'
-                            }} endIcon={<BorderColorRoundedIcon />} color="secondary">
+                                textTransform: 'none',
+                                '&:hover': {
+                                    backgroundColor: 'transparent', // Disable hover effect
+                                },
+                                '&:active': {
+                                    backgroundColor: 'transparent', // Disable active (click) effect
+                                },
+                                '&:focus': {
+                                    outline: 'none', // Optionally remove focus outline as well
+                                },
+                            }}
+                            endIcon={<BorderColorRoundedIcon />}
+                            color="secondary"
+                        >
                             Edit
                         </Button>
+
                     </Stack>
                     <Stack spacing={1} pt={2}>
                         {

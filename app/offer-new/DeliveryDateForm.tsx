@@ -46,10 +46,10 @@ const DeliveryDateForm = ({ form }: Props) => {
                     sx={{
                         m: 0,
                         border: '3px solid black',
-                        transform: 'scale(1.2)',
-                        mt: 6,
-                        ml: 4,
-                        mb: 2,
+                        // transform: 'scale(1.2)',
+                        mt: 2,
+                        // ml: 4,
+                        // mb: 2,
                         '& .MuiSvgIcon-root': {
                             fontSize: '2.5rem', // Increase icon size
                         },

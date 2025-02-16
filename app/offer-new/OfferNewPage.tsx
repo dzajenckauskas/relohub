@@ -262,7 +262,7 @@ export default function OfferNewPage({ countriesData }: Props) {
                 <Stack sx={{ backgroundColor: "#efefef" }}>
                     <MaxWidthContainer>
                         <Stack mx="auto" maxWidth="lg" width="100%">
-                            <HorizontalStepper activeStep={activeStep} setActiveStep={setActiveStep} />
+                            <HorizontalStepper disablePricesButton={prices?.length > 0} activeStep={activeStep} setActiveStep={setActiveStep} />
 
                             <form onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate>
                                 {/* Step 1: Contact details & Dates */}

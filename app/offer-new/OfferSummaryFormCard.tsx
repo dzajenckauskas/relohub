@@ -31,7 +31,7 @@ const OfferSummaryFormCard = ({ validateForm, countriesData, form, showPopUp, to
 
     return (
         <Dialog
-            sx={{ zIndex: 10, top: 50 }}
+            sx={{ zIndex: 10, top: 80 }}
             open={showPopUp}
             // TransitionComponent={isMobile ? TransitionMobile : TransitionDesktop}
             keepMounted
@@ -52,7 +52,23 @@ const OfferSummaryFormCard = ({ validateForm, countriesData, form, showPopUp, to
                 } />
             */}
                 <Stack alignItems={'stretch'} pb={2}>
-                    <Button sx={{ minWidth: 10, alignSelf: 'flex-end', position: 'absolute', top: 3, right: 3 }} onClick={togglePopUp}>
+                    <Button
+                        disableElevation
+                        disableFocusRipple
+                        disableRipple
+                        disableTouchRipple sx={{
+                            textTransform: 'none',
+                            '&:hover': {
+                                backgroundColor: 'transparent', // Disable hover effect
+                            },
+                            '&:active': {
+                                backgroundColor: 'transparent', // Disable active (click) effect
+                            },
+                            '&:focus': {
+                                outline: 'none', // Optionally remove focus outline as well
+                            },
+                            minWidth: 10, alignSelf: 'flex-end', position: 'absolute', top: 3, right: 3
+                        }} onClick={togglePopUp}>
                         <CloseIcon fontSize='large' sx={{ fontSize: 30 }} />
                     </Button>
                     <Typography variant="h2" sx={{ fontWeight: 500 }}>Edit <b>Your Information</b></Typography>

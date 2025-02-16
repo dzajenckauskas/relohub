@@ -75,10 +75,25 @@ const LuggageInformationForm = ({ form, detailsColumn }: Props) => {
                     <>
                         {fields?.reverse()?.map((ci, i) => {
                             return <Stack key={ci.id} alignItems={'stretch'} pb={2}>
-                                <Button sx={{
-                                    minWidth: 10, alignSelf: 'flex-end',
-                                    //  position: 'relative', top: 3, right: 3
-                                }}
+                                <Button
+
+                                    disableElevation
+                                    disableFocusRipple
+                                    disableRipple
+                                    disableTouchRipple sx={{
+                                        textTransform: 'none',
+                                        '&:hover': {
+                                            backgroundColor: 'transparent', // Disable hover effect
+                                        },
+                                        '&:active': {
+                                            backgroundColor: 'transparent', // Disable active (click) effect
+                                        },
+                                        '&:focus': {
+                                            outline: 'none', // Optionally remove focus outline as well
+                                        },
+                                        minWidth: 10, alignSelf: 'flex-end',
+                                        //  position: 'relative', top: 3, right: 3
+                                    }}
                                     onClick={() => remove(i)}
                                 >
                                     <CloseIcon fontSize='large' sx={{ fontSize: 20 }} />
