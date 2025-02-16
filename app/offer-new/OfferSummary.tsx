@@ -14,10 +14,13 @@ type Props = {
     form: any;
     activeStep: number;
     countriesData: CountriesResponseType;
+    validateForm?: () => Promise<boolean>
 }
 
-const OfferSummary = ({ form, countriesData, activeStep }: Props) => {
+const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) => {
     const [edit, setEdit] = useState(false)
+    console.log(edit, "edit");
+
     const togglePopUp = () => {
         setEdit(!edit)
     }
@@ -31,9 +34,6 @@ const OfferSummary = ({ form, countriesData, activeStep }: Props) => {
     const collectionDate = form.watch('collectionDate') ?? undefined
     const deliverBoxesDate = form.watch('deliverBoxesDate') ?? undefined
     const emptyBoxesQuantity = form.watch('emptyBoxesQuantity')
-
-    // console.log(collectionDate, "collectionDate");
-
     return (
         <>
             <Box flex={1} display="flex" flexDirection="column" gap={2}
@@ -49,7 +49,11 @@ const OfferSummary = ({ form, countriesData, activeStep }: Props) => {
                             SUMMARY
                         </Typography>
                         <Button
-                            onClick={togglePopUp}
+                            onClick={() => {
+                                console.log(edit, 'EDIT');
+
+                                togglePopUp()
+                            }}
                             sx={{
                                 textTransform: 'none'
                             }} endIcon={<BorderColorRoundedIcon />} color="secondary">
@@ -233,7 +237,7 @@ const OfferSummary = ({ form, countriesData, activeStep }: Props) => {
                     </Stack>
                 </Card>
             </Box>
-            {edit && <OfferSummaryFormCard countriesData={countriesData} showPopUp={edit} togglePopUp={togglePopUp} form={form} />}
+            {edit && <OfferSummaryFormCard validateForm={validateForm} countriesData={countriesData} showPopUp={edit} togglePopUp={togglePopUp} form={form} />}
         </>
     )
 }

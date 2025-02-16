@@ -30,8 +30,8 @@ const LocationsInformationForm = ({ countriesData, form, errors }: Props) => {
         }
     }
     return (
-        <Stack direction="row" gap={2} pt={2} >
-            <Box flex={1} display="flex" flexDirection="column" gap={2}>
+        <Stack direction="row" gap={3} pt={3} >
+            <Box flex={1} display="flex" flexDirection="column" gap={3}>
                 <CountriesAutocomplete
                     name={'collectCountry'}
                     label={'Collection country'}
@@ -60,7 +60,7 @@ const LocationsInformationForm = ({ countriesData, form, errors }: Props) => {
                         helperText={errors.collectPostcode?.message}
                     />}
             </Box>
-            <Box flex={1} display="flex" flexDirection="column" gap={2}>
+            <Box flex={1} display="flex" flexDirection="column" gap={3}>
                 <CountriesAutocomplete
                     name={'deliverCountry'}
                     label={'Destination country'}

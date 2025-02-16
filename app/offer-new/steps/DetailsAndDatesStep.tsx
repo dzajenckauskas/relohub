@@ -18,10 +18,10 @@ type Props = {
     nextStep: () => Promise<void>;
     activeStep: number;
     error: string;
-
+    validateForm?: () => Promise<boolean>
 }
 
-const DetailsAndDatesStep = ({ error, form, nextStep, countriesData, activeStep }: Props) => {
+const DetailsAndDatesStep = ({ validateForm, error, form, nextStep, countriesData, activeStep }: Props) => {
     const hasErrors = Object.keys(form.formState.errors).length > 0;
 
     return (
@@ -43,7 +43,7 @@ const DetailsAndDatesStep = ({ error, form, nextStep, countriesData, activeStep 
                     </Box>
                 </Stack>
                 <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative' }}>
-                    <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
+                    <OfferSummary validateForm={validateForm} countriesData={countriesData} activeStep={activeStep} form={form} />
                     <Stack sx={{ position: 'relative', mt: 2, bottom: -24, right: 135, width: '100%' }}>
                         <Image
                             alt="background"
