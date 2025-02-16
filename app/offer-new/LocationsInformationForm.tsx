@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import { FieldErrors, UseFormReturn } from 'react-hook-form';
 import { OfferFormType } from './OfferNewPage';
-import StyledTextInput from './StyledTextInput';
+import FormStyledTextInput from './FormStyledTextInput';
 
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>
@@ -52,7 +52,7 @@ const LocationsInformationForm = ({ countriesData, form, errors }: Props) => {
                     form={form} countryName={collectCountry}
                 />
                 {showCollectPostcode &&
-                    <StyledTextInput
+                    <FormStyledTextInput
                         label={`Collection ${checkZipOrPost(collectCountry)} Code`}
                         form={form}
                         name="collectPostcode"
@@ -80,7 +80,7 @@ const LocationsInformationForm = ({ countriesData, form, errors }: Props) => {
                     }}
                     form={form} countryName={deliverCountry}
                 />
-                {showDeliverPostcode && <StyledTextInput
+                {showDeliverPostcode && <FormStyledTextInput
                     label={`Collection ${checkZipOrPost(deliverCountry)} Code`}
                     form={form}
                     name="deliverPostcode"

@@ -1,7 +1,7 @@
 import Stack from '@mui/material/Stack';
 import { FieldErrors, UseFormReturn } from 'react-hook-form';
 import { OfferFormType } from './OfferNewPage';
-import StyledTextInput from './StyledTextInput';
+import FormStyledTextInput from './FormStyledTextInput';
 
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>
@@ -12,7 +12,7 @@ const PersonalInformationForm = ({ form }: Props) => {
     const { formState: { errors } } = form
     return (
         <Stack direction="column" gap={3} pt={2} width={'100%'}>
-            <StyledTextInput
+            <FormStyledTextInput
                 label="First and Last Name"
                 fullWidth
                 form={form}
@@ -21,7 +21,7 @@ const PersonalInformationForm = ({ form }: Props) => {
                 helperText={errors.fullName?.message}
             />
             <Stack gap={4} direction={'row'}>
-                <StyledTextInput
+                <FormStyledTextInput
                     fullWidth
                     label="Email"
                     form={form}
@@ -29,7 +29,7 @@ const PersonalInformationForm = ({ form }: Props) => {
                     error={!!errors.email}
                     helperText={errors.email?.message}
                 />
-                <StyledTextInput
+                <FormStyledTextInput
                     fullWidth
                     label="Telephone"
                     form={form}

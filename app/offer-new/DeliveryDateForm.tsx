@@ -45,6 +45,7 @@ const DeliveryDateForm = ({ form }: Props) => {
                     </Typography>
                     <Typography>Please select the date you would prefer your items to be collected.</Typography>
                     <DateCalendar
+                        value={form.getValues('collectionDate') ? dayjs(form.getValues('collectionDate')) : null} // Convert Date to Dayjs
                         sx={{
                             m: 0,
                             border: '3px solid black',
@@ -68,14 +69,13 @@ const DeliveryDateForm = ({ form }: Props) => {
                             },
                         }}
                         onChange={(v) => {
-                            console.log(v?.toDate(), "Selected Date");
-                            form.setValue('collectionDate', v?.toDate());
-                            return v;
+                            form.setValue('collectionDate', v?.toDate(), { shouldValidate: true }); // Ensure it's stored as Date and triggers validation
                         }}
                         shouldDisableDate={(date: Dayjs) =>
                             isPastOrWeekendOrFutureWorkingDay(date.toDate())
                         }
                     />
+
                     {form.formState?.errors?.collectionDate && (
                         <FormHelperText error>{form.formState?.errors?.collectionDate.message}</FormHelperText>
                     )}
