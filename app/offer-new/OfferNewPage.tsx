@@ -254,6 +254,7 @@ export default function OfferNewPage({ countriesData }: Props) {
         console.log('invalid', data, form.getValues())
     }
     console.log(error, "error");
+    console.log(prices, "price");
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
@@ -262,7 +263,7 @@ export default function OfferNewPage({ countriesData }: Props) {
                 <Stack sx={{ backgroundColor: "#efefef" }}>
                     <MaxWidthContainer>
                         <Stack mx="auto" maxWidth="lg" width="100%">
-                            <HorizontalStepper disablePricesButton={prices?.length > 0} activeStep={activeStep} setActiveStep={setActiveStep} />
+                            <HorizontalStepper error={error} disablePricesButton={prices == null} activeStep={activeStep} setActiveStep={setActiveStep} />
 
                             <form onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate>
                                 {/* Step 1: Contact details & Dates */}

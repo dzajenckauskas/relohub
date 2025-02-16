@@ -12,9 +12,10 @@ type Props = {
     activeStep: number;
     setActiveStep: (v: number) => void;
     disablePricesButton?: boolean;
+    error?: string;
 }
 
-export default function HorizontalStepper({ activeStep, setActiveStep, disablePricesButton }: Props) {
+export default function HorizontalStepper({ error, activeStep, setActiveStep, disablePricesButton }: Props) {
     // const [skipped, setSkipped] = React.useState(new Set<number>());
     // const theme = useTheme();
 
@@ -50,6 +51,7 @@ export default function HorizontalStepper({ activeStep, setActiveStep, disablePr
     // const handleReset = () => {
     //     setActiveStep(0);
     // };
+    console.log(error, "errorerrorerrorerror", activeStep);
 
     return (
         <Stack direction={'row'} justifyContent={'center'} sx={{ width: '100%', py: 4 }}>
@@ -85,6 +87,8 @@ export default function HorizontalStepper({ activeStep, setActiveStep, disablePr
                         // console.log(index, "index");
 
                         // const isPastStep = false
+                        console.log(index, "index");
+
                         return (
                             <Step key={label} {...stepProps} >
                                 <StepLabel
@@ -92,7 +96,7 @@ export default function HorizontalStepper({ activeStep, setActiveStep, disablePr
                                     {...labelProps}
                                     sx={{
                                         cursor: 'pointer',
-                                        pointerEvents: 'none',
+                                        pointerEvents: (disablePricesButton && index === 2) ? 'none' : 'auto',
                                         // pointerEvents: (disablePricesButton && index == 2) ? 'none' : 'auto',
                                         '& .MuiStepIcon-root': {
                                             fontSize: '5rem',

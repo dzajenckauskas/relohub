@@ -142,7 +142,9 @@ const CommonItemsForm = ({ form }: Props) => {
                     />
                 </Box>
 
-                {searchQuery && itemOptions &&
+                {
+                    // searchQuery &&
+                    itemOptions &&
                     <Stack spacing={2} sx={{ maxHeight: 360, overflow: 'scroll', width: 'calc(100% + 14px)', pr: '14px' }}>
                         {itemOptions?.map((item) => {
                             return (
