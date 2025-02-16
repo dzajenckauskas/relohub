@@ -155,7 +155,7 @@ const OfferSummary = ({ form, countriesData }: Props) => {
                                     </Typography>}
                                 {customItems?.map((ci, i) => {
                                     return (
-                                        <Box key={ci.name} pb={.5}>
+                                        <Box key={ci.name + i} pb={.5}>
                                             {/* {standardBox && */}
                                             {ci.name &&
                                                 <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.3, fontWeight: 500 }}>
@@ -180,7 +180,7 @@ const OfferSummary = ({ form, countriesData }: Props) => {
                                     </Typography>}
                                 {commonItems?.map((ci, i) => {
                                     return (
-                                        <Box key={ci.name} pb={.5}>
+                                        <Box key={ci.name + i} pb={.5}>
                                             {/* {standardBox && */}
                                             {ci.name &&
                                                 <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontWeight: 500 }}>

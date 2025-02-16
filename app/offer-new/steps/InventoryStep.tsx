@@ -28,7 +28,9 @@ const InventoryStep = ({ form, nextStep, countriesData, activeStep }: Props) => 
                     <Typography variant="h2" sx={{ fontWeight: 500 }}><b>Furniture</b> and <b>Appliances</b></Typography>
                     <CommonItemsForm form={form} />
                     <Box pb={4} pt={2}>
-                        <Button onClick={nextStep} variant="contained" color="secondary"
+                        <Button
+                            // onClick={nextStep}
+                            type='submit' variant="contained" color="secondary"
                             sx={{ px: 6, py: 2, mb: 1 }}>
                             Next step
                         </Button>

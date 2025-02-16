@@ -14,6 +14,10 @@ import HorizontalStepper from "./HorizontalStepper";
 import DetailsAndDatesStep from "./steps/DetailsAndDatesStep";
 import InventoryStep from "./steps/InventoryStep";
 import PriceOptionsStep from "./steps/PriceOptionsStep";
+import NoPricePopup from "@/COMPONENTS/offer_page/nopricepopup";
+import OfferPopup from "@/COMPONENTS/offer_page/offerPopup";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 export type OfferFormType = {
     fullName: string;
@@ -69,15 +73,13 @@ const stepSchemas = [
         hasItemsAdded: yup.boolean().when(['customItems', 'commonItems', 'standardBox', 'largeBox', 'suitcaseSmall', 'suitcaseLarge'], {
             is: (commonItems: any[], customItems: any[], standardBox: number, largeBox: number, suitcaseSmall: number, suitcaseLarge: number) => {
                 const invalid = ((commonItems?.length ?? 0) + (customItems?.length ?? 0) + (standardBox ?? 0) + (largeBox ?? 0) + (suitcaseSmall ?? 0) + (suitcaseLarge ?? 0)) <= 0
-                console.log(invalid, "invalid");
-
                 return invalid
             },
             then: () => yup.boolean().required(('At least one item must be selected')),
             otherwise: () => yup.boolean().nullable()
         }),
     }),
-    yup.object({}),
+    // yup.object({}),
 ];
 
 
@@ -86,7 +88,14 @@ type Props = {
     countriesData?: CountriesResponseType;
 }
 export default function OfferNewPage({ countriesData }: Props) {
+    const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC);
+
     const [activeStep, setActiveStep] = useState<number | undefined>(0);
+
+    const [showPopUp, setShowPopUp] = useState(false);
+    const [showpopupofprices, setshowpopupofprices] = useState(false);
+    const [nopricepopup, setshownopricepopup] = useState(false);
+    const [prices, setprices] = useState(null);
 
 
     const searchParams = useSearchParams();
@@ -141,19 +150,129 @@ export default function OfferNewPage({ countriesData }: Props) {
     const { handleSubmit, formState: { errors }, trigger, control } = form;
 
     const nextStep = async () => {
-        console.log(form.getValues(), "form.getValues()");
-
         const valid = await trigger(Object.keys(stepSchemas[activeStep].fields) as any); // Validate only current step fields
-        // console.log(stepSchemas[activeStep].fields, "stepSchemas[activeStep].fields");
-
         if (valid) {
             setActiveStep((prev) => prev + 1);
         }
     };
+    const formData = form.getValues()
+    const commonItems = form.watch('commonItems')
+    const customItems = form.watch('customItems')
 
-    const onSubmit = (data: OfferFormType) => {
+    const transformedCustomItems = customItems?.map((v) => {
+        return {
+            quantity: 1,
+            name: v.name,
+            width: v.width,
+            height: v.height,
+            depth: v.width,
+            weight: v.weight,
+        }
+    })
+    const transformedCommonItems = commonItems?.map((v) => {
+        return {
+            quantity: 1,
+            name: v.name,
+            width: v.width,
+            height: v.height,
+            depth: v.width,
+            weight: v.weight,
+        }
+    })
+    const transformedData = {
+        name: formData?.fullName,
+        email: formData?.email,
+        phone: formData?.phone,
+
+        from_city: formData?.collectCity,
+        from_country: formData?.collectCountry,
+        from_postCode: formData?.collectPostcode,
+
+        to_city: formData?.deliverCity,
+        to_country: formData?.deliverCountry,
+        to_postCode: formData?.deliverPostcode,
+
+        Collection_Date: formData?.collectionDate,
+
+        Standard_box: formData?.standardBox,
+        Large_box: formData?.largeBox,
+        Suitcase_small: formData?.suitcaseSmall,
+        Suitcase_large: formData?.suitcaseLarge,
+        Own_items: [...transformedCustomItems ?? [], ...transformedCommonItems ?? []],
+
+    }
+    const onSubmit = async (data: OfferFormType) => {
+        // {
+        //     "name": "TEST",
+        //     "Empty_Box_Delivery_Date": "",
+        //     "email": "TEST@TEST",
+        //     "from_city": "abades",
+        //     "from_country": "spain",
+        //     "to_city": "aiseau",
+        //     "to_country": "belgium",
+        //     "Standard_box": "1",
+        //     "Large_box": "1",
+        //     "Suitcase_small": "1",
+        //     "Suitcase_large": "1",
+        //     "Own_items": [
+        //       {
+        //         "id": "1739707814201",
+        //         "quantity": "1",
+        //         "name": "TEST",
+        //         "width": "123",
+        //         "height": "123",
+        //         "depth": "123",
+        //         "weight": "123"
+        //       }
+        //     ],
+        //     "phone": "TEST",
+        //     "from_postCode": "",
+        //     "to_postCode": "",
+        //     "Collection_Date": "2025-02-28"
+        //   }
+
+        console.log(transformedData, "transformedData");
+
+        const url = process.env.NEXT_PUBLIC_FETCH_URL;
+        const hv = process.env.NEXT_PUBLIC_HEADER_VALUE;
+
+        if (process.env.NODE_ENV === "development") {
+            console.log(transformedData, 'data');
+            setShowPopUp(!showPopUp)
+            console.log(showPopUp, 'showPopUp');
+        }
+        try {
+            const res = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "http-referer": hv,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(transformedData),
+            });
+
+            if (res.ok) {
+                const prc = await res.json();
+                setShowPopUp(!showPopUp)
+
+                if (process.env.NODE_ENV === "development") {
+                    console.log(prc);
+                }
+
+                if (prc.price.length === 0) {
+                    setshownopricepopup(true);
+                } else {
+                    setprices(prc);
+                    setshowpopupofprices(true);
+                }
+            }
+        } catch (error) {
+            console.log("fetch error:", error);
+        }
+
         console.log("Form Data:", data)
-        setActiveStep(undefined)
+        setActiveStep(2)
+        // setActiveStep(undefined)
     }
     const onInvalid: SubmitErrorHandler<OfferFormType> = (data) => {
         console.log('invalid', data, form.getValues())
@@ -208,6 +327,30 @@ export default function OfferNewPage({ countriesData }: Props) {
                                     </Button>
                                 </Card>
                             )}
+
+                            {/* {(!showPopUp
+                                && showpopupofprices
+                            ) ? ( */}
+                            <Elements stripe={stripePromise}>
+                                <OfferPopup
+                                    hidePopup={(v) => {
+                                        setshowpopupofprices(v);
+                                    }}
+                                    state={transformedData}
+                                    prices={prices}
+                                />
+                            </Elements>
+                            {/* ) 
+                            : null} */}
+                            {/* {(!showPopUp
+                                && nopricepopup
+                            ) ? ( */}
+                            {/* <NoPricePopup
+                                setshownopricepopup={(v) => {
+                                    setshownopricepopup(v);
+                                }}
+                            /> */}
+                            {/* ) : null} */}
                         </form>
                     </Stack>
                 </MaxWidthContainer>

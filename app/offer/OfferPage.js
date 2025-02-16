@@ -579,7 +579,7 @@ export default function OfferPage() {
             fetchOfferData();
         }
     }
-
+    console.log(state, "STATE");
     function editLeftWrp() {
         return (
             <section className="offereditglobalsection" ref={globalsectionleft} style={{ border: (state.from_city === '' || state.from_country === '' || fromPostCodeRequired) && `2px solid ${theme.palette.secondary.main}` }}>
