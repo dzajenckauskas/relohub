@@ -1,4 +1,7 @@
 import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
 
 type Props = {
     fullWidth?: boolean;
@@ -6,51 +9,55 @@ type Props = {
     onChange?: (v: any) => void;
     placeholder?: string;
     value?: string;
+    startIcon?: React.ReactNode; // Allows passing a custom icon
 }
 
-const StyledTextInput = ({ value, onChange, label, fullWidth, placeholder }: Props) => {
+const StyledTextInput = ({ value, onChange, label, fullWidth, placeholder, startIcon }: Props) => {
     return (
         <TextField
             sx={{ pb: 2 }}
             label={label}
             value={value}
-            placeholder={placeholder}
+            placeholder={'Search for more items'}
             fullWidth={fullWidth}
             onChange={onChange}
             InputLabelProps={{
-                shrink: true, // Keeps label above input
+                shrink: true,
                 sx: {
                     fontSize: "2.4rem",
                     fontWeight: 500,
-                    color: "black", pb: 2, top: -12, left: -8,
-                }, // Bold label with margin
+                    color: "black",
+                    pb: 2,
+                    top: -12,
+                    left: -8,
+                },
             }}
             FormHelperTextProps={{
                 sx: {
                     position: 'relative',
-                    left: -8
-                    // fontSize: "1rem", // Adjust font size
-                    // fontWeight: 500, // Adjust font weight
-                    // color: "red", // Change color
-                    // mt: 1, // Add margin to separate from input
+                    left: -8,
                 },
             }}
             InputProps={{
                 sx: {
-                    // mb: 2,
                     minHeight: 50,
-                    backgroundColor: "#efefef", // Background color
-                    borderRadius: 1, // Rounded corners
-                    color: "black", // White text
-                    "& .MuiOutlinedInput-notchedOutline": { border: "none" }, // Remove border
+                    backgroundColor: "#efefef",
+                    borderRadius: 1,
+                    color: "black",
+                    "& .MuiOutlinedInput-notchedOutline": { border: "none" },
                 },
-            }}
-            inputProps={{
-                // sx: { padding: "10px", color: "black" }, // Padding and white text
+                startAdornment: (
+                    <InputAdornment position="start">
+                        {startIcon || (
+                            <IconButton edge="start" size='large' disableFocusRipple disableRipple disableTouchRipple>
+                                <SearchIcon fontSize='large' />
+                            </IconButton>
+                        )}
+                    </InputAdornment>
+                ),
             }}
         />
-
-    )
+    );
 }
 
-export default StyledTextInput
+export default StyledTextInput;

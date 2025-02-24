@@ -17,6 +17,7 @@ import PriceOptionsStep from "./steps/PriceOptionsStep";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import 'dayjs/locale/en-gb';
+import OfferSummaryBottomLine from "./OfferSummaryBottomLine";
 
 export type OfferFormType = {
     fullName: string;
@@ -344,6 +345,9 @@ export default function OfferNewPage({ countriesData }: Props) {
                             </form>
                         </Stack>
                     </MaxWidthContainer>
+                </Stack>
+                <Stack sx={{ maxWidth: { xs: "100%", md: '100%' }, width: '100%', position: 'fixed', left: 0, bottom: 0, zIndex: 99 }}>
+                    <OfferSummaryBottomLine validateForm={validateForm} countriesData={countriesData} activeStep={activeStep} form={form} />
                 </Stack>
             </PageLayout>
         </LocalizationProvider>

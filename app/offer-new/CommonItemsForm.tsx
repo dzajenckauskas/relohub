@@ -9,9 +9,12 @@ import debounce from 'lodash/debounce';
 
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>;
+    showAllItems?: boolean;
 };
 
-const CommonItemsForm = ({ form }: Props) => {
+const CommonItemsForm = ({ form, showAllItems }: Props) => {
+    console.log(showAllItems, "showAllItems");
+
     const { fields, remove } = useFieldArray({
         control: form.control,
         name: 'commonItems',
@@ -79,37 +82,39 @@ const CommonItemsForm = ({ form }: Props) => {
     };
 
     return (
-        <Stack direction="row" gap={2} pb={2} pt={0}>
-            <Box flex={1} display="flex" flexDirection="column" gap={1}>
-                {fields.map((field) => {
-                    const quantity = fields.filter((item) => item.name === field.name).length;
-                    return (
-                        <Box key={field.id}>
+        <Stack direction="row" gap={0} pb={0} pt={0}>
+            <Box flex={1} display="flex" flexDirection="column">
+                <Stack gap={2}>
+                    {fields.map((field) => {
+                        const quantity = fields.filter((item) => item.name === field.name).length;
+                        return (
                             <LuggageItemRow
+                                key={field.id}
                                 quantity={quantity}
                                 onIncrease={() => handleAddItem(field)}
                                 onDecrease={() => handleRemoveItem(field)}
                                 primaryText={field.name}
-                                dimensions={`${field.height} x ${field.width} x ${field.length} cm`}
+                                dimensions={`${field.height} x ${field.width} x ${field.length}cm`}
                                 maxWeight={field.weight}
                                 form={form}
                                 name={field.name}
                             />
-                        </Box>
-                    );
-                })}
+                        );
+                    })}
+                </Stack>
 
                 {/* Search Input */}
-                <Box mt={6}>
+                <Box mt={0} sx={{ position: 'relative', zIndex: 1 }}>
                     <StyledTextInput
-                        label="Search for common items"
+                        // label="Search for common items"
                         fullWidth
+
                         onChange={handleSearch} // Uses debounce inside ref
                     />
                 </Box>
 
                 {/* Filtered Items List */}
-                {searchQuery && filteredItems.length > 0 && (
+                {((searchQuery && (filteredItems.length > 0)) || showAllItems) && (
                     <Stack spacing={2} sx={{ maxHeight: 360, overflowY: 'auto', pr: '14px' }}>
                         {filteredItems.map((item) => (
                             <LuggageItemRow

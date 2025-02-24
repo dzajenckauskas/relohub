@@ -11,6 +11,9 @@ import LuggageInformationForm from '../LuggageInformationForm';
 import { OfferFormType } from '../OfferNewPage';
 import OfferSummary from '../OfferSummary';
 import ErrorMessage from './ErrorMessage';
+import Divider from '@mui/material/Divider';
+import SuggestedItemsForm from '../SuggestedItemsForm';
+import { useState } from 'react';
 type Props = {
     countriesData?: CountriesResponseType;
     form: UseFormReturn<OfferFormType, any, undefined>;
@@ -20,15 +23,23 @@ type Props = {
 }
 
 const InventoryStep = ({ error, form, nextStep, countriesData, activeStep }: Props) => {
+    const [showAllItems, setShowAllItems] = useState(false)
     return (
-        <Card sx={{ p: 4, pb: 0, width: "100%", mx: "auto", mb: 10 }}>
+        <Card sx={{ p: 4, width: "100%", mx: "auto", mb: 36, pb: 0 }}>
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
-                <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
-                    <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Boxes & Luggage</b> Details</Typography>
-                    <LuggageInformationForm form={form} />
-                    <Typography variant="h2" sx={{ fontWeight: 500 }}><b>Furniture</b> and <b>Appliances</b></Typography>
-                    <CommonItemsForm form={form} />
-                    <Box pb={4} pt={2}>
+                <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 4, md: 8 }} width={'100%'} maxWidth={{ xs: '100%', md: "100%" }}>
+                    <Stack width={'100%'}>
+                        <Typography variant="h2" sx={{ fontWeight: 500, pb: 1 }}>Your <b>Boxes & Luggage</b> Details</Typography>
+                        <Divider />
+                        <LuggageInformationForm form={form} />
+                    </Stack>
+                    <Stack width={'100%'}>
+                        <Typography variant="h2" sx={{ fontWeight: 500, pb: 1 }}><b>Furniture</b> and <b>Appliances</b></Typography>
+                        <Divider />
+                        <SuggestedItemsForm form={form} setShowAllItems={setShowAllItems} />
+                        <CommonItemsForm form={form} showAllItems={showAllItems} />
+                    </Stack>
+                    {/* <Box pb={4} pt={2}>
                         <Button
                             // onClick={nextStep}
                             type='submit' variant="contained" color="secondary"
@@ -40,21 +51,21 @@ const InventoryStep = ({ error, form, nextStep, countriesData, activeStep }: Pro
                         )}
                         {error && <ErrorMessage message={error} />}
 
-                    </Box>
+                    </Box> */}
                 </Stack>
-                <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative' }}>
-                    <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
-                    <Stack sx={{ position: 'relative', mt: 0, bottom: -12, right: { xs: 0, md: 150 }, width: '100%' }}>
-                        <Image
-                            alt="background"
-                            src={"/illustration-1.svg"}
-                            style={{
-                                objectFit: "contain"
-                            }}
-                            width={480}
-                            height={250}
-                        />
-                    </Stack>
+            </Stack>
+            <Stack sx={{ maxWidth: { xs: "100%", md: '100%' }, width: '100%', position: 'relative', zIndex: 0 }}>
+                {/* <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} /> */}
+                <Stack sx={{ position: 'relative', mt: -8, bottom: -14, right: { xs: 0, md: -50 }, width: '100%' }}>
+                    <Image
+                        alt="background"
+                        src={"/illustration-1.svg"}
+                        style={{
+                            objectFit: "contain"
+                        }}
+                        width={480}
+                        height={250}
+                    />
                 </Stack>
             </Stack>
         </Card>

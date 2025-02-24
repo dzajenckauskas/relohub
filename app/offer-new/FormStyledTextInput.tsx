@@ -30,7 +30,7 @@ const FormStyledTextInput = ({ helperText, error, autoFocus, onChange, required,
                 shrink: true, // Keeps label above input
                 sx: {
                     fontSize: "2.4rem",
-                    fontWeight: 500,
+                    fontWeight: 400,
                     color: "black", pb: 2, top: -12, left: -8,
                 }, // Bold label with margin
             }}

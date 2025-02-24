@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Divider, Stack } from "@mui/material";
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 import QuantityButtons from "./QuantityButtons";
@@ -39,7 +39,7 @@ const LuggageItemRow = ({ detailsColumn, form, dimensions, maxWeight, primaryTex
                     {/* <Stack>
                         <Inventory2Icon sx={{ fontSize: 62 }} />
                     </Stack> */}
-                    {imgSrc && (
+                    {/* {imgSrc && (
                         <Stack sx={{ position: 'relative', mt: -1, bottom: -1, right: 0, width: 40, height: 40 }}>
                             <Image
                                 alt="background"
@@ -49,9 +49,12 @@ const LuggageItemRow = ({ detailsColumn, form, dimensions, maxWeight, primaryTex
                                 sizes="40px"
                             />
                         </Stack>
-                    )}
+                    )} */}
 
-                    <Stack sx={{ width: { xs: '100px', md: '140px' } }}>
+                    <Stack
+                        direction={'row'}
+                        sx={{ width: { xs: '100px', md: '100px' } }}
+                    >
 
                         <Typography variant='subtitle2' sx={{
                             fontWeight: 600,
@@ -63,11 +66,11 @@ const LuggageItemRow = ({ detailsColumn, form, dimensions, maxWeight, primaryTex
                         </Typography>
                     </Stack>
                 </Stack>
-                <Stack direction={detailsColumn ? 'column' : { xs: 'column', md: 'row' }}>
-                    <Stack sx={{ width: { xs: '100px', md: '160px' } }}>
+                <Stack direction={'column'}>
+                    <Stack sx={{ width: { xs: '100px', md: '100px' } }}>
                         <Typography variant='body2' sx={{
                             fontWeight: 500,
-                            fontSize: { xs: 14, md: 16 }
+                            fontSize: { xs: 14, md: 14 }
                         }}>
                             {dimensions}
                         </Typography>
@@ -75,9 +78,9 @@ const LuggageItemRow = ({ detailsColumn, form, dimensions, maxWeight, primaryTex
                     <Stack sx={{ width: { xs: '100px', md: '100px' } }}>
                         <Typography variant='body2' sx={{
                             fontWeight: 500,
-                            fontSize: { xs: 14, md: 16 }
+                            fontSize: { xs: 14, md: 14 }
                         }}>
-                            Max {maxWeight}Kg
+                            max {maxWeight}kg
                         </Typography>
                     </Stack>
                 </Stack>
@@ -86,6 +89,7 @@ const LuggageItemRow = ({ detailsColumn, form, dimensions, maxWeight, primaryTex
                     <QuantityButtons form={form} name={name} onIncrease={onIncrease} onDecrease={onDecrease} item={item} quantity={quantity} />
                 </Stack>
             </Stack>
+            <Divider />
 
         </>
 

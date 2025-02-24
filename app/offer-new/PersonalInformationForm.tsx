@@ -20,24 +20,22 @@ const PersonalInformationForm = ({ form }: Props) => {
                 error={!!errors.fullName}
                 helperText={errors.fullName?.message}
             />
-            <Stack gap={4} direction={'row'}>
-                <FormStyledTextInput
-                    fullWidth
-                    label="Email"
-                    form={form}
-                    name="email"
-                    error={!!errors.email}
-                    helperText={errors.email?.message}
-                />
-                <FormStyledTextInput
-                    fullWidth
-                    label="Telephone"
-                    form={form}
-                    name="phone"
-                    error={!!errors.phone}
-                    helperText={errors.phone?.message}
-                />
-            </Stack>
+            <FormStyledTextInput
+                fullWidth
+                label="Email"
+                form={form}
+                name="email"
+                error={!!errors.email}
+                helperText={errors.email?.message}
+            />
+            <FormStyledTextInput
+                fullWidth
+                label="Telephone"
+                form={form}
+                name="phone"
+                error={!!errors.phone}
+                helperText={errors.phone?.message}
+            />
         </Stack>
     )
 }

@@ -35,7 +35,7 @@ export function isPastOrWeekendOrFutureWorkingDay(date: Date) {
 
 const DeliveryDateForm = ({ form }: Props) => {
     return (
-        <Stack direction="row" gap={2} pb={2} pt={2} width={'100%'}>
+        <Stack direction="row" gap={2} pb={2} width={'100%'}>
             <Box flex={1} display="flex" flexDirection="column" gap={2} width={'100%'}>
                 <Typography variant="h2" sx={{ fontWeight: 500 }}>
                     Select <b>Your Collection</b> Date

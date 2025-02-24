@@ -14,9 +14,10 @@ import { CustomItemType, OfferFormType } from './OfferNewPage';
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>
     detailsColumn?: boolean;
+    setShowAllItems?: (v: boolean) => void;
 }
 
-const LuggageInformationForm = ({ form, detailsColumn }: Props) => {
+const SuggestedItemsForm = ({ form, detailsColumn, setShowAllItems }: Props) => {
     const { fields, append, remove } = useFieldArray({
         control: form.control,
         name: 'customItems'
@@ -28,42 +29,42 @@ const LuggageInformationForm = ({ form, detailsColumn }: Props) => {
                 <LuggageItemRow
                     detailsColumn={detailsColumn}
                     imgSrc="/sb.png"
-                    primaryText="Standard"
-                    secondaryText="Box"
+                    primaryText="TV"
+                    // secondaryText="Box"
                     dimensions="41 x 41 x 41cm"
                     maxWeight="20"
                     form={form}
-                    name={'standardBox'}
+                    name={'tv'}
                 />
                 <LuggageItemRow
                     detailsColumn={detailsColumn}
                     imgSrc="/lb.png"
-                    primaryText="Large"
-                    secondaryText="Box"
+                    primaryText="Bike"
+                    // secondaryText="Bo x"
                     dimensions="51 x 51 x 51cm"
                     maxWeight="30"
                     form={form}
-                    name={'largeBox'}
+                    name={'bike'}
                 />
                 <LuggageItemRow
                     detailsColumn={detailsColumn}
                     imgSrc="/ss.png"
-                    primaryText="Suitcase"
-                    secondaryText="Small"
+                    primaryText="Office"
+                    secondaryText="Chair"
                     dimensions="18 x 32 x 45cm"
                     maxWeight="20"
                     form={form}
-                    name={'suitcaseSmall'}
+                    name={'officeChair'}
                 />
                 <LuggageItemRow
                     detailsColumn={detailsColumn}
                     imgSrc="/sl.png"
-                    primaryText="Suitcase"
-                    secondaryText="Large"
+                    primaryText="Desk"
+                    // secondaryText="Large"
                     dimensions="36 x 47 x 70cm"
                     maxWeight="30"
                     form={form}
-                    name={'suitcaseLarge'}
+                    name={'desk'}
                 />
                 <Stack>
                     {/* <Box pb={1}>
@@ -107,18 +108,18 @@ const LuggageInformationForm = ({ form, detailsColumn }: Props) => {
                     </>
 
                     {/* } */}
-                    <Stack
+                    {/* <Stack
                         pt={1}
-                        onClick={async () => await append({} as CustomItemType)}
+                        onClick={async () => setShowAllItems(true)}
 
                         direction={'row'}
                         sx={{ cursor: 'pointer' }}
                         justifyContent={'flex-start'} alignItems={'center'} gap={2}>
                         <Add fontSize="large" sx={{ fill: theme.palette.secondary.main }} />
                         <Typography fontWeight={500} color={'secondary.main'} sx={{ letterSpacing: 1 }}>
-                            ADD YOUR OWN ITEM
+                            VIEW ALL FURNITURE {'&'} APPLIENCE ITEMS
                         </Typography>
-                    </Stack>
+                    </Stack> */}
                     {/* <Box pt={2}>
                         <Divider />
                     </Box> */}
@@ -130,4 +131,4 @@ const LuggageInformationForm = ({ form, detailsColumn }: Props) => {
     )
 }
 
-export default LuggageInformationForm
+export default SuggestedItemsForm
