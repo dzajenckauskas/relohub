@@ -1,13 +1,12 @@
+import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import React, { useState, useMemo, useRef } from 'react';
+import debounce from 'lodash/debounce';
+import React, { useMemo, useRef, useState } from 'react';
 import { UseFormReturn, useFieldArray } from 'react-hook-form';
 import LuggageItemRow from './LuggageItemRow';
 import { CustomItemType, OfferFormType } from './OfferNewPage';
 import StyledTextInput from './StyledTextInput';
-import debounce from 'lodash/debounce';
-import SuggestedItemsForm from './SuggestedItemsForm';
-import { Typography } from '@mui/material';
 
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>;
@@ -56,8 +55,6 @@ const topItems = [{
 }] as any[]
 
 const CommonItemsForm = ({ form, showAllItems }: Props) => {
-    console.log(showAllItems, "showAllItems");
-
     const { fields, remove } = useFieldArray({
         control: form.control,
         name: 'commonItems',
@@ -107,24 +104,11 @@ const CommonItemsForm = ({ form, showAllItems }: Props) => {
         if (!searchQuery) return items?.filter(item => !existingItemNames.includes(item.name));
 
         const queryWords = searchQuery.split(' ').filter(Boolean);
-        console.log(existingItemNames, "existingItemNames");
 
         return items
             .filter((item) => !existingItemNames.includes(item.name)) // Remove existing items
             .filter((item) => queryWords.every((word) => item.name?.toLowerCase().includes(word)));
     }, [searchQuery, items, existingItemNames]); // Add existingItemNames as a dependency
-
-    // const filteredTopItems = useMemo(() => {
-    //     // if (!searchQuery) return topItems.filter(item => !existingItemNames.includes(item.name));
-
-    //     const queryWords = searchQuery.split(' ').filter(Boolean);
-    //     console.log(existingItemNames, "existingItemNames");
-
-    //     return topItems
-    //         .filter((item) => !existingItemNames.includes(item.name)) // Remove existing items
-    //         .filter((item) => queryWords.every((word) => item.name?.toLowerCase().includes(word)));
-    // }, [searchQuery, topItems, existingItemNames]); // Add existingItemNames as a dependency
-
 
     const handleAddItem = (item: CustomItemType) => {
         form.setValue('commonItems', [...fields, item]);
@@ -139,32 +123,41 @@ const CommonItemsForm = ({ form, showAllItems }: Props) => {
         <Stack direction="row" gap={0} pb={0} pt={0}>
             <Box flex={1} display="flex" flexDirection="column">
                 <Stack gap={2}>
-                    {fields.map((field, index) => {
-                        const quantity = fields.filter((item) => item.name === field.name).length;
-                        return (
-                            <LuggageItemRow
-                                isLastItem={fields?.length - 1 === index}
-                                rowNo={index}
-                                key={field.id}
-                                quantity={quantity}
-                                onIncrease={() => handleAddItem(field)}
-                                onDecrease={() => handleRemoveItem(field)}
-                                primaryText={field.name}
-                                dimensions={`${field.height} x ${field.width} x ${field.length}cm`}
-                                maxWeight={field.weight}
-                                form={form}
-                                name={field.name}
-                            />
-                        );
-                    })}
+                    {Object.values(
+                        fields.reduce((acc, field, index) => {
+                            if (!acc[field.name]) {
+                                acc[field.name] = {
+                                    ...field,
+                                    quantity: 1,
+                                    rowNo: index,
+                                };
+                            } else {
+                                acc[field.name].quantity += 1;
+                            }
+                            return acc;
+                        }, {} as Record<string, any>) // Ensure the accumulator is typed correctly
+                    ).map((field, index) => (
+                        <LuggageItemRow
+                            isLastItem={index === fields.length - 1}
+                            rowNo={field.rowNo}
+                            key={field.id}
+                            quantity={field.quantity}
+                            onIncrease={() => handleAddItem(field)}
+                            onDecrease={() => handleRemoveItem(field)}
+                            primaryText={field.name}
+                            dimensions={`${field.height} x ${field.width} x ${field.length}cm`}
+                            maxWeight={field.weight}
+                            form={form}
+                            name={field.name}
+                        />
+                    ))}
                 </Stack>
+
 
                 {/* Search Input */}
                 <Box sx={{ position: 'relative', zIndex: 1 }}>
                     <StyledTextInput
-                        // label="Search for common items"
                         fullWidth
-
                         onChange={handleSearch} // Uses debounce inside ref
                     />
                 </Box>

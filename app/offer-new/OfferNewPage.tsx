@@ -300,48 +300,11 @@ export default function OfferNewPage({ countriesData }: Props) {
                                         <Typography variant="h2" sx={{ fontWeight: 500 }}><b>Thank you</b> for submission</Typography>
                                         <Stack direction="row" gap={2} pb={2} pt={4}>
                                             <Box flex={1} display="flex" flexDirection="column" gap={2}>
-                                                {/* <FormStyledTextInput
-                                                label="Something Else"
-                                                form={form}
-                                                name="somethingelse"
-                                                error={!!errors.somethingelse}
-                                                helperText={errors.somethingelse?.message}
-                                            /> */}
+
                                             </Box>
                                         </Stack>
-                                        {/* <Button onClick={() => {
-                                        form.reset()
-                                        setActiveStep(0)
-                                    }} variant="contained" color="secondary"
-                                        sx={{ px: 6, py: 2 }}>
-                                        Submit again
-                                    </Button> */}
                                     </Card>
                                 )}
-
-                                {/* {(!showPopUp
-                                && showpopupofprices
-                            ) ? ( */}
-                                {/* <Elements stripe={stripePromise}>
-                                <OfferPopup
-                                    hidePopup={(v) => {
-                                        setshowpopupofprices(v);
-                                    }}
-                                    state={transformedData}
-                                    prices={prices}
-                                />
-                            </Elements> */}
-                                {/* ) 
-                            : null} */}
-                                {/* {(!showPopUp
-                                && nopricepopup
-                            ) ? ( */}
-                                {/* <NoPricePopup
-                                setshownopricepopup={(v) => {
-                                    setshownopricepopup(v);
-                                }}
-                            /> */}
-                                {/* ) : null} */}
                             </form>
                         </Stack>
                     </MaxWidthContainer>

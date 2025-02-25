@@ -8,6 +8,7 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 import OfferSummaryFormCard from './OfferSummaryFormCard'
+import { theme } from '@/COMPONENTS/common/shared/Theme'
 
 
 type Props = {
@@ -153,19 +154,19 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                                 </Typography>
                                 {!!standardBox &&
                                     <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                        Standard Box x {standardBox}
+                                        Standard Box  <span style={{ color: theme.palette.secondary.main }}>x {standardBox}</span>
                                     </Typography>}
                                 {!!largeBox &&
                                     <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                        Large Box x {largeBox}
+                                        Large Box  <span style={{ color: theme.palette.secondary.main }}>x {largeBox}</span>
                                     </Typography>}
                                 {!!suitcaseSmall &&
                                     <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                        Suitcase Small x {suitcaseSmall}
+                                        Suitcase Small  <span style={{ color: theme.palette.secondary.main }}>x {suitcaseSmall}</span>
                                     </Typography>}
                                 {!!suitcaseLarge &&
                                     <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                        Suitcase Large x {suitcaseLarge}
+                                        Suitcase Large  <span style={{ color: theme.palette.secondary.main }}>x {suitcaseLarge}</span>
                                     </Typography>}
                             </Box>}
                         {customItems?.length > 0 &&
@@ -177,18 +178,18 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                                 {customItems?.map((ci, i) => {
                                     return (
                                         <Box key={ci.name + i} pb={.5}>
-                                            {/* {standardBox && */}
                                             {ci.name &&
                                                 <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.3, fontWeight: 500 }}>
-                                                    {i + 1}. {ci.name}
+                                                    {/* {i + 1}.  */}
+                                                    {ci.name} <span style={{ color: theme.palette.secondary.main }}>x {ci.quantity ?? 1}</span>
                                                 </Typography>}
                                             {(ci.width ?? ci.height ?? ci.debth) &&
-                                                <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.3, fontSize: 14, fontWeight: 500 }}>
-                                                    {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? 0} cm
+                                                <Typography color={'white'} variant="caption" sx={{ lineHeight: 1.3, fontSize: 14, fontWeight: 500 }}>
+                                                    {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? 0} cm,   {ci.weight ?? 0} kg
                                                 </Typography>}
-                                            {ci.weight && <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.3, fontSize: 14, fontWeight: 500 }}>
+                                            {/* {ci.weight && <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.3, fontSize: 14, fontWeight: 500 }}>
                                                 {ci.weight ?? 0} kg
-                                            </Typography>}
+                                            </Typography>} */}
                                         </Box>
                                     )
                                 })}
@@ -202,18 +203,18 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                                 {commonItems?.map((ci, i) => {
                                     return (
                                         <Box key={ci.name + i} pb={.5}>
-                                            {/* {standardBox && */}
                                             {ci.name &&
                                                 <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontWeight: 500 }}>
-                                                    {i + 1}. {ci.name}
+                                                    {/* {i + 1}.  */}
+                                                    {ci.name} <span style={{ color: theme.palette.secondary.main }}>x {ci.quantity ?? 1}</span>
                                                 </Typography>}
                                             {(ci.width ?? ci.height ?? ci.debth) &&
-                                                <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontSize: 14, fontWeight: 500 }}>
-                                                    {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? 0} cm
+                                                <Typography color={'white'} variant="caption" sx={{ lineHeight: 1.1, fontSize: 14, fontWeight: 500 }}>
+                                                    {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? 0} cm,    {ci.weight ?? 0} kg
                                                 </Typography>}
-                                            {ci.weight && <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontSize: 14, fontWeight: 500 }}>
+                                            {/* {ci.weight && <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontSize: 14, fontWeight: 500 }}>
                                                 {ci.weight ?? 0} kg
-                                            </Typography>}
+                                            </Typography>} */}
                                         </Box>
                                     )
                                 })}

@@ -34,21 +34,21 @@ const PriceOptionsStep = ({ error, transformedData, form, nextStep, countriesDat
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
                 <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
                     {
-                        prices?.length > 0 &&
+                        // prices?.length > 0 &&
                         <>
                             <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Price Options</b></Typography>
                             <Elements stripe={stripePromise}>
                                 <PriceOffer
                                     state={transformedData}
-                                    prices={prices}
-                                // prices={{
-                                //     price: {
-                                //         ROAD: 2113,
-                                //         SEA: 2113,
-                                //         'AIR COURIER': 2113,
-                                //         "AIR FREIGHT (TO-AIRPORT)": 2113,
-                                //     }
-                                // }}
+                                    // prices={prices}
+                                    prices={{
+                                        price: {
+                                            ROAD: 2113,
+                                            SEA: 2113,
+                                            'AIR COURIER': 2113,
+                                            "AIR FREIGHT (TO-AIRPORT)": 2113,
+                                        }
+                                    }}
                                 />
                             </Elements>
                         </>

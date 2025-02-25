@@ -16,41 +16,7 @@ type Props = {
 }
 
 export default function HorizontalStepper({ error, activeStep, setActiveStep, disablePricesButton }: Props) {
-    // const [skipped, setSkipped] = React.useState(new Set<number>());
-    // const theme = useTheme();
 
-    // const isStepOptional = (step: number) => step === 1;
-    // const isStepSkipped = (step: number) => skipped.has(step);
-
-    // const handleNext = () => {
-    //     let newSkipped = skipped;
-    //     if (isStepSkipped(activeStep)) {
-    //         newSkipped = new Set(newSkipped.values());
-    //         newSkipped.delete(activeStep);
-    //     }
-    //     setActiveStep(activeStep + 1);
-    //     setSkipped(newSkipped);
-    // };
-
-    // const handleBack = () => {
-    //     setActiveStep(activeStep - 1);
-    // };
-
-    // const handleSkip = () => {
-    //     if (!isStepOptional(activeStep)) {
-    //         throw new Error("You can't skip a step that isn't optional.");
-    //     }
-    //     setActiveStep(activeStep + 1);
-    //     setSkipped((prevSkipped) => {
-    //         const newSkipped = new Set(prevSkipped.values());
-    //         newSkipped.add(activeStep);
-    //         return newSkipped;
-    //     });
-    // };
-
-    // const handleReset = () => {
-    //     setActiveStep(0);
-    // };
     console.log(error, "errorerrorerrorerror", activeStep);
 
     return (
@@ -87,7 +53,6 @@ export default function HorizontalStepper({ error, activeStep, setActiveStep, di
                         // console.log(index, "index");
 
                         // const isPastStep = false
-                        console.log(index, "index");
 
                         return (
                             <Step key={label} {...stepProps} >
@@ -96,8 +61,7 @@ export default function HorizontalStepper({ error, activeStep, setActiveStep, di
                                     {...labelProps}
                                     sx={{
                                         cursor: 'pointer',
-                                        pointerEvents: (disablePricesButton && index === 2) ? 'none' : 'auto',
-                                        // pointerEvents: (disablePricesButton && index == 2) ? 'none' : 'auto',
+                                        // pointerEvents: (disablePricesButton && index === 2) ? 'none' : 'auto',
                                         '& .MuiStepIcon-root': {
                                             fontSize: '5rem',
                                             // color: activeStep === index ? theme.palette.secondary.main : 'transparent',
