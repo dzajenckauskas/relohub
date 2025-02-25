@@ -46,7 +46,7 @@ const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep,
                 <Card sx={{ backgroundColor: '#252420', px: 3, py: 3, pb: 3 }}>
 
                     <Stack direction={'row'} width={'100%'} justifyContent={{ xs: 'center', sm: 'space-between' }} spacing={1}>
-                        <Stack spacing={1} pt={2} direction={'row'} display={{ xs: 'none', sm: 'flex' }}>
+                        <Stack spacing={4} pt={2} direction={'row'} display={{ xs: 'none', sm: 'flex' }}>
                             {
                                 activeStep > 0 &&
                                 <>
@@ -115,7 +115,7 @@ const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep,
                                 </Box>}
 
                             {/* boxes */}
-                            {hasItems &&
+                            {/* {hasItems &&
                                 <Box>
                                     <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                         Boxes & Luggage:
@@ -136,8 +136,8 @@ const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep,
                                         <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                             Suitcase Large x {suitcaseLarge}
                                         </Typography>}
-                                </Box>}
-                            {customItems?.length > 0 &&
+                                </Box>} */}
+                            {/* {customItems?.length > 0 &&
                                 <Box>
                                     {!!customItems?.[0]?.name &&
                                         <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500 }}>
@@ -146,7 +146,6 @@ const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep,
                                     {customItems?.map((ci, i) => {
                                         return (
                                             <Box key={ci.name + i} pb={.5}>
-                                                {/* {standardBox && */}
                                                 {ci.name &&
                                                     <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.3, fontWeight: 500 }}>
                                                         {i + 1}. {ci.name}
@@ -161,8 +160,8 @@ const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep,
                                             </Box>
                                         )
                                     })}
-                                </Box>}
-                            {commonItems?.length > 0 &&
+                                </Box>} */}
+                            {/* {commonItems?.length > 0 &&
                                 <Box>
                                     {!!commonItems?.[0]?.name &&
                                         <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500 }}>
@@ -171,7 +170,6 @@ const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep,
                                     {commonItems?.map((ci, i) => {
                                         return (
                                             <Box key={ci.name + i} pb={.5}>
-                                                {/* {standardBox && */}
                                                 {ci.name &&
                                                     <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontWeight: 500 }}>
                                                         {i + 1}. {ci.name}
@@ -186,10 +184,10 @@ const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep,
                                             </Box>
                                         )
                                     })}
-                                </Box>}
+                                </Box>} */}
 
 
-                            {!!emptyBoxesQuantity &&
+                            {/* {!!emptyBoxesQuantity &&
                                 <Box>
                                     <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                         Number of empty boxes:
@@ -207,7 +205,7 @@ const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep,
                                     <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                         {formatDate(deliverBoxesDate)}
                                     </Typography>
-                                </Box>}
+                                </Box>} */}
 
                             {!!collectionDate &&
                                 <Box>

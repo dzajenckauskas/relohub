@@ -31,7 +31,7 @@ const OfferSummaryFormCard = ({ validateForm, countriesData, form, showPopUp, to
 
     return (
         <Dialog
-            sx={{ zIndex: 10, top: 80 }}
+            sx={{ zIndex: 10, top: -60 }}
             open={showPopUp}
             // TransitionComponent={isMobile ? TransitionMobile : TransitionDesktop}
             keepMounted
@@ -147,7 +147,7 @@ const OfferSummaryFormCard = ({ validateForm, countriesData, form, showPopUp, to
                         </Stack>
                     </Stack>
 
-                    <LuggageInformationForm detailsColumn form={form} />
+                    {/* <LuggageInformationForm detailsColumn form={form} /> */}
                 </Stack>
 
                 <Box pt={2} sx={{ width: '100%' }}>

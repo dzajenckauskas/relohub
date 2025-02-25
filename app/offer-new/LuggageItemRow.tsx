@@ -17,9 +17,11 @@ type Props = {
     item?: CustomItemType
     quantity?: number;
     detailsColumn?: boolean;
+    isLastItem?: boolean;
+    rowNo?: number;
 }
 
-const LuggageItemRow = ({ detailsColumn, form, dimensions, maxWeight, primaryText, secondaryText, name, imgSrc, onIncrease, onDecrease, item, quantity }: Props) => {
+const LuggageItemRow = ({ isLastItem, rowNo, detailsColumn, form, dimensions, maxWeight, primaryText, secondaryText, name, imgSrc, onIncrease, onDecrease, item, quantity }: Props) => {
 
     return (
         <>
@@ -89,8 +91,7 @@ const LuggageItemRow = ({ detailsColumn, form, dimensions, maxWeight, primaryTex
                     <QuantityButtons form={form} name={name} onIncrease={onIncrease} onDecrease={onDecrease} item={item} quantity={quantity} />
                 </Stack>
             </Stack>
-            <Divider />
-
+            <Divider sx={{ opacity: isLastItem ? 0 : 1 }} />
         </>
 
     )

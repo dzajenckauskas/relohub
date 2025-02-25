@@ -6,11 +6,54 @@ import LuggageItemRow from './LuggageItemRow';
 import { CustomItemType, OfferFormType } from './OfferNewPage';
 import StyledTextInput from './StyledTextInput';
 import debounce from 'lodash/debounce';
+import SuggestedItemsForm from './SuggestedItemsForm';
+import { Typography } from '@mui/material';
 
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>;
     showAllItems?: boolean;
 };
+const topItems = [{
+    "id": 10000324,
+    "name": "TV",
+    "slug": "top-tv",
+    "height": 97,
+    "width": 23,
+    "depth": 23,
+    "length": 147,
+    "weight": 10,
+},
+{
+    "id": 10000324,
+    "category_id": 1,
+    "name": "Bike",
+    "slug": "top-bike",
+    "height": 97,
+    "width": 23,
+    "depth": 23,
+    "length": 147,
+    "weight": 10,
+},
+{
+    "id": 10000324,
+    "name": "Office Chair",
+    "slug": "office-chair",
+    "height": 97,
+    "width": 23,
+    "depth": 23,
+    "length": 147,
+    "weight": 10,
+},
+{
+    "id": 10000324,
+    "name": "Desk",
+    "slug": "top-desk",
+    "height": 97,
+    "width": 23,
+    "depth": 23,
+    "length": 147,
+    "weight": 10,
+}] as any[]
 
 const CommonItemsForm = ({ form, showAllItems }: Props) => {
     console.log(showAllItems, "showAllItems");
@@ -61,7 +104,7 @@ const CommonItemsForm = ({ form, showAllItems }: Props) => {
 
     // Optimized filtering
     const filteredItems = useMemo(() => {
-        if (!searchQuery) return items.filter(item => !existingItemNames.includes(item.name));
+        if (!searchQuery) return items?.filter(item => !existingItemNames.includes(item.name));
 
         const queryWords = searchQuery.split(' ').filter(Boolean);
         console.log(existingItemNames, "existingItemNames");
@@ -70,6 +113,17 @@ const CommonItemsForm = ({ form, showAllItems }: Props) => {
             .filter((item) => !existingItemNames.includes(item.name)) // Remove existing items
             .filter((item) => queryWords.every((word) => item.name?.toLowerCase().includes(word)));
     }, [searchQuery, items, existingItemNames]); // Add existingItemNames as a dependency
+
+    // const filteredTopItems = useMemo(() => {
+    //     // if (!searchQuery) return topItems.filter(item => !existingItemNames.includes(item.name));
+
+    //     const queryWords = searchQuery.split(' ').filter(Boolean);
+    //     console.log(existingItemNames, "existingItemNames");
+
+    //     return topItems
+    //         .filter((item) => !existingItemNames.includes(item.name)) // Remove existing items
+    //         .filter((item) => queryWords.every((word) => item.name?.toLowerCase().includes(word)));
+    // }, [searchQuery, topItems, existingItemNames]); // Add existingItemNames as a dependency
 
 
     const handleAddItem = (item: CustomItemType) => {
@@ -85,10 +139,12 @@ const CommonItemsForm = ({ form, showAllItems }: Props) => {
         <Stack direction="row" gap={0} pb={0} pt={0}>
             <Box flex={1} display="flex" flexDirection="column">
                 <Stack gap={2}>
-                    {fields.map((field) => {
+                    {fields.map((field, index) => {
                         const quantity = fields.filter((item) => item.name === field.name).length;
                         return (
                             <LuggageItemRow
+                                isLastItem={fields?.length - 1 === index}
+                                rowNo={index}
                                 key={field.id}
                                 quantity={quantity}
                                 onIncrease={() => handleAddItem(field)}
@@ -104,7 +160,7 @@ const CommonItemsForm = ({ form, showAllItems }: Props) => {
                 </Stack>
 
                 {/* Search Input */}
-                <Box mt={0} sx={{ position: 'relative', zIndex: 1 }}>
+                <Box sx={{ position: 'relative', zIndex: 1 }}>
                     <StyledTextInput
                         // label="Search for common items"
                         fullWidth
@@ -112,25 +168,49 @@ const CommonItemsForm = ({ form, showAllItems }: Props) => {
                         onChange={handleSearch} // Uses debounce inside ref
                     />
                 </Box>
+                {/* Filtered Top Items List */}
+                <Stack spacing={2} sx={{ maxHeight: 420, overflowY: 'auto' }}>
+                    {!searchQuery &&
+                        topItems
+                            .filter((item) => !existingItemNames.includes(item.name)) // Exclude selected items
+                            .map((item) => (
+                                <LuggageItemRow
+                                    key={item.id}
+                                    item={item}
+                                    onIncrease={() => handleAddItem(item)}
+                                    onDecrease={() => handleRemoveItem(item)}
+                                    primaryText={item.name}
+                                    dimensions={`${item.height} x ${item.width} x ${item.length} cm`}
+                                    maxWeight={item.weight}
+                                    form={form}
+                                    name={item.slug}
+                                />
+                            ))}
+                </Stack>
 
-                {/* Filtered Items List */}
-                {((searchQuery && (filteredItems.length > 0)) || showAllItems) && (
-                    <Stack spacing={2} sx={{ maxHeight: 360, overflowY: 'auto', pr: '14px' }}>
-                        {filteredItems.map((item) => (
-                            <LuggageItemRow
-                                key={item.id}
-                                item={item}
-                                onIncrease={() => handleAddItem(item)}
-                                onDecrease={() => handleRemoveItem(item)}
-                                primaryText={item.name}
-                                dimensions={`${item.height} x ${item.width} x ${item.length} cm`}
-                                maxWeight={item.weight}
-                                form={form}
-                                name={item.slug}
-                            />
-                        ))}
-                    </Stack>
-                )}
+                {/* Filtered Search Results */}
+                <Stack spacing={2} sx={{ maxHeight: 350, overflowY: 'auto', pr: '14px' }}>
+                    {searchQuery &&
+                        filteredItems
+                            .filter((item) => !existingItemNames.includes(item.name)) // Ensure existing items are removed
+                            .map((item) => (
+                                <LuggageItemRow
+                                    key={item.id}
+                                    item={item}
+                                    onIncrease={() => handleAddItem(item)}
+                                    onDecrease={() => handleRemoveItem(item)}
+                                    primaryText={item.name}
+                                    dimensions={`${item.height} x ${item.width} x ${item.length} cm`}
+                                    maxWeight={item.weight}
+                                    form={form}
+                                    name={item.slug}
+                                />
+                            ))}
+                    {searchQuery &&
+                        filteredItems?.length === 0 &&
+                        <Typography color={'error'}>No results found</Typography>
+                    }
+                </Stack>
             </Box>
         </Stack>
     );

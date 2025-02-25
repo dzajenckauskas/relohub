@@ -35,8 +35,7 @@ const InventoryStep = ({ error, form, nextStep, countriesData, activeStep }: Pro
                     </Stack>
                     <Stack width={'100%'}>
                         <Typography variant="h2" sx={{ fontWeight: 500, pb: 1 }}><b>Furniture</b> and <b>Appliances</b></Typography>
-                        <Divider />
-                        <SuggestedItemsForm form={form} setShowAllItems={setShowAllItems} />
+                        <Divider sx={{ mb: 2 }} />
                         <CommonItemsForm form={form} showAllItems={showAllItems} />
                     </Stack>
                     {/* <Box pb={4} pt={2}>
