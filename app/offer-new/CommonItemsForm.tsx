@@ -170,6 +170,7 @@ const CommonItemsForm = ({ form, showAllItems }: Props) => {
                                 <LuggageItemRow
                                     key={item.id}
                                     item={item}
+                                    quantity={0}
                                     onIncrease={() => handleAddItem(item)}
                                     onDecrease={() => handleRemoveItem(item)}
                                     primaryText={item.name}
@@ -190,6 +191,7 @@ const CommonItemsForm = ({ form, showAllItems }: Props) => {
                                 <LuggageItemRow
                                     key={item.id}
                                     item={item}
+                                    quantity={0}
                                     onIncrease={() => handleAddItem(item)}
                                     onDecrease={() => handleRemoveItem(item)}
                                     primaryText={item.name}

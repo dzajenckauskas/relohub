@@ -14,7 +14,7 @@ type Props = {
 }
 
 const QuantityButtons = ({ form, name, onIncrease, onDecrease, item, quantity }: Props) => {
-    const qty = form.watch(name) ?? quantity ?? 0
+    const qty = form.watch(name) ?? 0
 
     const handleIncrement = () => {
         const newValue = (qty || 0) + 1;
@@ -45,7 +45,7 @@ const QuantityButtons = ({ form, name, onIncrease, onDecrease, item, quantity }:
                     render={({ field, fieldState }) => (
                         <TextField
                             {...field}
-                            value={field.value ?? quantity}
+                            value={quantity ?? field.value}
                             defaultValue={0}
                             type="text" // Prevent default number input behavior
                             error={!!fieldState.error}
