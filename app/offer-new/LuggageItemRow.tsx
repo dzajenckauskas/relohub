@@ -1,8 +1,7 @@
 import { Divider, Stack } from "@mui/material";
 import Typography from '@mui/material/Typography';
-import Image from 'next/image';
-import QuantityButtons from "./QuantityButtons";
 import { CustomItemType } from "./OfferNewPage";
+import QuantityButtons from "./QuantityButtons";
 
 type Props = {
     form: any;

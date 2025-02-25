@@ -6,18 +6,18 @@ import { CountriesResponseType } from "@/COMPONENTS/types/CountryType";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Card, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import 'dayjs/locale/en-gb';
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { SubmitErrorHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import HorizontalStepper from "./HorizontalStepper";
+import OfferSummaryBottomLine from "./OfferSummaryBottomLine";
 import DetailsAndDatesStep from "./steps/DetailsAndDatesStep";
 import InventoryStep from "./steps/InventoryStep";
 import PriceOptionsStep from "./steps/PriceOptionsStep";
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import 'dayjs/locale/en-gb';
-import OfferSummaryBottomLine from "./OfferSummaryBottomLine";
 
 export type OfferFormType = {
     fullName: string;

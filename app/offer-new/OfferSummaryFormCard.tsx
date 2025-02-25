@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import { UseFormReturn } from 'react-hook-form';
 import { isPastOrWeekendOrFutureWorkingDay } from './DeliveryDateForm';
 import LocationsInformationForm from './LocationsInformationForm';
-import LuggageInformationForm from './LuggageInformationForm';
 import { OfferFormType } from './OfferNewPage';
 import PersonalInformationForm from './PersonalInformationForm';
 import ErrorMessage from './steps/ErrorMessage';

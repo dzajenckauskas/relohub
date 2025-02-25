@@ -1,19 +1,14 @@
 import { CountriesResponseType } from '@/COMPONENTS/types/CountryType';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
+import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
+import { useState } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 import CommonItemsForm from '../CommonItemsForm';
 import LuggageInformationForm from '../LuggageInformationForm';
 import { OfferFormType } from '../OfferNewPage';
-import OfferSummary from '../OfferSummary';
-import ErrorMessage from './ErrorMessage';
-import Divider from '@mui/material/Divider';
-import SuggestedItemsForm from '../SuggestedItemsForm';
-import { useState } from 'react';
 type Props = {
     countriesData?: CountriesResponseType;
     form: UseFormReturn<OfferFormType, any, undefined>;
