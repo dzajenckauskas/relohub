@@ -66,13 +66,13 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
             <Box flex={1} display="flex" flexDirection="column" gap={2}
                 sx={{ width: '100%' }}
             >
-                <Card sx={{ backgroundColor: '#252420', px: 3, py: 2, pb: 3 }}>
+                <Card elevation={0} sx={{ backgroundColor: '#fff', border: '1px solid rgba(0, 0, 0, 0.12)', px: 3, pt: 1.4, pb: 3 }}>
                     <Stack direction={'row'} sx={{
                         width: '100%',
                         justifyContent: 'space-between',
-                        alignItems: 'center', borderBottom: '1px solid gray'
+                        alignItems: 'center', borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
                     }}>
-                        <Typography color={'white'} variant="subtitle2">
+                        <Typography color={'primary'} variant="subtitle2" sx={{ pb: 0 }}>
                             SUMMARY
                         </Typography>
                         <Button
@@ -109,30 +109,30 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                             activeStep > 0 &&
                             <>
                                 {(form.getValues('fullName')) && <Box>
-                                    <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                    <Typography color={'primary'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                         Name & Surname:
                                     </Typography>
-                                    <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                    <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                         {form.getValues('fullName')}
                                     </Typography>
                                 </Box>}
 
                                 {form.getValues('email') &&
                                     <Box>
-                                        <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                        <Typography color={'primary'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                             Email:
                                         </Typography>
-                                        <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                        <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                             {form.getValues('email')}
                                         </Typography>
                                     </Box>}
 
                                 {form.getValues('phone') &&
                                     <Box>
-                                        <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                        <Typography color={'primary'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                             Telephone:
                                         </Typography>
-                                        <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                        <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                             {form.getValues('phone')}
                                         </Typography>
                                     </Box>}
@@ -144,14 +144,14 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                         {/* collect from */}
                         {form.getValues('collectCountry') &&
                             <Box>
-                                <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                <Typography color={'primary'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                     Collect from:
                                 </Typography>
-                                <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                     {form.getValues('collectCountry')}, {form.getValues('collectCity')}
                                 </Typography>
                                 {form.getValues('collectPostcode') &&
-                                    <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                    <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                         {form.getValues('collectPostcode')}
                                     </Typography>}
                             </Box>}
@@ -160,14 +160,14 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                         {/* deliver to */}
                         {form.getValues('deliverCountry') &&
                             <Box>
-                                <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                <Typography color={'primary'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                     Deliver to:
                                 </Typography>
-                                <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                     {form.getValues('deliverCountry')}, {form.getValues('deliverCity')}
                                 </Typography>
                                 {form.getValues('deliverPostcode') &&
-                                    <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                    <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                         {form.getValues('deliverPostcode')}
                                     </Typography>}
                             </Box>}
@@ -175,45 +175,45 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                         {/* boxes */}
                         {hasItems &&
                             <Box>
-                                <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                <Typography color={'primary'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                     Boxes & Luggage:
                                 </Typography>
                                 {!!standardBox &&
-                                    <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                    <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                         Standard Box  <span style={{ color: theme.palette.secondary.main }}>x {standardBox}</span>
                                     </Typography>}
                                 {!!largeBox &&
-                                    <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                    <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                         Large Box  <span style={{ color: theme.palette.secondary.main }}>x {largeBox}</span>
                                     </Typography>}
                                 {!!suitcaseSmall &&
-                                    <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                    <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                         Suitcase Small  <span style={{ color: theme.palette.secondary.main }}>x {suitcaseSmall}</span>
                                     </Typography>}
                                 {!!suitcaseLarge &&
-                                    <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                    <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                         Suitcase Large  <span style={{ color: theme.palette.secondary.main }}>x {suitcaseLarge}</span>
                                     </Typography>}
                             </Box>}
                         {customItemsSummary?.length > 0 &&
                             <Box>
                                 {!!customItemsSummary?.[0]?.name &&
-                                    <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500 }}>
+                                    <Typography color={'primary'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500 }}>
                                         Your Items:
                                     </Typography>}
                                 {customItemsSummary?.map((ci, i) => {
                                     return (
                                         <Box key={ci.name + i} pb={1}>
                                             {ci.name &&
-                                                <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontWeight: 500 }}>
+                                                <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.1, fontWeight: 500 }}>
                                                     {/* {i + 1}.  */}
                                                     {ci.name} <span style={{ color: theme.palette.secondary.main }}>x {ci.quantity ?? 1}</span>
                                                 </Typography>}
                                             {(ci.width ?? ci.height ?? ci.depth) &&
-                                                <Typography color={'white'} variant="caption" sx={{ lineHeight: 1, fontSize: 14, fontWeight: 500 }}>
+                                                <Typography color={'primary'} variant="caption" sx={{ lineHeight: 1, fontSize: 14, fontWeight: 500 }}>
                                                     {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? ci.length ?? 0} cm,   {ci.weight ?? 0} kg
                                                 </Typography>}
-                                            {/* {ci.weight && <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.3, fontSize: 14, fontWeight: 500 }}>
+                                            {/* {ci.weight && <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.3, fontSize: 14, fontWeight: 500 }}>
                                                 {ci.weight ?? 0} kg
                                             </Typography>} */}
                                         </Box>
@@ -223,22 +223,22 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                         {commonItemsSummary?.length > 0 &&
                             <Box>
                                 {!!commonItemsSummary?.[0]?.name &&
-                                    <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500 }}>
+                                    <Typography color={'primary'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500 }}>
                                         Furniture and Appliances:
                                     </Typography>}
                                 {commonItemsSummary?.map((ci, i) => {
                                     return (
                                         <Box key={ci.name + i} pb={1}>
                                             {ci.name &&
-                                                <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontWeight: 500 }}>
+                                                <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.1, fontWeight: 500 }}>
                                                     {/* {i + 1}.  */}
                                                     {ci.name} <span style={{ color: theme.palette.secondary.main }}>x {ci.quantity ?? 1}</span>
                                                 </Typography>}
                                             {(ci.width ?? ci.height ?? ci.depth) &&
-                                                <Typography color={'white'} variant="caption" sx={{ lineHeight: 1, fontSize: 14, fontWeight: 500 }}>
+                                                <Typography color={'primary'} variant="caption" sx={{ lineHeight: 1, fontSize: 14, fontWeight: 500 }}>
                                                     {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? ci.length ?? 0} cm,    {ci.weight ?? 0} kg
                                                 </Typography>}
-                                            {/* {ci.weight && <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontSize: 14, fontWeight: 500 }}>
+                                            {/* {ci.weight && <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.1, fontSize: 14, fontWeight: 500 }}>
                                                 {ci.weight ?? 0} kg
                                             </Typography>} */}
                                         </Box>
@@ -249,32 +249,32 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
 
                         {!!emptyBoxesQuantity &&
                             <Box>
-                                <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                <Typography color={'primary'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                     Number of empty boxes:
                                 </Typography>
-                                <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                     x {emptyBoxesQuantity}
                                 </Typography>
 
                             </Box>}
                         {!!deliverBoxesDate &&
                             <Box>
-                                <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                <Typography color={'primary'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                     Delivery of empty boxes:
                                 </Typography>
-                                <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                     {formatDate(deliverBoxesDate)}
                                 </Typography>
                             </Box>}
 
                         {!!collectionDate &&
                             <Box>
-                                <Typography color={'white'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                <Typography color={'primary'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                     Collection date:
                                 </Typography>
 
                                 {!!collectionDate &&
-                                    <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                    <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                         {formatDate(collectionDate)}
                                     </Typography>}
                             </Box>}
