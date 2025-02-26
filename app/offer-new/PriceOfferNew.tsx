@@ -231,15 +231,6 @@ export default function PriceOffer({ state, prices }) {
                         </strong>{" "}
                         whitch will be deducted from the final invoice.
                     </p>
-                    {/* <button
-                            className="paywithstripebutton"
-                            onClick={() => {
-                                setshowstripepopup(true);
-                            }}
-                            disabled={!selected}
-                        >
-                            Pay deposit using <strong>stripe</strong>
-                        </button> */}
                 </div>
                 <Box>
                     <Button
