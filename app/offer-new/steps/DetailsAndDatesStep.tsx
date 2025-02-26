@@ -1,4 +1,3 @@
-import { CountriesResponseType } from '@/COMPONENTS/types/CountryType';
 import Card from '@mui/material/Card';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
@@ -8,7 +7,6 @@ import { UseFormReturn } from 'react-hook-form';
 import DeliveryDateForm from '../DeliveryDateForm';
 import { OfferFormType } from '../OfferNewPage';
 import PersonalInformationForm from '../PersonalInformationForm';
-import ErrorMessage from './ErrorMessage';
 
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>;
@@ -39,34 +37,16 @@ const DetailsAndDatesStep = ({ form, }: Props) => {
                 </Stack>
 
             </Stack>
-            {/* {hasErrors && <ErrorMessage message={'Check form for errors'} />} */}
-
-            {/* <Box pb={4} pt={2}>
-                <Button onClick={nextStep} variant="contained" color="secondary"
-                    sx={{ px: 6, py: 2 }}>
-                    Next step
-                </Button>
-                {hasErrors && <ErrorMessage message={'Check form for errors'} />}
-
-            </Box> */}
             <Stack direction={'row'}
                 sx={{
                     position: 'relative',
                     mt: { xs: 0, md: -8 },
                     bottom: { xs: -20, md: -34 },
-                    // minHeight: 300,
-                    // right: { xs: 0, md: -100 },
-                    // width: '100%'
                 }}>
                 <Stack sx={{
-                    // position: 'absolute', mt: 2, bottom: -24,
-                    // right: 0,
-                    //  right: { xs: -210, md: 135 },
-                    // width: '100%'
                 }}>
                     <Image
                         alt="background"
-                        // src={"/illustration-2.svg"}
                         src={"/deliveri-2-1.png"}
                         width={700}
                         height={260}

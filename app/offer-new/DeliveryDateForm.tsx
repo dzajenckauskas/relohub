@@ -6,8 +6,11 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import dayjs, { Dayjs } from 'dayjs';
 import 'dayjs/locale/en-gb';
 import localeData from 'dayjs/plugin/localeData';
-import { UseFormReturn } from 'react-hook-form';
+import { Controller, UseFormReturn } from 'react-hook-form';
 import { OfferFormType } from './OfferNewPage';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import Divider from '@mui/material/Divider';
+import { theme } from '@/COMPONENTS/common/shared/Theme';
 
 dayjs.extend(localeData);
 
@@ -35,48 +38,114 @@ export function isPastOrWeekendOrFutureWorkingDay(date: Date) {
 
 const DeliveryDateForm = ({ form }: Props) => {
     return (
-        <Stack direction="row" gap={2} pb={2} width={'100%'}>
-            <Box flex={1} display="flex" flexDirection="column" gap={2} width={'100%'}>
-                <Typography variant="h2" sx={{ fontWeight: 500 }}>
-                    Select <b>Your Collection</b> Date
-                </Typography>
-                <Typography>Please select the date you would prefer your items to be collected.</Typography>
-                <DateCalendar
-                    value={form.getValues('collectionDate') ? dayjs(form.getValues('collectionDate')) : null} // Convert Date to Dayjs
-                    sx={{
-                        m: 0,
-                        border: '3px solid black',
-                        // transform: 'scale(1.2)',
-                        mt: 2,
-                        // ml: 4,
-                        // mb: 2,
-                        '& .MuiSvgIcon-root': {
-                            fontSize: '2.5rem', // Increase icon size
-                        },
-                        '& .MuiDayCalendar-weekDayLabel, & .MuiDayCalendar-day': {
-                            fontSize: '1.2rem', // Increase weekday label and day number size
-                        },
-                    }}
-                    slotProps={{
-                        previousIconButton: {
-                            sx: { '& svg': { fontSize: '2.5rem' } }, // Larger previous arrow
-                        },
-                        nextIconButton: {
-                            sx: { '& svg': { fontSize: '2.5rem' } }, // Larger next arrow
-                        },
-                    }}
-                    onChange={(v) => {
-                        form.setValue('collectionDate', v?.toDate(), { shouldValidate: true }); // Ensure it's stored as Date and triggers validation
-                    }}
-                    shouldDisableDate={(date: Dayjs) =>
-                        isPastOrWeekendOrFutureWorkingDay(date.toDate())
-                    }
-                />
+        <Stack gap={2} width="100%">
+            <Typography variant="h4" sx={{ fontWeight: 600 }}>
+                Select Your <b>Collection</b> Date
+            </Typography>
+            {/* <Divider /> */}
+            <Typography variant="body1" color="text.secondary">
+                Please select the date you would prefer your items to be collected
+            </Typography>
 
-                {form.formState?.errors?.collectionDate && (
-                    <FormHelperText error>{form.formState?.errors?.collectionDate.message}</FormHelperText>
+            <Controller
+                name="collectionDate"
+                control={form.control}
+                rules={{ required: 'Please select a date' }}
+                render={({ field }) => (
+                    <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', maxWidth: '100%', mt: 2 }}>
+                        <DateCalendar
+                            {...field}
+                            value={field.value ? dayjs(field.value) : null}
+                            onChange={(date: Dayjs | null) => field.onChange(date?.toISOString())}
+                            disablePast
+                            views={['day']}
+                            shouldDisableDate={(date: Dayjs) =>
+                                isPastOrWeekendOrFutureWorkingDay(date.toDate())
+                            }
+                            sx={{
+                                width: '100%', // Make calendar full-width
+                                maxWidth: '100%', // Ensure it does not shrink
+                                borderRadius: '3px',
+                                minHeight: 'fit-content',
+                                // padding: 2,
+                                // overflow: 'hidden',
+                                border: `1px solid ${theme.palette.divider}`,
+                                // boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+                                '.MuiPickersCalendarHeader-root': {
+                                    borderBottom: `1px solid ${theme.palette.divider}`,
+                                    px: 4,
+                                    mt: 4,
+                                    pb: 4
+
+                                },
+                                '.MuiPickersCalendarHeader-label': {
+                                    fontSize: '3rem'
+                                },
+                                '.MuiDayCalendar-header': {
+                                    display: 'flex',
+                                    width: '100% !important',
+                                    justifyContent: 'space-between',
+                                    pb: 2
+                                    // p: 2,
+                                    // justifyContent: 'center',
+                                    // fontWeight: 'bold',
+                                    // padding: '14px', // Larger click area
+                                },
+                                '.MuiPickersArrowSwitcher-root button': {
+                                    color: '#D81B60',
+                                    fontSize: '3rem',
+                                },
+                                '.MuiDayCalendar-root': {
+                                    p: 4,
+                                    overflow: 'none',
+                                    minHeight: '450px !important',
+                                    // height: '1000px !important',
+                                    width: '100%', // Make sure the days container is also full width
+                                },
+                                '.MuiPickersSlideTransition-root': {
+                                    minWidth: '100%', // Ensure the transition animation does not shrink width
+                                },
+                                '.MuiDayCalendar-weekContainer': {
+                                    width: '100% !important',
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between'
+                                },
+                                '.MuiDayCalendar-weekDayLabel': {
+                                    fontSize: '2rem !important',
+                                    fontWeight: 500,
+                                    color: theme.palette.primary.main
+
+                                },
+                                '.MuiPickersDay-root': {
+                                    fontWeight: 400,
+                                    fontSize: '2rem',
+                                    marginBottom: '10px',
+                                    mt: 1
+                                    // marginX: '9%', // Larger click area
+                                    // width: '30px', // Ensures even spacing for full width layout
+                                    // height: '30px', // Ensures even spacing for full width layout
+                                },
+                                '.MuiPickersDay-today': {
+                                    border: '2px solid #D81B60',
+                                },
+                                '.MuiDayCalendar-slideTransition': {
+                                    overflowX: 'visible'
+                                },
+                                '.MuiPickersDay-daySelected': {
+                                    backgroundColor: '#D81B60 !important',
+                                    color: '#fff !important',
+                                    borderRadius: '50%',
+                                    fontSize: '2rem',
+                                },
+                                '.MuiTypography-caption': {
+                                    fontSize: '1.2rem',
+                                },
+                            }}
+                        />
+                    </Box>
                 )}
-            </Box>
+            />
         </Stack>
     );
 };
