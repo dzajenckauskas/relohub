@@ -12,49 +12,53 @@ type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>;
     showAllItems?: boolean;
 };
-const topItems = [{
-    "id": 10000324,
-    "name": "TV",
-    "slug": "top-tv",
-    "height": 97,
-    "width": 23,
-    "depth": 23,
-    "length": 147,
-    "weight": 10,
-},
-{
-    "id": 10000324,
-    "category_id": 1,
-    "name": "Bike",
-    "slug": "top-bike",
-    "height": 97,
-    "width": 23,
-    "depth": 23,
-    "length": 147,
-    "weight": 10,
-},
-{
-    "id": 10000324,
-    "name": "Office Chair",
-    "slug": "office-chair",
-    "height": 97,
-    "width": 23,
-    "depth": 23,
-    "length": 147,
-    "weight": 10,
-},
-{
-    "id": 10000324,
-    "name": "Desk",
-    "slug": "top-desk",
-    "height": 97,
-    "width": 23,
-    "depth": 23,
-    "length": 147,
-    "weight": 10,
-}] as any[]
+const topItems = [
+    {
+        "id": 184,
+        "category_id": 5,
+        "name": "Television",
+        "slug": "television",
+        "height": 81,
+        "width": 134,
+        "length": 21,
+        "weight": 29,
+        "boxes_and_luggage": 0
+    },
+    {
+        "id": 252,
+        "category_id": 7,
+        "name": "Bike / Bicycle",
+        "slug": "Bike-Bicycle",
+        "height": 90,
+        "width": 20,
+        "length": 200,
+        "weight": 15,
+        "boxes_and_luggage": 0
+    },
+    {
+        "id": 161,
+        "category_id": 5,
+        "name": "Office Chair",
+        "slug": "Office-Chair",
+        "height": 85,
+        "width": 55,
+        "length": 50,
+        "weight": 20,
+        "boxes_and_luggage": 0
+    },
+    {
+        "id": 154,
+        "category_id": 5,
+        "name": "Desk",
+        "slug": "Desk",
+        "height": 75,
+        "width": 120,
+        "length": 60,
+        "weight": 25,
+        "boxes_and_luggage": 0
+    }] as any[]
 
-const CommonItemsForm = ({ form, showAllItems }: Props) => {
+const CommonItemsForm = ({ form }: Props) => {
     const { fields, remove } = useFieldArray({
         control: form.control,
         name: 'commonItems',
@@ -77,6 +81,7 @@ const CommonItemsForm = ({ form, showAllItems }: Props) => {
                     item.name !== 'Large box' &&
                     item.name !== 'Suitcase large' &&
                     item.name !== 'Suitcase small'
+                    // item.slug !== 'television' &&
                 );
 
                 setItems(flattenedItems);
@@ -118,6 +123,7 @@ const CommonItemsForm = ({ form, showAllItems }: Props) => {
         const index = fields.findIndex((field) => field.name === item.name);
         if (index !== -1) remove(index);
     };
+    console.log(filteredItems, "filteredItems");
 
     return (
         <Stack direction="row" gap={0} pb={0} pt={0}>

@@ -10,15 +10,10 @@ import CommonItemsForm from '../CommonItemsForm';
 import LuggageInformationForm from '../LuggageInformationForm';
 import { OfferFormType } from '../OfferNewPage';
 type Props = {
-    countriesData?: CountriesResponseType;
     form: UseFormReturn<OfferFormType, any, undefined>;
-    nextStep: () => Promise<void>;
-    activeStep: number;
-    error: string;
 }
 
-const InventoryStep = ({ error, form, nextStep, countriesData, activeStep }: Props) => {
-    const [showAllItems, setShowAllItems] = useState(false)
+const InventoryStep = ({ form }: Props) => {
     return (
         <Card sx={{ p: 4, width: "100%", mx: "auto", mb: 36, pb: 0 }}>
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
@@ -31,7 +26,7 @@ const InventoryStep = ({ error, form, nextStep, countriesData, activeStep }: Pro
                     <Stack width={'100%'}>
                         <Typography variant="h2" sx={{ fontWeight: 500, pb: 1 }}><b>Furniture</b> and <b>Appliances</b></Typography>
                         <Divider sx={{ mb: 2 }} />
-                        <CommonItemsForm form={form} showAllItems={showAllItems} />
+                        <CommonItemsForm form={form} />
                     </Stack>
                     {/* <Box pb={4} pt={2}>
                         <Button

@@ -8,18 +8,13 @@ import { UseFormReturn } from 'react-hook-form';
 import DeliveryDateForm from '../DeliveryDateForm';
 import { OfferFormType } from '../OfferNewPage';
 import PersonalInformationForm from '../PersonalInformationForm';
+import ErrorMessage from './ErrorMessage';
 
 type Props = {
-    countriesData?: CountriesResponseType;
     form: UseFormReturn<OfferFormType, any, undefined>;
-    nextStep: () => Promise<void>;
-    activeStep: number;
-    error: string;
-    validateForm?: () => Promise<boolean>
 }
 
-const DetailsAndDatesStep = ({ validateForm, error, form, nextStep, countriesData, activeStep }: Props) => {
-    const hasErrors = Object.keys(form.formState.errors).length > 0;
+const DetailsAndDatesStep = ({ form, }: Props) => {
 
     return (
         <Card sx={{ p: { xs: 2, md: 4 }, pb: 0, width: "100%", mx: "auto", mb: 24 }}>
@@ -43,8 +38,8 @@ const DetailsAndDatesStep = ({ validateForm, error, form, nextStep, countriesDat
                     </Stack>
                 </Stack>
 
-
             </Stack>
+            {/* {hasErrors && <ErrorMessage message={'Check form for errors'} />} */}
 
             {/* <Box pb={4} pt={2}>
                 <Button onClick={nextStep} variant="contained" color="secondary"

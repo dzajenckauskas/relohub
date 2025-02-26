@@ -270,17 +270,14 @@ export default function OfferNewPage({ countriesData }: Props) {
                                 {/* Step 1: Contact details & Dates */}
                                 {activeStep === 0 && (
                                     <DetailsAndDatesStep
-                                        validateForm={validateForm}
-                                        error={error} form={form} countriesData={countriesData}
-                                        nextStep={nextStep} activeStep={activeStep}
+                                        form={form}
                                     />
                                 )}
 
                                 {/* Step 2: Your inventory */}
                                 {activeStep === 1 && (
                                     <InventoryStep
-                                        error={error} form={form} countriesData={countriesData}
-                                        nextStep={nextStep} activeStep={activeStep}
+                                        form={form}
                                     />
                                 )}
                                 {/* Step 3: Price options */}
@@ -310,7 +307,7 @@ export default function OfferNewPage({ countriesData }: Props) {
                     </MaxWidthContainer>
                 </Stack>
                 <Stack sx={{ maxWidth: { xs: "100%", md: '100%' }, width: '100%', position: 'fixed', left: 0, bottom: 0, zIndex: 99 }}>
-                    <OfferSummaryBottomLine validateForm={validateForm} countriesData={countriesData} activeStep={activeStep} form={form} />
+                    <OfferSummaryBottomLine validateForm={validateForm} countriesData={countriesData} activeStep={activeStep} nextStep={nextStep} form={form} />
                 </Stack>
             </PageLayout>
         </LocalizationProvider>

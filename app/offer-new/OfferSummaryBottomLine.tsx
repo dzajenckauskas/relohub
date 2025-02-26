@@ -17,16 +17,17 @@ type Props = {
     countriesData: CountriesResponseType;
     validateForm?: () => Promise<boolean>
     nextStep?: () => void;
-    hasErrors?: boolean;
 }
 
-const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep, nextStep, hasErrors }: Props) => {
+const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep, nextStep }: Props) => {
     const [edit, setEdit] = useState(false)
     console.log(edit, "edit");
 
     const togglePopUp = () => {
         setEdit(!edit)
     }
+    const hasErrors = Object.keys(form.formState.errors).length > 0;
+
     const standardBox = form.watch('standardBox') ?? 0
     const largeBox = form.watch('largeBox') ?? 0
     const suitcaseSmall = form.watch('suitcaseSmall') ?? 0
