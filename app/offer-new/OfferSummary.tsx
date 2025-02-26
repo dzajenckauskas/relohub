@@ -33,6 +33,7 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
     const collectionDate = form.watch('collectionDate') ?? undefined
     const deliverBoxesDate = form.watch('deliverBoxesDate') ?? undefined
     const emptyBoxesQuantity = form.watch('emptyBoxesQuantity')
+    console.log(form.getValues(), 'lala');
 
     const groupedCustomItems = customItems.reduce((acc, item) => {
         const key = item.slug; // Group items based on 'slug'
@@ -208,9 +209,9 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                                                     {/* {i + 1}.  */}
                                                     {ci.name} <span style={{ color: theme.palette.secondary.main }}>x {ci.quantity ?? 1}</span>
                                                 </Typography>}
-                                            {(ci.width ?? ci.height ?? ci.debth) &&
+                                            {(ci.width ?? ci.height ?? ci.depth) &&
                                                 <Typography color={'white'} variant="caption" sx={{ lineHeight: 1, fontSize: 14, fontWeight: 500 }}>
-                                                    {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? 0} cm,   {ci.weight ?? 0} kg
+                                                    {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? ci.length ?? 0} cm,   {ci.weight ?? 0} kg
                                                 </Typography>}
                                             {/* {ci.weight && <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.3, fontSize: 14, fontWeight: 500 }}>
                                                 {ci.weight ?? 0} kg
@@ -233,9 +234,9 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                                                     {/* {i + 1}.  */}
                                                     {ci.name} <span style={{ color: theme.palette.secondary.main }}>x {ci.quantity ?? 1}</span>
                                                 </Typography>}
-                                            {(ci.width ?? ci.height ?? ci.debth) &&
+                                            {(ci.width ?? ci.height ?? ci.depth) &&
                                                 <Typography color={'white'} variant="caption" sx={{ lineHeight: 1, fontSize: 14, fontWeight: 500 }}>
-                                                    {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? 0} cm,    {ci.weight ?? 0} kg
+                                                    {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? ci.length ?? 0} cm,    {ci.weight ?? 0} kg
                                                 </Typography>}
                                             {/* {ci.weight && <Typography color={'white'} variant="body1" sx={{ lineHeight: 1.1, fontSize: 14, fontWeight: 500 }}>
                                                 {ci.weight ?? 0} kg

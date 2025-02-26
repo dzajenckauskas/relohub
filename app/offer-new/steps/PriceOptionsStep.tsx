@@ -1,19 +1,15 @@
 import { CountriesResponseType } from '@/COMPONENTS/types/CountryType';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from "@stripe/stripe-js";
 import Image from 'next/image';
 import { UseFormReturn } from 'react-hook-form';
+import NoPricePopup from '../NoPricePopup';
 import { OfferFormType } from '../OfferNewPage';
 import OfferSummary from '../OfferSummary';
-import { Elements } from '@stripe/react-stripe-js';
-import OfferPopup from "@/COMPONENTS/offer_page/offerPopup";
-import { loadStripe } from "@stripe/stripe-js";
 import PriceOffer from '../PriceOffer';
-import ErrorMessage from './ErrorMessage';
-import NoPricePopup from '../NoPricePopup';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC);
 
 type Props = {
