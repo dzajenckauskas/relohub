@@ -7,6 +7,8 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import ErrorMessage from "./steps/ErrorMessage";
 import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import { theme } from "@/COMPONENTS/common/shared/Theme";
 
 export default function PriceOffer({ state, prices }) {
     const stripe = useStripe();
@@ -26,7 +28,7 @@ export default function PriceOffer({ state, prices }) {
             return (
                 <div className="methodpopuppriceswrp">
                     <Typography variant={'h1'} component={'h2'}>£{split[0]}</Typography>
-                    <p>{split[1]}</p>
+                    <p style={{ paddingLeft: 4 }}>{split[1]}</p>
                 </div>
             );
         }
@@ -35,57 +37,72 @@ export default function PriceOffer({ state, prices }) {
 
     const items = [
         {
-            name: "SEA FREIGHT",
-            duration: `10 - 14 WEEKS TRANSIT`,
+            name: "Sea Freight",
+            duration: `10 - 14 Weeks Transit`,
             image: `/ship.png`,
             field: `SEA`,
             price: prices?.price.SEA,
-            smallt: "DOOR TO DOOR",
+            smallt: (
+                <>
+                    {`Door to `}
+                    <b>Door</b>
+                </>
+            ),
         },
 
 
         {
-            name: "AIR COURIER",
-            duration: `7 - 12 DAYS TRANSIT`,
+            name: "Air Courier",
+            duration: `7 - 12 Days Transit`,
             image: `/plane.png`,
             field: `AIR COURIER`,
             price: prices?.price[`AIR COURIER`],
-            smallt: "DOOR TO DOOR",
+            smallt: (
+                <>
+                    {`Door to `}
+                    <b>Door</b>
+                </>
+            ),
         },
 
         {
-            name: "AIR FREIGHT",
-            duration: `7 - 12 DAYS TRANSIT`,
+            name: "Air Freight",
+            duration: `7 - 12 Days Transit`,
             image: `/plane.png`,
             field: `AIR FREIGHT (TO-AIRPORT)`,
             price: prices?.price[`AIR FREIGHT (TO-AIRPORT)`],
             smallt: (
                 <>
-                    {`DOOR TO `}
-                    <b>AIRPORT</b>
+                    {`Door to `}
+                    <b>Airport</b>
                 </>
             ),
         },
         {
-            name: "AIR FREIGHT",
-            duration: `7 - 12 DAYS TRANSIT`,
+            name: "Air Freight",
+            duration: `7 - 12 Days Transit`,
             image: `/plane.png`,
             field: `AIR FREIGHT (TO-DOOR)`,
             price: prices?.price[`AIR FREIGHT (TO-DOOR)`],
             smallt: (
                 <>
-                    {`DOOR TO `}
-                    <b>DOOR</b>
+                    {`Door to `}
+                    <b>Door</b>
                 </>
             ),
         },
         {
-            name: "ROAD FREIGHT",
-            duration: `7 - 12 DAYS TRANSIT`,
+            name: "Road Freight",
+            duration: `7 - 12 Days Transit`,
             image: `/truck.png`,
             field: `ROAD`,
             price: prices?.price.ROAD,
-            smallt: "DOOR TO DOOR",
+            smallt: (
+                <>
+                    {`Door to `}
+                    <b>Door</b>
+                </>
+            ),
         },
     ];
 
@@ -132,8 +149,8 @@ export default function PriceOffer({ state, prices }) {
 
     function pricesPopup() {
         return (
-            <div className="offerpopupcenterwrp" style={{ paddingLeft: 0 }}>
-                <p className="methodoftravelmobile">METHOD OF TRAVEL</p>
+            <div style={{ paddingLeft: 0 }}>
+                {/* <p className="methodoftravelmobile">METHOD OF TRAVEL</p> */}
 
                 {/* <button
                     className="alotoftextclosebutton"
@@ -143,74 +160,78 @@ export default function PriceOffer({ state, prices }) {
                 >
                     &#10006;
                 </button> */}
-                <div className="offerpopuptoptitles">
+                {/* <div className="offerpopuptoptitles">
                     <p>Method of travel</p>
 
                     <p>Total</p>
-                </div>
+                </div> */}
 
-                <div className="offerpopupselectionwrp">
+                {/* <div className="offerpopupselectionwrp"> */}
+                <Stack spacing={1} pt={1}>
                     {items.map((el, i) => {
+                        const isSelected = selected?.field === el.field
                         if (!el.price) {
                             return null;
                         }
 
                         return (
-                            <div
-                                className={
-                                    selected?.field === el.field
-                                        ? "offerpopupselectionlinerselected"
-                                        : "offerpopupselectionliner"
-                                }
+                            <Stack sx={{
+                                cursor: 'pointer', borderRadius: .75,
+                                backgroundColor: selected?.field === el.field ? theme.palette.secondary.main : '#EBEBEB',
+                                px: 3, py: 2
+                            }}
+                                direction={'row'} width={'100%'} alignItems={'center'}
+                                justifyContent={'space-between'}
                                 onClick={() => {
                                     setselected(el);
                                 }}
                                 key={i}
                             >
-                                <Image
-                                    alt={el.name}
-                                    src={el.image}
-                                    style={{ objectFit: "contain" }}
-                                    width={56}
-                                    height={56}
-                                />
+                                <Stack spacing={4} direction={'row'} width={'100%'} alignItems={'center'} >
+                                    <div
+                                        className={
+                                            isSelected
+                                                ? "offfepopupselectionsignselected"
+                                                : "offfepopupselectionsign"
+                                        }
+                                    >
+                                    </div>
+                                    <Image
+                                        alt={el.name}
+                                        src={el.image}
+                                        style={{ objectFit: "contain" }}
+                                        width={50}
+                                        height={50}
+                                    />
 
-                                <div className="offerpopupselectionlinercenterwrp">
-                                    <h3>{el.name}</h3>
-                                    <p>{el.smallt}</p>
-                                    <p>{el.duration}</p>
-                                </div>
+                                    <h3 style={{ fontSize: 20, color: isSelected ? '#fff' : theme.palette.primary.main, width: 80, textTransform: 'capitalize' }}>
+                                        {el.name}
+                                    </h3>
+                                    <div style={{ color: isSelected ? '#fff' : theme.palette.primary.main, }} className="offerpopupselectionlinercenterwrp">
+                                        <p style={{ fontWeight: 500 }}>{el.smallt}</p>
+                                        <p>{el.duration}</p>
+                                    </div>
+                                </Stack>
                                 <div
-                                    className={
-                                        selected?.field === el.field
-                                            ? "offerpopouppricewrpselected"
-                                            : "offerpopouppricewrp"
-                                    }
+                                    style={{ color: isSelected ? '#fff' : theme.palette.primary.main, letterSpacing: 1 }}
                                 >
                                     {splitprices(el.price)}
                                 </div>
 
-                                <div
-                                    className={
-                                        selected?.field === el.field
-                                            ? "offfepopupselectionsignselected"
-                                            : "offfepopupselectionsign"
-                                    }
-                                >
-                                    <div>&#x2714;</div>
-                                </div>
-                            </div>
+
+                            </Stack>
                         );
                     })}
+                </Stack>
 
-                    <div className="stripepaymentwrp">
-                        <p>
-                            <strong>
-                                To book, we only require a £100 deposit,{" "}
-                            </strong>{" "}
-                            whitch will be deducted from the final invoice.
-                        </p>
-                        {/* <button
+                <div className="stripepaymentwrp">
+                    <p>
+                        <strong>
+                            To book, we only require a £100 deposit,{" "}
+                        </strong>{" "}
+                        whitch will be deducted from the final invoice.
+                    </p>
+                    {/* <button
                             className="paywithstripebutton"
                             onClick={() => {
                                 setshowstripepopup(true);
@@ -219,21 +240,21 @@ export default function PriceOffer({ state, prices }) {
                         >
                             Pay deposit using <strong>stripe</strong>
                         </button> */}
-                    </div>
-                    <Box>
-                        <Button
-                            onClick={() => {
-                                setshowstripepopup(true);
-                            }}
-                            disabled={!selected}
-                            variant="contained" color="secondary"
-                            sx={{ px: 6, py: 2 }}>
-                            Pay deposit using stripe
-                        </Button>
-                        {error && <ErrorMessage message={String(error)} />}
-                    </Box>
                 </div>
+                <Box>
+                    <Button
+                        onClick={() => {
+                            setshowstripepopup(true);
+                        }}
+                        disabled={!selected}
+                        variant="contained" color="secondary"
+                        sx={{ px: 6, py: 2 }}>
+                        Pay deposit using stripe
+                    </Button>
+                    {error && <ErrorMessage message={String(error)} />}
+                </Box>
             </div>
+            // </div>
         );
     }
 
@@ -405,7 +426,7 @@ export default function PriceOffer({ state, prices }) {
     }
 
     return (
-        <section>
+        <section >
             {ordercompleted
                 ? null
                 : showstripepopup

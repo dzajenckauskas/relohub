@@ -35,7 +35,7 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
     const emptyBoxesQuantity = form.watch('emptyBoxesQuantity')
     console.log(form.getValues(), 'lala');
 
-    const groupedCustomItems = customItems.reduce((acc, item) => {
+    const groupedCustomItems = customItems?.reduce((acc, item) => {
         const key = item.slug; // Group items based on 'slug'
 
         if (!acc[key]) {
@@ -46,7 +46,7 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
 
         return acc;
     }, {} as Record<string, typeof customItems[number]>);
-    const groupedCommonItems = commonItems.reduce((acc, item) => {
+    const groupedCommonItems = commonItems?.reduce((acc, item) => {
         const key = item.slug; // Group items based on 'slug'
 
         if (!acc[key]) {
@@ -58,8 +58,8 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
         return acc;
     }, {} as Record<string, typeof commonItems[number]>);
 
-    const commonItemsSummary = Object.values(groupedCustomItems) as any;
-    const customItemsSummary = Object.values(groupedCommonItems) as any;
+    const commonItemsSummary = groupedCustomItems && Object?.values(groupedCustomItems) as any;
+    const customItemsSummary = groupedCommonItems && Object?.values(groupedCommonItems) as any;
 
     return (
         <>

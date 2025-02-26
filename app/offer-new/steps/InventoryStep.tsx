@@ -1,15 +1,12 @@
-import { CountriesResponseType } from '@/COMPONENTS/types/CountryType';
 import Card from '@mui/material/Card';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
-import { useState } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 import CommonItemsForm from '../CommonItemsForm';
 import LuggageInformationForm from '../LuggageInformationForm';
 import { OfferFormType } from '../OfferNewPage';
-import ErrorMessage from './ErrorMessage';
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>;
     error?: string;
@@ -21,13 +18,17 @@ const InventoryStep = ({ form, error }: Props) => {
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
                 <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 4, md: 8 }} width={'100%'} maxWidth={{ xs: '100%', md: "100%" }}>
                     <Stack width={'100%'}>
-                        <Typography variant="h2" sx={{ fontWeight: 500, pb: 1 }}>Your <b>Boxes & Luggage</b> Details</Typography>
-                        <Divider />
+                        <Stack gap={1}>
+                            <Typography variant="h2" sx={{ fontWeight: 500, pb: 1 }}>Your <b>Boxes & Luggage</b> Details</Typography>
+                            <Divider />
+                        </Stack>
                         <LuggageInformationForm form={form} />
                     </Stack>
                     <Stack width={'100%'}>
-                        <Typography variant="h2" sx={{ fontWeight: 500, pb: 1 }}><b>Furniture</b> and <b>Appliances</b></Typography>
-                        <Divider sx={{ mb: 2 }} />
+                        <Stack gap={1}>
+                            <Typography variant="h2" sx={{ fontWeight: 500, pb: 1 }}><b>Furniture</b> and <b>Appliances</b></Typography>
+                            <Divider sx={{ mb: 2 }} />
+                        </Stack>
                         <CommonItemsForm form={form} />
                     </Stack>
                     {/* <Box pb={4} pt={2}>

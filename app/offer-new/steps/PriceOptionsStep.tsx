@@ -10,6 +10,8 @@ import NoPricePopup from '../NoPricePopup';
 import { OfferFormType } from '../OfferNewPage';
 import OfferSummary from '../OfferSummary';
 import PriceOffer from '../PriceOffer';
+import PriceOfferNew from '../PriceOfferNew';
+import Divider from '@mui/material/Divider';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC);
 
 type Props = {
@@ -32,17 +34,22 @@ const PriceOptionsStep = ({ error, transformedData, form, nextStep, countriesDat
                     {
                         // prices?.length > 0 &&
                         <>
-                            <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Price Options</b></Typography>
+                            <Stack gap={2}>
+
+                                <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Price Options</b></Typography>
+                                <Divider />
+                            </Stack>
                             <Elements stripe={stripePromise}>
-                                <PriceOffer
+                                <PriceOfferNew
                                     state={transformedData}
                                     // prices={prices}
                                     prices={{
                                         price: {
-                                            ROAD: 2113,
-                                            SEA: 2113,
-                                            'AIR COURIER': 2113,
-                                            "AIR FREIGHT (TO-AIRPORT)": 2113,
+                                            ROAD: 123,
+                                            SEA: 234,
+                                            'AIR COURIER': 345,
+                                            "AIR FREIGHT (TO-AIRPORT)": 456,
+                                            "AIR FREIGHT (TO-DOOR)": 687,
                                         }
                                     }}
                                 />
