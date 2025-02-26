@@ -87,6 +87,7 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                             }}
                             sx={{
                                 textTransform: 'none',
+                                fontWeight: 500,
                                 '&:hover': {
                                     backgroundColor: 'transparent', // Disable hover effect
                                 },
@@ -97,7 +98,7 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                                     outline: 'none', // Optionally remove focus outline as well
                                 },
                             }}
-                            endIcon={<BorderColorRoundedIcon />}
+                            endIcon={<BorderColorRoundedIcon fontSize='small' />}
                             color="secondary"
                         >
                             Edit
