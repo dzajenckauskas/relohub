@@ -79,7 +79,8 @@ const DeliveryDateForm = ({ form }: Props) => {
 
                                 },
                                 '.MuiPickersCalendarHeader-label': {
-                                    fontSize: '3rem'
+                                    fontSize: '3rem',
+                                    pl: 1.3
                                 },
                                 '.MuiDayCalendar-header': {
                                     display: 'flex',
@@ -99,7 +100,6 @@ const DeliveryDateForm = ({ form }: Props) => {
                                     p: 4,
                                     overflow: 'none',
                                     minHeight: '450px !important',
-                                    // height: '1000px !important',
                                     width: '100%', // Make sure the days container is also full width
                                 },
                                 '.MuiPickersSlideTransition-root': {
