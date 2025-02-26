@@ -11,6 +11,7 @@ import { OfferFormType } from './OfferNewPage';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Divider from '@mui/material/Divider';
 import { theme } from '@/COMPONENTS/common/shared/Theme';
+import ErrorMessage from './steps/ErrorMessage';
 
 dayjs.extend(localeData);
 
@@ -38,15 +39,11 @@ export function isPastOrWeekendOrFutureWorkingDay(date: Date) {
 
 const DeliveryDateForm = ({ form }: Props) => {
     return (
-        <Stack gap={2} width="100%">
-            <Typography variant="h4" sx={{ fontWeight: 600 }}>
-                Select Your <b>Collection</b> Date
+        <Stack gap={1} width="100%">
+            <Typography variant="h2" sx={{ fontWeight: 500 }}>
+                Select <b>Your Collection</b> Date
             </Typography>
-            {/* <Divider /> */}
-            <Typography variant="body1" color="text.secondary">
-                Please select the date you would prefer your items to be collected
-            </Typography>
-
+            <Typography>Please select the date you would prefer your items to be collected.</Typography>
             <Controller
                 name="collectionDate"
                 control={form.control}
@@ -146,6 +143,8 @@ const DeliveryDateForm = ({ form }: Props) => {
                     </Box>
                 )}
             />
+            {form.formState?.errors?.collectionDate && (
+                <ErrorMessage message={form.formState?.errors?.collectionDate.message} />)}
         </Stack>
     );
 };
