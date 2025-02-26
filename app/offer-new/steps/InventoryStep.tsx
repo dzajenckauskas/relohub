@@ -9,11 +9,13 @@ import { UseFormReturn } from 'react-hook-form';
 import CommonItemsForm from '../CommonItemsForm';
 import LuggageInformationForm from '../LuggageInformationForm';
 import { OfferFormType } from '../OfferNewPage';
+import ErrorMessage from './ErrorMessage';
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>;
+    error?: string;
 }
 
-const InventoryStep = ({ form }: Props) => {
+const InventoryStep = ({ form, error }: Props) => {
     return (
         <Card sx={{ p: 4, width: "100%", mx: "auto", mb: 36, pb: 0 }}>
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
@@ -38,13 +40,15 @@ const InventoryStep = ({ form }: Props) => {
                         {form.formState.errors.hasItemsAdded?.message && (
                             <ErrorMessage message={form.formState.errors.hasItemsAdded.message} />
                         )}
-                        {error && <ErrorMessage message={error} />}
-
+                        
                     </Box> */}
                 </Stack>
             </Stack>
+
             <Stack sx={{ maxWidth: { xs: "100%", md: '100%' }, width: '100%', position: 'relative', zIndex: 0 }}>
                 {/* <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} /> */}
+                {/* {form.formState?.errors?.hasItemsAdded && (
+                    <ErrorMessage message={form.formState?.errors?.hasItemsAdded.message} />)} */}
                 <Stack sx={{ position: 'relative', mt: -8, bottom: -14, right: { xs: 0, md: -50 }, width: '100%' }}>
                     <Image
                         alt="background"
@@ -57,6 +61,7 @@ const InventoryStep = ({ form }: Props) => {
                     />
                 </Stack>
             </Stack>
+
         </Card>
     )
 }

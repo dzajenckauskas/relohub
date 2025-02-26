@@ -263,11 +263,19 @@ const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep,
                                     sx={{ px: 6, py: 2 }}>
                                     Next step
                                 </Button>
-                                {hasErrors && <ErrorMessage message={'Check form for errors'} />}
 
                             </Box>
+
                         </Stack>
+
                     </Stack>
+
+                    {(hasErrors || form.formState?.errors?.hasItemsAdded) &&
+                        <Stack direction={'row'} width={'100%'} justifyContent={'flex-end'}>
+                            {activeStep !== 1 && hasErrors && <ErrorMessage message={'Check form for errors'} />}
+                            {activeStep == 1 && form.formState?.errors?.hasItemsAdded && (
+                                <ErrorMessage message={form.formState?.errors?.hasItemsAdded.message} />)}
+                        </Stack>}
                 </Card>
             </Box>
             {edit && <OfferSummaryFormCard validateForm={validateForm} countriesData={countriesData} showPopUp={edit} togglePopUp={togglePopUp} form={form} />}

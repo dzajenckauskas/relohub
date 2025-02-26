@@ -123,7 +123,7 @@ const CommonItemsForm = ({ form }: Props) => {
         const index = fields.findIndex((field) => field.name === item.name);
         if (index !== -1) remove(index);
     };
-    console.log(filteredItems, "filteredItems");
+    // console.log(filteredItems, "filteredItems");
 
     return (
         <Stack direction="row" gap={0} pb={0} pt={0}>
