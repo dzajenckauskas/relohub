@@ -43,13 +43,13 @@ export const theme = createTheme({
                     boxShadow: 'none',
                     '&:hover': {
                         boxShadow: 'none' // Removing box shadow on hover
+                    },
+                    '&.Mui-disabled': {
+                        opacity: .8,
+                        backgroundColor: "gray !important",
+                        color: "white !important" // Ensure text is visible
                     }
-                }),
-                disabled: ({ theme }) => theme.unstable_sx({
-                    opacity: 1,
-                    backgroundColor: "red !important"
                 })
-
             }
         },
         MuiAutocomplete: {

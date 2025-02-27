@@ -7,6 +7,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Image from "next/image";
 import { useState } from "react";
 import OfferSummaryBottomLine from "./OfferSummaryBottomLine";
+import ErrorMessage from "./steps/ErrorMessage";
 
 export default function PriceOffer({ state, prices, form, activeStep }) {
     const stripe = useStripe();
@@ -14,7 +15,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
     const [selected, setselected] = useState(null);
     const [showstripepopup, setshowstripepopup] = useState(false);
     const [paymentbuttonenabled, setpaymentbuttonenabled] = useState(false);
-    const [error, seterror] = useState<string | boolean>("");
+    const [error, setError] = useState<string | undefined>();
     const [paymentonprogress, setpaymentonprogress] = useState(false);
     const [ordercompleted, setordercompleted] = useState(false);
 
@@ -208,31 +209,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
                         );
                     })}
                 </Stack>
-
-                {/* <div className="stripepaymentwrp">
-                    <p>
-                        <strong>
-                            To book, we only require a £100 deposit,{" "}
-                        </strong>{" "}
-                        whitch will be deducted from the final invoice.
-                    </p>
-                </div>
-                <Box>
-                    <Button
-                        onClick={() => {
-                            setshowstripepopup(true);
-                        }}
-                        disabled={!selected}
-                        variant="contained" color="secondary"
-                        sx={{ px: 6, py: 2 }}>
-                        Pay deposit using stripe
-                    </Button>
-                    {error && <ErrorMessage message={String(error)} />}
-                </Box> */}
-
-
             </div>
-            // </div>
         );
     }
 
@@ -273,7 +250,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
             setordercompleted(true);
             fetchtoServer();
         } else {
-            seterror("Payment error");
+            setError("Payment error");
             setpaymentonprogress(false);
         }
     }
@@ -285,12 +262,6 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
                     <Typography variant="h2" sx={{ fontWeight: 500 }}>Deposit <b>Payment</b></Typography>
                     <Divider />
                 </Stack>
-                {/* <div className="offerpopupstripetopwrp">
-                    {" "}
-                    <h3 className="stripepopuph3">DEPOSIT PAYMENT</h3>{" "}
-                    
-                </div> */}
-
                 <p>
                     Thank you for choosing Deliver1 to handle your shipment from{" "}
                     <strong className="stripepopupcountriesnames">
@@ -320,12 +291,12 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
                         <CardElement
                             className="stripecardelelemtn"
                             onChange={(e) => {
-                                seterror("");
+                                setError(undefined);
                                 setpaymentbuttonenabled(false);
                                 if (e.complete) {
                                     setpaymentbuttonenabled(true);
                                 } else if (e.error) {
-                                    seterror(e.error.message);
+                                    setError(e.error.message);
                                 }
                             }}
                             options={{
@@ -343,6 +314,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
                         />
                     )}
                     <p className="offerstripeerror">{error}</p>
+                    {error && <ErrorMessage message={String(error)} />}
                 </div>
                 {ordercompleted ? (
                     <p className="ordercompletedstripep">
@@ -352,17 +324,6 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
                     <span className="stripespinner"></span>
                 ) : (
                     null
-                    // <button
-                    //     disabled={!paymentbuttonenabled}
-                    //     className="stripepaydepositbtn"
-                    //     onClick={() => {
-                    //         setpaymentonprogress(true);
-                    //         seterror(false);
-                    //         handlePayment();
-                    //     }}
-                    // >
-                    //     PAY DEPOSIT NOW
-                    // </button>
                 )}
             </div>
         );
@@ -371,23 +332,10 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
     function afterPayment() {
         return (
             <div className="offerpopupcenterwrpstripe">
-                {/* <div className="offerpopupstripetopwrp"> */}
                 <Stack gap={2} pb={1}>
                     <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Payment Received</b></Typography>
                     <Divider />
                 </Stack>
-                {/* {" "}
-                    <h3 className="stripepopuph3">
-                        <div className="paymentreceivedcheckmark">&#x2714;</div>{" "}
-                        PAYMENT RECEIVED
-                    </h3>{" "} */}
-                {/* <Link className="paymentreceiverdlink" href={"/"}>
-                        <button className="alotoftextclosebutton">
-                            &#10006;
-                        </button>
-                    </Link> */}
-                {/* </div> */}
-
                 <p>
                     We have successfully received your £100.00 deposit payment.
                 </p>
@@ -420,7 +368,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
                     }}
                         onClickPay={() => {
                             setpaymentonprogress(true);
-                            seterror(false);
+                            setError(undefined);
                             handlePayment();
                         }
                         }
@@ -430,7 +378,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
                         showstripepopup={showstripepopup}
                         setorderCompleted={setordercompleted}
                         orderCompleted={ordercompleted}
-                        error={String(error)} activeStep={activeStep} form={form} />
+                        error={(error)} activeStep={activeStep} form={form} />
                 </Stack>}
         </section>
     );

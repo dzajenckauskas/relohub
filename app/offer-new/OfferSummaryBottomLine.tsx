@@ -321,7 +321,7 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
                     {(error || hasErrors || form.formState?.errors?.hasItemsAdded) &&
                         <Stack direction={'row'} width={'100%'} justifyContent={'flex-end'}>
                             {activeStep !== 1 && hasErrors && <ErrorMessage message={'Check form for errors'} />}
-                            {(error && error !== 'false') && <ErrorMessage message={error} />}
+                            {!!error && <ErrorMessage message={error} />}
                             {activeStep == 1 && form.formState?.errors?.hasItemsAdded && (
                                 <ErrorMessage message={form.formState?.errors?.hasItemsAdded.message} />)}
                         </Stack>}
