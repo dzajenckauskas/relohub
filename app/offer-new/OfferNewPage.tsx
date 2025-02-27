@@ -64,25 +64,35 @@ const customItemSchema = yup.object().shape({
     weight: yup.number().typeError('Weight must be a number').positive('Weight must be greater than 0').required('Weight is required'),
 });
 
+const phoneValidation = yup
+    .string()
+    .required("Phone number is required")
+    .matches(/^\d+$/, "Phone number must contain only digits") // ✅ Ensures only digits
+    .test("no-dial-code", "Phone number should not contain country code", function (value) {
+        const dialCode = this.parent.dialCode || "";
+        return !value.startsWith(dialCode);
+    });
+
 const stepSchemas = [
     yup.object({
         fullName: yup.string().required("Name is required"),
         email: yup.string().email("Invalid email").required("Email is required"),
-        phone: yup.string().nullable().required("Phone number is required"),
-        collectionDate: yup.date().required('Collection date is required'),
+        phone: phoneValidation, // ✅ Updated validation
+        collectionDate: yup.date().required("Collection date is required"),
     }),
     yup.object({
         customItems: yup.array().of(customItemSchema).default([]),
-        hasItemsAdded: yup.boolean().when(['customItems', 'commonItems', 'standardBox', 'largeBox', 'suitcaseSmall', 'suitcaseLarge'], {
-            is: (commonItems: any[], customItems: any[], standardBox: number, largeBox: number, suitcaseSmall: number, suitcaseLarge: number) => {
-                const invalid = ((commonItems?.length ?? 0) + (customItems?.length ?? 0) + (standardBox ?? 0) + (largeBox ?? 0) + (suitcaseSmall ?? 0) + (suitcaseLarge ?? 0)) <= 0
-                return invalid
-            },
-            then: () => yup.boolean().required(('At least one item must be selected')),
-            otherwise: () => yup.boolean().nullable()
-        }),
+        hasItemsAdded: yup.boolean().when(
+            ["customItems", "commonItems", "standardBox", "largeBox", "suitcaseSmall", "suitcaseLarge"],
+            {
+                is: (commonItems: any[], customItems: any[], standardBox: number, largeBox: number, suitcaseSmall: number, suitcaseLarge: number) => {
+                    return ((commonItems?.length ?? 0) + (customItems?.length ?? 0) + (standardBox ?? 0) + (largeBox ?? 0) + (suitcaseSmall ?? 0) + (suitcaseLarge ?? 0)) <= 0;
+                },
+                then: () => yup.boolean().required("At least one item must be selected"),
+                otherwise: () => yup.boolean().nullable(),
+            }
+        ),
     }),
-    // yup.object({}),
 ];
 
 
