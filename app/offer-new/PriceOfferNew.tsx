@@ -7,10 +7,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import OfferSummaryBottomLine from "./OfferSummaryBottomLine";
+import Divider from "@mui/material/Divider";
 
 export default function PriceOffer({ state, prices, form, activeStep }) {
-    console.log(activeStep, "activeStep");
-
     const stripe = useStripe();
     const elements = useElements();
     const [selected, setselected] = useState(null);
@@ -41,7 +40,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
             duration: `10 - 14 Weeks Transit`,
             image: `/ship.png`,
             field: `SEA`,
-            price: prices?.price.SEA,
+            price: prices?.SEA,
             smallt: (
                 <>
                     {`Door to `}
@@ -56,7 +55,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
             duration: `7 - 12 Days Transit`,
             image: `/plane.png`,
             field: `AIR COURIER`,
-            price: prices?.price[`AIR COURIER`],
+            price: prices?.[`AIR COURIER`],
             smallt: (
                 <>
                     {`Door to `}
@@ -70,7 +69,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
             duration: `7 - 12 Days Transit`,
             image: `/plane.png`,
             field: `AIR FREIGHT (TO-AIRPORT)`,
-            price: prices?.price[`AIR FREIGHT (TO-AIRPORT)`],
+            price: prices?.[`AIR FREIGHT (TO-AIRPORT)`],
             smallt: (
                 <>
                     {`Door to `}
@@ -83,7 +82,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
             duration: `7 - 12 Days Transit`,
             image: `/plane.png`,
             field: `AIR FREIGHT (TO-DOOR)`,
-            price: prices?.price[`AIR FREIGHT (TO-DOOR)`],
+            price: prices?.[`AIR FREIGHT (TO-DOOR)`],
             smallt: (
                 <>
                     {`Door to `}
@@ -96,7 +95,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
             duration: `7 - 12 Days Transit`,
             image: `/truck.png`,
             field: `ROAD`,
-            price: prices?.price.ROAD,
+            price: prices?.ROAD,
             smallt: (
                 <>
                     {`Door to `}
@@ -150,23 +149,6 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
     function pricesPopup() {
         return (
             <div style={{ paddingLeft: 0 }}>
-                {/* <p className="methodoftravelmobile">METHOD OF TRAVEL</p> */}
-
-                {/* <button
-                    className="alotoftextclosebutton"
-                    onClick={() => {
-                        hidePopup(false);
-                    }}
-                >
-                    &#10006;
-                </button> */}
-                {/* <div className="offerpopuptoptitles">
-                    <p>Method of travel</p>
-
-                    <p>Total</p>
-                </div> */}
-
-                {/* <div className="offerpopupselectionwrp"> */}
                 <Stack spacing={1} pt={1}>
                     {items.map((el, i) => {
                         const isSelected = selected?.field === el.field
@@ -420,6 +402,10 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
 
     return (
         <section >
+            <Stack gap={2} pb={1}>
+                <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Price Options</b></Typography>
+                <Divider />
+            </Stack>
             {ordercompleted
                 ? null
                 : showstripepopup

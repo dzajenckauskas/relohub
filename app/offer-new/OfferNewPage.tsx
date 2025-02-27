@@ -18,6 +18,7 @@ import OfferSummaryBottomLine from "./OfferSummaryBottomLine";
 import DetailsAndDatesStep from "./steps/DetailsAndDatesStep";
 import InventoryStep from "./steps/InventoryStep";
 import PriceOptionsStep from "./steps/PriceOptionsStep";
+import { formatDate } from "@/COMPONENTS/common/shared/formatDate";
 
 export type OfferFormType = {
     fullName: string;
@@ -186,6 +187,13 @@ export default function OfferNewPage({ countriesData }: Props) {
             weight: v.weight,
         }
     })
+
+    const convertToMySQLDate = (isoDate) => {
+        // Convert ISO 8601 format to MySQL format (YYYY-MM-DD HH:MM:SS)
+        const date = new Date(isoDate);
+        return date?.toISOString().slice(0, 19).replace('T', ' '); // e.g., '2025-03-12 22:00:00'
+    }
+
     const transformedData = {
         name: formData?.fullName,
         email: formData?.email,
@@ -199,7 +207,7 @@ export default function OfferNewPage({ countriesData }: Props) {
         to_country: formData?.deliverCountry,
         to_postCode: formData?.deliverPostcode,
 
-        Collection_Date: formData?.collectionDate,
+        Collection_Date: formData?.collectionDate && convertToMySQLDate(formData?.collectionDate),
 
         Standard_box: formData?.standardBox,
         Large_box: formData?.largeBox,
@@ -212,14 +220,14 @@ export default function OfferNewPage({ countriesData }: Props) {
         setError(undefined)
         console.log(transformedData, "transformedData");
 
-        const url = process.env.NEXT_PUBLIC_FETCH_URL;
+        // const url = process.env.NEXT_PUBLIC_FETCH_URL;
         const hv = process.env.NEXT_PUBLIC_HEADER_VALUE;
 
         if (process.env.NODE_ENV === "development") {
             console.log(transformedData, 'data');
         }
         try {
-            const res = await fetch(url, {
+            const res = await fetch('/api/proxy', {
                 method: "POST",
                 headers: {
                     "http-referer": hv,
@@ -235,7 +243,7 @@ export default function OfferNewPage({ countriesData }: Props) {
                 }
                 setActiveStep(2)
 
-                prc && setPrices(prc);
+                prc && setPrices(prc.price);
 
                 // if (prc.price.length === 0) {
                 //     // setshownopricepopup(true);
@@ -291,17 +299,6 @@ export default function OfferNewPage({ countriesData }: Props) {
                                     />
                                 )}
 
-                                {/* Step 4: Submitted */}
-                                {/* {activeStep === undefined && (
-                                    <Card sx={{ p: 4, width: "100%", mx: "auto", mb: 10 }}>
-                                        <Typography variant="h2" sx={{ fontWeight: 500 }}><b>Thank you</b> for submission</Typography>
-                                        <Stack direction="row" gap={2} pb={2} pt={4}>
-                                            <Box flex={1} display="flex" flexDirection="column" gap={2}>
-
-                                            </Box>
-                                        </Stack>
-                                    </Card>
-                                )} */}
                                 {activeStep !== 2 && <Stack sx={{ maxWidth: { xs: "100%", md: '100%' }, width: '100%', position: 'fixed', left: 0, bottom: 0, zIndex: 99 }}>
                                     <OfferSummaryBottomLine error={error} validateForm={validateForm} countriesData={countriesData} activeStep={activeStep} nextStep={nextStep} form={form} />
                                 </Stack>}
