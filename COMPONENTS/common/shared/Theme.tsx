@@ -31,6 +31,13 @@ export const theme = createTheme({
                 }),
             }
         },
+        MuiFormHelperText: {
+            styleOverrides: {
+                root: ({ theme }) => theme.unstable_sx({
+                    lineHeight: 1.1
+                }),
+            }
+        },
         MuiButton: {
             styleOverrides: {
                 root: ({ theme }) => theme.unstable_sx({
