@@ -61,7 +61,7 @@ export default function HorizontalStepper({ error, activeStep, setActiveStep, di
                                     {...labelProps}
                                     sx={{
                                         cursor: 'pointer',
-                                        // pointerEvents: (disablePricesButton && index === 2) ? 'none' : 'auto',
+                                        pointerEvents: (disablePricesButton && index === 2) ? 'none' : 'auto',
                                         '& .MuiStepIcon-root': {
                                             fontSize: '5rem',
                                             // color: activeStep === index ? theme.palette.secondary.main : 'transparent',

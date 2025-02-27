@@ -66,12 +66,6 @@ const LuggageInformationForm = ({ form, detailsColumn }: Props) => {
                     name={'suitcaseLarge'}
                 />
                 <Stack>
-                    {/* <Box pb={1}>
-                        <Divider />
-                    </Box> */}
-
-                    {/* {!addItem && */}
-                    {/* {addItem && */}
                     <>
                         {fields?.reverse()?.map((ci, i) => {
                             return <Stack key={ci.id} alignItems={'stretch'} pb={2}>
@@ -105,24 +99,18 @@ const LuggageInformationForm = ({ form, detailsColumn }: Props) => {
                             </Stack>
                         })}
                     </>
-
-                    {/* } */}
                     <Stack
                         pt={1}
                         onClick={async () => await append({} as CustomItemType)}
 
                         direction={'row'}
-                        sx={{ cursor: 'pointer' }}
+                        sx={{ cursor: 'pointer', zIndex: 2, maxWidth: 'max-content' }}
                         justifyContent={'flex-start'} alignItems={'center'} gap={2}>
                         <Add fontSize="large" sx={{ fill: theme.palette.secondary.main }} />
                         <Typography fontWeight={500} color={'secondary.main'} sx={{ letterSpacing: 1 }}>
                             ADD YOUR OWN ITEM
                         </Typography>
                     </Stack>
-                    {/* <Box pt={2}>
-                        <Divider />
-                    </Box> */}
-
                 </Stack>
             </Box>
         </Stack>
