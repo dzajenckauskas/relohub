@@ -1,0 +1,99 @@
+import { Divider, Stack } from "@mui/material";
+import Typography from '@mui/material/Typography';
+import { CustomItemType } from "./OfferNewPage";
+import QuantityButtons from "./QuantityButtons";
+
+type Props = {
+    form: any;
+    dimensions: string;
+    maxWeight: string;
+    primaryText?: string;
+    secondaryText?: string;
+    name: string;
+    imgSrc?: string;
+    onIncrease?: (item: CustomItemType) => void;
+    onDecrease?: (item: CustomItemType) => void;
+    item?: CustomItemType
+    quantity?: number;
+    detailsColumn?: boolean;
+    isLastItem?: boolean;
+    rowNo?: number;
+}
+
+const LuggageItemRow = ({ isLastItem, rowNo, detailsColumn, form, dimensions, maxWeight, primaryText, secondaryText, name, imgSrc, onIncrease, onDecrease, item, quantity }: Props) => {
+
+    return (
+        <>
+            <Stack direction={'row'} sx={{
+                width: '100%',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                zIndex: 1,
+                // px: 2
+            }}>
+                <Stack direction={'row'}
+                    gap={1}
+                    sx={{
+                        justifyContent: 'space-between',
+                        alignItems: 'center'
+                    }}>
+                    {/* <Stack>
+                        <Inventory2Icon sx={{ fontSize: 62 }} />
+                    </Stack> */}
+                    {/* {imgSrc && (
+                        <Stack sx={{ position: 'relative', mt: -1, bottom: -1, right: 0, width: 40, height: 40 }}>
+                            <Image
+                                alt="background"
+                                src={imgSrc}
+                                style={{ objectFit: "contain" }}
+                                fill
+                                sizes="40px"
+                            />
+                        </Stack>
+                    )} */}
+
+                    <Stack
+                        direction={'row'}
+                        sx={{ width: { xs: '100px', md: '100px' } }}
+                    >
+
+                        <Typography variant='subtitle2' sx={{
+                            fontWeight: 600,
+                            lineHeight: 1.2, maxWidth: 140, width: '100%'
+                        }}>
+                            {primaryText}
+                            {secondaryText && <br />}
+                            {secondaryText}
+                        </Typography>
+                    </Stack>
+                </Stack>
+                <Stack direction={'column'}>
+                    <Stack sx={{ width: { xs: '100px', md: '100px' } }}>
+                        <Typography variant='body2' sx={{
+                            fontWeight: 500,
+                            fontSize: { xs: 14, md: 14 }
+                        }}>
+                            {dimensions}
+                        </Typography>
+                    </Stack>
+                    <Stack sx={{ width: { xs: '100px', md: '100px' } }}>
+                        <Typography variant='body2' sx={{
+                            fontWeight: 500,
+                            fontSize: { xs: 14, md: 14 }
+                        }}>
+                            max {maxWeight}kg
+                        </Typography>
+                    </Stack>
+                </Stack>
+
+                <Stack sx={{ width: '140px' }}>
+                    <QuantityButtons form={form} name={name} onIncrease={onIncrease} onDecrease={onDecrease} item={item} quantity={quantity} />
+                </Stack>
+            </Stack>
+            <Divider sx={{ opacity: isLastItem ? 0 : 1 }} />
+        </>
+
+    )
+}
+
+export default LuggageItemRow

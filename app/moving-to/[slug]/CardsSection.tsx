@@ -14,7 +14,7 @@ const CardsSection = ({ countryName, cardsSection }: Props) => {
         const isFirst = i % 2 === 0
         return (
             <SectionCard key={i} reverse={isFirst}
-                imgSrc={process.env.NEXT_PUBLIC_API_URL + c.image?.data?.attributes?.url ?? undefined}
+                imgSrc={(process.env.NEXT_PUBLIC_API_URL + (c.image?.data?.attributes?.url ?? undefined))}
                 imgAlt={c.image?.data?.attributes?.alternativeText ?? undefined}
                 buttonText={c.buttonText}
                 url={c.url}

@@ -19,7 +19,7 @@ const PageLayout = ({ children, hidePopUpButton }: { children: React.ReactNode, 
 
             <Header />
             {children}
-            <GetInTOuch />
+            {/* <GetInTOuch /> */}
         </ThemeProvider >
     );
 };

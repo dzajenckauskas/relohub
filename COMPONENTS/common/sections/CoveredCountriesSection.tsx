@@ -10,18 +10,18 @@ import Stack from "@mui/material/Stack"
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { useState } from 'react'
+import { capitalizeEachWord } from '../shared/capitalizeEachWord'
 
 type Props = {
     articleContinents?: ContinentsResponseType;
     countries?: CountriesResponseType;
 }
 
+
 export const CoveredCountriesSection = ({ articleContinents, countries }: Props) => {
     const [active, setActive] = useState<string | undefined>('europe')
     const renderCountries = countries?.data?.filter((c) => c?.attributes?.continent && c?.attributes?.continent?.toLowerCase() === active?.toLowerCase())?.map((c) => {
-        const capitalizeEachWord = (str: string) => {
-            return str.replace(/\b\w/g, (char: string) => char.toUpperCase());
-        };
+
         return (
             <Grid item xs={6} sm={4} md={3} key={c?.id}>
                 <Link passHref href={`/moving-to/${c.attributes?.url}`}>
