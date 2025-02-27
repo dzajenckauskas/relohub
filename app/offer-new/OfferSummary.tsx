@@ -141,7 +141,17 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
 
                             </>}
 
+                        {!!collectionDate &&
+                            <Box>
+                                <Typography color={'primary'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                    Collection date:
+                                </Typography>
 
+                                {!!collectionDate &&
+                                    <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                        {formatDate(collectionDate)}
+                                    </Typography>}
+                            </Box>}
                         {/* collect from */}
                         {form.getValues('collectCountry') &&
                             <Box>
@@ -268,17 +278,7 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                                 </Typography>
                             </Box>}
 
-                        {!!collectionDate &&
-                            <Box>
-                                <Typography color={'primary'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                    Collection date:
-                                </Typography>
 
-                                {!!collectionDate &&
-                                    <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                        {formatDate(collectionDate)}
-                                    </Typography>}
-                            </Box>}
                     </Stack>
                 </Card>
             </Box>

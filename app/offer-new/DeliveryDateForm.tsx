@@ -63,27 +63,27 @@ const DeliveryDateForm = ({ form }: Props) => {
                                 width: '100%', // Make calendar full-width
                                 maxWidth: '100%', // Ensure it does not shrink
                                 borderRadius: '3px',
-                                minHeight: 'fit-content',
+                                minHeight: '400px !important',
                                 // padding: 2,
                                 // overflow: 'hidden',
                                 border: `1px solid ${theme.palette.divider}`,
                                 // boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
                                 '.MuiPickersCalendarHeader-root': {
                                     borderBottom: `1px solid ${theme.palette.divider}`,
-                                    px: 4,
-                                    mt: 4,
-                                    pb: 4
+                                    px: 3.5,
+                                    mt: 1,
+                                    pb: 1
 
                                 },
                                 '.MuiPickersCalendarHeader-label': {
-                                    fontSize: '3rem',
-                                    pl: 1.3
+                                    fontSize: '2.5rem',
+                                    // pl: 2.3
                                 },
                                 '.MuiDayCalendar-header': {
                                     display: 'flex',
                                     width: '100% !important',
                                     justifyContent: 'space-between',
-                                    pb: 2
+                                    pb: 0
                                     // p: 2,
                                     // justifyContent: 'center',
                                     // fontWeight: 'bold',
@@ -91,12 +91,12 @@ const DeliveryDateForm = ({ form }: Props) => {
                                 },
                                 '.MuiPickersArrowSwitcher-root button': {
                                     color: '#D81B60',
-                                    fontSize: '3rem',
+                                    fontSize: '2.5rem',
                                 },
                                 '.MuiDayCalendar-root': {
-                                    p: 4,
+                                    px: 2,
                                     overflow: 'none',
-                                    minHeight: '450px !important',
+                                    minHeight: '400px !important',
                                     width: '100%', // Make sure the days container is also full width
                                 },
                                 '.MuiPickersSlideTransition-root': {
@@ -117,7 +117,7 @@ const DeliveryDateForm = ({ form }: Props) => {
                                 '.MuiPickersDay-root': {
                                     fontWeight: 400,
                                     fontSize: '2rem',
-                                    marginBottom: '10px',
+                                    marginBottom: '4px',
                                     mt: 1
                                     // marginX: '9%', // Larger click area
                                     // width: '30px', // Ensures even spacing for full width layout

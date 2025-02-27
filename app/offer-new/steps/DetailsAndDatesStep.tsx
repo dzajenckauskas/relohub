@@ -15,7 +15,7 @@ type Props = {
 const DetailsAndDatesStep = ({ form, }: Props) => {
 
     return (
-        <Card sx={{ p: { xs: 2, md: 4 }, pb: 0, width: "100%", mx: "auto", mb: 24 }}>
+        <Card sx={{ p: { xs: 2, md: 4 }, pb: 0, width: "100%", mx: "auto", mb: { xs: '80px', md: '120px' } }}>
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
                 <Stack direction={{ xs: 'column', md: "row" }} justifyContent={'space-between'}
                     pb={2} width={'100%'} gap={{ xs: 5, md: 10 }}
@@ -40,8 +40,9 @@ const DetailsAndDatesStep = ({ form, }: Props) => {
             <Stack direction={'row'}
                 sx={{
                     position: 'relative',
-                    mt: { xs: 0, md: -8 },
-                    bottom: { xs: -20, md: -34 },
+                    mt: { xs: 4, md: -14 },
+                    left: { xs: -50, md: -200 },
+                    bottom: { xs: -10, md: -34 },
                 }}>
                 <Stack sx={{
                 }}>

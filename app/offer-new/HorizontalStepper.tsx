@@ -20,7 +20,7 @@ export default function HorizontalStepper({ error, activeStep, setActiveStep, di
     console.log(error, "errorerrorerrorerror", activeStep);
 
     return (
-        <Stack direction={'row'} justifyContent={'center'} sx={{ width: '100%', py: 4 }}>
+        <Stack direction={'row'} justifyContent={'center'} sx={{ width: '100%', py: { xs: 2, md: 4 } }}>
             <Box sx={{ width: '100%', maxWidth: 'sm' }}>
                 <Stepper activeStep={activeStep} variant='outlined'
                     alternativeLabel

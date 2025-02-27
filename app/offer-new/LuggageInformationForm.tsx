@@ -24,7 +24,7 @@ const LuggageInformationForm = ({ form, detailsColumn }: Props) => {
     return (
 
         <Stack direction="row" gap={2} pb={2} pt={2} >
-            <Box flex={1} display="flex" flexDirection="column" gap={2}>
+            <Box flex={1} display="flex" flexDirection="column" gap={{ xs: 1, md: 2 }}>
                 <LuggageItemRow
                     detailsColumn={detailsColumn}
                     imgSrc="/sb.png"

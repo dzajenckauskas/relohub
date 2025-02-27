@@ -128,7 +128,7 @@ const CommonItemsForm = ({ form }: Props) => {
     return (
         <Stack direction="row" gap={0} pb={0} pt={0}>
             <Box flex={1} display="flex" flexDirection="column">
-                <Stack gap={2}>
+                <Stack gap={{ xs: 1, md: 2 }}>
                     {Object.values(
                         fields.reduce((acc, field, index) => {
                             if (!acc[field.name]) {
@@ -168,7 +168,7 @@ const CommonItemsForm = ({ form }: Props) => {
                     />
                 </Box>
                 {/* Filtered Top Items List */}
-                <Stack spacing={2} sx={{ maxHeight: 420, overflowY: 'auto' }}>
+                <Stack spacing={{ xs: 1, md: 2 }} sx={{ maxHeight: 420, overflowY: 'auto' }}>
                     {!searchQuery &&
                         topItems
                             .filter((item) => !existingItemNames.includes(item.name)) // Exclude selected items
@@ -189,7 +189,7 @@ const CommonItemsForm = ({ form }: Props) => {
                 </Stack>
 
                 {/* Filtered Search Results */}
-                <Stack spacing={2} sx={{ maxHeight: 350, overflowY: 'auto', pr: '14px' }}>
+                <Stack spacing={{ xs: 1, md: 2 }} sx={{ maxHeight: 350, overflowY: 'auto', pr: '14px' }}>
                     {searchQuery &&
                         filteredItems
                             .filter((item) => !existingItemNames.includes(item.name)) // Ensure existing items are removed

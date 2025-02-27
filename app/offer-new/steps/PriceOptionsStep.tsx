@@ -27,7 +27,7 @@ const PriceOptionsStep = ({ error, transformedData, form, countriesData, activeS
     console.log(error, "ERROR");
 
     return (
-        <Card sx={{ p: 4, pb: 0, width: "100%", mx: "auto", mb: 10 }}>
+        <Card sx={{ p: { xs: 2, md: 4 }, pb: 0, width: "100%", mx: "auto", mb: '120px' }}>
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
                 <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
                     {
@@ -64,7 +64,7 @@ const PriceOptionsStep = ({ error, transformedData, form, countriesData, activeS
                 </Stack>
                 <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative', height: '100%' }}>
                     <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />
-                    <Stack sx={{ position: 'relative', mt: -4, bottom: -50, right: 2, width: '100%' }}>
+                    <Stack sx={{ position: 'relative', mt: -5, bottom: -60, right: 2, width: '100%' }}>
                         <Image
                             alt="background"
                             src={"/illustration-3.svg"}

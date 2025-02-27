@@ -1,4 +1,4 @@
-import { Divider, Stack } from "@mui/material";
+import { Box, Divider, Stack } from "@mui/material";
 import Typography from '@mui/material/Typography';
 import { CustomItemType } from "./OfferNewPage";
 import QuantityButtons from "./QuantityButtons";
@@ -31,58 +31,47 @@ const LuggageItemRow = ({ isLastItem, rowNo, detailsColumn, form, dimensions, ma
                 zIndex: 1,
                 // px: 2
             }}>
-                <Stack direction={'row'}
-                    gap={1}
-                    sx={{
-                        justifyContent: 'space-between',
-                        alignItems: 'center'
-                    }}>
-                    {/* <Stack>
-                        <Inventory2Icon sx={{ fontSize: 62 }} />
-                    </Stack> */}
-                    {/* {imgSrc && (
-                        <Stack sx={{ position: 'relative', mt: -1, bottom: -1, right: 0, width: 40, height: 40 }}>
-                            <Image
-                                alt="background"
-                                src={imgSrc}
-                                style={{ objectFit: "contain" }}
-                                fill
-                                sizes="40px"
-                            />
+                <Stack gap={{ xs: 0, sm: 10, md: 0 }} direction={{ xs: 'column', sm: 'row' }}>
+                    <Stack direction={'row'}
+                        gap={1}
+                        sx={{
+                            justifyContent: 'space-between',
+                            alignItems: 'center'
+                        }}>
+                        <Stack
+                            direction={'row'}
+                            sx={{ width: { xs: '100%', sm: '140px' } }}
+                        >
+
+                            <Typography variant='subtitle2' sx={{
+                                fontWeight: 600,
+                                lineHeight: 1, minWidth: { xs: '100%', sm: 140 }, width: '100%'
+                            }}>
+                                {primaryText}{' '}
+                                {secondaryText && <Box sx={{ display: { xs: 'none', sm: 'flex' } }}></Box>}
+                                {secondaryText}
+                            </Typography>
                         </Stack>
-                    )} */}
-
-                    <Stack
-                        direction={'row'}
-                        sx={{ width: { xs: '100px', md: '100px' } }}
-                    >
-
-                        <Typography variant='subtitle2' sx={{
-                            fontWeight: 600,
-                            lineHeight: 1.2, maxWidth: 140, width: '100%'
-                        }}>
-                            {primaryText}
-                            {secondaryText && <br />}
-                            {secondaryText}
-                        </Typography>
                     </Stack>
-                </Stack>
-                <Stack direction={'column'}>
-                    <Stack sx={{ width: { xs: '100px', md: '100px' } }}>
-                        <Typography variant='body2' sx={{
-                            fontWeight: 500,
-                            fontSize: { xs: 14, md: 14 }
-                        }}>
-                            {dimensions}
-                        </Typography>
-                    </Stack>
-                    <Stack sx={{ width: { xs: '100px', md: '100px' } }}>
-                        <Typography variant='body2' sx={{
-                            fontWeight: 500,
-                            fontSize: { xs: 14, md: 14 }
-                        }}>
-                            max {maxWeight}kg
-                        </Typography>
+                    <Stack width={'100%'} pt={{ xs: .5, sm: 0 }} direction={{ xs: 'column', sm: 'column' }}>
+                        <Stack sx={{ width: { xs: '100%', sm: '100px' } }}>
+                            <Typography variant='body2' sx={{
+                                fontWeight: 500,
+                                fontSize: { xs: 12, sm: 14 },
+                                lineHeight: { xs: 1.1, sm: 1.2 }
+                            }}>
+                                {dimensions}
+                            </Typography>
+                        </Stack>
+                        <Stack sx={{ width: { xs: '100%', sm: '100px' } }}>
+                            <Typography variant='body2' sx={{
+                                fontWeight: 500,
+                                fontSize: { xs: 12, sm: 14 },
+                                lineHeight: { xs: 1.1, sm: 1.2 }
+                            }}>
+                                max {maxWeight}kg
+                            </Typography>
+                        </Stack>
                     </Stack>
                 </Stack>
 

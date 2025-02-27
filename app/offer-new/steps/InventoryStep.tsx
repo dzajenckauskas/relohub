@@ -14,7 +14,7 @@ type Props = {
 
 const InventoryStep = ({ form, error }: Props) => {
     return (
-        <Card sx={{ p: 4, width: "100%", mx: "auto", mb: 36, pb: 0 }}>
+        <Card sx={{ p: { xs: 2, md: 4 }, width: "100%", mx: "auto", mb: { xs: '80px', md: '120px' }, pb: 0 }}>
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
                 <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 4, md: 8 }} width={'100%'} maxWidth={{ xs: '100%', md: "100%" }}>
                     <Stack width={'100%'}>
@@ -50,7 +50,7 @@ const InventoryStep = ({ form, error }: Props) => {
                 {/* <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} /> */}
                 {/* {form.formState?.errors?.hasItemsAdded && (
                     <ErrorMessage message={form.formState?.errors?.hasItemsAdded.message} />)} */}
-                <Stack sx={{ position: 'relative', mt: -8, bottom: -14, right: { xs: 0, md: -50 }, width: '100%' }}>
+                <Stack sx={{ position: 'relative', mt: { xs: 0, md: -8 }, bottom: -48, right: { xs: -20, md: -50 }, width: '100%' }}>
                     <Image
                         alt="background"
                         src={"/illustration-1.svg"}

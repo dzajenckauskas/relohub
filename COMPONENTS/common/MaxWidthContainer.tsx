@@ -11,12 +11,13 @@ export const MaxWidthContainer = ({ children, sx, spacing }: Props) => {
         <Stack
             direction={'row'} spacing={spacing ?? 0}
             sx={{
-                ...sx,
                 mx: 'auto',
                 maxWidth: 'lg',
                 width: '100%',
                 px: { xl: 2, sm: 2, xs: 2 },
                 alignItems: 'center',
+                ...sx,
+
             }}>
             {children}
         </Stack>

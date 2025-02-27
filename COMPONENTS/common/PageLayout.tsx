@@ -9,7 +9,7 @@ import Header from './shared/header/Header';
 
 
 
-const PageLayout = ({ children, hidePopUpButton }: { children: React.ReactNode, hidePopUpButton?: boolean }) => {
+const PageLayout = ({ children, hidePopUpButton, hideFooter }: { children: React.ReactNode, hidePopUpButton?: boolean, hideFooter?: boolean; }) => {
     const theme = getTheme();
 
     return (
@@ -19,7 +19,7 @@ const PageLayout = ({ children, hidePopUpButton }: { children: React.ReactNode, 
 
             <Header />
             {children}
-            <GetInTOuch />
+            {!hideFooter && <GetInTOuch />}
         </ThemeProvider >
     );
 };

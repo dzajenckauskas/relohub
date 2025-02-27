@@ -268,11 +268,12 @@ export default function OfferNewPage({ countriesData }: Props) {
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
 
-            <PageLayout hidePopUpButton>
-                <Stack sx={{ backgroundColor: "#efefef" }}>
-                    <MaxWidthContainer>
+            <PageLayout hidePopUpButton hideFooter>
+                <Stack sx={{ backgroundColor: "#efefef", minHeight: 'calc(100vh - 100px)' }}>
+                    <MaxWidthContainer sx={{ px: { xl: 2, sm: 2, xs: 0 }, }}>
                         <Stack mx="auto" maxWidth="lg" width="100%">
-                            <HorizontalStepper error={error} disablePricesButton={prices == null} activeStep={activeStep} setActiveStep={setActiveStep} />
+                            <HorizontalStepper error={error} disablePricesButton={prices == null}
+                                activeStep={activeStep} setActiveStep={setActiveStep} />
 
                             <form onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate>
                                 {/* Step 1: Contact details & Dates */}
