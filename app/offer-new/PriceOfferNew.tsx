@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useState } from "react";
 import OfferSummaryBottomLine from "./OfferSummaryBottomLine";
 import ErrorMessage from "./steps/ErrorMessage";
+import Box from "@mui/material/Box";
 
 export default function PriceOffer({ state, prices, form, activeStep }) {
     const stripe = useStripe();
@@ -21,13 +22,13 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
 
     function splitprices(elm) {
         if (elm) {
-            elm = elm.toString().includes(".") ? elm.toString() : `${elm}.00`;
+            elm = elm.toFixed(2)
             let split = elm.split(".");
 
             return (
                 <div className="methodpopuppriceswrp">
                     <Typography variant="h3" component={'h2'}>£{split[0]}</Typography>
-                    <p style={{ paddingLeft: 4 }}>{split[1]}</p>
+                    <Typography style={{ paddingLeft: 2, fontSize: 14, fontWeight: 600, letterSpacing: 1.2, position: 'relative', top: -1 }}>{split[1]}</Typography>
                 </div>
             );
         }
@@ -164,7 +165,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
                             <Stack sx={{
                                 cursor: 'pointer', borderRadius: .75,
                                 backgroundColor: selected?.field === el.field ? theme.palette.secondary.main : '#EBEBEB',
-                                px: 3, py: 2
+                                px: { xs: 2, sm: 3 }, py: { xs: 1.5, sm: 2 }
                             }}
                                 direction={'row'} width={'100%'} alignItems={'center'}
                                 justifyContent={'space-between'}
@@ -173,38 +174,85 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
                                 }}
                                 key={i}
                             >
-                                <Stack spacing={4} direction={'row'} width={'100%'} alignItems={'center'} >
+                                <Box sx={{ display: { xs: 'none', sm: 'flex' }, width: '100%', alignItems: 'center' }}>
+                                    <Stack spacing={4} direction={'row'} width={'100%'} alignItems={'center'} >
+                                        <div
+                                            className={
+                                                isSelected
+                                                    ? "offfepopupselectionsignselected"
+                                                    : "offfepopupselectionsign"
+                                            }
+                                        >
+                                        </div>
+                                        <Image
+                                            alt={el.name}
+                                            src={el.image}
+                                            style={{ objectFit: "contain" }}
+                                            width={50}
+                                            height={50}
+                                        />
+
+                                        <h3 style={{ fontSize: 20, color: isSelected ? '#fff' : theme.palette.primary.main, width: 80, textTransform: 'capitalize' }}>
+                                            {el.name}
+                                        </h3>
+                                        <div style={{ color: isSelected ? '#fff' : theme.palette.primary.main, }} className="offerpopupselectionlinercenterwrp">
+                                            <p style={{ fontWeight: 500 }}>{el.smallt}</p>
+                                            <p>{el.duration}</p>
+                                        </div>
+                                    </Stack>
                                     <div
-                                        className={
-                                            isSelected
-                                                ? "offfepopupselectionsignselected"
-                                                : "offfepopupselectionsign"
-                                        }
+                                        style={{ color: isSelected ? '#fff' : theme.palette.primary.main, letterSpacing: 1 }}
                                     >
+                                        {splitprices(el.price)}
                                     </div>
-                                    <Image
-                                        alt={el.name}
-                                        src={el.image}
-                                        style={{ objectFit: "contain" }}
-                                        width={50}
-                                        height={50}
-                                    />
+                                </Box>
 
-                                    <h3 style={{ fontSize: 20, color: isSelected ? '#fff' : theme.palette.primary.main, width: 80, textTransform: 'capitalize' }}>
-                                        {el.name}
-                                    </h3>
-                                    <div style={{ color: isSelected ? '#fff' : theme.palette.primary.main, }} className="offerpopupselectionlinercenterwrp">
-                                        <p style={{ fontWeight: 500 }}>{el.smallt}</p>
-                                        <p>{el.duration}</p>
-                                    </div>
-                                </Stack>
-                                <div
-                                    style={{ color: isSelected ? '#fff' : theme.palette.primary.main, letterSpacing: 1 }}
-                                >
-                                    {splitprices(el.price)}
-                                </div>
+                                <Box sx={{ display: { xs: 'flex', sm: 'none' }, width: '100%', alignItems: 'center' }}>
+                                    <Stack spacing={2} direction={'row'} width={'100%'} alignItems={'center'} >
+                                        <Stack position={"relative"} sx={{ top: -18 }}>
+                                            <div
+                                                className={
+                                                    isSelected
+                                                        ? "offfepopupselectionsignselected"
+                                                        : "offfepopupselectionsign"
+                                                }
+                                            >
+                                            </div>
+                                        </Stack>
+                                        <Stack width={'100%'}>
+                                            <Stack direction={'row'} alignContent={'center'} alignItems={'center'}
+                                                sx={{ borderBottom: `1px solid ${theme.palette.divider}`, pb: 1 }}>
+                                                <Stack spacing={2} width={'100%'} justifyContent={'space-between'} direction={'row'} alignContent={'center'} alignItems={'center'}>
+                                                    <Stack direction={'row'} spacing={3}>
+                                                        <Image
+                                                            alt={el.name}
+                                                            src={el.image}
+                                                            style={{ objectFit: "contain" }}
+                                                            width={40}
+                                                            height={40}
+                                                        />
 
+                                                        <h3 style={{ fontSize: 18, color: isSelected ? '#fff' : theme.palette.primary.main, width: 60, textTransform: 'capitalize' }}>
+                                                            {el.name}
+                                                        </h3>
+                                                    </Stack>
+                                                    <div
+                                                        style={{ color: isSelected ? '#fff' : theme.palette.primary.main, letterSpacing: 1 }}
+                                                    >
+                                                        {splitprices(el.price)}
+                                                    </div>
+                                                </Stack>
+                                            </Stack>
+                                            <Stack pt={1} direction={'row'}
+                                                width={'100%'} justifyContent={'space-between'}
+                                                sx={{ color: isSelected ? '#fff' : theme.palette.primary.main, }} className="offerpopupselectionlinercenterwrp">
+                                                <p style={{ fontWeight: 500 }}>{el.smallt}</p>
+                                                <p>{el.duration}</p>
+                                            </Stack>
+                                        </Stack>
+                                    </Stack>
 
+                                </Box>
                             </Stack>
                         );
                     })}

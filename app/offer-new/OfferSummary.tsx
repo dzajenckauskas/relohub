@@ -33,7 +33,6 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
     const collectionDate = form.watch('collectionDate') ?? undefined
     const deliverBoxesDate = form.watch('deliverBoxesDate') ?? undefined
     const emptyBoxesQuantity = form.watch('emptyBoxesQuantity')
-    console.log(form.getValues(), 'lala');
 
     const groupedCustomItems = customItems?.reduce((acc, item) => {
         const key = item.slug; // Group items based on 'slug'
@@ -72,10 +71,10 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                         justifyContent: 'space-between',
                         alignItems: 'center', borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
                     }}>
-                        <Typography color={'primary'} variant="subtitle2" sx={{ pb: 0 }}>
+                        <Typography color={'primary'} variant="subtitle2" sx={{ pb: 1.22 }}>
                             SUMMARY
                         </Typography>
-                        <Button
+                        {/* <Button
                             disableElevation
                             disableFocusRipple
                             disableRipple
@@ -102,7 +101,7 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                             color="secondary"
                         >
                             Edit
-                        </Button>
+                        </Button> */}
 
                     </Stack>
                     <Stack spacing={1} pt={2}>

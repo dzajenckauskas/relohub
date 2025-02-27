@@ -30,16 +30,9 @@ type Props = {
 };
 
 const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth, error, helperText }: Props) => {
-    // const [selectedCountry, setSelectedCountry] = useState("US");
-
-    // useEffect(() => {
-    //     console.log(form.getValues("dialCode"), "Country Dial Code in Form");
-    //     console.log(form.getValues("countryCode"), "Country Dial Code in Form");
-    // }, [form.watch("countryCode"), form.watch("dialCode")]); // ✅ Watching `countryCode`
-
     const handleCountryChange = (e: any) => {
         const newCountry = e.target.value;
-        const countryData = countryList.find(c => c.code === newCountry ?? 'US');
+        const countryData = countryList.find(c => c.code === (newCountry ?? 'US'));
 
         if (countryData) {
             // setSelectedCountry(newCountry);

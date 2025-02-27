@@ -68,10 +68,10 @@ const phoneValidation = yup
     .string()
     .required("Phone number is required")
     .matches(/^\d+$/, "Phone number must contain only digits") // ✅ Ensures only digits
-    .test("no-dial-code", "Phone number should not contain country code", function (value) {
-        const dialCode = this.parent.dialCode || "";
-        return !value.startsWith(dialCode);
-    });
+// .test("no-dial-code", "Phone number should not contain country code", function (value) {
+//     const dialCode = this.parent.dialCode || "";
+//     return !value.startsWith(dialCode);
+// });
 
 const stepSchemas = [
     yup.object({
