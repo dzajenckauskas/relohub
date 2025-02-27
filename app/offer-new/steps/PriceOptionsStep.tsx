@@ -32,7 +32,7 @@ const PriceOptionsStep = ({ error, transformedData, form, nextStep, countriesDat
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
                 <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
                     {
-                        // prices?.length > 0 &&
+                        prices?.length > 0 &&
                         <>
                             <Stack gap={2}>
 
@@ -41,17 +41,19 @@ const PriceOptionsStep = ({ error, transformedData, form, nextStep, countriesDat
                             </Stack>
                             <Elements stripe={stripePromise}>
                                 <PriceOfferNew
+                                    activeStep={activeStep}
+                                    form={form}
                                     state={transformedData}
-                                    // prices={prices}
-                                    prices={{
-                                        price: {
-                                            ROAD: 123,
-                                            SEA: 234,
-                                            'AIR COURIER': 345,
-                                            "AIR FREIGHT (TO-AIRPORT)": 456,
-                                            "AIR FREIGHT (TO-DOOR)": 687,
-                                        }
-                                    }}
+                                    prices={prices}
+                                // prices={{
+                                //     price: {
+                                //         ROAD: 123,
+                                //         SEA: 234,
+                                //         'AIR COURIER': 345,
+                                //         "AIR FREIGHT (TO-AIRPORT)": 456,
+                                //         "AIR FREIGHT (TO-DOOR)": 687,
+                                //     }
+                                // }}
                                 />
                             </Elements>
                         </>

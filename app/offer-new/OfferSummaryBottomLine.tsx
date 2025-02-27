@@ -14,12 +14,14 @@ import ErrorMessage from './steps/ErrorMessage'
 type Props = {
     form: any;
     activeStep: number;
-    countriesData: CountriesResponseType;
+    countriesData?: CountriesResponseType;
     validateForm?: () => Promise<boolean>
     nextStep?: () => void;
+    onClick?: () => void;
+    error?: string;
 }
 
-const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep, nextStep }: Props) => {
+const OfferSummaryBottomLine = ({ onClick, error, validateForm, form, countriesData, activeStep, nextStep }: Props) => {
     const [edit, setEdit] = useState(false)
     console.log(edit, "edit");
 
@@ -47,7 +49,7 @@ const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep,
                 <Card sx={{ backgroundColor: '#252420', px: 3, py: 3, pb: 3 }}>
 
                     <Stack direction={'row'} width={'100%'} justifyContent={{ xs: 'center', sm: 'space-between' }} spacing={1}>
-                        <Stack spacing={4} pt={2} direction={'row'} display={{ xs: 'none', sm: 'flex' }}>
+                        {activeStep !== 2 && <Stack spacing={4} pt={2} direction={'row'} display={{ xs: 'none', sm: 'flex' }}>
                             {
                                 activeStep > 0 &&
                                 <>
@@ -219,7 +221,13 @@ const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep,
                                             {formatDate(collectionDate)}
                                         </Typography>}
                                 </Box>}
-                        </Stack>
+                        </Stack>}
+
+                        {activeStep == 2 && <Stack spacing={4} pt={2} direction={'row'} display={{ xs: 'none', sm: 'flex' }}>
+                            <Typography color={'white'} variant="body1">
+                                <b>To book, we only require a £100 deposit</b>, whitch will be deducted from the final invoice.
+                            </Typography>
+                        </Stack>}
                         {/* <Stack direction={'row'} sx={{
                         width: '100%',
                         justifyContent: 'flex-end',
@@ -230,7 +238,7 @@ const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep,
                             SUMMARY
                         </Typography> */}
                         <Stack direction={'row'} alignItems={"center"} gap={3} alignContent={'center'}>
-                            <Button
+                            {activeStep !== 2 && <Button
                                 disableElevation
                                 disableFocusRipple
                                 disableRipple
@@ -256,23 +264,35 @@ const OfferSummaryBottomLine = ({ validateForm, form, countriesData, activeStep,
                                 color="secondary"
                             >
                                 Edit
-                            </Button>
+                            </Button>}
 
                             <Box>
-                                <Button onClick={nextStep} variant="contained" color="secondary"
-                                    sx={{ px: 6, py: 2 }}>
-                                    Next step
-                                </Button>
-
+                                {activeStep == 0 &&
+                                    <Button onClick={nextStep} variant="contained" color="secondary"
+                                        sx={{ px: 6, py: 2 }}>
+                                        Next step
+                                    </Button>}
+                                {activeStep == 1 &&
+                                    <Button type={'submit'} variant="contained" color="secondary"
+                                        sx={{ px: 6, py: 2 }}>
+                                        Next step
+                                    </Button>}
+                                {activeStep == 2 &&
+                                    <Button onClick={onClick} variant="contained" color="secondary"
+                                        sx={{ px: 6, py: 2 }}>
+                                        Pay deposit using stripe
+                                    </Button>}
                             </Box>
 
                         </Stack>
 
                     </Stack>
 
-                    {(hasErrors || form.formState?.errors?.hasItemsAdded) &&
+
+                    {(error || hasErrors || form.formState?.errors?.hasItemsAdded) &&
                         <Stack direction={'row'} width={'100%'} justifyContent={'flex-end'}>
                             {activeStep !== 1 && hasErrors && <ErrorMessage message={'Check form for errors'} />}
+                            {error && <ErrorMessage message={error} />}
                             {activeStep == 1 && form.formState?.errors?.hasItemsAdded && (
                                 <ErrorMessage message={form.formState?.errors?.hasItemsAdded.message} />)}
                         </Stack>}

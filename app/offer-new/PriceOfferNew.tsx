@@ -1,16 +1,16 @@
 "use client";
-import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import { theme } from "@/COMPONENTS/common/shared/Theme";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import ErrorMessage from "./steps/ErrorMessage";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import { theme } from "@/COMPONENTS/common/shared/Theme";
+import OfferSummaryBottomLine from "./OfferSummaryBottomLine";
 
-export default function PriceOffer({ state, prices }) {
+export default function PriceOffer({ state, prices, form, activeStep }) {
+    console.log(activeStep, "activeStep");
+
     const stripe = useStripe();
     const elements = useElements();
     const [selected, setselected] = useState(null);
@@ -224,7 +224,7 @@ export default function PriceOffer({ state, prices }) {
                     })}
                 </Stack>
 
-                <div className="stripepaymentwrp">
+                {/* <div className="stripepaymentwrp">
                     <p>
                         <strong>
                             To book, we only require a £100 deposit,{" "}
@@ -243,7 +243,9 @@ export default function PriceOffer({ state, prices }) {
                         Pay deposit using stripe
                     </Button>
                     {error && <ErrorMessage message={String(error)} />}
-                </Box>
+                </Box> */}
+
+
             </div>
             // </div>
         );
@@ -424,6 +426,12 @@ export default function PriceOffer({ state, prices }) {
                     ? stripefn()
                     : pricesPopup()}
             {ordercompleted ? afterPayment() : null}
+            {activeStep == 2 && <Stack sx={{ maxWidth: { xs: "100%", md: '100%' }, width: '100%', position: 'fixed', left: 0, bottom: 0, zIndex: 99 }}>
+                <OfferSummaryBottomLine onClick={() => {
+                    setshowstripepopup(true);
+                }}
+                    error={String(error)} activeStep={activeStep} form={form} />
+            </Stack>}
         </section>
     );
 }

@@ -5,23 +5,20 @@ const nextConfig = {
         optimizeFonts: true,
     },
     images: {
-        domains: ["154.49.136.99:4000", "154.49.136.99", "154.49.136.99:1344", "flagcdn.com", 'api.deliver1.co.uk'],
+        domains: [
+            "154.49.136.99",
+            "flagcdn.com",
+            "api.deliver1.co.uk"
+        ],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'api.deliver1.co.uk',
+                port: '1344',
+                pathname: '/uploads/**',
+            }
+        ],
     },
-    // images: {
-    //     remotePatterns: [
-    //         // {
-    //         //     protocol: 'http',
-    //         //     hostname: '154.49.136.99',
-    //         //     pathname: 'uploads/**',
-    //         // },
-    //         {
-    //             protocol: 'http',
-    //             hostname: '154.49.136.99',
-    //             port: '1344',
-    //             pathname: '/uploads/**',
-    //         }
-    //     ],
-    // },
 };
 
 module.exports = nextConfig;
