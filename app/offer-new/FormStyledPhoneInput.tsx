@@ -6,9 +6,8 @@ import {
     Select,
     TextField
 } from "@mui/material";
-import { useEffect, useState } from "react";
-import { Controller } from "react-hook-form";
 import { CountryCode, getCountries, getCountryCallingCode } from "libphonenumber-js";
+import { Controller } from "react-hook-form";
 
 const countryList = getCountries()
     .map((code) => ({
@@ -33,10 +32,10 @@ type Props = {
 const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth, error, helperText }: Props) => {
     // const [selectedCountry, setSelectedCountry] = useState("US");
 
-    useEffect(() => {
-        console.log(form.getValues("dialCode"), "Country Dial Code in Form");
-        console.log(form.getValues("countryCode"), "Country Dial Code in Form");
-    }, [form.watch("countryCode"), form.watch("dialCode")]); // ✅ Watching `countryCode`
+    // useEffect(() => {
+    //     console.log(form.getValues("dialCode"), "Country Dial Code in Form");
+    //     console.log(form.getValues("countryCode"), "Country Dial Code in Form");
+    // }, [form.watch("countryCode"), form.watch("dialCode")]); // ✅ Watching `countryCode`
 
     const handleCountryChange = (e: any) => {
         const newCountry = e.target.value;
@@ -62,9 +61,17 @@ const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth
                     helperText={helperText}
                     label={label}
                     sx={{
-                        backgroundColor: "#efefef",
+                        backgroundColor: "transparent", // ✅ Keep background transparent
                         borderRadius: 1,
-                        "& .MuiOutlinedInput-notchedOutline": { border: "none" },
+                        "& .MuiOutlinedInput-root": {
+                            backgroundColor: "#efefef", // ✅ Background only for input
+                            borderRadius: 1,
+                            "& .MuiOutlinedInput-notchedOutline": { border: "none" }, // Remove border
+                        },
+                        ".MuiFormHelperText-root": {
+                            position: 'relative',
+                            left: -8
+                        }
                     }}
                     {...field}
                     InputLabelProps={{
@@ -94,7 +101,7 @@ const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth
                                         right: 13,
                                         '.MuiSelect-iconOutlined': {
                                             transform: 'scale(2)'
-                                        }
+                                        },
                                     }}
                                     disableUnderline
                                     IconComponent={ArrowDropDown}
