@@ -1,5 +1,6 @@
 import { CountriesResponseType } from '@/COMPONENTS/types/CountryType';
 import Card from '@mui/material/Card';
+import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { Elements } from '@stripe/react-stripe-js';
@@ -9,9 +10,7 @@ import { UseFormReturn } from 'react-hook-form';
 import NoPricePopup from '../NoPricePopup';
 import { OfferFormType } from '../OfferNewPage';
 import OfferSummary from '../OfferSummary';
-import PriceOffer from '../PriceOffer';
 import PriceOfferNew from '../PriceOfferNew';
-import Divider from '@mui/material/Divider';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC);
 
 type Props = {
@@ -24,7 +23,7 @@ type Props = {
     error: string;
 }
 
-const PriceOptionsStep = ({ error, transformedData, form, nextStep, countriesData, activeStep, prices }: Props) => {
+const PriceOptionsStep = ({ error, transformedData, form, countriesData, activeStep, prices }: Props) => {
     console.log(error, "ERROR");
 
     return (
@@ -34,11 +33,7 @@ const PriceOptionsStep = ({ error, transformedData, form, nextStep, countriesDat
                     {
                         prices?.length !== 0 &&
                         <>
-                            <Stack gap={2}>
 
-                                <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Price Options</b></Typography>
-                                <Divider />
-                            </Stack>
                             <Elements stripe={stripePromise}>
                                 <PriceOfferNew
                                     activeStep={activeStep}
@@ -46,13 +41,11 @@ const PriceOptionsStep = ({ error, transformedData, form, nextStep, countriesDat
                                     state={transformedData}
                                     prices={prices}
                                 // prices={{
-                                //     price: {
-                                //         ROAD: 123,
-                                //         SEA: 234,
-                                //         'AIR COURIER': 345,
-                                //         "AIR FREIGHT (TO-AIRPORT)": 456,
-                                //         "AIR FREIGHT (TO-DOOR)": 687,
-                                //     }
+                                //     ROAD: 123,
+                                //     SEA: 234,
+                                //     'AIR COURIER': 345,
+                                //     "AIR FREIGHT (TO-AIRPORT)": 456,
+                                //     "AIR FREIGHT (TO-DOOR)": 687,
                                 // }}
                                 />
                             </Elements>
@@ -61,18 +54,13 @@ const PriceOptionsStep = ({ error, transformedData, form, nextStep, countriesDat
                     {
                         prices?.length === 0 &&
                         <>
-                            <Typography variant="h2" sx={{ fontWeight: 500 }}>Request <b>has been received</b></Typography>
+                            <Stack gap={2}>
+                                <Typography variant="h2" sx={{ fontWeight: 500 }}>Request <b>has been received</b></Typography>
+                                <Divider />
+                            </Stack>
                             <NoPricePopup />
                         </>
                     }
-                    {/* <Box>
-                        <Button onClick={nextStep} variant="contained" color="secondary"
-                            sx={{ px: 6, py: 2 }}>
-                            Next step
-                        </Button>
-                        {error && <ErrorMessage message={error} />}
-                    </Box> */}
-
                 </Stack>
                 <Stack sx={{ maxWidth: { xs: "100%", md: '30%' }, width: '100%', position: 'relative', height: '100%' }}>
                     <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} />

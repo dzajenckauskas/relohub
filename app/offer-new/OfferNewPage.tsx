@@ -299,17 +299,6 @@ export default function OfferNewPage({ countriesData }: Props) {
                                     />
                                 )}
 
-                                {/* Step 4: Submitted */}
-                                {/* {activeStep === undefined && (
-                                    <Card sx={{ p: 4, width: "100%", mx: "auto", mb: 10 }}>
-                                        <Typography variant="h2" sx={{ fontWeight: 500 }}><b>Thank you</b> for submission</Typography>
-                                        <Stack direction="row" gap={2} pb={2} pt={4}>
-                                            <Box flex={1} display="flex" flexDirection="column" gap={2}>
-
-                                            </Box>
-                                        </Stack>
-                                    </Card>
-                                )} */}
                                 {activeStep !== 2 && <Stack sx={{ maxWidth: { xs: "100%", md: '100%' }, width: '100%', position: 'fixed', left: 0, bottom: 0, zIndex: 99 }}>
                                     <OfferSummaryBottomLine error={error} validateForm={validateForm} countriesData={countriesData} activeStep={activeStep} nextStep={nextStep} form={form} />
                                 </Stack>}
