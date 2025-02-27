@@ -27,7 +27,7 @@ export default function PriceOffer({ state, prices }) {
 
             return (
                 <div className="methodpopuppriceswrp">
-                    <Typography variant={'h1'} component={'h2'}>£{split[0]}</Typography>
+                    <Typography variant="h3" component={'h2'}>£{split[0]}</Typography>
                     <p style={{ paddingLeft: 4 }}>{split[1]}</p>
                 </div>
             );
