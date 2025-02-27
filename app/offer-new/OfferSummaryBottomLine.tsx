@@ -32,6 +32,7 @@ type Props = {
 
 const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, selected, showstripepopup, setorderCompleted, orderCompleted, onClick, error, validateForm, form, countriesData, activeStep, nextStep }: Props) => {
     const [edit, setEdit] = useState(false)
+    console.log(form.getValues());
 
     const togglePopUp = () => {
         setEdit(!edit)
@@ -133,7 +134,7 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
                                                             Telephone:
                                                         </Typography>
                                                         <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                                            {form.getValues('phone')}
+                                                            {form.getValues('dialCode')}{form.getValues('phone')}
                                                         </Typography>
                                                     </Box>}
                                                 {!!collectionDate &&

@@ -31,6 +31,8 @@ export type OfferFormType = {
     collectPostcode: string;
     deliverCountry: string;
     deliverCity: string;
+    dialCode: string;
+    countryCode: string;
     deliverPostcode: string;
     standardBox: number;
     largeBox: number;
@@ -104,6 +106,7 @@ export default function OfferNewPage({ countriesData }: Props) {
         mode: "onTouched",
         reValidateMode: 'onChange',
         defaultValues: {
+            // countryCode: "+1",
             collectCountry: capitalizeEachWord(dataParam?.from_country)
             // ?? "United Kingdom"
             ,
@@ -197,7 +200,7 @@ export default function OfferNewPage({ countriesData }: Props) {
     const transformedData = {
         name: formData?.fullName,
         email: formData?.email,
-        phone: formData?.phone,
+        phone: `${formData?.dialCode}${formData?.phone}`,
 
         from_city: formData?.collectCity,
         from_country: formData?.collectCountry,
