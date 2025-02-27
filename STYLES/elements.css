@@ -1631,7 +1631,7 @@ th {
 }
 
 .offerstripecardetailstxt {
-    color: var(--green);
+    color: var(--pink_color);
     font-weight: bold;
 }
 
@@ -1661,8 +1661,8 @@ th {
 .offerpopupcenterwrpstripe,
 .nopricepopupcenterwrp {
     background: #fff;
-    padding: 24px;
-    max-width: 640px;
+    /* padding: 24px; */
+    /* max-width: 640px; */
     flex-grow: 10;
 }
 

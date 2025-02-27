@@ -1,13 +1,12 @@
 "use client";
 import { theme } from "@/COMPONENTS/common/shared/Theme";
+import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import OfferSummaryBottomLine from "./OfferSummaryBottomLine";
-import Divider from "@mui/material/Divider";
 
 export default function PriceOffer({ state, prices, form, activeStep }) {
     const stripe = useStripe();
@@ -149,6 +148,10 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
     function pricesPopup() {
         return (
             <div style={{ paddingLeft: 0 }}>
+                <Stack gap={2} pb={1}>
+                    <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Price Options</b></Typography>
+                    <Divider />
+                </Stack>
                 <Stack spacing={1} pt={1}>
                     {items.map((el, i) => {
                         const isSelected = selected?.field === el.field
@@ -278,18 +281,15 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
     function stripefn() {
         return (
             <div className="offerpopupcenterwrpstripe" style={{ paddingLeft: 0 }}>
-                <div className="offerpopupstripetopwrp">
+                <Stack gap={2} pb={1}>
+                    <Typography variant="h2" sx={{ fontWeight: 500 }}>Deposit <b>Payment</b></Typography>
+                    <Divider />
+                </Stack>
+                {/* <div className="offerpopupstripetopwrp">
                     {" "}
                     <h3 className="stripepopuph3">DEPOSIT PAYMENT</h3>{" "}
-                    {/* <button
-                        className="alotoftextclosebutton"
-                        onClick={() => {
-                            hidePopup(false);
-                        }}
-                    >
-                        &#10006;
-                    </button> */}
-                </div>
+                    
+                </div> */}
 
                 <p>
                     Thank you for choosing Deliver1 to handle your shipment from{" "}
@@ -351,17 +351,18 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
                 ) : paymentonprogress ? (
                     <span className="stripespinner"></span>
                 ) : (
-                    <button
-                        disabled={!paymentbuttonenabled}
-                        className="stripepaydepositbtn"
-                        onClick={() => {
-                            setpaymentonprogress(true);
-                            seterror(false);
-                            handlePayment();
-                        }}
-                    >
-                        PAY DEPOSIT NOW
-                    </button>
+                    null
+                    // <button
+                    //     disabled={!paymentbuttonenabled}
+                    //     className="stripepaydepositbtn"
+                    //     onClick={() => {
+                    //         setpaymentonprogress(true);
+                    //         seterror(false);
+                    //         handlePayment();
+                    //     }}
+                    // >
+                    //     PAY DEPOSIT NOW
+                    // </button>
                 )}
             </div>
         );
@@ -370,18 +371,22 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
     function afterPayment() {
         return (
             <div className="offerpopupcenterwrpstripe">
-                <div className="offerpopupstripetopwrp">
-                    {" "}
+                {/* <div className="offerpopupstripetopwrp"> */}
+                <Stack gap={2} pb={1}>
+                    <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Payment Received</b></Typography>
+                    <Divider />
+                </Stack>
+                {/* {" "}
                     <h3 className="stripepopuph3">
                         <div className="paymentreceivedcheckmark">&#x2714;</div>{" "}
                         PAYMENT RECEIVED
-                    </h3>{" "}
-                    <Link className="paymentreceiverdlink" href={"/"}>
+                    </h3>{" "} */}
+                {/* <Link className="paymentreceiverdlink" href={"/"}>
                         <button className="alotoftextclosebutton">
                             &#10006;
                         </button>
-                    </Link>
-                </div>
+                    </Link> */}
+                {/* </div> */}
 
                 <p>
                     We have successfully received your £100.00 deposit payment.
@@ -401,23 +406,32 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
     }
 
     return (
-        <section >
-            <Stack gap={2} pb={1}>
-                <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Price Options</b></Typography>
-                <Divider />
-            </Stack>
+        <section style={{ width: '100%' }}>
             {ordercompleted
                 ? null
                 : showstripepopup
                     ? stripefn()
                     : pricesPopup()}
             {ordercompleted ? afterPayment() : null}
-            {activeStep == 2 && <Stack sx={{ maxWidth: { xs: "100%", md: '100%' }, width: '100%', position: 'fixed', left: 0, bottom: 0, zIndex: 99 }}>
-                <OfferSummaryBottomLine onClick={() => {
-                    setshowstripepopup(true);
-                }}
-                    error={String(error)} activeStep={activeStep} form={form} />
-            </Stack>}
+            {activeStep == 2 &&
+                <Stack sx={{ maxWidth: { xs: "100%", md: '100%' }, width: '100%', position: 'fixed', left: 0, bottom: 0, zIndex: 99 }}>
+                    <OfferSummaryBottomLine onClick={() => {
+                        setshowstripepopup(true);
+                    }}
+                        onClickPay={() => {
+                            setpaymentonprogress(true);
+                            seterror(false);
+                            handlePayment();
+                        }
+                        }
+                        loading={paymentonprogress}
+                        paymentbuttonenabled={paymentbuttonenabled}
+                        selected={selected}
+                        showstripepopup={showstripepopup}
+                        setorderCompleted={setordercompleted}
+                        orderCompleted={ordercompleted}
+                        error={String(error)} activeStep={activeStep} form={form} />
+                </Stack>}
         </section>
     );
 }

@@ -241,11 +241,11 @@ h3 {
     font-size: 3rem;
 }
 
-/* button:disabled { */
-/* visibility: hidden; */
-/* pointer-events: none; */
-/* background: silver; */
-/* } */
+/* button:disabled {
+    visibility: hidden;
+    pointer-events: none;
+    background: silver;
+} */
 
 button {
     border: none;

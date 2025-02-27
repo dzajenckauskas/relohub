@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 import OfferSummaryFormCard from './OfferSummaryFormCard'
 import ErrorMessage from './steps/ErrorMessage'
+import Link from 'next/link'
 
 
 type Props = {
@@ -19,11 +20,17 @@ type Props = {
     nextStep?: () => void;
     onClick?: () => void;
     error?: string;
+    selected?: boolean;
+    paymentbuttonenabled?: boolean;
+    loading?: boolean;
+    orderCompleted?: boolean;
+    showstripepopup?: boolean;
+    setorderCompleted?: (v: boolean) => void;
+    onClickPay?: () => void;
 }
 
-const OfferSummaryBottomLine = ({ onClick, error, validateForm, form, countriesData, activeStep, nextStep }: Props) => {
+const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, selected, showstripepopup, setorderCompleted, orderCompleted, onClick, error, validateForm, form, countriesData, activeStep, nextStep }: Props) => {
     const [edit, setEdit] = useState(false)
-    console.log(edit, "edit");
 
     const togglePopUp = () => {
         setEdit(!edit)
@@ -42,7 +49,7 @@ const OfferSummaryBottomLine = ({ onClick, error, validateForm, form, countriesD
     const emptyBoxesQuantity = form.watch('emptyBoxesQuantity')
     return (
         <>
-            <Box flex={1} display="flex" flexDirection="column"
+            {<Box flex={1} display="flex" flexDirection="column"
                 // gap={2}
                 sx={{ width: '100%' }}
             >
@@ -223,10 +230,15 @@ const OfferSummaryBottomLine = ({ onClick, error, validateForm, form, countriesD
                                 </Box>}
                         </Stack>}
 
-                        {activeStep == 2 && <Stack spacing={4} pt={2} direction={'row'} display={{ xs: 'none', sm: 'flex' }}>
+                        {!orderCompleted && activeStep == 2 && <Stack spacing={4} pt={2} direction={'row'} display={{ xs: 'none', sm: 'flex' }}>
                             <Typography color={'white'} variant="body1">
                                 <b>To book, we only require a £100 deposit</b>, whitch will be deducted from the final invoice.
                             </Typography>
+                        </Stack>}
+                        {orderCompleted && activeStep == 2 && <Stack spacing={4} pt={2} direction={'row'} display={{ xs: 'none', sm: 'flex' }}>
+                            {/* <Typography color={'white'} variant="body1">
+                                <b>To book, we only require a £100 deposit</b>, whitch will be deducted from the final invoice.
+                            </Typography> */}
                         </Stack>}
                         {/* <Stack direction={'row'} sx={{
                         width: '100%',
@@ -267,21 +279,38 @@ const OfferSummaryBottomLine = ({ onClick, error, validateForm, form, countriesD
                             </Button>}
 
                             <Box>
-                                {activeStep == 0 &&
+                                {!orderCompleted && activeStep == 0 &&
                                     <Button onClick={nextStep} variant="contained" color="secondary"
                                         sx={{ px: 6, py: 2 }}>
                                         Next step
                                     </Button>}
-                                {activeStep == 1 &&
+                                {!orderCompleted && activeStep == 1 &&
                                     <Button type={'submit'} variant="contained" color="secondary"
                                         sx={{ px: 6, py: 2 }}>
                                         Next step
                                     </Button>}
-                                {activeStep == 2 &&
-                                    <Button onClick={onClick} variant="contained" color="secondary"
+                                {!showstripepopup && !orderCompleted && activeStep == 2 &&
+                                    <Button disabled={!selected} onClick={onClick} variant="contained" color="secondary"
                                         sx={{ px: 6, py: 2 }}>
                                         Pay deposit using stripe
                                     </Button>}
+                                {showstripepopup && !orderCompleted && activeStep == 2 &&
+                                    <Button disabled={loading || !paymentbuttonenabled} onClick={onClickPay} variant="contained" color="secondary"
+                                        sx={{ px: 6, py: 2 }}>
+                                        {loading ? "Loading..." : 'Pay deposit now'}
+                                    </Button>}
+                                {orderCompleted &&
+                                    <Link passHref href={'/'}>
+                                        <Button onClick={() => {
+                                            setTimeout(() => {
+                                                setorderCompleted(false)
+                                            }, 100)
+                                        }} variant="contained" color="secondary"
+                                            sx={{ px: 6, py: 2 }}>
+                                            Back to main
+                                        </Button>
+                                    </Link>
+                                }
                             </Box>
 
                         </Stack>
@@ -292,12 +321,12 @@ const OfferSummaryBottomLine = ({ onClick, error, validateForm, form, countriesD
                     {(error || hasErrors || form.formState?.errors?.hasItemsAdded) &&
                         <Stack direction={'row'} width={'100%'} justifyContent={'flex-end'}>
                             {activeStep !== 1 && hasErrors && <ErrorMessage message={'Check form for errors'} />}
-                            {error && <ErrorMessage message={error} />}
+                            {(error && error !== 'false') && <ErrorMessage message={error} />}
                             {activeStep == 1 && form.formState?.errors?.hasItemsAdded && (
                                 <ErrorMessage message={form.formState?.errors?.hasItemsAdded.message} />)}
                         </Stack>}
                 </Card>
-            </Box>
+            </Box>}
             {edit && <OfferSummaryFormCard validateForm={validateForm} countriesData={countriesData} showPopUp={edit} togglePopUp={togglePopUp} form={form} />}
         </>
     )

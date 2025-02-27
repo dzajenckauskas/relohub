@@ -45,6 +45,10 @@ export const theme = createTheme({
                         boxShadow: 'none' // Removing box shadow on hover
                     }
                 }),
+                disabled: ({ theme }) => theme.unstable_sx({
+                    opacity: 1,
+                    backgroundColor: "red !important"
+                })
 
             }
         },
