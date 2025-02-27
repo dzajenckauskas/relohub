@@ -32,7 +32,7 @@ const PriceOptionsStep = ({ error, transformedData, form, nextStep, countriesDat
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
                 <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
                     {
-                        prices?.length > 0 &&
+                        prices?.length !== 0 &&
                         <>
                             <Stack gap={2}>
 
