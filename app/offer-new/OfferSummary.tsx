@@ -133,7 +133,7 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                                             Telephone:
                                         </Typography>
                                         <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                            {form.getValues('countryCode')}{form.getValues('phone')}
+                                            {form.getValues('dialCode')}{form.getValues('phone')}
                                         </Typography>
                                     </Box>}
 
