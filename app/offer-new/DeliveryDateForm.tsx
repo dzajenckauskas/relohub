@@ -1,5 +1,5 @@
+import { theme } from '@/COMPONENTS/common/shared/Theme';
 import Box from '@mui/material/Box';
-import FormHelperText from '@mui/material/FormHelperText';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
@@ -8,9 +8,6 @@ import 'dayjs/locale/en-gb';
 import localeData from 'dayjs/plugin/localeData';
 import { Controller, UseFormReturn } from 'react-hook-form';
 import { OfferFormType } from './OfferNewPage';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import Divider from '@mui/material/Divider';
-import { theme } from '@/COMPONENTS/common/shared/Theme';
 import ErrorMessage from './steps/ErrorMessage';
 
 dayjs.extend(localeData);
@@ -35,7 +32,13 @@ export function isPastOrWeekendOrFutureWorkingDay(date: Date) {
         (date >= today && date <= futureDate)
     );
 }
-
+const firstAvailableDate = (() => {
+    let date = dayjs();
+    while (isPastOrWeekendOrFutureWorkingDay(date.toDate())) {
+        date = date.add(1, "day");
+    }
+    return date;
+})();
 
 const DeliveryDateForm = ({ form }: Props) => {
     return (
@@ -59,15 +62,13 @@ const DeliveryDateForm = ({ form }: Props) => {
                             shouldDisableDate={(date: Dayjs) =>
                                 isPastOrWeekendOrFutureWorkingDay(date.toDate())
                             }
+                            referenceDate={firstAvailableDate}
                             sx={{
                                 width: '100%', // Make calendar full-width
                                 maxWidth: '100%', // Ensure it does not shrink
                                 borderRadius: '3px',
                                 minHeight: '400px !important',
-                                // padding: 2,
-                                // overflow: 'hidden',
                                 border: `1px solid ${theme.palette.divider}`,
-                                // boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
                                 '.MuiPickersCalendarHeader-root': {
                                     borderBottom: `1px solid ${theme.palette.divider}`,
                                     px: 3.5,
@@ -77,17 +78,12 @@ const DeliveryDateForm = ({ form }: Props) => {
                                 },
                                 '.MuiPickersCalendarHeader-label': {
                                     fontSize: '2.5rem',
-                                    // pl: 2.3
                                 },
                                 '.MuiDayCalendar-header': {
                                     display: 'flex',
                                     width: '100% !important',
                                     justifyContent: 'space-between',
                                     pb: 0
-                                    // p: 2,
-                                    // justifyContent: 'center',
-                                    // fontWeight: 'bold',
-                                    // padding: '14px', // Larger click area
                                 },
                                 '.MuiPickersArrowSwitcher-root button': {
                                     color: '#D81B60',
@@ -119,9 +115,6 @@ const DeliveryDateForm = ({ form }: Props) => {
                                     fontSize: '2rem',
                                     marginBottom: '4px',
                                     mt: 1
-                                    // marginX: '9%', // Larger click area
-                                    // width: '30px', // Ensures even spacing for full width layout
-                                    // height: '30px', // Ensures even spacing for full width layout
                                 },
                                 '.MuiPickersDay-today': {
                                     border: '2px solid #D81B60',

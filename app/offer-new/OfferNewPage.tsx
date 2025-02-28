@@ -4,7 +4,6 @@ import PageLayout from "@/COMPONENTS/common/PageLayout";
 import { capitalizeEachWord } from "@/COMPONENTS/common/shared/capitalizeEachWord";
 import { CountriesResponseType } from "@/COMPONENTS/types/CountryType";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, Card, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -18,7 +17,6 @@ import OfferSummaryBottomLine from "./OfferSummaryBottomLine";
 import DetailsAndDatesStep from "./steps/DetailsAndDatesStep";
 import InventoryStep from "./steps/InventoryStep";
 import PriceOptionsStep from "./steps/PriceOptionsStep";
-import { formatDate } from "@/COMPONENTS/common/shared/formatDate";
 
 export type OfferFormType = {
     fullName: string;
@@ -68,10 +66,6 @@ const phoneValidation = yup
     .string()
     .required("Phone number is required")
     .matches(/^\d+$/, "Phone number must contain only digits") // ✅ Ensures only digits
-// .test("no-dial-code", "Phone number should not contain country code", function (value) {
-//     const dialCode = this.parent.dialCode || "";
-//     return !value.startsWith(dialCode);
-// });
 
 const stepSchemas = [
     yup.object({
@@ -165,7 +159,7 @@ export default function OfferNewPage({ countriesData }: Props) {
         }
     });
 
-    const { handleSubmit, formState: { errors }, trigger, control } = form;
+    const { handleSubmit, trigger } = form;
 
     const nextStep = async () => {
         const valid = await trigger(Object.keys(stepSchemas[activeStep].fields) as any); // Validate only current step fields
@@ -238,7 +232,7 @@ export default function OfferNewPage({ countriesData }: Props) {
     }
     const onSubmit = async () => {
         setError(undefined)
-        console.log(transformedData, "transformedData");
+        // console.log(transformedData, "transformedData");
 
         // const url = process.env.NEXT_PUBLIC_FETCH_URL;
         const hv = process.env.NEXT_PUBLIC_HEADER_VALUE;
@@ -275,15 +269,10 @@ export default function OfferNewPage({ countriesData }: Props) {
             console.log("fetch error:", error);
             setError(error.message)
         }
-
-        // console.log("Form Data:", data)
-        // setActiveStep(undefined)
     }
     const onInvalid: SubmitErrorHandler<OfferFormType> = (data) => {
         console.log('invalid', data, form.getValues())
     }
-    console.log(error, "error");
-    console.log(prices, "price");
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
