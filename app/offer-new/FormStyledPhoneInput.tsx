@@ -115,7 +115,7 @@ const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth
                                         <MenuItem key={code} value={code}>
                                             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                                                 <img src={flag} alt={code} width={20} height={15} />
-                                                <b style={{ fontWeight: 500 }}>{name}</b> {dialCode}
+                                                <b style={{ fontWeight: 500 }}>{dialCode}</b> {name}
                                             </Box>
                                         </MenuItem>
                                     ))}
