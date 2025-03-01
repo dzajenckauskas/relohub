@@ -56,10 +56,10 @@ const CountriesAutocomplete = ({ countries, onChange, form, name, label, disable
                     {...params}
                     label={label}
                     name={name}
-                    sx={{ pb: 2 }}
+                    sx={{ pb: 2, mt: 0 }}
                     InputLabelProps={{
                         shrink: true,
-                        sx: { fontSize: "2.4rem", fontWeight: 500, color: "black", pb: 2, top: -12, left: -8 }
+                        sx: { fontSize: "2.4rem", fontWeight: 400, color: "black", pb: 2, top: -12, left: -8 }
                     }}
                     FormHelperTextProps={{ sx: { position: 'relative', left: -8 } }}
                     InputProps={{
@@ -72,6 +72,8 @@ const CountriesAutocomplete = ({ countries, onChange, form, name, label, disable
                             "& .MuiOutlinedInput-notchedOutline": { border: "none" }
                         },
                     }}
+                    error={!!form.formState.errors?.[name]?.message}
+                    helperText={form.formState.errors?.[name]?.message}
                 />
             )}
             renderGroup={(params) => (

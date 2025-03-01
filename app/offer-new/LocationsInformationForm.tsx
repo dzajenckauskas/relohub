@@ -30,7 +30,7 @@ const LocationsInformationForm = ({ countriesData, form, errors }: Props) => {
         }
     }
     return (
-        <Stack direction="row" gap={3} pt={3} >
+        <Stack direction={{ xs: 'column', sm: "row" }} gap={3} pt={5} >
             <Box flex={1} display="flex" flexDirection="column" gap={3}>
                 <CountriesAutocomplete
                     name={'collectCountry'}
@@ -38,7 +38,9 @@ const LocationsInformationForm = ({ countriesData, form, errors }: Props) => {
                     onChange={(_event, option) => {
                         form.setValue('collectCity', null);
                         form.setValue('collectPostcode', null);
-                        return form.setValue('collectCountry', option);
+                        return form.setValue('collectCountry', option, {
+                            shouldValidate: true
+                        });
                     }}
                     form={form} countries={countriesData?.data}
                 />
@@ -47,7 +49,9 @@ const LocationsInformationForm = ({ countriesData, form, errors }: Props) => {
                     name={'collectCity'}
                     label={'Collection city'}
                     onChange={(_event, option) => {
-                        return form.setValue('collectCity', option);
+                        return form.setValue('collectCity', option, {
+                            shouldValidate: true
+                        });
                     }}
                     form={form} countryName={collectCountry}
                 />
@@ -57,7 +61,7 @@ const LocationsInformationForm = ({ countriesData, form, errors }: Props) => {
                         form={form}
                         name="collectPostcode"
                         error={!!errors.collectPostcode}
-                        helperText={errors.collectPostcode?.message}
+                        helperText={!!errors.collectPostcode ? `Collection ${checkZipOrPost(collectCountry)} Code is required` : null}
                     />}
             </Box>
             <Box flex={1} display="flex" flexDirection="column" gap={3}>
@@ -67,7 +71,9 @@ const LocationsInformationForm = ({ countriesData, form, errors }: Props) => {
                     onChange={(_event, option) => {
                         form.setValue('deliverCity', null);
                         form.setValue('deliverPostcode', null);
-                        return form.setValue('deliverCountry', option);
+                        return form.setValue('deliverCountry', option, {
+                            shouldValidate: true
+                        });
                     }}
                     form={form} countries={countriesData?.data}
                 />
@@ -76,7 +82,9 @@ const LocationsInformationForm = ({ countriesData, form, errors }: Props) => {
                     name={'deliverCity'}
                     label={'Destination city'}
                     onChange={(_event, option) => {
-                        return form.setValue('deliverCity', option);
+                        return form.setValue('deliverCity', option, {
+                            shouldValidate: true
+                        });
                     }}
                     form={form} countryName={deliverCountry}
                 />

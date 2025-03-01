@@ -11,9 +11,8 @@ import LocationsInformationForm from './LocationsInformationForm';
 import { OfferFormType } from './OfferNewPage';
 import PersonalInformationForm from './PersonalInformationForm';
 import ErrorMessage from './steps/ErrorMessage';
-// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
+import { theme } from '@/COMPONENTS/common/shared/Theme';
 import FormHelperText from '@mui/material/FormHelperText';
 import dayjs, { Dayjs } from 'dayjs';
 
@@ -30,26 +29,20 @@ const OfferSummaryFormCard = ({ validateForm, countriesData, form, showPopUp, to
 
     return (
         <Dialog
-            sx={{ zIndex: 10, top: -60 }}
+            sx={{ zIndex: 99, top: -0, width: '100%' }}
             open={showPopUp}
-            // TransitionComponent={isMobile ? TransitionMobile : TransitionDesktop}
             keepMounted
             onClose={togglePopUp}
             PaperProps={{
-                style: {
-
+                sx: {
+                    width: '100%'
                 },
             }}
         >
             <Box sx={{
                 position: 'relative',
-                p: 4,
-                width: { xs: '95vw', sm: 'sm', md: 'sm', lg: 'sm', xl: 'sm' },
-                maxWidth: { xs: '95vw', sm: 'sm', md: 'sm', lg: 'sm', xl: 'sm' }
+                p: { xs: 2, sm: 4 },
             }}>
-                {/* <InstantQuoteComponent togglePopUp={togglePopUp} title={
-                } />
-            */}
                 <Stack alignItems={'stretch'} pb={2}>
                     <Button
                         disableElevation
@@ -76,17 +69,15 @@ const OfferSummaryFormCard = ({ validateForm, countriesData, form, showPopUp, to
                     pt: .5,
                     pr: '14px',
                     width: 'calc(100% + 14px)',
-                    maxHeight: `calc(100vh - 320px)`,
+                    maxHeight: `calc(100vh - 220px)`,
                     overflow: 'scroll',
                 }}>
 
                     <PersonalInformationForm form={form} errors={form.formState.errors} />
-                    {/* <DeliveryDateForm form={form} /> */}
-
 
                     <LocationsInformationForm countriesData={countriesData} form={form} errors={form.formState.errors} />
                     <Stack pb={3} direction={'row'} justifyContent={'space-between'} gap={3} width={'100%'}>
-                        <Stack width={'50%'}>
+                        <Stack width={{ xs: '100%', sm: '100%' }}>
                             <DatePicker
                                 label={"Collection date"}
                                 value={form.getValues('collectionDate') ? dayjs(form.getValues('collectionDate')) : null}
@@ -103,7 +94,6 @@ const OfferSummaryFormCard = ({ validateForm, countriesData, form, showPopUp, to
                                     '& .MuiButtonBase-root': {
                                         position: 'relative',
                                         left: -4
-                                        // fontSize: '2.5rem', // Increase icon size
                                     },
                                     '& .MuiDayCalendar-weekDayLabel, & .MuiDayCalendar-day': {
                                         fontSize: '1.2rem', // Increase weekday label and day number size
@@ -114,9 +104,10 @@ const OfferSummaryFormCard = ({ validateForm, countriesData, form, showPopUp, to
                                         InputLabelProps: {
                                             shrink: true,
                                             sx: {
+                                                color: !!form.formState?.errors?.collectionDate ? theme.palette.error.main : 'black',
                                                 fontSize: "2.4rem",
-                                                fontWeight: 500,
-                                                color: "black",
+                                                fontWeight: 400,
+                                                // color: "black",
                                                 pb: 2,
                                                 top: -12,
                                                 left: -8,
@@ -138,15 +129,11 @@ const OfferSummaryFormCard = ({ validateForm, countriesData, form, showPopUp, to
                                 }
                             />
                             {form.formState?.errors?.collectionDate && (
-                                <FormHelperText error>{form.formState?.errors?.collectionDate.message}</FormHelperText>
+                                <FormHelperText error sx={{ pl: .8 }}>{form.formState?.errors?.collectionDate.message}</FormHelperText>
                             )}
-                        </Stack>
-                        <Stack width={'50%'}>
-
                         </Stack>
                     </Stack>
 
-                    {/* <LuggageInformationForm detailsColumn form={form} /> */}
                 </Stack>
 
                 <Box pt={2} sx={{ width: '100%' }}>

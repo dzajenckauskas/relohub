@@ -79,7 +79,13 @@ const stepSchemas = [
             .email("Invalid email")
             .required("Email is required"),
         phone: phoneValidation, // ✅ Updated validation
-        collectionDate: yup.date().required("Collection date is required"),
+        collectionDate: yup.date().required("Collection date is required").typeError("Invalid date"),
+        deliverCity: yup.string().required("Deliver city is required"),
+        deliverCountry: yup.string().required("Deliver country is required"),
+        collectCity: yup.string().required("Collection city is required"),
+        collectCountry: yup.string().required("Collection country is required"),
+        collectPostcode: yup.string().required("Collection post code is required"),
+        deliverPostcode: yup.string().required("Collection post code is required"),
     }),
     yup.object({
         customItems: yup.array().of(customItemSchema).default([]),
@@ -114,7 +120,7 @@ export default function OfferNewPage({ countriesData }: Props) {
 
     const form = useForm<OfferFormType>({
         resolver: yupResolver(stepSchemas[activeStep] as any) as any, // Change schema dynamically
-        mode: "onTouched",
+        mode: "onChange",
         reValidateMode: 'onChange',
         defaultValues: {
             // countryCode: "+1",
@@ -137,25 +143,6 @@ export default function OfferNewPage({ countriesData }: Props) {
             // ?? "BO5345"
             ,
 
-            // fullName: "John Rambo",
-            // email: 'johhnyboy@rambo.com',
-            // phone: '07123903433',
-
-            // standardBox: 1,
-            // suitcaseLarge: 1,
-            // suitcaseSmall: 2,
-            // largeBox: 4,
-            // customItems: [
-            //     {
-            //         name: 'Sack of potatoes',
-            //         width: '200',
-            //         height: '200',
-            //         depth: '200',
-            //         weight: '200',
-            //     }
-            // ],
-            // emptyBoxesQuantity: 0,
-            // collectionDate: new Date('2025-02-24'),
         }
     });
 
@@ -203,10 +190,13 @@ export default function OfferNewPage({ countriesData }: Props) {
     })
 
     const convertToMySQLDate = (isoDate) => {
-        // Convert ISO 8601 format to MySQL format (YYYY-MM-DD HH:MM:SS)
+        if (!isoDate) return null; // Handle null/undefined gracefully
+
         const date = new Date(isoDate);
-        return date?.toISOString().slice(0, 19).replace('T', ' '); // e.g., '2025-03-12 22:00:00'
-    }
+        if (isNaN(date.getTime())) return null; // Ensure it's a valid date
+
+        return date.toISOString().slice(0, 19).replace('T', ' ');
+    };
 
     const transformedData = {
         name: formData?.fullName,
@@ -258,12 +248,6 @@ export default function OfferNewPage({ countriesData }: Props) {
                 setActiveStep(2)
 
                 prc && setPrices(prc.price);
-
-                // if (prc.price.length === 0) {
-                //     // setshownopricepopup(true);
-                // } else {
-                //     // setshowpopupofprices(true);
-                // }
             }
         } catch (error) {
             console.log("fetch error:", error);
