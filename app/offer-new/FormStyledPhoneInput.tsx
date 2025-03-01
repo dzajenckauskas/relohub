@@ -96,7 +96,7 @@ const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth
                                             transform: 'scale(2)'
                                         },
                                     }}
-                                    disableUnderline
+                                    // disableUnderline
                                     IconComponent={ArrowDropDown}
                                 >
                                     {countryList.map(({ code, dialCode, flag }) => (

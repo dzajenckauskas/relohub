@@ -84,8 +84,20 @@ const stepSchemas = [
         deliverCountry: yup.string().required("Deliver country is required"),
         collectCity: yup.string().required("Collection city is required"),
         collectCountry: yup.string().required("Collection country is required"),
-        collectPostcode: yup.string().required("Collection post code is required"),
-        deliverPostcode: yup.string().required("Collection post code is required"),
+        deliverPostcode: yup.string().when("deliverCountry", {
+            is: (country) =>
+                typeof country === "string" &&
+                ["united kingdom", "united states"].includes(country.trim().toLowerCase()),
+            then: (schema) => schema.required("Delivery postcode is required"),
+            otherwise: (schema) => schema.notRequired(),
+        }),
+        collectPostcode: yup.string().when("collectCountry", {
+            is: (country) =>
+                typeof country === "string" &&
+                ["united kingdom", "united states"].includes(country.trim().toLowerCase()),
+            then: (schema) => schema.required("Collecty postcode is required"),
+            otherwise: (schema) => schema.notRequired(),
+        }),
     }),
     yup.object({
         customItems: yup.array().of(customItemSchema).default([]),

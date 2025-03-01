@@ -32,28 +32,16 @@ type Props = {
 
 const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, selected, showstripepopup, setorderCompleted, orderCompleted, onClick, error, validateForm, form, countriesData, activeStep, nextStep }: Props) => {
     const [edit, setEdit] = useState(false)
-    console.log(form.getValues());
 
     const togglePopUp = () => {
         setEdit(!edit)
     }
     const hasErrors = Object.keys(form.formState.errors).length > 0;
 
-    // const standardBox = form.watch('standardBox') ?? 0
-    // const largeBox = form.watch('largeBox') ?? 0
-    // const suitcaseSmall = form.watch('suitcaseSmall') ?? 0
-    // const suitcaseLarge = form.watch('suitcaseLarge') ?? 0
-    // const hasItems = (standardBox + largeBox + suitcaseSmall + suitcaseLarge) > 0
-    // const customItems = form.watch('customItems')
-    // const commonItems = form.watch('commonItems')
     const collectionDate = form.watch('collectionDate') ?? undefined
-    // const deliverBoxesDate = form.watch('deliverBoxesDate') ?? undefined
-    // const emptyBoxesQuantity = form.watch('emptyBoxesQuantity')
     return (
         <>
             {<Box
-                // flex={1} display="flex" flexDirection="column"
-                // gap={2}
                 sx={{ width: '100%' }}
             >
                 <Card sx={{ backgroundColor: '#252420', borderRadius: 0 }}>
@@ -154,98 +142,6 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
 
 
 
-                                    {/* boxes */}
-                                    {/* {hasItems &&
-                                <Box>
-                                    <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                        Boxes & Luggage:
-                                    </Typography>
-                                    {!!standardBox &&
-                                        <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                            Standard Box x {standardBox}
-                                        </Typography>}
-                                    {!!largeBox &&
-                                        <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                            Large Box x {largeBox}
-                                        </Typography>}
-                                    {!!suitcaseSmall &&
-                                        <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                            Suitcase Small x {suitcaseSmall}
-                                        </Typography>}
-                                    {!!suitcaseLarge &&
-                                        <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                            Suitcase Large x {suitcaseLarge}
-                                        </Typography>}
-                                </Box>} */}
-                                    {/* {customItems?.length > 0 &&
-                                <Box>
-                                    {!!customItems?.[0]?.name &&
-                                        <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500 }}>
-                                            Your Items:
-                                        </Typography>}
-                                    {customItems?.map((ci, i) => {
-                                        return (
-                                            <Box key={ci.name + i} pb={.5}>
-                                                {ci.name &&
-                                                    <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.3, fontWeight: 500 }}>
-                                                        {i + 1}. {ci.name}
-                                                    </Typography>}
-                                                {(ci.width ?? ci.height ?? ci.debth) &&
-                                                    <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.3, fontSize: 14, fontWeight: 500 }}>
-                                                        {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? 0} cm
-                                                    </Typography>}
-                                                {ci.weight && <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.3, fontSize: 14, fontWeight: 500 }}>
-                                                    {ci.weight ?? 0} kg
-                                                </Typography>}
-                                            </Box>
-                                        )
-                                    })}
-                                </Box>} */}
-                                    {/* {commonItems?.length > 0 &&
-                                <Box>
-                                    {!!commonItems?.[0]?.name &&
-                                        <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500 }}>
-                                            Furniture and Appliances:
-                                        </Typography>}
-                                    {commonItems?.map((ci, i) => {
-                                        return (
-                                            <Box key={ci.name + i} pb={.5}>
-                                                {ci.name &&
-                                                    <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.1, fontWeight: 500 }}>
-                                                        {i + 1}. {ci.name}
-                                                    </Typography>}
-                                                {(ci.width ?? ci.height ?? ci.debth) &&
-                                                    <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.1, fontSize: 14, fontWeight: 500 }}>
-                                                        {ci.width ?? 0} x {ci.height ?? 0} x {ci.depth ?? 0} cm
-                                                    </Typography>}
-                                                {ci.weight && <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.1, fontSize: 14, fontWeight: 500 }}>
-                                                    {ci.weight ?? 0} kg
-                                                </Typography>}
-                                            </Box>
-                                        )
-                                    })}
-                                </Box>} */}
-
-
-                                    {/* {!!emptyBoxesQuantity &&
-                                <Box>
-                                    <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                        Number of empty boxes:
-                                    </Typography>
-                                    <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                        x {emptyBoxesQuantity}
-                                    </Typography>
-
-                                </Box>}
-                            {!!deliverBoxesDate &&
-                                <Box>
-                                    <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                        Delivery of empty boxes:
-                                    </Typography>
-                                    <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                        {formatDate(deliverBoxesDate)}
-                                    </Typography>
-                                </Box>} */}
 
 
                                 </Stack>}
