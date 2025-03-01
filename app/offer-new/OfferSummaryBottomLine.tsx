@@ -56,11 +56,11 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
 
                                     <Stack spacing={1}>
                                         {/* collect from */}
-                                        {form.getValues('collectCountry') &&
-                                            <Box>
-                                                <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                                    Collect from:
-                                                </Typography>
+                                        <Box>
+                                            <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                                Collect from:
+                                            </Typography>
+                                            {(form.getValues('collectCountry') && form.getValues('collectCity')) ?
                                                 <Stack direction={'row'}>
                                                     <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                                         {form.getValues('collectCountry')}, {form.getValues('collectCity')}
@@ -69,73 +69,79 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
                                                         <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                                             {`, ${form.getValues('collectPostcode')}`}
                                                         </Typography>}
-                                                </Stack>
-                                            </Box>}
+                                                </Stack> :
+                                                <ErrorMessage message='Check form for errors' />
+                                            }
+                                        </Box>
 
 
                                         {/* deliver to */}
-                                        {form.getValues('deliverCountry') &&
-                                            <Box>
-                                                <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                                    Deliver to:
+                                        <Box>
+                                            <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                                Deliver to:
+                                            </Typography>
+                                            {(form.getValues('deliverCountry') && form.getValues('deliverCity')) ? <Stack direction={'row'}>
+                                                <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                                    {form.getValues('deliverCountry')}, {form.getValues('deliverCity')}
                                                 </Typography>
-                                                <Stack direction={'row'}>
+                                                {form.getValues('deliverPostcode') &&
                                                     <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                                        {form.getValues('deliverCountry')}, {form.getValues('deliverCity')}
-                                                    </Typography>
-                                                    {form.getValues('deliverPostcode') &&
-                                                        <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                                            {`, ${form.getValues('deliverPostcode')}`}
-                                                        </Typography>}
-                                                </Stack>
-                                            </Box>}
+                                                        {`, ${form.getValues('deliverPostcode')}`}
+                                                    </Typography>}
+                                            </Stack> : <ErrorMessage message='Check form for errors' />}
+                                        </Box>
                                     </Stack>
 
                                     {
                                         activeStep > 0 &&
                                         <Stack direction={'row'} spacing={6}>
                                             <Stack spacing={1}>
-                                                {(form.getValues('fullName')) && <Box>
+                                                <Box>
+
                                                     <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                                         Name & Surname:
                                                     </Typography>
-                                                    <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                                        {form.getValues('fullName')}
-                                                    </Typography>
-                                                </Box>}
-
-                                                {form.getValues('email') &&
-                                                    <Box>
-                                                        <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                                            Email:
+                                                    {(form.getValues('fullName')) ?
+                                                        <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                                            {form.getValues('fullName')}
                                                         </Typography>
+                                                        : <ErrorMessage message='Check form for errors' />}
+                                                </Box>
+
+                                                <Box>
+                                                    <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                                        Email:
+                                                    </Typography>
+                                                    {form.getValues('email') ?
                                                         <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                                             {form.getValues('email')}
                                                         </Typography>
-                                                    </Box>}
+                                                        : <ErrorMessage message='Check form for errors' />}
+                                                </Box>
                                             </Stack>
 
                                             <Stack spacing={1}>
-                                                {form.getValues('phone') &&
-                                                    <Box>
-                                                        <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                                            Telephone:
-                                                        </Typography>
+                                                <Box>
+                                                    <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                                        Telephone:
+                                                    </Typography>
+                                                    {form.getValues('phone') ?
                                                         <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                                             {form.getValues('dialCode')}{form.getValues('phone')}
                                                         </Typography>
-                                                    </Box>}
-                                                {!!collectionDate &&
-                                                    <Box>
-                                                        <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
-                                                            Collection date:
-                                                        </Typography>
+                                                        : <ErrorMessage message='Check form for errors' />}
+                                                </Box>
+                                                {/* {!!collectionDate && */}
+                                                <Box>
+                                                    <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
+                                                        Collection date:
+                                                    </Typography>
 
-                                                        {!!collectionDate &&
-                                                            <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
-                                                                {formatDate(collectionDate)}
-                                                            </Typography>}
-                                                    </Box>}
+                                                    {!!collectionDate ?
+                                                        <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
+                                                            {formatDate(collectionDate)}
+                                                        </Typography> : <ErrorMessage message='Check form for errors' />}
+                                                </Box>
                                             </Stack>
 
                                         </Stack>}
@@ -232,8 +238,8 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
 
                                 </Stack>
                                 {(error || hasErrors || form.formState?.errors?.hasItemsAdded) &&
-                                    <Stack direction={'row'} width={'100%'} justifyContent={'flex-end'}>
-                                        {activeStep !== 1 && hasErrors && <ErrorMessage message={'Check form for errors'} />}
+                                    <Stack direction={'column'} width={'100%'} alignItems={'flex-end'} pt={.5}>
+                                        {(!form.formState?.errors?.hasItemsAdded && hasErrors) && <ErrorMessage message={'Check form for errors'} />}
                                         {!!error && <ErrorMessage message={error} />}
                                         {activeStep == 1 && form.formState?.errors?.hasItemsAdded && (
                                             <ErrorMessage message={form.formState?.errors?.hasItemsAdded.message} />)}
