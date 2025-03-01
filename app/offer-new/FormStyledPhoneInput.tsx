@@ -8,14 +8,18 @@ import {
 } from "@mui/material";
 import { CountryCode, getCountries, getCountryCallingCode } from "libphonenumber-js";
 import { Controller } from "react-hook-form";
+import i18nCountries from "i18n-iso-countries";
+import enLocale from "i18n-iso-countries/langs/en.json"; // Load English names
+i18nCountries.registerLocale(enLocale);
 
 const countryList = getCountries()
     .map((code) => ({
         code,
+        name: i18nCountries.getName(code, "en"), // Get country name
         dialCode: `+${getCountryCallingCode(code as CountryCode)}`,
         flag: `https://flagcdn.com/w40/${code.toLowerCase()}.png`
     }))
-    .sort((a, b) => parseInt(a.dialCode.substring(1)) - parseInt(b.dialCode.substring(1))); // ✅ Sort by numeric dial code
+    .sort((a, b) => parseInt(a.dialCode.substring(1)) - parseInt(b.dialCode.substring(1)));
 
 
 type Props = {
@@ -84,6 +88,15 @@ const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth
                                 <Select
                                     value={form.watch('countryCode') ?? 'US'}
                                     onChange={handleCountryChange}
+                                    renderValue={(selected) => {
+                                        const selectedCountry = countryList.find(c => c.code === selected);
+                                        return selectedCountry ? (
+                                            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                                                <img src={selectedCountry.flag} alt={selectedCountry.code} width={20} height={15} />
+                                                {selectedCountry.dialCode}
+                                            </Box>
+                                        ) : "+1"; // ✅ Show flag + dial code when selected
+                                    }}
                                     sx={{
                                         display: "flex",
                                         alignItems: "center",
@@ -96,18 +109,19 @@ const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth
                                             transform: 'scale(2)'
                                         },
                                     }}
-                                    // disableUnderline
                                     IconComponent={ArrowDropDown}
                                 >
-                                    {countryList.map(({ code, dialCode, flag }) => (
+                                    {countryList.map(({ code, name, dialCode, flag }) => (
                                         <MenuItem key={code} value={code}>
                                             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                                                 <img src={flag} alt={code} width={20} height={15} />
-                                                {dialCode} {/* ✅ Displaying dial code */}
+                                                <b style={{ fontWeight: 500 }}>{name}</b> {dialCode}
                                             </Box>
                                         </MenuItem>
                                     ))}
                                 </Select>
+
+
                             </InputAdornment>
                         )
                     }}
