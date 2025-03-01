@@ -100,6 +100,18 @@ const stepSchemas = [
         }),
     }),
     yup.object({
+        fullName: yup
+            .string()
+            .matches(/^\S+\s+\S+/, "Please enter your full name (first and last name)")
+            .required("Name is required"),
+        email: yup
+            .string()
+            .matches(/^[^@]+@[^@]+\.[^@]+$/, "Invalid email format")
+            .email("Invalid email")
+            .required("Email is required"),
+        phone: phoneValidation, // ✅ Updated validation
+
+        collectionDate: yup.date().required("Collection date is required").typeError("Invalid date"),
         deliverCity: yup.string().required("Deliver city is required"),
         deliverCountry: yup.string().required("Deliver country is required"),
         collectCity: yup.string().required("Collection city is required"),

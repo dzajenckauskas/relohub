@@ -137,7 +137,7 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
                                                         Collection date:
                                                     </Typography>
 
-                                                    {!!collectionDate ?
+                                                    {!form.formState.errors.collectionDate ?
                                                         <Typography color={'white'} variant="body2" sx={{ lineHeight: 1.2, fontWeight: 500 }}>
                                                             {formatDate(collectionDate)}
                                                         </Typography> : <ErrorMessage message='Check form for errors' />}
