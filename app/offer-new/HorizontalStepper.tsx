@@ -13,12 +13,10 @@ type Props = {
     setActiveStep: (v: number) => void;
     disablePricesButton?: boolean;
     error?: string;
+    validateForm?: () => Promise<boolean>
 }
 
-export default function HorizontalStepper({ error, activeStep, setActiveStep, disablePricesButton }: Props) {
-
-    console.log(error, "errorerrorerrorerror", activeStep);
-
+export default function HorizontalStepper({ validateForm, error, activeStep, setActiveStep, disablePricesButton }: Props) {
     return (
         <Stack direction={'row'} justifyContent={'center'} sx={{ width: '100%', py: { xs: 2, md: 4 } }}>
             <Box sx={{ width: '100%', maxWidth: 'sm' }}>
@@ -57,7 +55,13 @@ export default function HorizontalStepper({ error, activeStep, setActiveStep, di
                         return (
                             <Step key={label} {...stepProps} >
                                 <StepLabel
-                                    onClick={() => setActiveStep(index)}
+                                    onClick={async () => {
+                                        const isValid = await validateForm()
+                                        if (isValid) {
+                                            setActiveStep(index)
+                                        }
+                                    }
+                                    }
                                     {...labelProps}
                                     sx={{
                                         cursor: 'pointer',

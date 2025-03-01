@@ -189,8 +189,6 @@ export default function OfferNewPage({ countriesData }: Props) {
     };
     const validateForm = async () => {
         const isValid = await trigger(Object.keys(stepSchemas[0].fields) as any); // Validate only current step fields
-        console.log(form.formState.errors, "isValid");
-
         return isValid
     };
 
@@ -295,7 +293,7 @@ export default function OfferNewPage({ countriesData }: Props) {
                 <Stack sx={{ backgroundColor: "#efefef", minHeight: 'calc(100vh - 100px)' }}>
                     <MaxWidthContainer sx={{ px: { xl: 2, sm: 2, xs: 0 }, }}>
                         <Stack mx="auto" maxWidth="lg" width="100%">
-                            <HorizontalStepper error={error} disablePricesButton={prices == null}
+                            <HorizontalStepper validateForm={validateForm} error={error} disablePricesButton={prices == null}
                                 activeStep={activeStep} setActiveStep={setActiveStep} />
 
                             <form onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate>
