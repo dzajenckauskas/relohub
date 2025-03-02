@@ -31,7 +31,7 @@ const DetailsAndDatesStep = ({ form, }: Props) => {
                         <PersonalInformationForm form={form} errors={form.formState.errors} />
 
                     </Stack>
-                    <Stack direction={'row'} width={'100%'} justifyContent={'flex-start'}>
+                    <Stack sx={{ position: 'relative', zIndex: 2 }} direction={'row'} width={'100%'} justifyContent={'flex-start'}>
                         <DeliveryDateForm form={form} />
                     </Stack>
                 </Stack>
@@ -39,10 +39,12 @@ const DetailsAndDatesStep = ({ form, }: Props) => {
             </Stack>
             <Stack direction={'row'}
                 sx={{
+                    zIndex: 1,
+                    transform: { xs: 'scale(.7)', sm: 'scale(1)' },
                     position: 'relative',
-                    mt: { xs: 4, md: -14 },
-                    left: { xs: -50, md: -200 },
-                    bottom: { xs: -10, md: -34 },
+                    mt: { xs: -4, md: -14 },
+                    left: { xs: -100, sm: -20, md: -20 },
+                    bottom: { xs: -50, sm: 10, md: -34 },
                 }}>
                 <Stack sx={{
                 }}>
