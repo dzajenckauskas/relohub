@@ -11,7 +11,7 @@ import OfferSummaryFormCard from './OfferSummaryFormCard'
 import ErrorMessage from './steps/ErrorMessage'
 import Link from 'next/link'
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer'
-
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 type Props = {
     form: any;
@@ -41,13 +41,10 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
     const collectionDate = form.watch('collectionDate') ?? undefined
     return (
         <>
-            {<Box
-                sx={{ width: '100%' }}
-            >
+            {<Box sx={{ width: '100%' }}>
                 <Card sx={{ backgroundColor: '#252420', borderRadius: 0 }}>
                     <MaxWidthContainer>
-
-                        <Stack direction={'row'} width={'100%'}
+                        <Stack direction={{ xs: 'column', sm: 'row' }} width={'100%'}
                             alignItems={'center'} alignContent={'center'}
                             justifyContent={{ xs: 'center', sm: 'space-between' }}
                             spacing={1} py={2}>
@@ -74,7 +71,6 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
                                             }
                                         </Box>
 
-
                                         {/* deliver to */}
                                         <Box>
                                             <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
@@ -92,12 +88,10 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
                                         </Box>
                                     </Stack>
 
-                                    {
-                                        activeStep > 0 &&
+                                    {activeStep > 0 &&
                                         <Stack direction={'row'} spacing={6}>
                                             <Stack spacing={1}>
                                                 <Box>
-
                                                     <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                                         Name & Surname:
                                                     </Typography>
@@ -107,7 +101,6 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
                                                         </Typography>
                                                         : <ErrorMessage message='Check form for errors' />}
                                                 </Box>
-
                                                 <Box>
                                                     <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                                         Email:
@@ -131,7 +124,6 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
                                                         </Typography>
                                                         : <ErrorMessage message='Check form for errors' />}
                                                 </Box>
-                                                {/* {!!collectionDate && */}
                                                 <Box>
                                                     <Typography color={'white'} variant="body2" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500, pt: .5 }}>
                                                         Collection date:
@@ -143,34 +135,19 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
                                                         </Typography> : <ErrorMessage message='Check form for errors' />}
                                                 </Box>
                                             </Stack>
-
                                         </Stack>}
-
-
-
-
-
                                 </Stack>}
 
-                            {!orderCompleted && activeStep == 2 && <Stack spacing={4} pt={2} direction={'row'} display={{ xs: 'none', sm: 'flex' }}>
+                            {!orderCompleted && activeStep == 2 && <Stack spacing={4} pt={{ xs: 1, sm: 2 }} pb={{ xs: 1, sm: 2 }} direction={'row'} display={{ xs: 'flex', sm: 'flex' }}>
                                 <Typography color={'white'} variant="body2">
-                                    <b>To book, we only require a £100 deposit</b>, whitch will be deducted from the final invoice.
+                                    <ErrorOutlineIcon fontSize='large' color='info' sx={{ position: 'relative', top: 3.5 }} />  <b>To book, we only require a £100 deposit</b>, whitch will be deducted from the final invoice.
                                 </Typography>
                             </Stack>}
                             {orderCompleted && activeStep == 2 && <Stack spacing={4} pt={2} direction={'row'} display={{ xs: 'none', sm: 'flex' }}>
-                                {/* <Typography color={'white'} variant="body2">
-                                <b>To book, we only require a £100 deposit</b>, whitch will be deducted from the final invoice.
-                            </Typography> */}
+                                <Typography color={'white'} variant="body2">
+                                    {/* <b>To book, we only require a £100 deposit</b>, whitch will be deducted from the final invoice. */}
+                                </Typography>
                             </Stack>}
-                            {/* <Stack direction={'row'} sx={{
-                        width: '100%',
-                        justifyContent: 'flex-end',
-                        // justifyContent: 'space-between',
-                        alignItems: 'center', borderBottom: '1px solid gray'
-                    }}> */}
-                            {/* <Typography color={'white'} variant="subtitle2">
-                            SUMMARY
-                        </Typography> */}
                             <Stack direction={'column'}>
                                 <Stack direction={'row'} alignItems={"center"} gap={3} alignContent={'center'}>
                                     {activeStep !== 2 && <Button
@@ -178,7 +155,6 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
                                         disableFocusRipple
                                         disableRipple
                                         disableTouchRipple
-                                        // variant='outlined'
                                         onClick={() => {
                                             console.log(edit, 'EDIT');
                                             togglePopUp();
@@ -213,10 +189,12 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
                                                 Next step
                                             </Button>}
                                         {!showstripepopup && !orderCompleted && activeStep == 2 &&
+
                                             <Button disabled={!selected} onClick={onClick} variant="contained" color="secondary"
-                                                sx={{ px: 6, py: 2 }}>
+                                                sx={{ px: { xs: 2, md: 4 }, py: 2, mb: { xs: 1, sm: 0 }, width: '260px !important' }}>
                                                 Pay deposit using stripe
-                                            </Button>}
+                                            </Button>
+                                        }
                                         {showstripepopup && !orderCompleted && activeStep == 2 &&
                                             <Button disabled={loading || !paymentbuttonenabled} onClick={onClickPay} variant="contained" color="secondary"
                                                 sx={{ px: 6, py: 2 }}>
@@ -229,13 +207,11 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
                                                         setorderCompleted(false)
                                                     }, 100)
                                                 }} variant="contained" color="secondary"
-                                                    sx={{ px: 6, py: 2 }}>
+                                                    sx={{ px: 6, py: 2, mt: { xs: -1, sm: 0 } }}>
                                                     Back to main
                                                 </Button>
-                                            </Link>
-                                        }
+                                            </Link>}
                                     </Box>
-
                                 </Stack>
                                 {(error || hasErrors || form.formState?.errors?.hasItemsAdded) &&
                                     <Stack direction={'column'} width={'100%'} alignItems={'flex-end'} pt={.5}>
@@ -245,17 +221,13 @@ const OfferSummaryBottomLine = ({ onClickPay, loading, paymentbuttonenabled, sel
                                             <ErrorMessage message={form.formState?.errors?.hasItemsAdded.message} />)}
                                     </Stack>}
                             </Stack>
-
                         </Stack>
-
-
                     </MaxWidthContainer>
 
                 </Card>
             </Box>}
             {edit && <OfferSummaryFormCard validateForm={validateForm} countriesData={countriesData} showPopUp={edit} togglePopUp={togglePopUp} form={form} />}
         </>
-
     )
 }
 

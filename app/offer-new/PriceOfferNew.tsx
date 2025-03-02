@@ -18,7 +18,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
     const [paymentbuttonenabled, setpaymentbuttonenabled] = useState(false);
     const [error, setError] = useState<string | undefined>();
     const [paymentonprogress, setpaymentonprogress] = useState(false);
-    const [ordercompleted, setordercompleted] = useState(false);
+    const [ordercompleted, setordercompleted] = useState(true);
 
     function splitprices(elm) {
         if (elm) {
@@ -379,7 +379,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
 
     function afterPayment() {
         return (
-            <div className="offerpopupcenterwrpstripe">
+            <div className="offerpopupcenterwrpstripe" style={{ marginBottom: 20 }}>
                 <Stack gap={2} pb={1}>
                     <Typography variant="h2" sx={{ fontWeight: 500 }}>Your <b>Payment Received</b></Typography>
                     <Divider />
