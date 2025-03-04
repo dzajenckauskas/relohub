@@ -233,7 +233,7 @@ export default function OfferNewPage({ countriesData }: Props) {
     const transformedData = {
         name: formData?.fullName,
         email: formData?.email,
-        phone: `${formData?.dialCode}${formData?.phone}`,
+        phone: `${formData?.dialCode ?? '+44'}${formData?.phone}`,
 
         from_city: formData?.collectCity,
         from_country: formData?.collectCountry,
