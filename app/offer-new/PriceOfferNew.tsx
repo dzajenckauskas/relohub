@@ -18,7 +18,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
     const [paymentbuttonenabled, setpaymentbuttonenabled] = useState(false);
     const [error, setError] = useState<string | undefined>();
     const [paymentonprogress, setpaymentonprogress] = useState(false);
-    const [ordercompleted, setordercompleted] = useState(true);
+    const [ordercompleted, setordercompleted] = useState(false);
 
     function splitprices(elm) {
         if (elm) {
