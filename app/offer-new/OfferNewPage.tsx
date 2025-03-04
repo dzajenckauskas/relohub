@@ -206,7 +206,7 @@ export default function OfferNewPage({ countriesData }: Props) {
             name: v.name,
             width: v.width,
             height: v.height,
-            depth: v.width,
+            depth: v.depth,
             weight: v.weight,
         }
     })
@@ -216,7 +216,7 @@ export default function OfferNewPage({ countriesData }: Props) {
             name: v.name,
             width: v.width,
             height: v.height,
-            depth: v.width,
+            depth: v.length,
             weight: v.weight,
         }
     })
