@@ -36,7 +36,7 @@ type Props = {
 const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth, error, helperText }: Props) => {
     const handleCountryChange = (e: any) => {
         const newCountry = e.target.value;
-        const countryData = countryList.find(c => c.code === (newCountry ?? 'US'));
+        const countryData = countryList.find(c => c.code === (newCountry ?? 'GB'));
 
         if (countryData) {
             // setSelectedCountry(newCountry);
@@ -86,7 +86,7 @@ const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth
                         startAdornment: (
                             <InputAdornment position="start">
                                 <Select
-                                    value={form.watch('countryCode') ?? 'US'}
+                                    value={form.watch('countryCode') ?? 'GB'}
                                     onChange={handleCountryChange}
                                     renderValue={(selected) => {
                                         const selectedCountry = countryList.find(c => c.code === selected);
@@ -95,7 +95,7 @@ const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth
                                                 <img src={selectedCountry.flag} alt={selectedCountry.code} width={20} height={15} />
                                                 {selectedCountry.dialCode}
                                             </Box>
-                                        ) : "+1"; // ✅ Show flag + dial code when selected
+                                        ) : "+44"; // ✅ Show flag + dial code when selected
                                     }}
                                     sx={{
                                         display: "flex",

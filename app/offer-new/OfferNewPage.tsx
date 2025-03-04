@@ -190,15 +190,7 @@ export default function OfferNewPage({ countriesData }: Props) {
 
     const { handleSubmit, trigger } = form;
 
-    const nextStep = async () => {
-        const valid = await trigger(Object.keys(stepSchemas[activeStep].fields) as any); // Validate only current step fields
-        if (valid) {
-            setActiveStep((prev) => prev + 1);
-        }
-        // else {
-        //     setError('Check form errors')
-        // }
-    };
+
     const validateForm = async () => {
         const isValid = await trigger(Object.keys(stepSchemas[0].fields) as any); // Validate only current step fields
         return isValid
@@ -280,20 +272,34 @@ export default function OfferNewPage({ countriesData }: Props) {
                 body: JSON.stringify(transformedData),
             });
 
-            if (res.ok) {
-                const prc = await res.json();
-                if (process.env.NODE_ENV === "development") {
-                    console.log(prc);
-                }
-                setActiveStep(2)
+            if (activeStep !== 0) {
+                if (res.ok) {
+                    const prc = await res.json();
+                    if (process.env.NODE_ENV === "development") {
+                        console.log(prc);
+                    }
 
-                prc && setPrices(prc.price);
+                    setActiveStep(2)
+
+                    prc && setPrices(prc.price);
+                }
             }
         } catch (error) {
             console.log("fetch error:", error);
             setError(error.message)
         }
     }
+
+    const nextStep = async () => {
+        const valid = await trigger(Object.keys(stepSchemas[activeStep].fields) as any); // Validate only current step fields
+        if (valid) {
+            if (activeStep === 0) {
+                await onSubmit()
+            }
+            setActiveStep((prev) => prev + 1);
+        }
+    };
+
     const onInvalid: SubmitErrorHandler<OfferFormType> = (data) => {
         console.log('invalid', data, form.getValues())
     }
