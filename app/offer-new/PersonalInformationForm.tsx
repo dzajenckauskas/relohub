@@ -14,6 +14,7 @@ const PersonalInformationForm = ({ form }: Props) => {
     return (
         <Stack direction="column" gap={3} pt={2} width={'100%'}>
             <FormStyledTextInput
+                autoFocus
                 label="First and Last Name"
                 fullWidth
                 form={form}
