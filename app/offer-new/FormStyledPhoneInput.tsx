@@ -17,6 +17,7 @@ import Image from "next/image";
 import { useState } from 'react';
 import { Controller } from "react-hook-form";
 i18nCountries.registerLocale(enLocale);
+import { useRef } from 'react';
 
 const countryList = getCountries()
     .map((code) => ({
@@ -79,12 +80,15 @@ const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth
         state.inputValue.toLowerCase()
         return options?.filter((v) => v.name?.toLowerCase()?.includes(state.inputValue.toLowerCase()) || v.code?.toLowerCase()?.includes(state.inputValue.toLowerCase()) || v.dialCode?.toLowerCase()?.includes(state.inputValue.toLowerCase()))
     };
+    const inputRef = useRef<HTMLInputElement | null>(null); // Create a reference
+
     return (
         <Controller
             name={name}
             control={form.control}
             render={({ field }) => (
                 <TextField
+                    inputRef={inputRef}
                     fullWidth={fullWidth}
                     required={required}
                     disabled={disabled}
@@ -176,10 +180,17 @@ const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth
                                     onOpen={() => setOpen(true)}
                                     onClose={() => setOpen(false)}
                                     onChange={(_e, v) => {
-                                        setSelectedCountry(v)
-                                        form.setValue("dialCode", v.dialCode); // ✅ Set dialCode instead of country code
-                                        form.setValue("countryCode", v.code); // ✅ Set dialCode instead of country code
-                                        return v
+                                        if (v) {
+
+                                            setSelectedCountry(v)
+                                            form.setValue("dialCode", v.dialCode); // ✅ Set dialCode instead of country code
+                                            form.setValue("countryCode", v.code); // ✅ Set dialCode instead of country code
+
+                                            // 🔹 Focus the parent TextField after selection
+                                            setTimeout(() => {
+                                                inputRef.current?.focus();
+                                            }, 100); // Small delay to ensure focus works
+                                        }
                                     }}
                                     renderOption={(props, option) => {
                                         return (
