@@ -67,7 +67,8 @@ const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth
                 {...props}
                 placement='bottom-start'
                 sx={{
-                    width: '240px !important',
+                    width: { xs: '100% !important', sm: '100% !important' },
+                    maxWidth: { xs: '500px !important', sm: '240px !importnat' },
                     marginLeft: '-14px !important', // Fine-tune the positioning, if needed
 
                 }}

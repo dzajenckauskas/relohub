@@ -36,9 +36,8 @@ const OfferSummaryFormCard = ({ validateForm, countriesData, form, showPopUp, to
             PaperProps={{
                 sx: {
                     width: '100%'
-                },
-            }}
-        >
+                }
+            }}>
             <Box sx={{
                 position: 'relative',
                 p: { xs: 2, sm: 4 },
@@ -69,7 +68,7 @@ const OfferSummaryFormCard = ({ validateForm, countriesData, form, showPopUp, to
                     pt: .5,
                     pr: '14px',
                     width: 'calc(100% + 14px)',
-                    maxHeight: `calc(100vh - 220px)`,
+                    // maxHeight: `calc(100vh - 220px)`,
                     overflow: 'scroll',
                 }}>
 
