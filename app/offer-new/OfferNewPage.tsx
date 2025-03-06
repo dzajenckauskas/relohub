@@ -165,7 +165,7 @@ export default function OfferNewPage({ countriesData }: Props) {
         mode: "onChange",
         reValidateMode: 'onChange',
         defaultValues: {
-            // countryCode: "+1",
+            dialCode: "+44",
             collectCountry: capitalizeEachWord(dataParam?.from_country)
             // ?? "United Kingdom"
             ,
