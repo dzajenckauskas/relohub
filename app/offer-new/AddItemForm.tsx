@@ -11,11 +11,11 @@ type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>;
     errors: FieldErrors<OfferFormType>;
     index: number;
-    append: UseFieldArrayAppend<OfferFormType, "customItems">
+    append?: UseFieldArrayAppend<OfferFormType, "customItems">
     setOpenCustomItemForm?: (v: boolean) => void;
 };
 
-const AddItemForm = ({ form, errors, index, append, setOpenCustomItemForm }: Props) => {
+const AddItemForm = ({ form, errors, index, setOpenCustomItemForm }: Props) => {
     const isConfirmed = form.watch(`customItems.${index}.confirmed`)
 
     const handleConfirm = async () => {
