@@ -1,4 +1,7 @@
-export const capitalizeEachWord = (string: string) => {
-    if (!string) return undefined
-    return string.replace(/\b\w/g, (char: string) => char.toUpperCase());
+export const capitalizeEachWord = (str?: string) => {
+    if (!str) return "";
+    return str
+        .replace(/_/g, " ") // Replace underscores with spaces
+        .toLowerCase() // Convert to lowercase
+        .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize each word
 };
