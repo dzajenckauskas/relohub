@@ -33,10 +33,10 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "app/offer/page.ts",
+    "app/offer-old/page.ts",
     "build/types/**/*.ts",
     "COMPONENTS/main_page/getInTouch.js",
-    "app/offer/OfferPage.js",
+    "app/offer-old/OfferPage.js",
     "COMPONENTS/main_page/videoarea.js"
   ],
   "exclude": [

@@ -1,6 +1,6 @@
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
-import OfferNewPage from "./OfferNewPage";
+import OfferPage from "./OfferPage";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
     const offerPage = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/offer-page?populate=seo`)
@@ -21,10 +21,8 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 }
 
 
-export default async function OfferNew() {
-    const countriesData = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/countries?pagination[limit]=100&sort[0]=name:asc`)
-
+export default function Offer() {
     return (
-        <OfferNewPage countriesData={countriesData} />
+        <OfferPage />
     )
 }

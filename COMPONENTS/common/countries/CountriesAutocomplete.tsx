@@ -1,6 +1,6 @@
 'use client'
 import { CountryDataType } from '@/COMPONENTS/types/CountryType'
-import { OfferFormType } from '@/app/offer-new/OfferNewPage'
+import { OfferFormType } from '@/app/offer/OfferNewPage'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import CloseIcon from '@mui/icons-material/Close'
 import { TextField, Typography } from '@mui/material'

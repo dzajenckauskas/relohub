@@ -1,5 +1,5 @@
 'use client'
-import { OfferFormType } from '@/app/offer-new/OfferNewPage'
+import { OfferFormType } from '@/app/offer/OfferNewPage'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import CloseIcon from '@mui/icons-material/Close'
 import { TextField } from '@mui/material'
