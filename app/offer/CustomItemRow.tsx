@@ -86,7 +86,7 @@ const CustomItemRow = ({ isLastItem, weight, form, dimensions, maxWeight, primar
                     </Stack>
                 </Stack>
 
-                <Stack sx={{ width: '140px' }}>
+                <Stack sx={{ width: '140px', minWidth: '140px' }}>
                     <CustomItemQuantityButtons form={form} name={`${name}.quantity`} onIncrease={onIncrease} onDecrease={onDecrease} item={item} quantity={quantity} />
                 </Stack>
             </Stack>

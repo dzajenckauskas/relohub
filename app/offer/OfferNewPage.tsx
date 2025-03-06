@@ -250,8 +250,14 @@ export default function OfferNewPage({ countriesData }: Props) {
 
 
     const validateForm = async () => {
-        const isValid = await trigger(Object.keys(stepSchemas[0].fields) as any); // Validate only current step fields
-        return isValid
+        // Check if `stepSchemas` exists and has a valid schema for the current active step
+        if (!stepSchemas || !stepSchemas[activeStep] || !stepSchemas[activeStep].fields) {
+            console.error("stepSchemas or fields for activeStep is undefined.");
+            return false;
+        }
+
+        const isValid = await trigger(Object.keys(stepSchemas[activeStep].fields) as any);
+        return isValid;
     };
 
     const formData = form.getValues()
