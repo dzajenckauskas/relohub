@@ -68,7 +68,7 @@ const DeliveryDateForm = ({ form }: Props) => {
                                 maxWidth: '100%', // Ensure it does not shrink
                                 borderRadius: '3px',
                                 minHeight: '400px !important',
-                                border: `1px solid ${theme.palette.divider}`,
+                                border: !!form.formState?.errors?.collectionDate ? `1px solid ${theme.palette.error.main}` : `1px solid ${theme.palette.divider}`,
                                 '.MuiPickersCalendarHeader-root': {
                                     borderBottom: `1px solid ${theme.palette.divider}`,
                                     px: 3.5,
