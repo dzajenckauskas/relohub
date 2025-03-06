@@ -129,6 +129,7 @@ const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth
                                     sx={{ width: 120 }}
                                     PopperComponent={CustomPopper}
                                     filterOptions={filterOptions}
+                                    isOptionEqualToValue={(option, value) => option.code === value.code}
                                     popupIcon={<ArrowDropDownIcon sx={{ fontSize: 30 }} />}
                                     clearIcon={<CloseIcon sx={{ fontSize: 20 }} />}
                                     disablePortal

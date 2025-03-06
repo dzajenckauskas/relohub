@@ -31,7 +31,7 @@ const PriceOptionsStep = ({ error, transformedData, form, countriesData, activeS
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
                 <Stack direction="column" gap={2} pb={2} width={'100%'} maxWidth={{ xs: '100%', md: "70%" }}>
                     {
-                        prices?.length !== 0 &&
+                        prices?.price?.length !== 0 &&
                         <>
 
                             <Elements stripe={stripePromise}>
@@ -52,7 +52,7 @@ const PriceOptionsStep = ({ error, transformedData, form, countriesData, activeS
                         </>
                     }
                     {
-                        prices?.length === 0 &&
+                        prices?.price?.length === 0 &&
                         <>
                             <Stack gap={2}>
                                 <Typography variant="h2" sx={{ fontWeight: 500 }}>Request <b>has been received</b></Typography>

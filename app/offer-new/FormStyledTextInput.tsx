@@ -18,6 +18,7 @@ const FormStyledTextInput = ({ helperText, error, autoFocus, onChange, required,
 
     return (
         <TextField
+            disabled={disabled}
             sx={{ pb: 2 }}
             autoFocus={autoFocus}
             required={required}

@@ -51,22 +51,65 @@ export type CustomItemType = {
     depth: string;
     length?: string;
     weight: string;
+    confirmed?: boolean;
 }
-// Step-based validation schemas
-
 const customItemSchema = yup.object().shape({
-    name: yup.string().required('Name is required'),
-    width: yup.number().typeError('Width must be a number').positive('Width must be greater than 0').required('Width is required'),
-    height: yup.number().typeError('Height must be a number').positive('Height must be greater than 0').required('Height is required'),
-    depth: yup.number().typeError('Depth must be a number').positive('Depth must be greater than 0').required('Depth is required'),
-    weight: yup.number().typeError('Weight must be a number').positive('Weight must be greater than 0').required('Weight is required'),
+    name: yup.string()
+        .transform((value, originalValue) => originalValue === "" ? undefined : value) // Prevents NaN
+        .when('confirmed', {
+            is: false,
+            then: schema => schema.required('Name is required'),
+            otherwise: schema => schema.notRequired().nullable(),
+        }),
+    width: yup.number()
+        .transform((value, originalValue) => originalValue === "" ? undefined : value) // Prevents NaN
+        .when('confirmed', {
+            is: false,
+            then: schema => schema
+                .typeError('Width must be a number')
+                .positive('Width must be greater than 0')
+                .required('Width is required'),
+            otherwise: schema => schema.notRequired().nullable(),
+        }),
+    height: yup.number()
+        .transform((value, originalValue) => originalValue === "" ? undefined : value)
+        .when('confirmed', {
+            is: false,
+            then: schema => schema
+                .typeError('Height must be a number')
+                .positive('Height must be greater than 0')
+                .required('Height is required'),
+            otherwise: schema => schema.notRequired().nullable(),
+        }),
+    depth: yup.number()
+        .transform((value, originalValue) => originalValue === "" ? undefined : value)
+        .when('confirmed', {
+            is: false,
+            then: schema => schema
+                .typeError('Depth must be a number')
+                .positive('Depth must be greater than 0')
+                .required('Depth is required'),
+            otherwise: schema => schema.notRequired().nullable(),
+        }),
+    weight: yup.number()
+        .transform((value, originalValue) => originalValue === "" ? undefined : value)
+        .when('confirmed', {
+            is: false,
+            then: schema => schema
+                .typeError('Weight must be a number')
+                .positive('Weight must be greater than 0')
+                .required('Weight is required'),
+            otherwise: schema => schema.notRequired().nullable(),
+        }),
+    confirmed: yup.boolean().default(false),
 });
+
+
 
 const phoneValidation = yup
     .string()
     .required("Phone number is required")
     .matches(/^\d+$/, "Phone number must contain only digits") // ✅ Ensures only digits
-
 const stepSchemas = [
     yup.object({
         fullName: yup
@@ -95,7 +138,7 @@ const stepSchemas = [
             is: (country) =>
                 typeof country === "string" &&
                 ["united kingdom", "united states"].includes(country.trim().toLowerCase()),
-            then: (schema) => schema.required("Collecty postcode is required"),
+            then: (schema) => schema.required("Collection postcode is required"),
             otherwise: (schema) => schema.notRequired(),
         }),
     }),
@@ -110,7 +153,6 @@ const stepSchemas = [
             .email("Invalid email")
             .required("Email is required"),
         phone: phoneValidation, // ✅ Updated validation
-
         collectionDate: yup.date().required("Collection date is required").typeError("Invalid date"),
         deliverCity: yup.string().required("Deliver city is required"),
         deliverCountry: yup.string().required("Deliver country is required"),
@@ -127,15 +169,27 @@ const stepSchemas = [
             is: (country) =>
                 typeof country === "string" &&
                 ["united kingdom", "united states"].includes(country.trim().toLowerCase()),
-            then: (schema) => schema.required("Collecty postcode is required"),
+            then: (schema) => schema.required("Collection postcode is required"),
             otherwise: (schema) => schema.notRequired(),
         }),
         customItems: yup.array().of(customItemSchema).default([]),
         hasItemsAdded: yup.boolean().when(
             ["customItems", "commonItems", "standardBox", "largeBox", "suitcaseSmall", "suitcaseLarge"],
             {
-                is: (commonItems: any[], customItems: any[], standardBox: number, largeBox: number, suitcaseSmall: number, suitcaseLarge: number) => {
-                    return ((commonItems?.length ?? 0) + (customItems?.length ?? 0) + (standardBox ?? 0) + (largeBox ?? 0) + (suitcaseSmall ?? 0) + (suitcaseLarge ?? 0)) <= 0;
+                is: (
+                    customItems: any[],
+                    commonItems: any[],
+                    standardBox: number,
+                    largeBox: number,
+                    suitcaseSmall: number,
+                    suitcaseLarge: number
+                ) => {
+                    // Count only confirmed customItems
+                    const confirmedCustomItems = customItems?.filter((item) => item?.confirmed === true)?.length ?? 0;
+
+                    return (
+                        ((commonItems?.length ?? 0) + confirmedCustomItems + (standardBox ?? 0) + (largeBox ?? 0) + (suitcaseSmall ?? 0) + (suitcaseLarge ?? 0)) <= 0
+                    );
                 },
                 then: () => yup.boolean().required("At least one item must be selected"),
                 otherwise: () => yup.boolean().nullable(),
@@ -200,7 +254,7 @@ export default function OfferNewPage({ countriesData }: Props) {
     const commonItems = form.watch('commonItems')
     const customItems = form.watch('customItems')
 
-    const transformedCustomItems = customItems?.map((v) => {
+    const transformedCustomItems = customItems?.filter((v) => v.confirmed === true)?.map((v) => {
         return {
             quantity: 1,
             name: v.name,
@@ -210,6 +264,7 @@ export default function OfferNewPage({ countriesData }: Props) {
             weight: v.weight,
         }
     })
+
     const transformedCommonItems = commonItems?.map((v) => {
         return {
             quantity: 1,
