@@ -80,6 +80,7 @@ const LuggageInformationForm = ({ form, detailsColumn }: Props) => {
                                 console.log(form.getValues());
                                 if (ci.confirmed) {
                                     return <CustomItemRow
+                                        key={ci.name}
                                         primaryText={ci.name}
                                         dimensions={`${ci.weight} x ${ci.height} x ${ci.depth}cm`}
                                         weight={ci.weight}
