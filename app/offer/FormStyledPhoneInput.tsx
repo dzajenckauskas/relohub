@@ -43,7 +43,7 @@ type Props = {
 const FormStyledPhoneInput = ({ form, name, label, required, disabled, fullWidth, error, helperText }: Props) => {
     const [open, setOpen] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState({
-        code: 'GB', dialCode: '+44', flag: "https://flagcdn.com/w40/gb.png", name: ''
+        code: form.getValues('countryCode') ?? 'GB', dialCode: form.getValues('dialCode') ?? '+44', flag: `https://flagcdn.com/w40/${form.getValues('countryCode')?.toLowerCase() ?? "gb"}.png`, name: ''
     });
     const GroupHeader = styled('div')(({ theme }) => ({
         padding: '4px 14px',

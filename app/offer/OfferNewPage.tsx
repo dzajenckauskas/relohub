@@ -17,6 +17,7 @@ import OfferSummaryBottomLine from "./OfferSummaryBottomLine";
 import DetailsAndDatesStep from "./steps/DetailsAndDatesStep";
 import InventoryStep from "./steps/InventoryStep";
 import PriceOptionsStep from "./steps/PriceOptionsStep";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
 
 export type OfferFormType = {
     fullName: string;
@@ -218,33 +219,31 @@ export default function OfferNewPage({ countriesData }: Props) {
     const searchParams = useSearchParams();
     const dataParam = JSON.parse(searchParams.get("data"))
 
-    const form = useForm<OfferFormType>({
-        resolver: yupResolver(stepSchemas[activeStep] as any) as any, // Change schema dynamically
-        mode: "onChange",
-        reValidateMode: 'onChange',
-        defaultValues: {
-            dialCode: "+44",
-            collectCountry: capitalizeEachWord(dataParam?.from_country)
-            // ?? "United Kingdom"
-            ,
-            collectCity: capitalizeEachWord(dataParam?.from_city)
-            // ?? "London"
-            ,
-            collectPostcode: capitalizeEachWord(dataParam?.from_postCode)
-            // ?? "HP23DS"
-            ,
-            deliverCountry: capitalizeEachWord(dataParam?.to_country)
-            // ?? "United States"
-            ,
-            deliverCity: capitalizeEachWord(dataParam?.to_city)
-            // ?? "Boston"
-            ,
-            deliverPostcode: capitalizeEachWord(dataParam?.to_postCode)
-            // ?? "BO5345"
-            ,
 
+    const formattedPhone = dataParam?.phone?.startsWith("+") ? dataParam.phone : `+${dataParam.phone}`;
+    const phoneNumber = formattedPhone ? parsePhoneNumberFromString(formattedPhone) : null;
+
+    const localPhone = phoneNumber ? phoneNumber.nationalNumber : dataParam?.phone || "";
+
+    const form = useForm<OfferFormType>({
+        resolver: yupResolver(stepSchemas[activeStep] as any) as any,
+        mode: "onChange",
+        reValidateMode: "onChange",
+        defaultValues: {
+            dialCode: phoneNumber ? `+${phoneNumber.countryCallingCode}` : "+44", // Extracted dial code
+            countryCode: phoneNumber?.country || "GB", // Country code
+            collectCountry: capitalizeEachWord(dataParam?.from_country),
+            collectCity: capitalizeEachWord(dataParam?.from_city),
+            collectPostcode: capitalizeEachWord(dataParam?.from_postCode),
+            deliverCountry: capitalizeEachWord(dataParam?.to_country),
+            deliverCity: capitalizeEachWord(dataParam?.to_city),
+            deliverPostcode: capitalizeEachWord(dataParam?.to_postCode),
+            fullName: capitalizeEachWord(dataParam?.first_last_name),
+            email: dataParam?.email,
+            phone: localPhone // Local number only (no dial code)
         }
     });
+
 
     const { handleSubmit, trigger } = form;
 
@@ -290,7 +289,7 @@ export default function OfferNewPage({ countriesData }: Props) {
     };
 
     const transformedData = {
-        name: formData?.fullName,
+        name: formData?.email,
         email: formData?.email,
         phone: `${formData?.dialCode ?? '+44'}${formData?.phone}`,
 
