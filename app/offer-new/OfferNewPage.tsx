@@ -281,7 +281,7 @@ export default function OfferNewPage({ countriesData }: Props) {
 
                     setActiveStep(2)
 
-                    prc && setPrices(prc.price);
+                    prc && setPrices(prc);
                 }
             }
         } catch (error) {
