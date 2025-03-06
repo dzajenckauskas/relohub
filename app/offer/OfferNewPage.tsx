@@ -18,6 +18,7 @@ import DetailsAndDatesStep from "./steps/DetailsAndDatesStep";
 import InventoryStep from "./steps/InventoryStep";
 import PriceOptionsStep from "./steps/PriceOptionsStep";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
+import { useRef, useEffect } from "react";
 
 export type OfferFormType = {
     fullName: string;
@@ -362,50 +363,78 @@ export default function OfferNewPage({ countriesData }: Props) {
         console.log('invalid', data, form.getValues())
     }
 
+
+    const topRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (topRef.current) {
+            const yOffset = -250; // Adjust this value to move the scroll higher (negative moves it up)
+            const y = topRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
+
+            window.scrollTo({ top: y, behavior: "smooth" });
+        }
+    }, [activeStep]);
+
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
-
             <PageLayout hidePopUpButton hideFooter>
                 <Stack sx={{ backgroundColor: "#efefef", minHeight: 'calc(100vh - 100px)' }}>
-                    <MaxWidthContainer sx={{ px: { xl: 2, sm: 2, xs: 0 }, }}>
+                    <MaxWidthContainer sx={{ px: { xl: 2, sm: 2, xs: 0 } }}>
                         <Stack mx="auto" maxWidth="lg" width="100%">
-                            <HorizontalStepper validateForm={validateForm} error={error} disablePricesButton={prices == null}
-                                activeStep={activeStep} setActiveStep={setActiveStep} />
+                            <HorizontalStepper
+                                validateForm={validateForm}
+                                error={error}
+                                disablePricesButton={prices == null}
+                                activeStep={activeStep}
+                                setActiveStep={setActiveStep}
+                            />
 
                             <form onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate>
                                 {/* Step 1: Contact details & Dates */}
                                 {activeStep === 0 && (
-                                    <DetailsAndDatesStep
-                                        form={form}
-                                    />
+                                    <div ref={topRef}>
+                                        <DetailsAndDatesStep form={form} />
+                                    </div>
                                 )}
 
                                 {/* Step 2: Your inventory */}
                                 {activeStep === 1 && (
-                                    <InventoryStep
-                                        form={form}
-                                    />
-                                )}
-                                {/* Step 3: Price options */}
-                                {activeStep === 2 && (
-                                    <PriceOptionsStep
-                                        error={error}
-                                        prices={prices}
-                                        transformedData={transformedData}
-                                        form={form} countriesData={countriesData}
-                                        nextStep={nextStep} activeStep={activeStep}
-                                    />
+                                    <div ref={topRef}>
+                                        <InventoryStep form={form} />
+                                    </div>
                                 )}
 
-                                {activeStep !== 2 && <Stack sx={{ maxWidth: { xs: "100%", md: '100%' }, width: '100%', position: 'fixed', left: 0, bottom: 0, zIndex: 99 }}>
-                                    <OfferSummaryBottomLine error={error} validateForm={validateForm} countriesData={countriesData} activeStep={activeStep} nextStep={nextStep} form={form} />
-                                </Stack>}
+                                {/* Step 3: Price options */}
+                                {activeStep === 2 && (
+                                    <div ref={topRef}>
+                                        <PriceOptionsStep
+                                            error={error}
+                                            prices={prices}
+                                            transformedData={transformedData}
+                                            form={form} countriesData={countriesData}
+                                            nextStep={nextStep} activeStep={activeStep}
+                                        />
+                                    </div>
+                                )}
+
+                                {activeStep !== 2 && (
+                                    <Stack sx={{ maxWidth: { xs: "100%", md: '100%' }, width: '100%', position: 'fixed', left: 0, bottom: 0, zIndex: 99 }}>
+                                        <OfferSummaryBottomLine
+                                            error={error}
+                                            validateForm={validateForm}
+                                            countriesData={countriesData}
+                                            activeStep={activeStep}
+                                            nextStep={nextStep}
+                                            form={form}
+                                        />
+                                    </Stack>
+                                )}
                             </form>
                         </Stack>
                     </MaxWidthContainer>
                 </Stack>
-
             </PageLayout>
         </LocalizationProvider>
     );
+
 }

@@ -42,7 +42,7 @@ const DetailsAndDatesStep = ({ form, }: Props) => {
                     zIndex: 1,
                     transform: { xs: 'scale(.7)', sm: 'scale(1)' },
                     position: 'relative',
-                    mt: { xs: -4, md: -14 },
+                    mt: { xs: -4, sm: 2, md: -12 },
                     left: { xs: -100, sm: -20, md: -20 },
                     bottom: { xs: -50, sm: 10, md: -34 },
                 }}>
