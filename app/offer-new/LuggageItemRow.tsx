@@ -44,7 +44,7 @@ const LuggageItemRow = ({ isLastItem, rowNo, detailsColumn, form, dimensions, ma
                         >
 
                             <Typography variant='subtitle2' sx={{
-                                fontWeight: 600,
+                                fontWeight: 600, pr: 1,
                                 lineHeight: 1, minWidth: { xs: '100%', sm: 120 }, width: '100%'
                             }}>
                                 {primaryText}{' '}

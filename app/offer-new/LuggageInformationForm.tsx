@@ -77,7 +77,6 @@ const LuggageInformationForm = ({ form, detailsColumn }: Props) => {
                     <Box flex={1} display="flex" flexDirection="column" gap={{ xs: 1, md: 2 }}>
                         <>
                             {customItems?.map((ci, i) => {
-                                console.log(form.getValues());
                                 if (ci.confirmed) {
                                     return <CustomItemRow
                                         key={ci.name}

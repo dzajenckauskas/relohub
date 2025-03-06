@@ -15,8 +15,8 @@ type Props = {
 const InventoryStep = ({ form, error }: Props) => {
     return (
         <Card sx={{ p: { xs: 2, md: 4 }, width: "100%", mx: "auto", mb: { xs: '80px', md: '120px' }, pb: 0 }}>
-            <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
-                <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 4, md: 8 }} width={'100%'} maxWidth={{ xs: '100%', md: "100%" }}>
+            <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, sm: 4, md: 4, lg: 6 }} width={'100%'}>
+                <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 4, sm: 4, md: 4, lg: 8 }} width={'100%'} maxWidth={{ xs: '100%', md: "100%" }}>
                     <Stack width={'100%'}>
                         <Stack gap={1}>
                             <Typography variant="h2" sx={{ fontWeight: 500, pb: 1 }}>Your <b>Boxes & Luggage</b> Details</Typography>
