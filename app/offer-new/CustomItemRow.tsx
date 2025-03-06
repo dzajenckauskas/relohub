@@ -1,12 +1,13 @@
 import { Box, Divider, Stack } from "@mui/material";
 import Typography from '@mui/material/Typography';
+import CustomItemQuantityButtons from "./CustomItemQuantityButtons";
 import { CustomItemType } from "./OfferNewPage";
-import QuantityButtons from "./QuantityButtons";
 
 type Props = {
     form: any;
     dimensions: string;
-    maxWeight: string;
+    maxWeight?: string;
+    weight?: string;
     primaryText?: string;
     secondaryText?: string;
     name: string;
@@ -20,8 +21,7 @@ type Props = {
     rowNo?: number;
 }
 
-const LuggageItemRow = ({ isLastItem, rowNo, detailsColumn, form, dimensions, maxWeight, primaryText, secondaryText, name, imgSrc, onIncrease, onDecrease, item, quantity }: Props) => {
-
+const CustomItemRow = ({ isLastItem, weight, form, dimensions, maxWeight, primaryText, secondaryText, name, onIncrease, onDecrease, item, quantity }: Props) => {
     return (
         <>
             <Stack direction={'row'} sx={{
@@ -45,7 +45,11 @@ const LuggageItemRow = ({ isLastItem, rowNo, detailsColumn, form, dimensions, ma
 
                             <Typography variant='subtitle2' sx={{
                                 fontWeight: 600,
-                                lineHeight: 1, minWidth: { xs: '100%', sm: 120 }, width: '100%'
+                                lineHeight: 1, minWidth: { xs: '100%', sm: 120 }, width: '100%',
+                                textWrap: 'wrap',
+                                pr: 1,
+                                textOverflow: 'ellipsis',
+                                overflow: 'hidden'
                             }}>
                                 {primaryText}{' '}
                                 {secondaryText && <Box sx={{ display: { xs: 'none', sm: 'flex' } }}></Box>}
@@ -53,7 +57,7 @@ const LuggageItemRow = ({ isLastItem, rowNo, detailsColumn, form, dimensions, ma
                             </Typography>
                         </Stack>
                     </Stack>
-                    <Stack width={'100%'} pt={{ xs: .5, sm: 0 }} direction={{ xs: 'column', sm: 'column' }}>
+                    <Stack width={'100%'} pt={{ xs: .5, sm: 0 }} justifyContent={'center'} direction={{ xs: 'column', sm: 'column' }}>
                         <Stack sx={{ width: { xs: '100%', sm: '120px' } }}>
                             <Typography variant='body2' sx={{
                                 fontWeight: 500,
@@ -64,19 +68,26 @@ const LuggageItemRow = ({ isLastItem, rowNo, detailsColumn, form, dimensions, ma
                             </Typography>
                         </Stack>
                         <Stack sx={{ width: { xs: '100%', sm: '100px' } }}>
-                            <Typography variant='body2' sx={{
+                            {maxWeight && <Typography variant='body2' sx={{
                                 fontWeight: 500,
                                 fontSize: { xs: 12, sm: 14 },
                                 lineHeight: { xs: 1.1, sm: 1.2 }
                             }}>
                                 max {maxWeight}kg
-                            </Typography>
+                            </Typography>}
+                            {weight && <Typography variant='body2' sx={{
+                                fontWeight: 500,
+                                fontSize: { xs: 12, sm: 14 },
+                                lineHeight: { xs: 1.1, sm: 1.2 }
+                            }}>
+                                {weight}kg
+                            </Typography>}
                         </Stack>
                     </Stack>
                 </Stack>
 
                 <Stack sx={{ width: '140px' }}>
-                    <QuantityButtons form={form} name={name} onIncrease={onIncrease} onDecrease={onDecrease} item={item} quantity={quantity} />
+                    <CustomItemQuantityButtons form={form} name={`${name}.quantity`} onIncrease={onIncrease} onDecrease={onDecrease} item={item} quantity={quantity} />
                 </Stack>
             </Stack>
             <Divider sx={{ opacity: isLastItem ? 0 : 1 }} />
@@ -85,4 +96,4 @@ const LuggageItemRow = ({ isLastItem, rowNo, detailsColumn, form, dimensions, ma
     )
 }
 
-export default LuggageItemRow
+export default CustomItemRow

@@ -10,6 +10,8 @@ import { UseFormReturn, useFieldArray } from 'react-hook-form';
 import AddItemForm from './AddItemForm';
 import LuggageItemRow from './LuggageItemRow';
 import { CustomItemType, OfferFormType } from './OfferNewPage';
+import { useState } from 'react';
+import CustomItemRow from './CustomItemRow';
 
 type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>
@@ -21,6 +23,8 @@ const LuggageInformationForm = ({ form, detailsColumn }: Props) => {
         control: form.control,
         name: 'customItems'
     });
+    const customItems = form.watch('customItems')
+    const [openCustomItemForm, setOpenCustomItemForm] = useState(false)
     return (
 
         <Stack direction="row" gap={2} pb={2} pt={2} >
@@ -66,11 +70,34 @@ const LuggageInformationForm = ({ form, detailsColumn }: Props) => {
                     name={'suitcaseLarge'}
                 />
                 <Stack>
+                    {customItems?.length > 0 && <Stack gap={1} mt={3} mb={2}>
+                        <Typography variant="h2" sx={{ fontWeight: 500, pb: 1 }}>Your <b>Custom Items</b></Typography>
+                        <Divider />
+                    </Stack>}
+                    <Box flex={1} display="flex" flexDirection="column" gap={{ xs: 1, md: 2 }}>
+                        <>
+                            {customItems?.map((ci, i) => {
+                                console.log(form.getValues());
+                                if (ci.confirmed) {
+                                    return <CustomItemRow
+                                        primaryText={ci.name}
+                                        dimensions={`${ci.weight} x ${ci.height} x ${ci.depth}cm`}
+                                        weight={ci.weight}
+                                        quantity={ci.quantity ?? 1}
+                                        form={form}
+                                        item={ci}
+                                        name={`customItems.${i}`}
+                                    />
+                                } else {
+                                    return null
+                                }
+                            })}
+                        </>
+                    </Box>
                     <>
-                        {fields?.reverse()?.map((ci, i) => {
-                            return <Stack key={ci.id} alignItems={'stretch'} pb={2}>
+                        {openCustomItemForm &&
+                            <Stack alignItems={'stretch'} pb={2}>
                                 <Button
-
                                     disableElevation
                                     disableFocusRipple
                                     disableRipple
@@ -86,22 +113,27 @@ const LuggageInformationForm = ({ form, detailsColumn }: Props) => {
                                             outline: 'none', // Optionally remove focus outline as well
                                         },
                                         minWidth: 10, alignSelf: 'flex-end',
-                                        //  position: 'relative', top: 3, right: 3
                                     }}
-                                    onClick={() => remove(i)}
+                                    onClick={() => {
+                                        remove(fields?.length - 1)
+                                        setOpenCustomItemForm(false)
+                                    }}
                                 >
                                     <CloseIcon fontSize='large' sx={{ fontSize: 20 }} />
                                 </Button>
-                                <AddItemForm form={form} errors={form.formState.errors} index={i} />
+                                <AddItemForm setOpenCustomItemForm={setOpenCustomItemForm} append={append} form={form} errors={form.formState.errors} index={fields?.length - 1} />
                                 <Box sx={{ pt: 1 }}>
                                     <Divider />
                                 </Box>
                             </Stack>
-                        })}
+                        }
                     </>
                     <Stack
                         pt={1}
-                        onClick={async () => await append({} as CustomItemType)}
+                        onClick={async () => {
+                            await append({} as CustomItemType)
+                            setOpenCustomItemForm(true)
+                        }}
 
                         direction={'row'}
                         sx={{ cursor: 'pointer', zIndex: 2, maxWidth: 'max-content' }}

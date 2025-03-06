@@ -52,6 +52,7 @@ export type CustomItemType = {
     length?: string;
     weight: string;
     confirmed?: boolean;
+    quantity?: number;
 }
 const customItemSchema = yup.object().shape({
     name: yup.string()
@@ -184,17 +185,20 @@ const stepSchemas = [
                     suitcaseSmall: number,
                     suitcaseLarge: number
                 ) => {
-                    // Count only confirmed customItems
-                    const confirmedCustomItems = customItems?.filter((item) => item?.confirmed === true)?.length ?? 0;
+                    // Sum up the quantity of confirmed customItems
+                    const confirmedCustomItemsQuantity = customItems
+                        ?.filter((item) => item?.confirmed === true)
+                        ?.reduce((sum, item) => sum + (item.quantity ?? 0), 0) ?? 0;
 
                     return (
-                        ((commonItems?.length ?? 0) + confirmedCustomItems + (standardBox ?? 0) + (largeBox ?? 0) + (suitcaseSmall ?? 0) + (suitcaseLarge ?? 0)) <= 0
+                        ((commonItems?.length ?? 0) + confirmedCustomItemsQuantity + (standardBox ?? 0) + (largeBox ?? 0) + (suitcaseSmall ?? 0) + (suitcaseLarge ?? 0)) <= 0
                     );
                 },
                 then: () => yup.boolean().required("At least one item must be selected"),
                 otherwise: () => yup.boolean().nullable(),
             }
         ),
+
     }),
 ];
 
@@ -254,9 +258,9 @@ export default function OfferNewPage({ countriesData }: Props) {
     const commonItems = form.watch('commonItems')
     const customItems = form.watch('customItems')
 
-    const transformedCustomItems = customItems?.filter((v) => v.confirmed === true)?.map((v) => {
+    const transformedCustomItems = customItems?.filter((v) => v.confirmed === true && v.quantity > 0)?.map((v) => {
         return {
-            quantity: 1,
+            quantity: v.quantity ?? 1,
             name: v.name,
             width: v.width,
             height: v.height,

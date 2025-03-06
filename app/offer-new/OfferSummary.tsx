@@ -34,8 +34,8 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
     const deliverBoxesDate = form.watch('deliverBoxesDate') ?? undefined
     const emptyBoxesQuantity = form.watch('emptyBoxesQuantity')
 
-    const groupedCustomItems = customItems?.reduce((acc, item) => {
-        const key = item.slug; // Group items based on 'slug'
+    const groupedCustomItems = customItems?.filter?.((v) => v.quantity > 0)?.reduce((acc, item) => {
+        const key = item.name; // Group items based on 'slug'
 
         if (!acc[key]) {
             acc[key] = { ...item, quantity: item.quantity || 1 };
@@ -45,6 +45,8 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
 
         return acc;
     }, {} as Record<string, typeof customItems[number]>);
+
+
     const groupedCommonItems = commonItems?.reduce((acc, item) => {
         const key = item.slug; // Group items based on 'slug'
 
@@ -57,8 +59,8 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
         return acc;
     }, {} as Record<string, typeof commonItems[number]>);
 
-    const commonItemsSummary = groupedCustomItems && Object?.values(groupedCustomItems) as any;
-    const customItemsSummary = groupedCommonItems && Object?.values(groupedCommonItems) as any;
+    const customItemsSummary = groupedCustomItems && Object?.values(groupedCustomItems) as any;
+    const commonItemsSummary = groupedCommonItems && Object?.values(groupedCommonItems) as any;
 
     return (
         <>
@@ -207,7 +209,7 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                             </Box>}
                         {customItemsSummary?.length > 0 &&
                             <Box>
-                                {!!customItemsSummary?.[0]?.name &&
+                                {
                                     <Typography color={'primary'} variant="body1" sx={{ opacity: .6, lineHeight: 1.2, fontWeight: 500 }}>
                                         Your Items:
                                     </Typography>}
@@ -215,7 +217,7 @@ const OfferSummary = ({ validateForm, form, countriesData, activeStep }: Props) 
                                     return (
                                         <Box key={ci.name + i} pb={1}>
                                             {ci.name &&
-                                                <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.1, fontWeight: 500 }}>
+                                                <Typography color={'primary'} variant="body1" sx={{ lineHeight: 1.1, fontWeight: 500, }}>
                                                     {/* {i + 1}.  */}
                                                     {ci.name} <span style={{ color: theme.palette.secondary.main }}>x {ci.quantity ?? 1}</span>
                                                 </Typography>}

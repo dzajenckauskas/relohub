@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import React from 'react';
 import FormStyledTextInput from './FormStyledTextInput';
-import { FieldErrors, UseFormReturn } from 'react-hook-form';
+import { FieldErrors, UseFieldArrayAppend, UseFormReturn } from 'react-hook-form';
 import { OfferFormType } from './OfferNewPage';
 import FormHelperText from '@mui/material/FormHelperText';
 import Button from '@mui/material/Button';
@@ -11,16 +11,20 @@ type Props = {
     form: UseFormReturn<OfferFormType, any, undefined>;
     errors: FieldErrors<OfferFormType>;
     index: number;
+    append: UseFieldArrayAppend<OfferFormType, "customItems">
+    setOpenCustomItemForm?: (v: boolean) => void;
 };
 
-const AddItemForm = ({ form, errors, index }: Props) => {
+const AddItemForm = ({ form, errors, index, append, setOpenCustomItemForm }: Props) => {
     const isConfirmed = form.watch(`customItems.${index}.confirmed`)
 
     const handleConfirm = async () => {
         const isValid = await form.trigger(`customItems.${index}`); // Validate custom item fields
 
         if (isValid) {
-            form.setValue(`customItems.${index}.confirmed`, true);
+            form.setValue(`customItems.${index}.confirmed`, true)
+            form.setValue(`customItems.${index}.quantity`, 1)
+            setOpenCustomItemForm && setOpenCustomItemForm(false)
         }
     };
 
