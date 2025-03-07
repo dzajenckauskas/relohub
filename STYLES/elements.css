@@ -1807,7 +1807,7 @@ th {
 }
 
 .stripecardelelemtn {
-    outline: 1px solid var(--light_grey);
+    outline: 1px solid var(--dark_grey);
     padding: 16px;
     font-size: 2rem;
     margin-top: 8px;
@@ -1830,7 +1830,7 @@ th {
     margin-top: 38px;
     width: 40px;
     height: 40px;
-    border: 2px solid var(--green);
+    border: 2px solid var(--pink_color);
     border-bottom-color: transparent;
     border-radius: 50%;
     display: inline-block;
