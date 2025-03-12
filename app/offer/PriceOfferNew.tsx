@@ -277,7 +277,8 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
 
         if (error) {
             console.log("[error]", error);
-
+            setError(error.message);
+            setpaymentonprogress(false);
             return;
         }
 
@@ -297,6 +298,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
         if (response.ok) {
             setordercompleted(true);
             fetchtoServer();
+            setpaymentonprogress(false);
         } else {
             setError("Payment error");
             setpaymentonprogress(false);
@@ -361,8 +363,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
                             }}
                         />
                     )}
-                    <p className="offerstripeerror">{error}</p>
-                    {error && <ErrorMessage message={String(error)} />}
+                    {error && <Box><ErrorMessage message={String(error)} /></Box>}
                 </div>
                 {ordercompleted ? (
                     <p className="ordercompletedstripep">
