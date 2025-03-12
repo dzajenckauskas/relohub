@@ -38,7 +38,7 @@ export default async function Home() {
     return (
         <PageLayout>
             {/* <RemovedaDataFromCitiesJson /> */}
-            <div className="bckimagewrp">
+            <div id={'hero-section'} className="bckimagewrp">
                 <div className="heroareaimgwrp">
                     <Image
                         className="herobckgimg"
