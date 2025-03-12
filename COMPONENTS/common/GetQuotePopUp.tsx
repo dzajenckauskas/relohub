@@ -6,7 +6,11 @@ import React, { useEffect, useState } from 'react';
 import { InstantQuoteComponent } from './InstantQuoteComponent';
 import { theme } from './shared/Theme';
 
-const GetQuotePopUp = () => {
+type Props = {
+    isHeroVisible?: boolean;
+}
+
+const GetQuotePopUp = ({ isHeroVisible }: Props) => {
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
     const TransitionDesktop = React.forwardRef(function Transition(
@@ -66,14 +70,15 @@ const GetQuotePopUp = () => {
 
     useEffect(() => {
         const popUpShown = sessionStorage.getItem('quotePopUpShown');
-        if (!popUpShown) {
-            const timer = setTimeout(() => {
-                setShowPopUp(true);
-                sessionStorage.setItem('quotePopUpShown', 'true');
-            }, 15000);
-            return () => clearTimeout(timer);
-        }
-    }, []);
+        if (!isHeroVisible)
+            if (!popUpShown) {
+                const timer = setTimeout(() => {
+                    setShowPopUp(true);
+                    sessionStorage.setItem('quotePopUpShown', 'true');
+                }, 15000);
+                return () => clearTimeout(timer);
+            }
+    }, [isHeroVisible]);
 
     return (
         <>

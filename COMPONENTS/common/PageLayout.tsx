@@ -38,7 +38,7 @@ const PageLayout = ({
     return (
         <ThemeProvider theme={theme}>
             <Chat />
-            {(!hidePopUpButton && !isHeroVisible) && <GetQuotePopUp />}
+            {(!hidePopUpButton) && <GetQuotePopUp isHeroVisible={isHeroVisible} />}
             <Header />
             {children}
             {!hideFooter && <GetInTOuch />}
