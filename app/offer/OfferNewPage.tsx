@@ -296,7 +296,7 @@ export default function OfferNewPage({ countriesData }: Props) {
     };
 
     const transformedData = {
-        name: formData?.email,
+        name: formData?.fullName,
         email: formData?.email,
         phone: `${formData?.dialCode ?? '+44'}${formData?.phone}`,
 
