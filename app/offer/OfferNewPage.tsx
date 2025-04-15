@@ -221,7 +221,7 @@ export default function OfferNewPage({ countriesData }: Props) {
     const dataParam = JSON.parse(searchParams.get("data"))
 
 
-    const formattedPhone = dataParam?.phone?.startsWith("+") ? dataParam.phone : `+${dataParam.phone}`;
+    const formattedPhone = (dataParam && dataParam?.phone) ? ((dataParam?.phone?.startsWith("+")) ? dataParam.phone : `+${dataParam?.phone}`) : null;
     const phoneNumber = formattedPhone ? parsePhoneNumberFromString(formattedPhone) : null;
 
     const localPhone = phoneNumber ? phoneNumber.nationalNumber : dataParam?.phone || "";
