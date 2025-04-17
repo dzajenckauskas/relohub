@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
     const article = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/articles/${params.slug}?populate=seo`)
-    const imageUrl = process.env.NEXT_PUBLIC_API_URL + article.data.attributes?.image.data.attributes?.url
+    const imageUrl = article.data.attributes?.image.data?.attributes?.url ? (process.env.NEXT_PUBLIC_API_URL + article.data.attributes?.image.data?.attributes?.url) : '/placeholder-image.webp'
 
     return {
         title: article?.data?.attributes?.seo?.seoTitle,

@@ -133,8 +133,8 @@ const ArticlePage = ({ article }: Props) => {
                     }}>
                         <Image
                             priority
-                            src={`${process.env.NEXT_PUBLIC_API_URL}${article?.data?.attributes?.image?.data?.attributes?.url ?? article?.data?.attributes?.image?.data?.attributes?.url}`}
-                            alt={article?.data?.attributes?.image?.data?.attributes?.alternativeText ?? article?.data?.attributes?.title}
+                            src={article?.data?.attributes?.image?.data ? `${process.env.NEXT_PUBLIC_API_URL}${article?.data?.attributes?.image?.data?.attributes?.url ?? article?.data?.attributes?.image?.data?.attributes?.url}` : '/placeholder-image.webp'}
+                            alt={article?.data?.attributes?.image?.data?.attributes?.alternativeText ?? article?.data?.attributes?.title ?? 'cover image'}
                             fill
                             objectFit="cover"
                         />

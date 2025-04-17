@@ -21,9 +21,9 @@ const ArticleCard = ({ loading, article, activeContinent }: Props) => {
             ?.find((c) => c?.attributes?.key === activeContinent)?.attributes?.name
         : article?.attributes?.articleContinents?.data?.[0]?.attributes?.name
     const url = `/guides/${article?.attributes?.articleCategory?.data?.attributes?.key}/${article?.attributes?.slug}`
-    const imgSrc = `${process.env.NEXT_PUBLIC_API_URL}${article?.attributes?.image?.data?.attributes?.formats?.medium?.url
+    const imgSrc = article?.attributes?.image?.data?.attributes ? `${process.env.NEXT_PUBLIC_API_URL}${article?.attributes?.image?.data?.attributes?.formats?.medium?.url
         ?? article?.attributes?.image?.data?.attributes?.url
-        ?? '/'}`
+        ?? '/'}` : '/placeholder-image.webp'
     const imgAlt = article?.attributes?.image?.data?.attributes?.alternativeText
         ?? article?.attributes?.title
 
