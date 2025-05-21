@@ -43,7 +43,7 @@ Ensure you have the following installed:
    ```sh
    npm run dev  # or yarn dev
    ```
-5. Access the app at `http://localhost:3000`.
+5. Access the app at `http://localhost:5555`.
 
 ## Deployment
 - The project is deployed on a VPS with Strapi running as a headless CMS.
