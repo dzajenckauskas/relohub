@@ -8,13 +8,13 @@ const nextConfig = {
         domains: [
             "154.49.136.99",
             "flagcdn.com",
-            "api.deliver1.co.uk"
+            "api.relohub.co.uk"
         ],
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'api.deliver1.co.uk',
-                port: '1344',
+                hostname: 'api.relohub.co.uk',
+                port: '1355',
                 pathname: '/uploads/**',
             }
         ],

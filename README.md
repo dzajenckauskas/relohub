@@ -1,9 +1,9 @@
-# Deliver1 - International Moving Services
+# Relohub - International Moving Services
 
 ## Overview
-Deliver1 is an international moving services platform that offers door-to-door shipping via sea, road, and air. The project was initially developed by another front-end developer, and I am currently rebuilding it to improve scalability, maintainability, and performance. This includes implementing TypeScript, refactoring the codebase, and adding new features.
+Relohub is an international moving services platform that offers door-to-door shipping via sea, road, and air. The project was initially developed by another front-end developer, and I am currently rebuilding it to improve scalability, maintainability, and performance. This includes implementing TypeScript, refactoring the codebase, and adding new features.
 
-Website: [www.deliver1.co.uk](https://www.deliver1.co.uk)
+Website: [www.relohub.co.uk](https://www.relohub.co.uk)
 
 ## Tech Stack
 - **Frontend:** React, Next.js, TypeScript
@@ -29,8 +29,8 @@ Ensure you have the following installed:
 ### Installation Steps
 1. Clone the repository:
    ```sh
-   git clone https://github.com/dzajenckauskas/deliver1.git
-   cd deliver1
+   git clone https://github.com/dzajenckauskas/relohub.git
+   cd relohub
    ```
 2. Install dependencies:
    ```sh
