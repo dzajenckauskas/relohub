@@ -3,10 +3,10 @@ export default function PrivacyPolicy() {
         <div className="alotoftext">
             <div>
                 <p>
-                    Deliver1 Ltd understands that your privacy is important to
+                    Relohub Ltd understands that your privacy is important to
                     you and that you care about how your personal data is used
                     and shared online. We respect and value the privacy of
-                    everyone who visits this website, www.deliver1.co.uk (“Our
+                    everyone who visits this website, www.Relohub.co.uk (“Our
                     Site”) and will only collect and use personal data in ways
                     that are described here, and in a manner that is consistent
                     with Our obligations and your rights under the law.
@@ -56,7 +56,7 @@ export default function PrivacyPolicy() {
                         Regulation (“GDPR”); and
                     </li>
                     <li>
-                        <strong>“We/Us/Our”</strong> means Deliver1 Ltd whose
+                        <strong>“We/Us/Our”</strong> means Relohub Ltd whose
                         main trading address is Dovecote, Finch Lane, Amersham,
                         England, HP7 9DS.
                     </li>
@@ -66,7 +66,7 @@ export default function PrivacyPolicy() {
                 <h3>2. Information About Us</h3>
 
                 <p>
-                    Our Site is owned and operated by Deliver1 whose main
+                    Our Site is owned and operated by Relohub whose main
                     trading address is Dovecote, Finch Lane, Amersham, England,
                     HP7 9DS.
                 </p>
@@ -494,7 +494,7 @@ export default function PrivacyPolicy() {
                     data held by Us (where such data is held). Under the GDPR,
                     no fee is payable and We will provide any and all
                     information in response to your request free of charge.
-                    Please contact Us for more details at Deliver1 Ltd,
+                    Please contact Us for more details at Relohub Ltd,
                     Dovecote, Finch Lane, Amersham, England, HP7 9DS, or using
                     the contact details below in section 14.
                 </p>
@@ -567,7 +567,7 @@ export default function PrivacyPolicy() {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Deliver1</td>
+                            <td>Relohub</td>
                             <td>Delivering a customised user experience</td>
                             <td>Yes</td>
                         </tr>
@@ -659,13 +659,13 @@ export default function PrivacyPolicy() {
                 <ul>
                     <li>
                         By email at{" "}
-                        <a href="mailto:hello@deliver1.co.uk">
-                            hello@deliver1.co.uk
+                        <a href="mailto:hello@relohub.co.uk">
+                            hello@relohub.co.uk
                         </a>
                     </li>
                     <li>By telephone on (+44) 333 090 7053</li>
                     <li>
-                        By post at Deliver1, Dovecote, Finch Lane, Amersham,
+                        By post at Relohub, Dovecote, Finch Lane, Amersham,
                         England, HP7 9DS
                     </li>
                 </ul>

@@ -170,8 +170,8 @@ export default function GetInTOuch() {
                                     <div className="gitleftlinerright">
                                         <p className="gittitlep">Email</p>
 
-                                        <a href="mailto:hello@deliver1.co.uk">
-                                            hello@deliver1.co.uk
+                                        <a href="mailto:hello@relohub.co.uk">
+                                            hello@relohub.co.uk
                                         </a>
                                     </div>
                                 </div>
@@ -386,8 +386,8 @@ export default function GetInTOuch() {
 //                                     <div className="gitleftlinerright">
 //                                         <p className="gittitlep">Email</p>
 
-//                                         <a href="mailto:hello@deliver1.co.uk">
-//                                             hello@deliver1.co.uk
+//                                         <a href="mailto:hello@relohub.co.uk">
+//                                             hello@relohub.co.uk
 //                                         </a>
 //                                     </div>
 //                                 </div>

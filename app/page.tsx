@@ -1,13 +1,15 @@
-import { CountriesDropdownList } from "@/COMPONENTS/common/CountriesDropdownList";
+// import { CountriesDropdownList } from "@/COMPONENTS/common/CountriesDropdownList";
 import { MaxWidthContainer } from "@/COMPONENTS/common/MaxWidthContainer";
 import PageLayout from "@/COMPONENTS/common/PageLayout";
+import { CoveredCountriesSection } from "@/COMPONENTS/common/sections/CoveredCountriesSection";
+import { ServicesSection } from "@/COMPONENTS/common/sections/ServicesSection";
 import FaqWrapper from "@/COMPONENTS/main_page/Faqwrapper";
-import LatestArticles from "@/COMPONENTS/main_page/LatestArticles";
+// import LatestArticles from "@/COMPONENTS/main_page/LatestArticles";
 import MainPageHeroArea from "@/COMPONENTS/main_page/MainPageHeroArea";
 import ProcessWrapper from "@/COMPONENTS/main_page/ProcessWrapper";
 import Postheroimages from "@/COMPONENTS/main_page/postheroimages";
 import Reviews from "@/COMPONENTS/main_page/reviews";
-import VideoArea from "@/COMPONENTS/main_page/videoarea";
+// import VideoArea from "@/COMPONENTS/main_page/videoarea";
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
 import Image from "next/image";
@@ -34,6 +36,7 @@ export async function generateMetadata({ }): Promise<Metadata> {
 
 export default async function Home() {
     const countriesData = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/countries?pagination[limit]=100&sort[0]=name:asc`)
+    const articleContinents = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/article-continents`)
 
     return (
         <PageLayout>
@@ -52,11 +55,13 @@ export default async function Home() {
                 </MaxWidthContainer>
                 <Postheroimages />
             </div>
-            <CountriesDropdownList countriesData={countriesData} />
-            <VideoArea hideIcons={false} />
+            <ServicesSection />
+            <CoveredCountriesSection articleContinents={articleContinents} countries={countriesData} />
+            {/* <CountriesDropdownList countriesData={countriesData} /> */}
+            {/* <VideoArea hideIcons={false} /> */}
             <ProcessWrapper />
             <FaqWrapper />
-            <LatestArticles />
+            {/* <LatestArticles /> */}
             <Reviews />
         </PageLayout>
     );

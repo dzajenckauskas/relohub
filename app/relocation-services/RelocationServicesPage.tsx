@@ -21,7 +21,7 @@ type Props = {
 }
 const RelocationServicesPage = ({ countriesData }: Props) => {
     const iconsSection2Content = [
-        { title: "Global Reach", text: "Deliver1 connects you with countries worldwide, handling shipping, paperwork, and logistics for a smooth moving experience.", icon: 'icon7.png' },
+        { title: "Global Reach", text: "Relohub connects you with countries worldwide, handling shipping, paperwork, and logistics for a smooth moving experience.", icon: 'icon7.png' },
         { title: "Experienced Team", text: "Founded in 2019, we've perfected our processes to make your international move stress-free and efficient.", icon: 'icon8.png' },
         { title: "Door-to-Door Service", text: "We take care of everything from your current home to your new one, so you can focus on your new adventure.", icon: 'icon9.png' },
         { title: "Skilled Professionals", text: "Our team provides top packing materials and uses best practices to pack and transport your belongings safely.", icon: 'icon10.png' },
@@ -39,7 +39,7 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
         { title: "Home Search Assistance: Find Your Dream Home Faster", text: "Our dedicated team of experts understands the local real estate market inside out. We conduct thorough research and arrange viewings of properties that match your criteria, helping you find your ideal home quickly and efficiently. We also provide negotiation support to ensure you get the best deal possible." },
         { title: "Settling In: We're Here to Support You Every Step of the Way", text: "Relocating involves more than just finding a place to live. Our settling-in services help you navigate the practicalities of your new life. From opening bank accounts and transferring driving licences to finding doctors, dentists, and schools, we ensure a smooth transition for you and your family." },
         { title: "School Search: Expert Guidance for Your Child's Education", text: "Choosing the right school is crucial for your child's future. Our personalised school search service takes into account your child's needs and preferences, providing a curated list of schools and arranging visits to help you make an informed decision." },
-        { title: "Your Relocation, Simplified with Deliver1", text: "At Deliver1, we believe that relocation should be an exciting adventure, not a stressful ordeal. Our comprehensive range of services is designed to support you every step of the way, ensuring a smooth and successful transition to your new home." },
+        { title: "Your Relocation, Simplified with Relohub", text: "At Relohub, we believe that relocation should be an exciting adventure, not a stressful ordeal. Our comprehensive range of services is designed to support you every step of the way, ensuring a smooth and successful transition to your new home." },
     ];
 
 
@@ -93,7 +93,7 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
                     imgAlt='relocation assistance'
                     title={'Relocation Assistance'}>
                     <Typography>
-                        Moving to a new country is an adventure filled with excitement and new beginnings. At Deliver1, we understand the challenges that come with relocating, and we&apos;re here to make your journey as smooth as possible.
+                        Moving to a new country is an adventure filled with excitement and new beginnings. At Relohub, we understand the challenges that come with relocating, and we&apos;re here to make your journey as smooth as possible.
                         <br />
                         <br />
                         Our relocation services are designed to support you every step of the way, ensuring a seamless transition to your new home.
@@ -102,13 +102,13 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
                         Whether you&apos;re navigating currency exchange, planning your pet&apos;s journey, searching for temporary or permanent housing, or adjusting to a new culture, our experienced team is dedicated to providing personalised solutions that meet your unique needs.
                         <br />
                         <br />
-                        With Deliver1,  you&apos;re embarking on your new chapter with confidence and peace of mind.
+                        With Relohub,  you&apos;re embarking on your new chapter with confidence and peace of mind.
                     </Typography>
                 </SectionCard>
             </MaxWidthContainer>
 
             <ListSection content={listContent}
-                title='Relocation Services Offered by Deliver1' />
+                title='Relocation Services Offered by Relohub' />
 
             <MaxWidthContainer>
                 <Stack py={8}>
@@ -116,13 +116,13 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
                         imgSrc='/images/relocation-services/how-to-book.png'
                         imgAlt='how to book'
                         buttonText='Login to customer portal'
-                        url='https://admin.deliver1.co.uk/customerPortal/login'
+                        url='https://admin.Relohub.co.uk/customerPortal/login'
                         title={'How to Book'}>
                         <Typography>
-                            Your move with Deliver1 opens the door to more than just exceptional service. Head over to your <Link passHref href={'https://admin.deliver1.co.uk/customerPortal/'} style={{ color: theme.palette.secondary.main }}>customer portal</Link> – your one-stop shop for managing your move – and discover a world of additional services designed to make your relocation even smoother.
+                            Your move with Relohub opens the door to more than just exceptional service. Head over to your <Link passHref href={'https://admin.Relohub.co.uk/customerPortal/'} style={{ color: theme.palette.secondary.main }}>customer portal</Link> – your one-stop shop for managing your move – and discover a world of additional services designed to make your relocation even smoother.
                             <br />
                             <br />
-                            As a valued Deliver1 customer, you&apos;ll also enjoy exclusive benefits, like 10% discounts on many of our popular relocation services. It&apos;s our way of saying thank you for choosing us for your big move!
+                            As a valued Relohub customer, you&apos;ll also enjoy exclusive benefits, like 10% discounts on many of our popular relocation services. It&apos;s our way of saying thank you for choosing us for your big move!
                         </Typography>
                     </SectionCard>
                 </Stack>
@@ -142,7 +142,7 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
                         >
                             <Stack>
                                 <Typography variant='body1' sx={{ pt: 1 }} component={'div'}>
-                                    Contact us now to discuss your moving and storage needs and discover how Deliver1 can make your relocation a success.
+                                    Contact us now to discuss your moving and storage needs and discover how Relohub can make your relocation a success.
                                     <br />
                                     <br />
 
@@ -150,16 +150,16 @@ const RelocationServicesPage = ({ countriesData }: Props) => {
                                         Follow Us on Social Media:
                                     </Typography>
                                     <Stack direction={'row'} pb={2} spacing={2}>
-                                        <Link style={{ color: theme.palette.secondary.main }} href={'https://www.facebook.com/deliver1uk/'}><FacebookIcon /></Link>
-                                        <Link style={{ color: theme.palette.secondary.main }} href={'https://uk.linkedin.com/company/deliver1'}><LinkedinIcon /></Link>
-                                        <Link style={{ color: theme.palette.secondary.main }} href={'https://www.instagram.com/deliver1_uk/'}><InstagramIcon /></Link>
+                                        <Link style={{ color: theme.palette.secondary.main }} href={'https://www.facebook.com/Relohubuk/'}><FacebookIcon /></Link>
+                                        <Link style={{ color: theme.palette.secondary.main }} href={'https://uk.linkedin.com/company/Relohub'}><LinkedinIcon /></Link>
+                                        <Link style={{ color: theme.palette.secondary.main }} href={'https://www.instagram.com/Relohub_uk/'}><InstagramIcon /></Link>
                                     </Stack>
                                     <Typography variant='subtitle1' fontWeight={600} pb={1}>
                                         Contact Us:
                                     </Typography>
                                     <b>
                                         Phone: <Link style={{ color: theme.palette.secondary.main }} href="tel:+443330907053">0333 090 7053</Link><br />
-                                        Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@deliver1.co.uk">hello@deliver1.co.uk</Link> <br />
+                                        Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@relohub.co.uk">hello@relohub.co.uk</Link> <br />
                                         Working Hours: <span style={{ fontWeight: 400 }}>Mon - Sat: 08:00 - 17:00; Sun: <span style={{ color: theme.palette.secondary.main }}>Closed</span></span><br />
                                     </b>
                                 </Typography>

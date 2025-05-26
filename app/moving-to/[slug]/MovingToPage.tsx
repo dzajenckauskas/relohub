@@ -39,7 +39,7 @@ const MovingToPage = ({ country, countriesData }: Props) => {
         { title: "Real-Time Shipment Tracking", text: "Stay connected with your belongings every step of the way, with up-to-date tracking information and notifications directly to your device." },
         { title: "Personalised Service for Your Unique Needs", text: "We understand that no two moves are alike. Our team will work closely with you to design a customised moving plan that caters to your specific requirements and budget." },
         { title: "24/7 Customer Support", text: "We're here for you whenever you need us. Our dedicated customer support team is available around the clock to answer your questions, address any concerns, and provide expert guidance throughout your moving journey." },
-        { title: "Experience the Deliver1 Difference", text: `At Deliver1, we believe that moving to ${countryName} should be an exciting adventure, not a stressful ordeal. Choose us for a seamless, transparent, and personalised moving experience that exceeds your expectations.` },
+        { title: "Experience the Relohub Difference", text: `At Relohub, we believe that moving to ${countryName} should be an exciting adventure, not a stressful ordeal. Choose us for a seamless, transparent, and personalised moving experience that exceeds your expectations.` },
         { title: "Ready to Start Your Journey?", text: `Contact us today for a free, no-obligation quote and let us help you turn your dream of living in ${countryName} into a reality.` },
     ];
 
@@ -107,23 +107,23 @@ const MovingToPage = ({ country, countriesData }: Props) => {
                             >
                                 <Stack>
                                     <Typography variant='body1' sx={{ pt: 1 }} component={'div'}>
-                                        Ready to make your move to {countryName}? Contact us now for a free quote and let Deliver1 take the stress out of your international relocation.
+                                        Ready to make your move to {countryName}? Contact us now for a free quote and let Relohub take the stress out of your international relocation.
                                         <br />
                                         <br />
                                         <Typography variant='subtitle1' fontWeight={600} pb={1}>
                                             Follow Us on Social Media:
                                         </Typography>
                                         <Stack direction={'row'} pb={2} spacing={2}>
-                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.facebook.com/deliver1uk/'}><FacebookIcon /></Link>
-                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://uk.linkedin.com/company/deliver1'}><LinkedinIcon /></Link>
-                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.instagram.com/deliver1_uk/'}><InstagramIcon /></Link>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.facebook.com/Relohubuk/'}><FacebookIcon /></Link>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://uk.linkedin.com/company/Relohub'}><LinkedinIcon /></Link>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.instagram.com/Relohub_uk/'}><InstagramIcon /></Link>
                                         </Stack>
                                         <Typography variant='subtitle1' fontWeight={600} pb={1}>
                                             Contact Us:
                                         </Typography>
                                         <b>
                                             Phone: <Link style={{ color: theme.palette.secondary.main }} href="tel:+443330907053">0333 090 7053</Link><br />
-                                            Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@deliver1.co.uk">hello@deliver1.co.uk</Link> <br />
+                                            Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@relohub.co.uk">hello@relohub.co.uk</Link> <br />
                                             Working Hours: <span style={{ fontWeight: 400 }}>Mon - Sat: 08:00 - 17:00; Sun: <span style={{ color: theme.palette.secondary.main }}>Closed</span></span><br />
                                         </b>
                                     </Typography>

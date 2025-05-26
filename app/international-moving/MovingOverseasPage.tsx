@@ -23,7 +23,7 @@ type Props = {
 }
 const MovingOverseasPage = ({ countriesData }: Props) => {
     const iconsSection2Content = [
-        { title: "Global Reach", text: "Deliver1 connects you with countries worldwide, handling shipping, paperwork, and logistics for a smooth moving experience.", icon: 'icon7.png' },
+        { title: "Global Reach", text: "Relohub connects you with countries worldwide, handling shipping, paperwork, and logistics for a smooth moving experience.", icon: 'icon7.png' },
         { title: "Experienced Team", text: "Founded in 2019, we've perfected our processes to make your international move stress-free and efficient.", icon: 'icon8.png' },
         { title: "Door-to-Door Service", text: "We take care of everything from your current home to your new one, so you can focus on your new adventure.", icon: 'icon9.png' },
         { title: "Skilled Professionals", text: "Our team provides top packing materials and uses best practices to pack and transport your belongings safely.", icon: 'icon10.png' },
@@ -89,10 +89,10 @@ const MovingOverseasPage = ({ countriesData }: Props) => {
             <MaxWidthContainer>
                 <Stack py={5} spacing={4}>
                     <SectionCard reverse
-                        imgSrc='/images/moving-overseas/international-removals-with-deliver1.png'
-                        imgAlt='international removals with deliver1'
-                        title={'International Removals with Deliver1'}
-                        shortContent={"Relocating to another country is an exciting but challenging experience. At Deliver1, we're dedicated to making your international move smooth and stress-free. With our comprehensive services, we handle all the details so you can focus on starting your new adventure."}
+                        imgSrc='/images/moving-overseas/international-removals-with-Relohub.png'
+                        imgAlt='international removals with Relohub'
+                        title={'International Removals with Relohub'}
+                        shortContent={"Relocating to another country is an exciting but challenging experience. At Relohub, we're dedicated to making your international move smooth and stress-free. With our comprehensive services, we handle all the details so you can focus on starting your new adventure."}
                     />
                     <SectionCard url='#get-in-touch'
                         objectPosition='top'
@@ -100,7 +100,7 @@ const MovingOverseasPage = ({ countriesData }: Props) => {
                         imgAlt='simple and efficient moving'
                         buttonText={'Get in touch'}
                         title='Simple and Efficient Moving Process'
-                        shortContent='At Deliver1, we understand that every move is unique. Our intuitive customer portal simplifies the process, allowing you to plan, book, and manage your move easily. From getting a quote to tracking your belongings, everything is handled online, ensuring a quick and seamless experience tailored to your needs.' />
+                        shortContent='At Relohub, we understand that every move is unique. Our intuitive customer portal simplifies the process, allowing you to plan, book, and manage your move easily. From getting a quote to tracking your belongings, everything is handled online, ensuring a quick and seamless experience tailored to your needs.' />
                 </Stack>
             </MaxWidthContainer>
 
@@ -127,21 +127,21 @@ const MovingOverseasPage = ({ countriesData }: Props) => {
                             objectPosition={'top'}
                             imgAlt='our background'
                             title={'Our background'}
-                            shortContent={"Relocating to another country is an exciting but challenging experience. At Deliver1, we're dedicated to making your international move smooth and stress-free. With our comprehensive services, we handle all the details so you can focus on starting your new adventure."}
+                            shortContent={"Relocating to another country is an exciting but challenging experience. At Relohub, we're dedicated to making your international move smooth and stress-free. With our comprehensive services, we handle all the details so you can focus on starting your new adventure."}
                         />
                         <SectionCard
                             imgSrc='/images/moving-overseas/customer-portal.png'
                             imgAlt='customer-portal'
                             objectPosition={'left'}
                             title='Simple and Intuitive Customer Portal'
-                            shortContent='At Deliver1, we understand that every move is unique. Our intuitive customer portal simplifies the process, allowing you to plan, book, and manage your move easily. From getting a quote to tracking your belongings, everything is handled online, ensuring a quick and seamless experience tailored to your needs.' />
+                            shortContent='At Relohub, we understand that every move is unique. Our intuitive customer portal simplifies the process, allowing you to plan, book, and manage your move easily. From getting a quote to tracking your belongings, everything is handled online, ensuring a quick and seamless experience tailored to your needs.' />
                     </Stack>
                 </MaxWidthContainer>
             </Stack>
 
             <ServicesSection />
 
-            <IconsSection title={"Why Choose Deliver1 for Your European Move?"}
+            <IconsSection title={"Why Choose Relohub for Your European Move?"}
                 lg={4}
                 content={iconsSectionContent} />
 
@@ -156,7 +156,7 @@ const MovingOverseasPage = ({ countriesData }: Props) => {
                                 imgSrc='/images/moving-overseas/countries-we-cover.png'
                                 imgAlt='countries we cover'
                                 title={'Countries We Cover'}
-                                shortContent={"Deliver1 can help you move to almost every country on earth. No matter where your destination is, our extensive network and experienced team ensure a smooth and efficient relocation process."}
+                                shortContent={"Relohub can help you move to almost every country on earth. No matter where your destination is, our extensive network and experienced team ensure a smooth and efficient relocation process."}
                             />
                         </Stack>
                         <Stack pb={8}>
@@ -172,26 +172,26 @@ const MovingOverseasPage = ({ countriesData }: Props) => {
                             >
                                 <Stack>
                                     <Typography variant='body1' sx={{ pt: 1 }} component={'div'} >
-                                        Ready to move? Contact us today for a free quote and consultation. Let us handle the logistics so you can focus on your new life abroad. With Deliver1, your international move is in expert hands.
+                                        Ready to move? Contact us today for a free quote and consultation. Let us handle the logistics so you can focus on your new life abroad. With Relohub, your international move is in expert hands.
                                         <br />
                                         <br />
-                                        Contact us now to discuss your moving needs and see how Deliver1 can make your international relocation a success. We’re excited to help you start this new chapter in your life.
+                                        Contact us now to discuss your moving needs and see how Relohub can make your international relocation a success. We’re excited to help you start this new chapter in your life.
                                         <br />
                                         <br />
                                         <Typography variant='subtitle1' fontWeight={600} pb={1}>
                                             Follow Us on Social Media:
                                         </Typography>
                                         <Stack direction={'row'} pb={2} spacing={2}>
-                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.facebook.com/deliver1uk/'}><FacebookIcon /></Link>
-                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://uk.linkedin.com/company/deliver1'}><LinkedinIcon /></Link>
-                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.instagram.com/deliver1_uk/'}><InstagramIcon /></Link>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.facebook.com/Relohubuk/'}><FacebookIcon /></Link>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://uk.linkedin.com/company/Relohub'}><LinkedinIcon /></Link>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.instagram.com/Relohub_uk/'}><InstagramIcon /></Link>
                                         </Stack>
                                         <Typography variant='subtitle1' fontWeight={600} pb={1}>
                                             Contact Us:
                                         </Typography>
                                         <b>
                                             Phone: <Link style={{ color: theme.palette.secondary.main }} href="tel:+443330907053">0333 090 7053</Link><br />
-                                            Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@deliver1.co.uk">hello@deliver1.co.uk</Link> <br />
+                                            Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@relohub.co.uk">hello@relohub.co.uk</Link> <br />
                                             Working Hours: <span style={{ fontWeight: 400 }}>Mon - Sat: 08:00 - 17:00; Sun: <span style={{ color: theme.palette.secondary.main }}>Closed</span></span><br />
                                         </b>
                                     </Typography>

@@ -15,7 +15,7 @@ export default function FaqWrapper() {
         },
         {
             q: "What services can I choose from?",
-            a: `At Deliver1, we offer a range of services to suit any requirement and budget. If you get an instant online price estimate, we will provide pricing and details for all available options. Please ensure you understand what each option includes. Our booking agents can answer any queries and, once you’ve booked, you can put any queries to your dedicated Client Services Executive.`,
+            a: `At Relohub, we offer a range of services to suit any requirement and budget. If you get an instant online price estimate, we will provide pricing and details for all available options. Please ensure you understand what each option includes. Our booking agents can answer any queries and, once you’ve booked, you can put any queries to your dedicated Client Services Executive.`,
         },
         {
             q: "How do you calculate the cost of my shipment?",
@@ -49,10 +49,10 @@ export default function FaqWrapper() {
             q: "Do you provide boxes?",
             a: (
                 <>
-                    Yes. Deliver1 has developed high quality cardboard export
+                    Yes. Relohub has developed high quality cardboard export
                     boxes. The boxes are double-walled and reinforced to
                     withstand the rigours of international travel. Protecting
-                    our environment is very important to Deliver1, that’s why
+                    our environment is very important to Relohub, that’s why
                     our boxes are 100% recyclable (made from recycled
                     materials), and they are designed to be re-used. Our boxes
                     can be included as part of your order, in which case they

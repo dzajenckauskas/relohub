@@ -5,18 +5,18 @@ const TermsAndConditions = () => {
         <div className="alotoftext">
             <div>
                 <p>
-                    All products and services ordered from Deliver1 Ltd (through
-                    our website or otherwise) are provided by Deliver1 Ltd,
+                    All products and services ordered from Relohub Ltd (through
+                    our website or otherwise) are provided by Relohub Ltd,
                     Dovecote, Finch Lane, Amersham, England, HP7 9DS on and
-                    subject to these terms and conditions. Deliver1 Ltd may
-                    involve certain members of the Deliver1 Group (including
+                    subject to these terms and conditions. Relohub Ltd may
+                    involve certain members of the Relohub Group (including
                     Transglobal) and connected companies in the delivery of the
                     products and services.
                 </p>
                 <p>
                     All payments are processed through Stripe Payments Europe,
                     Ltd., 1 Grand Canal Street Lower, Grand Canal Dock, Dublin.
-                    on behalf of Deliver1 Ltd unless direct payment by bank
+                    on behalf of Relohub Ltd unless direct payment by bank
                     transfer or other means has been agreed with us.
                 </p>
                 <p>
@@ -29,7 +29,7 @@ const TermsAndConditions = () => {
                     These conditions explain the rights, obligations, and
                     responsibilities of all parties to this Agreement. Where we
                     use the word ‘you’ or ‘your’ it means the Customer: ‘we’,
-                    ‘us’ or ‘our’ means Deliver1 Ltd. These terms and conditions
+                    ‘us’ or ‘our’ means Relohub Ltd. These terms and conditions
                     can be varied or amended subject to prior written agreement.
                 </p>
                 <p>
@@ -743,8 +743,8 @@ const TermsAndConditions = () => {
                             missing goods at the time the goods are handed to
                             you or your agent using our claims notification form
                             available. If you please contact us on{" "}
-                            <a href="mailto:customer.care@deliver1.co.uk">
-                                customer.care@deliver1.co.uk
+                            <a href="mailto:customer.care@Relohub.co.uk">
+                                customer.care@Relohub.co.uk
                             </a>
                             . You must provide all information, documentation,
                             and photographic evidence specified.
@@ -777,8 +777,8 @@ const TermsAndConditions = () => {
                             Any dispute concerning the handling of claims
                             should, in the first instance, be referred to our
                             customer service team via email:{" "}
-                            <a href="mailto:customer.care@deliver1.co.uk">
-                                customer.care@deliver1.co.uk
+                            <a href="mailto:customer.care@Relohub.co.uk">
+                                customer.care@Relohub.co.uk
                             </a>
                             .
                         </p>

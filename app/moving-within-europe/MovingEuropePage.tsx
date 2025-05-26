@@ -46,7 +46,7 @@ const MovingEuropePage = ({ countriesData }: Props) => {
         { title: "Specialised Services", text: "We provide tailored services for delicate items, furniture disassembly and assembly, and more." },
     ];
     const iconsSectionContent2 = [
-        { title: "Global Reach", text: "Deliver1 connects you with countries worldwide, handling shipping, paperwork, and logistics for a smooth moving experience.", icon: 'icon7.png' },
+        { title: "Global Reach", text: "Relohub connects you with countries worldwide, handling shipping, paperwork, and logistics for a smooth moving experience.", icon: 'icon7.png' },
         { title: "Experienced Team", text: "Founded in 2019, we've perfected our processes to make your international move stress-free and efficient.", icon: 'icon8.png' },
         { title: "Door-to-Door Service", text: "We take care of everything from your current home to your new one, so you can focus on your new adventure.", icon: 'icon9.png' },
         { title: "Skilled Professionals", text: "Our team provides top packing materials and uses best practices to pack and transport your belongings safely.", icon: 'icon10.png' },
@@ -101,8 +101,8 @@ const MovingEuropePage = ({ countriesData }: Props) => {
                     <SectionCard reverse
                         imgSrc='/images/moving-to-europe/removals-made-easy.png'
                         imgAlt='removals made easy'
-                        title={'European Removals Made Easy with Deliver1'}
-                        shortContent={"Moving to a new country in Europe is an exciting adventure, and at Deliver1, we're dedicated to making your move seamless and stress-free. With our comprehensive European removals service, we take care of every detail, allowing you to focus on exploring your new home."}
+                        title={'European Removals Made Easy with Relohub'}
+                        shortContent={"Moving to a new country in Europe is an exciting adventure, and at Relohub, we're dedicated to making your move seamless and stress-free. With our comprehensive European removals service, we take care of every detail, allowing you to focus on exploring your new home."}
                     />
                     <SectionCard
                         imgSrc='/images/moving-to-europe/simple-and-efficient.png'
@@ -119,7 +119,7 @@ const MovingEuropePage = ({ countriesData }: Props) => {
 
             <ProcessWrapper title='How it works?' />
 
-            <IconsSection title={"Why Choose Deliver1 for Your European Move?"} content={iconsSectionContent} />
+            <IconsSection title={"Why Choose Relohub for Your European Move?"} content={iconsSectionContent} />
 
             <MaxWidthContainer>
                 <Stack py={5} spacing={4}>
@@ -129,7 +129,7 @@ const MovingEuropePage = ({ countriesData }: Props) => {
                         buttonText='Get in touch'
                         url='#get-in-touch'
                         title='Our background'
-                        shortContent='Charlie Beck and Robertas Gailaitis founded Deliver1 in 2019. With extensive industry experience since 2013, they saw a need for moving services that combine value for money with high quality. Deliver1 was created to fill this gap, offering exceptional services without compromising on affordability.' />
+                        shortContent='Charlie Beck and Robertas Gailaitis founded Relohub in 2019. With extensive industry experience since 2013, they saw a need for moving services that combine value for money with high quality. Relohub was created to fill this gap, offering exceptional services without compromising on affordability.' />
                 </Stack>
             </MaxWidthContainer>
             <ListSection content={listContent2} title='Services Tailored for Your European Move' />
@@ -141,17 +141,17 @@ const MovingEuropePage = ({ countriesData }: Props) => {
                         imgSrc='/images/moving-to-europe/european-destinations.png'
                         imgAlt='european destinations'
                         title={'European Destinations We Cover'}
-                        shortContent={"Deliver1 specialises in European removals, offering comprehensive services to and from all countries within the European Union and beyond. Whether you're moving to a bustling city centre in Spain or a charming countryside village in Sweden, our network and expertise ensure a seamless relocation across Europe."}
+                        shortContent={"Relohub specialises in European removals, offering comprehensive services to and from all countries within the European Union and beyond. Whether you're moving to a bustling city centre in Spain or a charming countryside village in Sweden, our network and expertise ensure a seamless relocation across Europe."}
                     />
                     <SectionCard
                         imgSrc='/images/moving-to-europe/your-european-journey.png'
                         imgAlt='your european journey'
                         reverse title='Your European Journey Starts Today'>
                         <Typography variant='body1' sx={{ pt: 1 }}>
-                            Ready to embark on your European adventure? Contact Deliver1 today for a free quote and consultation.
+                            Ready to embark on your European adventure? Contact Relohub today for a free quote and consultation.
                             <br />
                             <br />
-                            Let us handle the logistics so you can focus on embracing your new life in Europe. With Deliver1, your European move is in expert hands.
+                            Let us handle the logistics so you can focus on embracing your new life in Europe. With Relohub, your European move is in expert hands.
                         </Typography>
                     </SectionCard>
                     <SectionCard
@@ -162,23 +162,23 @@ const MovingEuropePage = ({ countriesData }: Props) => {
                         url='#get-in-touch'>
                         <Stack>
                             <Typography variant='body1' sx={{ pt: 1 }}>
-                                Contact us now to discuss your European moving needs and discover how Deliver1 can make your relocation a success.
+                                Contact us now to discuss your European moving needs and discover how Relohub can make your relocation a success.
                                 <br />
                                 <br />
                                 <Typography variant='subtitle1' fontWeight={600} pb={1}>
                                     Follow Us on Social Media:
                                 </Typography>
                                 <Stack direction={'row'} pb={2} spacing={2}>
-                                    <Link style={{ color: theme.palette.secondary.main }} href={'https://www.facebook.com/deliver1uk/'}><FacebookIcon /></Link>
-                                    <Link style={{ color: theme.palette.secondary.main }} href={'https://uk.linkedin.com/company/deliver1'}><LinkedinIcon /></Link>
-                                    <Link style={{ color: theme.palette.secondary.main }} href={'https://www.instagram.com/deliver1_uk/'}><InstagramIcon /></Link>
+                                    <Link style={{ color: theme.palette.secondary.main }} href={'https://www.facebook.com/Relohubuk/'}><FacebookIcon /></Link>
+                                    <Link style={{ color: theme.palette.secondary.main }} href={'https://uk.linkedin.com/company/Relohub'}><LinkedinIcon /></Link>
+                                    <Link style={{ color: theme.palette.secondary.main }} href={'https://www.instagram.com/Relohub_uk/'}><InstagramIcon /></Link>
                                 </Stack>
                                 <Typography variant='subtitle1' fontWeight={600} pb={1}>
                                     Contact Us:
                                 </Typography>
                                 <b>
                                     Phone: <Link style={{ color: theme.palette.secondary.main }} href="tel:+443330907053">0333 090 7053</Link><br />
-                                    Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@deliver1.co.uk">hello@deliver1.co.uk</Link> <br />
+                                    Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@relohub.co.uk">hello@relohub.co.uk</Link> <br />
                                     Working Hours: <span style={{ fontWeight: 400 }}>Mon - Sat: 08:00 - 17:00; Sun: <span style={{ color: theme.palette.secondary.main }}>Closed</span></span><br />
                                 </b>
                             </Typography>

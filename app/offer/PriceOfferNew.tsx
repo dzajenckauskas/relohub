@@ -313,7 +313,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
                     <Divider />
                 </Stack>
                 <p>
-                    Thank you for choosing Deliver1 to handle your shipment from{" "}
+                    Thank you for choosing Relohub to handle your shipment from{" "}
                     <strong className="stripepopupcountriesnames">
                         {state.from_country}
                     </strong>{" "}

@@ -13,7 +13,7 @@ const car = [
                 They didn&apos;t damage anything and were amazing. Everything was
                 perfect! Even glass items were all perfectly intact. Moved
                 everything very fast and very efficiently. Amazing people! Would
-                definitely recommend. Very happy with Deliver1.
+                definitely recommend. Very happy with Relohub.
             </>
         ),
         author: `Kaziah Kwofie`,
@@ -24,7 +24,7 @@ const car = [
         txt: (
             <>
                 Our experience was good. I cannot imagine that a firm could
-                engage the customer as well as Deliver1 does - from start to
+                engage the customer as well as Relohub does - from start to
                 finish. We were kept informed throughout. Well done to the firm
                 and to Ernesto and his mate on this occasion..
             </>

@@ -77,7 +77,7 @@ export default function Footer() {
                     );
                 })}
             </div>
-            <p className="footerlastp">Deliver1 © {getCurrentYear()}</p>
+            <p className="footerlastp">Relohub © {getCurrentYear()}</p>
         </div>
     );
 }

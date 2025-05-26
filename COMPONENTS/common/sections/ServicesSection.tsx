@@ -71,7 +71,7 @@ export const ServicesSection = ({ }: Props) => {
         )
     })
     return (
-        <Stack sx={{ backgroundColor: '#fff' }}>
+        <Stack sx={{ backgroundColor: '#fff' }} id={'services'}>
             <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', py: 6 }}>
                 <Stack spacing={{ lg: 10, xs: 8 }} direction={{ md: 'row', xs: 'column' }} width={'100%'}>
                     <Stack sx={{ width: { lg: '55%', xs: '100%' }, }}>

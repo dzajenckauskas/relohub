@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import {useState} from "react";
+import { useState } from "react";
 
 export default function Chat() {
     const [showchat, setshowchat] = useState(false);
@@ -15,18 +15,18 @@ export default function Chat() {
                             src={"/wup.png"}
                             width={40}
                             height={40}
-                            style={{objectFit: "contain"}}
+                            style={{ objectFit: "contain" }}
                         ></Image>
                     </a>
                 </div>
                 <div className="chatinsideimgwrp">
-                    <a target="_blank" href="https://m.me/deliver1uk">
+                    <a target="_blank" href="https://m.me/Relohubuk">
                         <Image
                             alt="whats app"
                             src={"/msg.png"}
                             width={40}
                             height={40}
-                            style={{objectFit: "contain"}}
+                            style={{ objectFit: "contain" }}
                         ></Image>
                     </a>
                 </div>
@@ -61,7 +61,7 @@ export default function Chat() {
                         src={"/chaticon.svg"}
                         width={40}
                         height={40}
-                        style={{objectFit: "contain"}}
+                        style={{ objectFit: "contain" }}
                     ></Image>
                 </div>
             )}

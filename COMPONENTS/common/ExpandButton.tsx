@@ -23,7 +23,7 @@ export const ExpandButton = ({ onClick, active, setActive }: Props) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundColor: active ? 'transparent' : '#e71c5e',
+                backgroundColor: active ? 'transparent' : '#5720E3',
                 borderRadius: 50,
                 width: '36px',
                 minWidth: 36,

@@ -61,7 +61,7 @@ export function newOrder(json) {
             <div class="header">
                 <div class="logo">
                     <img
-                        src="https://deliver1.co.uk/_next/image?url=%2Flogo2.png&w=256&q=75"
+                        src="https://Relohub.co.uk/_next/image?url=%2Flogo2.png&w=256&q=75"
                         alt="Company Logo"
                     />
                 </div>
@@ -77,16 +77,14 @@ export function newOrder(json) {
                     <li><strong>Name: </strong>${first_last_name}</li>
                     <li><strong>Phone number: </strong>${phone}</li>
                     <li><strong>Email: </strong>${email.toLowerCase()}</li>
-                    <li><strong>From: </strong>${
-                        capitalizeFirstLetter(from_city) +
-                        ", " +
-                        capitalizeFirstLetter(from_country)
-                    }</li>
-                    <li><strong>To: </strong>${
-                        capitalizeFirstLetter(to_city) +
-                        ", " +
-                        capitalizeFirstLetter(to_country)
-                    }</li>
+                    <li><strong>From: </strong>${capitalizeFirstLetter(from_city) +
+        ", " +
+        capitalizeFirstLetter(from_country)
+        }</li>
+                    <li><strong>To: </strong>${capitalizeFirstLetter(to_city) +
+        ", " +
+        capitalizeFirstLetter(to_country)
+        }</li>
                 </ul>
 
                 <p><strong>Inventory:</strong></p>
@@ -94,7 +92,7 @@ export function newOrder(json) {
 
                 <p>
                     <strong>Lead Status:</strong>
-                    <a href="https://admin.deliver1.co.uk/login">
+                    <a href="https://admin.Relohub.co.uk/login">
                         Open lead on the system</a
                     >
                 </p>

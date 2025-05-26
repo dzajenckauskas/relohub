@@ -191,8 +191,8 @@ export const theme = createTheme({
             main: '#000'
         },
         secondary: {
-            main: '#e71c5e',
-            dark: '#ce1551'
+            main: '#5720E3',
+            dark: '#311D77'
         },
         info: {
             main: '#fff'
@@ -203,7 +203,7 @@ export const theme = createTheme({
             disabled: '#7d7c83',
         },
         error: {
-            main: '#e71c5e',
+            main: '#5720E3',
         }
     }
 })

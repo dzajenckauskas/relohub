@@ -24,14 +24,14 @@ const MovingServicesPage = ({ countriesData }: Props) => {
     const listContent = [
         { title: "Your Move, Your Way", text: "We understand that no two moves are alike. Our personalised approach ensures your relocation plan is tailored to your specific needs and preferences." },
         { title: "Seamless Experience, Start to Finish", text: "From the initial quote to unpacking in your new home, we handle every step of your move with meticulous attention to detail, providing a stress-free and seamless experience." },
-        { title: "Industry Expertise You Can Trust", text: "Founded in 2019 by seasoned professionals with a deep understanding of the removals industry, Deliver1 brings unparalleled expertise and knowledge to your relocation." },
+        { title: "Industry Expertise You Can Trust", text: "Founded in 2019 by seasoned professionals with a deep understanding of the removals industry, Relohub brings unparalleled expertise and knowledge to your relocation." },
         { title: "Transparent and Competitive Pricing", text: "We believe in upfront and honest pricing, with no hidden fees or surprises. Our competitive rates ensure you receive exceptional value for your investment." },
         { title: "Unwavering Commitment to Customer Satisfaction", text: "Your satisfaction is our top priority. We strive to exceed expectations at every step of your move, providing responsive communication and exceptional service." },
         { title: "Global Reach, Local Expertise", text: "Whether you're moving across continents or within Europe, our extensive network of partners and in-depth knowledge of local regulations ensure a smooth and efficient transition." },
     ];
 
     const iconsSection2Content = [
-        { title: "Global Reach", text: "Deliver1 connects you with countries worldwide, handling shipping, paperwork, and logistics for a smooth moving experience.", icon: 'icon7.png' },
+        { title: "Global Reach", text: "Relohub connects you with countries worldwide, handling shipping, paperwork, and logistics for a smooth moving experience.", icon: 'icon7.png' },
         { title: "Experienced Team", text: "Founded in 2019, we've perfected our processes to make your international move stress-free and efficient.", icon: 'icon8.png' },
         { title: "Door-to-Door Service", text: "We take care of everything from your current home to your new one, so you can focus on your new adventure.", icon: 'icon9.png' },
         { title: "Skilled Professionals", text: "Our team provides top packing materials and uses best practices to pack and transport your belongings safely.", icon: 'icon10.png' },
@@ -91,11 +91,11 @@ const MovingServicesPage = ({ countriesData }: Props) => {
                             lineHeight: 1.2,
                             width: { xs: '100%', sm: '100%', md: '100%' },
                         }}>
-                            Deliver1&apos;s Removal Services
+                            Relohub&apos;s Removal Services
                         </Typography>
                         <Stack alignItems={'center'}>
                             <Typography textAlign={"center"} width={{ lg: '60%', sm: '80%' }} variant='subtitle2' color={theme.palette.secondary.main}>
-                                Whether you&apos;re moving across Europe or embarking on an international adventure, Deliver1 offers a range of tailored services to simplify your relocation:
+                                Whether you&apos;re moving across Europe or embarking on an international adventure, Relohub offers a range of tailored services to simplify your relocation:
                             </Typography>
                         </Stack>
                     </Stack>
@@ -156,7 +156,7 @@ const MovingServicesPage = ({ countriesData }: Props) => {
 
 
             <ListSection content={listContent}
-                title='Why Entrust Your Move to Deliver1?' />
+                title='Why Entrust Your Move to Relohub?' />
 
             <ProcessWrapper title='How it works?' />
 
@@ -171,7 +171,7 @@ const MovingServicesPage = ({ countriesData }: Props) => {
                                 imgAlt='View countries we cover'
                                 url='/about-us#countries-we-cover'
                                 title={'Countries We Cover'}
-                                shortContent={"Deliver1 can help you move to almost every country on earth - from Iceland to South Africa, and Japan to Qatar. No matter where your destination is, our extensive network and experienced team ensure a smooth and efficient relocation process."}
+                                shortContent={"Relohub can help you move to almost every country on earth - from Iceland to South Africa, and Japan to Qatar. No matter where your destination is, our extensive network and experienced team ensure a smooth and efficient relocation process."}
                             />
                         </Stack>
                         <Stack pb={8} spacing={4}>
@@ -185,23 +185,23 @@ const MovingServicesPage = ({ countriesData }: Props) => {
                             >
                                 <Stack>
                                     <Typography variant='body1' sx={{ pt: 1 }} component={'div'}>
-                                        Contact us now to discuss your moving and storage needs and discover how Deliver1 can make your relocation a success.
+                                        Contact us now to discuss your moving and storage needs and discover how Relohub can make your relocation a success.
                                         <br />
                                         <br />
                                         <Typography variant='subtitle1' fontWeight={600} pb={1}>
                                             Follow Us on Social Media:
                                         </Typography>
                                         <Stack direction={'row'} pb={2} spacing={2}>
-                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.facebook.com/deliver1uk/'}><FacebookIcon /></Link>
-                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://uk.linkedin.com/company/deliver1'}><LinkedinIcon /></Link>
-                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.instagram.com/deliver1_uk/'}><InstagramIcon /></Link>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.facebook.com/Relohubuk/'}><FacebookIcon /></Link>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://uk.linkedin.com/company/Relohub'}><LinkedinIcon /></Link>
+                                            <Link style={{ color: theme.palette.secondary.main }} href={'https://www.instagram.com/Relohub_uk/'}><InstagramIcon /></Link>
                                         </Stack>
                                         <Typography variant='subtitle1' fontWeight={600} pb={1}>
                                             Contact Us:
                                         </Typography>
                                         <b>
                                             Phone: <Link style={{ color: theme.palette.secondary.main }} href="tel:+443330907053">0333 090 7053</Link><br />
-                                            Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@deliver1.co.uk">hello@deliver1.co.uk</Link> <br />
+                                            Email: <Link style={{ color: theme.palette.secondary.main }} href="mailto:hello@relohub.co.uk">hello@relohub.co.uk</Link> <br />
                                             Working Hours: <span style={{ fontWeight: 400 }}>Mon - Sat: 08:00 - 17:00; Sun: <span style={{ color: theme.palette.secondary.main }}>Closed</span></span><br />
                                         </b>
                                     </Typography>

@@ -19,7 +19,7 @@ const TextBanner = () => {
                 </Typography>
                 <Typography textAlign={{ md: 'left', xs: 'center' }} variant='h4' fontWeight={500} width={{ md: '80%', xs: '50%' }}>
                     Moving has bever been
-                    this simple with Deliver1
+                    this simple with Relohub
                 </Typography>
                 <Stack width={{ md: '80%', xs: '100%' }} display={{ md: 'flex', xs: 'none' }}>
                     <Link aria-label="Get a free quote" passHref href={'/offer'} style={{ textDecoration: 'none', paddingTop: 16, display: 'flex', justifyContent: 'center', width: '100%' }}>

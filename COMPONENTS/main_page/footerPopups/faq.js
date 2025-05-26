@@ -2,10 +2,10 @@ export default function FAQ() {
     return (
         <div className="alotoftext">
             <div>
-                <h3>Who can use Deliver1?</h3>
+                <h3>Who can use Relohub?</h3>
                 <p>
                     Anyone that needs help moving their belongings can use
-                    Deliver1! We operate throughout the world, so our
+                    Relohub! We operate throughout the world, so our
                     international shipping services are available no matter
                     where you are. We specialize in smaller shipments of
                     personal effects, so our services are perfect for
@@ -186,7 +186,7 @@ export default function FAQ() {
                 <h3>When do I pay?</h3>
 
                 <p>
-                    When you make a booking with Deliver1, we will take an
+                    When you make a booking with Relohub, we will take an
                     initial deposit (usually £100 / €100 / $150 depending on
                     your country of origin). This is to secure the booking,
                     cover any packing materials and hold the requested
@@ -234,7 +234,7 @@ export default function FAQ() {
                 <p>
                     If you would like to discuss alternative payment options,
                     please contact your Client Services Executive or email
-                    customer.care@deliver1.co.uk
+                    customer.care@Relohub.co.uk
                 </p>
             </div>
             <div>
@@ -251,7 +251,7 @@ export default function FAQ() {
                     fees do not apply to all shipments and differ from country
                     to country. Often determined based on the nature of the
                     shipment itself, they are not possible to calculate in
-                    advance or pre-pay so will not appear on your Deliver1
+                    advance or pre-pay so will not appear on your Relohub
                     invoice. Such fees are normally charged at the destination
                     and need to be paid prior to delivery.
                 </p>
@@ -330,12 +330,12 @@ export default function FAQ() {
                 <h3>Do you provide boxes?</h3>
 
                 <p>
-                    Yes. Deliver1 has developed high-quality cardboard export
+                    Yes. Relohub has developed high-quality cardboard export
                     boxes. The boxes are double-walled and reinforced to
                     withstand the rigours of international travel.
                 </p>
                 <p>
-                    Protecting our environment is very important to Deliver1,
+                    Protecting our environment is very important to Relohub,
                     that’s why our boxes are 100% recyclable (made from recycled
                     materials), and they are designed to be re-used.
                 </p>
@@ -351,9 +351,9 @@ export default function FAQ() {
                 </p>
             </div>
             <div>
-                <h3>What types of boxes does Deliver1 provide?</h3>
+                <h3>What types of boxes does Relohub provide?</h3>
 
-                <p>Deliver1 boxes come in two different sizes.</p>
+                <p>Relohub boxes come in two different sizes.</p>
                 <p>
                     <strong>Large Box:</strong> 50 x 50 x 50cm - Ideal for
                     larger, lightweight items such as clothing, linens, bedding,
@@ -369,7 +369,7 @@ export default function FAQ() {
                 </p>
                 <p>
                     <strong>PLEASE NOTE:</strong> As per our Terms & Conditions,
-                    Deliver1 accepts no liability for fragile items unless your
+                    Relohub accepts no liability for fragile items unless your
                     shipment has been professionally packed by our team of
                     experts.
                 </p>
@@ -407,7 +407,7 @@ export default function FAQ() {
             <div>
                 <h3>Can I use other types of packaging?</h3>
                 <p>
-                    We’d always advise using reinforced Deliver1 boxes. If you
+                    We’d always advise using reinforced Relohub boxes. If you
                     are thinking of using suitcases as well as or instead of
                     boxes, we would recommend hard cases.
                 </p>
@@ -510,7 +510,7 @@ export default function FAQ() {
                 <p>
                     Labelling your items clearly and securely is very important.
                     Items that are not properly labelled will not be collected
-                    and Deliver1, and our delivery partners, are not responsible
+                    and Relohub, and our delivery partners, are not responsible
                     for any shipment that is delayed or misplaced as a result of
                     labels becoming detached or damaged during shipping.
                 </p>
@@ -722,7 +722,7 @@ export default function FAQ() {
                     shipping is not a delicate process, so there are no
                     guarantees that fragile items will be safe in transit. For
                     this reason, unless your items have been professionally
-                    packed by Deliver1, fragile items will not be covered
+                    packed by Relohub, fragile items will not be covered
                     against any breakages caused in transit.
                 </p>
 

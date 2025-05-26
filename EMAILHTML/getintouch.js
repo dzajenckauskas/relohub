@@ -34,7 +34,7 @@ export function getInTouchHTML(json) {
                 <div class="header">
                     <div class="logo">
                         <img
-                            src="https://deliver1.co.uk/_next/image?url=%2Flogo2.png&w=256&q=75"
+                            src="https://Relohub.co.uk/_next/image?url=%2Flogo2.png&w=256&q=75"
                             alt="Company Logo"
                         />
                     </div>

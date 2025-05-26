@@ -16,7 +16,7 @@ import TopNavBar from '../../TopNavBar';
 import { HeaderLink, HeaderLinkType } from './HeaderLink';
 
 export default function Header() {
-    const loginUrl = 'https://admin.deliver1.co.uk/customerPortal/login'
+    const loginUrl = 'https://admin.Relohub.co.uk/customerPortal/login'
     const [open, setOpen] = useState(false)
     const [openDropdown, setOpenDropdown] = useState<number | undefined>()
 
@@ -25,35 +25,45 @@ export default function Header() {
     }
     const pathname = usePathname()
     const links: HeaderLinkType[] = [
-        {
-            id: 0,
-            url: '/',
-            name: "Home"
-        },
+        // {
+        //     id: 0,
+        //     url: '/',
+        //     name: "Home"
+        // },
 
+        // {
+        //     id: 2,
+        //     name: "International Moving",
+        //     links: [
+        //         { id: 0, name: 'Moving Overseas', url: '/international-moving' },
+        //         { id: 1, name: 'Moving within Europe', url: '/moving-within-europe' }]
+        // },
+        // {
+        //     id: 3,
+        //     name: "Services",
+        //     links: [
+        //         { id: 0, name: '⁠Moving services', url: '/moving-services' },
+        //         { id: 1, name: '⁠Relocation services', url: '/relocation-services' }]
+        // },
         {
-            id: 2,
-            name: "International Moving",
-            links: [
-                { id: 0, name: 'Moving Overseas', url: '/international-moving' },
-                { id: 1, name: 'Moving within Europe', url: '/moving-within-europe' }]
+            id: 1,
+            name: "Services",
+            url: '#services'
         },
         {
             id: 3,
-            name: "Services",
-            links: [
-                { id: 0, name: '⁠Moving services', url: '/moving-services' },
-                { id: 1, name: '⁠Relocation services', url: '/relocation-services' }]
+            name: "Get a Quote",
+            url: '#get-quote'
         },
         {
-            id: 1,
-            name: "Guides",
-            url: '/guides'
+            id: 3,
+            name: "The Process",
+            url: '#process'
         },
         {
             id: 4,
-            name: "About us",
-            url: '/about-us'
+            name: "About Us",
+            url: '#about-us'
         }
     ]
     useEffect(() => {
@@ -166,7 +176,7 @@ export default function Header() {
                     <Stack sx={{
                         display: { md: 'flex', sm: 'none', xs: 'none' }, flexDirection: 'row',
                         alignItems: 'center',
-                        gap: { lg: 4, md: .5, sm: 0, xs: 0 }
+                        gap: { lg: 6, md: 6, sm: 0, xs: 0 },
                     }}>
                         {renderLinks}
                     </Stack>
@@ -174,7 +184,7 @@ export default function Header() {
                         display: 'flex', flexDirection: 'row', gap: 15,
                         alignItems: 'center',
                     }}>
-                        <Link passHref href={loginUrl} >
+                        {/* <Link passHref href={loginUrl} >
                             <Button aria-label="Customer portal" variant='outlined' sx={{
                                 display: { md: 'flex', sm: 'flex', xs: 'flex' },
                                 border: '1px solid #ccc',
@@ -187,11 +197,11 @@ export default function Header() {
                                 cursor: 'pointer'
                             }}>
                                 <CustomerPortalIcon />
-                                {/* <Typography variant='h5' component={'p'} fontWeight={600} sx={{ pl: 1, display: { md: 'flex', xs: 'none' }, }}>
+                                <Typography variant='h5' component={'p'} fontWeight={600} sx={{ pl: 1, display: { md: 'flex', xs: 'none' }, }}>
                                     CUSTOMER PORTAL
-                                </Typography> */}
+                                </Typography>
                             </Button>
-                        </Link>
+                        </Link> */}
                         <Stack sx={{ display: { md: 'flex', xs: 'none' } }}>
                             <HeaderPinkElement />
                         </Stack>

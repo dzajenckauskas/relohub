@@ -30,8 +30,8 @@ export default function NoPricePopup({ setshownopricepopup }) {
                     or email{" "}
                     <strong>
                         {" "}
-                        <a href="mailto:hello@deliver1.co.uk">
-                            hello@deliver1.co.uk
+                        <a href="mailto:hello@relohub.co.uk">
+                            hello@relohub.co.uk
                         </a>{" "}
                     </strong>
                 </p>

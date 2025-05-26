@@ -23,7 +23,7 @@ export default function MainPageHeroArea() {
                         fontWeight: 700, lineHeight: 1.1, fontSize: { lg: 60, md: 52, sm: 42, xs: 32 },
                         color: theme.palette.secondary.main
                     }}>
-                    Deliver1</Typography>
+                    Relohub</Typography>
                 <br />flawless  relocation
             </Typography>
             <Stack maxWidth={{ md: 'none', xs: 'sm' }}

@@ -31,7 +31,7 @@ if ($result_decoded) {
 	$orderReferenceNumber = $result_decoded->orderReferenceNumber;
 	$uuid                 = $result_decoded->uuid;
 
-	setcookie("orderReferenceNumber", $orderReferenceNumber, 0, '/', ".deliver1.co.uk");
+	setcookie("orderReferenceNumber", $orderReferenceNumber, 0, '/', ".Relohub.co.uk");
 	echo $orderReferenceNumber . " " . $uuid;
 } else {
 	echo 'empty';
