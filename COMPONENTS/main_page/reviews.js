@@ -4,7 +4,8 @@ import Image from "next/image";
 import { MaxWidthContainer } from "../common/MaxWidthContainer";
 import { Stack } from "@mui/material";
 import Typography from "@mui/material/Typography";
-
+import StarIcon from '@mui/icons-material/Star';
+import { theme } from '@/COMPONENTS/common/shared/Theme'
 const car = [
     {
         title: "Everything was perfect!",
@@ -138,15 +139,16 @@ const Carousel = () => {
 
         for (let i = 0; i < 5; i++) {
             stars.push(
-                <Image
-                    key={i}
-                    width={24}
-                    height={24}
-                    src={"/star.png"}
-                    alt="star"
-                    quality={100}
-                    priority
-                />,
+                // <Image
+                //     key={i}
+                //     width={24}
+                //     height={24}
+                //     src={"/star.png"}
+                //     alt="star"
+                //     quality={100}
+                //     priority
+                // />,
+                <StarIcon fontSize="large" sx={{ color: theme.palette.secondary.dark }} />,
             );
         }
         return stars;
@@ -155,7 +157,6 @@ const Carousel = () => {
     const getTransformValue = () => {
         return `translateX(-${currentSlide * 100}%)`; // Assuming each slide has the same width as the parent
     };
-
     return (
         <Stack sx={{ backgroundColor: '#ededed' }}>
 

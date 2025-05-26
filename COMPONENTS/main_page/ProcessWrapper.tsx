@@ -18,7 +18,7 @@ export default function ProcessWrapper({ title }: Props) {
     ];
 
     return (
-        <Stack py={2}>
+        <Stack py={2} id={'process'}>
             <section className="processglobalwrapper">
                 {/* {!title && <p className="processwrphowitworksp">HOW IT WORKS</p>} */}
                 <Typography variant="h2" textAlign={'center'} pt={0} pb={{ xs: 4, sm: 6 }}>{title ?? 'The Process'}</Typography>

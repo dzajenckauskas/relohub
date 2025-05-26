@@ -86,7 +86,7 @@ const DeliveryDateForm = ({ form }: Props) => {
                                     pb: 0
                                 },
                                 '.MuiPickersArrowSwitcher-root button': {
-                                    color: '#D81B60',
+                                    color: theme.palette.secondary.main,
                                     fontSize: '2.5rem',
                                 },
                                 '.MuiDayCalendar-root': {
@@ -117,13 +117,13 @@ const DeliveryDateForm = ({ form }: Props) => {
                                     mt: 1
                                 },
                                 '.MuiPickersDay-today': {
-                                    border: '2px solid #D81B60',
+                                    border: `2px solid ${theme.palette.secondary.main}`,
                                 },
                                 '.MuiDayCalendar-slideTransition': {
                                     overflowX: 'visible'
                                 },
                                 '.MuiPickersDay-daySelected': {
-                                    backgroundColor: '#D81B60 !important',
+                                    backgroundColor: `${theme.palette.secondary.main} !important`,
                                     color: '#fff !important',
                                     borderRadius: '50%',
                                     fontSize: '2rem',

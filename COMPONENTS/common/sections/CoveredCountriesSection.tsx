@@ -24,10 +24,11 @@ export const CoveredCountriesSection = ({ articleContinents, countries }: Props)
             <Grid item xs={6} sm={4} md={3} key={c?.id}>
                 {/* <Link passHref href={`/moving-to/${c.attributes?.url}`}> */}
                 <Typography variant='body1' sx={{
+                    color: '#fff',
                     // ':hover': { color: theme.palette.secondary.main }, 
                     alignItems: 'center', display: 'flex', gap: 1
                 }}>
-                    <EastIcon fontSize='large' color='secondary' />
+                    <EastIcon fontSize='large' sx={{ color: '#fff' }} />
                     {capitalizeEachWord(c?.attributes?.name)}
                 </Typography>
                 {/* </Link> */}
@@ -65,11 +66,11 @@ export const CoveredCountriesSection = ({ articleContinents, countries }: Props)
 
     return (
 
-        <Stack sx={{ backgroundColor: '#f1f1f1' }} id={'countries-we-cover'}>
+        <Stack sx={{ backgroundColor: theme.palette.secondary.main }} id={'countries-we-cover'}>
             <MaxWidthContainer sx={{ display: 'flex', flexDirection: 'column', pt: 6, pb: 10 }}>
                 <Stack sx={{ width: '100%' }}>
-                    <Typography variant={'h2'} sx={{ pb: 1 }}>
-                        Countries that we cover:
+                    <Typography variant={'h2'} sx={{ pb: 1, color: '#fff' }}>
+                        Countries that we cover
                     </Typography>
                     {/* <Stack direction={'row'} gap={1} pt={1} sx={{ flexWrap: 'wrap' }}>
                         {renderArticleContinents}

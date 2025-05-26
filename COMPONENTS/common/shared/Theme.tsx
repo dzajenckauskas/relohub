@@ -188,7 +188,7 @@ export const theme = createTheme({
     },
     palette: {
         primary: {
-            main: '#000'
+            main: '#303030'
         },
         secondary: {
             main: '#5720E3',
@@ -203,7 +203,7 @@ export const theme = createTheme({
             disabled: '#7d7c83',
         },
         error: {
-            main: '#5720E3',
+            main: '#E71D5E',
         }
     }
 })

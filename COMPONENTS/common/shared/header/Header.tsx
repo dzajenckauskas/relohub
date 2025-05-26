@@ -60,11 +60,11 @@ export default function Header() {
             name: "The Process",
             url: '#process'
         },
-        {
-            id: 4,
-            name: "About Us",
-            url: '#about-us'
-        }
+        // {
+        //     id: 4,
+        //     name: "About Us",
+        //     url: '#about-us'
+        // }
     ]
     useEffect(() => {
         if (open) {
@@ -165,7 +165,7 @@ export default function Header() {
 
                     <Link passHref href={'/'} style={{ position: 'relative', width: 140, height: 40 }}>
                         <Image
-                            src="/logo2.png"
+                            src="/relohub-logo.svg"
                             alt="logo"
                             width={140}
                             height={40}

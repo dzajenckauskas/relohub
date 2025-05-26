@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
                     `}
                     </Script>
                 )}
-                <link rel="preload" href="/logo2.png" as="image" />
+                <link rel="preload" href="/relohub-logo.svg" as="image" />
                 <link
                     rel="preload"
                     href="/fonts/Uniform-Condensed.ttf"
@@ -72,24 +72,26 @@ export default function RootLayout({ children }) {
                     type="font/ttf"
                     crossOrigin="anonymous"
                 />
-                <link
-                    rel="apple-touch-icon"
-                    sizes="180x180"
-                    href="/favicons/apple-touch-icon.png"
-                />
-                <link
-                    rel="icon"
-                    type="image/png"
-                    sizes="32x32"
-                    href="/favicons/favicon-32x32.png"
-                />
-                <link
-                    rel="icon"
-                    type="image/png"
-                    sizes="16x16"
-                    href="/favicons/favicon-16x16.png"
-                />
+
+                {/* <!-- Light theme icons --> */}
+                <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" media="(prefers-color-scheme: light)" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" media="(prefers-color-scheme: light)" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" media="(prefers-color-scheme: light)" />
+
+                {/* <!-- Dark theme icons --> */}
+                <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-dark.png" media="(prefers-color-scheme: dark)" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32-dark.png" media="(prefers-color-scheme: dark)" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16-dark.png" media="(prefers-color-scheme: dark)" />
+
+                {/* <!-- Fallback for older browsers --> */}
+                <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+                <link rel="icon" href="/favicons/favicon.ico" />
+
+                {/* <!-- Manifest --> */}
                 <link rel="manifest" href="/favicons/site.webmanifest" />
+
                 <meta
                     name="google-site-verification"
                     content="9OrdpSBzrVlAPw36L_LZtXnMywNGG2R59g0Ix6ZFQzc"
