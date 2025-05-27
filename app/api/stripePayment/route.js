@@ -13,7 +13,7 @@ export async function POST(req, res) {
             payment_method: paymentMethodId,
             confirm: true,
             receipt_email: email,
-            return_url: "https://Relohub.co.uk/offer",
+            return_url: "https://relohub.co.uk/offer",
         });
 
         return NextResponse.json({ id: paymentIntent.id }, { status: 200 });

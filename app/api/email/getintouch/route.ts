@@ -19,9 +19,9 @@ export async function POST(req, res) {
     let to =
         process.env.NODE_ENV === "development"
             ? `1000kaktusu@gmail.com`
-            : `hello@relohub.co.uk`;
+            : process.env.EMAIL;
     let mailOptions = {
-        from: `hello@relohub.co.uk`, // sender address
+        from: process.env.EMAIL, // sender address
         to,
         subject: `New message via website (${json.data.name})`,
         html: getInTouchHTML(json),
