@@ -10,6 +10,23 @@ import OfferSummaryBottomLine from "./OfferSummaryBottomLine";
 import ErrorMessage from "./steps/ErrorMessage";
 import Box from "@mui/material/Box";
 
+function addPercentageToPrice(price: number | string, percentage: number): number {
+    if (!price) {
+        return null
+    }
+    const numberPrice = Number(price)
+
+    if (typeof numberPrice !== 'number' || isNaN(numberPrice)) {
+        throw new TypeError("Price must be a number.");
+    }
+    if (typeof percentage !== 'number' || isNaN(percentage)) {
+        throw new TypeError("Percentage must be a number.");
+    }
+    const transformedPrice = (numberPrice * (1 + percentage / 100));
+
+    return transformedPrice
+}
+
 export default function PriceOffer({ state, prices, form, activeStep }) {
     const stripe = useStripe();
     const elements = useElements();
@@ -41,7 +58,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
             duration: `10 - 14 Weeks Transit`,
             image: `/ship.png`,
             field: `SEA`,
-            price: prices?.price?.SEA,
+            price: addPercentageToPrice(prices?.price?.SEA, 12),
             smallt: (
                 <>
                     {`Door to `}
@@ -56,7 +73,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
             duration: `7 - 12 Days Transit`,
             image: `/plane.png`,
             field: `AIR COURIER`,
-            price: prices?.price?.[`AIR COURIER`],
+            price: addPercentageToPrice(prices?.price?.[`AIR COURIER`], 12),
             smallt: (
                 <>
                     {`Door to `}
@@ -70,7 +87,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
             duration: `7 - 12 Days Transit`,
             image: `/plane.png`,
             field: `AIR FREIGHT (TO-AIRPORT)`,
-            price: prices?.price?.[`AIR FREIGHT (TO-AIRPORT)`],
+            price: addPercentageToPrice(prices?.price?.[`AIR FREIGHT (TO-AIRPORT)`], 12),
             smallt: (
                 <>
                     {`Door to `}
@@ -83,7 +100,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
             duration: `7 - 12 Days Transit`,
             image: `/plane.png`,
             field: `AIR FREIGHT (TO-DOOR)`,
-            price: prices?.price?.[`AIR FREIGHT (TO-DOOR)`],
+            price: addPercentageToPrice(prices?.price?.[`AIR FREIGHT (TO-DOOR)`], 12),
             smallt: (
                 <>
                     {`Door to `}
@@ -96,7 +113,7 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
             duration: `7 - 12 Days Transit`,
             image: `/truck.png`,
             field: `ROAD`,
-            price: prices?.price?.ROAD,
+            price: addPercentageToPrice(prices?.price?.ROAD, 12),
             smallt: (
                 <>
                     {`Door to `}
@@ -114,14 +131,14 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
                 orderReferenceNumber: prices.orderReferenceNumber,
                 uuid: prices.uuid,
                 type: selected.field,
-                price: selected.price,
+                price: (selected.price),
             };
             const hv = process.env.NEXT_PUBLIC_HEADER_VALUE;
             if (process.env.NODE_ENV === "development") {
                 console.log(body);
             }
-            const res = await fetch(url, {
-                method: "POST",
+            const res = await fetch(prices.uuid ? `${url}/${prices.uuid}` : url, {
+                method: prices.uuid ? "PUT" : "POST",
                 headers: {
                     "http-referer": hv,
                     "Content-Type": "application/json",
