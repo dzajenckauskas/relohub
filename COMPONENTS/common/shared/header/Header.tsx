@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import CustomerPortalIcon from '../../CustomerPortalIcon';
+// import CustomerPortalIcon from '../../CustomerPortalIcon';
 import HeaderPinkElement from "./HeaderPinkElement";
 import { theme } from '../Theme';
 import TopNavBar from '../../TopNavBar';
@@ -16,7 +16,7 @@ import TopNavBar from '../../TopNavBar';
 import { HeaderLink, HeaderLinkType } from './HeaderLink';
 
 export default function Header() {
-    const loginUrl = 'https://admin.Relohub.co.uk/customerPortal/login'
+    // const loginUrl = 'https://admin.Relohub.co.uk/customerPortal/login'
     const [open, setOpen] = useState(false)
     const [openDropdown, setOpenDropdown] = useState<number | undefined>()
 
@@ -184,24 +184,26 @@ export default function Header() {
                         display: 'flex', flexDirection: 'row', gap: 15,
                         alignItems: 'center',
                     }}>
-                        {/* <Link passHref href={loginUrl} >
-                            <Button aria-label="Customer portal" variant='outlined' sx={{
-                                display: { md: 'flex', sm: 'flex', xs: 'flex' },
-                                border: '1px solid #ccc',
-                                borderRadius: '3px', fontWeight: 700,
-                                fontSize: 14,
-                                minWidth: 20,
-                                padding: '10px 14px',
-                                alignItems: 'center',
-                                fontFamily: 'inherit',
-                                cursor: 'pointer'
-                            }}>
-                                <CustomerPortalIcon />
-                                <Typography variant='h5' component={'p'} fontWeight={600} sx={{ pl: 1, display: { md: 'flex', xs: 'none' }, }}>
-                                    CUSTOMER PORTAL
-                                </Typography>
-                            </Button>
-                        </Link> */}
+                        {/* <Link passHref href={loginUrl} > */}
+                        <Button aria-label="Customer portal" variant='outlined' sx={{
+                            display: { md: 'flex', sm: 'flex', xs: 'flex' },
+                            opacity: 0,
+                            border: '1px solid #ccc',
+                            borderRadius: '3px', fontWeight: 700,
+                            fontSize: 14,
+                            minWidth: 20,
+                            padding: '10px 14px',
+                            alignItems: 'center',
+                            fontFamily: 'inherit',
+                            cursor: 'default'
+                            // cursor: 'pointer'
+                        }}>
+                            {/* <CustomerPortalIcon /> */}
+                            <Typography variant='h5' component={'p'} fontWeight={600} sx={{ pl: 1, display: { md: 'flex', xs: 'none' }, }}>
+                                {/* CUSTOMER PORTAL */}
+                            </Typography>
+                        </Button>
+                        {/* </Link> */}
                         <Stack sx={{ display: { md: 'flex', xs: 'none' } }}>
                             <HeaderPinkElement />
                         </Stack>
@@ -221,7 +223,7 @@ export default function Header() {
                 }}>
                     <Stack spacing={3} sx={{ position: 'fixed', textTransform: 'uppercase', pl: { sm: 4, xs: 2 }, pr: { md: 4, xs: 2 }, py: 2 }}>
                         {renderMobileLinks}
-                        <Link passHref href={loginUrl} >
+                        {/* <Link passHref href={loginUrl} >
                             <Button aria-label="Customer portal" variant='outlined' sx={{
                                 border: '1px solid #ccc',
                                 borderRadius: '3px', fontWeight: 700,
@@ -237,7 +239,7 @@ export default function Header() {
                                     CUSTOMER PORTAL
                                 </Typography>
                             </Button>
-                        </Link>
+                        </Link> */}
                     </Stack>
                 </Stack>
             }
