@@ -130,15 +130,17 @@ const GetQuotePopUp = ({ isHeroVisible }: Props) => {
                     }}
                 >
                     <Box sx={{ p: 4, width: { xs: '95vw', sm: 'sm', md: 'sm', lg: 'sm', xl: 'sm' }, maxWidth: { xs: '95vw', sm: 'sm', md: 'sm', lg: 'sm', xl: 'sm' } }}>
-                        <InstantQuoteComponent togglePopUp={togglePopUp} title={
-                            <h2 className="instantquotewrp">
-                                <span>{"Get a "}</span>
-                                <span style={{ fontWeight: 800 }}>
-                                    <b>Fast Free Quote</b>
-                                </span>
-                                <span>{" now"}</span>
-                            </h2>
-                        } />
+                        <InstantQuoteComponent
+                            popUp={true}
+                            togglePopUp={togglePopUp} title={
+                                <h2 className="instantquotewrp">
+                                    <span>{"Get a "}</span>
+                                    <span style={{ fontWeight: 800 }}>
+                                        <b>Fast Free Quote</b>
+                                    </span>
+                                    <span>{" now"}</span>
+                                </h2>
+                            } />
                     </Box>
                 </Dialog>}
         </>

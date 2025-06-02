@@ -46,6 +46,7 @@ export const InstantQuoteHorizontalComponent = ({ togglePopUp, title }: Props) =
             </Stack>
 
             <HeroInputs
+                popUp={false}
                 isOffer={false}
                 state={state}
                 setstate={setstate}

@@ -80,7 +80,7 @@ export const countries = [
     { country: "united states", iso: "US", continent: "North America" },
 ];
 
-export default function HeroInputs({ enableButton, edit, newstate, isOffer, state, setstate }) {
+export default function HeroInputs({ enableButton, edit, newstate, isOffer, state, setstate, popUp }) {
     const listRef = useRef(null);
     const zipfocus = useRef(null);
     const zipfocusdest = useRef(null);
@@ -775,11 +775,11 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
 
     return (
         <Stack
-            direction={{ xs: 'column', md: 'row' }}
+            direction={{ xs: 'column', md: popUp ? 'column' : 'row' }}
             width={'100%'}
             gap={2}
-            pr={{ xs: 0, md: 2 }}
-            pb={{ xs: 2, md: 0 }}
+            pr={{ xs: 0, md: popUp ? 0 : 2 }}
+            pb={{ xs: 2, md: popUp ? 2 : 0 }}
             justifyContent={'space-between'}
         >
             {inputs.map((el, i) => {

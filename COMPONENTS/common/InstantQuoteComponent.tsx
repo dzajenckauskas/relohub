@@ -11,9 +11,10 @@ import "/STYLES/medias.css";
 type Props = {
     togglePopUp?: () => void;
     title?: React.ReactNode
+    popUp?: boolean;
 }
 
-export const InstantQuoteComponent = ({ togglePopUp, title }: Props) => {
+export const InstantQuoteComponent = ({ togglePopUp, title, popUp }: Props) => {
     const router = useRouter();
     const [enableButton, setEnableButton] = useState(false);
     const [state, setstate] = useState({
@@ -30,6 +31,7 @@ export const InstantQuoteComponent = ({ togglePopUp, title }: Props) => {
         }}>
             <Stack
                 direction={'row'}
+                pb={2}
                 justifyContent={{ xs: togglePopUp ? 'space-between' : 'center', md: 'flex-start' }}
                 alignItems="center"
             >
@@ -54,7 +56,9 @@ export const InstantQuoteComponent = ({ togglePopUp, title }: Props) => {
                 )}
             </Stack>
 
-            <HeroInputs isOffer={false}
+            <HeroInputs
+                popUp={popUp}
+                isOffer={false}
                 state={state}
                 setstate={setstate}
                 enableButton={(st) => {
