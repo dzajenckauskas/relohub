@@ -36,23 +36,24 @@ export default function MainPageHeroArea() {
                     />
                 </Stack>
                 <Typography component={'h1'} sx={{
-                    fontWeight: 700,
+                    fontWeight: 400,
                     fontSize: { lg: 60, md: 48, sm: 42, xs: 32 },
                     position: 'relative',
                     // top: { sm: 0, xs: -30 },
                     // pt: { md: 16, sm: 0, xs: 0 },
                     pb: { xs: 6, md: 0 },
-                    lineHeight: 1.1,
+                    lineHeight: .8,
+                    pt: 4,
                     textAlign: { md: 'center', xs: 'center' },
                     width: '100%',
                 }}>
-                    YOUR PARTNER <br />  <Typography component={'span'}
+                    YOUR PARTNER IN<br />  <Typography component={'span'}
                         sx={{
                             fontWeight: 700, lineHeight: 1.1,
                             fontSize: { lg: 60, md: 48, sm: 42, xs: 32 },
                             color: theme.palette.secondary.main
                         }}>
-                        IN SEEMLESS RELOCATIONS</Typography>
+                        SEEMLESS RELOCATIONS</Typography>
                 </Typography>
             </Stack>
             <Stack maxWidth={{ md: 'none', xs: 'sm' }}
