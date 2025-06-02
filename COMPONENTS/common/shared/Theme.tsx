@@ -41,7 +41,7 @@ export const theme = createTheme({
         MuiButton: {
             styleOverrides: {
                 root: ({ theme }) => theme.unstable_sx({
-                    // fontFamily: 'Uniform',
+                    fontFamily: 'Calibri',
                     fontSize: 14,
                     py: 1.2,
                     letterSpacing: 1,
@@ -78,7 +78,7 @@ export const theme = createTheme({
 
     typography: {
         h1: {
-            // fontFamily: 'Uniform',
+            fontFamily: 'Calibri',
             fontWeight: 700,
             fontSize: 32,
             '@media (min-width:600px)': {
@@ -95,7 +95,7 @@ export const theme = createTheme({
             },
         },
         h2: {
-            // fontFamily: 'Uniform',
+            fontFamily: 'Calibri',
             fontWeight: 700,
             fontSize: 24,
             '@media (min-width:600px)': {
@@ -112,7 +112,7 @@ export const theme = createTheme({
             },
         },
         h3: {
-            // fontFamily: 'Uniform',
+            fontFamily: 'Calibri',
             fontWeight: 700,
             fontSize: 20,
             '@media (min-width:600px)': {
@@ -129,7 +129,7 @@ export const theme = createTheme({
             },
         },
         h4: {
-            // fontFamily: 'Uniform',
+            fontFamily: 'Calibri',
             fontSize: 18,
             '@media (min-width:600px)': {
                 fontSize: 20,
@@ -145,14 +145,14 @@ export const theme = createTheme({
             },
         },
         h5: {
-            // fontFamily: 'Uniform',
+            fontFamily: 'Calibri',
             fontSize: 20
         },
         h6: {
-            // fontFamily: 'Uniform',
+            fontFamily: 'Calibri',
         },
         subtitle1: {
-            // fontFamily: 'Uniform',
+            fontFamily: 'Calibri',
             fontSize: 18,
             '@media (min-width:600px)': {
                 fontSize: 18,
@@ -168,20 +168,20 @@ export const theme = createTheme({
             },
         },
         subtitle2: {
-            // fontFamily: 'Uniform',
+            fontFamily: 'Calibri',
             fontSize: 18,
         },
         body1: {
-            // fontFamily: 'Uniform',
+            fontFamily: 'Calibri',
             fontSize: 16,
 
         },
         body2: {
-            // fontFamily: 'Uniform',
+            fontFamily: 'Calibri',
             fontSize: 14
         },
         caption: {
-            // fontFamily: 'Uniform',
+            fontFamily: 'Calibri',
             fontSize: 12
 
         }
