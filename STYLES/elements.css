@@ -610,15 +610,15 @@
 }
 
 .herobuttongetestimate {
-    width: 168px;
+    /* width: 168px; */
     height: 56px;
     outline: none;
     border: none;
     background: var(--pink_color);
     color: white;
     cursor: pointer;
-    margin-top: 32px;
-    margin-left: auto;
+    /* margin-top: 32px; */
+    /* margin-left: auto; */
     border-radius: 4px;
     transition-duration: 200ms;
 }

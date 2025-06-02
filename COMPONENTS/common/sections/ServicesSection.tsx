@@ -101,11 +101,11 @@ export const ServicesSection = ({ }: Props) => {
                             </Typography>
                         </Stack>
                         <Stack sx={{ width: '100%', height: { md: 300, xs: 200 }, position: 'relative', top: { md: 48, sm: 48, xs: 48 } }}>
-                            <Image
+                            {/* <Image
                                 alt="backgorund"
                                 src={"/sofa2cut.png"}
                                 style={{ objectFit: "contain", objectPosition: 'bottom' }}
-                                fill />
+                                fill /> */}
                         </Stack>
                     </Stack>
                 </Stack>

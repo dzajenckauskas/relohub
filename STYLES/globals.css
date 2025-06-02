@@ -48,7 +48,7 @@ body {
 }
 
 :root {
-    --pink_color: #5720E3;
+    --pink_color: #377f61;
     --light_grey: #ebebeb;
     --mid_grey: #f1f1f1;
     --dark_grey: #636363;
@@ -79,7 +79,7 @@ body {
 
     content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  transform="scale(.9)" fill="rgb(231,28,94)"><path d="m15 5-1.41 1.41L18.17 11H2v2h16.17l-4.59 4.59L15 19l7-7z"></path></svg>');
     position: absolute;
-    fill: #5720E3 !important;
+    fill: #377f61 !important;
     top: 50%;
     left: 25px;
     top: 1px;
@@ -146,11 +146,11 @@ body {
     font-size: 32px;
     padding-top: 4rem;
     padding-bottom: 2rem;
-    color: #5720E3 !important;
+    color: #377f61 !important;
 }
 
 .dynamicContent h2>span {
-    color: #5720E3 !important;
+    color: #377f61 !important;
 }
 
 .dynamicContent h3 {

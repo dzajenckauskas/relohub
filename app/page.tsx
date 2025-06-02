@@ -2,6 +2,7 @@
 import { MaxWidthContainer } from "@/COMPONENTS/common/MaxWidthContainer";
 import PageLayout from "@/COMPONENTS/common/PageLayout";
 import { CoveredCountriesSection } from "@/COMPONENTS/common/sections/CoveredCountriesSection";
+import IconsSection from "@/COMPONENTS/common/sections/IconsSection";
 import { ServicesSection } from "@/COMPONENTS/common/sections/ServicesSection";
 import FaqWrapper from "@/COMPONENTS/main_page/Faqwrapper";
 // import LatestArticles from "@/COMPONENTS/main_page/LatestArticles";
@@ -13,6 +14,7 @@ import Reviews from "@/COMPONENTS/main_page/reviews";
 import { getData } from "@/UTILS/getData";
 import { Metadata } from "next";
 import Image from "next/image";
+import { iconsSectionContent } from "./moving-within-europe/IconsSectionContent";
 
 
 export async function generateMetadata({ }): Promise<Metadata> {
@@ -53,14 +55,16 @@ export default async function Home() {
                 <MaxWidthContainer>
                     <MainPageHeroArea />
                 </MaxWidthContainer>
-                <Postheroimages />
+                {/* <Postheroimages /> */}
             </div>
-            <ServicesSection />
-            <CoveredCountriesSection articleContinents={articleContinents} countries={countriesData} />
+            <IconsSection title={"Why Choose Relohub for Your Move?"} content={iconsSectionContent} />
+
             {/* <CountriesDropdownList countriesData={countriesData} /> */}
             {/* <VideoArea hideIcons={false} /> */}
-            <ProcessWrapper />
+            {/* <ProcessWrapper /> */}
             <FaqWrapper />
+            <ServicesSection />
+            <CoveredCountriesSection articleContinents={articleContinents} countries={countriesData} />
             {/* <LatestArticles /> */}
             <Reviews />
         </PageLayout>

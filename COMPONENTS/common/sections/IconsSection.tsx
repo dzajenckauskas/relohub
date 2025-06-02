@@ -1,3 +1,4 @@
+'use client'
 import { MaxWidthContainer } from '@/COMPONENTS/common/MaxWidthContainer'
 import { theme } from '@/COMPONENTS/common/shared/Theme'
 import Grid from '@mui/material/Grid'

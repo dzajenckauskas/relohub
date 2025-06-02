@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useEffect, useRef, useState } from "react";
 import { FixedSizeList as List } from "react-window";
@@ -772,115 +773,103 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
         return `heroinputliner heroinputliner${i}`;
     }
 
-    // useEffect(() => {
-    //     if (state.) {
-    //         document.body.style.overflow = 'hidden';
-    //     } else {
-    //         document.body.style.overflow = 'auto';
-    //     }
-    //     return () => {
-    //         document.body.style.overflow = 'auto';
-    //     };
-    // }, [state.]);
-
     return (
-        <div className={edit ? "heroinputswrpedit" : "heroinputswrp"}>
-            <div
-                className={
-                    edit
-                        ? "heroinputsinputsinsidewrpedit"
-                        : "heroinputsinputsinsidewrp"
-                }
-            >
-                {inputs.map((el, i) => {
-                    return (
-                        <div
-                            className={addclassnametomobileinputs(el, i)}
-                            key={i}
-                        >
-                            <label className="heroinputlabel">
-                                {edit ? (
-                                    `${el.label.split(" ").slice(1).join(" ")}:`
-                                ) : (
-                                    <p className="hiddenmobilelabel">
-                                        {el.label}:
-                                    </p>
-                                )}
+        <Stack
+            direction={{ xs: 'column', md: 'row' }}
+            width={'100%'}
+            gap={2}
+            pr={2}
+            justifyContent={'space-between'}
+        >
+            {inputs.map((el, i) => {
+                return (
+                    <div
+                        style={{ width: '100%' }}
+                        className={addclassnametomobileinputs(el, i)}
+                        key={i}
+                    >
+                        <label className="heroinputlabel">
+                            {edit ? (
+                                `${el.label.split(" ").slice(1).join(" ")}:`
+                            ) : (
+                                <p className="hiddenmobilelabel">
+                                    {el.label}:
+                                </p>
+                            )}
 
-                                {manualCity === el.label ? (
-                                    <div className={`heroinputselectwrpmanual`}>
-                                        <input
-                                            value={state[el.field]}
-                                            onChange={(e) => {
-                                                setstate({
-                                                    ...state,
-                                                    [el.field]: e.target.value,
-                                                });
-                                            }}
-                                            className="manualcityinput"
-                                            autoFocus
-                                        ></input>
-                                        <button
-                                            className="manualcityconfirmbutton"
-                                            onClick={() => {
-                                                setManualCity(null);
-                                            }}
-                                        >
-                                            Confirm
-                                        </button>
-                                    </div>
-                                ) : (
-                                    <div
-                                        className={editClassname(el, i)}
-                                        style={{ border: (!state[el.field] && isOffer) ? `2px solid ${theme.palette.secondary.main}` : '' }}
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            e.preventDefault();
-
-                                            if (
-                                                !e.target.classList.contains(
-                                                    "heroinputselectwrpdisabled",
-                                                )
-                                            ) {
-                                                setinputvalue("");
-                                                setSelectedField(
-                                                    selectedField === el.label
-                                                        ? null
-                                                        : el.label,
-                                                );
-                                            }
+                            {manualCity === el.label ? (
+                                <div className={`heroinputselectwrpmanual`}>
+                                    <input
+                                        value={state[el.field]}
+                                        onChange={(e) => {
+                                            setstate({
+                                                ...state,
+                                                [el.field]: e.target.value,
+                                            });
+                                        }}
+                                        className="manualcityinput"
+                                        autoFocus
+                                    ></input>
+                                    <button
+                                        className="manualcityconfirmbutton"
+                                        onClick={() => {
+                                            setManualCity(null);
                                         }}
                                     >
-                                        {state[el.field] ? (
-                                            <p className="inputtextforcountriesandcitiesp">
-                                                {state[el.field]}
+                                        Confirm
+                                    </button>
+                                </div>
+                            ) : (
+                                <div
+                                    className={editClassname(el, i)}
+                                    style={{ border: (!state[el.field] && isOffer) ? `2px solid ${theme.palette.secondary.main}` : '' }}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        e.preventDefault();
+
+                                        if (
+                                            !e.target.classList.contains(
+                                                "heroinputselectwrpdisabled",
+                                            )
+                                        ) {
+                                            setinputvalue("");
+                                            setSelectedField(
+                                                selectedField === el.label
+                                                    ? null
+                                                    : el.label,
+                                            );
+                                        }
+                                    }}
+                                >
+                                    {state[el.field] ? (
+                                        <p className="inputtextforcountriesandcitiesp">
+                                            {state[el.field]}
+                                        </p>
+                                    ) : (
+                                        <div>
+                                            <p className="hiddenmobilelabel"
+                                                style={{ color: (!state[el.field] && isOffer) ? `${theme.palette.secondary.main}` : '' }}
+                                            >
+                                                Please select
                                             </p>
-                                        ) : (
-                                            <div>
-                                                <p className="hiddenmobilelabel"
-                                                    style={{ color: (!state[el.field] && isOffer) ? `${theme.palette.secondary.main}` : '' }}
-                                                >
-                                                    Please select
-                                                </p>
-                                                <p className="shownmobilelebel">
-                                                    {el.label}
-                                                </p>
-                                            </div>
-                                        )}
+                                            <p className="shownmobilelebel">
+                                                {el.label}
+                                            </p>
+                                        </div>
+                                    )}
 
-                                        <span className="triangledown"></span>
-                                    </div>
-                                )}
-                                {selectedField === el.label && !manualCity
-                                    ? dropdown(el, i)
-                                    : null}
-                            </label>
-                        </div>
-                    );
-                })}
+                                    <span className="triangledown"></span>
+                                </div>
+                            )}
+                            {selectedField === el.label && !manualCity
+                                ? dropdown(el, i)
+                                : null}
+                        </label>
+                    </div>
+                );
+            })}
 
-                {ifukofus()}
-            </div>
-        </div>
+            {ifukofus()}
+        </Stack>
     );
 }
