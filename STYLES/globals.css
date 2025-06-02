@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: Uniform;
     src:
         url('/fonts/Uniform-Condensed.ttf') format('truetype');
@@ -41,10 +41,12 @@
     font-weight: 300;
     font-style: normal;
     font-display: swap;
-}
+} */
 
 body {
-    font-family: Uniform !important;
+    font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif
+        /* font-family: Uniform !important; */
+        /* font-family: Uniform !important; */
 }
 
 :root {

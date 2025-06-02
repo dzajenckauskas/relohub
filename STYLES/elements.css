@@ -498,6 +498,8 @@
 .bckimagewrp {
     position: relative;
     z-index: 1;
+    /* background: #2c634c; */
+    /* background: #377f61; */
     background: var(--light_grey);
 }
 

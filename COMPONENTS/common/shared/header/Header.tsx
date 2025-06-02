@@ -173,41 +173,14 @@ export default function Header() {
                             style={{ objectFit: "contain" }}
                         />
                     </Link>
-                    <Stack sx={{
+                    {/* <Stack sx={{
                         display: { md: 'flex', sm: 'none', xs: 'none' }, flexDirection: 'row',
                         alignItems: 'center',
                         gap: { lg: 6, md: 6, sm: 0, xs: 0 },
                     }}>
                         {renderLinks}
-                    </Stack>
-                    <Stack style={{
-                        display: 'flex', flexDirection: 'row', gap: 15,
-                        alignItems: 'center',
-                    }}>
-                        {/* <Link passHref href={loginUrl} > */}
-                        <Button aria-label="Customer portal" variant='outlined' sx={{
-                            display: { md: 'flex', sm: 'flex', xs: 'flex' },
-                            opacity: 0,
-                            border: '1px solid #ccc',
-                            borderRadius: '3px', fontWeight: 700,
-                            fontSize: 14,
-                            minWidth: 20,
-                            padding: '10px 14px',
-                            alignItems: 'center',
-                            fontFamily: 'inherit',
-                            cursor: 'default'
-                            // cursor: 'pointer'
-                        }}>
-                            {/* <CustomerPortalIcon /> */}
-                            <Typography variant='h5' component={'p'} fontWeight={600} sx={{ pl: 1, display: { md: 'flex', xs: 'none' }, }}>
-                                {/* CUSTOMER PORTAL */}
-                            </Typography>
-                        </Button>
-                        {/* </Link> */}
-                        <Stack sx={{ display: { md: 'flex', xs: 'none' } }}>
-                            <HeaderPinkElement />
-                        </Stack>
-                    </Stack>
+                    </Stack> */}
+
                 </Stack>
             </header>
             <Stack sx={{ height: { md: 60, sm: 100, xs: 90 }, width: '100%', backgroundColor: '#efefef' }}>
