@@ -91,7 +91,7 @@ const GetQuotePopUp = ({ isHeroVisible }: Props) => {
                         position: 'fixed',
                         zIndex: 9,
                         left: 0,
-                        bottom: { xs: 10, md: 'calc(50vh - 33px)' },
+                        bottom: { xs: 10, md: 'calc(33vh - 33px)' },
                         backgroundColor: theme.palette.secondary.main,
                         borderRadius: '0px 8px 8px 0px ',
                         padding: { xs: 1 },

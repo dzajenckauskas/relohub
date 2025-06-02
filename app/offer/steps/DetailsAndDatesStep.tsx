@@ -37,7 +37,7 @@ const DetailsAndDatesStep = ({ form, }: Props) => {
                 </Stack>
 
             </Stack>
-            <Stack direction={'row'}
+            {/* <Stack direction={'row'}
                 sx={{
                     zIndex: 1,
                     transform: { xs: 'scale(.7)', sm: 'scale(1)' },
@@ -59,7 +59,7 @@ const DetailsAndDatesStep = ({ form, }: Props) => {
                         }}
                     />
                 </Stack>
-            </Stack>
+            </Stack> */}
         </Card>
     )
 }

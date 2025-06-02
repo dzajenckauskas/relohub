@@ -203,7 +203,7 @@ export const theme = createTheme({
             disabled: '#7d7c83',
         },
         error: {
-            main: '#E71D5E',
+            main: '#e31212',
         }
     }
 })

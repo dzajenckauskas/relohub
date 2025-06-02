@@ -3,28 +3,58 @@ import Stack from "@mui/material/Stack";
 import Typography from '@mui/material/Typography';
 import { InstantQuoteHorizontalComponent } from "../common/InstantQuoteHorizontalComponent";
 import { theme } from "../common/shared/Theme";
-
+import Image from "next/image";
 export default function MainPageHeroArea() {
+    // const bgColorLight = '#D7F2CB'
+    // const bgColorDark = '#C4F6E1'
     return (
-        <Stack direction={{ md: 'column', xs: 'column' }} pt={6} mx={'auto'} width={'100%'}>
-            <Typography component={'h1'} sx={{
-                fontWeight: 700,
-                fontSize: { lg: 60, md: 50, sm: 40, xs: 30 },
-                position: 'relative',
-                top: { sm: 0, xs: -30 },
-                pt: { md: 16, sm: 0, xs: 0 },
-                pb: { md: 4, sm: 4, xs: 11 },
-                lineHeight: 1.1,
-                textAlign: { md: 'center', xs: 'center' },
-                width: '100%',
-            }}>
-                YOUR PARTNER <br />  <Typography component={'span'}
-                    sx={{
-                        fontWeight: 700, lineHeight: 1.1, fontSize: { lg: 60, md: 52, sm: 42, xs: 32 },
-                        color: theme.palette.secondary.main
-                    }}>
-                    IN SEEMLESS RELOCATIONS</Typography>
-            </Typography>
+        <Stack direction={{ md: 'column', xs: 'column' }}
+            pt={{ xs: 6, md: 5 }}
+            pb={{ xs: 4, md: 8 }}
+            mx={'auto'}
+            width={'100%'}
+        >
+            <Stack
+                direction={{ xs: 'column', md: 'row' }}
+                alignItems={'center'}
+                //  width={'100%'}
+                sx={{ position: 'relative' }}
+                mb={{ xs: 0, md: -7.25 }}
+            >
+                <Stack
+                // sx={{
+                //     mt: { xs: -14, sm: -5, md: 0 },
+                //     ml: { xs: 15, md: 0 }
+                // }}
+                >
+                    <Image
+                        src={"/images/globe-vector.svg"}
+                        width={350}
+                        height={350}
+                        alt="moving overseas"
+                        priority
+                    />
+                </Stack>
+                <Typography component={'h1'} sx={{
+                    fontWeight: 700,
+                    fontSize: { lg: 60, md: 48, sm: 42, xs: 32 },
+                    position: 'relative',
+                    // top: { sm: 0, xs: -30 },
+                    // pt: { md: 16, sm: 0, xs: 0 },
+                    pb: { xs: 6, md: 0 },
+                    lineHeight: 1.1,
+                    textAlign: { md: 'center', xs: 'center' },
+                    width: '100%',
+                }}>
+                    YOUR PARTNER <br />  <Typography component={'span'}
+                        sx={{
+                            fontWeight: 700, lineHeight: 1.1,
+                            fontSize: { lg: 60, md: 48, sm: 42, xs: 32 },
+                            color: theme.palette.secondary.main
+                        }}>
+                        IN SEEMLESS RELOCATIONS</Typography>
+                </Typography>
+            </Stack>
             <Stack maxWidth={{ md: 'none', xs: 'sm' }}
                 sx={{
                     width: '100%',

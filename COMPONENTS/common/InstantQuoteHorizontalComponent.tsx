@@ -25,7 +25,7 @@ export const InstantQuoteHorizontalComponent = ({ togglePopUp, title }: Props) =
         to_postCode: "",
     });
     return (
-        <Stack direction={'row'} sx={{
+        <Stack direction={{ xs: 'column', md: 'row' }} sx={{
             // minHeight: { xs: 0, sm: 330 }
         }}>
             <Stack

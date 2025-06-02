@@ -778,13 +778,14 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
             direction={{ xs: 'column', md: 'row' }}
             width={'100%'}
             gap={2}
-            pr={2}
+            pr={{ xs: 0, md: 2 }}
+            pb={{ xs: 2, md: 0 }}
             justifyContent={'space-between'}
         >
             {inputs.map((el, i) => {
                 return (
                     <div
-                        style={{ width: '100%' }}
+                        style={{ width: '100%', color: theme.palette.secondary.main, }}
                         className={addclassnametomobileinputs(el, i)}
                         key={i}
                     >

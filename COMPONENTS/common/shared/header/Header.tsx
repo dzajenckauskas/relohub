@@ -79,44 +79,65 @@ export default function Header() {
 
     const path = pathname.split('/').slice(0, 2).join('/');
 
-    const renderLinks = links.map((link) => {
-        return (
-            <HeaderLink setOpenDropdown={setOpenDropdown} openDropdown={openDropdown}
-                key={link?.id} path={path} link={link} />
-        )
-    })
-    const renderMobileLinks = links.map((link) => {
-        return (
-            <Stack key={link.id}>
-                {link?.url && <Link onClick={toggleOpen} passHref href={link?.url} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
-                    <Stack sx={{ color: path === link.url ? theme.palette.secondary.main : 'inherit', position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
-                        {link.name}
-                    </Stack>
-                </Link>}
-                {!link.url &&
-                    <Stack spacing={3} sx={{
-                    }}>
-                        {link.links.map((l, i) => {
-                            return (
-                                <Link key={i} onClick={toggleOpen} passHref href={l?.url} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
-                                    <Stack sx={{ color: path === l.url ? theme.palette.secondary.main : 'inherit', position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
-                                        {l.name}
-                                    </Stack>
-                                </Link>
-                            )
-                        })}
-                    </Stack>
-                }
-            </Stack>
-        )
-    })
+    // const renderLinks = links.map((link) => {
+    //     return (
+    //         <HeaderLink setOpenDropdown={setOpenDropdown} openDropdown={openDropdown}
+    //             key={link?.id} path={path} link={link} />
+    //     )
+    // })
+    // const renderMobileLinks = links.map((link) => {
+    //     return (
+    //         <Stack key={link.id}>
+    //             {link?.url && <Link onClick={toggleOpen} passHref href={link?.url} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
+    //                 <Stack sx={{ color: path === link.url ? theme.palette.secondary.main : 'inherit', position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
+    //                     {link.name}
+    //                 </Stack>
+    //             </Link>}
+    //             {!link.url &&
+    //                 <Stack spacing={3} sx={{
+    //                 }}>
+    //                     {link.links.map((l, i) => {
+    //                         return (
+    //                             <Link key={i} onClick={toggleOpen} passHref href={l?.url} style={{ fontWeight: 500, fontSize: 16, cursor: 'pointer', textDecoration: 'none' }}>
+    //                                 <Stack sx={{ color: path === l.url ? theme.palette.secondary.main : 'inherit', position: 'relative', ':hover': { color: theme.palette.secondary.main } }}>
+    //                                     {l.name}
+    //                                 </Stack>
+    //                             </Link>
+    //                         )
+    //                     })}
+    //                 </Stack>
+    //             }
+    //         </Stack>
+    //     )
+    // })
+    const [isQuoteVisible, setIsQuoteVisible] = useState(true);
+    useEffect(() => {
+        const target = document.getElementById("get-quote");
+        if (!target) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsQuoteVisible(entry.isIntersecting);
+            },
+            { root: null, threshold: 0.1 }
+        );
+
+        observer.observe(target);
+
+        return () => observer.disconnect();
+    }, []);
     return (
         <>
             <header
                 style={{
-                    borderBottom: '1px solid #d8d8d8', backgroundColor: '#f1f1f1',
-                    position: 'fixed', top: 0, width: '100%', zIndex: 99
-                }}>
+                    position: 'fixed',
+                    top: 0,
+                    width: '100%',
+                    zIndex: 99,
+                    backgroundColor: isQuoteVisible ? 'transparent' : '#ffffff',
+                    transition: 'background-color 0.3s ease',
+                }}
+            >
                 <TopNavBar />
                 <Stack
                     direction={'row'}
@@ -128,7 +149,7 @@ export default function Header() {
                         alignItems: 'center',
                         height: 60
                     }}>
-                    {!open && <Button
+                    {/* {!open && <Button
                         aria-label="Mobile menu"
                         onClick={toggleOpen}
                         sx={{
@@ -161,7 +182,7 @@ export default function Header() {
                             cursor: 'pointer'
                         }}>
                         <CloseRoundedIcon sx={{ transform: 'scale(1.8)' }} />
-                    </Button>}
+                    </Button>} */}
 
                     <Link passHref href={'/'} style={{ position: 'relative', width: 140, height: 40 }}>
                         <Image
@@ -183,19 +204,18 @@ export default function Header() {
 
                 </Stack>
             </header>
-            <Stack sx={{ height: { md: 60, sm: 100, xs: 90 }, width: '100%', backgroundColor: '#efefef' }}>
-            </Stack>
+            {/* <Stack sx={{ height: { md: 60, sm: 100, xs: 90 }, width: '100%' }}>
+            </Stack> */}
             {open &&
                 <Stack sx={{
                     display: { md: 'none', xs: 'flex' }, position: 'fixed', zIndex: 12,
                     top: 74, width: { xs: '100% ' }, left: 0,
                     pt: 4,
-                    backgroundColor: '#f1f1f1',
                     height: 'calc(100vh - 28px)',
                     boxShadow: 'rgba(0, 0, 0, 0.08) 0px 4px 12px;'
                 }}>
                     <Stack spacing={3} sx={{ position: 'fixed', textTransform: 'uppercase', pl: { sm: 4, xs: 2 }, pr: { md: 4, xs: 2 }, py: 2 }}>
-                        {renderMobileLinks}
+                        {/* {renderMobileLinks} */}
                         {/* <Link passHref href={loginUrl} >
                             <Button aria-label="Customer portal" variant='outlined' sx={{
                                 border: '1px solid #ccc',

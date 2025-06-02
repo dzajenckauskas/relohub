@@ -176,14 +176,14 @@ export default function GetInTOuch() {
                                     </div>
                                 </div>
                             </div>
-                            <Image
+                            {/* <Image
                                 className="githumanboximg"
                                 alt="human carying box"
                                 height={400}
                                 width={280}
                                 style={{ objectFit: "contain" }}
                                 src={"/humanbox.png"}
-                            ></Image>
+                            ></Image> */}
                         </div>
                         <div>
                             <ContactForm />

@@ -46,11 +46,11 @@ const InventoryStep = ({ form, error }: Props) => {
                 </Stack>
             </Stack>
 
-            <Stack sx={{ maxWidth: { xs: "100%", md: '100%' }, width: '100%', position: 'relative', zIndex: 0 }}>
-                {/* <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} /> */}
-                {/* {form.formState?.errors?.hasItemsAdded && (
+            {/* <Stack sx={{ maxWidth: { xs: "100%", md: '100%' }, width: '100%', position: 'relative', zIndex: 0 }}> */}
+            {/* <OfferSummary countriesData={countriesData} activeStep={activeStep} form={form} /> */}
+            {/* {form.formState?.errors?.hasItemsAdded && (
                     <ErrorMessage message={form.formState?.errors?.hasItemsAdded.message} />)} */}
-                <Stack sx={{ position: 'relative', mt: { xs: 0, md: -8 }, bottom: -48, right: { xs: -20, md: -50 }, width: '100%' }}>
+            {/* <Stack sx={{ position: 'relative', mt: { xs: 0, md: -8 }, bottom: -48, right: { xs: -20, md: -50 }, width: '100%' }}>
                     <Image
                         alt="background"
                         src={"/illustration-1.svg"}
@@ -61,7 +61,7 @@ const InventoryStep = ({ form, error }: Props) => {
                         height={250}
                     />
                 </Stack>
-            </Stack>
+            </Stack> */}
 
         </Card>
     )
