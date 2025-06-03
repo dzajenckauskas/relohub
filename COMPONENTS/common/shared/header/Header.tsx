@@ -206,7 +206,8 @@ export default function Header({ homePage }: Props) {
             </header>
             {!homePage && <Stack sx={{ height: { md: 60, sm: 100, xs: 90 }, width: '100%' }}>
             </Stack>}
-            {open &&
+            {
+                // open &&
                 <Stack sx={{
                     display: { md: 'none', xs: 'flex' }, position: 'fixed', zIndex: 12,
                     top: 74, width: { xs: '100% ' }, left: 0,
