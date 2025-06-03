@@ -82,7 +82,7 @@ export const ServicesSection = ({ }: Props) => {
                             {renderServices}
                         </Stack>
                     </Stack>
-                    <Stack sx={{ width: { lg: '45%', xs: '100%' }, }}>
+                    <Stack sx={{ width: { lg: '45%', xs: '100%' }, pb: 4 }}>
                         <Typography variant={'h2'} sx={{ pb: 3 }}>
                             Other services we offer include:
                         </Typography>
@@ -99,13 +99,6 @@ export const ServicesSection = ({ }: Props) => {
                             <Typography variant='body1' sx={{ alignItems: 'center', display: 'flex', gap: 1 }}>
                                 <EastIcon fontSize='large' color='secondary' />   Furniture disassembly and assembly
                             </Typography>
-                        </Stack>
-                        <Stack sx={{ width: '100%', height: { md: 300, xs: 200 }, position: 'relative', top: { md: 48, sm: 48, xs: 48 } }}>
-                            {/* <Image
-                                alt="backgorund"
-                                src={"/sofa2cut.png"}
-                                style={{ objectFit: "contain", objectPosition: 'bottom' }}
-                                fill /> */}
                         </Stack>
                     </Stack>
                 </Stack>

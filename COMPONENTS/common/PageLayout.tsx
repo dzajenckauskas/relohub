@@ -39,7 +39,7 @@ const PageLayout = ({
 
     return (
         <ThemeProvider theme={theme}>
-            <Chat />
+            {/* <Chat /> */}
             {(!hidePopUpButton) && <GetQuotePopUp isHeroVisible={isHeroVisible} />}
             <Header homePage={homePage} />
             {children}

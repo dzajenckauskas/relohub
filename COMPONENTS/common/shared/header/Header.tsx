@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import Image from "next/image";
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import TopNavBar from '../../TopNavBar';
+// import TopNavBar from '../../TopNavBar';
 
 
 type Props = {
@@ -43,7 +43,7 @@ export default function Header({ homePage }: Props) {
                     transition: 'background-color 0.3s ease',
                 }}
             >
-                <TopNavBar />
+                {/* <TopNavBar /> */}
                 <Stack
                     direction={'row'}
                     maxWidth={'lg'}

@@ -25,7 +25,7 @@ export default function NoPricePopup({ setshownopricepopup }) {
                     If you are feeling very inpatient or your move is imminent,
                     please call us on{" "}
                     <strong>
-                        <a href="tel:+443330907053">0333 090 7053</a>
+                        <a href="tel:+442080642634">+44 2080 642634</a>
                     </strong>{" "}
                     or email{" "}
                     <strong>
