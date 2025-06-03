@@ -1,83 +1,79 @@
 'use client'
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
 import Image from "next/image";
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 // import CustomerPortalIcon from '../../CustomerPortalIcon';
-import HeaderPinkElement from "./HeaderPinkElement";
-import { theme } from '../Theme';
 import TopNavBar from '../../TopNavBar';
 
-import { HeaderLink, HeaderLinkType } from './HeaderLink';
 
-export default function Header() {
+type Props = {
+    homePage?: boolean;
+}
+
+export default function Header({ homePage }: Props) {
     // const loginUrl = 'https://admin.Relohub.co.uk/customerPortal/login'
-    const [open, setOpen] = useState(false)
-    const [openDropdown, setOpenDropdown] = useState<number | undefined>()
+    // const [open, setOpen] = useState(false)
+    // const [openDropdown, setOpenDropdown] = useState<number | undefined>()
 
-    const toggleOpen = () => {
-        setOpen(!open)
-    }
-    const pathname = usePathname()
-    const links: HeaderLinkType[] = [
-        // {
-        //     id: 0,
-        //     url: '/',
-        //     name: "Home"
-        // },
+    // const toggleOpen = () => {
+    //     setOpen(!open)
+    // }
+    // const pathname = usePathname()
+    // const links: HeaderLinkType[] = [
+    //     // {
+    //     //     id: 0,
+    //     //     url: '/',
+    //     //     name: "Home"
+    //     // },
 
-        // {
-        //     id: 2,
-        //     name: "International Moving",
-        //     links: [
-        //         { id: 0, name: 'Moving Overseas', url: '/international-moving' },
-        //         { id: 1, name: 'Moving within Europe', url: '/moving-within-europe' }]
-        // },
-        // {
-        //     id: 3,
-        //     name: "Services",
-        //     links: [
-        //         { id: 0, name: '⁠Moving services', url: '/moving-services' },
-        //         { id: 1, name: '⁠Relocation services', url: '/relocation-services' }]
-        // },
-        {
-            id: 1,
-            name: "Services",
-            url: '#services'
-        },
-        {
-            id: 3,
-            name: "Get a Quote",
-            url: '#get-quote'
-        },
-        {
-            id: 3,
-            name: "The Process",
-            url: '#process'
-        },
-        // {
-        //     id: 4,
-        //     name: "About Us",
-        //     url: '#about-us'
-        // }
-    ]
-    useEffect(() => {
-        if (open) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-        return () => {
-            document.body.style.overflow = 'auto';
-        };
-    }, [open]);
+    //     // {
+    //     //     id: 2,
+    //     //     name: "International Moving",
+    //     //     links: [
+    //     //         { id: 0, name: 'Moving Overseas', url: '/international-moving' },
+    //     //         { id: 1, name: 'Moving within Europe', url: '/moving-within-europe' }]
+    //     // },
+    //     // {
+    //     //     id: 3,
+    //     //     name: "Services",
+    //     //     links: [
+    //     //         { id: 0, name: '⁠Moving services', url: '/moving-services' },
+    //     //         { id: 1, name: '⁠Relocation services', url: '/relocation-services' }]
+    //     // },
+    //     {
+    //         id: 1,
+    //         name: "Services",
+    //         url: '#services'
+    //     },
+    //     {
+    //         id: 3,
+    //         name: "Get a Quote",
+    //         url: '#get-quote'
+    //     },
+    //     {
+    //         id: 3,
+    //         name: "The Process",
+    //         url: '#process'
+    //     },
+    //     // {
+    //     //     id: 4,
+    //     //     name: "About Us",
+    //     //     url: '#about-us'
+    //     // }
+    // ]
+    // useEffect(() => {
+    //     if (open) {
+    //         document.body.style.overflow = 'hidden';
+    //     } else {
+    //         document.body.style.overflow = 'auto';
+    //     }
+    //     return () => {
+    //         document.body.style.overflow = 'auto';
+    //     };
+    // }, [open]);
 
-    const path = pathname.split('/').slice(0, 2).join('/');
+    // const path = pathname.split('/').slice(0, 2).join('/');
 
     // const renderLinks = links.map((link) => {
     //     return (
@@ -112,20 +108,24 @@ export default function Header() {
     // })
     const [isQuoteVisible, setIsQuoteVisible] = useState(true);
     useEffect(() => {
-        const target = document.getElementById("get-quote");
-        if (!target) return;
+        if (homePage) {
 
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setIsQuoteVisible(entry.isIntersecting);
-            },
-            { root: null, threshold: 0.1 }
-        );
+            const target = document.getElementById("get-quote");
+            if (!target) return;
 
-        observer.observe(target);
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    setIsQuoteVisible(entry.isIntersecting);
+                },
+                { root: null, threshold: 0.1 }
+            );
 
-        return () => observer.disconnect();
-    }, []);
+            observer.observe(target);
+
+            return () => observer.disconnect();
+        }
+
+    }, [homePage]);
     return (
         <>
             <header
@@ -134,7 +134,7 @@ export default function Header() {
                     top: 0,
                     width: '100%',
                     zIndex: 99,
-                    backgroundColor: isQuoteVisible ? 'transparent' : '#ffffff',
+                    backgroundColor: homePage ? (isQuoteVisible ? 'transparent' : '#ffffff') : '#fff',
                     transition: 'background-color 0.3s ease',
                 }}
             >
@@ -204,8 +204,8 @@ export default function Header() {
 
                 </Stack>
             </header>
-            {/* <Stack sx={{ height: { md: 60, sm: 100, xs: 90 }, width: '100%' }}>
-            </Stack> */}
+            {!homePage && <Stack sx={{ height: { md: 60, sm: 100, xs: 90 }, width: '100%' }}>
+            </Stack>}
             {open &&
                 <Stack sx={{
                     display: { md: 'none', xs: 'flex' }, position: 'fixed', zIndex: 12,

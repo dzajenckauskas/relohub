@@ -34,7 +34,7 @@ export default async function Home() {
     const countriesData = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/countries?pagination[limit]=100&sort[0]=name:asc`)
     const articleContinents = await getData(`${process.env.NEXT_PUBLIC_API_URL}/api/article-continents`)
     return (
-        <PageLayout>
+        <PageLayout homePage>
             <div id={'get-quote'} className="bckimagewrp">
                 <MaxWidthContainer>
                     <MainPageHeroArea />

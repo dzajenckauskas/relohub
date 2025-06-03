@@ -11,10 +11,12 @@ const PageLayout = ({
     children,
     hidePopUpButton,
     hideFooter,
+    homePage
 }: {
     children: React.ReactNode;
     hidePopUpButton?: boolean;
     hideFooter?: boolean;
+    homePage?: boolean;
 }) => {
     const theme = getTheme();
     const [isHeroVisible, setIsHeroVisible] = useState(false);
@@ -39,7 +41,7 @@ const PageLayout = ({
         <ThemeProvider theme={theme}>
             <Chat />
             {(!hidePopUpButton) && <GetQuotePopUp isHeroVisible={isHeroVisible} />}
-            <Header />
+            <Header homePage={homePage} />
             {children}
             {!hideFooter && <GetInTOuch />}
         </ThemeProvider>
