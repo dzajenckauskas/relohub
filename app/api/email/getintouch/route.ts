@@ -22,7 +22,7 @@ export async function POST(req, res) {
             // : process.env.EMAIL;
             : `1000kaktusu@gmail.com`;
     let mailOptions = {
-        from: process.env.EMAIL, // sender address
+        from: process.env.EMAIL_FROM, // sender address
         to,
         subject: `New message via website (${json.data.name})`,
         html: getInTouchHTML(json),

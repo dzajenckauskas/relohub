@@ -18,11 +18,11 @@ export async function POST(req) {
     let to =
         process.env.NODE_ENV === "development"
             ? `1000kaktusu@gmail.com`
-            : `1000kaktusu@gmail.com`;;
+            : `1000kaktusu@gmail.com`;
     // : process.env.EMAIL;
     // : `operations@Relohub.co.uk`;
     let mailOptions = {
-        from: process.env.EMAIL,
+        from: process.env.EMAIL_FROM,
         to,
         subject: `New deposit payment by (${json.first_last_name})`,
         html: newOrder(json),
