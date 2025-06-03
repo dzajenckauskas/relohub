@@ -1,4 +1,4 @@
-import { getInTouchHTML } from "@/EMAILHTML/getintouch";
+import { getInTouchHTML } from "@/EMAILHTML/Getintouch";
 import { NextResponse } from "next/server";
 
 export async function POST(req, res) {
@@ -19,11 +19,11 @@ export async function POST(req, res) {
     let to =
         process.env.NODE_ENV === "development"
             ? `1000kaktusu@gmail.com`
-            // : process.env.EMAIL;
-            : `1000kaktusu@gmail.com`;
+            // : `1000kaktusu@gmail.com`;
+            : [`1000kaktusu@gmail.com`, process.env.EMAIL_FROM];
     let mailOptions = {
         from: process.env.EMAIL_FROM, // sender address
-        to,
+        to: to,
         subject: `New message via website (${json.data.name})`,
         html: getInTouchHTML(json),
     };
