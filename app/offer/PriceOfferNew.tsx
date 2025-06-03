@@ -137,15 +137,19 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
             if (process.env.NODE_ENV === "development") {
                 console.log(body);
             }
-            const res = await fetch(prices.uuid ? `${url}/${prices.uuid}` : url, {
-                method: prices.uuid ? "PUT" : "POST",
+            // const res = await fetch(prices.uuid ? `${url}/${prices.uuid}` : url, {
+            //     method: prices.uuid ? "PUT" : "POST",
+            const res = await fetch(url, {
+                method: "POST",
                 headers: {
                     "http-referer": hv,
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(body),
             });
-
+            if (process.env.NODE_ENV === "development") {
+                console.log(res);
+            }
             if (!res.ok) {
                 console.log("Error with status code:", res.status);
             } else {
@@ -154,7 +158,12 @@ export default function PriceOffer({ state, prices, form, activeStep }) {
                 }
             }
 
-            await fetch("/api/email/neworder", {
+            await fetch("/api/email/order-received", {
+                method: "POST",
+                body: JSON.stringify(state),
+                headers: { "Content-Type": "application/json" },
+            });
+            await fetch("/api/email/order-confirm", {
                 method: "POST",
                 body: JSON.stringify(state),
                 headers: { "Content-Type": "application/json" },
