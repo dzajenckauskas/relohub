@@ -61,8 +61,8 @@ export function newOrder(json) {
             <div class="header">
                 <div class="logo">
                     <img
-                        src="https://Relohub.co.uk/_next/image?url=%2Flogo2.png&w=256&q=75"
-                        alt="Company Logo"
+                        src="https://relohub.co.uk/relohub-logo.svg"
+                        alt="Relohub"
                     />
                 </div>
             </div>
