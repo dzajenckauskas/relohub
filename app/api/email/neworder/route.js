@@ -18,7 +18,8 @@ export async function POST(req) {
     let to =
         process.env.NODE_ENV === "development"
             ? `1000kaktusu@gmail.com`
-            : process.env.EMAIL;
+            : `1000kaktusu@gmail.com`;;
+    // : process.env.EMAIL;
     // : `operations@Relohub.co.uk`;
     let mailOptions = {
         from: process.env.EMAIL,
