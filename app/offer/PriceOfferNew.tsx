@@ -27,7 +27,7 @@ function addPercentageToPrice(price: number | string, percentage: number): numbe
     return transformedPrice
 }
 
-export default function PriceOffer({ state, prices, form, activeStep }) {
+export default function PriceOfferNew({ state, prices, form, activeStep }) {
     const stripe = useStripe();
     const elements = useElements();
     const [selected, setselected] = useState(null);
