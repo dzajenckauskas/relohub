@@ -37,6 +37,8 @@ export default function RootLayout({ children }) {
                     </Script>
                 )}
                 <link rel="preload" href="/relohub-logo.svg" as="image" />
+                <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet" />
+
                 {/* <link
                     rel="preload"
                     href="/fonts/Uniform-Condensed.ttf"

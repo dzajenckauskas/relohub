@@ -43,11 +43,11 @@
     font-display: swap;
 } */
 
+
 body {
-    font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif
-        /* font-family: Uniform !important; */
-        /* font-family: Uniform !important; */
+    font-family: 'Source Sans Pro', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
 }
+
 
 :root {
     --pink_color: #377f61;
