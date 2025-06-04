@@ -687,7 +687,11 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
                                     });
                                 }}
                             ></input>
-                            {fromPostCodeRequired && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${fromPostZipCodeCheck} code is mandatory`} />}
+                            {fromPostCodeRequired && <ErrorBox mt={0}
+                                sx={{
+                                    fontWeight: 600, lineHeight: 1.2
+                                }}
+                                error={`${fromPostZipCodeCheck} code is mandatory`} />}
                             {zipinputfocused && !edit ? (
                                 <button
                                     className="postcodeconfirmbutton"
@@ -746,7 +750,10 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
                                 }}
                             ></input>
                             {toPostCodeRequired &&
-                                <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${toPostZipCodeCheck} code is mandatory`} />}
+                                <ErrorBox mt={0} sx={{
+                                    fontWeight: 600, lineHeight: 1.2
+                                }}
+                                    error={`${toPostZipCodeCheck} code is mandatory`} />}
 
                             {zipinputfocuseddest && !edit ? (
                                 <button
