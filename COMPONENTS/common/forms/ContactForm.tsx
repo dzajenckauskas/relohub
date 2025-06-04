@@ -37,7 +37,7 @@ const ContactForm = () => {
             }
         }
 
-        let url = "/api/email/getintouch"
+        let url = "/api/email/contact-form-submitted"
         await axios.post(url, inputData)
             .catch((error) => {
                 console.log(error);

@@ -319,16 +319,14 @@ export default function OfferNewPage({ countriesData }: Props) {
     }
     const onSubmit = async () => {
         setError(undefined)
-        // console.log(transformedData, "transformedData");
 
-        // const url = process.env.NEXT_PUBLIC_FETCH_URL;
         const hv = process.env.NEXT_PUBLIC_HEADER_VALUE;
 
         if (process.env.NODE_ENV === "development") {
             console.log(transformedData, 'data');
         }
         try {
-            const res = await fetch('/api/proxy', {
+            const res = await fetch('/api/insert-lead', {
                 method: "POST",
                 headers: {
                     "http-referer": hv,

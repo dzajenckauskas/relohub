@@ -32,7 +32,7 @@ export async function POST(req) {
         console.log("Backend Response:", data);
         return new Response(JSON.stringify(data), { status: response.status });
     } catch (error) {
-        console.error("Proxy Error:", error);
+        console.error("Insert lead Error:", error);
         return new Response(JSON.stringify({ error: "Failed to connect to backend" }), { status: 500 });
     }
 }
