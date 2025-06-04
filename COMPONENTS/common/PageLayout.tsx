@@ -22,7 +22,7 @@ const PageLayout = ({
     const [isHeroVisible, setIsHeroVisible] = useState(false);
 
     useEffect(() => {
-        const heroSection = document.getElementById("hero-section");
+        const heroSection = document.getElementById("get-quote");
         if (!heroSection) return;
 
         const observer = new IntersectionObserver(

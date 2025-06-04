@@ -1,33 +1,33 @@
 export const NewOrderClientMail = (data: any) => {
-    const {
-        name,
-        from_city,
-        from_country,
-        from_postCode,
-        to_city,
-        to_country,
-        to_postCode,
-        Collection_Date,
-        Standard_box,
-        Own_items = [],
-    } = data;
+  const {
+    name,
+    from_city,
+    from_country,
+    from_postCode,
+    to_city,
+    to_country,
+    to_postCode,
+    Collection_Date,
+    Standard_box,
+    Own_items = [],
+  } = data;
 
-    const formattedDate = new Date(Collection_Date).toLocaleDateString("en-GB", {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    });
+  const formattedDate = new Date(Collection_Date).toLocaleDateString("en-GB", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 
-    const fromLocation = [from_city, from_country, from_postCode].filter(Boolean).join(", ");
-    const toLocation = [to_city, to_country, to_postCode].filter(Boolean).join(", ");
+  const fromLocation = [from_city, from_country, from_postCode].filter(Boolean).join(", ");
+  const toLocation = [to_city, to_country, to_postCode].filter(Boolean).join(", ");
 
-    const ownItemsHtml = Own_items.map(
-        (item) =>
-            `<li>${item.quantity} x ${item.name} (${item.width}x${item.height}x${item.depth}cm @ ${item.weight}kg)</li>`
-    ).join("");
+  const ownItemsHtml = Own_items.map(
+    (item) =>
+      `<li>${item.quantity} x ${item.name} (${item.width}x${item.height}x${item.depth}cm @ ${item.weight}kg)</li>`
+  ).join("");
 
-    return `
+  return `
 <!DOCTYPE html>
 <html>
   <head>
@@ -37,7 +37,7 @@ export const NewOrderClientMail = (data: any) => {
   <body style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px; color: #333;">
     <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 6px; overflow: hidden;">
       <tr>
-        <td style="padding: 20px; text-align: center; background-color: #f1f1f1;">
+        <td style="padding: 20px; text-align: center;">
           <img 
           src="https://relohub.co.uk/relohub-logo.svg"
           alt="Relohub"
@@ -71,7 +71,7 @@ export const NewOrderClientMail = (data: any) => {
         </td>
       </tr>
       <tr>
-        <td style="background-color: #f1f1f1; padding: 10px; text-align: center; font-size: 12px; color: #999;">
+        <td style="padding: 10px; text-align: center; font-size: 12px; color: #999;">
           © 2025 All rights reserved.
         </td>
       </tr>

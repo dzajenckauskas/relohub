@@ -124,7 +124,7 @@ export default function PriceOfferNew({ state, prices, form, activeStep }) {
     ];
 
     async function fetchtoServer() {
-        const url = process.env.NEXT_PUBLIC_AFTER_STRIPE;
+        // const url = process.env.NEXT_PUBLIC_AFTER_STRIPE;
 
         try {
             const body = {
@@ -133,34 +133,36 @@ export default function PriceOfferNew({ state, prices, form, activeStep }) {
                 type: selected.field,
                 price: (selected.price),
             };
-            const hv = process.env.NEXT_PUBLIC_HEADER_VALUE;
-            if (process.env.NODE_ENV === "development") {
-                console.log(body);
-            }
+            // console.log(JSON.stringify({ ...state, ...body }), "JSON.stringify({ ...state, ...body })");
+
+            // const hv = process.env.NEXT_PUBLIC_HEADER_VALUE;
+            // if (process.env.NODE_ENV === "development") {
+            //     console.log(body);
+            // }
             // const res = await fetch(prices.uuid ? `${url}/${prices.uuid}` : url, {
             //     method: prices.uuid ? "PUT" : "POST",
-            const res = await fetch(url, {
-                method: "POST",
-                headers: {
-                    "http-referer": hv,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(body),
-            });
-            if (process.env.NODE_ENV === "development") {
-                console.log(res);
-            }
-            if (!res.ok) {
-                console.log("Error with status code:", res.status);
-            } else {
-                if (process.env.NODE_ENV === "development") {
-                    console.log(res);
-                }
-            }
+            // const res = await fetch(url, {
+            //     method: "POST",
+            //     headers: {
+            //         "http-referer": hv,
+            //         "Content-Type": "application/json",
+            //     },
+            //     body: JSON.stringify(body),
+            // });
+            // if (process.env.NODE_ENV === "development") {
+            //     console.log(res);
+            // }
+            // if (!res.ok) {
+            //     console.log("Error with status code:", res.status);
+            // } else {
+            //     if (process.env.NODE_ENV === "development") {
+            //         console.log(res);
+            //     }
+            // }
 
             await fetch("/api/email/order-received", {
                 method: "POST",
-                body: JSON.stringify(state),
+                body: JSON.stringify({ ...state, ...body }),
                 headers: { "Content-Type": "application/json" },
             });
             await fetch("/api/email/order-confirm", {

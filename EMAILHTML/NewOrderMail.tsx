@@ -11,7 +11,9 @@ export const NewOrderMail = (data: any) => {
     Standard_box,
     Own_items = [],
     email,
-    phone
+    phone,
+    type,
+    price
   } = data;
 
   const formattedDate = new Date(Collection_Date).toLocaleDateString("en-GB", {
@@ -39,7 +41,7 @@ export const NewOrderMail = (data: any) => {
   <body style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px; color: #333;">
     <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 6px; overflow: hidden;">
       <tr>
-        <td style="padding: 20px; text-align: center; background-color: #f1f1f1;">
+        <td style="padding: 20px; text-align: center;">
           <img 
             src="https://relohub.co.uk/relohub-logo.svg"
             alt="Relohub"
@@ -63,6 +65,8 @@ export const NewOrderMail = (data: any) => {
 
           <hr style="margin: 20px 0;" />
 
+          <p><strong>Price selected:</strong> £${price?.toFixed(2)}</p>
+          <p><strong>Travel method chosen:</strong> ${type}</p>
           <p><strong>Collection date:</strong> ${formattedDate}</p>
           <p><strong>Collection from:</strong> ${fromLocation}</p>
           <p><strong>Delivery to:</strong> ${toLocation}</p>
@@ -81,7 +85,7 @@ export const NewOrderMail = (data: any) => {
         </td>
       </tr>
       <tr>
-        <td style="background-color: #f1f1f1; padding: 10px; text-align: center; font-size: 12px; color: #999;">
+        <td style="padding: 10px; text-align: center; font-size: 12px; color: #999;">
           © 2025 Relohub – Internal Notification System
         </td>
       </tr>
