@@ -59,8 +59,9 @@ export const InstantQuoteHorizontalComponent = ({ togglePopUp, title }: Props) =
                 disabled={!enableButton}
                 // className="herobuttongetestimate"
                 sx={{
-                    alignSelf: 'flex-end',
+                    alignSelf: 'flex-start',
                     fontSize: 14,
+                    mt: '28px',
                     height: 48,
                     minWidth: '140px'
                 }}

@@ -641,119 +641,128 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
                     ? " Post "
                     : " Zip "
                 : ""
-            }Code${edit || width >= 500 ? ":" : ""}`;
+            }Code${edit || width >= 500 ? "" : ""}`;
     }
 
-    function ifukofus() {
+    function ifukofus(type) {
         const arr = [];
+        if (type === 'collection') {
 
-        if (
-            (state.from_country.toLowerCase() === "united states" ||
-                state.from_country.toLowerCase() === "united kingdom" || isOffer)
-        ) {
-            if (!edit || edit === "from") {
-                arr.push(
-                    <label className="heroinputlabel  collpostcode" key={"a"}>
-                        <p className={edit ? "" : "hiddenmobilelabel"}>
-                            {postcodetxt("Collection", "from")}
-                        </p>
+            if (
+                (state.from_country.toLowerCase() === "united states" ||
+                    state.from_country.toLowerCase() === "united kingdom" || isOffer)
+            ) {
+                if (!edit || edit === "from") {
+                    arr.push(
+                        <label style={{ marginTop: '16px' }} className="heroinputlabel  collpostcode" key={"a"}>
+                            <p style={{ color: theme.palette.secondary.main }} className={edit ? "" : "hiddenmobilelabel"}>
+                                {postcodetxt("Collection", "from")}
+                            </p>
 
-                        <input
-                            ref={zipfocus}
-                            onFocus={() => {
-                                setzipinputfocused(true);
-                            }}
-                            onBlur={() => {
-                                setzipinputfocused(false);
-                            }}
-                            className="dropdowninputsearch  ifukorusinput"
-                            value={state.from_postCode}
-                            placeholder={
-                                width && width <= 500 && !edit
-                                    ? postcodetxt("Collection", "from")
-                                    : ""
-                            }
-                            style={{
-                                borderRadius: '0px !important',
-                                border: fromPostCodeRequired ? `2px solid ${theme.palette.secondary.main}` : ''
-                            }}
-                            onChange={(e) => {
-                                setstate({
-                                    ...state,
-                                    from_postCode: e.target.value.toUpperCase(),
-                                });
-                            }}
-                        ></input>
-                        {fromPostCodeRequired && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${fromPostZipCodeCheck} code is mandatory`} />}
-                        {zipinputfocused && !edit ? (
-                            <button
-                                className="postcodeconfirmbutton"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    e.stopPropagation();
+                            <input
+                                ref={zipfocus}
+                                onFocus={() => {
+                                    setzipinputfocused(true);
+                                }}
+                                onBlur={() => {
                                     setzipinputfocused(false);
                                 }}
-                            >
-                                Confirm
-                            </button>
-                        ) : null}
-                    </label>,
-                );
+                                className="dropdowninputsearch  ifukorusinput"
+                                value={state.from_postCode}
+                                placeholder={
+                                    width && width <= 500 && !edit
+                                        ? postcodetxt("Collection", "from")
+                                        : ""
+                                }
+                                style={{
+                                    height: '48px',
+                                    margin: 0,
+                                    borderRadius: '0px !important',
+                                    border: fromPostCodeRequired ? `2px solid ${theme.palette.error.main}` : ''
+                                }}
+                                onChange={(e) => {
+                                    setstate({
+                                        ...state,
+                                        from_postCode: e.target.value.toUpperCase(),
+                                    });
+                                }}
+                            ></input>
+                            {fromPostCodeRequired && <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${fromPostZipCodeCheck} code is mandatory`} />}
+                            {zipinputfocused && !edit ? (
+                                <button
+                                    className="postcodeconfirmbutton"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        setzipinputfocused(false);
+                                    }}
+                                >
+                                    Confirm
+                                </button>
+                            ) : null}
+                        </label>,
+                    );
+                }
             }
         }
-        if (
-            state.to_country.toLowerCase() === "united states" ||
-            state.to_country.toLowerCase() === "united kingdom" || isOffer
-        ) {
-            if (!edit || edit === "to") {
-                arr.push(
-                    <label className="heroinputlabel destpostcode" key={"b"}>
-                        <p className={edit ? "" : "hiddenmobilelabel"}>
-                            {postcodetxt("Destination", "to")}
-                        </p>
+        else {
 
-                        <input
-                            placeholder={
-                                width && width <= 500 && !edit
-                                    ? postcodetxt("Destination", "to")
-                                    : ""
-                            }
-                            ref={zipfocusdest}
-                            onFocus={() => {
-                                setzipinputfocuseddest(true);
-                            }}
-                            onBlur={() => {
-                                setzipinputfocuseddest(false);
-                            }}
-                            className="dropdowninputsearch  ifukorusinput"
-                            value={state.to_postCode}
-                            style={{
-                                border: toPostCodeRequired ? `2px solid ${theme.palette.secondary.main}` : ''
-                            }}
-                            onChange={(e) => {
-                                setstate({
-                                    ...state,
-                                    to_postCode: e.target.value.toUpperCase(),
-                                });
-                            }}
-                        ></input>
-                        {toPostCodeRequired &&
-                            <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${toPostZipCodeCheck} code is mandatory`} />}
+            if (
+                state.to_country.toLowerCase() === "united states" ||
+                state.to_country.toLowerCase() === "united kingdom" || isOffer
+            ) {
+                if (!edit || edit === "to") {
+                    arr.push(
+                        <label style={{ marginTop: '16px' }} className="heroinputlabel destpostcode" key={"b"}>
+                            <p style={{ color: theme.palette.secondary.main }} className={edit ? "" : "hiddenmobilelabel"}>
+                                {postcodetxt("Destination", "to")}
+                            </p>
 
-                        {zipinputfocuseddest && !edit ? (
-                            <button
-                                className="postcodeconfirmbutton"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    setzipinputfocused(false);
+                            <input
+                                placeholder={
+                                    width && width <= 500 && !edit
+                                        ? postcodetxt("Destination", "to")
+                                        : ""
+                                }
+                                ref={zipfocusdest}
+                                onFocus={() => {
+                                    setzipinputfocuseddest(true);
                                 }}
-                            >
-                                Confirm
-                            </button>
-                        ) : null}
-                    </label>,
-                );
+                                onBlur={() => {
+                                    setzipinputfocuseddest(false);
+                                }}
+                                className="dropdowninputsearch  ifukorusinput"
+                                value={state.to_postCode}
+                                style={{
+                                    height: '48px',
+                                    margin: 0,
+                                    border: toPostCodeRequired ? `2px solid ${theme.palette.error.main}` : ''
+                                }}
+                                onChange={(e) => {
+                                    setstate({
+                                        ...state,
+                                        to_postCode: e.target.value.toUpperCase(),
+                                    });
+                                }}
+                            ></input>
+                            {toPostCodeRequired &&
+                                <ErrorBox mt={0} sx={{ mt: { xs: -.5, sm: -3.5 }, fontWeight: 600, lineHeight: 1.2 }} error={`${toPostZipCodeCheck} code is mandatory`} />}
+
+                            {zipinputfocuseddest && !edit ? (
+                                <button
+                                    className="postcodeconfirmbutton"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        setzipinputfocused(false);
+                                    }}
+                                >
+                                    Confirm
+                                </button>
+                            ) : null}
+                        </label>,
+                    );
+                }
             }
         }
 
@@ -782,432 +791,357 @@ export default function HeroInputs({ enableButton, edit, newstate, isOffer, stat
             pb={{ xs: 2, md: popUp ? 2 : 0 }}
             justifyContent={'space-between'}
         >
-            {/* {inputs.map((el, i) => {
-                return (
-                    <div
-                        style={{ width: '100%', color: theme.palette.secondary.main, }}
-                        className={addclassnametomobileinputs(el, i)}
-                        key={i}
-                    >
-                        <label className="heroinputlabel">
-                            {edit ? (
-                                `${el.label.split(" ").slice(1).join(" ")}:`
-                            ) : (
-                                <p className="hiddenmobilelabel">
-                                    {el.label}:
-                                </p>
-                            )}
+            {inputs &&
+                <>
+                    <Stack width={'100%'}>
 
-                            {manualCity === el.label ? (
-                                <div className={`heroinputselectwrpmanual`}>
-                                    <input
-                                        value={state[el.field]}
-                                        onChange={(e) => {
-                                            setstate({
-                                                ...state,
-                                                [el.field]: e.target.value,
-                                            });
+
+                        <div
+                            style={{ width: '100%', color: theme.palette.secondary.main, }}
+                            className={addclassnametomobileinputs(inputs?.[0], 0)}
+                            key={0}
+                        >
+                            <label className="heroinputlabel">
+                                {edit ? (
+                                    `${inputs?.[0]?.label.split(" ").slice(1).join(" ")}:`
+                                ) : (
+                                    <p className="hiddenmobilelabel">
+                                        {inputs?.[0]?.label ?? <>&nbsp;</>}
+                                    </p>
+                                )}
+
+                                {manualCity === inputs?.[0]?.label ? (
+                                    <div className={`heroinputselectwrpmanual`}>
+                                        <input
+                                            value={state[inputs?.[0]?.field]}
+                                            onChange={(e) => {
+                                                setstate({
+                                                    ...state,
+                                                    [inputs?.[0]?.field]: e.target.value,
+                                                });
+                                            }}
+                                            className="manualcityinput"
+                                            autoFocus
+                                        ></input>
+                                        <button
+                                            className="manualcityconfirmbutton"
+                                            onClick={() => {
+                                                setManualCity(null);
+                                            }}
+                                        >
+                                            Confirm
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div
+                                        className={editClassname(inputs?.[0], 0)}
+                                        style={{ border: (!state[inputs?.[0]?.field] && isOffer) ? `2px solid ${theme.palette.secondary.main}` : '' }}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            e.preventDefault();
+
+                                            if (
+                                                !e.target.classList.contains(
+                                                    "heroinputselectwrpdisabled",
+                                                )
+                                            ) {
+                                                setinputvalue("");
+                                                setSelectedField(
+                                                    selectedField === inputs?.[0]?.label
+                                                        ? null
+                                                        : inputs?.[0]?.label,
+                                                );
+                                            }
                                         }}
-                                        className="manualcityinput"
-                                        autoFocus
-                                    ></input>
-                                    <button
-                                        className="manualcityconfirmbutton"
-                                        onClick={() => {
-                                            setManualCity(null);
+                                    >
+                                        {state[inputs?.[0]?.field] ? (
+                                            <p className="inputtextforcountriesandcitiesp">
+                                                {state[inputs?.[0]?.field]}
+                                            </p>
+                                        ) : (
+                                            <div>
+                                                <p className="hiddenmobilelabel"
+                                                    style={{ color: (!state[inputs?.[0]?.field] && isOffer) ? `${theme.palette.secondary.main}` : '' }}
+                                                >
+                                                    Please select
+                                                </p>
+                                                <p className="shownmobilelebel">
+                                                    {inputs?.[0]?.label}
+                                                </p>
+                                            </div>
+                                        )}
+
+                                        <span className="triangledown"></span>
+                                    </div>
+                                )}
+                                {selectedField === inputs?.[0]?.label && !manualCity
+                                    ? dropdown(inputs?.[0], 0)
+                                    : null}
+                            </label>
+                        </div>
+                        {ifukofus('collection')}
+                    </Stack>
+                    <Stack width={'100%'}>
+                        <div
+                            style={{ width: '100%', color: theme.palette.secondary.main, }}
+                            className={addclassnametomobileinputs(inputs?.[2], 2)}
+                            key={2}
+                        >
+                            <label className="heroinputlabel">
+                                {edit ? (
+                                    `${inputs?.[2]?.label.split(" ").slice(1).join(" ")}:`
+                                ) : (
+                                    <p className="hiddenmobilelabel">
+                                        {inputs?.[2]?.label ?? <>&nbsp;</>}
+                                    </p>
+                                )}
+
+                                {manualCity === inputs?.[2]?.label ? (
+                                    <div className={`heroinputselectwrpmanual`}>
+                                        <input
+                                            value={state[inputs?.[2]?.field]}
+                                            onChange={(e) => {
+                                                setstate({
+                                                    ...state,
+                                                    [inputs?.[2]?.field]: e.target.value,
+                                                });
+                                            }}
+                                            className="manualcityinput"
+                                            autoFocus
+                                        ></input>
+                                        <button
+                                            className="manualcityconfirmbutton"
+                                            onClick={() => {
+                                                setManualCity(null);
+                                            }}
+                                        >
+                                            Confirm
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div
+                                        className={editClassname(inputs?.[2], 2)}
+                                        style={{ border: (!state[inputs?.[2]?.field] && isOffer) ? `2px solid ${theme.palette.secondary.main}` : '' }}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            e.preventDefault();
+
+                                            if (
+                                                !e.target.classList.contains(
+                                                    "heroinputselectwrpdisabled",
+                                                )
+                                            ) {
+                                                setinputvalue("");
+                                                setSelectedField(
+                                                    selectedField === inputs?.[2]?.label
+                                                        ? null
+                                                        : inputs?.[2]?.label,
+                                                );
+                                            }
                                         }}
                                     >
-                                        Confirm
-                                    </button>
-                                </div>
-                            ) : (
-                                <div
-                                    className={editClassname(el, i)}
-                                    style={{ border: (!state[el.field] && isOffer) ? `2px solid ${theme.palette.secondary.main}` : '' }}
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        e.preventDefault();
-
-                                        if (
-                                            !e.target.classList.contains(
-                                                "heroinputselectwrpdisabled",
-                                            )
-                                        ) {
-                                            setinputvalue("");
-                                            setSelectedField(
-                                                selectedField === el.label
-                                                    ? null
-                                                    : el.label,
-                                            );
-                                        }
-                                    }}
-                                >
-                                    {state[el.field] ? (
-                                        <p className="inputtextforcountriesandcitiesp">
-                                            {state[el.field]}
-                                        </p>
-                                    ) : (
-                                        <div>
-                                            <p className="hiddenmobilelabel"
-                                                style={{ color: (!state[el.field] && isOffer) ? `${theme.palette.secondary.main}` : '' }}
-                                            >
-                                                Please select
+                                        {state[inputs?.[2]?.field] ? (
+                                            <p className="inputtextforcountriesandcitiesp">
+                                                {state[inputs?.[2]?.field]}
                                             </p>
-                                            <p className="shownmobilelebel">
-                                                {el.label}
+                                        ) : (
+                                            <div>
+                                                <p className="hiddenmobilelabel"
+                                                    style={{ color: (!state[inputs?.[2]?.field] && isOffer) ? `${theme.palette.secondary.main}` : '' }}
+                                                >
+                                                    Please select
+                                                </p>
+                                                <p className="shownmobilelebel">
+                                                    {inputs?.[2]?.label}
+                                                </p>
+                                            </div>
+                                        )}
+
+                                        <span className="triangledown"></span>
+                                    </div>
+                                )}
+                                {selectedField === inputs?.[2]?.label && !manualCity
+                                    ? dropdown(inputs?.[2], 2)
+                                    : null}
+                            </label>
+                        </div>
+                    </Stack>
+                    <Stack width={'100%'}>
+                        <div
+                            style={{ width: '100%', color: theme.palette.secondary.main, }}
+                            className={addclassnametomobileinputs(inputs?.[1], 1)}
+                            key={1}
+                        >
+                            <label className="heroinputlabel">
+                                {edit ? (
+                                    `${inputs?.[1]?.label.split(" ").slice(1).join(" ")}:`
+                                ) : (
+                                    <p className="hiddenmobilelabel">
+                                        {inputs?.[1]?.label ?? <>&nbsp;</>}
+                                    </p>
+                                )}
+
+                                {manualCity === inputs?.[1]?.label ? (
+                                    <div className={`heroinputselectwrpmanual`}>
+                                        <input
+                                            value={state[inputs?.[1]?.field]}
+                                            onChange={(e) => {
+                                                setstate({
+                                                    ...state,
+                                                    [inputs?.[1]?.field]: e.target.value,
+                                                });
+                                            }}
+                                            className="manualcityinput"
+                                            autoFocus
+                                        ></input>
+                                        <button
+                                            className="manualcityconfirmbutton"
+                                            onClick={() => {
+                                                setManualCity(null);
+                                            }}
+                                        >
+                                            Confirm
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div
+                                        className={editClassname(inputs?.[1], 1)}
+                                        style={{ border: (!state[inputs?.[1]?.field] && isOffer) ? `2px solid ${theme.palette.secondary.main}` : '' }}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            e.preventDefault();
+
+                                            if (
+                                                !e.target.classList.contains(
+                                                    "heroinputselectwrpdisabled",
+                                                )
+                                            ) {
+                                                setinputvalue("");
+                                                setSelectedField(
+                                                    selectedField === inputs?.[1]?.label
+                                                        ? null
+                                                        : inputs?.[1]?.label,
+                                                );
+                                            }
+                                        }}
+                                    >
+                                        {state[inputs?.[1]?.field] ? (
+                                            <p className="inputtextforcountriesandcitiesp">
+                                                {state[inputs?.[1]?.field]}
                                             </p>
-                                        </div>
-                                    )}
+                                        ) : (
+                                            <div>
+                                                <p className="hiddenmobilelabel"
+                                                    style={{ color: (!state[inputs?.[1]?.field] && isOffer) ? `${theme.palette.secondary.main}` : '' }}
+                                                >
+                                                    Please select
+                                                </p>
+                                                <p className="shownmobilelebel">
+                                                    {inputs?.[1]?.label}
+                                                </p>
+                                            </div>
+                                        )}
 
-                                    <span className="triangledown"></span>
-                                </div>
-                            )}
-                            {selectedField === el.label && !manualCity
-                                ? dropdown(el, i)
-                                : null}
-                        </label>
-                    </div>
-                );
-            })} */}
-
-            {/* {inputs.map((el, i) => {
-                return ( */}
-            <div
-                style={{ width: '100%', color: theme.palette.secondary.main, }}
-                className={addclassnametomobileinputs(inputs?.[0], 0)}
-                key={0}
-            >
-                <label className="heroinputlabel">
-                    {edit ? (
-                        `${inputs?.[0]?.label.split(" ").slice(1).join(" ")}:`
-                    ) : (
-                        <p className="hiddenmobilelabel">
-                            {inputs?.[0]?.label}:
-                        </p>
-                    )}
-
-                    {manualCity === inputs?.[0]?.label ? (
-                        <div className={`heroinputselectwrpmanual`}>
-                            <input
-                                value={state[inputs?.[0]?.field]}
-                                onChange={(e) => {
-                                    setstate({
-                                        ...state,
-                                        [inputs?.[0]?.field]: e.target.value,
-                                    });
-                                }}
-                                className="manualcityinput"
-                                autoFocus
-                            ></input>
-                            <button
-                                className="manualcityconfirmbutton"
-                                onClick={() => {
-                                    setManualCity(null);
-                                }}
-                            >
-                                Confirm
-                            </button>
+                                        <span className="triangledown"></span>
+                                    </div>
+                                )}
+                                {selectedField === inputs?.[1]?.label && !manualCity
+                                    ? dropdown(inputs?.[1], 1)
+                                    : null}
+                            </label>
                         </div>
-                    ) : (
+                        {ifukofus('destination')}
+                    </Stack>
+                    <Stack width={'100%'}>
                         <div
-                            className={editClassname(inputs?.[0], 0)}
-                            style={{ border: (!state[inputs?.[0]?.field] && isOffer) ? `2px solid ${theme.palette.secondary.main}` : '' }}
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                e.preventDefault();
-
-                                if (
-                                    !e.target.classList.contains(
-                                        "heroinputselectwrpdisabled",
-                                    )
-                                ) {
-                                    setinputvalue("");
-                                    setSelectedField(
-                                        selectedField === inputs?.[0]?.label
-                                            ? null
-                                            : inputs?.[0]?.label,
-                                    );
-                                }
-                            }}
+                            style={{ width: '100%', color: theme.palette.secondary.main, }}
+                            className={addclassnametomobileinputs(inputs?.[3], 3)}
+                            key={3}
                         >
-                            {state[inputs?.[0]?.field] ? (
-                                <p className="inputtextforcountriesandcitiesp">
-                                    {state[inputs?.[0]?.field]}
-                                </p>
-                            ) : (
-                                <div>
-                                    <p className="hiddenmobilelabel"
-                                        style={{ color: (!state[inputs?.[0]?.field] && isOffer) ? `${theme.palette.secondary.main}` : '' }}
+                            <label className="heroinputlabel">
+                                {edit ? (
+                                    `${inputs?.[3]?.label.split(" ").slice(1).join(" ")}:`
+                                ) : (
+                                    <p className="hiddenmobilelabel">
+                                        {inputs?.[3]?.label ?? <>&nbsp;</>}
+                                    </p>
+                                )}
+
+                                {manualCity === inputs?.[3]?.label ? (
+                                    <div className={`heroinputselectwrpmanual`}>
+                                        <input
+                                            value={state[inputs?.[3]?.field]}
+                                            onChange={(e) => {
+                                                setstate({
+                                                    ...state,
+                                                    [inputs?.[3]?.field]: e.target.value,
+                                                });
+                                            }}
+                                            className="manualcityinput"
+                                            autoFocus
+                                        ></input>
+                                        <button
+                                            className="manualcityconfirmbutton"
+                                            onClick={() => {
+                                                setManualCity(null);
+                                            }}
+                                        >
+                                            Confirm
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div
+                                        className={editClassname(inputs?.[3], 3)}
+                                        style={{ border: (!state[inputs?.[3]?.field] && isOffer) ? `2px solid ${theme.palette.secondary.main}` : '' }}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            e.preventDefault();
+
+                                            if (
+                                                !e.target.classList.contains(
+                                                    "heroinputselectwrpdisabled",
+                                                )
+                                            ) {
+                                                setinputvalue("");
+                                                setSelectedField(
+                                                    selectedField === inputs?.[3]?.label
+                                                        ? null
+                                                        : inputs?.[3]?.label,
+                                                );
+                                            }
+                                        }}
                                     >
-                                        Please select
-                                    </p>
-                                    <p className="shownmobilelebel">
-                                        {inputs?.[0]?.label}
-                                    </p>
-                                </div>
-                            )}
+                                        {state[inputs?.[3]?.field] ? (
+                                            <p className="inputtextforcountriesandcitiesp">
+                                                {state[inputs?.[3]?.field]}
+                                            </p>
+                                        ) : (
+                                            <div>
+                                                <p className="hiddenmobilelabel"
+                                                    style={{ color: (!state[inputs?.[3]?.field] && isOffer) ? `${theme.palette.secondary.main}` : '' }}
+                                                >
+                                                    Please select
+                                                </p>
+                                                <p className="shownmobilelebel">
+                                                    {inputs?.[3]?.label}
+                                                </p>
+                                            </div>
+                                        )}
 
-                            <span className="triangledown"></span>
+                                        <span className="triangledown"></span>
+                                    </div>
+                                )}
+                                {selectedField === inputs?.[3]?.label && !manualCity
+                                    ? dropdown(inputs?.[3], 3)
+                                    : null}
+                            </label>
                         </div>
-                    )}
-                    {selectedField === inputs?.[0]?.label && !manualCity
-                        ? dropdown(inputs?.[0], 0)
-                        : null}
-                </label>
-            </div>
-            <div
-                style={{ width: '100%', color: theme.palette.secondary.main, }}
-                className={addclassnametomobileinputs(inputs?.[2], 2)}
-                key={2}
-            >
-                <label className="heroinputlabel">
-                    {edit ? (
-                        `${inputs?.[2]?.label.split(" ").slice(1).join(" ")}:`
-                    ) : (
-                        <p className="hiddenmobilelabel">
-                            {inputs?.[2]?.label}:
-                        </p>
-                    )}
-
-                    {manualCity === inputs?.[2]?.label ? (
-                        <div className={`heroinputselectwrpmanual`}>
-                            <input
-                                value={state[inputs?.[2]?.field]}
-                                onChange={(e) => {
-                                    setstate({
-                                        ...state,
-                                        [inputs?.[2]?.field]: e.target.value,
-                                    });
-                                }}
-                                className="manualcityinput"
-                                autoFocus
-                            ></input>
-                            <button
-                                className="manualcityconfirmbutton"
-                                onClick={() => {
-                                    setManualCity(null);
-                                }}
-                            >
-                                Confirm
-                            </button>
-                        </div>
-                    ) : (
-                        <div
-                            className={editClassname(inputs?.[2], 2)}
-                            style={{ border: (!state[inputs?.[2]?.field] && isOffer) ? `2px solid ${theme.palette.secondary.main}` : '' }}
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                e.preventDefault();
-
-                                if (
-                                    !e.target.classList.contains(
-                                        "heroinputselectwrpdisabled",
-                                    )
-                                ) {
-                                    setinputvalue("");
-                                    setSelectedField(
-                                        selectedField === inputs?.[2]?.label
-                                            ? null
-                                            : inputs?.[2]?.label,
-                                    );
-                                }
-                            }}
-                        >
-                            {state[inputs?.[2]?.field] ? (
-                                <p className="inputtextforcountriesandcitiesp">
-                                    {state[inputs?.[2]?.field]}
-                                </p>
-                            ) : (
-                                <div>
-                                    <p className="hiddenmobilelabel"
-                                        style={{ color: (!state[inputs?.[2]?.field] && isOffer) ? `${theme.palette.secondary.main}` : '' }}
-                                    >
-                                        Please select
-                                    </p>
-                                    <p className="shownmobilelebel">
-                                        {inputs?.[2]?.label}
-                                    </p>
-                                </div>
-                            )}
-
-                            <span className="triangledown"></span>
-                        </div>
-                    )}
-                    {selectedField === inputs?.[2]?.label && !manualCity
-                        ? dropdown(inputs?.[2], 2)
-                        : null}
-                </label>
-            </div>
-            <div
-                style={{ width: '100%', color: theme.palette.secondary.main, }}
-                className={addclassnametomobileinputs(inputs?.[1], 1)}
-                key={1}
-            >
-                <label className="heroinputlabel">
-                    {edit ? (
-                        `${inputs?.[1]?.label.split(" ").slice(1).join(" ")}:`
-                    ) : (
-                        <p className="hiddenmobilelabel">
-                            {inputs?.[1]?.label}:
-                        </p>
-                    )}
-
-                    {manualCity === inputs?.[1]?.label ? (
-                        <div className={`heroinputselectwrpmanual`}>
-                            <input
-                                value={state[inputs?.[1]?.field]}
-                                onChange={(e) => {
-                                    setstate({
-                                        ...state,
-                                        [inputs?.[1]?.field]: e.target.value,
-                                    });
-                                }}
-                                className="manualcityinput"
-                                autoFocus
-                            ></input>
-                            <button
-                                className="manualcityconfirmbutton"
-                                onClick={() => {
-                                    setManualCity(null);
-                                }}
-                            >
-                                Confirm
-                            </button>
-                        </div>
-                    ) : (
-                        <div
-                            className={editClassname(inputs?.[1], 1)}
-                            style={{ border: (!state[inputs?.[1]?.field] && isOffer) ? `2px solid ${theme.palette.secondary.main}` : '' }}
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                e.preventDefault();
-
-                                if (
-                                    !e.target.classList.contains(
-                                        "heroinputselectwrpdisabled",
-                                    )
-                                ) {
-                                    setinputvalue("");
-                                    setSelectedField(
-                                        selectedField === inputs?.[1]?.label
-                                            ? null
-                                            : inputs?.[1]?.label,
-                                    );
-                                }
-                            }}
-                        >
-                            {state[inputs?.[1]?.field] ? (
-                                <p className="inputtextforcountriesandcitiesp">
-                                    {state[inputs?.[1]?.field]}
-                                </p>
-                            ) : (
-                                <div>
-                                    <p className="hiddenmobilelabel"
-                                        style={{ color: (!state[inputs?.[1]?.field] && isOffer) ? `${theme.palette.secondary.main}` : '' }}
-                                    >
-                                        Please select
-                                    </p>
-                                    <p className="shownmobilelebel">
-                                        {inputs?.[1]?.label}
-                                    </p>
-                                </div>
-                            )}
-
-                            <span className="triangledown"></span>
-                        </div>
-                    )}
-                    {selectedField === inputs?.[1]?.label && !manualCity
-                        ? dropdown(inputs?.[1], 1)
-                        : null}
-                </label>
-            </div>
-            <div
-                style={{ width: '100%', color: theme.palette.secondary.main, }}
-                className={addclassnametomobileinputs(inputs?.[3], 3)}
-                key={3}
-            >
-                <label className="heroinputlabel">
-                    {edit ? (
-                        `${inputs?.[3]?.label.split(" ").slice(1).join(" ")}:`
-                    ) : (
-                        <p className="hiddenmobilelabel">
-                            {inputs?.[3]?.label}:
-                        </p>
-                    )}
-
-                    {manualCity === inputs?.[3]?.label ? (
-                        <div className={`heroinputselectwrpmanual`}>
-                            <input
-                                value={state[inputs?.[3]?.field]}
-                                onChange={(e) => {
-                                    setstate({
-                                        ...state,
-                                        [inputs?.[3]?.field]: e.target.value,
-                                    });
-                                }}
-                                className="manualcityinput"
-                                autoFocus
-                            ></input>
-                            <button
-                                className="manualcityconfirmbutton"
-                                onClick={() => {
-                                    setManualCity(null);
-                                }}
-                            >
-                                Confirm
-                            </button>
-                        </div>
-                    ) : (
-                        <div
-                            className={editClassname(inputs?.[3], 3)}
-                            style={{ border: (!state[inputs?.[3]?.field] && isOffer) ? `2px solid ${theme.palette.secondary.main}` : '' }}
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                e.preventDefault();
-
-                                if (
-                                    !e.target.classList.contains(
-                                        "heroinputselectwrpdisabled",
-                                    )
-                                ) {
-                                    setinputvalue("");
-                                    setSelectedField(
-                                        selectedField === inputs?.[3]?.label
-                                            ? null
-                                            : inputs?.[3]?.label,
-                                    );
-                                }
-                            }}
-                        >
-                            {state[inputs?.[3]?.field] ? (
-                                <p className="inputtextforcountriesandcitiesp">
-                                    {state[inputs?.[3]?.field]}
-                                </p>
-                            ) : (
-                                <div>
-                                    <p className="hiddenmobilelabel"
-                                        style={{ color: (!state[inputs?.[3]?.field] && isOffer) ? `${theme.palette.secondary.main}` : '' }}
-                                    >
-                                        Please select
-                                    </p>
-                                    <p className="shownmobilelebel">
-                                        {inputs?.[3]?.label}
-                                    </p>
-                                </div>
-                            )}
-
-                            <span className="triangledown"></span>
-                        </div>
-                    )}
-                    {selectedField === inputs?.[3]?.label && !manualCity
-                        ? dropdown(inputs?.[3], 3)
-                        : null}
-                </label>
-            </div>
+                    </Stack>
+                </>}
             {/* );
             })} */}
 
-            {ifukofus()}
+
         </Stack>
     );
 }
