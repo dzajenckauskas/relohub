@@ -148,7 +148,7 @@ const Carousel = () => {
                 //     quality={100}
                 //     priority
                 // />,
-                <StarIcon fontSize="large" sx={{ color: theme.palette.secondary.dark }} />,
+                <StarIcon key={i} fontSize="large" sx={{ color: theme.palette.secondary.dark }} />,
             );
         }
         return stars;

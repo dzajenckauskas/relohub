@@ -17,15 +17,16 @@ export async function generateMetadata({ }): Promise<Metadata> {
         title: homePage?.data?.attributes?.seo?.seoTitle,
         description: homePage?.data?.attributes?.seo?.seoDescription,
         keywords: homePage?.data?.attributes?.seo?.seoKeywords,
+        metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL!),
         alternates: {
             canonical: process.env.NEXT_PUBLIC_DOMAIN_URL,
         },
         openGraph: {
-            images: [`${process.env.NEXT_PUBLIC_DOMAIN_URL}/images/globe-vector.png`]
+            images: ['/images/globe-vector.png']
         },
         twitter: {
-            images: [`${process.env.NEXT_PUBLIC_DOMAIN_URL}/images/globe-vector.png`]
-        }
+            images: ['/images/globe-vector.png']
+        },
     }
 }
 

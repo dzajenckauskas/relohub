@@ -1,22 +1,29 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     distDir: 'build',
-    experimental: {
-        optimizeFonts: true,
-    },
     images: {
-        domains: [
-            "154.49.136.99",
-            "flagcdn.com",
-            "api.relohub.co.uk"
-        ],
         remotePatterns: [
+            {
+                protocol: 'http',
+                hostname: '154.49.136.99',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'flagcdn.com',
+                pathname: '/**',
+            },
             {
                 protocol: 'https',
                 hostname: 'api.relohub.co.uk',
                 port: '1355',
                 pathname: '/uploads/**',
-            }
+            },
+            {
+                protocol: 'https',
+                hostname: 'api.relohub.co.uk',
+                pathname: '/**',
+            },
         ],
     },
 };
