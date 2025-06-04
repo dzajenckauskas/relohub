@@ -33,9 +33,10 @@ export function getInTouchHTML(json) {
             <div class="container">
                 <div class="header">
                     <div class="logo">
-                        <img
-                            src="https://relohub.co.uk/relohub-logo.svg"
+                        <img 
+                            src="https://relohub.co.uk/relohub-logo.png"
                             alt="Relohub"
+                            style="display: block; margin: 0 auto;" 
                         />
                     </div>
                 </div>

@@ -35,13 +35,14 @@ export const NewOrderClientMail = (data: any) => {
     <title>New Order Confirmation</title>
   </head>
   <body style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px; color: #333;">
-    <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 6px; overflow: hidden;">
+  <table width="600" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto; background-color: #ffffff; border-radius: 6px; overflow: hidden;">
       <tr>
-        <td style="padding: 20px; text-align: center;">
+        <td style="padding: 20px; text-align: center; background-color: #f7f7f7;">
           <img 
-          src="https://relohub.co.uk/relohub-logo.svg"
-          alt="Relohub"
-          width="150" />
+            src="https://relohub.co.uk/relohub-logo.png"
+            alt="Relohub"
+            style="display: block; margin: 0 auto;" 
+          />
         </td>
       </tr>
       <tr>
@@ -71,7 +72,7 @@ export const NewOrderClientMail = (data: any) => {
         </td>
       </tr>
       <tr>
-        <td style="padding: 10px; text-align: center; font-size: 12px; color: #999;">
+        <td style="background-color: #f7f7f7; padding: 10px; text-align: center; font-size: 12px; color: #999;">
           © 2025 All rights reserved.
         </td>
       </tr>
