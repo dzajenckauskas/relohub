@@ -5,7 +5,6 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from "@stripe/stripe-js";
-import Image from 'next/image';
 import { UseFormReturn } from 'react-hook-form';
 import NoPricePopup from '../NoPricePopup';
 import { OfferFormType } from '../OfferNewPage';
@@ -23,9 +22,7 @@ type Props = {
     error: string;
 }
 
-const PriceOptionsStep = ({ error, transformedData, form, countriesData, activeStep, prices }: Props) => {
-    console.log(error, "ERROR");
-
+const PriceOptionsStep = ({ transformedData, form, countriesData, activeStep, prices }: Props) => {
     return (
         <Card sx={{ p: { xs: 2, md: 4 }, pb: 0, width: "100%", mx: "auto", mb: '120px' }}>
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, md: 6 }} width={'100%'}>
