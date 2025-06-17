@@ -20,6 +20,14 @@ import PriceOptionsStep from "./steps/PriceOptionsStep";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import { useRef, useEffect } from "react";
 
+interface ApiResponse {
+    server_response_code: string;
+    server_response: string;
+    price: { [key: string]: number };
+    orderReferenceNumber: string;
+    uuid: string;
+}
+
 export type OfferFormType = {
     fullName: string;
     email: string;
@@ -215,6 +223,7 @@ export default function OfferNewPage({ countriesData }: Props) {
     const [error, setError] = useState<string | undefined>();
 
     const [prices, setPrices] = useState(null);
+    const [uuid, setUuid] = useState(null);
 
 
     const searchParams = useSearchParams();
@@ -317,41 +326,73 @@ export default function OfferNewPage({ countriesData }: Props) {
         Own_items: [...transformedCustomItems ?? [], ...transformedCommonItems ?? []],
 
     }
+
     const onSubmit = async () => {
-        setError(undefined)
+        setError(undefined);
 
         const hv = process.env.NEXT_PUBLIC_HEADER_VALUE;
 
-        if (process.env.NODE_ENV === "development") {
-            console.log(transformedData, 'data');
-        }
         try {
-            const res = await fetch('/api/insert-lead', {
-                method: "POST",
+            const res = await fetch(`/api/insertLead${uuid ? `/${uuid}` : ''}`, {
+                method: uuid ? "PUT" : "POST",
                 headers: {
-                    "http-referer": hv,
+                    referer: hv,
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(transformedData),
             });
 
-            if (activeStep !== 0) {
-                if (res.ok) {
-                    const prc = await res.json();
-                    if (process.env.NODE_ENV === "development") {
-                        console.log(prc);
+            if (res.ok) {
+                let prc: ApiResponse;
+
+                try {
+                    const raw = await res.json();
+
+                    // Handle possibly double-stringified JSON
+                    if (typeof raw === "string") {
+                        prc = JSON.parse(raw);
+                    } else {
+                        prc = raw;
                     }
 
-                    setActiveStep(2)
+                    if (!prc) {
+                        setError("API response was valid JSON but parsed to empty or null object.");
+                        return;
+                    }
 
-                    prc && setPrices(prc);
+                    if (process.env.NODE_ENV === "development") {
+                        console.log("--- API Response Debug Logs (After Final Parsing) ---");
+                        console.log("Object.keys(prc):", Object.keys(prc));
+                        console.log("Parsed JSON Response (prc - final):", prc);
+                        console.log("UUID from prc:", prc.uuid);
+                        console.log("--- End API Response Debug Logs ---");
+                    }
+
+                    setPrices(prc);
+                    setUuid(prc.uuid);
+
+                    if (activeStep !== 0) {
+                        setActiveStep(2);
+                    }
+
+                } catch (jsonParseError: any) {
+                    console.error("Failed to parse JSON response:", jsonParseError);
+                    setError(`Error parsing API response: ${jsonParseError.message}`);
+                    return;
                 }
+            } else {
+                const errorBody = await res.text();
+                console.error(`API Error: ${res.status} ${res.statusText}`);
+                console.error("Error details:", errorBody);
+                setError(`API call failed: ${res.status} ${res.statusText}. Details: ${errorBody.substring(0, 100)}...`);
             }
-        } catch (error) {
+
+        } catch (error: any) {
             console.log("fetch error:", error);
-            setError(error.message)
+            setError(error.message);
         }
-    }
+    };
+
 
     const nextStep = async () => {
         const valid = await trigger(Object.keys(stepSchemas[activeStep].fields) as any); // Validate only current step fields

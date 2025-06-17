@@ -12,7 +12,7 @@ type Props = {
     error?: string;
 }
 
-const InventoryStep = ({ form, error }: Props) => {
+const InventoryStep = ({ form }: Props) => {
     return (
         <Card sx={{ p: { xs: 2, md: 4 }, width: "100%", mx: "auto", mb: { xs: '80px', md: '120px' }, pb: 0 }}>
             <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 0, sm: 4, md: 4, lg: 6 }} width={'100%'}>
