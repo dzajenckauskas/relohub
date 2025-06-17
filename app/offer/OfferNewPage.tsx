@@ -333,7 +333,7 @@ export default function OfferNewPage({ countriesData }: Props) {
         const hv = process.env.NEXT_PUBLIC_HEADER_VALUE;
 
         try {
-            const res = await fetch(`/api/insertLead${uuid ? `/${uuid}` : ''}`, {
+            const res = await fetch(`/api/insert-lead${uuid ? `/${uuid}` : ''}`, {
                 method: uuid ? "PUT" : "POST",
                 headers: {
                     referer: hv,
